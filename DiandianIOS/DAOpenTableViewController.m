@@ -8,6 +8,7 @@
 
 #import "DAOpenTableViewController.h"
 #import "DAOpenTableViewCell.h"
+#import "DAMyTableViewController.h"
 
 @interface DAOpenTableViewController ()
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -27,10 +28,13 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    DAMyTableViewController *book = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
+    [self addChildViewController:book];
     
-    //[self.collectionView registerClass:[DAOpenTableViewController class] forCellWithReuseIdentifier:@"TableCell"];
+    [self.openTableView addSubview:book.view];//添加到self.view
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,28 +42,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-// 1
-- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    return 8;
-}
-// 2
-- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
-    return 1;
-}
-// 3
-- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    DAOpenTableViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"TableCell" forIndexPath:indexPath];
-//    cell.imageView.image =
-    
-    return cell;
-}
-// 4
-/*- (UICollectionReusableView *)collectionView:
- (UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
- {
- return [[UICollectionReusableView alloc] init];
- }*/
 
 
 

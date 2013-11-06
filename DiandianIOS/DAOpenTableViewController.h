@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DAOpenTableViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface DAOpenTableViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *openTableView;
 
 @end
