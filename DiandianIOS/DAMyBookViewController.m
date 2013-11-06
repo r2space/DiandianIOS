@@ -67,7 +67,9 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"sadfsdfsadf");
+    
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"orderReload" object:[self.dataArray objectAtIndex:indexPath.row]];
+    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
 }
 
 - (void)didReceiveMemoryWarning

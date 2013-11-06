@@ -7,9 +7,13 @@
 //
 
 #import "DAMyOrderViewController.h"
+#import "DAMyOrderDetailViewController.h"
+#import "UIViewController+CWPopup.h"
 
 @interface DAMyOrderViewController ()
-
+{
+    NSMutableArray *list;
+}
 @end
 
 @implementation DAMyOrderViewController
@@ -27,11 +31,30 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSArray *list = [NSArray arrayWithObjects:@"fd",@"sdfdf",nil];
-    self.orderList = list;
-    self.tableVIew.delegate = self;
-    self.tableVIew.dataSource = self;
+//    NSArray *list = [NSArray arrayWithObjects:@"fd",@"sdfdf",nil];
+    list =[[NSMutableArray alloc] init];
+    [list addObject:@"sfasdf1"];
+    [list addObject:@"sfasdf2"];
 
+    self.orderList = [[NSArray alloc]initWithArray:list];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderReload:)
+                                                 name:@"orderReload" object:nil];
+    
+    UINib *cellNib = [UINib nibWithNibName:@"DAOrderCell" bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAOrderCell"];
+
+}
+
+- (void)orderReload:(NSNotification*) notification
+{
+
+    id obj = [notification object];
+    NSLog(@"%@",obj);
+    [list addObject:obj];
+    self.orderList = [[NSArray alloc]initWithArray:list];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,15 +66,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellWithIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellWithIdentifier];
-    }
+    static NSString *CellWithIdentifier = @"DAOrderCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
+    
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
     NSUInteger row = [indexPath row];
-    cell.textLabel.text = [self.orderList objectAtIndex:row];
-    cell.imageView.image = [UIImage imageNamed:@"green.png"];
-    cell.detailTextLabel.text = @"详细信息";
+    titleLabel.text = [self.orderList objectAtIndex:row];
+
     return cell;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -64,19 +85,19 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 2;
+    return [self.orderList count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70;
+    return 44;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] % 2 == 0) {
-        cell.backgroundColor = [UIColor blueColor];
+//        cell.backgroundColor = [UIColor blueColor];
     } else {
-        cell.backgroundColor = [UIColor greenColor];
+//        cell.backgroundColor = [UIColor greenColor];
     }
 }
 
@@ -96,7 +117,13 @@
 
 
 - (IBAction)putDone:(id)sender {
+
+    UIStoryboard *OrderDetailViewStoryboard = [UIStoryboard storyboardWithName:@"DAMyOrderDetailViewStoryboard" bundle:nil];
+    UIViewController *orderDetailVC = [OrderDetailViewStoryboard instantiateViewControllerWithIdentifier:@"orderDetailVC"];
+    [self.navigationController pushViewController:orderDetailVC animated:YES];
 }
+
+
 
 - (IBAction)overOrder:(id)sender {
 }

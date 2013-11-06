@@ -1,5 +1,5 @@
 //
-//  DAOrderCell.h
+//  DAMyOrderDetailViewController.h
 //  DiandianIOS
 //
 //  Created by Antony on 13-11-6.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DAOrderCell : UITableViewCell
+@interface DAMyOrderDetailViewController : UIViewController
 
 @end

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DAOrderCell.h"
 
-@interface DAMyOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableVIew;
+@interface DAMyOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSArray *orderList;
+
 - (IBAction)putDone:(id)sender;
 - (IBAction)overOrder:(id)sender;
 @end

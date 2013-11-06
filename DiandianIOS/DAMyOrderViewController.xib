@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DAMyOrderViewController">
             <connections>
-                <outlet property="tableVIew" destination="YMr-4Z-wRK" id="Mra-Le-UwH"/>
+                <outlet property="tableView" destination="YMr-4Z-wRK" id="Vn3-ml-v9D"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>

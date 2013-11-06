@@ -11,6 +11,7 @@
 #import "DAMyBookViewController.h"
 #import "DAMyFilterViewController.h"
 #import "DAMyOrderViewController.h"
+#import "DAMyMenuBookViewController.h"
 
 
 
@@ -38,10 +39,15 @@
 	// Do any additional setup after loading the view.
 
     
-    DAMyBookViewController *my = [[DAMyBookViewController alloc] initWithNibName:@"DAMyBookViewController" bundle:nil];
-    [self addChildViewController:my];
-
-    [self.MenuGird addSubview:my.view];//添加到self.view
+//    DAMyBookViewController *my = [[DAMyBookViewController alloc] initWithNibName:@"DAMyBookViewController" bundle:nil];
+//    [self addChildViewController:my];
+//
+//    [self.MenuGird addSubview:my.view];//添加到self.view
+    
+    DAMyMenuBookViewController *book = [[DAMyMenuBookViewController alloc] initWithNibName:@"DAMyMenuBookViewController" bundle:nil];
+    [self addChildViewController:book];
+    [self.MenuGird addSubview:book.view];//添加到self.view
+    
     
     DAMyFilterViewController *filter = [[DAMyFilterViewController alloc] initWithNibName:@"DAMyFilterViewController" bundle:nil];
     [self addChildViewController:filter];

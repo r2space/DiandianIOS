@@ -1,38 +1,29 @@
 //
 //  DAOrderCell.m
-//  MenuBook
+//  DiandianIOS
 //
-//  Created by Antony on 13-11-5.
+//  Created by Antony on 13-11-6.
 //  Copyright (c) 2013年 DAC. All rights reserved.
 //
 
 #import "DAOrderCell.h"
 
-@interface DAOrderCell ()
-
-@end
-
 @implementation DAOrderCell
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Custom initialization
+        // Initialization code
     }
     return self;
 }
 
-- (void)viewDidLoad
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
+    [super setSelected:selected animated:animated];
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // Configure the view for the selected state
 }
 
 @end

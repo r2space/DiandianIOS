@@ -11,6 +11,23 @@
 		0A07BD061828EC1B00A350BC /* DAMyOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD041828EC1B00A350BC /* DAMyOrderViewController.xib */; };
 		0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD081828ECF800A350BC /* DAMyFilterViewController.m */; };
 		0A07BD0B1828ECF800A350BC /* DAMyFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD091828ECF800A350BC /* DAMyFilterViewController.xib */; };
+		0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD501829CB6900A350BC /* CCSegmentedControl.m */; };
+		0A07BD551829CC8A00A350BC /* segment_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD531829CC8A00A350BC /* segment_bg.png */; };
+		0A07BD561829CC8A00A350BC /* stain.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD541829CC8A00A350BC /* stain.png */; };
+		0A07BD591829D2A500A350BC /* type.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD581829D2A500A350BC /* type.json */; };
+		0A07BD5B1829D2AF00A350BC /* table.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD5A1829D2AF00A350BC /* table.json */; };
+		0A07BD5D1829D2B900A350BC /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD5C1829D2B900A350BC /* menu.json */; };
+		0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */; };
+		0A07BD621829DC0900A350BC /* DAMyMenuBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */; };
+		0A07BD681829DC8100A350BC /* MSGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD651829DC8100A350BC /* MSGridView.m */; };
+		0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD671829DC8100A350BC /* MSGridViewCell.m */; };
+		0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD6B182A003E00A350BC /* MSBookMenu.m */; };
+		0A07BD6E182A031000A350BC /* cai_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD6D182A031000A350BC /* cai_2.png */; };
+		0A07BD73182A0BBD00A350BC /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD72182A0BBD00A350BC /* Util.m */; };
+		0A07BD76182A0E7B00A350BC /* DAOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD75182A0E7B00A350BC /* DAOrderCell.m */; };
+		0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD79182A204800A350BC /* UIViewController+CWPopup.m */; };
+		0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD7C182A20DC00A350BC /* DAMyOrderDetailViewController.m */; };
+		0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */; };
 		0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BC8182878DA009CDF6D /* DAViewController.m */; };
 		0A577BD7182890D2009CDF6D /* DAOpenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BD6182890D2009CDF6D /* DAOpenTableViewController.m */; };
 		0A577BD9182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A577BD8182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard */; };
@@ -18,7 +35,6 @@
 		0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */; };
 		0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C31828764800037E73 /* DARootViewController.m */; };
 		0A9DA5C61828766200037E73 /* DARootView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C51828766100037E73 /* DARootView.storyboard */; };
-		0AA5338D1828AC820087EFF1 /* DAOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA5338B1828AC820087EFF1 /* DAOrderCell.m */; };
 		0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533911828AD690087EFF1 /* DABookViewController.xib */; };
 		0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533971828AD7D0087EFF1 /* DAOrderCell.xib */; };
 		0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533991828B7FE0087EFF1 /* DABookCell.xib */; };
@@ -61,6 +77,32 @@
 		0A07BD071828ECF800A350BC /* DAMyFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyFilterViewController.h; sourceTree = "<group>"; };
 		0A07BD081828ECF800A350BC /* DAMyFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyFilterViewController.m; sourceTree = "<group>"; };
 		0A07BD091828ECF800A350BC /* DAMyFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyFilterViewController.xib; sourceTree = "<group>"; };
+		0A07BD4F1829CB6900A350BC /* CCSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSegmentedControl.h; sourceTree = "<group>"; };
+		0A07BD501829CB6900A350BC /* CCSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSegmentedControl.m; sourceTree = "<group>"; };
+		0A07BD531829CC8A00A350BC /* segment_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = segment_bg.png; sourceTree = "<group>"; };
+		0A07BD541829CC8A00A350BC /* stain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stain.png; sourceTree = "<group>"; };
+		0A07BD581829D2A500A350BC /* type.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = type.json; sourceTree = "<group>"; };
+		0A07BD5A1829D2AF00A350BC /* table.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = table.json; sourceTree = "<group>"; };
+		0A07BD5C1829D2B900A350BC /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
+		0A07BD5E1829DC0900A350BC /* DAMyMenuBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuBookViewController.h; sourceTree = "<group>"; };
+		0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuBookViewController.m; sourceTree = "<group>"; };
+		0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyMenuBookViewController.xib; sourceTree = "<group>"; };
+		0A07BD641829DC8100A350BC /* MSGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridView.h; sourceTree = "<group>"; };
+		0A07BD651829DC8100A350BC /* MSGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridView.m; sourceTree = "<group>"; };
+		0A07BD661829DC8100A350BC /* MSGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridViewCell.h; sourceTree = "<group>"; };
+		0A07BD671829DC8100A350BC /* MSGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridViewCell.m; sourceTree = "<group>"; };
+		0A07BD6A182A003E00A350BC /* MSBookMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBookMenu.h; sourceTree = "<group>"; };
+		0A07BD6B182A003E00A350BC /* MSBookMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBookMenu.m; sourceTree = "<group>"; };
+		0A07BD6D182A031000A350BC /* cai_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cai_2.png; sourceTree = "<group>"; };
+		0A07BD71182A0BBD00A350BC /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		0A07BD72182A0BBD00A350BC /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		0A07BD74182A0E7B00A350BC /* DAOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderCell.h; sourceTree = "<group>"; };
+		0A07BD75182A0E7B00A350BC /* DAOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderCell.m; sourceTree = "<group>"; };
+		0A07BD78182A204800A350BC /* UIViewController+CWPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CWPopup.h"; sourceTree = "<group>"; };
+		0A07BD79182A204800A350BC /* UIViewController+CWPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CWPopup.m"; sourceTree = "<group>"; };
+		0A07BD7B182A20DC00A350BC /* DAMyOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderDetailViewController.h; sourceTree = "<group>"; };
+		0A07BD7C182A20DC00A350BC /* DAMyOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderDetailViewController.m; sourceTree = "<group>"; };
+		0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAMyOrderDetailViewStoryboard.storyboard; sourceTree = "<group>"; };
 		0A577BC7182878DA009CDF6D /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
 		0A577BC8182878DA009CDF6D /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
 		0A577BD5182890D2009CDF6D /* DAOpenTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOpenTableViewController.h; sourceTree = "<group>"; };
@@ -72,8 +114,6 @@
 		0A9DA5C21828764800037E73 /* DARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARootViewController.h; sourceTree = "<group>"; };
 		0A9DA5C31828764800037E73 /* DARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARootViewController.m; sourceTree = "<group>"; };
 		0A9DA5C51828766100037E73 /* DARootView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DARootView.storyboard; sourceTree = "<group>"; };
-		0AA5338A1828AC820087EFF1 /* DAOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderCell.h; sourceTree = "<group>"; };
-		0AA5338B1828AC820087EFF1 /* DAOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderCell.m; sourceTree = "<group>"; };
 		0AA533941828AD750087EFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DABookViewController.xib; sourceTree = "<group>"; };
 		0AA533981828AD800087EFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DAOrderCell.xib; sourceTree = "<group>"; };
 		0AA533991828B7FE0087EFF1 /* DABookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABookCell.xib; sourceTree = "<group>"; };
@@ -133,6 +173,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A07BD4D1829CB3800A350BC /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				0A07BD77182A204800A350BC /* CWPopup */,
+				0A07BD70182A0B9600A350BC /* Common */,
+				0A07BD631829DC6900A350BC /* MSGridView */,
+				0A07BD4E1829CB6900A350BC /* CCSegmentedControl */,
+			);
+			name = assets;
+			sourceTree = "<group>";
+		};
+		0A07BD4E1829CB6900A350BC /* CCSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				0A07BD4F1829CB6900A350BC /* CCSegmentedControl.h */,
+				0A07BD501829CB6900A350BC /* CCSegmentedControl.m */,
+			);
+			path = CCSegmentedControl;
+			sourceTree = "<group>";
+		};
+		0A07BD521829CC8A00A350BC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0A07BD6D182A031000A350BC /* cai_2.png */,
+				0A07BD531829CC8A00A350BC /* segment_bg.png */,
+				0A07BD541829CC8A00A350BC /* stain.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		0A07BD571829D27E00A350BC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A07BD521829CC8A00A350BC /* Images */,
+				0A07BD581829D2A500A350BC /* type.json */,
+				0A07BD5A1829D2AF00A350BC /* table.json */,
+				0A07BD5C1829D2B900A350BC /* menu.json */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		0A07BD631829DC6900A350BC /* MSGridView */ = {
+			isa = PBXGroup;
+			children = (
+				0A07BD641829DC8100A350BC /* MSGridView.h */,
+				0A07BD651829DC8100A350BC /* MSGridView.m */,
+				0A07BD661829DC8100A350BC /* MSGridViewCell.h */,
+				0A07BD671829DC8100A350BC /* MSGridViewCell.m */,
+				0A07BD6A182A003E00A350BC /* MSBookMenu.h */,
+				0A07BD6B182A003E00A350BC /* MSBookMenu.m */,
+			);
+			name = MSGridView;
+			sourceTree = "<group>";
+		};
+		0A07BD6F182A0A0500A350BC /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Module;
+			sourceTree = "<group>";
+		};
+		0A07BD70182A0B9600A350BC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0A07BD71182A0BBD00A350BC /* Util.h */,
+				0A07BD72182A0BBD00A350BC /* Util.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		0A07BD77182A204800A350BC /* CWPopup */ = {
+			isa = PBXGroup;
+			children = (
+				0A07BD78182A204800A350BC /* UIViewController+CWPopup.h */,
+				0A07BD79182A204800A350BC /* UIViewController+CWPopup.m */,
+			);
+			path = CWPopup;
+			sourceTree = "<group>";
+		};
 		0AA956EC18274DCA0098D60C = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +285,9 @@
 		0AA956FE18274DCA0098D60C /* DiandianIOS */ = {
 			isa = PBXGroup;
 			children = (
+				0A07BD571829D27E00A350BC /* Resources */,
+				0A07BD4D1829CB3800A350BC /* assets */,
+				0A07BD6F182A0A0500A350BC /* Module */,
 				0AA9573518279D410098D60C /* view */,
 				0AA9570718274DCA0098D60C /* DAAppDelegate.h */,
 				0AA9570818274DCA0098D60C /* DAAppDelegate.m */,
@@ -179,7 +301,6 @@
 				0A577BC7182878DA009CDF6D /* DAViewController.h */,
 				0A577BC8182878DA009CDF6D /* DAViewController.m */,
 			);
-			name = DiandianIOS;
 			path = DiandianIOS;
 			sourceTree = "<group>";
 		};
@@ -200,7 +321,6 @@
 				0AA9572618274DCA0098D60C /* MenuBookTests.m */,
 				0AA9572118274DCA0098D60C /* Supporting Files */,
 			);
-			name = DiandianIOSTests;
 			path = DiandianIOSTests;
 			sourceTree = "<group>";
 		};
@@ -233,8 +353,8 @@
 				0AA5339B1828B8600087EFF1 /* DABookCell.h */,
 				0AA5339C1828B8600087EFF1 /* DABookCell.m */,
 				0AA533991828B7FE0087EFF1 /* DABookCell.xib */,
-				0AA5338A1828AC820087EFF1 /* DAOrderCell.h */,
-				0AA5338B1828AC820087EFF1 /* DAOrderCell.m */,
+				0A07BD74182A0E7B00A350BC /* DAOrderCell.h */,
+				0A07BD75182A0E7B00A350BC /* DAOrderCell.m */,
 				0AA533971828AD7D0087EFF1 /* DAOrderCell.xib */,
 				0AA5339E1828BEE80087EFF1 /* DAMyBookViewController.h */,
 				0AA5339F1828BEE80087EFF1 /* DAMyBookViewController.m */,
@@ -245,6 +365,12 @@
 				0A07BD071828ECF800A350BC /* DAMyFilterViewController.h */,
 				0A07BD081828ECF800A350BC /* DAMyFilterViewController.m */,
 				0A07BD091828ECF800A350BC /* DAMyFilterViewController.xib */,
+				0A07BD5E1829DC0900A350BC /* DAMyMenuBookViewController.h */,
+				0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */,
+				0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */,
+				0A07BD7B182A20DC00A350BC /* DAMyOrderDetailViewController.h */,
+				0A07BD7C182A20DC00A350BC /* DAMyOrderDetailViewController.m */,
+				0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -326,18 +452,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A07BD551829CC8A00A350BC /* segment_bg.png in Resources */,
+				0A07BD561829CC8A00A350BC /* stain.png in Resources */,
+				0A07BD591829D2A500A350BC /* type.json in Resources */,
 				0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */,
 				0AA533A21828BEE80087EFF1 /* DAMyBookViewController.xib in Resources */,
+				0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */,
 				0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */,
 				0AA9571418274DCA0098D60C /* Images.xcassets in Resources */,
 				0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */,
+				0A07BD6E182A031000A350BC /* cai_2.png in Resources */,
 				0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */,
+				0A07BD5D1829D2B900A350BC /* menu.json in Resources */,
 				0AA9570318274DCA0098D60C /* InfoPlist.strings in Resources */,
+				0A07BD5B1829D2AF00A350BC /* table.json in Resources */,
 				0A577BD9182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard in Resources */,
 				0AA9570C18274DCA0098D60C /* Main.storyboard in Resources */,
 				0A07BD0B1828ECF800A350BC /* DAMyFilterViewController.xib in Resources */,
 				0A07BD061828EC1B00A350BC /* DAMyOrderViewController.xib in Resources */,
 				0A9DA5C61828766200037E73 /* DARootView.storyboard in Resources */,
+				0A07BD621829DC0900A350BC /* DAMyMenuBookViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,21 +490,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AA5338D1828AC820087EFF1 /* DAOrderCell.m in Sources */,
 				0A577BD7182890D2009CDF6D /* DAOpenTableViewController.m in Sources */,
+				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
+				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,
 				0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */,
 				0AA9570518274DCA0098D60C /* main.m in Sources */,
+				0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
+				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
+				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
+				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
 				28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */,
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,
+				0A07BD681829DC8100A350BC /* MSGridView.m in Sources */,
 				0A07BD051828EC1B00A350BC /* DAMyOrderViewController.m in Sources */,
 				0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
+				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
+				0A07BD76182A0E7B00A350BC /* DAOrderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

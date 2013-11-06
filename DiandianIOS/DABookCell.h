@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DABookCell : UICollectionViewCell
+@interface DABookCell : UIView
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UILabel *label;
