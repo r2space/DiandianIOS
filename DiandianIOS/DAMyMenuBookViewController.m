@@ -7,11 +7,14 @@
 //
 
 #import "DAMyMenuBookViewController.h"
-
+#import "DAMenuModule.h"
+#import "DAMyMenuBookCell.h"
 @interface DAMyMenuBookViewController ()
 {
     MSGridView *gridView;
+    NSMutableArray *menuList;
     BOOL listType;
+    UICollectionViewFlowLayout *defaultLayout;
 }
 @end
 
@@ -29,89 +32,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    gridView = [[MSGridView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    gridView.gridViewDelegate = self;
-    gridView.gridViewDataSource = self;
-    [gridView setInnerSpacing:CGSizeMake(100, 0)];
-    [self.view addSubview:gridView];
+    menuList = [[NSMutableArray alloc ] init];
     listType = YES;
+    [self loadFromDisk];
+    UINib *cellNib = [UINib nibWithNibName:@"DAMyMenuBookCell" bundle:nil];
+    [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyMenuBookCell"];
+    defaultLayout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
+    
+    
     
 }
 
-
-
-#pragma mark gridView delegate methods
-
-#pragma mark gridView datasource methods
-
-
--(MSGridViewCell *)cellForIndexPath:(NSIndexPath*)indexPath inGridWithIndexPath:(NSIndexPath *)gridIndexPath;
-{
+-(void)loadFromDisk{
+    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
+    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
     
-    static NSString *reuseIdentifier = @"cell";
-    MSGridViewCell *cell = [MSGridView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    NSError *anError = nil;
+    NSArray *parsedElements = [NSJSONSerialization JSONObjectWithData:elementsData
+                                                              options:NSJSONReadingAllowFragments
+                                                                error:&anError];
     
-    if(cell == nil) {
-        cell = [[MSGridViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:reuseIdentifier];
+    for (NSDictionary *aModuleDict in parsedElements){
+        [menuList addObject:aModuleDict];
     }
-    
-    cell.layer.borderWidth = 1;
-    return cell;
-    
-}
-
-// Returns the number of supergrid rows
--(NSUInteger)numberOfGridRows
-{
-    return 1;
-}
-
-// Returns the number of supergrid rows
--(NSUInteger)numberOfGridColumns
-{
-    return 3;
-}
-
-
--(NSUInteger)numberOfColumnsForGridAtIndexPath:(NSIndexPath*)indexPath
-{
-    return 2;
-    
-}
-
--(NSUInteger)numberOfRowsForGridAtIndexPath:(NSIndexPath*)indexPath
-{
-    return 2;
-}
-
-/*
- * If you want to specify a height
- *
- 
- 
- -(float)heightForCellRowAtIndex:(NSUInteger)row forGridAtIndexPath:(NSIndexPath *)gridIndexPath
- {
- NSLog(@"call");
- return self.view.frame.size.width*1.2/3;
- }
- */
-
-
--(void)didSelectCellWithIndexPath:(NSIndexPath*) indexPath
-{
-    
-    int index = [indexPath indexAtPosition:2]*3+[indexPath indexAtPosition:3];
-    NSLog(@"index: %i",index);
-    
-    [[[UIAlertView alloc] initWithTitle:@"Tapped" message:[NSString stringWithFormat:@"You tapped cell %i in grid (%i,%i)",index,[indexPath indexAtPosition:0],[indexPath indexAtPosition:1]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil] show];
-    if(listType){
-        listType = NO;
-    }else {
-        listType = YES;
-    }
-    [gridView reloadData];
-
 }
 
 
@@ -121,4 +64,69 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
+{
+    return [menuList count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
+{
+    
+    // we're going to use a custom UICollectionViewCell, which will hold an image and its label
+    //
+    
+    DAMenuModule *data = [[DAMenuModule alloc ]initWithDictionary:[menuList objectAtIndex:indexPath.row]];
+    NSString *cellIdentifier ;
+    if (!listType) {
+        cellIdentifier = @"DAMyBigMenuBookCell";
+    } else {
+        cellIdentifier = @"DAMyMenuBookCell";
+    }
+    
+    DAMyMenuBookCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
+    titleLabel.text = data.name;
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:12];
+    [imageView setImage: [UIImage imageNamed:data.image]];
+    UIButton *addBtn = (UIButton *)[cell viewWithTag:13];
+    
+    [addBtn addTarget:self
+            action:@selector(addMenu:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return cell;
+}
+
+-(void)addMenu:(UIButton*)button{
+    NSLog(@"增加菜");
+}
+
+-(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (listType) {
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        [flowLayout setItemSize:CGSizeMake(693, 680)];
+        [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+        flowLayout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
+        
+        [self.collectionView setCollectionViewLayout:flowLayout];
+        
+        UINib *cellbigNib = [UINib nibWithNibName:@"DAMyBigMenuBookCell" bundle:nil];
+        [self.collectionView registerNib:cellbigNib forCellWithReuseIdentifier:@"DAMyBigMenuBookCell"];
+        
+        listType = NO;
+        [self.collectionView  reloadData];
+    } else {
+        
+        
+        [self.collectionView setCollectionViewLayout:defaultLayout];
+        
+        UINib *cellNib = [UINib nibWithNibName:@"DAMyMenuBookCell" bundle:nil];
+        [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyMenuBookCell"];
+        
+        listType = YES;
+        [self.collectionView  reloadData];
+    }
+    
+    
+}
 @end

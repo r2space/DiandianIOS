@@ -15,7 +15,7 @@ typedef enum {
     MenuBookDetail  = 1
 } MenuBookType;
 
-@interface DAMyMenuBookViewController : UIViewController<MSGridViewDataSource,MSGridViewDelegate>
-
+@interface DAMyMenuBookViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

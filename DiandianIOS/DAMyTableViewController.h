@@ -11,7 +11,7 @@
 #import "MSGridView.h"
 #import "DABookCell.h"
 
-@interface DAMyTableViewController : UIViewController<MSGridViewDataSource,MSGridViewDelegate>
-
+@interface DAMyTableViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

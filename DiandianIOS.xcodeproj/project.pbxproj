@@ -30,6 +30,12 @@
 		0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */; };
 		0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD88182A363000A350BC /* DAMyTableViewController.m */; };
 		0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD89182A363000A350BC /* DAMyTableViewController.xib */; };
+		0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD8D182A3E9600A350BC /* DAMenuModule.m */; };
+		0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB729182A741200170F0C /* DAMyMenuBookCell.xib */; };
+		0A3DB72C182A7B8700170F0C /* DAMyBigMenuBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72B182A7B8700170F0C /* DAMyBigMenuBookCell.xib */; };
+		0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */; };
+		0A3DB730182B1F5100170F0C /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72F182B1F5100170F0C /* table.png */; };
+		0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */; };
 		0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BC8182878DA009CDF6D /* DAViewController.m */; };
 		0A577BD7182890D2009CDF6D /* DAOpenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BD6182890D2009CDF6D /* DAOpenTableViewController.m */; };
 		0A577BD9182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A577BD8182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard */; };
@@ -108,6 +114,14 @@
 		0A07BD87182A363000A350BC /* DAMyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTableViewController.h; sourceTree = "<group>"; };
 		0A07BD88182A363000A350BC /* DAMyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableViewController.m; sourceTree = "<group>"; };
 		0A07BD89182A363000A350BC /* DAMyTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableViewController.xib; sourceTree = "<group>"; };
+		0A07BD8C182A3E9600A350BC /* DAMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMenuModule.h; sourceTree = "<group>"; };
+		0A07BD8D182A3E9600A350BC /* DAMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMenuModule.m; sourceTree = "<group>"; };
+		0A3DB729182A741200170F0C /* DAMyMenuBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyMenuBookCell.xib; sourceTree = "<group>"; };
+		0A3DB72B182A7B8700170F0C /* DAMyBigMenuBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyBigMenuBookCell.xib; sourceTree = "<group>"; };
+		0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableViewCell.xib; sourceTree = "<group>"; };
+		0A3DB72F182B1F5100170F0C /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
+		0A3DB731182B21B500170F0C /* DAMyMenuBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuBookCell.h; sourceTree = "<group>"; };
+		0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuBookCell.m; sourceTree = "<group>"; };
 		0A577BC7182878DA009CDF6D /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
 		0A577BC8182878DA009CDF6D /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
 		0A577BD5182890D2009CDF6D /* DAOpenTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOpenTableViewController.h; sourceTree = "<group>"; };
@@ -201,6 +215,7 @@
 		0A07BD521829CC8A00A350BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0A3DB72F182B1F5100170F0C /* table.png */,
 				0A07BD6D182A031000A350BC /* cai_2.png */,
 				0A07BD531829CC8A00A350BC /* segment_bg.png */,
 				0A07BD541829CC8A00A350BC /* stain.png */,
@@ -235,6 +250,8 @@
 		0A07BD6F182A0A0500A350BC /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				0A07BD8C182A3E9600A350BC /* DAMenuModule.h */,
+				0A07BD8D182A3E9600A350BC /* DAMenuModule.m */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -255,6 +272,17 @@
 				0A07BD79182A204800A350BC /* UIViewController+CWPopup.m */,
 			);
 			path = CWPopup;
+			sourceTree = "<group>";
+		};
+		0A3DB728182A73F700170F0C /* menubook */ = {
+			isa = PBXGroup;
+			children = (
+				0A3DB731182B21B500170F0C /* DAMyMenuBookCell.h */,
+				0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */,
+				0A3DB729182A741200170F0C /* DAMyMenuBookCell.xib */,
+				0A3DB72B182A7B8700170F0C /* DAMyBigMenuBookCell.xib */,
+			);
+			name = menubook;
 			sourceTree = "<group>";
 		};
 		0AA956EC18274DCA0098D60C = {
@@ -373,12 +401,14 @@
 				0A07BD5E1829DC0900A350BC /* DAMyMenuBookViewController.h */,
 				0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */,
 				0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */,
+				0A3DB728182A73F700170F0C /* menubook */,
 				0A07BD7B182A20DC00A350BC /* DAMyOrderDetailViewController.h */,
 				0A07BD7C182A20DC00A350BC /* DAMyOrderDetailViewController.m */,
 				0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */,
 				0A07BD87182A363000A350BC /* DAMyTableViewController.h */,
 				0A07BD88182A363000A350BC /* DAMyTableViewController.m */,
 				0A07BD89182A363000A350BC /* DAMyTableViewController.xib */,
+				0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -460,12 +490,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */,
 				0A07BD551829CC8A00A350BC /* segment_bg.png in Resources */,
 				0A07BD561829CC8A00A350BC /* stain.png in Resources */,
+				0A3DB72C182A7B8700170F0C /* DAMyBigMenuBookCell.xib in Resources */,
+				0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */,
 				0A07BD591829D2A500A350BC /* type.json in Resources */,
 				0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */,
 				0AA533A21828BEE80087EFF1 /* DAMyBookViewController.xib in Resources */,
 				0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */,
+				0A3DB730182B1F5100170F0C /* table.png in Resources */,
 				0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */,
 				0AA9571418274DCA0098D60C /* Images.xcassets in Resources */,
 				0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */,
@@ -515,9 +549,11 @@
 				28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */,
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
+				0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */,
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,
 				0A07BD681829DC8100A350BC /* MSGridView.m in Sources */,
 				0A07BD051828EC1B00A350BC /* DAMyOrderViewController.m in Sources */,
+				0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */,
 				0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,

@@ -17,13 +17,13 @@
 
 @implementation MSGridViewCell
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)identifier
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)identifier menuData:(DAMenuModule *)menuData
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
         self.reuseIdentifier = identifier;
-
+        self.menuData = menuData;
         UIImageView  *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(4, 4, 160, 120)];
         [imageView setImage:[UIImage imageNamed:@"cai_2.png"]];
         [self addSubview:imageView];
@@ -35,7 +35,7 @@
         bookDetail.frame = CGRectMake(130, 160, 100, 30);
         bookOrder.frame = CGRectMake(40, 160, 100, 30);
         
-        bookName.text = @"宫爆鸡丁";
+        bookName.text = self.menuData.name;
         bookPrice.text = @"100元/盘";
         [bookDetail setTitle:@"详细" forState:UIControlStateNormal];
         [bookOrder setTitle:@"预定" forState:UIControlStateNormal];
