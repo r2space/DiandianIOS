@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import <TribeSDK/TribeSDK.h>
+
 #import "Jastor.h"
 
 @interface DAMyMenu : Jastor
@@ -14,7 +14,10 @@
 @property(retain, nonatomic) NSString* name;
 @property(retain, nonatomic) NSString *title;
 @property(retain, nonatomic) NSString *image;
+@property(retain, nonatomic) NSString *price;
 @property(retain, nonatomic) NSString *type;
+@property(retain, nonatomic) NSString *index;
+
 
 @end
 

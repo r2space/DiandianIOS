@@ -1,5 +1,5 @@
 //
-//  DAMyMenuBookCell.h
+//  DAMyBigMenuBookCell.h
 //  DiandianIOS
 //
 //  Created by Antony on 13-11-7.
@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 
-@interface DAMyMenuBookCell : UICollectionViewCell
+@interface DAMyBigMenuBookCell : UICollectionViewCell
 
 
 @property (nonatomic, strong) DAMyMenu *menuData;
-
 - (IBAction)addMenu:(id)sender;
 
 @end

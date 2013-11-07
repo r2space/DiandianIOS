@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "DAOrderCell.h"
+#import "DAOrderAddAmountBtn.h"
 
 @interface DAMyOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

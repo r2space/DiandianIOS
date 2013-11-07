@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TribeSDK/TribeSDKHeader.h>
 #import "MSGridView.h"
 #import "DABookCell.h"
 

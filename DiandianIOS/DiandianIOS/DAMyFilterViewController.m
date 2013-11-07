@@ -68,7 +68,15 @@
 - (void)valueChanged:(id)sender
 {
     CCSegmentedControl* segmentedControl = sender;
-    NSLog(@"%s line:%d segment has changed to %d", __FUNCTION__, __LINE__, segmentedControl.selectedSegmentIndex);
+    NSString *index = [NSString stringWithFormat:@"%d",segmentedControl.selectedSegmentIndex];
+    NSLog(@"%s line:%d segment has changed to %@", __FUNCTION__, __LINE__, index);
+    
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:index];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

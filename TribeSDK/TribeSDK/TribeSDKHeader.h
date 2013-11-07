@@ -82,4 +82,6 @@
 // setting
 #import <TribeSDK/DAYiSettingModule.h>
 
+#import <TribeSDK/DAMyMenu.h>
+
 #endif

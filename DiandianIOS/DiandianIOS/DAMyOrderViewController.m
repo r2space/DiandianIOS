@@ -33,8 +33,7 @@
     // Do any additional setup after loading the view from its nib.
 //    NSArray *list = [NSArray arrayWithObjects:@"fd",@"sdfdf",nil];
     list =[[NSMutableArray alloc] init];
-    [list addObject:@"sfasdf1"];
-    [list addObject:@"sfasdf2"];
+    
 
     self.orderList = [[NSArray alloc]initWithArray:list];
     self.tableView.delegate = self;
@@ -42,17 +41,25 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderReload:)
                                                  name:@"orderReload" object:nil];
     
+    
     UINib *cellNib = [UINib nibWithNibName:@"DAOrderCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAOrderCell"];
 
 }
 
-- (void)orderReload:(NSNotification*) notification
+
+
+- (void)orderReload :(NSNotification*) notification
 {
 
-    id obj = [notification object];
+    DAMyMenu *obj = [notification object];
     NSLog(@"%@",obj);
+    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
+    [tmpList addObjectsFromArray:list];
+    list =[[NSMutableArray alloc] init];
     [list addObject:obj];
+    [list addObjectsFromArray:tmpList];
+    
     self.orderList = [[NSArray alloc]initWithArray:list];
     [self.tableView reloadData];
 }
@@ -66,12 +73,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSUInteger row = [indexPath row];
+    DAMyMenu *menudata = [self.orderList objectAtIndex:row];
     static NSString *CellWithIdentifier = @"DAOrderCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
+    DAOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
-    NSUInteger row = [indexPath row];
-    titleLabel.text = [self.orderList objectAtIndex:row];
+
+
+    DAOrderAddAmountBtn *addBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:20];
+    addBtn.name = menudata.name;
+    [addBtn addTarget:self
+               action:@selector(addAmount:) forControlEvents:UIControlEventTouchUpInside];
+    titleLabel.text = menudata.name;
 
     return cell;
 }
@@ -127,4 +141,13 @@
 
 - (IBAction)overOrder:(id)sender {
 }
+
+-(void) addAmount :(id)sender {
+    DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
+    
+    
+    NSLog(@"add Amount %@" ,btn.name );
+    
+}
+
 @end

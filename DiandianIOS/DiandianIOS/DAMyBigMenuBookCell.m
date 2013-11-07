@@ -1,14 +1,14 @@
 //
-//  DAMyMenuBookCell.m
+//  DAMyBigMenuBookCell.m
 //  DiandianIOS
 //
 //  Created by Antony on 13-11-7.
 //  Copyright (c) 2013年 DAC. All rights reserved.
 //
 
-#import "DAMyMenuBookCell.h"
+#import "DAMyBigMenuBookCell.h"
 
-@implementation DAMyMenuBookCell
+@implementation DAMyBigMenuBookCell
 
 - (id)initWithFrame:(CGRect)frame
 {

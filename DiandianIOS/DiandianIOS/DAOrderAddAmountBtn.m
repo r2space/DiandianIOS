@@ -1,14 +1,14 @@
 //
-//  DAMyMenuBookCell.m
+//  DAOrderAddAmountBtn.m
 //  DiandianIOS
 //
 //  Created by Antony on 13-11-7.
 //  Copyright (c) 2013年 DAC. All rights reserved.
 //
 
-#import "DAMyMenuBookCell.h"
+#import "DAOrderAddAmountBtn.h"
 
-@implementation DAMyMenuBookCell
+@implementation DAOrderAddAmountBtn
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -28,9 +28,4 @@
 }
 */
 
-- (IBAction)addMenu:(id)sender {
-    NSLog(@"dfdaf  data  %@  " ,self.menuData.name);
-    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"orderReload" object:self.menuData];
-    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
-}
 @end

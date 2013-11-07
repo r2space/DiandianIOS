@@ -9,6 +9,7 @@
 #import "DAMyMenuBookViewController.h"
 #import "DAMenuModule.h"
 #import "DAMyMenuBookCell.h"
+
 @interface DAMyMenuBookViewController ()
 {
     MSGridView *gridView;
@@ -39,6 +40,8 @@
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyMenuBookCell"];
     defaultLayout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:)
+                                                 name:@"filterReload" object:nil];
     
     
 }
@@ -75,7 +78,7 @@
     // we're going to use a custom UICollectionViewCell, which will hold an image and its label
     //
     
-    DAMenuModule *data = [[DAMenuModule alloc ]initWithDictionary:[menuList objectAtIndex:indexPath.row]];
+    DAMyMenu *data = [[DAMyMenu alloc ]initWithDictionary:[menuList objectAtIndex:indexPath.row]];
     NSString *cellIdentifier ;
     if (!listType) {
         cellIdentifier = @"DAMyBigMenuBookCell";
@@ -84,6 +87,9 @@
     }
     
     DAMyMenuBookCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    cell.menuData = data;
+    
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
     titleLabel.text = data.name;
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:12];
@@ -128,5 +134,24 @@
     }
     
     
+}
+
+
+- (void)filterReload : (NSNotification*) notification
+{
+//    NSString *obj = [notification object];
+    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
+    int i = 0 ;
+    for (DAMyMenu *menu in menuList) {
+//        NSLog(@"menu.type : %@" ,menu.type);
+
+        
+        if (i % 2  == 0) {
+            [tmpList addObject:menu];
+        }
+        i = i + 1;
+    }
+    menuList = [[NSMutableArray alloc]initWithArray:tmpList];
+    [self.collectionView reloadData];
 }
 @end

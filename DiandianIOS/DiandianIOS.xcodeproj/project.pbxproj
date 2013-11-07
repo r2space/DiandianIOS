@@ -43,6 +43,8 @@
 		0A577BD9182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A577BD8182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard */; };
 		0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BDB1828A040009CDF6D /* DABookViewController.m */; };
 		0A5D2835182B6E2F00847578 /* table1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2834182B6E2F00847578 /* table1.png */; };
+		0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D2837182B77A000847578 /* DAMyBigMenuBookCell.m */; };
+		0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D283D182B81F000847578 /* DAOrderAddAmountBtn.m */; };
 		0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */; };
 		0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C31828764800037E73 /* DARootViewController.m */; };
 		0A9DA5C61828766200037E73 /* DARootView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C51828766100037E73 /* DARootView.storyboard */; };
@@ -135,6 +137,10 @@
 		0A577BDA1828A040009CDF6D /* DABookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABookViewController.h; sourceTree = "<group>"; };
 		0A577BDB1828A040009CDF6D /* DABookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABookViewController.m; sourceTree = "<group>"; };
 		0A5D2834182B6E2F00847578 /* table1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table1.png; sourceTree = "<group>"; };
+		0A5D2836182B77A000847578 /* DAMyBigMenuBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyBigMenuBookCell.h; sourceTree = "<group>"; };
+		0A5D2837182B77A000847578 /* DAMyBigMenuBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyBigMenuBookCell.m; sourceTree = "<group>"; };
+		0A5D283C182B81F000847578 /* DAOrderAddAmountBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderAddAmountBtn.h; sourceTree = "<group>"; };
+		0A5D283D182B81F000847578 /* DAOrderAddAmountBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderAddAmountBtn.m; sourceTree = "<group>"; };
 		0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAMenuBookView.storyboard; sourceTree = "<group>"; };
 		0A9DA5C21828764800037E73 /* DARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARootViewController.h; sourceTree = "<group>"; };
 		0A9DA5C31828764800037E73 /* DARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARootViewController.m; sourceTree = "<group>"; };
@@ -286,10 +292,17 @@
 		0A3DB728182A73F700170F0C /* menubook */ = {
 			isa = PBXGroup;
 			children = (
+				0A07BD74182A0E7B00A350BC /* DAOrderCell.h */,
+				0A07BD75182A0E7B00A350BC /* DAOrderCell.m */,
+				0AA533971828AD7D0087EFF1 /* DAOrderCell.xib */,
 				0A3DB731182B21B500170F0C /* DAMyMenuBookCell.h */,
 				0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */,
 				0A3DB729182A741200170F0C /* DAMyMenuBookCell.xib */,
+				0A5D2836182B77A000847578 /* DAMyBigMenuBookCell.h */,
+				0A5D2837182B77A000847578 /* DAMyBigMenuBookCell.m */,
 				0A3DB72B182A7B8700170F0C /* DAMyBigMenuBookCell.xib */,
+				0A5D283C182B81F000847578 /* DAOrderAddAmountBtn.h */,
+				0A5D283D182B81F000847578 /* DAOrderAddAmountBtn.m */,
 			);
 			name = menubook;
 			sourceTree = "<group>";
@@ -396,9 +409,6 @@
 				0AA5339B1828B8600087EFF1 /* DABookCell.h */,
 				0AA5339C1828B8600087EFF1 /* DABookCell.m */,
 				0AA533991828B7FE0087EFF1 /* DABookCell.xib */,
-				0A07BD74182A0E7B00A350BC /* DAOrderCell.h */,
-				0A07BD75182A0E7B00A350BC /* DAOrderCell.m */,
-				0AA533971828AD7D0087EFF1 /* DAOrderCell.xib */,
 				0AA5339E1828BEE80087EFF1 /* DAMyBookViewController.h */,
 				0AA5339F1828BEE80087EFF1 /* DAMyBookViewController.m */,
 				0AA533A01828BEE80087EFF1 /* DAMyBookViewController.xib */,
@@ -570,6 +580,8 @@
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
+				0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */,
+				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
 				0A07BD76182A0E7B00A350BC /* DAOrderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,7 +729,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/Antony/Desktop/DAC/github/DiandianIOS/TribeSDK/build/Debug-framework",
+					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -738,7 +750,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/Antony/Desktop/DAC/github/DiandianIOS/TribeSDK/build/Debug-framework",
+					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
