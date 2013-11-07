@@ -736,7 +736,7 @@
 				INFOPLIST_FILE = "DiandianIOS/DiandianIOS-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/Antony/Desktop/DAC/github/DiandianIOS/TribeSDK/build/Debug-iphoneos",
+					"$(SRCROOT)/../TribeSDK/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = DiandianIOS;
 				WRAPPER_EXTENSION = app;
@@ -757,7 +757,7 @@
 				INFOPLIST_FILE = "DiandianIOS/DiandianIOS-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/Antony/Desktop/DAC/github/DiandianIOS/TribeSDK/build/Debug-iphoneos",
+					"$(SRCROOT)/../TribeSDK/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = DiandianIOS;
 				WRAPPER_EXTENSION = app;
