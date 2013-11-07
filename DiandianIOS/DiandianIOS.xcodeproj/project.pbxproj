@@ -42,6 +42,7 @@
 		0A577BD7182890D2009CDF6D /* DAOpenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BD6182890D2009CDF6D /* DAOpenTableViewController.m */; };
 		0A577BD9182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A577BD8182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard */; };
 		0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BDB1828A040009CDF6D /* DABookViewController.m */; };
+		0A5D2835182B6E2F00847578 /* table1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2834182B6E2F00847578 /* table1.png */; };
 		0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */; };
 		0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C31828764800037E73 /* DARootViewController.m */; };
 		0A9DA5C61828766200037E73 /* DARootView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C51828766100037E73 /* DARootView.storyboard */; };
@@ -133,6 +134,7 @@
 		0A577BD8182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAOpenTableViewStoryboard.storyboard; sourceTree = "<group>"; };
 		0A577BDA1828A040009CDF6D /* DABookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABookViewController.h; sourceTree = "<group>"; };
 		0A577BDB1828A040009CDF6D /* DABookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABookViewController.m; sourceTree = "<group>"; };
+		0A5D2834182B6E2F00847578 /* table1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table1.png; sourceTree = "<group>"; };
 		0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAMenuBookView.storyboard; sourceTree = "<group>"; };
 		0A9DA5C21828764800037E73 /* DARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARootViewController.h; sourceTree = "<group>"; };
 		0A9DA5C31828764800037E73 /* DARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARootViewController.m; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		0A07BD521829CC8A00A350BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0A5D2834182B6E2F00847578 /* table1.png */,
 				0A1DBAB5182B3A7D0045787A /* bg_first.png */,
 				0A3DB72F182B1F5100170F0C /* table.png */,
 				0A07BD6D182A031000A350BC /* cai_2.png */,
@@ -516,6 +519,7 @@
 				0A07BD5D1829D2B900A350BC /* menu.json in Resources */,
 				0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */,
 				0AA9570318274DCA0098D60C /* InfoPlist.strings in Resources */,
+				0A5D2835182B6E2F00847578 /* table1.png in Resources */,
 				0A07BD5B1829D2AF00A350BC /* table.json in Resources */,
 				0A577BD9182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard in Resources */,
 				0AA9570C18274DCA0098D60C /* Main.storyboard in Resources */,
