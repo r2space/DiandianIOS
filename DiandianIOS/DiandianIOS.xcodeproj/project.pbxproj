@@ -70,6 +70,7 @@
 		0AA9572518274DCA0098D60C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AA9572318274DCA0098D60C /* InfoPlist.strings */; };
 		0AA9572718274DCA0098D60C /* MenuBookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9572618274DCA0098D60C /* MenuBookTests.m */; };
 		0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9573118279AE90098D60C /* DAMenuBookViewController.m */; };
+		2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */; };
 		28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +177,8 @@
 		0AA9572618274DCA0098D60C /* MenuBookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuBookTests.m; sourceTree = "<group>"; };
 		0AA9573018279AE90098D60C /* DAMenuBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMenuBookViewController.h; sourceTree = "<group>"; };
 		0AA9573118279AE90098D60C /* DAMenuBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMenuBookViewController.m; sourceTree = "<group>"; };
+		2854672A182BC2A5004CD144 /* DAMyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTableViewCell.h; sourceTree = "<group>"; };
+		2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableViewCell.m; sourceTree = "<group>"; };
 		28C97A301828D86A0099FE4A /* DAOpenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOpenTableViewCell.h; sourceTree = "<group>"; };
 		28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOpenTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -428,6 +431,8 @@
 				0A07BD87182A363000A350BC /* DAMyTableViewController.h */,
 				0A07BD88182A363000A350BC /* DAMyTableViewController.m */,
 				0A07BD89182A363000A350BC /* DAMyTableViewController.xib */,
+				2854672A182BC2A5004CD144 /* DAMyTableViewCell.h */,
+				2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */,
 				0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */,
 			);
 			name = view;
@@ -557,6 +562,7 @@
 			files = (
 				0A577BD7182890D2009CDF6D /* DAOpenTableViewController.m in Sources */,
 				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
+				2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
 				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,

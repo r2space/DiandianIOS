@@ -7,6 +7,7 @@
 //
 
 #import "DAMyTableViewController.h"
+#import "DAMyTableViewCell.h"
 
 @interface DAMyTableViewController ()
 {
@@ -25,13 +26,28 @@
     dataList = [[NSMutableArray alloc] init];
     UINib *cellNib = [UINib nibWithNibName:@"DAMyTableViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyTableViewCell"];
-
+    
+    
+    [self loadFromFile];
 }
 
+-(void)loadFromFile{
+    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"table" ofType:@"json"];
+    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
+    
+    NSError *anError = nil;
+    NSArray *items = [NSJSONSerialization JSONObjectWithData:elementsData
+                                                              options:NSJSONReadingAllowFragments
+                                                                error:&anError];
+    
+    for (NSDictionary *d in items){
+        [dataList addObject:d];
+    }
+}
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
-    return 32;
+    return dataList.count ;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -45,9 +61,10 @@
     
     cellIdentifier = @"DAMyTableViewCell";
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
-    titleLabel.text = @"fsadf";
+    DAMyTableViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    NSDictionary *d = [dataList objectAtIndex:indexPath.row];
+    [cell setData:[d objectForKey:@"name"] setState:[d objectForKey:@"state"]];
 
     return cell;
 }
