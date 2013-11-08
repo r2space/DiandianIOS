@@ -1,28 +1,24 @@
 //
-//  DAMyOrderDetailViewController.m
+//  DADetailOrderViewController.m
 //  DiandianIOS
 //
-//  Created by Antony on 13-11-6.
+//  Created by Antony on 13-11-7.
 //  Copyright (c) 2013年 DAC. All rights reserved.
 //
 
-#import "DAMyOrderDetailViewController.h"
+#import "DADetailOrderViewController.h"
 
-@interface DAMyOrderDetailViewController ()
+@interface DADetailOrderViewController ()
 
 @end
 
-@implementation DAMyOrderDetailViewController
-@synthesize delegate;
-
-
+@implementation DADetailOrderViewController
 - (IBAction)closePopup:(id)sender
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
         [self.delegate cancelButtonClicked:self];
     }
 }
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

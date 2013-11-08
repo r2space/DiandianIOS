@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DAMyOrderDetailDelegate;
 @interface DAMyOrderDetailViewController : UIViewController
 
+@property (assign, nonatomic) id <DAMyOrderDetailDelegate>delegate;
+@end
+
+
+@protocol DAMyOrderDetailDelegate<NSObject>
+
+@optional
+- (void)cancelButtonClicked:(DAMyOrderDetailViewController*)secondDetailViewController;
 @end

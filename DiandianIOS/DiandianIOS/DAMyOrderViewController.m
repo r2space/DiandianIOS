@@ -9,8 +9,10 @@
 #import "DAMyOrderViewController.h"
 #import "DAMyOrderDetailViewController.h"
 #import "UIViewController+CWPopup.h"
+#import "UIViewController+MJPopupViewController.h"
+#import "DADetailOrderViewController.h"
 
-@interface DAMyOrderViewController ()
+@interface DAMyOrderViewController ()<DADetailOrderDelegate>
 {
     NSMutableArray *list;
 }
@@ -132,9 +134,10 @@
 
 - (IBAction)putDone:(id)sender {
 
-    UIStoryboard *OrderDetailViewStoryboard = [UIStoryboard storyboardWithName:@"DAMyOrderDetailViewStoryboard" bundle:nil];
-    UIViewController *orderDetailVC = [OrderDetailViewStoryboard instantiateViewControllerWithIdentifier:@"orderDetailVC"];
-    [self.navigationController pushViewController:orderDetailVC animated:YES];
+    DADetailOrderViewController *secondDetailViewController = [[DADetailOrderViewController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];
+    secondDetailViewController.delegate = self;
+    [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
+    
 }
 
 

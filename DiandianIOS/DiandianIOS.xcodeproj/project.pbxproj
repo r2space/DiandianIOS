@@ -45,6 +45,11 @@
 		0A5D2835182B6E2F00847578 /* table1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2834182B6E2F00847578 /* table1.png */; };
 		0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D2837182B77A000847578 /* DAMyBigMenuBookCell.m */; };
 		0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D283D182B81F000847578 /* DAOrderAddAmountBtn.m */; };
+		0A5D288F182BD03600847578 /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D288C182BD03600847578 /* MJPopupBackgroundView.m */; };
+		0A5D2890182BD03600847578 /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D288E182BD03600847578 /* UIViewController+MJPopupViewController.m */; };
+		0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2891182BD1FD00847578 /* DAMyOrderDetailViewController.xib */; };
+		0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D2894182BD23700847578 /* DADetailOrderViewController.m */; };
+		0A5D2897182BD23700847578 /* DADetailOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2895182BD23700847578 /* DADetailOrderViewController.xib */; };
 		0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */; };
 		0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C31828764800037E73 /* DARootViewController.m */; };
 		0A9DA5C61828766200037E73 /* DARootView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C51828766100037E73 /* DARootView.storyboard */; };
@@ -142,6 +147,14 @@
 		0A5D2837182B77A000847578 /* DAMyBigMenuBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyBigMenuBookCell.m; sourceTree = "<group>"; };
 		0A5D283C182B81F000847578 /* DAOrderAddAmountBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderAddAmountBtn.h; sourceTree = "<group>"; };
 		0A5D283D182B81F000847578 /* DAOrderAddAmountBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderAddAmountBtn.m; sourceTree = "<group>"; };
+		0A5D288B182BD03600847578 /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
+		0A5D288C182BD03600847578 /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
+		0A5D288D182BD03600847578 /* UIViewController+MJPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MJPopupViewController.h"; sourceTree = "<group>"; };
+		0A5D288E182BD03600847578 /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
+		0A5D2891182BD1FD00847578 /* DAMyOrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyOrderDetailViewController.xib; sourceTree = "<group>"; };
+		0A5D2893182BD23700847578 /* DADetailOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADetailOrderViewController.h; sourceTree = "<group>"; };
+		0A5D2894182BD23700847578 /* DADetailOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADetailOrderViewController.m; sourceTree = "<group>"; };
+		0A5D2895182BD23700847578 /* DADetailOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADetailOrderViewController.xib; sourceTree = "<group>"; };
 		0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAMenuBookView.storyboard; sourceTree = "<group>"; };
 		0A9DA5C21828764800037E73 /* DARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARootViewController.h; sourceTree = "<group>"; };
 		0A9DA5C31828764800037E73 /* DARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARootViewController.m; sourceTree = "<group>"; };
@@ -211,6 +224,7 @@
 		0A07BD4D1829CB3800A350BC /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				0A5D288A182BD01400847578 /* Popup */,
 				0A07BD77182A204800A350BC /* CWPopup */,
 				0A07BD70182A0B9600A350BC /* Common */,
 				0A07BD631829DC6900A350BC /* MSGridView */,
@@ -308,6 +322,17 @@
 				0A5D283D182B81F000847578 /* DAOrderAddAmountBtn.m */,
 			);
 			name = menubook;
+			sourceTree = "<group>";
+		};
+		0A5D288A182BD01400847578 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				0A5D288B182BD03600847578 /* MJPopupBackgroundView.h */,
+				0A5D288C182BD03600847578 /* MJPopupBackgroundView.m */,
+				0A5D288D182BD03600847578 /* UIViewController+MJPopupViewController.h */,
+				0A5D288E182BD03600847578 /* UIViewController+MJPopupViewController.m */,
+			);
+			name = Popup;
 			sourceTree = "<group>";
 		};
 		0AA956EC18274DCA0098D60C = {
@@ -427,8 +452,12 @@
 				0A3DB728182A73F700170F0C /* menubook */,
 				0A07BD7B182A20DC00A350BC /* DAMyOrderDetailViewController.h */,
 				0A07BD7C182A20DC00A350BC /* DAMyOrderDetailViewController.m */,
+				0A5D2891182BD1FD00847578 /* DAMyOrderDetailViewController.xib */,
 				0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */,
 				0A07BD87182A363000A350BC /* DAMyTableViewController.h */,
+				0A5D2893182BD23700847578 /* DADetailOrderViewController.h */,
+				0A5D2894182BD23700847578 /* DADetailOrderViewController.m */,
+				0A5D2895182BD23700847578 /* DADetailOrderViewController.xib */,
 				0A07BD88182A363000A350BC /* DAMyTableViewController.m */,
 				0A07BD89182A363000A350BC /* DAMyTableViewController.xib */,
 				2854672A182BC2A5004CD144 /* DAMyTableViewCell.h */,
@@ -520,8 +549,10 @@
 				0A07BD561829CC8A00A350BC /* stain.png in Resources */,
 				0A3DB72C182A7B8700170F0C /* DAMyBigMenuBookCell.xib in Resources */,
 				0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */,
+				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
 				0A07BD591829D2A500A350BC /* type.json in Resources */,
 				0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */,
+				0A5D2897182BD23700847578 /* DADetailOrderViewController.xib in Resources */,
 				0AA533A21828BEE80087EFF1 /* DAMyBookViewController.xib in Resources */,
 				0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */,
 				0A3DB730182B1F5100170F0C /* table.png in Resources */,
@@ -561,6 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A577BD7182890D2009CDF6D /* DAOpenTableViewController.m in Sources */,
+				0A5D2890182BD03600847578 /* UIViewController+MJPopupViewController.m in Sources */,
 				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
 				2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
@@ -570,10 +602,12 @@
 				0AA9570518274DCA0098D60C /* main.m in Sources */,
 				0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */,
 				0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */,
+				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
 				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
+				0A5D288F182BD03600847578 /* MJPopupBackgroundView.m in Sources */,
 				28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */,
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,

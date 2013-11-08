@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--My Order Detail View Controller-->
+        <!--View Controller-->
         <scene sceneID="4pv-bj-R7v">
             <objects>
-                <viewController storyboardIdentifier="orderDetailVC" id="ctU-ul-57I" customClass="DAMyOrderDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="orderDetailVC" id="ctU-ul-57I" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nWO-wz-hao"/>
                         <viewControllerLayoutGuide type="bottom" id="Gw1-47-TLa"/>
