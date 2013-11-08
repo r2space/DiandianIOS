@@ -130,7 +130,7 @@
         [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyMenuBookCell"];
         
         listType = YES;
-        [self.collectionView  reloadData];
+        [self.collectionView reloadData];
     }
     
     
