@@ -94,12 +94,20 @@
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:12];
 
     DAOrderAddAmountBtn *addBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:20];
+    DAOrderAddAmountBtn *deleteBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:21];
     DAOrderRecipeBtn *recipeBtn = (DAOrderRecipeBtn *)[cell viewWithTag:31];
     addBtn.name = menudata.name;
+    addBtn._id = menudata._id;
+    deleteBtn.name = menudata.name;
+    deleteBtn._id = menudata._id;
+    
     recipeBtn.name = menudata.name;
     recipeBtn.orderId = menudata.name;
     [addBtn addTarget:self
                action:@selector(addAmount:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [deleteBtn addTarget:self
+               action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
     [recipeBtn addTarget:self action:@selector(updateRecipe: ) forControlEvents:UIControlEventTouchUpInside];
     titleLabel.text = menudata.name;
     amountLabel.text = [NSString stringWithFormat:@"%@份", menudata.amount];
@@ -175,13 +183,32 @@
 - (IBAction)overOrder:(id)sender {
 }
 
+
+-(void) deleteAmount :(id)sender {
+    DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
+
+    for (DAMyMenu *menu in list) {
+        if (menu._id == btn._id) {
+            if (![menu.amount isEqualToString:@"1"]) {
+                int amount = [menu.amount integerValue] - 1;
+                menu.amount = [NSString stringWithFormat:@"%d", amount];
+                [self.tableView reloadData];
+                return;
+            }
+            
+        }
+    }
+}
 -(void) addAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
     
-    
-    NSLog(@"add Amount %@" ,btn.name );
     for (DAMyMenu *menu in list) {
-        
+        if (menu._id == btn._id) {
+            int amount = [menu.amount integerValue] + 1;
+            menu.amount = [NSString stringWithFormat:@"%d", amount];
+            [self.tableView reloadData];
+            return;
+        }
     }
     
 }

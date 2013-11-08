@@ -11,5 +11,6 @@
 @interface DAOrderAddAmountBtn : UIButton
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *_id;
 
 @end
