@@ -8,8 +8,10 @@
 
 #import "DAMyTableViewController.h"
 #import "DAMyTableViewCell.h"
+#import "DAMyLoginViewController.h"
+#import "UIViewController+MJPopupViewController.h"
 
-@interface DAMyTableViewController ()
+@interface DAMyTableViewController ()<DAMyLoginDelegate>
 {
     MSGridView *gridView;
     NSMutableArray *dataList;
@@ -68,6 +70,18 @@
 
     return cell;
 }
+
+
+-(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    DAMyLoginViewController *loginViewVC = [[DAMyLoginViewController alloc]initWithNibName:@"DAMyLoginViewController" bundle:nil];
+    loginViewVC.delegate = self;
+    [self presentPopupViewController:loginViewVC animationType:MJPopupViewAnimationFade];
+    
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

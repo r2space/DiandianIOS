@@ -11,6 +11,7 @@
 #import "UIViewController+CWPopup.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "DADetailOrderViewController.h"
+#import "DAOrderRecipeBtn.h"
 
 @interface DAMyOrderViewController ()<DADetailOrderDelegate>
 {
@@ -40,9 +41,9 @@
     self.orderList = [[NSArray alloc]initWithArray:list];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderReload:)
-                                                 name:@"orderReload" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderReload:) name:@"orderReload" object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationSetRecipe:) name:@"setRecipe" object:nil];
     
     UINib *cellNib = [UINib nibWithNibName:@"DAOrderCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAOrderCell"];
@@ -55,10 +56,19 @@
 {
 
     DAMyMenu *obj = [notification object];
+    for (DAMyMenu *menu in list) {
+        if (menu._id == obj._id) {
+            int amount = [menu.amount integerValue] + 1;
+            menu.amount = [NSString stringWithFormat:@"%d", amount];
+            [self.tableView reloadData];
+            return;
+        }
+    }
     NSLog(@"%@",obj);
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [tmpList addObjectsFromArray:list];
     list =[[NSMutableArray alloc] init];
+    obj.amount = @"1";
     [list addObject:obj];
     [list addObjectsFromArray:tmpList];
     
@@ -81,13 +91,18 @@
     DAOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
-
+    UILabel *amountLabel = (UILabel *)[cell viewWithTag:12];
 
     DAOrderAddAmountBtn *addBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:20];
+    DAOrderRecipeBtn *recipeBtn = (DAOrderRecipeBtn *)[cell viewWithTag:31];
     addBtn.name = menudata.name;
+    recipeBtn.name = menudata.name;
+    recipeBtn.orderId = menudata.name;
     [addBtn addTarget:self
                action:@selector(addAmount:) forControlEvents:UIControlEventTouchUpInside];
+    [recipeBtn addTarget:self action:@selector(updateRecipe: ) forControlEvents:UIControlEventTouchUpInside];
     titleLabel.text = menudata.name;
+    amountLabel.text = [NSString stringWithFormat:@"%@份", menudata.amount];
 
     return cell;
 }
@@ -139,7 +154,22 @@
     [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
     
 }
+-(void)updateRecipe:(id)sender 
+{
+    DAOrderRecipeBtn *btn = (DAOrderRecipeBtn *)sender;
+    
+    NSLog(@"%s  %@  %@",   __FUNCTION__  ,btn.name,btn.orderId);
+    DADetailOrderViewController *secondDetailViewController = [[DADetailOrderViewController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];
+    secondDetailViewController.delegate = self;
+    [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
+}
 
+-(void) notificationSetRecipe :(NSNotification *)notification
+{
+    DADetailOrderViewController *secondDetailViewController = [[DADetailOrderViewController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];
+    secondDetailViewController.delegate = self;
+    [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
+}
 
 
 - (IBAction)overOrder:(id)sender {
@@ -150,6 +180,9 @@
     
     
     NSLog(@"add Amount %@" ,btn.name );
+    for (DAMyMenu *menu in list) {
+        
+    }
     
 }
 

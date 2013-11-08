@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 @protocol DADetailOrderDelegate;
-@interface DADetailOrderViewController : UIViewController
+@interface DADetailOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) id <DADetailOrderDelegate>delegate;
+- (IBAction)closePopup:(id)sender;
 @end
 
 

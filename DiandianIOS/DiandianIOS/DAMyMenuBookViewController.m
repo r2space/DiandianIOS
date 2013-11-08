@@ -40,8 +40,7 @@
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyMenuBookCell"];
     defaultLayout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:)
-                                                 name:@"filterReload" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:) name:@"filterReload" object:nil];
     
     
 }

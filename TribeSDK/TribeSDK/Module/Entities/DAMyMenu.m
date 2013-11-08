@@ -11,7 +11,7 @@
 @implementation DAMyMenu
 
 
-@synthesize name,image,type,price,index;
+@synthesize name,image,type,price,index,amount;
 
 -(id)initWithDictionary:(NSDictionary *)aDict{
     self = [self init];
@@ -21,6 +21,10 @@
         self.price = [aDict objectForKey:@"price"];
         self.type = [aDict objectForKey:@"type"];
         self.index = [aDict objectForKey:@"index"];
+        self.amount = [aDict objectForKey:@"amount"];
+        self._id = [aDict objectForKey:@"_id"];
+        
+        
     }
     return self;
 }
