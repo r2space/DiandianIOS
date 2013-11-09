@@ -81,6 +81,13 @@
 		0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9573118279AE90098D60C /* DAMenuBookViewController.m */; };
 		2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */; };
 		28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */; };
+		47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */; };
+		47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */; };
+		47A6ADAF182E188C00E80AA1 /* bill.json in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADAE182E188C00E80AA1 /* bill.json */; };
+		47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADB1182E25B100E80AA1 /* DABillDetailViewController.m */; };
+		47A6ADB4182E25B100E80AA1 /* DABillDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADB2182E25B100E80AA1 /* DABillDetailViewController.xib */; };
+		47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */; };
+		47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +211,16 @@
 		2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableViewCell.m; sourceTree = "<group>"; };
 		28C97A301828D86A0099FE4A /* DAOpenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOpenTableViewCell.h; sourceTree = "<group>"; };
 		28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOpenTableViewCell.m; sourceTree = "<group>"; };
+		47A6ADA9182E0F2500E80AA1 /* DABillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillViewController.h; sourceTree = "<group>"; };
+		47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillViewController.m; sourceTree = "<group>"; };
+		47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillViewController.xib; sourceTree = "<group>"; };
+		47A6ADAE182E188C00E80AA1 /* bill.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bill.json; sourceTree = "<group>"; };
+		47A6ADB0182E25B100E80AA1 /* DABillDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillDetailViewController.h; sourceTree = "<group>"; };
+		47A6ADB1182E25B100E80AA1 /* DABillDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillDetailViewController.m; sourceTree = "<group>"; };
+		47A6ADB2182E25B100E80AA1 /* DABillDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillDetailViewController.xib; sourceTree = "<group>"; };
+		47A6ADB5182E2B7D00E80AA1 /* DABillDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillDetailViewCell.h; sourceTree = "<group>"; };
+		47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillDetailViewCell.m; sourceTree = "<group>"; };
+		47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillDetailViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +289,7 @@
 				0A07BD581829D2A500A350BC /* type.json */,
 				0A07BD5A1829D2AF00A350BC /* table.json */,
 				0A07BD5C1829D2B900A350BC /* menu.json */,
+				47A6ADAE182E188C00E80AA1 /* bill.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -479,6 +497,15 @@
 				0A5D2898182C6EFF00847578 /* DAMyLoginViewController.h */,
 				0A5D2899182C6EFF00847578 /* DAMyLoginViewController.m */,
 				0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */,
+				47A6ADA9182E0F2500E80AA1 /* DABillViewController.h */,
+				47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */,
+				47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */,
+				47A6ADB0182E25B100E80AA1 /* DABillDetailViewController.h */,
+				47A6ADB1182E25B100E80AA1 /* DABillDetailViewController.m */,
+				47A6ADB2182E25B100E80AA1 /* DABillDetailViewController.xib */,
+				47A6ADB5182E2B7D00E80AA1 /* DABillDetailViewCell.h */,
+				47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */,
+				47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -568,6 +595,8 @@
 				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
 				0A07BD591829D2A500A350BC /* type.json in Resources */,
 				0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */,
+				47A6ADAF182E188C00E80AA1 /* bill.json in Resources */,
+				47A6ADB4182E25B100E80AA1 /* DABillDetailViewController.xib in Resources */,
 				0A5D2897182BD23700847578 /* DADetailOrderViewController.xib in Resources */,
 				0A5D28A1182CA9AA00847578 /* DADetailOrderCell.xib in Resources */,
 				0AA533A21828BEE80087EFF1 /* DAMyBookViewController.xib in Resources */,
@@ -576,10 +605,12 @@
 				0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */,
 				0AA9571418274DCA0098D60C /* Images.xcassets in Resources */,
 				0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */,
+				47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */,
 				0A07BD6E182A031000A350BC /* cai_2.png in Resources */,
 				0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */,
 				0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */,
 				0A07BD5D1829D2B900A350BC /* menu.json in Resources */,
+				47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */,
 				0A5D289C182C6EFF00847578 /* DAMyLoginViewController.xib in Resources */,
 				0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */,
 				0AA9570318274DCA0098D60C /* InfoPlist.strings in Resources */,
@@ -622,6 +653,7 @@
 				0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */,
 				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
+				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
 				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
@@ -631,6 +663,7 @@
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
 				0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */,
+				47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */,
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,
 				0A07BD681829DC8100A350BC /* MSGridView.m in Sources */,
 				0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */,
@@ -641,6 +674,7 @@
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
 				0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */,
+				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
 				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
 				0A07BD76182A0E7B00A350BC /* DAOrderCell.m in Sources */,
 			);

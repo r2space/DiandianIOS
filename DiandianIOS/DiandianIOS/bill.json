@@ -1,0 +1,26 @@
+[
+ {
+ "name":"鱼香肉丝",
+ "price":100,
+ "amount":1,
+ "off":0.8
+ },
+ {
+ "name":"鸡蛋灌饼",
+ "price":20,
+ "amount":1,
+ "off":0.8
+ },
+ {
+ "name":"五仁月饼",
+ "price":20,
+ "amount":10,
+ "off":0.8
+ },
+ {
+ "name":"五粮液",
+ "price":20,
+ "amount":3,
+ "off":0.6
+ }
+]
