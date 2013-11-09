@@ -7,6 +7,7 @@
 //
 
 #import "DAViewController.h"
+#import "DAOrderQueueViewController.h"
 
 @interface DAViewController ()
 
@@ -44,5 +45,10 @@
     UIStoryboard *openTableStoryboard = [UIStoryboard storyboardWithName:@"DAOpenTableViewStoryboard" bundle:nil];
     UIViewController *DAOpenTableViewVC = [openTableStoryboard instantiateViewControllerWithIdentifier:@"DAOpenTableViewVC"];
     [self.navigationController pushViewController:DAOpenTableViewVC animated:YES];
+}
+
+- (IBAction)showOrderQueue:(id)sender {
+    DAOrderQueueViewController *viewController = [[DAOrderQueueViewController alloc] initWithNibName:@"DAOrderQueueViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 @end
