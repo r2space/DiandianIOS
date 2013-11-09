@@ -88,6 +88,26 @@
 		47A6ADB4182E25B100E80AA1 /* DABillDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADB2182E25B100E80AA1 /* DABillDetailViewController.xib */; };
 		47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */; };
 		47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */; };
+		F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */; };
+		F2AB4BF8182DDDB90067E450 /* DAOrderQueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4BF6182DDDB90067E450 /* DAOrderQueueViewController.xib */; };
+		F2AB4BFD182E030A0067E450 /* DAOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4BFB182E030A0067E450 /* DAOrderDetailViewController.m */; };
+		F2AB4BFE182E030A0067E450 /* DAOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4BFC182E030A0067E450 /* DAOrderDetailViewController.xib */; };
+		F2AB4C02182E03480067E450 /* DAOrderGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4C00182E03480067E450 /* DAOrderGroupViewController.m */; };
+		F2AB4C03182E03480067E450 /* DAOrderGroupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C01182E03480067E450 /* DAOrderGroupViewController.xib */; };
+		F2AB4C06182E11380067E450 /* DAOrderDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4C05182E11380067E450 /* DAOrderDetailViewCell.m */; };
+		F2AB4C08182E15B30067E450 /* DAOrderDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C07182E15B30067E450 /* DAOrderDetailViewCell.xib */; };
+		F2AB4C0A182E1E120067E450 /* DAOrderGroupViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C09182E1E120067E450 /* DAOrderGroupViewCell.xib */; };
+		F2AB4C0D182E1E2B0067E450 /* DAOrderGroupViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4C0C182E1E2B0067E450 /* DAOrderGroupViewCell.m */; };
+		F2AB4C14182E21F90067E450 /* sample-table.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C12182E21F90067E450 /* sample-table.jpg */; };
+		F2AB4C15182E21F90067E450 /* sample-ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C13182E21F90067E450 /* sample-ticket.png */; };
+		F2AB4C17182E26710067E450 /* queue_detail.json in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C16182E26710067E450 /* queue_detail.json */; };
+		F2AB4C19182E26960067E450 /* queue_group.json in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C18182E26960067E450 /* queue_group.json */; };
+		F2AB4C20182E273F0067E450 /* 牛三样.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C1A182E273F0067E450 /* 牛三样.jpg */; };
+		F2AB4C21182E273F0067E450 /* 牛拼盘.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C1B182E273F0067E450 /* 牛拼盘.jpg */; };
+		F2AB4C22182E273F0067E450 /* 玉米小炒.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C1C182E273F0067E450 /* 玉米小炒.jpg */; };
+		F2AB4C23182E273F0067E450 /* 金枪鱼刺身.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C1D182E273F0067E450 /* 金枪鱼刺身.jpg */; };
+		F2AB4C24182E273F0067E450 /* 五彩拉皮.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C1E182E273F0067E450 /* 五彩拉皮.jpg */; };
+		F2AB4C25182E273F0067E450 /* 香煎猪五花.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4C1F182E273F0067E450 /* 香煎猪五花.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +241,31 @@
 		47A6ADB5182E2B7D00E80AA1 /* DABillDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillDetailViewCell.h; sourceTree = "<group>"; };
 		47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillDetailViewCell.m; sourceTree = "<group>"; };
 		47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillDetailViewCell.xib; sourceTree = "<group>"; };
+		F2AB4BF4182DDDB90067E450 /* DAOrderQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderQueueViewController.h; sourceTree = "<group>"; };
+		F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderQueueViewController.m; sourceTree = "<group>"; };
+		F2AB4BF6182DDDB90067E450 /* DAOrderQueueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderQueueViewController.xib; sourceTree = "<group>"; };
+		F2AB4BFA182E030A0067E450 /* DAOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderDetailViewController.h; sourceTree = "<group>"; };
+		F2AB4BFB182E030A0067E450 /* DAOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderDetailViewController.m; sourceTree = "<group>"; };
+		F2AB4BFC182E030A0067E450 /* DAOrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderDetailViewController.xib; sourceTree = "<group>"; };
+		F2AB4BFF182E03480067E450 /* DAOrderGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderGroupViewController.h; sourceTree = "<group>"; };
+		F2AB4C00182E03480067E450 /* DAOrderGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderGroupViewController.m; sourceTree = "<group>"; };
+		F2AB4C01182E03480067E450 /* DAOrderGroupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderGroupViewController.xib; sourceTree = "<group>"; };
+		F2AB4C04182E11380067E450 /* DAOrderDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderDetailViewCell.h; sourceTree = "<group>"; };
+		F2AB4C05182E11380067E450 /* DAOrderDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderDetailViewCell.m; sourceTree = "<group>"; };
+		F2AB4C07182E15B30067E450 /* DAOrderDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderDetailViewCell.xib; sourceTree = "<group>"; };
+		F2AB4C09182E1E120067E450 /* DAOrderGroupViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderGroupViewCell.xib; sourceTree = "<group>"; };
+		F2AB4C0B182E1E2B0067E450 /* DAOrderGroupViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderGroupViewCell.h; sourceTree = "<group>"; };
+		F2AB4C0C182E1E2B0067E450 /* DAOrderGroupViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderGroupViewCell.m; sourceTree = "<group>"; };
+		F2AB4C12182E21F90067E450 /* sample-table.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sample-table.jpg"; sourceTree = "<group>"; };
+		F2AB4C13182E21F90067E450 /* sample-ticket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sample-ticket.png"; sourceTree = "<group>"; };
+		F2AB4C16182E26710067E450 /* queue_detail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queue_detail.json; sourceTree = "<group>"; };
+		F2AB4C18182E26960067E450 /* queue_group.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queue_group.json; sourceTree = "<group>"; };
+		F2AB4C1A182E273F0067E450 /* 牛三样.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "牛三样.jpg"; sourceTree = "<group>"; };
+		F2AB4C1B182E273F0067E450 /* 牛拼盘.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "牛拼盘.jpg"; sourceTree = "<group>"; };
+		F2AB4C1C182E273F0067E450 /* 玉米小炒.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "玉米小炒.jpg"; sourceTree = "<group>"; };
+		F2AB4C1D182E273F0067E450 /* 金枪鱼刺身.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "金枪鱼刺身.jpg"; sourceTree = "<group>"; };
+		F2AB4C1E182E273F0067E450 /* 五彩拉皮.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "五彩拉皮.jpg"; sourceTree = "<group>"; };
+		F2AB4C1F182E273F0067E450 /* 香煎猪五花.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "香煎猪五花.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +317,14 @@
 		0A07BD521829CC8A00A350BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F2AB4C1A182E273F0067E450 /* 牛三样.jpg */,
+				F2AB4C1B182E273F0067E450 /* 牛拼盘.jpg */,
+				F2AB4C1C182E273F0067E450 /* 玉米小炒.jpg */,
+				F2AB4C1D182E273F0067E450 /* 金枪鱼刺身.jpg */,
+				F2AB4C1E182E273F0067E450 /* 五彩拉皮.jpg */,
+				F2AB4C1F182E273F0067E450 /* 香煎猪五花.jpg */,
+				F2AB4C12182E21F90067E450 /* sample-table.jpg */,
+				F2AB4C13182E21F90067E450 /* sample-ticket.png */,
 				0A5D2834182B6E2F00847578 /* table1.png */,
 				0A1DBAB5182B3A7D0045787A /* bg_first.png */,
 				0A3DB72F182B1F5100170F0C /* table.png */,
@@ -290,6 +343,8 @@
 				0A07BD5A1829D2AF00A350BC /* table.json */,
 				0A07BD5C1829D2B900A350BC /* menu.json */,
 				47A6ADAE182E188C00E80AA1 /* bill.json */,
+				F2AB4C16182E26710067E450 /* queue_detail.json */,
+				F2AB4C18182E26960067E450 /* queue_group.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -451,6 +506,7 @@
 		0AA9573518279D410098D60C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F2AB4BF9182E01150067E450 /* OrderQueue */,
 				0AA9573018279AE90098D60C /* DAMenuBookViewController.h */,
 				0AA9573118279AE90098D60C /* DAMenuBookViewController.m */,
 				0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */,
@@ -508,6 +564,28 @@
 				47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */,
 			);
 			name = view;
+			sourceTree = "<group>";
+		};
+		F2AB4BF9182E01150067E450 /* OrderQueue */ = {
+			isa = PBXGroup;
+			children = (
+				F2AB4BF4182DDDB90067E450 /* DAOrderQueueViewController.h */,
+				F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */,
+				F2AB4BF6182DDDB90067E450 /* DAOrderQueueViewController.xib */,
+				F2AB4BFA182E030A0067E450 /* DAOrderDetailViewController.h */,
+				F2AB4BFB182E030A0067E450 /* DAOrderDetailViewController.m */,
+				F2AB4BFC182E030A0067E450 /* DAOrderDetailViewController.xib */,
+				F2AB4BFF182E03480067E450 /* DAOrderGroupViewController.h */,
+				F2AB4C00182E03480067E450 /* DAOrderGroupViewController.m */,
+				F2AB4C01182E03480067E450 /* DAOrderGroupViewController.xib */,
+				F2AB4C04182E11380067E450 /* DAOrderDetailViewCell.h */,
+				F2AB4C05182E11380067E450 /* DAOrderDetailViewCell.m */,
+				F2AB4C07182E15B30067E450 /* DAOrderDetailViewCell.xib */,
+				F2AB4C0B182E1E2B0067E450 /* DAOrderGroupViewCell.h */,
+				F2AB4C0C182E1E2B0067E450 /* DAOrderGroupViewCell.m */,
+				F2AB4C09182E1E120067E450 /* DAOrderGroupViewCell.xib */,
+			);
+			name = OrderQueue;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,10 +666,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */,
+				F2AB4C17182E26710067E450 /* queue_detail.json in Resources */,
 				0A07BD551829CC8A00A350BC /* segment_bg.png in Resources */,
+				F2AB4C21182E273F0067E450 /* 牛拼盘.jpg in Resources */,
 				0A07BD561829CC8A00A350BC /* stain.png in Resources */,
+				F2AB4C14182E21F90067E450 /* sample-table.jpg in Resources */,
 				0A3DB72C182A7B8700170F0C /* DAMyBigMenuBookCell.xib in Resources */,
 				0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */,
+				F2AB4C20182E273F0067E450 /* 牛三样.jpg in Resources */,
+				F2AB4BFE182E030A0067E450 /* DAOrderDetailViewController.xib in Resources */,
+				F2AB4C0A182E1E120067E450 /* DAOrderGroupViewCell.xib in Resources */,
 				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
 				0A07BD591829D2A500A350BC /* type.json in Resources */,
 				0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */,
@@ -603,25 +687,34 @@
 				0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */,
 				0A3DB730182B1F5100170F0C /* table.png in Resources */,
 				0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */,
+				F2AB4C23182E273F0067E450 /* 金枪鱼刺身.jpg in Resources */,
+				F2AB4C15182E21F90067E450 /* sample-ticket.png in Resources */,
 				0AA9571418274DCA0098D60C /* Images.xcassets in Resources */,
 				0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */,
 				47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */,
 				0A07BD6E182A031000A350BC /* cai_2.png in Resources */,
 				0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */,
+				F2AB4C22182E273F0067E450 /* 玉米小炒.jpg in Resources */,
 				0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */,
 				0A07BD5D1829D2B900A350BC /* menu.json in Resources */,
 				47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */,
+				F2AB4BF8182DDDB90067E450 /* DAOrderQueueViewController.xib in Resources */,
 				0A5D289C182C6EFF00847578 /* DAMyLoginViewController.xib in Resources */,
 				0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */,
+				F2AB4C08182E15B30067E450 /* DAOrderDetailViewCell.xib in Resources */,
+				F2AB4C03182E03480067E450 /* DAOrderGroupViewController.xib in Resources */,
 				0AA9570318274DCA0098D60C /* InfoPlist.strings in Resources */,
 				0A5D2835182B6E2F00847578 /* table1.png in Resources */,
 				0A07BD5B1829D2AF00A350BC /* table.json in Resources */,
+				F2AB4C19182E26960067E450 /* queue_group.json in Resources */,
+				F2AB4C25182E273F0067E450 /* 香煎猪五花.jpg in Resources */,
 				0A577BD9182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard in Resources */,
 				0AA9570C18274DCA0098D60C /* Main.storyboard in Resources */,
 				0A07BD0B1828ECF800A350BC /* DAMyFilterViewController.xib in Resources */,
 				0A07BD061828EC1B00A350BC /* DAMyOrderViewController.xib in Resources */,
 				0A9DA5C61828766200037E73 /* DARootView.storyboard in Resources */,
 				0A07BD621829DC0900A350BC /* DAMyMenuBookViewController.xib in Resources */,
+				F2AB4C24182E273F0067E450 /* 五彩拉皮.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +740,7 @@
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
 				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,
+				F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */,
 				0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */,
 				0AA9570518274DCA0098D60C /* main.m in Sources */,
 				0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */,
@@ -654,6 +748,7 @@
 				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
 				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
+				F2AB4C0D182E1E2B0067E450 /* DAOrderGroupViewCell.m in Sources */,
 				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
@@ -677,6 +772,9 @@
 				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
 				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
 				0A07BD76182A0E7B00A350BC /* DAOrderCell.m in Sources */,
+				F2AB4C06182E11380067E450 /* DAOrderDetailViewCell.m in Sources */,
+				F2AB4C02182E03480067E450 /* DAOrderGroupViewController.m in Sources */,
+				F2AB4BFD182E030A0067E450 /* DAOrderDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
