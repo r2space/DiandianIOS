@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TribeSDK/TribeSDKHeader.h>
 @protocol DADetailOrderDelegate;
 @interface DADetailOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 
+@property (weak, nonatomic) IBOutlet UILabel *amountPriceLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (retain, nonatomic) DAMyMenuList *orderList;
+@property (retain, nonatomic) NSString *tableNO;
+
+
 @property (assign, nonatomic) id <DADetailOrderDelegate>delegate;
 - (IBAction)closePopup:(id)sender;
+- (IBAction)confirmOrder:(id)sender;
 @end
 
 
@@ -21,4 +28,5 @@
 
 @optional
 - (void)cancelButtonClicked:(DADetailOrderViewController*)secondDetailViewController;
+- (void)confirmButtonClicked:(DADetailOrderViewController*)secondDetailViewController;
 @end

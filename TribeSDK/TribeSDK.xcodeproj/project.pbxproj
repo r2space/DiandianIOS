@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = F213C0FB171BC57900E562A8 /* Build configuration list for PBXAggregateTarget "TribeSDKUniversal" */;
 			buildPhases = (
-				F213C0FE171BC59200E562A8 /* ShellScript */,
+				F213C0FE171BC59200E562A8 /* Run Script */,
 			);
 			dependencies = (
 			);
@@ -38,6 +38,8 @@
 		0A1DBAB4182B2AC50045787A /* DAMyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1DBAB2182B2AC50045787A /* DAMyMenu.m */; };
 		0A641A4517E99B8A00002CE7 /* DAYiWorkstationModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A641A4317E99B8A00002CE7 /* DAYiWorkstationModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A641A4617E99B8A00002CE7 /* DAYiWorkstationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A641A4417E99B8A00002CE7 /* DAYiWorkstationModule.m */; };
+		0A8C2F42182E125D0080F15F /* DAMyMenuList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A8C2F40182E125D0080F15F /* DAMyMenuList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A8C2F43182E125D0080F15F /* DAMyMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F41182E125D0080F15F /* DAMyMenuList.m */; };
 		0ABE9E9C17F3165900BE1D91 /* DAYiSettingModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ABE9E9A17F3165900BE1D91 /* DAYiSettingModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0ABE9E9D17F3165900BE1D91 /* DAYiSettingModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE9E9B17F3165900BE1D91 /* DAYiSettingModule.m */; };
 		0ABE9EA017F3167A00BE1D91 /* DAYiSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ABE9E9E17F3167A00BE1D91 /* DAYiSetting.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -303,6 +305,8 @@
 		0A1DBAB2182B2AC50045787A /* DAMyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenu.m; sourceTree = "<group>"; };
 		0A641A4317E99B8A00002CE7 /* DAYiWorkstationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAYiWorkstationModule.h; sourceTree = "<group>"; };
 		0A641A4417E99B8A00002CE7 /* DAYiWorkstationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAYiWorkstationModule.m; sourceTree = "<group>"; };
+		0A8C2F40182E125D0080F15F /* DAMyMenuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuList.h; sourceTree = "<group>"; };
+		0A8C2F41182E125D0080F15F /* DAMyMenuList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuList.m; sourceTree = "<group>"; };
 		0ABE9E9A17F3165900BE1D91 /* DAYiSettingModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAYiSettingModule.h; sourceTree = "<group>"; };
 		0ABE9E9B17F3165900BE1D91 /* DAYiSettingModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAYiSettingModule.m; sourceTree = "<group>"; };
 		0ABE9E9E17F3167A00BE1D91 /* DAYiSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAYiSetting.h; sourceTree = "<group>"; };
@@ -702,6 +706,8 @@
 				47AB2090180EC14000A511DD /* DAYiConference.m */,
 				0A1DBAB1182B2AC50045787A /* DAMyMenu.h */,
 				0A1DBAB2182B2AC50045787A /* DAMyMenu.m */,
+				0A8C2F40182E125D0080F15F /* DAMyMenuList.h */,
+				0A8C2F41182E125D0080F15F /* DAMyMenuList.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -927,6 +933,7 @@
 				0ABE9EA417F3169C00BE1D91 /* DAYiSettingList.h in Headers */,
 				47AB2091180EC14000A511DD /* DAYiConference.h in Headers */,
 				0A1DBAB3182B2AC50045787A /* DAMyMenu.h in Headers */,
+				0A8C2F42182E125D0080F15F /* DAMyMenuList.h in Headers */,
 				47AB2095180EC20D00A511DD /* DAYiConferenceModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1025,13 +1032,14 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		F213C0FE171BC59200E562A8 /* ShellScript */ = {
+		F213C0FE171BC59200E562A8 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1066,6 +1074,7 @@
 				F213C190171BC6E900E562A8 /* GTMHTTPFetchHistory.m in Sources */,
 				F213C192171BC6E900E562A8 /* GTMHTTPUploadFetcher.m in Sources */,
 				F213C194171BC6E900E562A8 /* GTMMIMEDocument.m in Sources */,
+				0A8C2F43182E125D0080F15F /* DAMyMenuList.m in Sources */,
 				F213C196171BC6E900E562A8 /* GTMReadMonitorInputStream.m in Sources */,
 				F213C199171BC6E900E562A8 /* Jastor.m in Sources */,
 				F213C19B171BC6E900E562A8 /* JastorRuntimeHelper.m in Sources */,
@@ -1340,14 +1349,20 @@
 		F213C0FC171BC57900E562A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = TribeSDKUniversal;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
 		F213C0FD171BC57900E562A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = TribeSDKUniversal;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

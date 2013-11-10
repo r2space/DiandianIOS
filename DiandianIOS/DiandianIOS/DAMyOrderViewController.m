@@ -15,7 +15,9 @@
 
 @interface DAMyOrderViewController ()<DADetailOrderDelegate>
 {
-    NSMutableArray *list;
+
+    
+    
 }
 @end
 
@@ -33,12 +35,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tableNO = @"01";
     // Do any additional setup after loading the view from its nib.
 //    NSArray *list = [NSArray arrayWithObjects:@"fd",@"sdfdf",nil];
-    list =[[NSMutableArray alloc] init];
-    
 
-    self.orderList = [[NSArray alloc]initWithArray:list];
+    
+    self.dataList = [DAMyMenuList alloc];
+    self.dataList.items = [[NSArray alloc] init];
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderReload:) name:@"orderReload" object:nil];
@@ -50,30 +54,60 @@
 
 }
 
+-(BOOL) loadTableFromDisk
+{
+    NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                        NSUserDomainMask, YES);
+    if([paths count]>0){
+        NSString *arrayPath =[[paths objectAtIndex:0]
+                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_%@_orderList",self.tableNO]];
+        
+        self.dataList = [NSKeyedUnarchiver unarchiveObjectWithFile: arrayPath];
+        [self.tableView reloadData];
+        return YES;
+    }
+    
+    
+    return NO;
+}
+
+-(void) tableViewReload
+{
+    NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                        NSUserDomainMask, YES);
+    if([paths count]>0){
+        NSString *arrayPath =[[paths objectAtIndex:0]
+                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_%@_orderList",self.tableNO]];
+        BOOL f = [NSKeyedArchiver archiveRootObject:self.dataList toFile:arrayPath];
+        
+        if (f) {
+            NSLog(@"xieru");
+        }
+    }
+    [self.tableView reloadData];
+        
+}
 
 
 - (void)orderReload :(NSNotification*) notification
 {
 
     DAMyMenu *obj = [notification object];
-    for (DAMyMenu *menu in list) {
+    for (DAMyMenu *menu in self.dataList.items) {
         if (menu._id == obj._id) {
             int amount = [menu.amount integerValue] + 1;
             menu.amount = [NSString stringWithFormat:@"%d", amount];
-            [self.tableView reloadData];
+            [self tableViewReload];
             return;
         }
     }
     NSLog(@"%@",obj);
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
-    [tmpList addObjectsFromArray:list];
-    list =[[NSMutableArray alloc] init];
     obj.amount = @"1";
-    [list addObject:obj];
-    [list addObjectsFromArray:tmpList];
-    
-    self.orderList = [[NSArray alloc]initWithArray:list];
-    [self.tableView reloadData];
+    [tmpList addObject:obj];
+    [tmpList addObjectsFromArray:self.dataList.items];
+    self.dataList.items = [[NSArray alloc] initWithArray:tmpList];
+    [self tableViewReload];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,13 +120,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger row = [indexPath row];
-    DAMyMenu *menudata = [self.orderList objectAtIndex:row];
+    DAMyMenu *menudata = [self.dataList.items objectAtIndex:row];
     static NSString *CellWithIdentifier = @"DAOrderCell";
     DAOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:12];
-
+    titleLabel.text = menudata.name;
+    amountLabel.text = [NSString stringWithFormat:@"%@份", menudata.amount];
+    if (menudata.status!=nil && [menudata.status isEqualToString:@"doing"]) {
+        
+        return cell;
+    }
     DAOrderAddAmountBtn *addBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:20];
     DAOrderAddAmountBtn *deleteBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:21];
     DAOrderRecipeBtn *recipeBtn = (DAOrderRecipeBtn *)[cell viewWithTag:31];
@@ -109,8 +148,7 @@
     [deleteBtn addTarget:self
                action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
     [recipeBtn addTarget:self action:@selector(updateRecipe: ) forControlEvents:UIControlEventTouchUpInside];
-    titleLabel.text = menudata.name;
-    amountLabel.text = [NSString stringWithFormat:@"%@份", menudata.amount];
+
 
     return cell;
 }
@@ -124,7 +162,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [self.orderList count];
+    return [self.dataList.items count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,7 +181,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSString *msg = [[NSString alloc] initWithFormat:@"你选择的是:%@",[self.orderList objectAtIndex:[indexPath row]]];
+    NSString *msg = [[NSString alloc] initWithFormat:@"你选择的是:%@",[self.dataList.items objectAtIndex:[indexPath row]]];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     
     [alert show];
@@ -159,6 +197,8 @@
 
     DADetailOrderViewController *secondDetailViewController = [[DADetailOrderViewController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];
     secondDetailViewController.delegate = self;
+    secondDetailViewController.tableNO = self.tableNO;
+    
     [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
     
 }
@@ -172,6 +212,24 @@
     [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
 }
 
+
+- (void)cancelButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
+    [self loadTableFromDisk];
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    [self tableViewReload];
+    
+}
+-(void)confirmButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
+    
+    [self loadTableFromDisk];
+    for (DAMyMenu *menu in self.dataList.items) {
+        menu.status = [NSString stringWithFormat:@"doing"];
+
+    }
+//    [self tableViewReload];
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    [self tableViewReload];
+}
 -(void) notificationSetRecipe :(NSNotification *)notification
 {
     DADetailOrderViewController *secondDetailViewController = [[DADetailOrderViewController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];
@@ -187,12 +245,12 @@
 -(void) deleteAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
 
-    for (DAMyMenu *menu in list) {
+    for (DAMyMenu *menu in self.dataList.items) {
         if (menu._id == btn._id) {
             if (![menu.amount isEqualToString:@"1"]) {
                 int amount = [menu.amount integerValue] - 1;
                 menu.amount = [NSString stringWithFormat:@"%d", amount];
-                [self.tableView reloadData];
+                [self tableViewReload];
                 return;
             }
             
@@ -202,11 +260,11 @@
 -(void) addAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
     
-    for (DAMyMenu *menu in list) {
+    for (DAMyMenu *menu in self.dataList.items) {
         if (menu._id == btn._id) {
             int amount = [menu.amount integerValue] + 1;
             menu.amount = [NSString stringWithFormat:@"%d", amount];
-            [self.tableView reloadData];
+            [self tableViewReload];
             return;
         }
     }

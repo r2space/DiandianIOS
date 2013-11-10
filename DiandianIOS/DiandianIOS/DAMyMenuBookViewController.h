@@ -10,13 +10,15 @@
 #import <TribeSDK/TribeSDKHeader.h>
 #import "MSGridView.h"
 #import "DABookCell.h"
+#import "CustomLayout.h"
+#import "RFQuiltLayout.h"
 
 typedef enum {
     MenuBookList    = 0,
     MenuBookDetail  = 1
 } MenuBookType;
 
-@interface DAMyMenuBookViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface DAMyMenuBookViewController : UIViewController<UICollectionViewDataSource,RFQuiltLayoutDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

@@ -10,6 +10,7 @@
 #import "DAMenuModule.h"
 #import "DAMyMenuBookCell.h"
 
+
 @interface DAMyMenuBookViewController ()
 {
     MSGridView *gridView;
@@ -38,11 +39,18 @@
     [self loadFromDisk];
     UINib *cellNib = [UINib nibWithNibName:@"DAMyMenuBookCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyMenuBookCell"];
-    defaultLayout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
+
     
+    RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
+    layout.direction = UICollectionViewScrollDirectionHorizontal;
+    layout.blockPixels = CGSizeMake(234 ,230);
+    layout.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:) name:@"filterReload" object:nil];
     
-    
+    defaultLayout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
+}
+- (void) viewDidAppear:(BOOL)animated {
+    [self.collectionView reloadData];
 }
 
 -(void)loadFromDisk{
@@ -93,6 +101,28 @@
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
     titleLabel.text = data.name;
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:12];
+    if (indexPath.row  == 0)
+        [imageView setFrame:CGRectMake(10,10,720,240)];
+    else if (indexPath.row == 1)
+        [imageView setFrame:CGRectMake(10,10,240,240)];
+    else if (indexPath.row == 2)
+        [imageView setFrame:CGRectMake(10,10,240,240)];
+    else if (indexPath.row == 3)
+        [imageView setFrame:CGRectMake(10,10,480,480)];
+    else if (indexPath.row % 10 == 0)
+        [imageView setFrame:CGRectMake(10,10,720,240)];
+    else if (indexPath.row % 11 == 0)
+        [imageView setFrame:CGRectMake(10,10,480,240)];
+    else if (indexPath.row % 7 == 0)
+        [imageView setFrame:CGRectMake(10,10,240,720)];
+    else if (indexPath.row % 8 == 0)
+        [imageView setFrame:CGRectMake(10,10,240,480)];
+    else if(indexPath.row % 3 == 0)
+        [imageView setFrame:CGRectMake(10,10,480,480)];
+    else
+        [imageView setFrame:CGRectMake(10,10,240,240)];
+    
+
     [imageView setImage: [UIImage imageNamed:data.image]];
     UIButton *addBtn = (UIButton *)[cell viewWithTag:13];
     
@@ -105,6 +135,35 @@
 -(void)addMenu:(UIButton*)button{
     NSLog(@"增加菜");
 }
+#pragma mark – RFQuiltLayoutDelegate
+
+- (CGSize) blockSizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (!listType) {
+      return  CGSizeMake(3, 3);
+    }
+    if(indexPath.row >= menuList.count)
+        NSLog(@"Asking for index paths of non-existant cells!! %d from %d cells", indexPath.row, menuList.count);
+    
+    if (indexPath.row % 10 == 0)
+        return CGSizeMake(3, 1);
+    if (indexPath.row % 11 == 0)
+        return CGSizeMake(2, 1);
+    else if (indexPath.row % 7 == 0)
+        return CGSizeMake(1, 3);
+    else if (indexPath.row % 8 == 0)
+        return CGSizeMake(1, 2);
+    else if(indexPath.row % 3 == 0)
+        return CGSizeMake(2, 2);
+    
+    if (indexPath.row == 0) return CGSizeMake(5, 5);
+    
+    return CGSizeMake(1, 1);
+}
+
+- (UIEdgeInsets)insetsForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return UIEdgeInsetsMake(2, 2, 2, 2);
+}
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -112,9 +171,8 @@
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         [flowLayout setItemSize:CGSizeMake(693, 680)];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        flowLayout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
+        flowLayout.sectionInset = UIEdgeInsetsMake(2, 2, 2, 2);
         
-        [self.collectionView setCollectionViewLayout:flowLayout];
         
         UINib *cellbigNib = [UINib nibWithNibName:@"DAMyBigMenuBookCell" bundle:nil];
         [self.collectionView registerNib:cellbigNib forCellWithReuseIdentifier:@"DAMyBigMenuBookCell"];

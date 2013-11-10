@@ -13,7 +13,9 @@
 
 @interface DAMyOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) NSArray *orderList;
+
+@property (nonatomic, retain) DAMyMenuList *dataList;
+@property (nonatomic, retain) NSString *tableNO;
 
 - (IBAction)putDone:(id)sender;
 - (IBAction)overOrder:(id)sender;

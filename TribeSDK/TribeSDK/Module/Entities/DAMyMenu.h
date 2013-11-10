@@ -18,6 +18,7 @@
 @property(retain, nonatomic) NSString *type;
 @property(retain, nonatomic) NSString *index;
 @property(retain, nonatomic) NSString *amount;
+@property(retain, nonatomic) NSString *status;
 @property(retain, nonatomic) NSString *_id;
 
 
