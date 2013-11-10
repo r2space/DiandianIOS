@@ -86,44 +86,47 @@
     //
     
     DAMyMenu *data = [menuList objectAtIndex:indexPath.row];
-
+    DAMyMenuBookCell *cell;
     NSString *cellIdentifier ;
     if (!listType) {
         cellIdentifier = @"DAMyBigMenuBookCell";
+        cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:3] column:[[NSNumber alloc] initWithInt:3]];
     } else {
         cellIdentifier = @"DAMyMenuBookCell";
+        NSNumber *rows = [[NSNumber alloc]initWithInt:5];
+        if (indexPath.row % [rows integerValue] == 0) {
+            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+        } else if(indexPath.row % [rows integerValue] == 1){
+            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:2] column:[[NSNumber alloc] initWithInt:2]];
+        } else if(indexPath.row % [rows integerValue] == 2){
+            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+        } else if(indexPath.row % [rows integerValue] == 3){
+            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:2]];
+        } else if(indexPath.row % [rows integerValue] == 4){
+            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+        } else if(indexPath.row % [rows integerValue] == 5){
+            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+        } else if(indexPath.row % [rows integerValue] == 6){
+            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:2] column:[[NSNumber alloc] initWithInt:2]];
+        } else if(indexPath.row % [rows integerValue] == 7){
+            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+        } else {
+            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+        }
+//        if (indexPath.row % 2 == 0) {
+//
+//        } else {
+//            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:2] column:[[NSNumber alloc] initWithInt:2]];
+//        }
     }
+
     
-    DAMyMenuBookCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     cell.menuData = data;
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
     titleLabel.text = data.name;
-    UIImageView *imageView = (UIImageView *)[cell viewWithTag:12];
-    if (indexPath.row  == 0)
-        [imageView setFrame:CGRectMake(10,10,720,240)];
-    else if (indexPath.row == 1)
-        [imageView setFrame:CGRectMake(10,10,240,240)];
-    else if (indexPath.row == 2)
-        [imageView setFrame:CGRectMake(10,10,240,240)];
-    else if (indexPath.row == 3)
-        [imageView setFrame:CGRectMake(10,10,480,480)];
-    else if (indexPath.row % 10 == 0)
-        [imageView setFrame:CGRectMake(10,10,720,240)];
-    else if (indexPath.row % 11 == 0)
-        [imageView setFrame:CGRectMake(10,10,480,240)];
-    else if (indexPath.row % 7 == 0)
-        [imageView setFrame:CGRectMake(10,10,240,720)];
-    else if (indexPath.row % 8 == 0)
-        [imageView setFrame:CGRectMake(10,10,240,480)];
-    else if(indexPath.row % 3 == 0)
-        [imageView setFrame:CGRectMake(10,10,480,480)];
-    else
-        [imageView setFrame:CGRectMake(10,10,240,240)];
-    
 
-    [imageView setImage: [UIImage imageNamed:data.image]];
     UIButton *addBtn = (UIButton *)[cell viewWithTag:13];
     
     [addBtn addTarget:self
@@ -142,19 +145,42 @@
     if (!listType) {
       return  CGSizeMake(3, 3);
     }
-    if(indexPath.row >= menuList.count)
+//    if(indexPath.row >= menuList.count)
         NSLog(@"Asking for index paths of non-existant cells!! %d from %d cells", indexPath.row, menuList.count);
     
-    if (indexPath.row % 10 == 0)
-        return CGSizeMake(3, 1);
-    if (indexPath.row % 11 == 0)
-        return CGSizeMake(2, 1);
-    else if (indexPath.row % 7 == 0)
-        return CGSizeMake(1, 3);
-    else if (indexPath.row % 8 == 0)
-        return CGSizeMake(1, 2);
-    else if(indexPath.row % 3 == 0)
+//    if (indexPath.row % 10 == 0)
+//        return CGSizeMake(3, 1);
+//    if (indexPath.row % 11 == 0)
+//        return CGSizeMake(2, 1);
+//    else if (indexPath.row % 7 == 0)
+//        return CGSizeMake(1, 3);
+//    else if (indexPath.row % 8 == 0)
+//        return CGSizeMake(1, 2);
+//    else if(indexPath.row % 3 == 0)
+//        return CGSizeMake(2, 2);
+    NSNumber *rows = [[NSNumber alloc]initWithInt:5];
+    
+    if (indexPath.row % [rows integerValue] == 0) {
+        return CGSizeMake(1, 1);
+    } else if(indexPath.row % [rows integerValue] == 1){
         return CGSizeMake(2, 2);
+    } else if(indexPath.row % [rows integerValue] == 2){
+        return CGSizeMake(1, 1);
+    } else if(indexPath.row % [rows integerValue] == 3){
+        return CGSizeMake(1, 2);
+    } else if(indexPath.row % [rows integerValue] == 4){
+        return CGSizeMake(1, 1);
+    } else if(indexPath.row % [rows integerValue] == 5){
+        return CGSizeMake(1, 1);
+    } else if(indexPath.row % [rows integerValue] == 6){
+        return CGSizeMake(2, 2);
+    } else if(indexPath.row % [rows integerValue] == 7){
+        return CGSizeMake(1, 1);
+    } else {
+        return CGSizeMake(1, 1);
+    }
+    
+    
     
     if (indexPath.row == 0) return CGSizeMake(5, 5);
     

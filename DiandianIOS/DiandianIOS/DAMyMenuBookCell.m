@@ -10,6 +10,29 @@
 
 @implementation DAMyMenuBookCell
 
+- (DAMyMenuBookCell *)initWithObj:(DAMyMenu *)menu collectionView:(UICollectionView *)collectionView  cellIdentifier: (NSString *)cellIdentifier indexPath:(NSIndexPath *)indexPath row:(NSNumber *)row column:(NSNumber *)column
+{
+    DAMyMenuBookCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    UIImageView  *imageView = [UIImageView alloc];
+    if ([row isEqualToNumber:[[NSNumber alloc] initWithInt:1]] && [column isEqualToNumber:[[NSNumber alloc] initWithInt:1]]) {
+        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 240, 240)];
+        
+    } else if([row isEqualToNumber:[[NSNumber alloc] initWithInt:2]] && [column isEqualToNumber:[[NSNumber alloc] initWithInt:2]]){
+        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 480)];
+        
+    } else if([row isEqualToNumber:[[NSNumber alloc] initWithInt:1]] && [column isEqualToNumber:[[NSNumber alloc] initWithInt:2]]){
+        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 240, 480)];
+        
+    }  else if([row isEqualToNumber:[[NSNumber alloc] initWithInt:3]] && [column isEqualToNumber:[[NSNumber alloc] initWithInt:3]]){
+        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 720, 720)];
+    }
+    [imageView setImage: [UIImage imageNamed:menu.image]];
+
+    [[cell viewWithTag:12] addSubview:imageView];
+    return cell;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

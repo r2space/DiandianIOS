@@ -7,7 +7,4 @@
    <FileRef
       location = "group:TribeSDK/TribeSDK.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:SmartSDKIOS/SmartSDKIOS.xcodeproj">
-   </FileRef>
 </Workspace>
