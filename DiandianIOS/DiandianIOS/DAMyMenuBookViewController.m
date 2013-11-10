@@ -43,7 +43,7 @@
     
     RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
     layout.direction = UICollectionViewScrollDirectionHorizontal;
-    layout.blockPixels = CGSizeMake(234 ,230);
+    layout.blockPixels = CGSizeMake(234 ,210);
     layout.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:) name:@"filterReload" object:nil];
     
@@ -88,39 +88,44 @@
     DAMyMenu *data = [menuList objectAtIndex:indexPath.row];
     DAMyMenuBookCell *cell;
     NSString *cellIdentifier ;
+    NSNumber *nsRow = [[NSNumber alloc] initWithInt:1];
+    NSNumber *nsColumn = [[NSNumber alloc] initWithInt:1];
     if (!listType) {
         cellIdentifier = @"DAMyBigMenuBookCell";
-        cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:3] column:[[NSNumber alloc] initWithInt:3]];
+        nsRow = [[NSNumber alloc] initWithInt:3];
+        nsColumn = [[NSNumber alloc] initWithInt:3];
+
     } else {
         cellIdentifier = @"DAMyMenuBookCell";
         NSNumber *rows = [[NSNumber alloc]initWithInt:5];
         if (indexPath.row % [rows integerValue] == 0) {
-            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+            nsRow = [[NSNumber alloc] initWithInt:1];
+            nsColumn = [[NSNumber alloc] initWithInt:1];
         } else if(indexPath.row % [rows integerValue] == 1){
-            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:2] column:[[NSNumber alloc] initWithInt:2]];
+            nsRow = [[NSNumber alloc] initWithInt:2];
+            nsColumn = [[NSNumber alloc] initWithInt:2];
         } else if(indexPath.row % [rows integerValue] == 2){
-            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+            nsRow = [[NSNumber alloc] initWithInt:1];
+            nsColumn = [[NSNumber alloc] initWithInt:1];
         } else if(indexPath.row % [rows integerValue] == 3){
-            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:2]];
+            nsRow = [[NSNumber alloc] initWithInt:1];
+            nsColumn = [[NSNumber alloc] initWithInt:2];
         } else if(indexPath.row % [rows integerValue] == 4){
-            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+            nsRow = [[NSNumber alloc] initWithInt:1];
+            nsColumn = [[NSNumber alloc] initWithInt:1];
         } else if(indexPath.row % [rows integerValue] == 5){
-            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+            nsRow = [[NSNumber alloc] initWithInt:1];
+            nsColumn = [[NSNumber alloc] initWithInt:1];
         } else if(indexPath.row % [rows integerValue] == 6){
-            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:2] column:[[NSNumber alloc] initWithInt:2]];
+            nsRow = [[NSNumber alloc] initWithInt:2];
+            nsColumn = [[NSNumber alloc] initWithInt:2];
         } else if(indexPath.row % [rows integerValue] == 7){
-            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
-        } else {
-            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:1] column:[[NSNumber alloc] initWithInt:1]];
+            nsRow = [[NSNumber alloc] initWithInt:1];
+            nsColumn = [[NSNumber alloc] initWithInt:1];
         }
-//        if (indexPath.row % 2 == 0) {
-//
-//        } else {
-//            cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:[[NSNumber alloc] initWithInt:2] column:[[NSNumber alloc] initWithInt:2]];
-//        }
     }
 
-    
+    cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:nsRow column:nsColumn];
     
     cell.menuData = data;
     

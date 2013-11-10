@@ -31,6 +31,7 @@
 		0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD88182A363000A350BC /* DAMyTableViewController.m */; };
 		0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD89182A363000A350BC /* DAMyTableViewController.xib */; };
 		0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD8D182A3E9600A350BC /* DAMenuModule.m */; };
+		0A1530C0182FD4ED00A13EB8 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1530BF182FD4ED00A13EB8 /* mask.png */; };
 		0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1DBAB5182B3A7D0045787A /* bg_first.png */; };
 		0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB729182A741200170F0C /* DAMyMenuBookCell.xib */; };
 		0A3DB72C182A7B8700170F0C /* DAMyBigMenuBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72B182A7B8700170F0C /* DAMyBigMenuBookCell.xib */; };
@@ -175,6 +176,7 @@
 		0A07BD89182A363000A350BC /* DAMyTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableViewController.xib; sourceTree = "<group>"; };
 		0A07BD8C182A3E9600A350BC /* DAMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMenuModule.h; sourceTree = "<group>"; };
 		0A07BD8D182A3E9600A350BC /* DAMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMenuModule.m; sourceTree = "<group>"; };
+		0A1530BF182FD4ED00A13EB8 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
 		0A1DBAB5182B3A7D0045787A /* bg_first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_first.png; sourceTree = "<group>"; };
 		0A3DB729182A741200170F0C /* DAMyMenuBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyMenuBookCell.xib; sourceTree = "<group>"; };
 		0A3DB72B182A7B8700170F0C /* DAMyBigMenuBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyBigMenuBookCell.xib; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 		0A07BD521829CC8A00A350BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0A1530BF182FD4ED00A13EB8 /* mask.png */,
 				0A8C2F48182E430F0080F15F /* 虫草炖官燕12.png */,
 				0A8C2F49182E430F0080F15F /* 虫草炖官燕33.png */,
 				0A8C2F4A182E430F0080F15F /* 虫草金钩翅13.png */,
@@ -773,6 +776,7 @@
 				0AA9571418274DCA0098D60C /* Images.xcassets in Resources */,
 				0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */,
 				0A8C2F57182E430F0080F15F /* 虫草炖官燕33.png in Resources */,
+				0A1530C0182FD4ED00A13EB8 /* mask.png in Resources */,
 				47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */,
 				0A07BD6E182A031000A350BC /* cai_2.png in Resources */,
 				0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */,

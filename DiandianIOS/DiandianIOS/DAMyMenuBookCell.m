@@ -10,6 +10,28 @@
 
 @implementation DAMyMenuBookCell
 
+
+- (NSArray *)constrainSubview:(UIView *)subview toMatchWithSuperview:(UIView *)superview
+{
+    subview.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(subview);
+    
+    NSArray *constraints = [NSLayoutConstraint
+                            constraintsWithVisualFormat:@"H:|[subview]|"
+                            options:0
+                            metrics:nil
+                            views:viewsDictionary];
+    constraints = [constraints arrayByAddingObjectsFromArray:
+                   [NSLayoutConstraint
+                    constraintsWithVisualFormat:@"V:|[subview]|"
+                    options:0
+                    metrics:nil
+                    views:viewsDictionary]];
+    [superview addConstraints:constraints];
+    
+    return constraints;
+}
+
 - (DAMyMenuBookCell *)initWithObj:(DAMyMenu *)menu collectionView:(UICollectionView *)collectionView  cellIdentifier: (NSString *)cellIdentifier indexPath:(NSIndexPath *)indexPath row:(NSNumber *)row column:(NSNumber *)column
 {
     DAMyMenuBookCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
@@ -27,9 +49,16 @@
     }  else if([row isEqualToNumber:[[NSNumber alloc] initWithInt:3]] && [column isEqualToNumber:[[NSNumber alloc] initWithInt:3]]){
         imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 720, 720)];
     }
+    
     [imageView setImage: [UIImage imageNamed:menu.image]];
+    [((UIImageView *)[cell viewWithTag:12]).superview addSubview:imageView];
+    UIView *maskView = [cell viewWithTag:101];
 
-    [[cell viewWithTag:12] addSubview:imageView];
+//    [cell constrainSubview:maskView toMatchWithSuperview:((UIImageView *)[cell viewWithTag:12]).superview];
+
+
+
+    [((UIImageView *)[cell viewWithTag:12]).superview addSubview:maskView];
     return cell;
 }
 
