@@ -1,0 +1,43 @@
+
+[
+ {
+ "name": "包间1",
+ "image": "sample-table.jpg",
+ "process": "1 / 8"
+ },
+ {
+ "name": "包间2",
+ "image": "sample-table.jpg",
+ "process": "9 / 10"
+ },
+ {
+ "name": "包间3",
+ "image": "sample-table.jpg",
+ "process": "8 / 8"
+ },
+ {
+ "name": "包间4",
+ "image": "sample-table.jpg",
+ "process": "1 / 16"
+ },
+ {
+ "name": "一楼 001",
+ "image": "sample-table.jpg",
+ "process": "1 / 2"
+ },
+ {
+ "name": "一楼 002",
+ "image": "sample-table.jpg",
+ "process": "3 / 4"
+ },
+ {
+ "name": "一楼 003",
+ "image": "sample-table.jpg",
+ "process": "2 / 4"
+ },
+ {
+ "name": "一楼 004",
+ "image": "sample-table.jpg",
+ "process": "6 / 7"
+ }
+]

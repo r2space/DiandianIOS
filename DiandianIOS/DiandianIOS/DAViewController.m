@@ -7,6 +7,8 @@
 //
 
 #import "DAViewController.h"
+#import "DAOrderQueueViewController.h"
+#import "DABillViewController.h"
 
 @interface DAViewController ()
 
@@ -44,5 +46,14 @@
     UIStoryboard *openTableStoryboard = [UIStoryboard storyboardWithName:@"DAOpenTableViewStoryboard" bundle:nil];
     UIViewController *DAOpenTableViewVC = [openTableStoryboard instantiateViewControllerWithIdentifier:@"DAOpenTableViewVC"];
     [self.navigationController pushViewController:DAOpenTableViewVC animated:YES];
+}
+- (IBAction)showBill:(id)sender {
+    DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (IBAction)showOrderQueue:(id)sender {
+    DAOrderQueueViewController *viewController = [[DAOrderQueueViewController alloc] initWithNibName:@"DAOrderQueueViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 @end
