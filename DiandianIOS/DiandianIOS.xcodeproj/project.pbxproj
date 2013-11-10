@@ -330,7 +330,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A07BD4D1829CB3800A350BC /* assets */ = {
+		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
 				0A8C2F44182E33A70080F15F /* TVQuiltLayout */,
@@ -340,7 +340,7 @@
 				0A07BD631829DC6900A350BC /* MSGridView */,
 				0A07BD4E1829CB6900A350BC /* CCSegmentedControl */,
 			);
-			name = assets;
+			name = Thirdparty;
 			sourceTree = "<group>";
 		};
 		0A07BD4E1829CB6900A350BC /* CCSegmentedControl */ = {
@@ -441,7 +441,7 @@
 			path = CWPopup;
 			sourceTree = "<group>";
 		};
-		0A3DB728182A73F700170F0C /* menubook */ = {
+		0A3DB728182A73F700170F0C /* Menubook */ = {
 			isa = PBXGroup;
 			children = (
 				0A07BD74182A0E7B00A350BC /* DAOrderCell.h */,
@@ -461,7 +461,7 @@
 				0A8C2F3D182DDDD70080F15F /* CustomLayout.h */,
 				0A8C2F3E182DDDD70080F15F /* CustomLayout.m */,
 			);
-			name = menubook;
+			name = Menubook;
 			sourceTree = "<group>";
 		};
 		0A5D288A182BD01400847578 /* Popup */ = {
@@ -520,9 +520,9 @@
 			isa = PBXGroup;
 			children = (
 				0A07BD571829D27E00A350BC /* Resources */,
-				0A07BD4D1829CB3800A350BC /* assets */,
+				0A07BD4D1829CB3800A350BC /* Thirdparty */,
 				0A07BD6F182A0A0500A350BC /* Module */,
-				0AA9573518279D410098D60C /* view */,
+				0AA9573518279D410098D60C /* View */,
 				0AA9570718274DCA0098D60C /* DAAppDelegate.h */,
 				0AA9570818274DCA0098D60C /* DAAppDelegate.m */,
 				0AA9570A18274DCA0098D60C /* Main.storyboard */,
@@ -530,10 +530,10 @@
 				0AA9570E18274DCA0098D60C /* DAMasterViewController.m */,
 				0AA9571018274DCA0098D60C /* DADetailViewController.h */,
 				0AA9571118274DCA0098D60C /* DADetailViewController.m */,
-				0AA9571318274DCA0098D60C /* Images.xcassets */,
-				0AA956FF18274DCA0098D60C /* Supporting Files */,
 				0A577BC7182878DA009CDF6D /* DAViewController.h */,
 				0A577BC8182878DA009CDF6D /* DAViewController.m */,
+				0AA9571318274DCA0098D60C /* Images.xcassets */,
+				0AA956FF18274DCA0098D60C /* Supporting Files */,
 			);
 			path = DiandianIOS;
 			sourceTree = "<group>";
@@ -567,10 +567,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0AA9573518279D410098D60C /* view */ = {
+		0AA9573518279D410098D60C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F2AB4C26182F6F710067E450 /* Bill */,
 				F2AB4BF9182E01150067E450 /* OrderQueue */,
+				0A3DB728182A73F700170F0C /* Menubook */,
 				0AA9573018279AE90098D60C /* DAMenuBookViewController.h */,
 				0AA9573118279AE90098D60C /* DAMenuBookViewController.m */,
 				0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */,
@@ -603,7 +605,6 @@
 				0A07BD5E1829DC0900A350BC /* DAMyMenuBookViewController.h */,
 				0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */,
 				0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */,
-				0A3DB728182A73F700170F0C /* menubook */,
 				0A07BD7B182A20DC00A350BC /* DAMyOrderDetailViewController.h */,
 				0A07BD7C182A20DC00A350BC /* DAMyOrderDetailViewController.m */,
 				0A5D2891182BD1FD00847578 /* DAMyOrderDetailViewController.xib */,
@@ -617,17 +618,8 @@
 				0A5D2898182C6EFF00847578 /* DAMyLoginViewController.h */,
 				0A5D2899182C6EFF00847578 /* DAMyLoginViewController.m */,
 				0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */,
-				47A6ADA9182E0F2500E80AA1 /* DABillViewController.h */,
-				47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */,
-				47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */,
-				47A6ADB0182E25B100E80AA1 /* DABillDetailViewController.h */,
-				47A6ADB1182E25B100E80AA1 /* DABillDetailViewController.m */,
-				47A6ADB2182E25B100E80AA1 /* DABillDetailViewController.xib */,
-				47A6ADB5182E2B7D00E80AA1 /* DABillDetailViewCell.h */,
-				47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */,
-				47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */,
 			);
-			name = view;
+			name = View;
 			sourceTree = "<group>";
 		};
 		F2AB4BF9182E01150067E450 /* OrderQueue */ = {
@@ -650,6 +642,22 @@
 				F2AB4C09182E1E120067E450 /* DAOrderGroupViewCell.xib */,
 			);
 			name = OrderQueue;
+			sourceTree = "<group>";
+		};
+		F2AB4C26182F6F710067E450 /* Bill */ = {
+			isa = PBXGroup;
+			children = (
+				47A6ADA9182E0F2500E80AA1 /* DABillViewController.h */,
+				47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */,
+				47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */,
+				47A6ADB0182E25B100E80AA1 /* DABillDetailViewController.h */,
+				47A6ADB1182E25B100E80AA1 /* DABillDetailViewController.m */,
+				47A6ADB2182E25B100E80AA1 /* DABillDetailViewController.xib */,
+				47A6ADB5182E2B7D00E80AA1 /* DABillDetailViewCell.h */,
+				47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */,
+				47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */,
+			);
+			name = Bill;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

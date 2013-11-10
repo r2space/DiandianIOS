@@ -11,5 +11,6 @@
 @interface DAOrderQueueViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *imgGroupView;
 @property (weak, nonatomic) IBOutlet UIImageView *imgDetailView;
+- (IBAction)onReturnTouched:(id)sender;
 
 @end

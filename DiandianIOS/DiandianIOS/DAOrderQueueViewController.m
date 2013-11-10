@@ -55,4 +55,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onReturnTouched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end
