@@ -47,6 +47,19 @@
     }
 }
 
+- (void)cancelButtonClicked:(DAMyLoginViewController*)loginViewViewController{
+    
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    
+}
+
+- (void)startTableButtonClicked:(DAMyLoginViewController*)loginViewViewController{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+    UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+    [self.navigationController pushViewController:menubookVC animated:YES];
+}
+
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
     return dataList.count ;

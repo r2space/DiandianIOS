@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblReduce;
 @property (weak, nonatomic) IBOutlet UILabel *lblPay;
 - (IBAction)onDetailTaped:(id)sender;
+- (IBAction)onBackTouched:(id)sender;
+
 
 @end

@@ -14,6 +14,19 @@
 
 @implementation DAMyLoginViewController
 
+- (IBAction)closePopup:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
+        [self.delegate cancelButtonClicked:self];
+    }
+    
+}
+
+- (IBAction)startTable:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(startTableButtonClicked:)]) {
+        [self.delegate startTableButtonClicked:self];
+    }
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

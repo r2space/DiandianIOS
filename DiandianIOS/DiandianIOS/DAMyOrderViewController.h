@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) DAMyMenuList *dataList;
 @property (nonatomic, retain) NSString *tableNO;
+- (IBAction)backTopMenu:(id)sender;
 
 - (IBAction)putDone:(id)sender;
 - (IBAction)overOrder:(id)sender;

@@ -12,4 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *openTableView;
 
+- (IBAction)backTouched:(id)sender;
+
 @end

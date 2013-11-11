@@ -93,4 +93,8 @@
         [self reload];
     }];
 }
+
+- (IBAction)onBackTouched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

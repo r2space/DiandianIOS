@@ -16,5 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIView *filerListView;
 @property (weak, nonatomic) IBOutlet UIView *orderListView;
 - (IBAction)backAction:(id)sender;
+- (IBAction)fadeIn:(id)sender;
+
+- (IBAction)fadeOut:(id)sender;
 
 @end

@@ -58,7 +58,33 @@
     [self.orderListView addSubview:orderView.view];
 }
 
+- (void)fadeInWorkstationMenu{
+    
+    //    CGPoint menuCenter = menuScrollView.center;
+    
+    [UIView animateWithDuration:0.5
+                     animations:^(void){
+                         //                         menuScrollView.center = CGPointMake(menuCenter.x + 171 , menuCenter.y );
+                         self.orderListView.center = CGPointMake(148   , 384);
+                         self.orderListView.frame = CGRectMake(0, 0, 296, 768);
+                     }];
+    
+    
+}
 
+- (void)fadeOutWorkstationMenu{
+    
+    //    CGPoint menuCenter = menuScrollView.center;
+    
+    [UIView animateWithDuration:0.5
+                     animations:^(void){
+                         //                         menuScrollView.center = CGPointMake(menuCenter.x - 171 , menuCenter.y );
+                         self.orderListView.center = CGPointMake(148   , 384);
+                         self.orderListView.frame = CGRectMake(0, 0, 60, 768);
+                     }];
+    
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -68,5 +94,13 @@
 
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)fadeIn:(id)sender {
+    [self fadeInWorkstationMenu];
+}
+
+- (IBAction)fadeOut:(id)sender {
+    [self fadeOutWorkstationMenu];
 }
 @end

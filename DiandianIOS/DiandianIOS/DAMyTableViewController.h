@@ -10,7 +10,9 @@
 
 #import "MSGridView.h"
 #import "DABookCell.h"
+#import "RFQuiltLayout.h"
 
+@protocol DATableViewDelegate;
 @interface DAMyTableViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 

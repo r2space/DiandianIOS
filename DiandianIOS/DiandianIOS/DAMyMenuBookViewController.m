@@ -34,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     menuList = [[NSMutableArray alloc ] init];
     listType = YES;
     [self loadFromDisk];
@@ -43,7 +44,7 @@
     
     RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
     layout.direction = UICollectionViewScrollDirectionHorizontal;
-    layout.blockPixels = CGSizeMake(234 ,220);
+    layout.blockPixels = CGSizeMake(340 ,200);
     layout.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:) name:@"filterReload" object:nil];
     
@@ -177,10 +178,10 @@
         return CGSizeMake(1, 1);
     } else if(indexPath.row % [rows integerValue] == 5){
         return CGSizeMake(1, 1);
-    } else if(indexPath.row % [rows integerValue] == 6){
-        return CGSizeMake(2, 2);
-    } else if(indexPath.row % [rows integerValue] == 7){
-        return CGSizeMake(1, 1);
+//    } else if(indexPath.row % [rows integerValue] == 6){
+//        return CGSizeMake(2, 2);
+//    } else if(indexPath.row % [rows integerValue] == 7){
+//        return CGSizeMake(1, 1);
     } else {
         return CGSizeMake(1, 1);
     }

@@ -193,6 +193,10 @@
 }
 
 
+- (IBAction)backTopMenu:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)putDone:(id)sender {
 
     DADetailOrderViewController *secondDetailViewController = [[DADetailOrderViewController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];
@@ -219,6 +223,7 @@
     [self tableViewReload];
     
 }
+
 -(void)confirmButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
     
     [self loadTableFromDisk];

@@ -19,7 +19,7 @@
         NSArray *array = [nib instantiateWithOwner:nil options:nil];
         cell = [array objectAtIndex:0];
     }
-    [self.setRecipeBtn addTarget:cell action:@selector(update:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.setRecipeBtn addTarget:cell action:@selector(update:) forControlEvents:UIControlEventTouchUpInside];
     
     return self;
 }
