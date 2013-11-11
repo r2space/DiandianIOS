@@ -43,7 +43,7 @@
     
     RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
     layout.direction = UICollectionViewScrollDirectionHorizontal;
-    layout.blockPixels = CGSizeMake(234 ,210);
+    layout.blockPixels = CGSizeMake(234 ,220);
     layout.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:) name:@"filterReload" object:nil];
     
