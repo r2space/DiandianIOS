@@ -118,7 +118,7 @@
     static NSString *CellWithIdentifier = @"DADetailOrderCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:9];
-    imageView.image = [UIImage imageNamed:@"cai_2.png"];
+    imageView.image = [UIImage imageNamed:menu.image];
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:10];
     nameLabel.text = menu.name;
     UILabel *pirceLabel = (UILabel *)[cell viewWithTag:11];

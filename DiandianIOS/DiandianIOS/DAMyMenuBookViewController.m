@@ -45,9 +45,11 @@
     
     RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
     layout.direction = UICollectionViewScrollDirectionHorizontal;
-    layout.blockPixels = CGSizeMake(301 ,240);
+    layout.blockPixels = CGSizeMake(291 ,230);
     layout.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:) name:@"filterReload" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popupDetailMenu:) name:@"popupDetailMenu" object:nil];
     
     defaultLayout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
 }
@@ -136,7 +138,9 @@
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:102];
     [imageView setImage:[ UIImage imageNamed:data.image]];
     UIButton *addBtn = (UIButton *)[cell viewWithTag:13];
-    
+    UILabel *labelAmount = (UILabel *)[cell viewWithTag:19];
+    labelAmount.text = [NSString stringWithFormat:@"%@元",data.price];
+
     [addBtn addTarget:self
             action:@selector(addMenu:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -202,15 +206,26 @@
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DAMyMenu *data = [menuList objectAtIndex:indexPath.row];
-    DAMyMenuBookPopupController *secondDetailViewController = [[DAMyMenuBookPopupController alloc] initWithNibName:@"DAMyMenuBookPopupController" bundle:nil];
-    secondDetailViewController.delegate = self;
-    secondDetailViewController.tableNO = self.tableNO;
-    secondDetailViewController.menuData = data;
-    [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
-        
+    [self popupDetail:data];
     
 }
 
+-(void) popupDetailMenu :(NSNotification *) sender
+{
+    DAMyMenu * menu  = (DAMyMenu *)[sender object];
+    [self popupDetail:menu];
+}
+
+-(void) popupDetail :(DAMyMenu *) menu
+{
+
+    DAMyMenuBookPopupController *secondDetailViewController = [[DAMyMenuBookPopupController alloc] initWithNibName:@"DAMyMenuBookPopupController" bundle:nil];
+    secondDetailViewController.delegate = self;
+    secondDetailViewController.tableNO = self.tableNO;
+    secondDetailViewController.menuData = menu;
+    [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
+    
+}
 
 - (void)filterReload : (NSNotification*) notification
 {
