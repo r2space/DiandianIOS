@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <TribeSDK/DAMyTable.h>
+#import "DAPopTableViewController.h"
 
 @protocol DAMyLoginDelegate;
-@interface DAMyLoginViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource>
+@interface DAMyLoginViewController : UIViewController<DAPopTableViewDelegate, UITextFieldDelegate>
 @property (assign, nonatomic) id <DAMyLoginDelegate>delegate;
 - (IBAction)closePopup:(id)sender;
 - (IBAction)startTable:(id)sender;
