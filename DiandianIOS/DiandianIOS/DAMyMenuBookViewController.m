@@ -9,9 +9,10 @@
 #import "DAMyMenuBookViewController.h"
 #import "DAMenuModule.h"
 #import "DAMyMenuBookCell.h"
+#import "UIViewController+MJPopupViewController.h"
+#import "DAMyMenuBookPopupController.h"
 
-
-@interface DAMyMenuBookViewController ()
+@interface DAMyMenuBookViewController () <DAMyMenuBookPopupDelegate>
 {
     MSGridView *gridView;
     NSMutableArray *menuList;
@@ -44,7 +45,7 @@
     
     RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
     layout.direction = UICollectionViewScrollDirectionHorizontal;
-    layout.blockPixels = CGSizeMake(340 ,200);
+    layout.blockPixels = CGSizeMake(301 ,240);
     layout.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:) name:@"filterReload" object:nil];
     
@@ -132,7 +133,8 @@
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
     titleLabel.text = data.name;
-
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:102];
+    [imageView setImage:[ UIImage imageNamed:data.image]];
     UIButton *addBtn = (UIButton *)[cell viewWithTag:13];
     
     [addBtn addTarget:self
@@ -199,30 +201,13 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (listType) {
-        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        [flowLayout setItemSize:CGSizeMake(693, 680)];
-        [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        flowLayout.sectionInset = UIEdgeInsetsMake(2, 2, 2, 2);
-        
-        
-        UINib *cellbigNib = [UINib nibWithNibName:@"DAMyBigMenuBookCell" bundle:nil];
-        [self.collectionView registerNib:cellbigNib forCellWithReuseIdentifier:@"DAMyBigMenuBookCell"];
-        
-        listType = NO;
-        [self.collectionView  reloadData];
-    } else {
-        
-        
-        [self.collectionView setCollectionViewLayout:defaultLayout];
-        
-        UINib *cellNib = [UINib nibWithNibName:@"DAMyMenuBookCell" bundle:nil];
-        [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyMenuBookCell"];
-        
-        listType = YES;
-        [self.collectionView reloadData];
-    }
     
+    DAMyMenuBookPopupController *secondDetailViewController = [[DAMyMenuBookPopupController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];
+    secondDetailViewController.delegate = self;
+    secondDetailViewController.tableNO = self.tableNO;
+    
+    [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
+        
     
 }
 

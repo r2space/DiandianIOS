@@ -21,12 +21,16 @@
 @property (assign, nonatomic) id <DADetailOrderDelegate>delegate;
 - (IBAction)closePopup:(id)sender;
 - (IBAction)confirmOrder:(id)sender;
+- (IBAction)backTableClick:(id)sender;
 @end
 
 
 @protocol DADetailOrderDelegate<NSObject>
 
 @optional
+
 - (void)cancelButtonClicked:(DADetailOrderViewController*)secondDetailViewController;
 - (void)confirmButtonClicked:(DADetailOrderViewController*)secondDetailViewController;
+- (void)backButtonClicked:(DADetailOrderViewController*)secondDetailViewController;
+
 @end

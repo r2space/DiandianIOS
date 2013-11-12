@@ -12,13 +12,13 @@
 #import "DAMyFilterViewController.h"
 #import "DAMyOrderViewController.h"
 #import "DAMyMenuBookViewController.h"
-
+#import "DAOrderThumbViewController.h"
 
 
 @interface DARootViewController ()
 {
-    
-    
+    DAMyOrderViewController *orderView;
+    DAOrderThumbViewController *thumbView;
 }
 @end
 
@@ -53,9 +53,12 @@
     [self addChildViewController:filter];
     [self.filerListView addSubview:filter.view];
     
-    DAMyOrderViewController *orderView = [[DAMyOrderViewController alloc] initWithNibName:@"DAMyOrderViewController" bundle:nil];
-    [self addChildViewController:orderView];
-    [self.orderListView addSubview:orderView.view];
+    
+    
+    thumbView = [[DAOrderThumbViewController alloc] initWithNibName:@"DAOrderThumbViewController" bundle:nil];
+    orderView = [[DAMyOrderViewController alloc] initWithNibName:@"DAMyOrderViewController" bundle:nil];
+    [self addChildViewController:thumbView];
+    [self.orderListView addSubview:thumbView.view];
 }
 
 - (void)fadeInWorkstationMenu{
@@ -64,11 +67,13 @@
     
     [UIView animateWithDuration:0.5
                      animations:^(void){
-                         //                         menuScrollView.center = CGPointMake(menuCenter.x + 171 , menuCenter.y );
                          self.orderListView.center = CGPointMake(148   , 384);
                          self.orderListView.frame = CGRectMake(0, 0, 296, 768);
+                         orderView = [[DAMyOrderViewController alloc] initWithNibName:@"DAMyOrderViewController" bundle:nil];
+                         [self addChildViewController:orderView];
+                         [self.orderListView addSubview:orderView.view];
                      }];
-    
+    [thumbView.view removeFromSuperview];
     
 }
 
@@ -78,10 +83,13 @@
     
     [UIView animateWithDuration:0.5
                      animations:^(void){
-                         //                         menuScrollView.center = CGPointMake(menuCenter.x - 171 , menuCenter.y );
                          self.orderListView.center = CGPointMake(148   , 384);
                          self.orderListView.frame = CGRectMake(0, 0, 60, 768);
+                         thumbView = [[DAOrderThumbViewController alloc] initWithNibName:@"DAOrderThumbViewController" bundle:nil];
+                         [self addChildViewController:thumbView];
+                         [self.orderListView addSubview:thumbView.view];
                      }];
+    [orderView.view removeFromSuperview];
     
     
 }

@@ -51,6 +51,7 @@
     
     UINib *cellNib = [UINib nibWithNibName:@"DAOrderCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAOrderCell"];
+    [self tableViewReload];
 
 }
 
@@ -235,6 +236,7 @@
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self tableViewReload];
 }
+
 -(void) notificationSetRecipe :(NSNotification *)notification
 {
     DADetailOrderViewController *secondDetailViewController = [[DADetailOrderViewController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];

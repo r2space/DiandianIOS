@@ -14,46 +14,18 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="pFM-TM-8Tz" userLabel="content">
-                                <rect key="frame" x="0.0" y="60" width="1024" height="708"/>
+                                <rect key="frame" x="120" y="44" width="904" height="730"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.90980398650000005" green="0.86666673419999996" blue="0.95294123890000004" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="SvP-sj-Mta" userLabel="filter">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="60"/>
+                                <rect key="frame" x="120" y="0.0" width="904" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.27450980390000002" green="0.15686274510000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" id="4op-ly-4zY">
-                                <rect key="frame" x="831" y="724" width="193" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bYx-vX-heu">
-                                        <rect key="frame" x="5" y="7" width="60" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                        <state key="normal" title="已点菜单">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="fadeIn:" destination="lfc-Ep-Daj" eventType="touchUpInside" id="PU6-SI-e6r"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KKk-Pv-RAJ">
-                                        <rect key="frame" x="73" y="7" width="60" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <state key="normal" title="已点详情">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="fadeOut:" destination="lfc-Ep-Daj" eventType="touchUpInside" id="okW-Oq-Via"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" id="6UJ-dq-TW2" userLabel="orderList">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

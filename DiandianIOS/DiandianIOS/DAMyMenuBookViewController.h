@@ -20,5 +20,6 @@ typedef enum {
 
 @interface DAMyMenuBookViewController : UIViewController<UICollectionViewDataSource,RFQuiltLayoutDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (retain, nonatomic) NSString *tableNO;
 
 @end

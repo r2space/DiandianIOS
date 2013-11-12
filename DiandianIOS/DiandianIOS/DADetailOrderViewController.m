@@ -30,6 +30,12 @@
     }
 }
 
+- (IBAction)backTableClick:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(backButtonClicked:)]) {
+        [self.delegate backButtonClicked:self];
+    }
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

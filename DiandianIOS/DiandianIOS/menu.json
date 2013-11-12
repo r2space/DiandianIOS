@@ -73,230 +73,222 @@
  "_id":"1006"
 },
 {
-"name":"宫爆鸡丁6",
+"name":"凉拌芹菜苗",
 "price":"600",
 "index":"1",
 "type":"2",
- "image":"cai_2.png",
+ "image":"凉拌芹菜苗.jpg",
  "_id":"1007"
  
 },
 {
-"name":"宫爆鸡丁7",
+"name":"老汤炖鸡",
 "price":"700",
 "index":"1",
 "type":"3",
- "image":"cai_2.png",
+ "image":"老汤炖鸡.jpg",
  "_id":"1008"
  
 },
 {
-"name":"宫爆鸡丁8",
+"name":"捞汁海参",
 "price":"800",
 "index":"1",
 "type":"4",
- "image":"cai_2.png",
+ "image":"捞汁海参.jpg",
  "_id":"1009"
 },
 {
-"name":"宫爆鸡丁9",
+"name":"烤羊排",
 "price":"900",
 "index":"1",
 "type":"4",
- "image":"cai_2.png",
+ "image":"烤羊排.jpg",
  "_id":"1010"
 },
 {
-"name":"宫爆鸡丁10",
+"name":"烤鸡",
 "price":"2200",
 "index":"1",
 "type":"5",
- "image":"cai_2.png",
+ "image":"烤鸡.jpg",
  "_id":"1011"
 },
 {
-"name":"宫爆鸡丁11",
+"name":"金枪鱼刺身",
 "price":"11100",
 "index":"1",
 "type":"6",
- "image":"cai_2.png",
+ "image":"金枪鱼刺身.jpg",
  "_id":"1012"
 },
  {
- "name":"宫爆鸡丁1",
+ "name":"家常豆腐",
  "price":"100",
  "index":"1",
  "type":"1",
- "image":"cai_2.png",
+ "image":"家常豆腐.jpg",
  "_id":"1013"
  },
  {
- "name":"宫爆鸡丁2",
+ "name":"机芯炒鳝片",
  "price":"200",
  "index":"1",
  "type":"1",
- "image":"cai_2.png",
+ "image":"机芯炒鳝片.jpg",
  "_id":"1014"
  },
  {
- "name":"宫爆鸡丁3",
+ "name":"红烧肉",
  "price":"300",
  "index":"1",
  "type":"1",
- "image":"cai_2.png",
+ "image":"红烧肉.jpg",
  "_id":"1015"
  },
  {
- "name":"宫爆鸡丁4",
+ "name":"红烧大连小鲍鱼",
  "price":"400",
  "index":"1",
  "type":"2",
- "image":"cai_2.png",
+ "image":"红烧大连小鲍鱼.jpg",
  "_id":"1016"
  },
  {
- "name":"宫爆鸡丁5",
+ "name":"海蛎三吃",
  "price":"500",
  "index":"1",
  "type":"2",
- "image":"cai_2.png",
+ "image":"海蛎三吃.jpg",
  "_id":"1017"
  },
  {
- "name":"宫爆鸡丁6",
+ "name":"怪味牛肉",
  "price":"600",
  "index":"1",
  "type":"2",
- "image":"cai_2.png",
+ "image":"怪味牛肉.jpg",
  "_id":"1018"
  },
  {
- "name":"宫爆鸡丁7",
+ "name":"高压鲍鱼",
  "price":"700",
  "index":"1",
  "type":"3",
- "image":"cai_2.png",
+ "image":"高压鲍鱼.jpg",
  "_id":"1019"
  },
  {
- "name":"宫爆鸡丁8",
+ "name":"干锅鸭头",
  "price":"800",
  "index":"1",
  "type":"4",
- "image":"cai_2.png",
+ "image":"干锅鸭头.jpg",
  "_id":"1020"
  },
  {
- "name":"宫爆鸡丁9",
+ "name":"干锅虾",
  "price":"900",
  "index":"1",
  "type":"4",
- "image":"cai_2.png",
+ "image":"干锅虾.jpg",
  "_id":"1021"
  },
  {
- "name":"宫爆鸡丁10",
+ "name":"干锅千叶豆腐",
  "price":"2200",
  "index":"1",
  "type":"5",
- "image":"cai_2.png",
+ "image":"干锅千叶豆腐.jpg",
  "_id":"1022"
  },
  {
- "name":"宫爆鸡丁11",
- "price":"11100",
- "index":"1",
- "type":"6",
- "image":"cai_2.png",
- "_id":"1023"
- },
- {
- "name":"宫爆鸡丁1",
+ "name":"剁椒鲢鱼",
  "price":"100",
  "index":"1",
  "type":"1",
- "image":"cai_2.png",
+ "image":"剁椒鲢鱼.jpg",
  "_id":"1024"
  },
  {
- "name":"宫爆鸡丁2",
+ "name":"大红袍猪腰",
  "price":"200",
  "index":"1",
  "type":"1",
- "image":"cai_2.png",
+ "image":"大红袍猪腰.jpg",
  "_id":"1025"
  
  },
  {
- "name":"宫爆鸡丁3",
+ "name":"村妇梅肉",
  "price":"300",
  "index":"1",
  "type":"1",
- "image":"cai_2.png",
+ "image":"村妇梅肉.jpg",
  "_id":"1026"
  },
  {
- "name":"宫爆鸡丁4",
+ "name":"葱油鸡胗",
  "price":"400",
  "index":"1",
  "type":"2",
- "image":"cai_2.png",
+ "image":"葱油鸡胗.jpg",
  "_id":"1027"
  },
  {
- "name":"宫爆鸡丁5",
+ "name":"刺身拼盘",
  "price":"500",
  "index":"1",
  "type":"2",
- "image":"cai_2.png",
+ "image":"刺身拼盘.jpg",
  "_id":"1028"
  },
  {
- "name":"宫爆鸡丁6",
+ "name":"炒猪肠",
  "price":"600",
  "index":"1",
  "type":"2",
- "image":"cai_2.png",
+ "image":"炒猪肠.jpg",
  "_id":"1029"
  },
  {
- "name":"宫爆鸡丁7",
+ "name":"炒鳝片",
  "price":"700",
  "index":"1",
  "type":"3",
- "image":"cai_2.png",
+ "image":"炒鳝片.jpg",
  "_id":"1030"
  },
  {
- "name":"宫爆鸡丁8",
+ "name":"茶香虾",
  "price":"800",
  "index":"1",
  "type":"4",
- "image":"cai_2.png",
+ "image":"茶香虾.jpg",
  "_id":"1031"
  },
  {
- "name":"宫爆鸡丁9",
+ "name":"百豆会",
  "price":"900",
  "index":"1",
  "type":"4",
- "image":"cai_2.png",
+ "image":"百豆会.jpg",
  "_id":"1032"
  },
  {
- "name":"宫爆鸡丁10",
+ "name":"白斩鸡",
  "price":"2200",
  "index":"1",
  "type":"5",
- "image":"cai_2.png",
+ "image":"白斩鸡.jpg",
  "_id":"1033"
  },
  {
- "name":"宫爆鸡丁11",
+ "name":"干锅千叶豆腐",
  "price":"11100",
  "index":"1",
  "type":"6",
- "image":"cai_2.png",
+ "image":"鲅鱼饼子29元.jpg",
  "_id":"1034"
  }
 ]

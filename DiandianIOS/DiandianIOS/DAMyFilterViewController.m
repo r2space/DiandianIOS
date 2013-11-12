@@ -34,17 +34,17 @@
     [self loadFromDisk];
     // Do any additional setup after loading the view from its nib.
     CCSegmentedControl* segmentedControl = [[CCSegmentedControl alloc] initWithItems:elements];
-    segmentedControl.frame = CGRectMake(0, 0, 1024, 60);
+    segmentedControl.frame = CGRectMake(0, 0, 904, 50);
     
     //设置背景图片，或者设置颜色，或者使用默认白色外观
-    segmentedControl.backgroundImage = [UIImage imageNamed:@"segment_bg.png"];
+    segmentedControl.backgroundImage = [UIImage imageNamed:@"filter_bg1.png"];
     //segmentedControl.backgroundColor = [UIColor grayColor];
     
     //阴影部分图片，不设置使用默认椭圆外观的stain
-    segmentedControl.selectedStainView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stain.png"]];
+    segmentedControl.selectedStainView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stain_bg1.png"]];
     
-    segmentedControl.selectedSegmentTextColor = [UIColor whiteColor];
-    segmentedControl.segmentTextColor = [self colorWithHexString:@"#535353"];
+    segmentedControl.selectedSegmentTextColor = [self colorWithHexString:@"#FFEE00"];
+    segmentedControl.segmentTextColor = [self colorWithHexString:@"#D14DB7"];
     [segmentedControl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
 }

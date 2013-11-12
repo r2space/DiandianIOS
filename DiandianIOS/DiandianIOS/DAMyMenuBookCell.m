@@ -38,16 +38,16 @@
     
     UIImageView  *imageView = [UIImageView alloc];
     if ([row isEqualToNumber:[[NSNumber alloc] initWithInt:1]] && [column isEqualToNumber:[[NSNumber alloc] initWithInt:1]]) {
-        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 240, 240)];
+        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 240)];
         
     } else if([row isEqualToNumber:[[NSNumber alloc] initWithInt:2]] && [column isEqualToNumber:[[NSNumber alloc] initWithInt:2]]){
-        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 480, 480)];
+        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 600, 480)];
         
     } else if([row isEqualToNumber:[[NSNumber alloc] initWithInt:1]] && [column isEqualToNumber:[[NSNumber alloc] initWithInt:2]]){
-        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 240, 480)];
+        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 480)];
         
     }  else if([row isEqualToNumber:[[NSNumber alloc] initWithInt:3]] && [column isEqualToNumber:[[NSNumber alloc] initWithInt:3]]){
-        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 720, 720)];
+        imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 900, 720)];
     }
     
     [imageView setImage: [UIImage imageNamed:menu.image]];
