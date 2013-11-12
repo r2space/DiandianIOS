@@ -86,6 +86,17 @@
     
     cell.imgTable.layer.cornerRadius = 5.0;
     cell.imgTable.layer.masksToBounds = YES;
+    
+    cell.viewMask.layer.cornerRadius = 5.0;
+    cell.viewMask.layer.masksToBounds = YES;
+
+    cell.viewLabel.layer.cornerRadius = 3.0;
+    cell.viewLabel.layer.masksToBounds = YES;
+    
+    
+    if (indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 9) {
+        cell.viewMask.hidden = YES;
+    }
 
     return cell;
 }

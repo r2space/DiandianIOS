@@ -758,6 +758,7 @@
 		0AA9573518279D410098D60C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0AEBE5CA1831F2EF00B01A5E /* Table */,
 				F2AB4C26182F6F710067E450 /* Bill */,
 				F2AB4BF9182E01150067E450 /* OrderQueue */,
 				0A3DB728182A73F700170F0C /* Menubook */,
@@ -803,12 +804,6 @@
 				0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */,
 				0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */,
 				0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */,
-				0A07BD87182A363000A350BC /* DAMyTableViewController.h */,
-				0A07BD88182A363000A350BC /* DAMyTableViewController.m */,
-				0A07BD89182A363000A350BC /* DAMyTableViewController.xib */,
-				2854672A182BC2A5004CD144 /* DAMyTableViewCell.h */,
-				2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */,
-				0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */,
 				0A5D2898182C6EFF00847578 /* DAMyLoginViewController.h */,
 				0A5D2899182C6EFF00847578 /* DAMyLoginViewController.m */,
 				0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */,
@@ -895,6 +890,19 @@
 				0AEBE5751831162700B01A5E /* 猪肉锅贴.jpg */,
 			);
 			name = group;
+			sourceTree = "<group>";
+		};
+		0AEBE5CA1831F2EF00B01A5E /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				0A07BD87182A363000A350BC /* DAMyTableViewController.h */,
+				0A07BD88182A363000A350BC /* DAMyTableViewController.m */,
+				0A07BD89182A363000A350BC /* DAMyTableViewController.xib */,
+				2854672A182BC2A5004CD144 /* DAMyTableViewCell.h */,
+				2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */,
+				0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */,
+			);
+			name = Table;
 			sourceTree = "<group>";
 		};
 		F2AB4BF9182E01150067E450 /* OrderQueue */ = {
