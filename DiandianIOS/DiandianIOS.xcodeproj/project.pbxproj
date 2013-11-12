@@ -193,10 +193,10 @@
 		0AEBE5E11832212A00B01A5E /* chazi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5E01832212A00B01A5E /* chazi.jpg */; };
 		2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */; };
 		28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */; };
-		28FFB61B1831EC40003443D1 /* DAPopTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28FFB61A1831EC40003443D1 /* DAPopTableView.storyboard */; };
-		28FFB61E1831EC81003443D1 /* DAPopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB61D1831EC81003443D1 /* DAPopTableViewController.m */; };
-		28FFB6201831FB07003443D1 /* DAPopTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FFB61F1831FB07003443D1 /* DAPopTableViewController.xib */; };
-		28FFB62318320A8F003443D1 /* DAPopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB62218320A8F003443D1 /* DAPopTableViewCell.m */; };
+		28FFB62A18322E20003443D1 /* DAPopTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28FFB62418322E20003443D1 /* DAPopTableView.storyboard */; };
+		28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB62618322E20003443D1 /* DAPopTableViewCell.m */; };
+		28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB62818322E20003443D1 /* DAPopTableViewController.m */; };
+		28FFB62D18322E20003443D1 /* DAPopTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FFB62918322E20003443D1 /* DAPopTableViewController.xib */; };
 		47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */; };
 		47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */; };
 		47A6ADAF182E188C00E80AA1 /* bill.json in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADAE182E188C00E80AA1 /* bill.json */; };
@@ -467,12 +467,12 @@
 		2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableViewCell.m; sourceTree = "<group>"; };
 		28C97A301828D86A0099FE4A /* DAOpenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOpenTableViewCell.h; sourceTree = "<group>"; };
 		28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOpenTableViewCell.m; sourceTree = "<group>"; };
-		28FFB61A1831EC40003443D1 /* DAPopTableView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAPopTableView.storyboard; sourceTree = "<group>"; };
-		28FFB61C1831EC81003443D1 /* DAPopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPopTableViewController.h; sourceTree = "<group>"; };
-		28FFB61D1831EC81003443D1 /* DAPopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPopTableViewController.m; sourceTree = "<group>"; };
-		28FFB61F1831FB07003443D1 /* DAPopTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPopTableViewController.xib; sourceTree = "<group>"; };
-		28FFB62118320A8F003443D1 /* DAPopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPopTableViewCell.h; sourceTree = "<group>"; };
-		28FFB62218320A8F003443D1 /* DAPopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPopTableViewCell.m; sourceTree = "<group>"; };
+		28FFB62418322E20003443D1 /* DAPopTableView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DAPopTableView.storyboard; path = DiandianIOS/DAPopTableView.storyboard; sourceTree = SOURCE_ROOT; };
+		28FFB62518322E20003443D1 /* DAPopTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPopTableViewCell.h; path = DiandianIOS/DAPopTableViewCell.h; sourceTree = SOURCE_ROOT; };
+		28FFB62618322E20003443D1 /* DAPopTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPopTableViewCell.m; path = DiandianIOS/DAPopTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		28FFB62718322E20003443D1 /* DAPopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPopTableViewController.h; path = DiandianIOS/DAPopTableViewController.h; sourceTree = SOURCE_ROOT; };
+		28FFB62818322E20003443D1 /* DAPopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPopTableViewController.m; path = DiandianIOS/DAPopTableViewController.m; sourceTree = SOURCE_ROOT; };
+		28FFB62918322E20003443D1 /* DAPopTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DAPopTableViewController.xib; path = DiandianIOS/DAPopTableViewController.xib; sourceTree = SOURCE_ROOT; };
 		47A6ADA9182E0F2500E80AA1 /* DABillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillViewController.h; sourceTree = "<group>"; };
 		47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillViewController.m; sourceTree = "<group>"; };
 		47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillViewController.xib; sourceTree = "<group>"; };
@@ -797,7 +797,7 @@
 		0AA9573518279D410098D60C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				28FFB6191831EB9A003443D1 /* PopTable */,
+				28FFB62E18322E2D003443D1 /* PopoverTable */,
 				0AEBE5CA1831F2EF00B01A5E /* Table */,
 				F2AB4C26182F6F710067E450 /* Bill */,
 				F2AB4BF9182E01150067E450 /* OrderQueue */,
@@ -932,17 +932,6 @@
 			name = group;
 			sourceTree = "<group>";
 		};
-		28FFB6191831EB9A003443D1 /* PopTable */ = {
-			isa = PBXGroup;
-			children = (
-				28FFB61A1831EC40003443D1 /* DAPopTableView.storyboard */,
-				28FFB61C1831EC81003443D1 /* DAPopTableViewController.h */,
-				28FFB61D1831EC81003443D1 /* DAPopTableViewController.m */,
-				28FFB61F1831FB07003443D1 /* DAPopTableViewController.xib */,
-				28FFB62118320A8F003443D1 /* DAPopTableViewCell.h */,
-				28FFB62218320A8F003443D1 /* DAPopTableViewCell.m */,
-			);
-			name = PopTable;
 		0AEBE5CA1831F2EF00B01A5E /* Table */ = {
 			isa = PBXGroup;
 			children = (
@@ -966,6 +955,19 @@
 				0AEBE5D91832139700B01A5E /* clipboard.png */,
 			);
 			name = icon;
+			sourceTree = "<group>";
+		};
+		28FFB62E18322E2D003443D1 /* PopoverTable */ = {
+			isa = PBXGroup;
+			children = (
+				28FFB62418322E20003443D1 /* DAPopTableView.storyboard */,
+				28FFB62518322E20003443D1 /* DAPopTableViewCell.h */,
+				28FFB62618322E20003443D1 /* DAPopTableViewCell.m */,
+				28FFB62718322E20003443D1 /* DAPopTableViewController.h */,
+				28FFB62818322E20003443D1 /* DAPopTableViewController.m */,
+				28FFB62918322E20003443D1 /* DAPopTableViewController.xib */,
+			);
+			name = PopoverTable;
 			sourceTree = "<group>";
 		};
 		F2AB4BF9182E01150067E450 /* OrderQueue */ = {
@@ -1086,7 +1088,6 @@
 				0AEBE5A71831162700B01A5E /* 清蒸章鱼.jpg in Resources */,
 				0AEBE5B91831162700B01A5E /* 银耳螺片.jpg in Resources */,
 				0AEBE5871831162700B01A5E /* 海蛎三吃.jpg in Resources */,
-				28FFB61B1831EC40003443D1 /* DAPopTableView.storyboard in Resources */,
 				0AEBE5DA1832139700B01A5E /* clipboard@2x.png in Resources */,
 				F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */,
 				0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */,
@@ -1119,7 +1120,6 @@
 				0AEBE5971831162700B01A5E /* 梅菜扣肉.jpg in Resources */,
 				0AEBE5A01831162700B01A5E /* 青虾炒时蔬.jpg in Resources */,
 				0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */,
-				28FFB6201831FB07003443D1 /* DAPopTableViewController.xib in Resources */,
 				0AEBE5A41831162700B01A5E /* 清肺小炒.jpg in Resources */,
 				0AEBE5DF1832208800B01A5E /* top_bg3.png in Resources */,
 				F2A8CB871831D2D3002AD240 /* sample_table_back.png in Resources */,
@@ -1130,6 +1130,7 @@
 				0AEBE5BF1831162700B01A5E /* 猪肉锅贴.jpg in Resources */,
 				0AEBE5281831087F00B01A5E /* filter_bg1.png in Resources */,
 				0AEBE5771831162700B01A5E /* 白斩鸡.jpg in Resources */,
+				28FFB62D18322E20003443D1 /* DAPopTableViewController.xib in Resources */,
 				0AEBE5D31832071300B01A5E /* top_bg1.png in Resources */,
 				0A5D2897182BD23700847578 /* DADetailOrderViewController.xib in Resources */,
 				0AEBE5B21831162700B01A5E /* 乌东面.jpg in Resources */,
@@ -1152,6 +1153,7 @@
 				0AEBE5931831162700B01A5E /* 凉拌猪耳.jpg in Resources */,
 				0AEBE5911831162700B01A5E /* 凉拌芹菜苗.jpg in Resources */,
 				0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */,
+				28FFB62A18322E20003443D1 /* DAPopTableView.storyboard in Resources */,
 				0AEBE5B71831162700B01A5E /* 香辣鸡脆骨.jpg in Resources */,
 				0A3DB730182B1F5100170F0C /* table.png in Resources */,
 				0AEBE5791831162700B01A5E /* 茶香虾.jpg in Resources */,
@@ -1290,18 +1292,18 @@
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
 				0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */,
+				28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */,
 				47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */,
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,
-				28FFB61E1831EC81003443D1 /* DAPopTableViewController.m in Sources */,
 				0A07BD681829DC8100A350BC /* MSGridView.m in Sources */,
 				0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */,
 				0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */,
-				28FFB62318320A8F003443D1 /* DAPopTableViewCell.m in Sources */,
 				0A07BD051828EC1B00A350BC /* DAMyOrderViewController.m in Sources */,
 				0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */,
 				0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
+				28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
 				0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */,
 				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
