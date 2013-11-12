@@ -40,8 +40,6 @@
 		0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */; };
 		0A3DB929182B29EC00170F0C /* TribeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3DB928182B29EC00170F0C /* TribeSDK.framework */; };
 		0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BC8182878DA009CDF6D /* DAViewController.m */; };
-		0A577BD7182890D2009CDF6D /* DAOpenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BD6182890D2009CDF6D /* DAOpenTableViewController.m */; };
-		0A577BD9182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A577BD8182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard */; };
 		0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BDB1828A040009CDF6D /* DABookViewController.m */; };
 		0A5D2835182B6E2F00847578 /* table1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2834182B6E2F00847578 /* table1.png */; };
 		0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D2837182B77A000847578 /* DAMyBigMenuBookCell.m */; };
@@ -189,6 +187,9 @@
 		47A6ADB4182E25B100E80AA1 /* DABillDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADB2182E25B100E80AA1 /* DABillDetailViewController.xib */; };
 		47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */; };
 		47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */; };
+		F2A8CB831831CEB5002AD240 /* sample-table1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB821831CEB5002AD240 /* sample-table1.jpg */; };
+		F2A8CB871831D2D3002AD240 /* sample_table_back.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB861831D2D3002AD240 /* sample_table_back.png */; };
+		F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */; };
 		F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */; };
 		F2AB4BF8182DDDB90067E450 /* DAOrderQueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4BF6182DDDB90067E450 /* DAOrderQueueViewController.xib */; };
 		F2AB4BFD182E030A0067E450 /* DAOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4BFB182E030A0067E450 /* DAOrderDetailViewController.m */; };
@@ -270,9 +271,6 @@
 		0A3DB928182B29EC00170F0C /* TribeSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TribeSDK.framework; path = "../TribeSDK/build/Debug-framework/TribeSDK.framework"; sourceTree = "<group>"; };
 		0A577BC7182878DA009CDF6D /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
 		0A577BC8182878DA009CDF6D /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
-		0A577BD5182890D2009CDF6D /* DAOpenTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOpenTableViewController.h; sourceTree = "<group>"; };
-		0A577BD6182890D2009CDF6D /* DAOpenTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOpenTableViewController.m; sourceTree = "<group>"; };
-		0A577BD8182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAOpenTableViewStoryboard.storyboard; sourceTree = "<group>"; };
 		0A577BDA1828A040009CDF6D /* DABookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABookViewController.h; sourceTree = "<group>"; };
 		0A577BDB1828A040009CDF6D /* DABookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABookViewController.m; sourceTree = "<group>"; };
 		0A5D2834182B6E2F00847578 /* table1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table1.png; sourceTree = "<group>"; };
@@ -448,6 +446,9 @@
 		47A6ADB5182E2B7D00E80AA1 /* DABillDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillDetailViewCell.h; sourceTree = "<group>"; };
 		47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillDetailViewCell.m; sourceTree = "<group>"; };
 		47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillDetailViewCell.xib; sourceTree = "<group>"; };
+		F2A8CB821831CEB5002AD240 /* sample-table1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sample-table1.jpg"; sourceTree = "<group>"; };
+		F2A8CB861831D2D3002AD240 /* sample_table_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_table_back.png; sourceTree = "<group>"; };
+		F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_table_back.jpg; sourceTree = "<group>"; };
 		F2AB4BF4182DDDB90067E450 /* DAOrderQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderQueueViewController.h; sourceTree = "<group>"; };
 		F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderQueueViewController.m; sourceTree = "<group>"; };
 		F2AB4BF6182DDDB90067E450 /* DAOrderQueueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderQueueViewController.xib; sourceTree = "<group>"; };
@@ -551,7 +552,10 @@
 				F2AB4C1E182E273F0067E450 /* 五彩拉皮.jpg */,
 				F2AB4C1F182E273F0067E450 /* 香煎猪五花.jpg */,
 				F2AB4C12182E21F90067E450 /* sample-table.jpg */,
+				F2A8CB821831CEB5002AD240 /* sample-table1.jpg */,
 				F2AB4C13182E21F90067E450 /* sample-ticket.png */,
+				F2A8CB861831D2D3002AD240 /* sample_table_back.png */,
+				F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */,
 				0A5D2834182B6E2F00847578 /* table1.png */,
 				0A1DBAB5182B3A7D0045787A /* bg_first.png */,
 				0A3DB72F182B1F5100170F0C /* table.png */,
@@ -760,9 +764,6 @@
 				0A9DA5C51828766100037E73 /* DARootView.storyboard */,
 				28C97A301828D86A0099FE4A /* DAOpenTableViewCell.h */,
 				28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */,
-				0A577BD5182890D2009CDF6D /* DAOpenTableViewController.h */,
-				0A577BD6182890D2009CDF6D /* DAOpenTableViewController.m */,
-				0A577BD8182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard */,
 				0A577BDA1828A040009CDF6D /* DABookViewController.h */,
 				0A577BDB1828A040009CDF6D /* DABookViewController.m */,
 				0AA533911828AD690087EFF1 /* DABookViewController.xib */,
@@ -1006,11 +1007,13 @@
 				0AEBE5A71831162700B01A5E /* 清蒸章鱼.jpg in Resources */,
 				0AEBE5B91831162700B01A5E /* 银耳螺片.jpg in Resources */,
 				0AEBE5871831162700B01A5E /* 海蛎三吃.jpg in Resources */,
+				F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */,
 				0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */,
 				0AEBE59A1831162700B01A5E /* 木耳蛰头.jpg in Resources */,
 				0AEBE5BE1831162700B01A5E /* 炸蛎黄.jpg in Resources */,
 				0A8C2F5B182E430F0080F15F /* 黑松露炖暴翅33.png in Resources */,
 				F2AB4C17182E26710067E450 /* queue_detail.json in Resources */,
+				F2A8CB831831CEB5002AD240 /* sample-table1.jpg in Resources */,
 				0A07BD551829CC8A00A350BC /* segment_bg.png in Resources */,
 				F2AB4C21182E273F0067E450 /* 牛拼盘.jpg in Resources */,
 				0A07BD561829CC8A00A350BC /* stain.png in Resources */,
@@ -1034,6 +1037,7 @@
 				0AEBE5A01831162700B01A5E /* 青虾炒时蔬.jpg in Resources */,
 				0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */,
 				0AEBE5A41831162700B01A5E /* 清肺小炒.jpg in Resources */,
+				F2A8CB871831D2D3002AD240 /* sample_table_back.png in Resources */,
 				0A8C2F62182E430F0080F15F /* 松茸清汤海虎翅33.png in Resources */,
 				0AEBE5A11831162700B01A5E /* 清炒滑子蘑.jpg in Resources */,
 				47A6ADAF182E188C00E80AA1 /* bill.json in Resources */,
@@ -1128,7 +1132,6 @@
 				F2AB4C19182E26960067E450 /* queue_group.json in Resources */,
 				F2AB4C25182E273F0067E450 /* 香煎猪五花.jpg in Resources */,
 				0AEBE59E1831162700B01A5E /* 牛三样.jpg in Resources */,
-				0A577BD9182890F0009CDF6D /* DAOpenTableViewStoryboard.storyboard in Resources */,
 				0AA9570C18274DCA0098D60C /* Main.storyboard in Resources */,
 				0AEBE58A1831162700B01A5E /* 机芯炒鳝片.jpg in Resources */,
 				0AEBE5841831162700B01A5E /* 干锅鸭头.jpg in Resources */,
@@ -1166,7 +1169,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A577BD7182890D2009CDF6D /* DAOpenTableViewController.m in Sources */,
 				0A5D2890182BD03600847578 /* UIViewController+MJPopupViewController.m in Sources */,
 				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
 				2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */,
