@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TribeSDK/DAMyTable.h>
 
 @protocol DAMyLoginDelegate;
-@interface DAMyLoginViewController : UIViewController
+@interface DAMyLoginViewController : UIViewController<UIPickerViewDelegate,UIPickerViewDataSource>
 @property (assign, nonatomic) id <DAMyLoginDelegate>delegate;
 - (IBAction)closePopup:(id)sender;
 - (IBAction)startTable:(id)sender;
+
++ (void) show:(DAMyTable*)thisTable parentView :(UIViewController *) parentView;
+
 @end
 
 @protocol DAMyLoginDelegate<NSObject>

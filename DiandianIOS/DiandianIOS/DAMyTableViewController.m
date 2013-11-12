@@ -10,6 +10,7 @@
 #import "DAMyTableViewCell.h"
 #import "DAMyLoginViewController.h"
 #import "UIViewController+MJPopupViewController.h"
+#import <TribeSDK/DAMyTable.h>
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate>
 {
@@ -92,11 +93,12 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    DAMyLoginViewController *loginViewVC = [[DAMyLoginViewController alloc]initWithNibName:@"DAMyLoginViewController" bundle:nil];
-    loginViewVC.delegate = self;
-    [self presentPopupViewController:loginViewVC animationType:MJPopupViewAnimationFade];
-    
+    NSDictionary *d = [dataList objectAtIndex:indexPath.row];
+    DAMyTable * t = [[DAMyTable alloc] init];
+    t._id = [d objectForKey:@"id"];
+    t.name = [d objectForKey:@"name"];
+    t.state = [d objectForKey:@"state"];
+    [DAMyLoginViewController show: t parentView:self ];
 }
 
 
