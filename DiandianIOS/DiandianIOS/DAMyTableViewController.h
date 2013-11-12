@@ -15,5 +15,6 @@
 @protocol DATableViewDelegate;
 @interface DAMyTableViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+- (IBAction)onReturnTouched:(id)sender;
 
 @end

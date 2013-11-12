@@ -52,9 +52,18 @@
     UINib *cellNib = [UINib nibWithNibName:@"DAOrderCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAOrderCell"];
     [self tableViewReload];
+   
 
 }
-
+-(void)loadAmountPrice
+{
+    int amountPrice = 0 ;
+    for (DAMyMenu *menu in self.dataList.items) {
+        amountPrice = amountPrice + [menu.price integerValue] * [menu.amount integerValue];
+    }
+    self.labelAmount.text = [NSString stringWithFormat:@"总价:%d元" ,amountPrice];
+    
+}
 -(BOOL) loadTableFromDisk
 {
     NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
@@ -86,7 +95,8 @@
         }
     }
     [self.tableView reloadData];
-        
+    [self loadAmountPrice];
+    
 }
 
 
@@ -181,17 +191,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"popupDetailMenu" object:[self.dataList.items objectAtIndex:indexPath.row]];
     
-    NSString *msg = [[NSString alloc] initWithFormat:@"你选择的是:%@",[self.dataList.items objectAtIndex:[indexPath row]]];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
     
-    [alert show];
+//    NSString *msg = [[NSString alloc] initWithFormat:@"你选择的是:%@",[self.dataList.items objectAtIndex:[indexPath row]]];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//    
+//    [alert show];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"执行删除操作");
-}
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"执行删除操作");
+//}
 
 
 - (IBAction)backTopMenu:(id)sender {
@@ -218,11 +231,11 @@
 }
 
 
-- (void)cancelButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
+-(void)backButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
     [self loadTableFromDisk];
+    [self.navigationController popViewControllerAnimated:YES];
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self tableViewReload];
-    
 }
 
 -(void)confirmButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
@@ -230,12 +243,22 @@
     [self loadTableFromDisk];
     for (DAMyMenu *menu in self.dataList.items) {
         menu.status = [NSString stringWithFormat:@"doing"];
-
+        
     }
-//    [self tableViewReload];
+    
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self tableViewReload];
 }
+
+
+- (void)cancelButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
+    [self loadTableFromDisk];
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    [self tableViewReload];
+    
+}
+
+
 
 -(void) notificationSetRecipe :(NSNotification *)notification
 {

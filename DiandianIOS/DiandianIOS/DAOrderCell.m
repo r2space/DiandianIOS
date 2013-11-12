@@ -35,6 +35,16 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        CGContextRef context =UIGraphicsGetCurrentContext();  //获取绘图上下文----画板
+        CGContextBeginPath(context);  //创建一条路径
+        CGContextSetLineWidth(context, 2.0);  //设置线宽
+        CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);  //设置线的颜色
+        float lengths[] = {10,10};
+        CGContextSetLineDash(context, 0, lengths,2);  //设置虚线的样式
+        CGContextMoveToPoint(context, 10.0, 20.0);  //将路径绘制的起点移动到一个位置，即设置线条的起点
+        CGContextAddLineToPoint(context, 310.0,20.0);  //在图形上下文移动你的笔画来指定线条的重点
+        CGContextStrokePath(context);  //创建你已经设定好的路径。此过程将使用图形上下文已经设置好的颜色来绘制路径。
+        CGContextClosePath(context);
     }
     return self;
 }

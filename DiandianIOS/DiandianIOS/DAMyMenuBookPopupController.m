@@ -22,11 +22,22 @@
     }
     return self;
 }
-
+//@property (weak, nonatomic) IBOutlet UILabel *labelName;
+//@property (weak, nonatomic) IBOutlet UILabel *labelPrice;
+//@property (weak, nonatomic) IBOutlet UIImageView *viewImage;
+//@property (weak, nonatomic) IBOutlet UILabel *labelMaterial;
+//@property (weak, nonatomic) IBOutlet UILabel *labelAmount;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initUI];
     // Do any additional setup after loading the view from its nib.
+}
+- (void) initUI
+{
+    self.labelName.text = self.menuData.name;
+    self.labelAmount.text = self.menuData.amount;
+    [self.viewImage setImage:[UIImage imageNamed:self.menuData.image]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,5 +50,11 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
         [self.delegate cancelButtonClicked:self];
     }
+}
+
+- (IBAction)orderTouched:(id)sender {
+    NSLog(@"dfdaf  data  %@  " ,self.menuData.name);
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"orderReload" object:self.menuData];
+    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
 }
 @end

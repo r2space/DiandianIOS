@@ -30,6 +30,7 @@
     UINib *cellNib = [UINib nibWithNibName:@"DAMyTableViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyTableViewCell"];
     
+    self.navigationController.navigationBarHidden = YES;
     
     [self loadFromFile];
 }
@@ -81,6 +82,21 @@
     
     NSDictionary *d = [dataList objectAtIndex:indexPath.row];
     [cell setData:[d objectForKey:@"name"] setState:[d objectForKey:@"state"]];
+    cell.imgTable.image = [UIImage imageNamed:[d objectForKey:@"image"]];
+    
+    cell.imgTable.layer.cornerRadius = 5.0;
+    cell.imgTable.layer.masksToBounds = YES;
+    
+    cell.viewMask.layer.cornerRadius = 5.0;
+    cell.viewMask.layer.masksToBounds = YES;
+
+    cell.viewLabel.layer.cornerRadius = 3.0;
+    cell.viewLabel.layer.masksToBounds = YES;
+    
+    
+    if (indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 9) {
+        cell.viewMask.hidden = YES;
+    }
 
     return cell;
 }
@@ -105,4 +121,7 @@
     
 }
 
+- (IBAction)onReturnTouched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

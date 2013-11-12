@@ -11,6 +11,9 @@
 @interface DAMyTableViewCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *tableTitle;
 @property (strong, nonatomic) IBOutlet UILabel *tableState;
+@property (weak, nonatomic) IBOutlet UIImageView *imgTable;
+@property (weak, nonatomic) IBOutlet UIView *viewMask;
+@property (weak, nonatomic) IBOutlet UIView *viewLabel;
 
 - (void)setData:(NSString*)title setState:(NSString*)state;
 @end

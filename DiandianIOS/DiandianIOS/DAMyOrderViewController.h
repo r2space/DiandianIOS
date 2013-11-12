@@ -14,6 +14,7 @@
 @interface DAMyOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (weak, nonatomic) IBOutlet UILabel *labelAmount;
 @property (nonatomic, retain) DAMyMenuList *dataList;
 @property (nonatomic, retain) NSString *tableNO;
 - (IBAction)backTopMenu:(id)sender;
