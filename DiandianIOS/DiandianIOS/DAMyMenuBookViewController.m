@@ -201,11 +201,11 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    DAMyMenuBookPopupController *secondDetailViewController = [[DAMyMenuBookPopupController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];
+    DAMyMenu *data = [menuList objectAtIndex:indexPath.row];
+    DAMyMenuBookPopupController *secondDetailViewController = [[DAMyMenuBookPopupController alloc] initWithNibName:@"DAMyMenuBookPopupController" bundle:nil];
     secondDetailViewController.delegate = self;
     secondDetailViewController.tableNO = self.tableNO;
-    
+    secondDetailViewController.menuData = data;
     [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
         
     
@@ -227,5 +227,9 @@
     }
     menuList = [[NSMutableArray alloc]initWithArray:tmpList];
     [self.collectionView reloadData];
+}
+- (void)cancelButtonClicked:(DAMyMenuBookPopupController*) popupViewController
+{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
 }
 @end

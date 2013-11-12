@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <TribeSDK/TribeSDKHeader.h>
 @protocol DADetailOrderDelegate;
-@interface DADetailOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface DADetailOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIPopoverControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UILabel *amountPriceLabel;

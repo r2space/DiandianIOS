@@ -10,7 +10,7 @@
 #import "DAOrderAddAmountBtn.h"
 #define AMOUNT_LABEL_TAG 101
 @interface DADetailOrderViewController ()
-
+@property (nonatomic, strong) UIPopoverController *remarkViewPopover;
 @end
 
 @implementation DADetailOrderViewController
@@ -196,6 +196,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    self.remarkViewPopover = [[UIPopoverController alloc] initWithContentViewController:listViewCtrl];
+//    self.remarkViewPopover.popoverContentSize = CGSizeMake(540., 620.);
+//    self.remarkViewPopover.delegate = self;
+//    // Present the popover from the button that was tapped in the detail view.
+//    [self.remarkViewPopover presentPopoverFromRect:CGSizeMake(1,1,540., 620.) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    
     
     NSString *msg = [[NSString alloc] initWithFormat:@"你选择的是:%@",@"123123"];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
