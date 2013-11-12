@@ -46,6 +46,8 @@
 		0ABE9EA117F3167A00BE1D91 /* DAYiSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE9E9F17F3167A00BE1D91 /* DAYiSetting.m */; };
 		0ABE9EA417F3169C00BE1D91 /* DAYiSettingList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ABE9EA217F3169C00BE1D91 /* DAYiSettingList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0ABE9EA517F3169C00BE1D91 /* DAYiSettingList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE9EA317F3169C00BE1D91 /* DAYiSettingList.m */; };
+		28FFB6171830DBFE003443D1 /* DAMyTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 28FFB6151830DBFE003443D1 /* DAMyTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		28FFB6181830DBFE003443D1 /* DAMyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB6161830DBFE003443D1 /* DAMyTable.m */; };
 		47120B1017337B7600FB74AF /* DANotificationModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 47120B0E17337B7600FB74AF /* DANotificationModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47120B1117337B7600FB74AF /* DANotificationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 47120B0F17337B7600FB74AF /* DANotificationModule.m */; };
 		47120B1217337B7600FB74AF /* DANotificationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 47120B0F17337B7600FB74AF /* DANotificationModule.m */; };
@@ -313,6 +315,8 @@
 		0ABE9E9F17F3167A00BE1D91 /* DAYiSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAYiSetting.m; sourceTree = "<group>"; };
 		0ABE9EA217F3169C00BE1D91 /* DAYiSettingList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAYiSettingList.h; sourceTree = "<group>"; };
 		0ABE9EA317F3169C00BE1D91 /* DAYiSettingList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAYiSettingList.m; sourceTree = "<group>"; };
+		28FFB6151830DBFE003443D1 /* DAMyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTable.h; sourceTree = "<group>"; };
+		28FFB6161830DBFE003443D1 /* DAMyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTable.m; sourceTree = "<group>"; };
 		47120B0E17337B7600FB74AF /* DANotificationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationModule.h; sourceTree = "<group>"; };
 		47120B0F17337B7600FB74AF /* DANotificationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotificationModule.m; sourceTree = "<group>"; };
 		472DCF3817D08BE10094ABB4 /* DALayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALayout.h; sourceTree = "<group>"; };
@@ -708,6 +712,8 @@
 				0A1DBAB2182B2AC50045787A /* DAMyMenu.m */,
 				0A8C2F40182E125D0080F15F /* DAMyMenuList.h */,
 				0A8C2F41182E125D0080F15F /* DAMyMenuList.m */,
+				28FFB6151830DBFE003443D1 /* DAMyTable.h */,
+				28FFB6161830DBFE003443D1 /* DAMyTable.m */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -934,6 +940,7 @@
 				47AB2091180EC14000A511DD /* DAYiConference.h in Headers */,
 				0A1DBAB3182B2AC50045787A /* DAMyMenu.h in Headers */,
 				0A8C2F42182E125D0080F15F /* DAMyMenuList.h in Headers */,
+				28FFB6171830DBFE003443D1 /* DAMyTable.h in Headers */,
 				47AB2095180EC20D00A511DD /* DAYiConferenceModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1087,6 +1094,7 @@
 				F2A6EAAF172AA2AA00C1A9BF /* DAShortmail.m in Sources */,
 				F2A6EAB4172AAF9D00C1A9BF /* DAShortmailList.m in Sources */,
 				F2A6EBBA1730CD7700C1A9BF /* AFHTTPClient.m in Sources */,
+				28FFB6181830DBFE003443D1 /* DAMyTable.m in Sources */,
 				47AB2092180EC14000A511DD /* DAYiConference.m in Sources */,
 				F2A6EBBD1730CD7700C1A9BF /* AFHTTPRequestOperation.m in Sources */,
 				F2A6EBC01730CD7700C1A9BF /* AFImageRequestOperation.m in Sources */,

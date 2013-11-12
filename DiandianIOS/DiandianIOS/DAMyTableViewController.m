@@ -10,6 +10,7 @@
 #import "DAMyTableViewCell.h"
 #import "DAMyLoginViewController.h"
 #import "UIViewController+MJPopupViewController.h"
+#import <TribeSDK/DAMyTable.h>
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate>
 {
@@ -29,6 +30,7 @@
     UINib *cellNib = [UINib nibWithNibName:@"DAMyTableViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyTableViewCell"];
     
+    self.navigationController.navigationBarHidden = YES;
     
     [self loadFromFile];
 }
@@ -80,6 +82,10 @@
     
     NSDictionary *d = [dataList objectAtIndex:indexPath.row];
     [cell setData:[d objectForKey:@"name"] setState:[d objectForKey:@"state"]];
+    cell.imgTable.image = [UIImage imageNamed:[d objectForKey:@"image"]];
+    
+    cell.imgTable.layer.cornerRadius = 5.0;
+    cell.imgTable.layer.masksToBounds = YES;
 
     return cell;
 }
@@ -87,11 +93,12 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    DAMyLoginViewController *loginViewVC = [[DAMyLoginViewController alloc]initWithNibName:@"DAMyLoginViewController" bundle:nil];
-    loginViewVC.delegate = self;
-    [self presentPopupViewController:loginViewVC animationType:MJPopupViewAnimationFade];
-    
+    NSDictionary *d = [dataList objectAtIndex:indexPath.row];
+    DAMyTable * t = [[DAMyTable alloc] init];
+    t._id = [d objectForKey:@"id"];
+    t.name = [d objectForKey:@"name"];
+    t.state = [d objectForKey:@"state"];
+    [DAMyLoginViewController show: t parentView:self ];
 }
 
 
@@ -103,4 +110,7 @@
     
 }
 
+- (IBAction)onReturnTouched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

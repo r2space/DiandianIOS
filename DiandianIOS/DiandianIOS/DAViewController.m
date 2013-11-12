@@ -9,6 +9,7 @@
 #import "DAViewController.h"
 #import "DAOrderQueueViewController.h"
 #import "DABillViewController.h"
+#import "DAMyTableViewController.h"
 
 @interface DAViewController ()
 
@@ -43,9 +44,8 @@
     [self.navigationController pushViewController:menubookVC animated:YES];
 }
 - (IBAction)toTable:(id)sender {
-    UIStoryboard *openTableStoryboard = [UIStoryboard storyboardWithName:@"DAOpenTableViewStoryboard" bundle:nil];
-    UIViewController *DAOpenTableViewVC = [openTableStoryboard instantiateViewControllerWithIdentifier:@"DAOpenTableViewVC"];
-    [self.navigationController pushViewController:DAOpenTableViewVC animated:YES];
+    DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 - (IBAction)showBill:(id)sender {
     DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];
