@@ -197,6 +197,15 @@
 		28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB62618322E20003443D1 /* DAPopTableViewCell.m */; };
 		28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB62818322E20003443D1 /* DAPopTableViewController.m */; };
 		28FFB62D18322E20003443D1 /* DAPopTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FFB62918322E20003443D1 /* DAPopTableViewController.xib */; };
+		28FFB64418332272003443D1 /* DADateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB63218332272003443D1 /* DADateUtil.m */; };
+		28FFB64518332272003443D1 /* DADelegateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB63418332272003443D1 /* DADelegateUtil.m */; };
+		28FFB64618332272003443D1 /* DADevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB63618332272003443D1 /* DADevice.m */; };
+		28FFB64718332272003443D1 /* DAImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB63818332272003443D1 /* DAImageUtil.m */; };
+		28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB63A18332272003443D1 /* DAKeyboardObserver.m */; };
+		28FFB64A18332272003443D1 /* DASettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB63E18332272003443D1 /* DASettings.m */; };
+		28FFB64B18332272003443D1 /* NSNumber+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB64118332272003443D1 /* NSNumber+Util.m */; };
+		28FFB64C18332272003443D1 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB64318332272003443D1 /* NSString+Util.m */; };
+		28FFB650183322B2003443D1 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB64F183322B2003443D1 /* NSData+Base64.m */; };
 		47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */; };
 		47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */; };
 		47A6ADAF182E188C00E80AA1 /* bill.json in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADAE182E188C00E80AA1 /* bill.json */; };
@@ -473,6 +482,25 @@
 		28FFB62718322E20003443D1 /* DAPopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPopTableViewController.h; path = DiandianIOS/DAPopTableViewController.h; sourceTree = SOURCE_ROOT; };
 		28FFB62818322E20003443D1 /* DAPopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPopTableViewController.m; path = DiandianIOS/DAPopTableViewController.m; sourceTree = SOURCE_ROOT; };
 		28FFB62918322E20003443D1 /* DAPopTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DAPopTableViewController.xib; path = DiandianIOS/DAPopTableViewController.xib; sourceTree = SOURCE_ROOT; };
+		28FFB63118332272003443D1 /* DADateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADateUtil.h; sourceTree = "<group>"; };
+		28FFB63218332272003443D1 /* DADateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADateUtil.m; sourceTree = "<group>"; };
+		28FFB63318332272003443D1 /* DADelegateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADelegateUtil.h; sourceTree = "<group>"; };
+		28FFB63418332272003443D1 /* DADelegateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADelegateUtil.m; sourceTree = "<group>"; };
+		28FFB63518332272003443D1 /* DADevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADevice.h; sourceTree = "<group>"; };
+		28FFB63618332272003443D1 /* DADevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADevice.m; sourceTree = "<group>"; };
+		28FFB63718332272003443D1 /* DAImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAImageUtil.h; sourceTree = "<group>"; };
+		28FFB63818332272003443D1 /* DAImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAImageUtil.m; sourceTree = "<group>"; };
+		28FFB63918332272003443D1 /* DAKeyboardObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardObserver.h; sourceTree = "<group>"; };
+		28FFB63A18332272003443D1 /* DAKeyboardObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardObserver.m; sourceTree = "<group>"; };
+		28FFB63D18332272003443D1 /* DASettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASettings.h; sourceTree = "<group>"; };
+		28FFB63E18332272003443D1 /* DASettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASettings.m; sourceTree = "<group>"; };
+		28FFB63F18332272003443D1 /* DAUtilCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUtilCommon.h; sourceTree = "<group>"; };
+		28FFB64018332272003443D1 /* NSNumber+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Util.h"; sourceTree = "<group>"; };
+		28FFB64118332272003443D1 /* NSNumber+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Util.m"; sourceTree = "<group>"; };
+		28FFB64218332272003443D1 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
+		28FFB64318332272003443D1 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
+		28FFB64E183322B2003443D1 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		28FFB64F183322B2003443D1 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		47A6ADA9182E0F2500E80AA1 /* DABillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillViewController.h; sourceTree = "<group>"; };
 		47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillViewController.m; sourceTree = "<group>"; };
 		47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillViewController.xib; sourceTree = "<group>"; };
@@ -714,6 +742,7 @@
 		0AA956EC18274DCA0098D60C = {
 			isa = PBXGroup;
 			children = (
+				28FFB62F18332213003443D1 /* Libraries */,
 				0AA956FE18274DCA0098D60C /* DiandianIOS */,
 				0AA9572018274DCA0098D60C /* DiandianIOSTests */,
 				0AA956F718274DCA0098D60C /* Frameworks */,
@@ -968,6 +997,48 @@
 				28FFB62918322E20003443D1 /* DAPopTableViewController.xib */,
 			);
 			name = PopoverTable;
+			sourceTree = "<group>";
+		};
+		28FFB62F18332213003443D1 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				28FFB6301833223E003443D1 /* DAUtil */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		28FFB6301833223E003443D1 /* DAUtil */ = {
+			isa = PBXGroup;
+			children = (
+				28FFB64D1833229A003443D1 /* Base64 */,
+				28FFB63118332272003443D1 /* DADateUtil.h */,
+				28FFB63218332272003443D1 /* DADateUtil.m */,
+				28FFB63318332272003443D1 /* DADelegateUtil.h */,
+				28FFB63418332272003443D1 /* DADelegateUtil.m */,
+				28FFB63518332272003443D1 /* DADevice.h */,
+				28FFB63618332272003443D1 /* DADevice.m */,
+				28FFB63718332272003443D1 /* DAImageUtil.h */,
+				28FFB63818332272003443D1 /* DAImageUtil.m */,
+				28FFB63918332272003443D1 /* DAKeyboardObserver.h */,
+				28FFB63A18332272003443D1 /* DAKeyboardObserver.m */,
+				28FFB63D18332272003443D1 /* DASettings.h */,
+				28FFB63E18332272003443D1 /* DASettings.m */,
+				28FFB63F18332272003443D1 /* DAUtilCommon.h */,
+				28FFB64018332272003443D1 /* NSNumber+Util.h */,
+				28FFB64118332272003443D1 /* NSNumber+Util.m */,
+				28FFB64218332272003443D1 /* NSString+Util.h */,
+				28FFB64318332272003443D1 /* NSString+Util.m */,
+			);
+			name = DAUtil;
+			sourceTree = "<group>";
+		};
+		28FFB64D1833229A003443D1 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				28FFB64E183322B2003443D1 /* NSData+Base64.h */,
+				28FFB64F183322B2003443D1 /* NSData+Base64.m */,
+			);
+			name = Base64;
 			sourceTree = "<group>";
 		};
 		F2AB4BF9182E01150067E450 /* OrderQueue */ = {
@@ -1264,9 +1335,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28FFB64418332272003443D1 /* DADateUtil.m in Sources */,
 				0A5D2890182BD03600847578 /* UIViewController+MJPopupViewController.m in Sources */,
+				28FFB64618332272003443D1 /* DADevice.m in Sources */,
 				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
 				2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */,
+				28FFB64A18332272003443D1 /* DASettings.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
 				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,
@@ -1282,11 +1356,14 @@
 				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
 				F2AB4C0D182E1E2B0067E450 /* DAOrderGroupViewCell.m in Sources */,
 				0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */,
+				28FFB64C18332272003443D1 /* NSString+Util.m in Sources */,
 				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
+				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
 				0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
 				0A5D289B182C6EFF00847578 /* DAMyLoginViewController.m in Sources */,
+				28FFB64B18332272003443D1 /* NSNumber+Util.m in Sources */,
 				0A5D288F182BD03600847578 /* MJPopupBackgroundView.m in Sources */,
 				28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */,
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
@@ -1301,11 +1378,14 @@
 				0A07BD051828EC1B00A350BC /* DAMyOrderViewController.m in Sources */,
 				0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */,
 				0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */,
+				28FFB64518332272003443D1 /* DADelegateUtil.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
+				28FFB64718332272003443D1 /* DAImageUtil.m in Sources */,
 				0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */,
+				28FFB650183322B2003443D1 /* NSData+Base64.m in Sources */,
 				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
 				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
 				0AEBE5C81831D69000B01A5E /* DARemarkPopoverViewController.m in Sources */,
