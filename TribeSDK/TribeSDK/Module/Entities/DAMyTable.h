@@ -11,11 +11,13 @@
 
 @interface DAMyTable: Jastor
 
-@property(retain, nonatomic) NSString *_id;
+@property(retain, nonatomic) NSString *tableId;
 @property(retain, nonatomic) NSString *name;
 @property(retain, nonatomic) NSString *type;
 @property(retain, nonatomic) NSString *state;
 @property(retain, nonatomic) NSString *numOfPepole;
 @property(retain, nonatomic) NSString *waitterId;
+@property(retain, nonatomic) NSString *durationTime;
+@property(retain, nonatomic) NSString *unfinishedCount;
 @end
 

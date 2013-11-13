@@ -2,93 +2,118 @@
 [
  {
  "name":"包101" ,
- "id":"1001"    ,
+ "tableId":"1001"    ,
  "state": "empty",
  "image": "sample-table.jpg"
  },
  {
  "name":"包102" ,
- "id":"1002"    ,
+ "tableId":"1002"    ,
  "state": "empty",
  "image": "sample-table.jpg"
  },
  {
  "name":"包103" ,
- "id":"1003"    ,
+ "tableId":"1003"    ,
  "state": "empty",
  "image": "sample-table.jpg"
  },
  {
  "name":"包104" ,
- "id":"1004"    ,
+ "tableId":"1004"    ,
  "state": "empty",
  "image": "sample-table.jpg"
  },
  {
  "name":"包105" ,
- "id":"1005"    ,
+ "tableId":"1005"    ,
  "state": "empty",
  "image": "sample-table.jpg"
  },
  {
  "name":"一楼106" ,
- "id":"1006"    ,
+ "tableId":"1006"    ,
  "state": "eating",
+ "durationTime": "0.5h",
+ "unfinishedCount": "2",
+ "numOfPepole": "3",
  "image": "sample-table1.jpg"
  },
  {
  "name":"一楼107" ,
- "id":"1007"    ,
+ "tableId":"1007"    ,
  "state": "empty",
  "image": "sample-table1.jpg"
  },
  {
  "name":"一楼108" ,
- "id":"1008"    ,
+ "tableId":"1008"    ,
  "state": "eating",
+ "numOfPepole": "10",
  "image": "sample-table1.jpg"
  },
  {
  "name":"一楼108" ,
- "id":"1009"    ,
+ "tableId":"1009"    ,
  "state": "eating",
+ "durationTime": "1h",
+ "unfinishedCount": "0",
+ "numOfPepole": "5",
  "image": "sample-table1.jpg"
  },
  {
  "name":"一楼108" ,
- "id":"1010"    ,
+ "tableId":"1010"    ,
  "state": "eating",
+ "durationTime": "1h",
+ "unfinishedCount": "0",
+ "numOfPepole": "6",
  "image": "sample-table1.jpg"
  },
  {
  "name":"二楼108" ,
- "id":"1011"    ,
+ "tableId":"1011"    ,
  "state": "eating",
+ "durationTime": "2h",
+ "unfinishedCount": "5",
+ "numOfPepole": "7",
  "image": "sample-table1.jpg"
  },
  {
  "name":"二楼108" ,
- "id":"1012"    ,
+ "tableId":"1012"    ,
  "state": "eating",
+ "durationTime": "24h",
+ "unfinishedCount": "5",
+ "numOfPepole": "8",
  "image": "sample-table1.jpg"
  },
  {
  "name":"二楼108" ,
- "id":"1013"    ,
+ "tableId":"1013"    ,
  "state": "eating",
+ "durationTime": "5h",
+ "unfinishedCount": "1",
+ "numOfPepole": "9",
  "image": "sample-table1.jpg"
  },
  {
  "name":"二楼108" ,
- "id":"1014"    ,
+ "tableId":"1014"    ,
  "state": "eating",
+ "durationTime": "2h",
+ "unfinishedCount": "0",
+ "numOfPepole": "10",
  "image": "sample-table1.jpg"
  }
  ,
  {
  "name":"二楼108" ,
- "id":"1015"    ,
+ "tableId":"1015"    ,
  "state": "eating",
+ "durationTime": "1.5h",
+ "unfinishedCount": "0",
+ "numOfPepole": "11",
  "image": "sample-table1.jpg"
  }
 ]

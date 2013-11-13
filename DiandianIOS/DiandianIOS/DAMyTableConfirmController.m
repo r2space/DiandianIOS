@@ -6,26 +6,29 @@
 //  Copyright (c) 2013年 DAC. All rights reserved.
 //
 
-#import "DAMyLoginViewController.h"
-#import "DAMyTableViewController.h"
+#import "DAMyTableConfirmController.h"
+#import "DABillViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import <TribeSDK/DAMyTable.h>
 #import "DAPopTableViewController.h"
 #import "NSString+Util.h"
 
-@interface DAMyLoginViewController ()
+UIViewController *parentVC;
+
+@interface DAMyTableConfirmController ()
 @property (strong, nonatomic) IBOutlet UITextField *tableName;
 @property (strong, nonatomic) IBOutlet UITextField *numOfPepole;
-@property (strong, nonatomic) IBOutlet UITextField *waitterId;
-@property (strong, nonatomic) IBOutlet UITextField *waitterPassword;
+@property (strong, nonatomic) IBOutlet UITextField *durationTime;
+@property (strong, nonatomic) IBOutlet UITextField *unfinishedCount;
 
 @property (strong, nonatomic) IBOutlet UIPopoverController *popover;
 
 @property (retain, nonatomic) NSString *myTableId;
 @property (retain, nonatomic) DAMyTable *myTable;
+
 @end
 
-@implementation DAMyLoginViewController
+@implementation DAMyTableConfirmController
 {
     
 }
@@ -36,7 +39,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.numOfPepole.delegate = self;
-    self.waitterId.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,10 +49,11 @@
 
 + (void) show:(DAMyTable*)thisTable parentView :(UIViewController *) parentView
 {
-    DAMyLoginViewController *vc = [[DAMyLoginViewController alloc]initWithNibName:@"DAMyLoginViewController" bundle:nil];
+    DAMyTableConfirmController *vc = [[DAMyTableConfirmController alloc]initWithNibName:@"DAMyTableConfirmController" bundle:nil];
     vc.delegate = (id)parentView;
     [parentView  presentPopupViewController:vc animationType:MJPopupViewAnimationFade];
     
+    parentVC = (id)parentView;
     [vc setTable:thisTable];
 }
 
@@ -61,10 +64,8 @@
     
     self.tableName.text = self.myTable.name;
     self.numOfPepole.text = self.myTable.numOfPepole;
-    self.waitterId.text = self.myTable.waitterId;
-    self.waitterPassword.text = @"";
-    
-    [self saveTableInfo];
+    self.durationTime.text = self.myTable.durationTime;
+    self.unfinishedCount.text = self.myTable.unfinishedCount;
 }
 
 -(void) loadTableInfo:(DAMyTable*) defaultMyTable
@@ -83,39 +84,7 @@
         if ([NSString isNotEmpty:lastWaitterId]) {
             self.myTable.waitterId = lastWaitterId;
         }
-        // Init numOfPepole
-        self.myTable.numOfPepole = (self.myTable.numOfPepole == nil) ? @"4" : self.myTable.numOfPepole;
     }
-//    if (self.myTable == nil) { // init myTable
-//        NSMutableDictionary * t = [NSMutableDictionary dictionaryWithCapacity:5];
-//        [t setObject:@"_id" forKey:self.myTableId];
-//        self.myTable = [[DAMyTable alloc] initWithDictionary:t];
-//    }
-}
-
--(BOOL) saveTableInfo
-{
-    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
-    [defaults setObject:self.waitterId.text forKey: @"LastWaiterId"];
-    NSLog(@"%@",[defaults objectForKey:@"LastWaiterId"]);
-    //[defaults synchronize];
-    
-    self.myTable.numOfPepole = self.numOfPepole.text;
-    self.myTable.waitterId = self.waitterId.text;
-    
-    NSString *path = [self tableInfoPath];
-    if(path != nil){
-        BOOL f = [NSKeyedArchiver archiveRootObject:self.myTable toFile:path];
-        if (f) {
-            return YES;
-        } else {
-            NSLog(@"save DAMyTable info fail.");
-        }
-    } else {
-        NSLog(@"Path don't exists!");
-    }
-    
-    return NO;
 }
 
 -(NSString*) tableInfoPath
@@ -130,25 +99,6 @@
     return nil;
 }
 
-- (IBAction)closePopup:(id)sender
-{
-    [self saveTableInfo];
-
-    if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
-        [self.delegate cancelButtonClicked:self];
-    }
-    
-}
-
-- (IBAction)startTable:(id)sender {
-    
-    [self saveTableInfo];
-    // TODO: 密码check
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(startTableButtonClicked:)]) {
-        [self.delegate startTableButtonClicked:self];
-    }
-}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -173,43 +123,45 @@
         self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
         self.popover.popoverContentSize = CGSizeMake(100, 400);
         [self.popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    } else if ([textField isEqual:self.waitterId])
-    {
-        DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
-        
-        NSMutableArray *wList = [NSMutableArray array];
-        [wList addObject:@"张三"];
-        [wList addObject:@"李四"];
-        [wList addObject:@"王二麻子"];
-        [wList addObject:@"木头六"];
-        [wList addObject:@"张之洞"];
-        [wList addObject:@"纪晓岚"];
-        [wList addObject:@"赵德芳"];
-        [wList addObject:@"越德昭"];
-        [wList addObject:@"老杨"];
-        [wList addObject:@"小杨"];
-        [wList addObject:@"杨胜利"];
-        [wList addObject:@"胜利"];
-        [wList addObject:@"胜利杨"];
-        [vc initData:@"waitter" list:wList];
-        vc.delegate = self;
-        
-        self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
-        self.popover.popoverContentSize = CGSizeMake(120, 400);
-        [self.popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 	return NO;
 }
 
 - (void)popTableViewSelectRow:(NSString *)tag value:(NSString *)value
 {
-    if ([@"waitter" isEqualToString:tag]) {
-        self.waitterId.text = value;
-    } else if ([@"pepole" isEqualToString:tag]) {
+    if ([@"pepole" isEqualToString:tag]) {
         self.numOfPepole.text = value;
     }
     
     [self.popover dismissPopoverAnimated:YES];
+}
+
+- (IBAction)closePopup:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
+        [self.delegate cancelButtonClicked:self];
+    }
+}
+- (IBAction)startTable:(id)sender {
+    
+    
+    // TODO: 密码check
+
+}
+- (IBAction)appendOrder:(id)sender {
+    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    
+    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+    UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+    [parentVC.navigationController pushViewController:menubookVC animated:YES];
+}
+- (IBAction)backOrder:(id)sender {
+
+}
+- (IBAction)payTheBill:(id)sender {
+    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];
+    [parentVC.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

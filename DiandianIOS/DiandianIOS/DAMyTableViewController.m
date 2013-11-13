@@ -9,6 +9,7 @@
 #import "DAMyTableViewController.h"
 #import "DAMyTableViewCell.h"
 #import "DAMyLoginViewController.h"
+#import "DAMyTableConfirmController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import <TribeSDK/DAMyTable.h>
 
@@ -105,11 +106,14 @@
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *d = [dataList objectAtIndex:indexPath.row];
-    DAMyTable * t = [[DAMyTable alloc] init];
-    t._id = [d objectForKey:@"id"];
-    t.name = [d objectForKey:@"name"];
-    t.state = [d objectForKey:@"state"];
-    [DAMyLoginViewController show: t parentView:self ];
+    DAMyTable * t = [[DAMyTable alloc] initWithDictionary:d];
+
+    if ([@"empty" isEqualToString:t.state]) {
+        [DAMyLoginViewController show: t parentView:self ];
+    } else {
+        [DAMyTableConfirmController show: t parentView:self ];
+    }
+    
 }
 
 
