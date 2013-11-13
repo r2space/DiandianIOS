@@ -210,6 +210,8 @@
 		28FFB64B18332272003443D1 /* NSNumber+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB64118332272003443D1 /* NSNumber+Util.m */; };
 		28FFB64C18332272003443D1 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB64318332272003443D1 /* NSString+Util.m */; };
 		28FFB650183322B2003443D1 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB64F183322B2003443D1 /* NSData+Base64.m */; };
+		28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB652183347B4003443D1 /* DAMyTableConfirmController.m */; };
+		28FFB655183347CF003443D1 /* DAMyTableConfirmController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FFB654183347CF003443D1 /* DAMyTableConfirmController.xib */; };
 		47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */; };
 		47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */; };
 		47A6ADAF182E188C00E80AA1 /* bill.json in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADAE182E188C00E80AA1 /* bill.json */; };
@@ -510,6 +512,9 @@
 		28FFB64318332272003443D1 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		28FFB64E183322B2003443D1 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		28FFB64F183322B2003443D1 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		28FFB6511833479E003443D1 /* DAMyTableConfirmController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTableConfirmController.h; sourceTree = "<group>"; };
+		28FFB652183347B4003443D1 /* DAMyTableConfirmController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableConfirmController.m; sourceTree = "<group>"; };
+		28FFB654183347CF003443D1 /* DAMyTableConfirmController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableConfirmController.xib; sourceTree = "<group>"; };
 		47A6ADA9182E0F2500E80AA1 /* DABillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillViewController.h; sourceTree = "<group>"; };
 		47A6ADAA182E0F2500E80AA1 /* DABillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillViewController.m; sourceTree = "<group>"; };
 		47A6ADAB182E0F2600E80AA1 /* DABillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillViewController.xib; sourceTree = "<group>"; };
@@ -984,6 +989,9 @@
 				2854672A182BC2A5004CD144 /* DAMyTableViewCell.h */,
 				2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */,
 				0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */,
+				28FFB6511833479E003443D1 /* DAMyTableConfirmController.h */,
+				28FFB652183347B4003443D1 /* DAMyTableConfirmController.m */,
+				28FFB654183347CF003443D1 /* DAMyTableConfirmController.xib */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -1172,6 +1180,7 @@
 			files = (
 				0AEBE5A71831162700B01A5E /* 清蒸章鱼.jpg in Resources */,
 				0AEBE5B91831162700B01A5E /* 银耳螺片.jpg in Resources */,
+				28FFB655183347CF003443D1 /* DAMyTableConfirmController.xib in Resources */,
 				0AEBE5871831162700B01A5E /* 海蛎三吃.jpg in Resources */,
 				0AEBE5DA1832139700B01A5E /* clipboard@2x.png in Resources */,
 				F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */,
@@ -1376,6 +1385,7 @@
 				28FFB64C18332272003443D1 /* NSString+Util.m in Sources */,
 				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
 				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
+				28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */,
 				0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,

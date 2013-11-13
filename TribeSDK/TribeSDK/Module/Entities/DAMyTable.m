@@ -11,41 +11,46 @@
 @implementation DAMyTable
 
 
-@synthesize _id,name,type,state,numOfPepole,waitterId;
+@synthesize tableId, name, type, state, numOfPepole, waitterId, durationTime, unfinishedCount;
 
 -(id)initWithDictionary:(NSDictionary *)aDict{
     self = [self init];
     if (self){
-        self._id  = [aDict objectForKey:@"_id"];
+        self.tableId  = [aDict objectForKey:@"tableId"];
         self.type  = [aDict objectForKey:@"type"];
         self.name   = [aDict objectForKey:@"name"];
         self.state  = [aDict objectForKey:@"state"];
         self.numOfPepole  = [aDict objectForKey:@"numOfPepole"];
         self.waitterId  = [aDict objectForKey:@"waitterId"];
-        //self.waitterName  = [aDict objectForKey:@"waitterName"];
+        self.durationTime  = [aDict objectForKey:@"durationTime"];
+        self.unfinishedCount  = [aDict objectForKey:@"unfinishedCount"];
     }
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self._id   forKey:@"_id"];
+    [aCoder encodeObject:self.tableId   forKey:@"tableId"];
     [aCoder encodeObject:self.name  forKey:@"name"];
     [aCoder encodeObject:self.type forKey:@"type"];
     [aCoder encodeObject:self.state forKey:@"state"];
     [aCoder encodeObject:self.numOfPepole forKey:@"numOfPepole"];
     [aCoder encodeObject:self.waitterId forKey:@"waitterId"];
+    [aCoder encodeObject:self.durationTime forKey:@"durationTime"];
+    [aCoder encodeObject:self.unfinishedCount forKey:@"unfinishedCount"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super init];
-    self._id = [aDecoder decodeObjectForKey:@"_id"];
+    self.tableId = [aDecoder decodeObjectForKey:@"tableId"];
     self.name = [aDecoder decodeObjectForKey:@"name"];
     self.type = [aDecoder decodeObjectForKey:@"type"];
     self.state = [aDecoder decodeObjectForKey:@"state"];
     self.numOfPepole = [aDecoder decodeObjectForKey:@"numOfPepole"];
     self.waitterId = [aDecoder decodeObjectForKey:@"waitterId"];
+    self.durationTime = [aDecoder decodeObjectForKey:@"durationTime"];
+    self.unfinishedCount = [aDecoder decodeObjectForKey:@"unfinishedCount"];
 
     return self;
 }
