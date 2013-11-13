@@ -7,12 +7,13 @@
 //
 
 #import "DAAppDelegate.h"
+#import "DASettings.h"
 
 @implementation DAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [DASettings registerDefaultsFromSettingsBundle];
 
     return YES;
 }

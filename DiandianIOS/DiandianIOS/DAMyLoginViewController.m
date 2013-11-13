@@ -11,6 +11,7 @@
 #import "UIViewController+MJPopupViewController.h"
 #import <TribeSDK/DAMyTable.h>
 #import "DAPopTableViewController.h"
+#import "NSString+Util.h"
 
 @interface DAMyLoginViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *tableName;
@@ -56,28 +57,34 @@
 - (void) setTable:(DAMyTable*)thisTable
 {
     self.myTableId = thisTable._id;
-    [self loadTableInfo];
-    if (self.myTable == nil) {
-        self.myTable = thisTable;
-    }
-    
-    self.myTable.numOfPepole = (self.myTable.numOfPepole == nil) ? @"0" : self.myTable.numOfPepole;
-    
-    [self saveTableInfo];
+    [self loadTableInfo:thisTable];
     
     self.tableName.text = self.myTable.name;
     self.numOfPeople.text = self.myTable.numOfPepole;
     self.waitterId.text = self.myTable.waitterId;
     self.waitterPassword.text = @"";
+    
+    [self saveTableInfo];
 }
 
--(void) loadTableInfo
+-(void) loadTableInfo:(DAMyTable*) defaultMyTable
 {
     self.myTable = nil;
 
     NSString *path = [self tableInfoPath];
     if(path != nil){
+        // Get MyTable
         self.myTable = [NSKeyedUnarchiver unarchiveObjectWithFile: path];
+        if (self.myTable == nil) {
+            self.myTable = defaultMyTable;
+        }
+        // Init waitterId
+        NSString *lastWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey: @"LastWaiterId"];
+        if ([NSString isNotEmpty:lastWaitterId]) {
+            self.myTable.waitterId = lastWaitterId;
+        }
+        // Init numOfPepole
+        self.myTable.numOfPepole = (self.myTable.numOfPepole == nil) ? @"4" : self.myTable.numOfPepole;
     }
 //    if (self.myTable == nil) { // init myTable
 //        NSMutableDictionary * t = [NSMutableDictionary dictionaryWithCapacity:5];
@@ -88,6 +95,11 @@
 
 -(BOOL) saveTableInfo
 {
+    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.waitterId.text forKey: @"LastWaiterId"];
+    NSLog(@"%@",[defaults objectForKey:@"LastWaiterId"]);
+    //[defaults synchronize];
+    
     self.myTable.numOfPepole = self.numOfPeople.text;
     self.myTable.waitterId = self.waitterId.text;
     
