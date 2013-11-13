@@ -57,4 +57,10 @@
     NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"orderReload" object:self.menuData];
     [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
 }
+
+- (IBAction)backThumbTouched:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
+        [self.delegate cancelButtonClicked:self];
+    }
+}
 @end

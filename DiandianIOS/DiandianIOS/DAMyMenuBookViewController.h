@@ -22,4 +22,7 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (retain, nonatomic) NSString *tableNO;
 
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+- (IBAction)changePage:(id)sender;
+
 @end

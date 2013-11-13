@@ -55,6 +55,11 @@
 }
 - (void) viewDidAppear:(BOOL)animated {
     [self.collectionView reloadData];
+    self.pageControl.numberOfPages = [menuList count] / 5 ;
+    if ([menuList count] % 5 !=0) {
+        self.pageControl.numberOfPages = self.pageControl.numberOfPages + 1;
+    }
+    
 }
 
 -(void)loadFromDisk{
@@ -148,7 +153,7 @@
 }
 
 -(void)addMenu:(UIButton*)button{
-    NSLog(@"增加菜");
+
 }
 #pragma mark – RFQuiltLayoutDelegate
 
@@ -158,7 +163,7 @@
       return  CGSizeMake(3, 3);
     }
 //    if(indexPath.row >= menuList.count)
-        NSLog(@"Asking for index paths of non-existant cells!! %d from %d cells", indexPath.row, menuList.count);
+//        NSLog(@"Asking for index paths of non-existant cells!! %d from %d cells", indexPath.row, menuList.count);
     
 //    if (indexPath.row % 10 == 0)
 //        return CGSizeMake(3, 1);
@@ -202,6 +207,17 @@
 - (UIEdgeInsets)insetsForItemAtIndexPath:(NSIndexPath *)indexPath {
     return UIEdgeInsetsMake(2, 2, 2, 2);
 }
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+
+    int page = (int)targetContentOffset->x /874;
+    if (targetContentOffset->x /874 > (int)targetContentOffset->x /874) {
+        page = page + 1;
+    }
+    self.pageControl.currentPage = page;
+
+
+}
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -209,6 +225,7 @@
     [self popupDetail:data];
     
 }
+
 
 -(void) popupDetailMenu :(NSNotification *) sender
 {
@@ -242,9 +259,31 @@
     }
     menuList = [[NSMutableArray alloc]initWithArray:tmpList];
     [self.collectionView reloadData];
+    
+    self.pageControl.numberOfPages = [menuList count] / 5 ;
+    if ([menuList count] % 5 !=0) {
+        self.pageControl.numberOfPages = self.pageControl.numberOfPages + 1;
+    }
 }
 - (void)cancelButtonClicked:(DAMyMenuBookPopupController*) popupViewController
 {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+}
+
+- (void)gotoPage:(BOOL)animated
+{
+    NSInteger page = self.pageControl.currentPage;
+    
+    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+	// update the scroll view to the appropriate page
+    CGRect bounds = self.collectionView.bounds;
+    bounds.origin.x = 874.0 * page;
+    bounds.origin.y = 0;
+    [self.collectionView scrollRectToVisible:bounds animated:animated];
+}
+
+- (IBAction)changePage:(id)sender
+{
+    [self gotoPage:YES];    // YES = animate
 }
 @end

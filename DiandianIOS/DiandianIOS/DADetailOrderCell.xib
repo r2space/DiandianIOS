@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="828" height="65"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cai_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="tic-22-yuN">
+                    <imageView userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cai_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="tic-22-yuN">
                         <rect key="frame" x="0.0" y="0.0" width="100" height="66"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>

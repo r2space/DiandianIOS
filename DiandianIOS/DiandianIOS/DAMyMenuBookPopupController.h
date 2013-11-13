@@ -15,7 +15,7 @@
 @property (assign, nonatomic) id <DAMyMenuBookPopupDelegate>delegate;
 - (IBAction)backTouched:(id)sender;
 - (IBAction)orderTouched:(id)sender;
-
+- (IBAction)backThumbTouched:(id)sender;
 
 @property (retain, nonatomic) NSString *tableNO;
 @property (retain, nonatomic) DAMyMenu *menuData;

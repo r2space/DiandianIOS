@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DAMyMenuBookViewController">
             <connections>
                 <outlet property="collectionView" destination="fpa-uD-BBA" id="7hM-zn-dlO"/>
+                <outlet property="pageControl" destination="co7-R4-yJ4" id="4L2-Kf-QWu"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
         </placeholder>
@@ -27,6 +28,13 @@
                         <outlet property="delegate" destination="-1" id="r5q-tv-9MX"/>
                     </connections>
                 </collectionView>
+                <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="co7-R4-yJ4">
+                    <rect key="frame" x="377" y="651" width="121" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="changePage:" destination="-1" eventType="valueChanged" id="eAb-YD-eGh"/>
+                    </connections>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>

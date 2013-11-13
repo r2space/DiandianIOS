@@ -15,14 +15,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" tag="11" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="宫爆鸡丁" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LQt-AR-gej">
-                        <rect key="frame" x="24" y="11" width="120" height="21"/>
+                        <rect key="frame" x="26" y="11" width="120" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chazi.jpg" id="iae-2F-KtK">
-                        <rect key="frame" x="0.0" y="11" width="20" height="21"/>
+                        <rect key="frame" x="2" y="11" width="20" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
