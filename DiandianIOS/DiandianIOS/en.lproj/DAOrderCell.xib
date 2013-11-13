@@ -21,15 +21,27 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chazi.jpg" id="iae-2F-KtK">
+                    <imageView userInteractionEnabled="NO" tag="122" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chazi.jpg" id="iae-2F-KtK">
                         <rect key="frame" x="2" y="11" width="20" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="虚线.png" id="bY0-Uj-vU5">
+                        <rect key="frame" x="0.0" y="28" width="120" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <button opaque="NO" tag="123" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nhf-Dh-4uc" customClass="DAOrderAddAmountBtn">
+                        <rect key="frame" x="2" y="11" width="20" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Button" image="chazi.jpg">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
         </tableViewCell>
     </objects>
     <resources>
         <image name="chazi.jpg" width="214" height="220"/>
+        <image name="虚线.png" width="1024" height="20"/>
     </resources>
 </document>

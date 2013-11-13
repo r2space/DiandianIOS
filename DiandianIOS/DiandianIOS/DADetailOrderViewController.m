@@ -8,8 +8,9 @@
 
 #import "DADetailOrderViewController.h"
 #import "DAOrderAddAmountBtn.h"
+#import "DAMyOrderLoginViewController.h"
 #define AMOUNT_LABEL_TAG 101
-@interface DADetailOrderViewController ()
+@interface DADetailOrderViewController ()<DAMyOrderLoginDelegate>
 @property (nonatomic, strong) UIPopoverController *remarkViewPopover;
 @end
 

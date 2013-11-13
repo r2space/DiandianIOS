@@ -58,11 +58,16 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="虚线.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nh9-KF-Uvd">
+                        <rect key="frame" x="0.0" y="59" width="828" height="8"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
         </tableViewCell>
     </objects>
     <resources>
         <image name="cai_2.png" width="487" height="366"/>
+        <image name="虚线.png" width="1024" height="20"/>
     </resources>
 </document>

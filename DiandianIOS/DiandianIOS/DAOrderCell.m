@@ -45,6 +45,10 @@
         CGContextAddLineToPoint(context, 310.0,20.0);  //在图形上下文移动你的笔画来指定线条的重点
         CGContextStrokePath(context);  //创建你已经设定好的路径。此过程将使用图形上下文已经设置好的颜色来绘制路径。
         CGContextClosePath(context);
+        UIImage *image = [UIImage imageNamed:@"apple.jpg"];
+        [image drawInRect:CGRectMake(0, 0, 20, 20)];//在坐标中画出图片
+        CGContextDrawImage(context, CGRectMake(0, 0, 20, 20), image.CGImage);
+        
     }
     return self;
 }

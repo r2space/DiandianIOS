@@ -95,6 +95,10 @@
 		0AA9572518274DCA0098D60C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AA9572318274DCA0098D60C /* InfoPlist.strings */; };
 		0AA9572718274DCA0098D60C /* MenuBookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9572618274DCA0098D60C /* MenuBookTests.m */; };
 		0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA9573118279AE90098D60C /* DAMenuBookViewController.m */; };
+		0AB1138F183343660011828A /* 虚线.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB1138E183343660011828A /* 虚线.png */; };
+		0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB11391183349A10011828A /* DAMyOrderLoginViewController.m */; };
+		0AB11394183349A10011828A /* DAMyOrderLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB11392183349A10011828A /* DAMyOrderLoginViewController.xib */; };
+		0AB113961833770F0011828A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AB113951833770F0011828A /* Settings.bundle */; };
 		0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */; };
 		0AEBE51B1830B10900B01A5E /* DAOrderThumbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */; };
 		0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */; };
@@ -372,6 +376,11 @@
 		0AA9572618274DCA0098D60C /* MenuBookTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuBookTests.m; sourceTree = "<group>"; };
 		0AA9573018279AE90098D60C /* DAMenuBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMenuBookViewController.h; sourceTree = "<group>"; };
 		0AA9573118279AE90098D60C /* DAMenuBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMenuBookViewController.m; sourceTree = "<group>"; };
+		0AB1138E183343660011828A /* 虚线.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "虚线.png"; sourceTree = "<group>"; };
+		0AB11390183349A10011828A /* DAMyOrderLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderLoginViewController.h; sourceTree = "<group>"; };
+		0AB11391183349A10011828A /* DAMyOrderLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderLoginViewController.m; sourceTree = "<group>"; };
+		0AB11392183349A10011828A /* DAMyOrderLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyOrderLoginViewController.xib; sourceTree = "<group>"; };
+		0AB113951833770F0011828A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0AEBE5171830B10900B01A5E /* DAOrderThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderThumbViewController.h; sourceTree = "<group>"; };
 		0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderThumbViewController.m; sourceTree = "<group>"; };
 		0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderThumbViewController.xib; sourceTree = "<group>"; };
@@ -592,6 +601,7 @@
 		0A07BD521829CC8A00A350BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0AB1138E183343660011828A /* 虚线.png */,
 				0AEBE5E01832212A00B01A5E /* chazi.jpg */,
 				0AEBE5DE1832208800B01A5E /* top_bg3.png */,
 				0AEBE5D618320B9100B01A5E /* price_mask1.png */,
@@ -640,6 +650,7 @@
 		0A07BD571829D27E00A350BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0AB113951833770F0011828A /* Settings.bundle */,
 				0AEBE5CB1831FFC200B01A5E /* icon */,
 				0AEBE52B1831161B00B01A5E /* group */,
 				0A07BD521829CC8A00A350BC /* Images */,
@@ -876,6 +887,9 @@
 				0A5D2898182C6EFF00847578 /* DAMyLoginViewController.h */,
 				0A5D2899182C6EFF00847578 /* DAMyLoginViewController.m */,
 				0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */,
+				0AB11390183349A10011828A /* DAMyOrderLoginViewController.h */,
+				0AB11391183349A10011828A /* DAMyOrderLoginViewController.m */,
+				0AB11392183349A10011828A /* DAMyOrderLoginViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1202,6 +1216,7 @@
 				0AEBE5281831087F00B01A5E /* filter_bg1.png in Resources */,
 				0AEBE5771831162700B01A5E /* 白斩鸡.jpg in Resources */,
 				28FFB62D18322E20003443D1 /* DAPopTableViewController.xib in Resources */,
+				0AB1138F183343660011828A /* 虚线.png in Resources */,
 				0AEBE5D31832071300B01A5E /* top_bg1.png in Resources */,
 				0A5D2897182BD23700847578 /* DADetailOrderViewController.xib in Resources */,
 				0AEBE5B21831162700B01A5E /* 乌东面.jpg in Resources */,
@@ -1283,6 +1298,7 @@
 				F2AB4C03182E03480067E450 /* DAOrderGroupViewController.xib in Resources */,
 				0AA9570318274DCA0098D60C /* InfoPlist.strings in Resources */,
 				0AEBE59B1831162700B01A5E /* 奶香玉米.jpg in Resources */,
+				0AB113961833770F0011828A /* Settings.bundle in Resources */,
 				0AEBE59F1831162700B01A5E /* 培根卷鲜菇.jpg in Resources */,
 				0AEBE5D5183209A500B01A5E /* price_mask.png in Resources */,
 				0A8C2F5D182E430F0080F15F /* 鹿鞭烧辽参33.png in Resources */,
@@ -1299,6 +1315,7 @@
 				0AEBE59E1831162700B01A5E /* 牛三样.jpg in Resources */,
 				0AA9570C18274DCA0098D60C /* Main.storyboard in Resources */,
 				0AEBE58A1831162700B01A5E /* 机芯炒鳝片.jpg in Resources */,
+				0AB11394183349A10011828A /* DAMyOrderLoginViewController.xib in Resources */,
 				0AEBE5841831162700B01A5E /* 干锅鸭头.jpg in Resources */,
 				0AEBE57C1831162700B01A5E /* 刺身拼盘.jpg in Resources */,
 				0AEBE58D1831162700B01A5E /* 烤鸡.jpg in Resources */,
@@ -1361,6 +1378,7 @@
 				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
 				0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
+				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
 				0A5D289B182C6EFF00847578 /* DAMyLoginViewController.m in Sources */,
 				28FFB64B18332272003443D1 /* NSNumber+Util.m in Sources */,

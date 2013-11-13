@@ -12,6 +12,7 @@
 #import "UIViewController+MJPopupViewController.h"
 #import "DADetailOrderViewController.h"
 #import "DAOrderRecipeBtn.h"
+#import "DAMyOrderLoginViewController.h"
 
 @interface DAMyOrderViewController ()<DADetailOrderDelegate>
 {
@@ -143,19 +144,16 @@
         
         return cell;
     }
-    DAOrderAddAmountBtn *addBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:20];
-    DAOrderAddAmountBtn *deleteBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:21];
+
+    DAOrderAddAmountBtn *deleteBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:123];
     DAOrderRecipeBtn *recipeBtn = (DAOrderRecipeBtn *)[cell viewWithTag:31];
-    addBtn.name = menudata.name;
-    addBtn._id = menudata._id;
+
     deleteBtn.name = menudata.name;
     deleteBtn._id = menudata._id;
     
     recipeBtn.name = menudata.name;
     recipeBtn.orderId = menudata.name;
-    [addBtn addTarget:self
-               action:@selector(addAmount:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     [deleteBtn addTarget:self
                action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
     [recipeBtn addTarget:self action:@selector(updateRecipe: ) forControlEvents:UIControlEventTouchUpInside];
@@ -248,6 +246,11 @@
     
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self tableViewReload];
+    
+    DAMyOrderLoginViewController * loginVC =[[DAMyOrderLoginViewController alloc]initWithNibName:@"DAMyOrderLoginViewController" bundle:nil];
+    loginVC.delegate = self;
+    [self presentPopupViewController:loginVC animationType:MJPopupViewAnimationFade];
+    
 }
 
 
@@ -299,6 +302,23 @@
         }
     }
     
+}
+
+- (void)backmenuButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
+{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+}
+
+- (void)cancelOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController;
+{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)confirmOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController;
+{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

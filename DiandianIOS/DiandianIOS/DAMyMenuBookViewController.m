@@ -264,6 +264,8 @@
     if ([menuList count] % 5 !=0) {
         self.pageControl.numberOfPages = self.pageControl.numberOfPages + 1;
     }
+    self.pageControl.currentPage = 0;
+    [self gotoPage:NO];
 }
 - (void)cancelButtonClicked:(DAMyMenuBookPopupController*) popupViewController
 {
