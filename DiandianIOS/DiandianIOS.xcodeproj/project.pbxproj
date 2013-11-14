@@ -99,6 +99,7 @@
 		0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB11391183349A10011828A /* DAMyOrderLoginViewController.m */; };
 		0AB11394183349A10011828A /* DAMyOrderLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB11392183349A10011828A /* DAMyOrderLoginViewController.xib */; };
 		0AB113961833770F0011828A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AB113951833770F0011828A /* Settings.bundle */; };
+		0AB113981833AC040011828A /* chazi1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB113971833AC040011828A /* chazi1.png */; };
 		0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */; };
 		0AEBE51B1830B10900B01A5E /* DAOrderThumbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */; };
 		0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */; };
@@ -194,7 +195,6 @@
 		0AEBE5DB1832139700B01A5E /* clipboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5D91832139700B01A5E /* clipboard.png */; };
 		0AEBE5DD183216A000B01A5E /* clipboard1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5DC183216A000B01A5E /* clipboard1.png */; };
 		0AEBE5DF1832208800B01A5E /* top_bg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5DE1832208800B01A5E /* top_bg3.png */; };
-		0AEBE5E11832212A00B01A5E /* chazi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5E01832212A00B01A5E /* chazi.jpg */; };
 		2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */; };
 		28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */; };
 		28FFB62A18322E20003443D1 /* DAPopTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28FFB62418322E20003443D1 /* DAPopTableView.storyboard */; };
@@ -383,6 +383,7 @@
 		0AB11391183349A10011828A /* DAMyOrderLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderLoginViewController.m; sourceTree = "<group>"; };
 		0AB11392183349A10011828A /* DAMyOrderLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyOrderLoginViewController.xib; sourceTree = "<group>"; };
 		0AB113951833770F0011828A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		0AB113971833AC040011828A /* chazi1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chazi1.png; sourceTree = "<group>"; };
 		0AEBE5171830B10900B01A5E /* DAOrderThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderThumbViewController.h; sourceTree = "<group>"; };
 		0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderThumbViewController.m; sourceTree = "<group>"; };
 		0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderThumbViewController.xib; sourceTree = "<group>"; };
@@ -482,7 +483,6 @@
 		0AEBE5D91832139700B01A5E /* clipboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clipboard.png; sourceTree = "<group>"; };
 		0AEBE5DC183216A000B01A5E /* clipboard1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clipboard1.png; sourceTree = "<group>"; };
 		0AEBE5DE1832208800B01A5E /* top_bg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_bg3.png; sourceTree = "<group>"; };
-		0AEBE5E01832212A00B01A5E /* chazi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chazi.jpg; sourceTree = "<group>"; };
 		2854672A182BC2A5004CD144 /* DAMyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTableViewCell.h; sourceTree = "<group>"; };
 		2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableViewCell.m; sourceTree = "<group>"; };
 		28C97A301828D86A0099FE4A /* DAOpenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOpenTableViewCell.h; sourceTree = "<group>"; };
@@ -606,8 +606,8 @@
 		0A07BD521829CC8A00A350BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0AB113971833AC040011828A /* chazi1.png */,
 				0AB1138E183343660011828A /* 虚线.png */,
-				0AEBE5E01832212A00B01A5E /* chazi.jpg */,
 				0AEBE5DE1832208800B01A5E /* top_bg3.png */,
 				0AEBE5D618320B9100B01A5E /* price_mask1.png */,
 				0AEBE5D4183209A500B01A5E /* price_mask.png */,
@@ -1278,6 +1278,7 @@
 				47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */,
 				0A07BD6E182A031000A350BC /* cai_2.png in Resources */,
 				0AEBE5821831162700B01A5E /* 干锅千叶豆腐.jpg in Resources */,
+				0AB113981833AC040011828A /* chazi1.png in Resources */,
 				0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */,
 				0AEBE5A31831162700B01A5E /* 清炒杏仁.jpg in Resources */,
 				F2AB4C22182E273F0067E450 /* 玉米小炒.jpg in Resources */,
@@ -1290,7 +1291,6 @@
 				0AEBE52A18310D3800B01A5E /* stain_bg1.png in Resources */,
 				0AEBE5881831162700B01A5E /* 红烧大连小鲍鱼.jpg in Resources */,
 				0AEBE59C1831162700B01A5E /* 南瓜饼.jpg in Resources */,
-				0AEBE5E11832212A00B01A5E /* chazi.jpg in Resources */,
 				F2AB4BF8182DDDB90067E450 /* DAOrderQueueViewController.xib in Resources */,
 				0AEBE58B1831162700B01A5E /* 家常豆腐.jpg in Resources */,
 				0AEBE5CE1831FFCB00B01A5E /* newspaper-mini.png in Resources */,

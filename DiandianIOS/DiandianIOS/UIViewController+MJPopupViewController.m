@@ -11,7 +11,7 @@
 #import "MJPopupBackgroundView.h"
 #import <objc/runtime.h>
 
-#define kPopupModalAnimationDuration 0.35
+#define kPopupModalAnimationDuration 0.0
 #define kMJPopupViewController @"kMJPopupViewController"
 #define kMJPopupBackgroundView @"kMJPopupBackgroundView"
 #define kMJSourceViewTag 23941
@@ -113,7 +113,7 @@ static void * const keypath = (void*)&keypath;
     popupView.layer.masksToBounds = NO;
     popupView.layer.shadowOffset = CGSizeMake(5, 5);
     popupView.layer.shadowRadius = 5;
-    popupView.layer.shadowOpacity = 0.5;
+    popupView.layer.shadowOpacity = 0.9;
     popupView.layer.shouldRasterize = YES;
     popupView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
     
@@ -121,23 +121,23 @@ static void * const keypath = (void*)&keypath;
     UIView *overlayView = [[UIView alloc] initWithFrame:sourceView.bounds];
     overlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     overlayView.tag = kMJOverlayViewTag;
-    overlayView.backgroundColor = [UIColor clearColor];
-    
+
     // BackgroundView
     self.mj_popupBackgroundView = [[MJPopupBackgroundView alloc] initWithFrame:sourceView.bounds];
     self.mj_popupBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.mj_popupBackgroundView.backgroundColor = [UIColor clearColor];
-    self.mj_popupBackgroundView.alpha = 0.0f;
+    self.mj_popupBackgroundView.backgroundColor = [UIColor darkGrayColor];
+    self.mj_popupBackgroundView.alpha = 1.0f;
     [overlayView addSubview:self.mj_popupBackgroundView];
     
     // Make the Background Clickable
     UIButton * dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
     dismissButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     dismissButton.backgroundColor = [UIColor clearColor];
+    dismissButton.alpha = 1.0f;
     dismissButton.frame = sourceView.bounds;
     [overlayView addSubview:dismissButton];
     
-    popupView.alpha = 0.0f;
+    popupView.alpha = 0.7f;
     [overlayView addSubview:popupView];
     [sourceView addSubview:overlayView];
     
@@ -330,7 +330,8 @@ static void * const keypath = (void*)&keypath;
     
     [UIView animateWithDuration:kPopupModalAnimationDuration animations:^{
         [self.mj_popupViewController viewWillAppear:NO];
-        self.mj_popupBackgroundView.alpha = 0.5f;
+        self.mj_popupBackgroundView.backgroundColor = [UIColor blackColor];
+        self.mj_popupBackgroundView.alpha = 0.8f;
         popupView.alpha = 1.0f;
     } completion:^(BOOL finished) {
         [self.mj_popupViewController viewDidAppear:NO];
