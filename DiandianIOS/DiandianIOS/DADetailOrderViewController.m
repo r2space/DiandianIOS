@@ -9,7 +9,10 @@
 #import "DADetailOrderViewController.h"
 #import "DAOrderAddAmountBtn.h"
 #import "DAMyOrderLoginViewController.h"
+#import "UIViewController+MJPopupViewController.h"
 #define AMOUNT_LABEL_TAG 101
+
+
 @interface DADetailOrderViewController ()<DAMyOrderLoginDelegate>
 @property (nonatomic, strong) UIPopoverController *remarkViewPopover;
 @end
@@ -26,9 +29,13 @@
 - (IBAction)confirmOrder:(id)sender
 {
 
-    if (self.delegate && [self.delegate respondsToSelector:@selector(confirmButtonClicked:)]) {
-        [self.delegate confirmButtonClicked:self];
-    }
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(confirmButtonClicked:)]) {
+//        [self.delegate confirmButtonClicked:self];
+//    }
+    
+    DAMyOrderLoginViewController * loginVC =[[DAMyOrderLoginViewController alloc]initWithNibName:@"DAMyOrderLoginViewController" bundle:nil];
+    loginVC.delegate = self;
+    [self presentPopupViewController:loginVC animationType:MJPopupViewAnimationFade];
 }
 
 - (IBAction)backTableClick:(id)sender {
@@ -214,6 +221,25 @@
     
 }
 
+- (void)confirmOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
+{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(backButtonClicked:)]) {
+        [self.delegate backButtonClicked:self];
+    }
+
+}
+- (void)cancelOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
+{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(backButtonClicked:)]) {
+        [self.delegate backButtonClicked:self];
+    }
+}
+- (void)backmenuButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
+{
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+}
 
 
 @end

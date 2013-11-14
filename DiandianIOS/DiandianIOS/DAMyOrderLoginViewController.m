@@ -52,12 +52,20 @@
 }
 
 - (IBAction)confirmOrderTouched:(id)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(confirmOrderButtonClicked:)]) {
-        [self.delegate confirmOrderButtonClicked:self];
+    
+    if ([self.labelName.text isEqualToString:@"嘀嗒嘀嗒"] && [self.labelPassword.text isEqualToString:@"123"]) {
+
+        if (self.delegate && [self.delegate respondsToSelector:@selector(confirmOrderButtonClicked:)]) {
+            [self.delegate confirmOrderButtonClicked:self];
+        }
+        
+    } else {
+        NSLog(@"密码错误");
     }
 }
 
 - (IBAction)cancelOrderTouched:(id)sender {
+    if ([self.labelName.text isEqualToString:@"嘀嗒嘀嗒"] && [self.labelPassword.text isEqualToString:@"123"])
     if (self.delegate && [self.delegate respondsToSelector:@selector(cancelOrderButtonClicked:)]) {
         [self.delegate cancelOrderButtonClicked:self];
     }

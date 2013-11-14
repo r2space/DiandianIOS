@@ -175,22 +175,22 @@
 //        return CGSizeMake(1, 2);
 //    else if(indexPath.row % 3 == 0)
 //        return CGSizeMake(2, 2);
-    NSNumber *rows = [[NSNumber alloc]initWithInt:5];
+    NSNumber *rows = [[NSNumber alloc]initWithInt:6];
     
     if (indexPath.row % [rows integerValue] == 0) {
-        return CGSizeMake(1, 1);
-    } else if(indexPath.row % [rows integerValue] == 1){
         return CGSizeMake(2, 2);
+    } else if(indexPath.row % [rows integerValue] == 1){
+        return CGSizeMake(1, 1);
     } else if(indexPath.row % [rows integerValue] == 2){
         return CGSizeMake(1, 1);
     } else if(indexPath.row % [rows integerValue] == 3){
-        return CGSizeMake(1, 2);
+        return CGSizeMake(1, 1);
     } else if(indexPath.row % [rows integerValue] == 4){
         return CGSizeMake(1, 1);
     } else if(indexPath.row % [rows integerValue] == 5){
         return CGSizeMake(1, 1);
-//    } else if(indexPath.row % [rows integerValue] == 6){
-//        return CGSizeMake(2, 2);
+    } else if(indexPath.row % [rows integerValue] == 6){
+        return CGSizeMake(1, 1);
 //    } else if(indexPath.row % [rows integerValue] == 7){
 //        return CGSizeMake(1, 1);
     } else {

@@ -32,7 +32,6 @@
                     <rect key="frame" x="377" y="651" width="121" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="pageIndicatorTintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="changePage:" destination="-1" eventType="valueChanged" id="eAb-YD-eGh"/>
                     </connections>

@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 @protocol DAMyOrderLoginDelegate;
 @interface DAMyOrderLoginViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *labelName;
+@property (weak, nonatomic) IBOutlet UITextField *labelPassword;
+
 
 @property (assign, nonatomic) id <DAMyOrderLoginDelegate>delegate;
 

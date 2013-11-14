@@ -176,7 +176,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return 73;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -231,9 +231,9 @@
 
 -(void)backButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
     [self loadTableFromDisk];
-    [self.navigationController popViewControllerAnimated:YES];
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self tableViewReload];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)confirmButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
@@ -247,9 +247,6 @@
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self tableViewReload];
     
-    DAMyOrderLoginViewController * loginVC =[[DAMyOrderLoginViewController alloc]initWithNibName:@"DAMyOrderLoginViewController" bundle:nil];
-    loginVC.delegate = self;
-    [self presentPopupViewController:loginVC animationType:MJPopupViewAnimationFade];
     
 }
 
@@ -278,23 +275,21 @@
 -(void) deleteAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
 
-    for (DAMyMenu *menu in self.dataList.items) {
-        if (menu._id == btn._id) {
-            if (![menu.amount isEqualToString:@"1"]) {
-                int amount = [menu.amount integerValue] - 1;
-                menu.amount = [NSString stringWithFormat:@"%d", amount];
-                [self tableViewReload];
-                return;
-            }
-            
+    
+    NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
+    for (DAMyMenu *mymenu in self.dataList.items) {
+        if (![mymenu._id isEqualToString:btn._id]) {
+            [tmpArray addObject:mymenu];
         }
     }
+    self.dataList.items = [[NSArray alloc]initWithArray:tmpArray];
+    [self tableViewReload];
 }
 -(void) addAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
     
     for (DAMyMenu *menu in self.dataList.items) {
-        if (menu._id == btn._id) {
+        if ([menu._id isEqualToString: btn._id]) {
             int amount = [menu.amount integerValue] + 1;
             menu.amount = [NSString stringWithFormat:@"%d", amount];
             [self tableViewReload];
