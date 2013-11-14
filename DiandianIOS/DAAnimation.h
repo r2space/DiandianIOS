@@ -11,7 +11,7 @@
 @interface DAAnimation : NSObject
 
 // UIView追加闪烁阴影效果
-+ (void) addFlickerShadow:(UIView*)view shadowColor:(UIColor*)color;
++ (void) addFlickerShadow:(UIView*)view shadowColor:(UIColor*)color shadowRadius:(float)shadowRadius;
 // UIView移除闪烁阴影效果
 + (void) removeFlickerShadow:(UIView*)view;
 @end

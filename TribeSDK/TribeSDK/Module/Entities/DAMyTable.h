@@ -19,5 +19,7 @@
 @property(retain, nonatomic) NSString *waitterId;
 @property(retain, nonatomic) NSString *durationTime;
 @property(retain, nonatomic) NSString *unfinishedCount;
+
+-(void)swap:(DAMyTable*)otherTable;
 @end
 

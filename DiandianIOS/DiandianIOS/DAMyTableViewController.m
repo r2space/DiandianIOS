@@ -14,10 +14,12 @@
 #import "UIViewController+MJPopupViewController.h"
 #import <TribeSDK/DAMyTable.h>
 
-@interface DAMyTableViewController ()<DAMyLoginDelegate>
+@interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate>
 {
     MSGridView *gridView;
     NSMutableArray *dataList;
+    BOOL isStartChangeTable;
+    NSString * changeTableId;
 }
 @end
 
@@ -47,8 +49,22 @@
                                                                 error:&anError];
     
     for (NSDictionary *d in items){
-        [dataList addObject:d];
+        [dataList addObject: [[DAMyTable alloc]initWithDictionary:d]];
     }
+}
+- (DAMyTable*)getDataByTableId:(NSString*)tableId
+{
+    if (dataList == nil || dataList.count <= 0) {
+        return nil;
+    }
+    
+    for (DAMyTable *t in dataList) {
+        if ([t.tableId isEqualToString:tableId]) {
+            return t;
+        }
+    }
+    
+    return nil;
 }
 
 - (void)cancelButtonClicked:(DAMyLoginViewController*)loginViewViewController{
@@ -82,12 +98,16 @@
     
     DAMyTableViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    NSDictionary *d = [dataList objectAtIndex:indexPath.row];
-    [cell setData:[d objectForKey:@"name"] setState:[d objectForKey:@"state"]];
-    cell.imgTable.image = [UIImage imageNamed:[d objectForKey:@"image"]];
+    DAMyTable *t = [dataList objectAtIndex:indexPath.row];
+    [cell setData:t.name setState:t.state];
     
+    //NSString *imageName = [@"eating" isEqualToString:t.state] ? @"sample-table.jpg" : @"sample-table1.jpg";
+    cell.imgTable.image = [UIImage imageNamed:@"sample-table.jpg"];
+    
+    cell.imgTable.layer.backgroundColor = [UIColor redColor].CGColor;
     cell.imgTable.layer.cornerRadius = 5.0;
     cell.imgTable.layer.masksToBounds = YES;
+    //cell.imgTable.layer.mask = NO;
     
     cell.viewMask.layer.cornerRadius = 5.0;
     cell.viewMask.layer.masksToBounds = YES;
@@ -95,9 +115,16 @@
     cell.viewLabel.layer.cornerRadius = 3.0;
     cell.viewLabel.layer.masksToBounds = YES;
     
-    
-    if (indexPath.row == 2 || indexPath.row == 5 || indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 9) {
+    // 设置空桌的效果
+    if (![@"empty" isEqualToString:t.state])
+    {
         cell.viewMask.hidden = YES;
+    }
+    // 设置换桌的动画效果
+    if (isStartChangeTable && [@"empty" isEqualToString:t.state]) {
+        [DAAnimation addFlickerShadow:cell.imgTable shadowColor:[UIColor greenColor] shadowRadius:5.0];
+    } else {
+        [DAAnimation removeFlickerShadow:cell.imgTable];
     }
 
     return cell;
@@ -106,9 +133,23 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *d = [dataList objectAtIndex:indexPath.row];
-    DAMyTable * t = [[DAMyTable alloc] initWithDictionary:d];
-
+    DAMyTable * t = [dataList objectAtIndex:indexPath.row];
+    
+    if (isStartChangeTable) {
+        if ([@"empty" isEqualToString:t.state]) {
+            DAMyTable *fromT = [self getDataByTableId:changeTableId];
+            
+  //          NSString * msg = [NSString ]
+            
+            [fromT swap:t];
+            
+            isStartChangeTable = false;
+            [self setTableFlicker:false];
+        }
+        
+        return;
+    }
+    
     if ([@"empty" isEqualToString:t.state]) {
         [DAMyLoginViewController show: t parentView:self ];
     } else {
@@ -116,10 +157,15 @@
     }
     
 }
-
-- (void) setTableFlicker
+- (void)changeTable:(NSString *)tableId
 {
-    self.collectionView.subviews
+    changeTableId = tableId;
+    [self setTableFlicker:YES];
+}
+- (void) setTableFlicker:(BOOL)enabled
+{
+    isStartChangeTable = enabled;
+    [self.collectionView reloadItemsAtIndexPaths:self.collectionView.indexPathsForVisibleItems];
 }
 
 - (void)didReceiveMemoryWarning
