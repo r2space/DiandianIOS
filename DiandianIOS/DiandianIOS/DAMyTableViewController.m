@@ -10,6 +10,7 @@
 #import "DAMyTableViewCell.h"
 #import "DAMyLoginViewController.h"
 #import "DAMyTableConfirmController.h"
+#import "DAAnimation.h"
 #import "UIViewController+MJPopupViewController.h"
 #import <TribeSDK/DAMyTable.h>
 
@@ -116,7 +117,10 @@
     
 }
 
-
+- (void) setTableFlicker
+{
+    self.collectionView.subviews
+}
 
 - (void)didReceiveMemoryWarning
 {
