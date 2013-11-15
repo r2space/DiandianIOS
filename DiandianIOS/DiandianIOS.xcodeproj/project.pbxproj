@@ -53,6 +53,7 @@
 		0A5D289C182C6EFF00847578 /* DAMyLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */; };
 		0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D289E182C8FE400847578 /* DAOrderRecipeBtn.m */; };
 		0A5D28A1182CA9AA00847578 /* DADetailOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D28A0182CA9AA00847578 /* DADetailOrderCell.xib */; };
+		0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */; };
 		0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F3E182DDDD70080F15F /* CustomLayout.m */; };
 		0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F46182E33BF0080F15F /* RFQuiltLayout.m */; };
 		0A8C2F56182E430F0080F15F /* 虫草炖官燕12.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C2F48182E430F0080F15F /* 虫草炖官燕12.png */; };
@@ -331,6 +332,8 @@
 		0A5D289D182C8FE400847578 /* DAOrderRecipeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderRecipeBtn.h; sourceTree = "<group>"; };
 		0A5D289E182C8FE400847578 /* DAOrderRecipeBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderRecipeBtn.m; sourceTree = "<group>"; };
 		0A5D28A0182CA9AA00847578 /* DADetailOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADetailOrderCell.xib; sourceTree = "<group>"; };
+		0A7AF0A21835C2E200635376 /* SMVerticalSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMVerticalSegmentedControl.h; sourceTree = "<group>"; };
+		0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMVerticalSegmentedControl.m; sourceTree = "<group>"; };
 		0A8C2F3D182DDDD70080F15F /* CustomLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayout.h; sourceTree = "<group>"; };
 		0A8C2F3E182DDDD70080F15F /* CustomLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayout.m; sourceTree = "<group>"; };
 		0A8C2F45182E33BF0080F15F /* RFQuiltLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFQuiltLayout.h; sourceTree = "<group>"; };
@@ -601,6 +604,7 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0A7AF0A11835C2C900635376 /* SMVerticalSegmentedControl */,
 				0A8C2F44182E33A70080F15F /* TVQuiltLayout */,
 				0A5D288A182BD01400847578 /* Popup */,
 				0A07BD77182A204800A350BC /* CWPopup */,
@@ -761,6 +765,36 @@
 				0A5D288E182BD03600847578 /* UIViewController+MJPopupViewController.m */,
 			);
 			name = Popup;
+			sourceTree = "<group>";
+		};
+		0A7AF0A11835C2C900635376 /* SMVerticalSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				0A7AF0A21835C2E200635376 /* SMVerticalSegmentedControl.h */,
+				0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */,
+			);
+			name = SMVerticalSegmentedControl;
+			sourceTree = "<group>";
+		};
+		0A7AF0A51835E81800635376 /* Drink */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Drink;
+			sourceTree = "<group>";
+		};
+		0A7AF0A61835E82300635376 /* Food */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Food;
+			sourceTree = "<group>";
+		};
+		0A7AF0A71835E82900635376 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Item;
 			sourceTree = "<group>";
 		};
 		0A8C2F44182E33A70080F15F /* TVQuiltLayout */ = {
@@ -1083,6 +1117,9 @@
 		F2AB4BF9182E01150067E450 /* OrderQueue */ = {
 			isa = PBXGroup;
 			children = (
+				0A7AF0A71835E82900635376 /* Item */,
+				0A7AF0A61835E82300635376 /* Food */,
+				0A7AF0A51835E81800635376 /* Drink */,
 				F2AB4BF4182DDDB90067E450 /* DAOrderQueueViewController.h */,
 				F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */,
 				F2AB4BF6182DDDB90067E450 /* DAOrderQueueViewController.xib */,
@@ -1406,6 +1443,7 @@
 				0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */,
 				0AA9570518274DCA0098D60C /* main.m in Sources */,
 				0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */,
+				0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */,
 				0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */,
 				0AEBE5C31831C21300B01A5E /* DAMyMenuBookPopupController.m in Sources */,
 				0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */,

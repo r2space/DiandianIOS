@@ -10,8 +10,16 @@
 #import "DAMyTableListViewController.h"
 #import "DAOrderGroupViewController.h"
 #import "DAMyItemListViewController.h"
+#import "SMVerticalSegmentedControl.h"
+#define UI_COLOR_FROM_RGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
 
 @interface DAMyOrderQueueViewController ()
+
+@property (nonatomic, retain) SMVerticalSegmentedControl *segmentedControl;
 
 @end
 
@@ -33,7 +41,7 @@
     //
     DAMyItemListViewController *itemListViewController = [[DAMyItemListViewController alloc] initWithNibName:@"DAMyItemListViewController" bundle:nil];
     
-    [itemListViewController.view setFrame:CGRectMake(100, 81, 734,651)];
+    [itemListViewController.view setFrame:self.imageItemblockView.frame];
     self.imageItemblockView.layer.shadowColor = UIColor.blackColor.CGColor;
     self.imageItemblockView.layer.shadowRadius = 2;
     self.imageItemblockView.layer.shadowOpacity = 0.6;
@@ -50,11 +58,7 @@
     
     DAOrderGroupViewController *orderGroupViewController = [[DAOrderGroupViewController alloc] initWithNibName:@"DAOrderGroupViewController" bundle:nil];
     
-    [orderGroupViewController.view setFrame:CGRectMake(844 , 81 , 160 , 651)];
-    self.imageTableListView.layer.shadowColor = UIColor.blackColor.CGColor;
-    self.imageTableListView.layer.shadowRadius = 2;
-    self.imageTableListView.layer.shadowOpacity = 0.6;
-    self.imageTableListView.layer.shadowOffset = CGSizeMake(0, 1);
+    [orderGroupViewController.view setFrame:self.imageTableblockView.frame];
     [self addChildViewController:orderGroupViewController];
     [self.view addSubview:orderGroupViewController.view];
     [orderGroupViewController didMoveToParentViewController:self];
@@ -64,6 +68,51 @@
     self.imageCategoryView.layer.shadowRadius = 2;
     self.imageCategoryView.layer.shadowOpacity = 0.6;
     self.imageCategoryView.layer.shadowOffset = CGSizeMake(0, 1);
+    
+    
+    
+    NSArray *titles = @[@"菜类", @"凉菜", @"主食", @"酒水"];
+    self.segmentedControl = [[SMVerticalSegmentedControl alloc] initWithSectionTitles:titles];
+    self.segmentedControl.backgroundColor = [UIColor whiteColor];
+    //UI_COLOR_FROM_RGB(0xecf0f1);
+    self.segmentedControl.selectionStyle = SMVerticalSegmentedControlSelectionStyleBox;
+    self.segmentedControl.selectionIndicatorThickness = 4;
+    [self.segmentedControl setFrame:CGRectMake(20, 44, 80.0f, 260.f)];
+//    [self.view addSubview:self.segmentedControl];
+    self.segmentedControl.indexChangeBlock = ^(NSInteger index) {
+        NSLog(@"fsdafdsf  ：  %@" ,[titles objectAtIndex:index]);
+    };
+    
+    self.labelTitle.layer.cornerRadius = 15.0;
+    self.labelTitle.layer.masksToBounds = YES;
+    
+    
+    self.topmenuView.layer.shadowColor = UIColor.blackColor.CGColor;
+    self.topmenuView.layer.shadowRadius = 2;
+    self.topmenuView.layer.shadowOpacity = 0.6;
+    self.topmenuView.layer.shadowOffset = CGSizeMake(0, 1);
+
+    
+    self.btnBack.layer.shadowColor = UIColor.blackColor.CGColor;
+    self.btnBack.layer.shadowRadius = 2;
+    self.btnBack.layer.shadowOpacity = 0.6;
+    self.btnBack.layer.shadowOffset = CGSizeMake(0, 1);
+    
+    self.btnDrink.layer.shadowColor = UIColor.blackColor.CGColor;
+    self.btnDrink.layer.shadowRadius = 2;
+    self.btnDrink.layer.shadowOpacity = 0.6;
+    self.btnDrink.layer.shadowOffset = CGSizeMake(0, 1);
+    
+    self.btnFood.layer.shadowColor = UIColor.blackColor.CGColor;
+    self.btnFood.layer.shadowRadius = 2;
+    self.btnFood.layer.shadowOpacity = 0.6;
+    self.btnFood.layer.shadowOffset = CGSizeMake(0, 1);
+    
+    self.btnItem.layer.shadowColor = UIColor.blackColor.CGColor;
+    self.btnItem.layer.shadowRadius = 2;
+    self.btnItem.layer.shadowOpacity = 0.6;
+    self.btnItem.layer.shadowOffset = CGSizeMake(0, 1);
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,6 +122,9 @@
 }
 
 - (IBAction)backTopMenuTouched:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)btnBackAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

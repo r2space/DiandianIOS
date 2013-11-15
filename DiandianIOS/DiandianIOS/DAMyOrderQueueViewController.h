@@ -12,10 +12,18 @@
 @property (weak, nonatomic) IBOutlet UIView *imageItemblockView;
 @property (weak, nonatomic) IBOutlet UIView *imageTableblockView;
 
-@property (weak, nonatomic) IBOutlet UIView *imageTableListView;
-@property (weak, nonatomic) IBOutlet UIView *imageTableTitleView;
-@property (weak, nonatomic) IBOutlet UIView *imageItemListView;
+
 @property (weak, nonatomic) IBOutlet UIView *imageCategoryView;
+
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+@property (weak, nonatomic) IBOutlet UIView *viewTitle;
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
+
+@property (weak, nonatomic) IBOutlet UIView *topmenuView;
+@property (weak, nonatomic) IBOutlet UIButton *btnDrink;
+@property (weak, nonatomic) IBOutlet UIButton *btnFood;
+@property (weak, nonatomic) IBOutlet UIButton *btnItem;
+
 - (IBAction)backTopMenuTouched:(id)sender;
 
 @end
