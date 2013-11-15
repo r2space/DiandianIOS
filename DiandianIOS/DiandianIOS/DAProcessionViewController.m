@@ -8,12 +8,16 @@
 
 #import "DAProcessionViewController.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "DAProcessionViewCell.h"
 
 @interface DAProcessionViewController ()
 
 @end
 
 @implementation DAProcessionViewController
+{
+    NSMutableArray *dataList;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,10 +55,49 @@
         [self.delegate cancelButtonClicked:self];
     }
 }
+
 - (IBAction)addProcession:(id)sender {
 }
 - (IBAction)openMyTable:(id)sender {
 }
 - (IBAction)orderFool:(id)sender {
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return dataList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DAProcessionViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DAProcessionViewCell"];
+    if (cell == nil) {
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DAProcessionViewControll" owner:self options:nil];
+        for(id c in topLevelObjects)
+        {
+            if ([c isKindOfClass:[UITableViewCell class]])
+            {
+                cell=(DAProcessionViewCell *) c;
+                break;
+            }
+        }
+    }
+    
+//    NSDictionary *row = [dataList objectAtIndex:indexPath.row];
+//    cell.imgGroup.image = [UIImage imageNamed:[row objectForKey:@"image"]];
+//    cell.lblName.text = [row objectForKey:@"name"];
+//    cell.lblProcess.text = [row objectForKey:@"process"];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 160;
 }
 @end

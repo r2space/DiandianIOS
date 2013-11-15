@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol DAProcessionDelegate;
 
-@interface DAProcessionViewController : UIViewController
+@interface DAProcessionViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 @property (assign, nonatomic) id <DAProcessionDelegate>delegate;
 
 + (void) show:(UIViewController *) parentView;

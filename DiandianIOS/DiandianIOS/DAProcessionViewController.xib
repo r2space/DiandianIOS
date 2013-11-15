@@ -20,6 +20,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="separatorInset" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="vQb-lM-fyZ"/>
+                    </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YgB-IQ-lSc">
                     <rect key="frame" x="316" y="594" width="91" height="30"/>
@@ -51,7 +54,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NSY-kl-a2E">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NSY-kl-a2E" customClass="DAProcessionViewCell">
             <rect key="frame" x="0.0" y="0.0" width="440" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NSY-kl-a2E" id="ENh-y4-SvH">
