@@ -41,7 +41,7 @@
     //
     DAOrderGroupViewController *orderGroupViewController = [[DAOrderGroupViewController alloc] initWithNibName:@"DAOrderGroupViewController" bundle:nil];
     
-    [orderGroupViewController.view setFrame:self.imgGroupView.frame];
+    [orderGroupViewController.view setFrame:CGRectMake(40,81, 734,651)];
     
     [self addChildViewController:orderGroupViewController];
     [self.view addSubview:orderGroupViewController.view];
