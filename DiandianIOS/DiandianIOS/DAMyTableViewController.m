@@ -121,6 +121,8 @@
     if (![@"empty" isEqualToString:t.state])
     {
         cell.viewMask.hidden = YES;
+    }else {
+        cell.viewMask.hidden = NO;
     }
     // 设置换桌的动画效果
     if (isStartChangeTable && [@"empty" isEqualToString:t.state]) {
