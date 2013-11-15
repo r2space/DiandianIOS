@@ -148,6 +148,14 @@ UIViewController *parentVC;
     // TODO: 密码check
 
 }
+//  换桌
+- (IBAction)changeTable:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(changeTable:)]) {
+        [self.delegate changeTable:self.myTableId];
+    }
+    
+    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+}
 - (IBAction)appendOrder:(id)sender {
     [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     

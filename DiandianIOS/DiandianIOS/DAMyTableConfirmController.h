@@ -24,5 +24,6 @@
 
 @optional
 - (void)cancelButtonClicked:(DAMyTableConfirmController*)controller;
+- (void)changeTable:(NSString*)tableId;
 @end
 
