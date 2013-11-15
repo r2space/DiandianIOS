@@ -53,6 +53,7 @@
 		0A5D289C182C6EFF00847578 /* DAMyLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */; };
 		0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D289E182C8FE400847578 /* DAOrderRecipeBtn.m */; };
 		0A5D28A1182CA9AA00847578 /* DADetailOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D28A0182CA9AA00847578 /* DADetailOrderCell.xib */; };
+		0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */; };
 		0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F3E182DDDD70080F15F /* CustomLayout.m */; };
 		0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F46182E33BF0080F15F /* RFQuiltLayout.m */; };
 		0A8C2F56182E430F0080F15F /* 虫草炖官燕12.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C2F48182E430F0080F15F /* 虫草炖官燕12.png */; };
@@ -69,6 +70,13 @@
 		0A8C2F61182E430F0080F15F /* 松茸清汤海虎翅11.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C2F53182E430F0080F15F /* 松茸清汤海虎翅11.png */; };
 		0A8C2F62182E430F0080F15F /* 松茸清汤海虎翅33.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C2F54182E430F0080F15F /* 松茸清汤海虎翅33.png */; };
 		0A8C2F63182E430F0080F15F /* 野生甲鱼角烧裙边11.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C2F55182E430F0080F15F /* 野生甲鱼角烧裙边11.png */; };
+		0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924AA31834899A0004C973 /* DAMyOrderQueueViewController.m */; };
+		0A924AA61834899A0004C973 /* DAMyOrderQueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A924AA41834899A0004C973 /* DAMyOrderQueueViewController.xib */; };
+		0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924AA818348A420004C973 /* DAMyItemListViewController.m */; };
+		0A924AAB18348A420004C973 /* DAMyItemListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A924AA918348A420004C973 /* DAMyItemListViewController.xib */; };
+		0A924AAF18348A810004C973 /* DAMyTableListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924AAD18348A810004C973 /* DAMyTableListViewController.m */; };
+		0A924AB018348A810004C973 /* DAMyTableListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A924AAE18348A810004C973 /* DAMyTableListViewController.xib */; };
+		0A924AB21834908E0004C973 /* DAMyItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A924AB11834908E0004C973 /* DAMyItemCell.xib */; };
 		0A926CF8182F28AE00A2F49E /* TribeSDK in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A926CF7182F28AE00A2F49E /* TribeSDK */; };
 		0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */; };
 		0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C31828764800037E73 /* DARootViewController.m */; };
@@ -327,6 +335,8 @@
 		0A5D289D182C8FE400847578 /* DAOrderRecipeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderRecipeBtn.h; sourceTree = "<group>"; };
 		0A5D289E182C8FE400847578 /* DAOrderRecipeBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderRecipeBtn.m; sourceTree = "<group>"; };
 		0A5D28A0182CA9AA00847578 /* DADetailOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADetailOrderCell.xib; sourceTree = "<group>"; };
+		0A7AF0A21835C2E200635376 /* SMVerticalSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMVerticalSegmentedControl.h; sourceTree = "<group>"; };
+		0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMVerticalSegmentedControl.m; sourceTree = "<group>"; };
 		0A8C2F3D182DDDD70080F15F /* CustomLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayout.h; sourceTree = "<group>"; };
 		0A8C2F3E182DDDD70080F15F /* CustomLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayout.m; sourceTree = "<group>"; };
 		0A8C2F45182E33BF0080F15F /* RFQuiltLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFQuiltLayout.h; sourceTree = "<group>"; };
@@ -345,6 +355,16 @@
 		0A8C2F53182E430F0080F15F /* 松茸清汤海虎翅11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "松茸清汤海虎翅11.png"; sourceTree = "<group>"; };
 		0A8C2F54182E430F0080F15F /* 松茸清汤海虎翅33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "松茸清汤海虎翅33.png"; sourceTree = "<group>"; };
 		0A8C2F55182E430F0080F15F /* 野生甲鱼角烧裙边11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "野生甲鱼角烧裙边11.png"; sourceTree = "<group>"; };
+		0A924AA21834899A0004C973 /* DAMyOrderQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderQueueViewController.h; sourceTree = "<group>"; };
+		0A924AA31834899A0004C973 /* DAMyOrderQueueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderQueueViewController.m; sourceTree = "<group>"; };
+		0A924AA41834899A0004C973 /* DAMyOrderQueueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyOrderQueueViewController.xib; sourceTree = "<group>"; };
+		0A924AA718348A420004C973 /* DAMyItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyItemListViewController.h; sourceTree = "<group>"; };
+		0A924AA818348A420004C973 /* DAMyItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyItemListViewController.m; sourceTree = "<group>"; };
+		0A924AA918348A420004C973 /* DAMyItemListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyItemListViewController.xib; sourceTree = "<group>"; };
+		0A924AAC18348A810004C973 /* DAMyTableListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTableListViewController.h; sourceTree = "<group>"; };
+		0A924AAD18348A810004C973 /* DAMyTableListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableListViewController.m; sourceTree = "<group>"; };
+		0A924AAE18348A810004C973 /* DAMyTableListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableListViewController.xib; sourceTree = "<group>"; };
+		0A924AB11834908E0004C973 /* DAMyItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyItemCell.xib; sourceTree = "<group>"; };
 		0A926CF7182F28AE00A2F49E /* TribeSDK */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = TribeSDK; path = "../TribeSDK/build/Debug-framework/TribeSDK.framework/Versions/A/TribeSDK"; sourceTree = "<group>"; };
 		0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAMenuBookView.storyboard; sourceTree = "<group>"; };
 		0A9DA5C21828764800037E73 /* DARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARootViewController.h; sourceTree = "<group>"; };
@@ -592,6 +612,7 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0A7AF0A11835C2C900635376 /* SMVerticalSegmentedControl */,
 				0A8C2F44182E33A70080F15F /* TVQuiltLayout */,
 				0A5D288A182BD01400847578 /* Popup */,
 				0A07BD77182A204800A350BC /* CWPopup */,
@@ -752,6 +773,36 @@
 				0A5D288E182BD03600847578 /* UIViewController+MJPopupViewController.m */,
 			);
 			name = Popup;
+			sourceTree = "<group>";
+		};
+		0A7AF0A11835C2C900635376 /* SMVerticalSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				0A7AF0A21835C2E200635376 /* SMVerticalSegmentedControl.h */,
+				0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */,
+			);
+			name = SMVerticalSegmentedControl;
+			sourceTree = "<group>";
+		};
+		0A7AF0A51835E81800635376 /* Drink */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Drink;
+			sourceTree = "<group>";
+		};
+		0A7AF0A61835E82300635376 /* Food */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Food;
+			sourceTree = "<group>";
+		};
+		0A7AF0A71835E82900635376 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Item;
 			sourceTree = "<group>";
 		};
 		0A8C2F44182E33A70080F15F /* TVQuiltLayout */ = {
@@ -1079,6 +1130,9 @@
 		F2AB4BF9182E01150067E450 /* OrderQueue */ = {
 			isa = PBXGroup;
 			children = (
+				0A7AF0A71835E82900635376 /* Item */,
+				0A7AF0A61835E82300635376 /* Food */,
+				0A7AF0A51835E81800635376 /* Drink */,
 				F2AB4BF4182DDDB90067E450 /* DAOrderQueueViewController.h */,
 				F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */,
 				F2AB4BF6182DDDB90067E450 /* DAOrderQueueViewController.xib */,
@@ -1094,6 +1148,16 @@
 				F2AB4C0B182E1E2B0067E450 /* DAOrderGroupViewCell.h */,
 				F2AB4C0C182E1E2B0067E450 /* DAOrderGroupViewCell.m */,
 				F2AB4C09182E1E120067E450 /* DAOrderGroupViewCell.xib */,
+				0A924AA21834899A0004C973 /* DAMyOrderQueueViewController.h */,
+				0A924AA31834899A0004C973 /* DAMyOrderQueueViewController.m */,
+				0A924AA41834899A0004C973 /* DAMyOrderQueueViewController.xib */,
+				0A924AA718348A420004C973 /* DAMyItemListViewController.h */,
+				0A924AA818348A420004C973 /* DAMyItemListViewController.m */,
+				0A924AA918348A420004C973 /* DAMyItemListViewController.xib */,
+				0A924AB11834908E0004C973 /* DAMyItemCell.xib */,
+				0A924AAC18348A810004C973 /* DAMyTableListViewController.h */,
+				0A924AAD18348A810004C973 /* DAMyTableListViewController.m */,
+				0A924AAE18348A810004C973 /* DAMyTableListViewController.xib */,
 			);
 			name = OrderQueue;
 			sourceTree = "<group>";
@@ -1196,6 +1260,7 @@
 				28FFB655183347CF003443D1 /* DAMyTableConfirmController.xib in Resources */,
 				0AEBE5871831162700B01A5E /* 海蛎三吃.jpg in Resources */,
 				0AEBE5DA1832139700B01A5E /* clipboard@2x.png in Resources */,
+				0A924AB21834908E0004C973 /* DAMyItemCell.xib in Resources */,
 				F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */,
 				0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */,
 				0AEBE59A1831162700B01A5E /* 木耳蛰头.jpg in Resources */,
@@ -1222,6 +1287,7 @@
 				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
 				0AEBE5B81831162700B01A5E /* 腌黄瓜.jpg in Resources */,
 				0AEBE5B11831162700B01A5E /* 头菜炒粉.jpg in Resources */,
+				0A924AAB18348A420004C973 /* DAMyItemListViewController.xib in Resources */,
 				0A07BD591829D2A500A350BC /* type.json in Resources */,
 				0AEBE5941831162700B01A5E /* 麻辣豆腐.jpg in Resources */,
 				0AEBE5971831162700B01A5E /* 梅菜扣肉.jpg in Resources */,
@@ -1311,10 +1377,12 @@
 				0AEBE5D718320B9100B01A5E /* price_mask1.png in Resources */,
 				0AEBE5861831162700B01A5E /* 怪味牛肉.jpg in Resources */,
 				0A5D289C182C6EFF00847578 /* DAMyLoginViewController.xib in Resources */,
+				0A924AA61834899A0004C973 /* DAMyOrderQueueViewController.xib in Resources */,
 				0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */,
 				0A8C2F63182E430F0080F15F /* 野生甲鱼角烧裙边11.png in Resources */,
 				0AEBE5811831162700B01A5E /* 风干肠16元.jpg in Resources */,
 				F2AB4C08182E15B30067E450 /* DAOrderDetailViewCell.xib in Resources */,
+				0A924AB018348A810004C973 /* DAMyTableListViewController.xib in Resources */,
 				0AEBE5AE1831162700B01A5E /* 水煮肉片.jpg in Resources */,
 				0AEBE5A81831162700B01A5E /* 肉末豆腐.jpg in Resources */,
 				F2AB4C03182E03480067E450 /* DAOrderGroupViewController.xib in Resources */,
@@ -1384,10 +1452,12 @@
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
 				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,
+				0A924AAF18348A810004C973 /* DAMyTableListViewController.m in Sources */,
 				F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */,
 				0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */,
 				0AA9570518274DCA0098D60C /* main.m in Sources */,
 				0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */,
+				0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */,
 				0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */,
 				0AEBE5C31831C21300B01A5E /* DAMyMenuBookPopupController.m in Sources */,
 				0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */,
@@ -1402,6 +1472,7 @@
 				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
 				28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */,
 				0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */,
+				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
@@ -1426,6 +1497,7 @@
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */,
+				0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
 				28FFB64718332272003443D1 /* DAImageUtil.m in Sources */,
 				0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */,

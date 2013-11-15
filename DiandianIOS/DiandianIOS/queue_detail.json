@@ -4,68 +4,68 @@
  "name": "牛拼盘",
  "table": "001",
  "ticket": "58",
- "waitingtime": "12:10"
+ "waitingtime": "10:10"
  },
  {
  "image": "玉米小炒.jpg",
  "name": "玉米小炒",
- "table": "001",
+ "table": "002",
  "ticket": "58",
- "waitingtime": "12:10"
+ "waitingtime": "10:20"
  },
  {
  "image": "金枪鱼刺身.jpg",
  "name": "金枪鱼刺身",
- "table": "001",
+ "table": "002",
  "ticket": "58",
- "waitingtime": "12:10"
+ "waitingtime": "11:10"
  },
  {
  "image": "五彩拉皮.jpg",
  "name": "五彩拉皮",
- "table": "001",
+ "table": "002",
  "ticket": "58",
- "waitingtime": "12:10"
+ "waitingtime": "11:10"
  },
  {
  "image": "香煎猪五花.jpg",
  "name": "香煎猪五花",
- "table": "001",
+ "table": "003",
  "ticket": "58",
- "waitingtime": "12:10"
+ "waitingtime": "11:30"
  },
  {
  "image": "牛三样.jpg",
  "name": "牛拼盘",
- "table": "001",
+ "table": "003",
  "ticket": "58",
- "waitingtime": "12:10"
+ "waitingtime": "11:30"
  },
  {
  "image": "玉米小炒.jpg",
  "name": "玉米小炒",
- "table": "001",
+ "table": "004",
  "ticket": "58",
  "waitingtime": "12:10"
  },
  {
  "image": "金枪鱼刺身.jpg",
  "name": "金枪鱼刺身",
- "table": "001",
+ "table": "004",
  "ticket": "58",
  "waitingtime": "12:10"
  },
  {
  "image": "五彩拉皮.jpg",
  "name": "五彩拉皮",
- "table": "001",
+ "table": "004",
  "ticket": "58",
  "waitingtime": "12:10"
  },
  {
  "image": "香煎猪五花.jpg",
  "name": "香煎猪五花",
- "table": "001",
+ "table": "005",
  "ticket": "58",
  "waitingtime": "12:10"
  }

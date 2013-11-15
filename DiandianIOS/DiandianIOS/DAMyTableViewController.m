@@ -12,6 +12,8 @@
 #import "DAMyTableConfirmController.h"
 #import "DAAnimation.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "DAMyOrderQueueViewController.h"
+#import "DABillViewController.h"
 #import <TribeSDK/DAMyTable.h>
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate>
@@ -177,5 +179,21 @@
 
 - (IBAction)onReturnTouched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)showBillTouched:(id)sender {
+    DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (IBAction)showMenuList:(id)sender {
+    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+    UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+    [self.navigationController pushViewController:menubookVC animated:YES];
+}
+
+- (IBAction)showOrderQueueTouched:(id)sender {
+    DAMyOrderQueueViewController *viewController = [[DAMyOrderQueueViewController alloc] initWithNibName:@"DAMyOrderQueueViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+
 }
 @end
