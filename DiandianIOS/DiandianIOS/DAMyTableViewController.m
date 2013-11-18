@@ -17,6 +17,7 @@
 #import "DAQueueMasterViewController.h"
 #import "DAProcessionViewController.h"
 #import <TribeSDK/DAMyTable.h>
+#import "NSString+Util.h"
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate>
 {
@@ -115,7 +116,7 @@
     DAMyTableViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     DAMyTable *t = [dataList objectAtIndex:indexPath.row];
-    [cell setData:t.name setState:t.state];
+    [cell setData:t];
     
     //NSString *imageName = [@"eating" isEqualToString:t.state] ? @"sample-table.jpg" : @"sample-table1.jpg";
     cell.imgTable.image = [UIImage imageNamed:@"sample-table.jpg"];
