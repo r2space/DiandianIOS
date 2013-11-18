@@ -9,6 +9,7 @@
 #import "DABillViewController.h"
 #import "DABillDetailViewController.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "DAPreferentialViewController.h"
 
 @interface DABillViewController ()
 
@@ -89,6 +90,21 @@
     DABillDetailViewController *c = [[DABillDetailViewController alloc] initWithNibName:nil bundle:nil];
     c.finfishList = finishList;
     c.cancelList = cancelList;
+    c.chanelBlock = ^() {
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    };
+
+    [self presentPopupViewController:c animationType:MJPopupViewAnimationFade dismissed:^{
+        [self reload];
+    }];
+}
+- (IBAction)onPreferentialTouched:(id)sender {
+
+    DAPreferentialViewController *c = [[DAPreferentialViewController alloc] initWithNibName:@"DAPreferentialViewController" bundle:nil];
+    c.chanelBlock = ^() {
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    };
+    
     [self presentPopupViewController:c animationType:MJPopupViewAnimationFade dismissed:^{
         [self reload];
     }];

@@ -33,6 +33,8 @@
 		0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD8D182A3E9600A350BC /* DAMenuModule.m */; };
 		0A1530C0182FD4ED00A13EB8 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1530BF182FD4ED00A13EB8 /* mask.png */; };
 		0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1DBAB5182B3A7D0045787A /* bg_first.png */; };
+		0A24A2D11838C18D00B340BE /* DAQueueItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A24A2D01838C18D00B340BE /* DAQueueItemListCell.xib */; };
+		0A24A2D31838C66100B340BE /* DAQueueTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A24A2D21838C66100B340BE /* DAQueueTableCell.xib */; };
 		0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB729182A741200170F0C /* DAMyMenuBookCell.xib */; };
 		0A3DB72C182A7B8700170F0C /* DAMyBigMenuBookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72B182A7B8700170F0C /* DAMyBigMenuBookCell.xib */; };
 		0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */; };
@@ -54,6 +56,29 @@
 		0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D289E182C8FE400847578 /* DAOrderRecipeBtn.m */; };
 		0A5D28A1182CA9AA00847578 /* DADetailOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D28A0182CA9AA00847578 /* DADetailOrderCell.xib */; };
 		0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */; };
+		0A7AF0AB183600C900635376 /* DADrinkQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0A9183600C900635376 /* DADrinkQueueViewController.m */; };
+		0A7AF0AC183600C900635376 /* DADrinkQueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0AA183600C900635376 /* DADrinkQueueViewController.xib */; };
+		0A7AF0B0183600E400635376 /* DAFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0AE183600E400635376 /* DAFoodViewController.m */; };
+		0A7AF0B1183600E400635376 /* DAFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0AF183600E400635376 /* DAFoodViewController.xib */; };
+		0A7AF0B5183600EE00635376 /* DAItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0B3183600EE00635376 /* DAItemViewController.m */; };
+		0A7AF0B6183600EE00635376 /* DAItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0B4183600EE00635376 /* DAItemViewController.xib */; };
+		0A7AF0BA183606B900635376 /* DAQueueItemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0B8183606B900635376 /* DAQueueItemTableViewController.m */; };
+		0A7AF0BB183606B900635376 /* DAQueueItemTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0B9183606B900635376 /* DAQueueItemTableViewController.xib */; };
+		0A7AF0BF183606D300635376 /* DAQueueFoodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0BD183606D300635376 /* DAQueueFoodTableViewController.m */; };
+		0A7AF0C0183606D300635376 /* DAQueueFoodTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0BE183606D300635376 /* DAQueueFoodTableViewController.xib */; };
+		0A7AF0C41836070000635376 /* DAQueueDrinkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0C21836070000635376 /* DAQueueDrinkTableViewController.m */; };
+		0A7AF0C51836070000635376 /* DAQueueDrinkTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0C31836070000635376 /* DAQueueDrinkTableViewController.xib */; };
+		0A7AF0C91836075200635376 /* DAQueueItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0C71836075200635376 /* DAQueueItemListViewController.m */; };
+		0A7AF0CA1836075200635376 /* DAQueueItemListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0C81836075200635376 /* DAQueueItemListViewController.xib */; };
+		0A7AF0CE1836076600635376 /* DAQueueFoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0CC1836076600635376 /* DAQueueFoodListViewController.m */; };
+		0A7AF0CF1836076600635376 /* DAQueueFoodListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0CD1836076600635376 /* DAQueueFoodListViewController.xib */; };
+		0A7AF0D31836077B00635376 /* DAQueueDrinkListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0D11836077B00635376 /* DAQueueDrinkListViewController.m */; };
+		0A7AF0D41836077B00635376 /* DAQueueDrinkListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0D21836077B00635376 /* DAQueueDrinkListViewController.xib */; };
+		0A7AF0D618360B2400635376 /* da_data_queue_item.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0D518360B2400635376 /* da_data_queue_item.json */; };
+		0A7AF0D818360B3A00635376 /* da_data_queue_food.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0D718360B3A00635376 /* da_data_queue_food.json */; };
+		0A7AF0DA18360B5000635376 /* da_data_queue_drink.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0D918360B5000635376 /* da_data_queue_drink.json */; };
+		0A7AF0DE183612EF00635376 /* DAQueueMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0DC183612EF00635376 /* DAQueueMasterViewController.m */; };
+		0A7AF0DF183612EF00635376 /* DAQueueMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0DD183612EF00635376 /* DAQueueMasterViewController.xib */; };
 		0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F3E182DDDD70080F15F /* CustomLayout.m */; };
 		0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F46182E33BF0080F15F /* RFQuiltLayout.m */; };
 		0A8C2F56182E430F0080F15F /* 虫草炖官燕12.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C2F48182E430F0080F15F /* 虫草炖官燕12.png */; };
@@ -108,6 +133,9 @@
 		0AB11394183349A10011828A /* DAMyOrderLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB11392183349A10011828A /* DAMyOrderLoginViewController.xib */; };
 		0AB113961833770F0011828A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AB113951833770F0011828A /* Settings.bundle */; };
 		0AB113981833AC040011828A /* chazi1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB113971833AC040011828A /* chazi1.png */; };
+		0AB4B3AD1838D4CC00D77D7E /* DAQueueDrinkListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4B3AC1838D4CC00D77D7E /* DAQueueDrinkListCell.xib */; };
+		0AB4B3B11838DE3700D77D7E /* DAPreferentialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4B3AF1838DE3700D77D7E /* DAPreferentialViewController.m */; };
+		0AB4B3B21838DE3700D77D7E /* DAPreferentialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4B3B01838DE3700D77D7E /* DAPreferentialViewController.xib */; };
 		0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */; };
 		0AEBE51B1830B10900B01A5E /* DAOrderThumbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */; };
 		0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */; };
@@ -305,6 +333,8 @@
 		0A07BD8D182A3E9600A350BC /* DAMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMenuModule.m; sourceTree = "<group>"; };
 		0A1530BF182FD4ED00A13EB8 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
 		0A1DBAB5182B3A7D0045787A /* bg_first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_first.png; sourceTree = "<group>"; };
+		0A24A2D01838C18D00B340BE /* DAQueueItemListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueItemListCell.xib; sourceTree = "<group>"; };
+		0A24A2D21838C66100B340BE /* DAQueueTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueTableCell.xib; sourceTree = "<group>"; };
 		0A3DB729182A741200170F0C /* DAMyMenuBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyMenuBookCell.xib; sourceTree = "<group>"; };
 		0A3DB72B182A7B8700170F0C /* DAMyBigMenuBookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyBigMenuBookCell.xib; sourceTree = "<group>"; };
 		0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableViewCell.xib; sourceTree = "<group>"; };
@@ -337,6 +367,39 @@
 		0A5D28A0182CA9AA00847578 /* DADetailOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADetailOrderCell.xib; sourceTree = "<group>"; };
 		0A7AF0A21835C2E200635376 /* SMVerticalSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMVerticalSegmentedControl.h; sourceTree = "<group>"; };
 		0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMVerticalSegmentedControl.m; sourceTree = "<group>"; };
+		0A7AF0A8183600C900635376 /* DADrinkQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADrinkQueueViewController.h; sourceTree = "<group>"; };
+		0A7AF0A9183600C900635376 /* DADrinkQueueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADrinkQueueViewController.m; sourceTree = "<group>"; };
+		0A7AF0AA183600C900635376 /* DADrinkQueueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADrinkQueueViewController.xib; sourceTree = "<group>"; };
+		0A7AF0AD183600E400635376 /* DAFoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAFoodViewController.h; sourceTree = "<group>"; };
+		0A7AF0AE183600E400635376 /* DAFoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAFoodViewController.m; sourceTree = "<group>"; };
+		0A7AF0AF183600E400635376 /* DAFoodViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAFoodViewController.xib; sourceTree = "<group>"; };
+		0A7AF0B2183600EE00635376 /* DAItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAItemViewController.h; sourceTree = "<group>"; };
+		0A7AF0B3183600EE00635376 /* DAItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAItemViewController.m; sourceTree = "<group>"; };
+		0A7AF0B4183600EE00635376 /* DAItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAItemViewController.xib; sourceTree = "<group>"; };
+		0A7AF0B7183606B900635376 /* DAQueueItemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQueueItemTableViewController.h; sourceTree = "<group>"; };
+		0A7AF0B8183606B900635376 /* DAQueueItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQueueItemTableViewController.m; sourceTree = "<group>"; };
+		0A7AF0B9183606B900635376 /* DAQueueItemTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueItemTableViewController.xib; sourceTree = "<group>"; };
+		0A7AF0BC183606D300635376 /* DAQueueFoodTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQueueFoodTableViewController.h; sourceTree = "<group>"; };
+		0A7AF0BD183606D300635376 /* DAQueueFoodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQueueFoodTableViewController.m; sourceTree = "<group>"; };
+		0A7AF0BE183606D300635376 /* DAQueueFoodTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueFoodTableViewController.xib; sourceTree = "<group>"; };
+		0A7AF0C11836070000635376 /* DAQueueDrinkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQueueDrinkTableViewController.h; sourceTree = "<group>"; };
+		0A7AF0C21836070000635376 /* DAQueueDrinkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQueueDrinkTableViewController.m; sourceTree = "<group>"; };
+		0A7AF0C31836070000635376 /* DAQueueDrinkTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueDrinkTableViewController.xib; sourceTree = "<group>"; };
+		0A7AF0C61836075200635376 /* DAQueueItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQueueItemListViewController.h; sourceTree = "<group>"; };
+		0A7AF0C71836075200635376 /* DAQueueItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQueueItemListViewController.m; sourceTree = "<group>"; };
+		0A7AF0C81836075200635376 /* DAQueueItemListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueItemListViewController.xib; sourceTree = "<group>"; };
+		0A7AF0CB1836076600635376 /* DAQueueFoodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQueueFoodListViewController.h; sourceTree = "<group>"; };
+		0A7AF0CC1836076600635376 /* DAQueueFoodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQueueFoodListViewController.m; sourceTree = "<group>"; };
+		0A7AF0CD1836076600635376 /* DAQueueFoodListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueFoodListViewController.xib; sourceTree = "<group>"; };
+		0A7AF0D01836077B00635376 /* DAQueueDrinkListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQueueDrinkListViewController.h; sourceTree = "<group>"; };
+		0A7AF0D11836077B00635376 /* DAQueueDrinkListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQueueDrinkListViewController.m; sourceTree = "<group>"; };
+		0A7AF0D21836077B00635376 /* DAQueueDrinkListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueDrinkListViewController.xib; sourceTree = "<group>"; };
+		0A7AF0D518360B2400635376 /* da_data_queue_item.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = da_data_queue_item.json; sourceTree = "<group>"; };
+		0A7AF0D718360B3A00635376 /* da_data_queue_food.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = da_data_queue_food.json; sourceTree = "<group>"; };
+		0A7AF0D918360B5000635376 /* da_data_queue_drink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = da_data_queue_drink.json; sourceTree = "<group>"; };
+		0A7AF0DB183612EF00635376 /* DAQueueMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQueueMasterViewController.h; sourceTree = "<group>"; };
+		0A7AF0DC183612EF00635376 /* DAQueueMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQueueMasterViewController.m; sourceTree = "<group>"; };
+		0A7AF0DD183612EF00635376 /* DAQueueMasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueMasterViewController.xib; sourceTree = "<group>"; };
 		0A8C2F3D182DDDD70080F15F /* CustomLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayout.h; sourceTree = "<group>"; };
 		0A8C2F3E182DDDD70080F15F /* CustomLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayout.m; sourceTree = "<group>"; };
 		0A8C2F45182E33BF0080F15F /* RFQuiltLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFQuiltLayout.h; sourceTree = "<group>"; };
@@ -407,6 +470,10 @@
 		0AB11392183349A10011828A /* DAMyOrderLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyOrderLoginViewController.xib; sourceTree = "<group>"; };
 		0AB113951833770F0011828A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		0AB113971833AC040011828A /* chazi1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chazi1.png; sourceTree = "<group>"; };
+		0AB4B3AC1838D4CC00D77D7E /* DAQueueDrinkListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueDrinkListCell.xib; sourceTree = "<group>"; };
+		0AB4B3AE1838DE3700D77D7E /* DAPreferentialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPreferentialViewController.h; sourceTree = "<group>"; };
+		0AB4B3AF1838DE3700D77D7E /* DAPreferentialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPreferentialViewController.m; sourceTree = "<group>"; };
+		0AB4B3B01838DE3700D77D7E /* DAPreferentialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPreferentialViewController.xib; sourceTree = "<group>"; };
 		0AEBE5171830B10900B01A5E /* DAOrderThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderThumbViewController.h; sourceTree = "<group>"; };
 		0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderThumbViewController.m; sourceTree = "<group>"; };
 		0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderThumbViewController.xib; sourceTree = "<group>"; };
@@ -738,6 +805,15 @@
 			path = CWPopup;
 			sourceTree = "<group>";
 		};
+		0A24A2CF1838C17000B340BE /* ItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				0A24A2D01838C18D00B340BE /* DAQueueItemListCell.xib */,
+				0A24A2D21838C66100B340BE /* DAQueueTableCell.xib */,
+			);
+			name = ItemCell;
+			sourceTree = "<group>";
+		};
 		0A3DB728182A73F700170F0C /* Menubook */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,6 +863,17 @@
 		0A7AF0A51835E81800635376 /* Drink */ = {
 			isa = PBXGroup;
 			children = (
+				0AB4B3AB1838D4B500D77D7E /* DrinkCell */,
+				0A7AF0A8183600C900635376 /* DADrinkQueueViewController.h */,
+				0A7AF0A9183600C900635376 /* DADrinkQueueViewController.m */,
+				0A7AF0AA183600C900635376 /* DADrinkQueueViewController.xib */,
+				0A7AF0C11836070000635376 /* DAQueueDrinkTableViewController.h */,
+				0A7AF0C21836070000635376 /* DAQueueDrinkTableViewController.m */,
+				0A7AF0C31836070000635376 /* DAQueueDrinkTableViewController.xib */,
+				0A7AF0D01836077B00635376 /* DAQueueDrinkListViewController.h */,
+				0A7AF0D11836077B00635376 /* DAQueueDrinkListViewController.m */,
+				0A7AF0D21836077B00635376 /* DAQueueDrinkListViewController.xib */,
+				0A7AF0D918360B5000635376 /* da_data_queue_drink.json */,
 			);
 			name = Drink;
 			sourceTree = "<group>";
@@ -794,6 +881,16 @@
 		0A7AF0A61835E82300635376 /* Food */ = {
 			isa = PBXGroup;
 			children = (
+				0A7AF0AD183600E400635376 /* DAFoodViewController.h */,
+				0A7AF0AE183600E400635376 /* DAFoodViewController.m */,
+				0A7AF0AF183600E400635376 /* DAFoodViewController.xib */,
+				0A7AF0BC183606D300635376 /* DAQueueFoodTableViewController.h */,
+				0A7AF0BD183606D300635376 /* DAQueueFoodTableViewController.m */,
+				0A7AF0BE183606D300635376 /* DAQueueFoodTableViewController.xib */,
+				0A7AF0CB1836076600635376 /* DAQueueFoodListViewController.h */,
+				0A7AF0CC1836076600635376 /* DAQueueFoodListViewController.m */,
+				0A7AF0CD1836076600635376 /* DAQueueFoodListViewController.xib */,
+				0A7AF0D718360B3A00635376 /* da_data_queue_food.json */,
 			);
 			name = Food;
 			sourceTree = "<group>";
@@ -801,8 +898,26 @@
 		0A7AF0A71835E82900635376 /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				0A24A2CF1838C17000B340BE /* ItemCell */,
+				0A7AF0B2183600EE00635376 /* DAItemViewController.h */,
+				0A7AF0B3183600EE00635376 /* DAItemViewController.m */,
+				0A7AF0B4183600EE00635376 /* DAItemViewController.xib */,
+				0A7AF0B7183606B900635376 /* DAQueueItemTableViewController.h */,
+				0A7AF0B8183606B900635376 /* DAQueueItemTableViewController.m */,
+				0A7AF0B9183606B900635376 /* DAQueueItemTableViewController.xib */,
+				0A7AF0C61836075200635376 /* DAQueueItemListViewController.h */,
+				0A7AF0C71836075200635376 /* DAQueueItemListViewController.m */,
+				0A7AF0C81836075200635376 /* DAQueueItemListViewController.xib */,
+				0A7AF0D518360B2400635376 /* da_data_queue_item.json */,
 			);
 			name = Item;
+			sourceTree = "<group>";
+		};
+		0A7AF0E01836131A00635376 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		0A8C2F44182E33A70080F15F /* TVQuiltLayout */ = {
@@ -901,6 +1016,7 @@
 		0AA9573518279D410098D60C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0A7AF0E01836131A00635376 /* Common */,
 				28FFB62E18322E2D003443D1 /* PopoverTable */,
 				0AEBE5CA1831F2EF00B01A5E /* Table */,
 				F2AB4C26182F6F710067E450 /* Bill */,
@@ -956,6 +1072,14 @@
 				0AB11392183349A10011828A /* DAMyOrderLoginViewController.xib */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		0AB4B3AB1838D4B500D77D7E /* DrinkCell */ = {
+			isa = PBXGroup;
+			children = (
+				0AB4B3AC1838D4CC00D77D7E /* DAQueueDrinkListCell.xib */,
+			);
+			name = DrinkCell;
 			sourceTree = "<group>";
 		};
 		0AEBE52B1831161B00B01A5E /* group */ = {
@@ -1133,6 +1257,9 @@
 				0A7AF0A71835E82900635376 /* Item */,
 				0A7AF0A61835E82300635376 /* Food */,
 				0A7AF0A51835E81800635376 /* Drink */,
+				0A7AF0DB183612EF00635376 /* DAQueueMasterViewController.h */,
+				0A7AF0DC183612EF00635376 /* DAQueueMasterViewController.m */,
+				0A7AF0DD183612EF00635376 /* DAQueueMasterViewController.xib */,
 				F2AB4BF4182DDDB90067E450 /* DAOrderQueueViewController.h */,
 				F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */,
 				F2AB4BF6182DDDB90067E450 /* DAOrderQueueViewController.xib */,
@@ -1174,6 +1301,9 @@
 				47A6ADB5182E2B7D00E80AA1 /* DABillDetailViewCell.h */,
 				47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */,
 				47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */,
+				0AB4B3AE1838DE3700D77D7E /* DAPreferentialViewController.h */,
+				0AB4B3AF1838DE3700D77D7E /* DAPreferentialViewController.m */,
+				0AB4B3B01838DE3700D77D7E /* DAPreferentialViewController.xib */,
 			);
 			name = Bill;
 			sourceTree = "<group>";
@@ -1260,6 +1390,7 @@
 				28FFB655183347CF003443D1 /* DAMyTableConfirmController.xib in Resources */,
 				0AEBE5871831162700B01A5E /* 海蛎三吃.jpg in Resources */,
 				0AEBE5DA1832139700B01A5E /* clipboard@2x.png in Resources */,
+				0A7AF0BB183606B900635376 /* DAQueueItemTableViewController.xib in Resources */,
 				0A924AB21834908E0004C973 /* DAMyItemCell.xib in Resources */,
 				F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */,
 				0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */,
@@ -1284,8 +1415,10 @@
 				0AEBE5D11832052600B01A5E /* top_bg.png in Resources */,
 				F2AB4C0A182E1E120067E450 /* DAOrderGroupViewCell.xib in Resources */,
 				0AEBE5831831162700B01A5E /* 干锅虾.jpg in Resources */,
+				0A7AF0D818360B3A00635376 /* da_data_queue_food.json in Resources */,
 				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
 				0AEBE5B81831162700B01A5E /* 腌黄瓜.jpg in Resources */,
+				0A7AF0DF183612EF00635376 /* DAQueueMasterViewController.xib in Resources */,
 				0AEBE5B11831162700B01A5E /* 头菜炒粉.jpg in Resources */,
 				0A924AAB18348A420004C973 /* DAMyItemListViewController.xib in Resources */,
 				0A07BD591829D2A500A350BC /* type.json in Resources */,
@@ -1297,8 +1430,10 @@
 				0AEBE5DF1832208800B01A5E /* top_bg3.png in Resources */,
 				F2A8CB871831D2D3002AD240 /* sample_table_back.png in Resources */,
 				0A8C2F62182E430F0080F15F /* 松茸清汤海虎翅33.png in Resources */,
+				0A24A2D11838C18D00B340BE /* DAQueueItemListCell.xib in Resources */,
 				0AEBE5A11831162700B01A5E /* 清炒滑子蘑.jpg in Resources */,
 				47A6ADAF182E188C00E80AA1 /* bill.json in Resources */,
+				0A7AF0CF1836076600635376 /* DAQueueFoodListViewController.xib in Resources */,
 				47A6ADB4182E25B100E80AA1 /* DABillDetailViewController.xib in Resources */,
 				0AEBE5BF1831162700B01A5E /* 猪肉锅贴.jpg in Resources */,
 				0AEBE5281831087F00B01A5E /* filter_bg1.png in Resources */,
@@ -1345,20 +1480,26 @@
 				0AEBE5891831162700B01A5E /* 红烧肉.jpg in Resources */,
 				0AEBE5961831162700B01A5E /* 毛血旺.jpg in Resources */,
 				0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */,
+				0A7AF0CA1836075200635376 /* DAQueueItemListViewController.xib in Resources */,
 				0AEBE5B01831162700B01A5E /* 泰椒腊肉.jpg in Resources */,
 				0A8C2F57182E430F0080F15F /* 虫草炖官燕33.png in Resources */,
+				0A7AF0C0183606D300635376 /* DAQueueFoodTableViewController.xib in Resources */,
 				0AEBE5901831162700B01A5E /* 老汤炖鸡.jpg in Resources */,
+				0A7AF0AC183600C900635376 /* DADrinkQueueViewController.xib in Resources */,
 				0AEBE5C91831D69000B01A5E /* DARemarkPopoverViewController.xib in Resources */,
 				0A1530C0182FD4ED00A13EB8 /* mask.png in Resources */,
 				0AEBE5AC1831162700B01A5E /* 水果小凉菜.jpg in Resources */,
 				0AEBE58F1831162700B01A5E /* 捞汁海参.jpg in Resources */,
 				0AEBE5BC1831162700B01A5E /* 炸蚕豆.jpg in Resources */,
+				0A7AF0C51836070000635376 /* DAQueueDrinkTableViewController.xib in Resources */,
 				0AEBE5761831162700B01A5E /* 鲅鱼饼子29元.jpg in Resources */,
 				47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */,
+				0A7AF0B6183600EE00635376 /* DAItemViewController.xib in Resources */,
 				0A07BD6E182A031000A350BC /* cai_2.png in Resources */,
 				0AEBE5821831162700B01A5E /* 干锅千叶豆腐.jpg in Resources */,
 				0AB113981833AC040011828A /* chazi1.png in Resources */,
 				0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */,
+				0A7AF0D618360B2400635376 /* da_data_queue_item.json in Resources */,
 				0AEBE5A31831162700B01A5E /* 清炒杏仁.jpg in Resources */,
 				F2AB4C22182E273F0067E450 /* 玉米小炒.jpg in Resources */,
 				0AEBE5991831162700B01A5E /* 面包肉松.jpg in Resources */,
@@ -1371,9 +1512,12 @@
 				0AEBE5881831162700B01A5E /* 红烧大连小鲍鱼.jpg in Resources */,
 				0AEBE59C1831162700B01A5E /* 南瓜饼.jpg in Resources */,
 				F2AB4BF8182DDDB90067E450 /* DAOrderQueueViewController.xib in Resources */,
+				0A7AF0DA18360B5000635376 /* da_data_queue_drink.json in Resources */,
+				0A7AF0B1183600E400635376 /* DAFoodViewController.xib in Resources */,
 				0AEBE58B1831162700B01A5E /* 家常豆腐.jpg in Resources */,
 				0AEBE5CE1831FFCB00B01A5E /* newspaper-mini.png in Resources */,
 				0AEBE5241831027600B01A5E /* price_tag.png in Resources */,
+				0A7AF0D41836077B00635376 /* DAQueueDrinkListViewController.xib in Resources */,
 				0AEBE5D718320B9100B01A5E /* price_mask1.png in Resources */,
 				0AEBE5861831162700B01A5E /* 怪味牛肉.jpg in Resources */,
 				0A5D289C182C6EFF00847578 /* DAMyLoginViewController.xib in Resources */,
@@ -1391,7 +1535,9 @@
 				0AB113961833770F0011828A /* Settings.bundle in Resources */,
 				286797AD1835027D0032BC72 /* DAMyTableReservationController.xib in Resources */,
 				0AEBE59F1831162700B01A5E /* 培根卷鲜菇.jpg in Resources */,
+				0AB4B3B21838DE3700D77D7E /* DAPreferentialViewController.xib in Resources */,
 				0AEBE5D5183209A500B01A5E /* price_mask.png in Resources */,
+				0A24A2D31838C66100B340BE /* DAQueueTableCell.xib in Resources */,
 				0A8C2F5D182E430F0080F15F /* 鹿鞭烧辽参33.png in Resources */,
 				0A5D2835182B6E2F00847578 /* table1.png in Resources */,
 				0A8C2F56182E430F0080F15F /* 虫草炖官燕12.png in Resources */,
@@ -1411,6 +1557,7 @@
 				0AEBE57C1831162700B01A5E /* 刺身拼盘.jpg in Resources */,
 				0AEBE58D1831162700B01A5E /* 烤鸡.jpg in Resources */,
 				0A07BD0B1828ECF800A350BC /* DAMyFilterViewController.xib in Resources */,
+				0AB4B3AD1838D4CC00D77D7E /* DAQueueDrinkListCell.xib in Resources */,
 				0AEBE5B61831162700B01A5E /* 香煎猪五花.jpg in Resources */,
 				0AEBE5CF1831FFCB00B01A5E /* newspaper-mini@2x.png in Resources */,
 				0A07BD061828EC1B00A350BC /* DAMyOrderViewController.xib in Resources */,
@@ -1461,12 +1608,15 @@
 				0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */,
 				0AEBE5C31831C21300B01A5E /* DAMyMenuBookPopupController.m in Sources */,
 				0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */,
+				0A7AF0BA183606B900635376 /* DAQueueItemTableViewController.m in Sources */,
 				286797B5183502E40032BC72 /* DAMyTableReservationController.m in Sources */,
 				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
 				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
 				F2AB4C0D182E1E2B0067E450 /* DAOrderGroupViewCell.m in Sources */,
+				0A7AF0BF183606D300635376 /* DAQueueFoodTableViewController.m in Sources */,
 				0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */,
+				0A7AF0AB183600C900635376 /* DADrinkQueueViewController.m in Sources */,
 				28FFB64C18332272003443D1 /* NSString+Util.m in Sources */,
 				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
 				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
@@ -1475,15 +1625,18 @@
 				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
+				0A7AF0CE1836076600635376 /* DAQueueFoodListViewController.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
 				0A5D289B182C6EFF00847578 /* DAMyLoginViewController.m in Sources */,
 				28FFB64B18332272003443D1 /* NSNumber+Util.m in Sources */,
 				0A5D288F182BD03600847578 /* MJPopupBackgroundView.m in Sources */,
 				28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */,
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
+				0A7AF0B5183600EE00635376 /* DAItemViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
 				0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */,
 				28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */,
+				0A7AF0C91836075200635376 /* DAQueueItemListViewController.m in Sources */,
 				47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */,
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,
 				0A07BD681829DC8100A350BC /* MSGridView.m in Sources */,
@@ -1491,24 +1644,29 @@
 				0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */,
 				28414E9918349EFC009210AF /* DAAnimation.m in Sources */,
 				0A07BD051828EC1B00A350BC /* DAMyOrderViewController.m in Sources */,
+				0A7AF0B0183600E400635376 /* DAFoodViewController.m in Sources */,
 				0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */,
 				0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */,
 				28FFB64518332272003443D1 /* DADelegateUtil.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
+				0AB4B3B11838DE3700D77D7E /* DAPreferentialViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */,
 				0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
 				28FFB64718332272003443D1 /* DAImageUtil.m in Sources */,
 				0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */,
+				0A7AF0C41836070000635376 /* DAQueueDrinkTableViewController.m in Sources */,
 				28FFB650183322B2003443D1 /* NSData+Base64.m in Sources */,
 				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
 				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
+				0A7AF0DE183612EF00635376 /* DAQueueMasterViewController.m in Sources */,
 				0AEBE5C81831D69000B01A5E /* DARemarkPopoverViewController.m in Sources */,
 				0A07BD76182A0E7B00A350BC /* DAOrderCell.m in Sources */,
 				F2AB4C06182E11380067E450 /* DAOrderDetailViewCell.m in Sources */,
 				F2AB4C02182E03480067E450 /* DAOrderGroupViewController.m in Sources */,
 				F2AB4BFD182E030A0067E450 /* DAOrderDetailViewController.m in Sources */,
+				0A7AF0D31836077B00635376 /* DAQueueDrinkListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

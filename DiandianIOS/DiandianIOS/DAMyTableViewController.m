@@ -14,6 +14,7 @@
 #import "UIViewController+MJPopupViewController.h"
 #import "DAMyOrderQueueViewController.h"
 #import "DABillViewController.h"
+#import "DAQueueMasterViewController.h"
 #import <TribeSDK/DAMyTable.h>
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate>
@@ -194,7 +195,7 @@
 }
 
 - (IBAction)showOrderQueueTouched:(id)sender {
-    DAMyOrderQueueViewController *viewController = [[DAMyOrderQueueViewController alloc] initWithNibName:@"DAMyOrderQueueViewController" bundle:nil];
+    DAQueueMasterViewController *viewController = [[DAQueueMasterViewController alloc] initWithNibName:@"DAQueueMasterViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 
 }

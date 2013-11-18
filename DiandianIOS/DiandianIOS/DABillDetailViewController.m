@@ -103,6 +103,11 @@
     
     return nil;
 }
+- (IBAction)cancelTouched:(id)sender {
+    if (self.chanelBlock) {
+        self.chanelBlock();
+    }
+}
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
