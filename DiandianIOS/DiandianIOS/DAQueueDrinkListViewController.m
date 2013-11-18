@@ -61,13 +61,13 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     NSDictionary *row = [dataList objectAtIndex:indexPath.row];
     
-//    UIImageView *imgItem = (UIImageView *)[cell viewWithTag:10];
-//    imgItem.image = [UIImage imageNamed:[row objectForKey:@"image"]];
-//    UILabel *lblName = (UILabel *)[cell viewWithTag:11];
-//    lblName.text = [row objectForKey:@"name"];
-//    UILabel *lblWaitingTime = (UILabel *)[cell viewWithTag:12];
-//    lblWaitingTime.text = [row objectForKey:@"waitingtime"];
-    
+
+    UILabel *lblName = (UILabel *)[cell viewWithTag:10];
+    lblName.text = [row objectForKey:@"name"];
+    UILabel *lblWaitingTime = (UILabel *)[cell viewWithTag:11];
+    lblWaitingTime.text = [row objectForKey:@"waitingtime"];
+    UILabel *lblAmount = (UILabel *)[cell viewWithTag:12];
+    lblAmount.text = [row objectForKey:@"amount"];
     
     return cell;
 }
@@ -79,7 +79,7 @@
 }
 
 - (void)loadFromFile {
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"queue_detail" ofType:@"json"];
+    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"queue_drink" ofType:@"json"];
     NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
     
     NSError *anError = nil;

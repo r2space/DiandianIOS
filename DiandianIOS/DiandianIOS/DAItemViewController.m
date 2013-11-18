@@ -12,7 +12,11 @@
 #import "DAQueueItemListViewController.h"
 #import "DAOrderGroupViewController.h"
 
+static DAQueueItemListViewController *vc;
+static DAQueueItemTableViewController *vct;
+
 @interface DAItemViewController ()
+
 
 @end
 
@@ -30,6 +34,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    vct = [[DAQueueItemTableViewController alloc] initWithNibName:@"DAQueueItemTableViewController" bundle:nil];
+    vc = [[DAQueueItemListViewController alloc] initWithNibName:@"DAQueueItemListViewController" bundle:nil];
+    
     [self initLayer];
     [self initItemList];
     [self initTableList];
@@ -40,18 +47,26 @@
 
 -(void)initItemList
 {
-    
-    DAQueueItemListViewController *vc = [[DAQueueItemListViewController alloc] initWithNibName:@"DAQueueItemListViewController" bundle:nil];
     vc.view.frame = self.viewItemlist.frame;
+    vc.selectItemBlock = ^(NSString *itemId,NSString *tableNO){
+        NSLog(@"itemId : %@",itemId  );
+        NSLog(@"tableNO : %@",tableNO  );
+        vct.curItemId = itemId;
+        vct.curTableNO = tableNO;
+
+        [vct filterTable];
+    };
     [self addChildViewController:vc];
     [self.viewItemlist addSubview:vc.view];
+    
 }
 
 -(void)initTableList
 {
-    
-    DAQueueItemTableViewController *vct = [[DAQueueItemTableViewController alloc] initWithNibName:@"DAQueueItemTableViewController" bundle:nil];
     vct.view.frame = CGRectMake(834, 10, 160.0, 668.0);
+    vct.selectTableBlock = ^(NSString *itemId,NSString *tableNO){
+        [vc filterItem:itemId tableNO:tableNO];
+    };
     [self addChildViewController:vct];
     [self.view addSubview:vct.view];
 }

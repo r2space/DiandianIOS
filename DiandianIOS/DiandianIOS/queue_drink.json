@@ -1,0 +1,41 @@
+ [
+  {
+  "drinkId" : "1001",
+  "name": "青岛啤酒",
+  "table": "004",
+  "amount": "12",
+  "waitingtime": "12:10"
+  },
+  {
+  "drinkId" : "1002",
+  "name": "雪花啤酒",
+  "table": "004",
+  "ticket": "58",
+  "amount": "6",
+  "waitingtime": "12:10"
+  },
+  {
+  "drinkId" : "1003",
+  "name": "勇闯天涯",
+  "table": "005",
+  "ticket": "58",
+  "amount": "100",
+  "waitingtime": "12:10"
+  },
+  {
+  "drinkId" : "1004",
+  "name": "米饭",
+  "table": "001",
+  "ticket": "58",
+  "amount": "15",
+  "waitingtime": "12:01"
+  },
+  {
+  "drinkId" : "1005",
+  "name": "玉米",
+  "table": "002",
+  "ticket": "58",
+  "amount": "100",
+  "waitingtime": "12:00"
+  }
+  ]

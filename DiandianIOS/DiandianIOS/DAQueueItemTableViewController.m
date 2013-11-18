@@ -81,8 +81,31 @@
     return 160;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.curItemId.length > 0 && self.curTableNO.length > 0) {
+        self.selectTableBlock(self.curItemId,self.curTableNO);
+        self.curItemId = @"";
+        self.curTableNO = @"";
+        [self loadFromFile];
+    }
+    
+}
 
-
+- (void)filterTable
+{
+    [self loadFromFile];
+    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
+    for (NSDictionary *d in dataList){
+        NSString *disTableNo = [d objectForKey:@"table"];
+        if ([self.curTableNO isEqualToString:disTableNo]) {
+            [tmpList addObject:d];
+        }
+        
+    }
+    dataList = [[NSArray alloc] initWithArray:tmpList];
+    [self.tableView reloadData];
+}
 
 - (void)loadFromFile {
     NSString *pathString = [[NSBundle mainBundle] pathForResource:@"queue_group" ofType:@"json"];
@@ -100,5 +123,6 @@
     dataList = [[NSArray alloc] initWithArray:tmpList];
     [self.tableView reloadData];
 }
+
 
 @end

@@ -12,7 +12,9 @@
 #import "DAPreferentialViewController.h"
 
 @interface DABillViewController ()
-
+{
+    NSMutableArray *btnList;
+}
 @end
 
 @implementation DABillViewController
@@ -52,6 +54,32 @@
     }
 
     [self reload];
+    [self initTopmenu];
+}
+
+- (void) initTopmenu
+{
+    self.viewTopmenuLabel.layer.cornerRadius = 15.0;
+    self.viewTopmenuLabel.layer.masksToBounds = YES;
+    
+    
+    self.viewTopmenu.layer.shadowColor = UIColor.blackColor.CGColor;
+    self.viewTopmenu.layer.shadowRadius = 2;
+    self.viewTopmenu.layer.shadowOpacity = 0.6;
+    self.viewTopmenu.layer.shadowOffset = CGSizeMake(0, 1);
+    
+    btnList =  [[NSMutableArray alloc] init];
+    [btnList addObject:[self.view viewWithTag:100]];
+    [btnList addObject:[self.view viewWithTag:201]];
+    
+    [btnList addObject:[self.view viewWithTag:203]];
+    
+    for (UIButton *btn in btnList) {
+        btn.layer.shadowColor = UIColor.blackColor.CGColor;
+        btn.layer.shadowRadius = 2;
+        btn.layer.shadowOpacity = 0.6;
+        btn.layer.shadowOffset = CGSizeMake(0, 1);
+    }
     
 }
 

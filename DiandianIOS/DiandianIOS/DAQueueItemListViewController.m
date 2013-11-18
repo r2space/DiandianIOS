@@ -11,6 +11,8 @@
 @interface DAQueueItemListViewController ()
 {
     NSArray *dataList;
+    NSIndexPath *oldIndexPath;
+    UICollectionViewCell * oldcell;
 }
 @end
 
@@ -69,7 +71,7 @@
     lblName.text = [row objectForKey:@"name"];
     UILabel *lblWaitingTime = (UILabel *)[cell viewWithTag:12];
     lblWaitingTime.text = [row objectForKey:@"waitingtime"];
-    
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -77,8 +79,38 @@
 {
     NSDictionary *row = [dataList objectAtIndex:indexPath.row];
     NSLog(@"%@", row);
+    NSString *tableNO = [row objectForKey:@"table"];
+    NSString *name = [row objectForKey:@"name"];
+    self.selectItemBlock(name,tableNO);
+    
+    NSArray *cells = [self.collectionView visibleCells];
+    for (UICollectionViewCell * cObj in cells) {
+        cObj.backgroundColor = [UIColor clearColor];
+    }
+
+    UICollectionViewCell * cell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor darkGrayColor];
+}
+
+#pragma mark --UICollectionViewDelegate
+
+//返回这个UICollectionView是否可以被选择
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return YES;
     
 }
+
+-(void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+//    NSArray *cells =  [collectionView visibleCells];
+//    for (UICollectionViewCell *cobj in cells ) {
+//        cobj.backgroundColor = [UIColor clearColor];
+//        
+//    }
+}
+
 
 - (void)loadFromFile {
     NSString *pathString = [[NSBundle mainBundle] pathForResource:@"queue_detail" ofType:@"json"];
@@ -96,5 +128,33 @@
     dataList = [[NSArray alloc] initWithArray:tmpList];
     [self.collectionView reloadData];
 }
+
+
+- (void)filterItem:(NSString *)itemId tableNO:(NSString *)tableNo
+{
+    
+    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
+    for (NSDictionary *d in dataList){
+        NSString *table = [d objectForKey:@"table"];
+        NSString *name =  [d objectForKey:@"name"];
+        if ([table isEqualToString:tableNo] && [name isEqualToString:itemId]) {
+            
+        } else {
+            [tmpList addObject:d];
+        }
+        
+    }
+    dataList = [[NSArray alloc] initWithArray:tmpList];
+    [self.collectionView reloadData];
+    
+    
+    
+}
+
+
+
+
+
+
 
 @end
