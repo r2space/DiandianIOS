@@ -9,14 +9,17 @@
 #import "DAProcessionViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "DAProcessionViewCell.h"
+#import "DAProcession.h"
 
 @interface DAProcessionViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation DAProcessionViewController
 {
     NSMutableArray *dataList;
+    UIViewController *parentVC;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,7 +34,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    UINib *cellNib = [UINib nibWithNibName:@"DAProcessionViewCell" bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAProcessionViewCell"];
+
+    [self loadFromFile];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,9 +51,23 @@
 {
     DAProcessionViewController *vc = [[DAProcessionViewController alloc]initWithNibName:@"DAProcessionViewController" bundle:nil];
     vc.delegate = (id)parentView;
+    vc->parentVC = (id)parentView;
     [parentView  presentPopupViewController:vc animationType:MJPopupViewAnimationFade];
+}
+
+-(void)loadFromFile{
+    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"procession" ofType:@"json"];
+    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
     
-    //parentVC = (id)parentView;
+    NSError *anError = nil;
+    NSArray *items = [NSJSONSerialization JSONObjectWithData:elementsData
+                                                     options:NSJSONReadingAllowFragments
+                                                       error:&anError];
+    dataList = [[NSMutableArray alloc]init];
+    for (NSDictionary *d in items){
+        [dataList addObject: [[DAProcession alloc]initWithDictionary:d]];
+    }
+    [self.tableView reloadData];
 }
 
 - (IBAction)closePopup:(id)sender
@@ -57,10 +78,6 @@
 }
 
 - (IBAction)addProcession:(id)sender {
-}
-- (IBAction)openMyTable:(id)sender {
-}
-- (IBAction)orderFool:(id)sender {
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -76,28 +93,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DAProcessionViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DAProcessionViewCell"];
-    if (cell == nil) {
-        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"DAProcessionViewControll" owner:self options:nil];
-        for(id c in topLevelObjects)
-        {
-            if ([c isKindOfClass:[UITableViewCell class]])
-            {
-                cell=(DAProcessionViewCell *) c;
-                break;
-            }
-        }
-    }
-    
-//    NSDictionary *row = [dataList objectAtIndex:indexPath.row];
-//    cell.imgGroup.image = [UIImage imageNamed:[row objectForKey:@"image"]];
-//    cell.lblName.text = [row objectForKey:@"name"];
-//    cell.lblProcess.text = [row objectForKey:@"process"];
+    [cell initData:[dataList objectAtIndex:indexPath.row] parentViewController:parentVC];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 160;
+    return 43;
 }
 @end

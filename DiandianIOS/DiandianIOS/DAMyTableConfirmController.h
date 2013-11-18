@@ -14,7 +14,6 @@
 @interface DAMyTableConfirmController : UIViewController<DAPopTableViewDelegate, UITextFieldDelegate>
 @property (assign, nonatomic) id <DAMyTableConfirmDelegate>delegate;
 - (IBAction)closePopup:(id)sender;
-- (IBAction)startTable:(id)sender;
 
 + (void) show:(DAMyTable*)thisTable parentView :(UIViewController *) parentView;
 

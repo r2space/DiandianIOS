@@ -142,12 +142,7 @@ UIViewController *parentVC;
         [self.delegate cancelButtonClicked:self];
     }
 }
-- (IBAction)startTable:(id)sender {
-    
-    
-    // TODO: 密码check
 
-}
 //  换桌
 - (IBAction)changeTable:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(changeTable:)]) {
@@ -164,6 +159,7 @@ UIViewController *parentVC;
     [parentVC.navigationController pushViewController:menubookVC animated:YES];
 }
 - (IBAction)backOrder:(id)sender {
+    NSLog(@"fdfas");
 
 }
 - (IBAction)payTheBill:(id)sender {

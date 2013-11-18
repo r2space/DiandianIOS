@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol DAProcessionDelegate;
+@protocol DAProcessionViewDelegate;
 
 @interface DAProcessionViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
-@property (assign, nonatomic) id <DAProcessionDelegate>delegate;
+@property (assign, nonatomic) id <DAProcessionViewDelegate>delegate;
 
 + (void) show:(UIViewController *) parentView;
 @end
 
-@protocol DAProcessionDelegate<NSObject>
+@protocol DAProcessionViewDelegate<NSObject>
 
 - (void)cancelButtonClicked:(DAProcessionViewController*)controller;
-- (void)changeTable:(NSString*)tableId;
+- (void)processionOrderFool:(NSString*)processionId;
+- (void)processionIntoTable:(NSString*)processionId;
 @end

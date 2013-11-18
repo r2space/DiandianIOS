@@ -1,0 +1,38 @@
+[
+ {
+ "processionId": "1001",
+ "num":"1",
+ "numOfPeople":"4",
+ "order":"true"
+ },
+ {
+ "processionId": "1002",
+ "num":"2",
+ "numOfPeople":"6",
+ "order":"true"
+ },
+ {
+ "processionId": "1003",
+ "num":"3",
+ "numOfPeople":"3",
+ "order":"false"
+ },
+ {
+ "processionId": "1004",
+ "num":"4",
+ "numOfPeople":"2",
+ "order":"true"
+ },
+ {
+ "processionId": "1005",
+ "num":"5",
+ "numOfPeople":"2",
+ "order":"false"
+ },
+ {
+ "processionId": "1006",
+ "num":"6",
+ "numOfPeople":"4",
+ "order":"false"
+ }
+]

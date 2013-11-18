@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DAProcessionViewCell : UITableViewCell
-
+#import "DAProcession.h"
+#import "DAPopTableViewController.h"
+#import "DAProcessionViewController.h"
+@interface DAProcessionViewCell : UITableViewCell<DAPopTableViewDelegate, UITextFieldDelegate>
+@property (assign, nonatomic) id <DAProcessionViewDelegate>delegate;
+- (void) initData:(DAProcession*)p parentViewController:(UIViewController*)parent;
 @end

@@ -18,11 +18,13 @@
 #import "DAProcessionViewController.h"
 #import <TribeSDK/DAMyTable.h>
 
-@interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate>
+@interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate>
 {
     MSGridView *gridView;
     NSMutableArray *dataList;
+    BOOL isTableFlicker;
     BOOL isStartChangeTable;
+    BOOL isProcessionIntoTable;
     NSString * changeTableId;
 }
 @end
@@ -39,6 +41,9 @@
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyTableViewCell"];
     
     self.navigationController.navigationBarHidden = YES;
+    
+    isTableFlicker = false;
+    isProcessionIntoTable = false;
     
     [self loadFromFile];
 }
@@ -91,11 +96,6 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    
-    // we're going to use a custom UICollectionViewCell, which will hold an image and its label
-    //
-    
-    
     NSString *cellIdentifier ;
     
     cellIdentifier = @"DAMyTableViewCell";
@@ -127,7 +127,7 @@
         cell.viewMask.hidden = NO;
     }
     // 设置换桌的动画效果
-    if (isStartChangeTable && [@"empty" isEqualToString:t.state]) {
+    if (isTableFlicker && [@"empty" isEqualToString:t.state]) {
         [DAAnimation addFlickerShadow:cell.imgTable shadowColor:[UIColor greenColor] shadowRadius:5.0];
     } else {
         [DAAnimation removeFlickerShadow:cell.imgTable];
@@ -144,34 +144,49 @@
     if (isStartChangeTable) {
         if ([@"empty" isEqualToString:t.state]) {
             DAMyTable *fromT = [self getDataByTableId:changeTableId];
-            
-  //          NSString * msg = [NSString ]
-            
             [fromT swap:t];
-            
+
             isStartChangeTable = false;
             [self setTableFlicker:false];
         }
         
         return;
-    }
-    
-    if ([@"empty" isEqualToString:t.state]) {
-        [DAMyLoginViewController show: t parentView:self ];
+    } else if (isProcessionIntoTable) {
+        t.state = @"eating";
+
+        isProcessionIntoTable = false;
+        [self setTableFlicker:false];
+        return;
     } else {
-        [DAMyTableConfirmController show: t parentView:self ];
+        if ([@"empty" isEqualToString:t.state]) {
+            [DAMyLoginViewController show: t parentView:self ];
+        } else {
+            [DAMyTableConfirmController show: t parentView:self ];
+        }
     }
     
 }
 - (void)changeTable:(NSString *)tableId
 {
     changeTableId = tableId;
+    isStartChangeTable = true;
     [self setTableFlicker:YES];
 }
 - (void) setTableFlicker:(BOOL)enabled
 {
-    isStartChangeTable = enabled;
+    isTableFlicker = enabled;
     [self.collectionView reloadItemsAtIndexPaths:self.collectionView.indexPathsForVisibleItems];
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+}
+
+- (void)processionIntoTable:(NSString *)processionId
+{
+    isProcessionIntoTable = true;
+    [self setTableFlicker:true];
+}
+- (void)processionOrderFool:(NSString *)processionId
+{
+    
 }
 
 - (void)didReceiveMemoryWarning

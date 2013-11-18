@@ -238,6 +238,9 @@
 		2886BAFD18360F5800A496AC /* DAProcessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886BAFB18360F5800A496AC /* DAProcessionViewController.m */; };
 		2886BAFE18360F5800A496AC /* DAProcessionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2886BAFC18360F5800A496AC /* DAProcessionViewController.xib */; };
 		2886BB011836250D00A496AC /* DAProcessionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886BB001836250D00A496AC /* DAProcessionViewCell.m */; };
+		2886BB031839ABBE00A496AC /* procession.json in Resources */ = {isa = PBXBuildFile; fileRef = 2886BB021839ABBE00A496AC /* procession.json */; };
+		2886BB071839AD8100A496AC /* DAProcession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886BB061839AD8100A496AC /* DAProcession.m */; };
+		2886BB091839F15000A496AC /* DAProcessionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2886BB081839F15000A496AC /* DAProcessionViewCell.xib */; };
 		28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */; };
 		28FFB62A18322E20003443D1 /* DAPopTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28FFB62418322E20003443D1 /* DAPopTableView.storyboard */; };
 		28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB62618322E20003443D1 /* DAPopTableViewCell.m */; };
@@ -588,6 +591,10 @@
 		2886BAFC18360F5800A496AC /* DAProcessionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAProcessionViewController.xib; sourceTree = "<group>"; };
 		2886BAFF1836250D00A496AC /* DAProcessionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAProcessionViewCell.h; sourceTree = "<group>"; };
 		2886BB001836250D00A496AC /* DAProcessionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAProcessionViewCell.m; sourceTree = "<group>"; };
+		2886BB021839ABBE00A496AC /* procession.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = procession.json; sourceTree = "<group>"; };
+		2886BB051839AD8100A496AC /* DAProcession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAProcession.h; sourceTree = "<group>"; };
+		2886BB061839AD8100A496AC /* DAProcession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAProcession.m; sourceTree = "<group>"; };
+		2886BB081839F15000A496AC /* DAProcessionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAProcessionViewCell.xib; sourceTree = "<group>"; };
 		28C97A301828D86A0099FE4A /* DAOpenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOpenTableViewCell.h; sourceTree = "<group>"; };
 		28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOpenTableViewCell.m; sourceTree = "<group>"; };
 		28FFB62418322E20003443D1 /* DAPopTableView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DAPopTableView.storyboard; path = DiandianIOS/DAPopTableView.storyboard; sourceTree = SOURCE_ROOT; };
@@ -769,6 +776,7 @@
 				47A6ADAE182E188C00E80AA1 /* bill.json */,
 				F2AB4C16182E26710067E450 /* queue_detail.json */,
 				F2AB4C18182E26960067E450 /* queue_group.json */,
+				2886BB021839ABBE00A496AC /* procession.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -976,6 +984,7 @@
 				0A07BD571829D27E00A350BC /* Resources */,
 				0A07BD4D1829CB3800A350BC /* Thirdparty */,
 				0A07BD6F182A0A0500A350BC /* Module */,
+				2886BB041839AD1E00A496AC /* Entities */,
 				0AA9573518279D410098D60C /* View */,
 				0AA9570718274DCA0098D60C /* DAAppDelegate.h */,
 				0AA9570818274DCA0098D60C /* DAAppDelegate.m */,
@@ -1191,6 +1200,7 @@
 				2886BAFC18360F5800A496AC /* DAProcessionViewController.xib */,
 				2886BAFF1836250D00A496AC /* DAProcessionViewCell.h */,
 				2886BB001836250D00A496AC /* DAProcessionViewCell.m */,
+				2886BB081839F15000A496AC /* DAProcessionViewCell.xib */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -1205,6 +1215,15 @@
 				0AEBE5D91832139700B01A5E /* clipboard.png */,
 			);
 			name = icon;
+			sourceTree = "<group>";
+		};
+		2886BB041839AD1E00A496AC /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				2886BB051839AD8100A496AC /* DAProcession.h */,
+				2886BB061839AD8100A496AC /* DAProcession.m */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		28FFB62E18322E2D003443D1 /* PopoverTable */ = {
@@ -1574,11 +1593,13 @@
 				0AB4B3AD1838D4CC00D77D7E /* DAQueueDrinkListCell.xib in Resources */,
 				0AEBE5B61831162700B01A5E /* 香煎猪五花.jpg in Resources */,
 				0AEBE5CF1831FFCB00B01A5E /* newspaper-mini@2x.png in Resources */,
+				2886BB031839ABBE00A496AC /* procession.json in Resources */,
 				0A07BD061828EC1B00A350BC /* DAMyOrderViewController.xib in Resources */,
 				0AEBE57A1831162700B01A5E /* 炒鳝片.jpg in Resources */,
 				0AEBE57B1831162700B01A5E /* 炒猪肠.jpg in Resources */,
 				0AEBE58C1831162700B01A5E /* 金枪鱼刺身.jpg in Resources */,
 				0AEBE5A91831162700B01A5E /* 肉丸子.jpg in Resources */,
+				2886BB091839F15000A496AC /* DAProcessionViewCell.xib in Resources */,
 				0A9DA5C61828766200037E73 /* DARootView.storyboard in Resources */,
 				0AEBE5AB1831162700B01A5E /* 蔬菜汤.jpg in Resources */,
 				0A8C2F5C182E430F0080F15F /* 鹿鞭烧辽参31.png in Resources */,
@@ -1639,6 +1660,7 @@
 				28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */,
 				0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */,
 				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
+				2886BB071839AD8100A496AC /* DAProcession.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
 				0A7AF0CE1836076600635376 /* DAQueueFoodListViewController.m in Sources */,
