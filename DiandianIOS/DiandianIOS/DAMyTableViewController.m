@@ -15,6 +15,7 @@
 #import "DAMyOrderQueueViewController.h"
 #import "DABillViewController.h"
 #import "DAQueueMasterViewController.h"
+#import "DAProcessionViewController.h"
 #import <TribeSDK/DAMyTable.h>
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate>
@@ -182,6 +183,9 @@
 
 - (IBAction)onReturnTouched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)showProcessionList:(id)sender {
+    [DAProcessionViewController show:self];
 }
 - (IBAction)showBillTouched:(id)sender {
     DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];

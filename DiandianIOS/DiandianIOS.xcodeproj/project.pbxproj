@@ -235,6 +235,9 @@
 		2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */; };
 		286797AD1835027D0032BC72 /* DAMyTableReservationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286797AC1835027D0032BC72 /* DAMyTableReservationController.xib */; };
 		286797B5183502E40032BC72 /* DAMyTableReservationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286797B4183502E40032BC72 /* DAMyTableReservationController.m */; };
+		2886BAFD18360F5800A496AC /* DAProcessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886BAFB18360F5800A496AC /* DAProcessionViewController.m */; };
+		2886BAFE18360F5800A496AC /* DAProcessionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2886BAFC18360F5800A496AC /* DAProcessionViewController.xib */; };
+		2886BB011836250D00A496AC /* DAProcessionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886BB001836250D00A496AC /* DAProcessionViewCell.m */; };
 		28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */; };
 		28FFB62A18322E20003443D1 /* DAPopTableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28FFB62418322E20003443D1 /* DAPopTableView.storyboard */; };
 		28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB62618322E20003443D1 /* DAPopTableViewCell.m */; };
@@ -580,6 +583,11 @@
 		286797AC1835027D0032BC72 /* DAMyTableReservationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableReservationController.xib; sourceTree = "<group>"; };
 		286797B3183502E40032BC72 /* DAMyTableReservationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTableReservationController.h; sourceTree = "<group>"; };
 		286797B4183502E40032BC72 /* DAMyTableReservationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableReservationController.m; sourceTree = "<group>"; };
+		2886BAFA18360F5800A496AC /* DAProcessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAProcessionViewController.h; sourceTree = "<group>"; };
+		2886BAFB18360F5800A496AC /* DAProcessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAProcessionViewController.m; sourceTree = "<group>"; };
+		2886BAFC18360F5800A496AC /* DAProcessionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAProcessionViewController.xib; sourceTree = "<group>"; };
+		2886BAFF1836250D00A496AC /* DAProcessionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAProcessionViewCell.h; sourceTree = "<group>"; };
+		2886BB001836250D00A496AC /* DAProcessionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAProcessionViewCell.m; sourceTree = "<group>"; };
 		28C97A301828D86A0099FE4A /* DAOpenTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOpenTableViewCell.h; sourceTree = "<group>"; };
 		28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOpenTableViewCell.m; sourceTree = "<group>"; };
 		28FFB62418322E20003443D1 /* DAPopTableView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = DAPopTableView.storyboard; path = DiandianIOS/DAPopTableView.storyboard; sourceTree = SOURCE_ROOT; };
@@ -1178,6 +1186,11 @@
 				286797B3183502E40032BC72 /* DAMyTableReservationController.h */,
 				286797B4183502E40032BC72 /* DAMyTableReservationController.m */,
 				286797AC1835027D0032BC72 /* DAMyTableReservationController.xib */,
+				2886BAFA18360F5800A496AC /* DAProcessionViewController.h */,
+				2886BAFB18360F5800A496AC /* DAProcessionViewController.m */,
+				2886BAFC18360F5800A496AC /* DAProcessionViewController.xib */,
+				2886BAFF1836250D00A496AC /* DAProcessionViewCell.h */,
+				2886BB001836250D00A496AC /* DAProcessionViewCell.m */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -1458,6 +1471,7 @@
 				0AEBE5AA1831162700B01A5E /* 砂锅鸡.jpg in Resources */,
 				0AEBE5A61831162700B01A5E /* 清蒸蛇肉.jpg in Resources */,
 				0A8C2F61182E430F0080F15F /* 松茸清汤海虎翅11.png in Resources */,
+				2886BAFE18360F5800A496AC /* DAProcessionViewController.xib in Resources */,
 				0AEBE5A21831162700B01A5E /* 清炒时蔬.jpg in Resources */,
 				0AEBE5931831162700B01A5E /* 凉拌猪耳.jpg in Resources */,
 				0AEBE5911831162700B01A5E /* 凉拌芹菜苗.jpg in Resources */,
@@ -1592,7 +1606,9 @@
 			files = (
 				28FFB64418332272003443D1 /* DADateUtil.m in Sources */,
 				0A5D2890182BD03600847578 /* UIViewController+MJPopupViewController.m in Sources */,
+				2886BB011836250D00A496AC /* DAProcessionViewCell.m in Sources */,
 				28FFB64618332272003443D1 /* DADevice.m in Sources */,
+				2886BAFD18360F5800A496AC /* DAProcessionViewController.m in Sources */,
 				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
 				2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */,
 				28FFB64A18332272003443D1 /* DASettings.m in Sources */,
