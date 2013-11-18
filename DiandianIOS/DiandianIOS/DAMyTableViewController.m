@@ -46,6 +46,18 @@
     isProcessionIntoTable = false;
     
     [self loadFromFile];
+    
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch=[event.allTouches anyObject];
+    if (![touch.view isEqual:self.collectionView]) {
+        isStartChangeTable = NO;
+        isProcessionIntoTable = NO;
+        [self setTableFlicker:false];
+        
+    }
 }
 
 -(void)loadFromFile{
@@ -152,10 +164,13 @@
         
         return;
     } else if (isProcessionIntoTable) {
-        t.state = @"eating";
+        if ([@"empty" isEqualToString:t.state])
+        {
+            t.state = @"eating";
 
-        isProcessionIntoTable = false;
-        [self setTableFlicker:false];
+            isProcessionIntoTable = false;
+            [self setTableFlicker:false];
+        }
         return;
     } else {
         if ([@"empty" isEqualToString:t.state]) {
@@ -186,7 +201,10 @@
 }
 - (void)processionOrderFool:(NSString *)processionId
 {
-    
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+    UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+    [self.navigationController pushViewController:menubookVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
