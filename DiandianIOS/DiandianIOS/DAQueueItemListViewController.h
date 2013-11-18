@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^SelectItemBlock)(NSString *itemId , NSString *tableNO);
+
 @interface DAQueueItemListViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, copy) SelectItemBlock selectItemBlock;
+
+- (void)filterItem:(NSString *)itemId tableNO:(NSString *)tableNo;
 
 @end

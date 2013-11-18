@@ -231,6 +231,7 @@
 		0AEBE5DB1832139700B01A5E /* clipboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5D91832139700B01A5E /* clipboard.png */; };
 		0AEBE5DD183216A000B01A5E /* clipboard1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5DC183216A000B01A5E /* clipboard1.png */; };
 		0AEBE5DF1832208800B01A5E /* top_bg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5DE1832208800B01A5E /* top_bg3.png */; };
+		0AF2C9CD1839DE9400A74B72 /* queue_drink.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AF2C9CC1839DE9400A74B72 /* queue_drink.json */; };
 		28414E9918349EFC009210AF /* DAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28414E9818349EFC009210AF /* DAAnimation.m */; };
 		2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */; };
 		286797AD1835027D0032BC72 /* DAMyTableReservationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286797AC1835027D0032BC72 /* DAMyTableReservationController.xib */; };
@@ -576,6 +577,7 @@
 		0AEBE5D91832139700B01A5E /* clipboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clipboard.png; sourceTree = "<group>"; };
 		0AEBE5DC183216A000B01A5E /* clipboard1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clipboard1.png; sourceTree = "<group>"; };
 		0AEBE5DE1832208800B01A5E /* top_bg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_bg3.png; sourceTree = "<group>"; };
+		0AF2C9CC1839DE9400A74B72 /* queue_drink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queue_drink.json; sourceTree = "<group>"; };
 		28414E9718349EFC009210AF /* DAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAnimation.h; sourceTree = "<group>"; };
 		28414E9818349EFC009210AF /* DAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAnimation.m; sourceTree = "<group>"; };
 		2854672A182BC2A5004CD144 /* DAMyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTableViewCell.h; sourceTree = "<group>"; };
@@ -769,6 +771,7 @@
 				47A6ADAE182E188C00E80AA1 /* bill.json */,
 				F2AB4C16182E26710067E450 /* queue_detail.json */,
 				F2AB4C18182E26960067E450 /* queue_group.json */,
+				0AF2C9CC1839DE9400A74B72 /* queue_drink.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1512,6 +1515,7 @@
 				0A07BD6E182A031000A350BC /* cai_2.png in Resources */,
 				0AEBE5821831162700B01A5E /* 干锅千叶豆腐.jpg in Resources */,
 				0AB113981833AC040011828A /* chazi1.png in Resources */,
+				0AF2C9CD1839DE9400A74B72 /* queue_drink.json in Resources */,
 				0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */,
 				0A7AF0D618360B2400635376 /* da_data_queue_item.json in Resources */,
 				0AEBE5A31831162700B01A5E /* 清炒杏仁.jpg in Resources */,

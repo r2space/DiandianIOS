@@ -17,4 +17,7 @@
 - (IBAction)onBackTouched:(id)sender;
 
 
+@property (weak, nonatomic) IBOutlet UIView *viewTopmenu;
+@property (weak, nonatomic) IBOutlet UILabel *viewTopmenuLabel;
+
 @end
