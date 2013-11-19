@@ -243,7 +243,10 @@
 
 -(void)takeoutOrder:(DATakeout *)takeout
 {
-    
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+    UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+    [self.navigationController pushViewController:menubookVC animated:YES];
 }
 
 - (void)takeoutOrderList:(DATakeout *)takeout
@@ -252,7 +255,9 @@
 }
 -(void)takeoutPay:(DATakeout *)takeout
 {
-    
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
