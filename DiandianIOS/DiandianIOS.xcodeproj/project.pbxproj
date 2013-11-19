@@ -55,6 +55,12 @@
 		0A5D289C182C6EFF00847578 /* DAMyLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */; };
 		0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D289E182C8FE400847578 /* DAOrderRecipeBtn.m */; };
 		0A5D28A1182CA9AA00847578 /* DADetailOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D28A0182CA9AA00847578 /* DADetailOrderCell.xib */; };
+		0A739E62183B019D00AA48C4 /* DAMyBackOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A739E60183B019D00AA48C4 /* DAMyBackOrderViewController.m */; };
+		0A739E63183B019D00AA48C4 /* DAMyBackOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A739E61183B019D00AA48C4 /* DAMyBackOrderViewController.xib */; };
+		0A739E65183B01F800AA48C4 /* DAMyBackOrderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A739E64183B01F800AA48C4 /* DAMyBackOrderViewCell.xib */; };
+		0A739E68183B0A4100AA48C4 /* DAMyBackOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A739E67183B0A4100AA48C4 /* DAMyBackOrderViewCell.m */; };
+		0A739E6E183B244F00AA48C4 /* DrawPatternLockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A739E6B183B244F00AA48C4 /* DrawPatternLockView.m */; };
+		0A739E6F183B244F00AA48C4 /* DrawPatternLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A739E6D183B244F00AA48C4 /* DrawPatternLockViewController.m */; };
 		0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */; };
 		0A7AF0AB183600C900635376 /* DADrinkQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0A9183600C900635376 /* DADrinkQueueViewController.m */; };
 		0A7AF0AC183600C900635376 /* DADrinkQueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0AA183600C900635376 /* DADrinkQueueViewController.xib */; };
@@ -372,6 +378,16 @@
 		0A5D289D182C8FE400847578 /* DAOrderRecipeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderRecipeBtn.h; sourceTree = "<group>"; };
 		0A5D289E182C8FE400847578 /* DAOrderRecipeBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderRecipeBtn.m; sourceTree = "<group>"; };
 		0A5D28A0182CA9AA00847578 /* DADetailOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADetailOrderCell.xib; sourceTree = "<group>"; };
+		0A739E5F183B019D00AA48C4 /* DAMyBackOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyBackOrderViewController.h; sourceTree = "<group>"; };
+		0A739E60183B019D00AA48C4 /* DAMyBackOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyBackOrderViewController.m; sourceTree = "<group>"; };
+		0A739E61183B019D00AA48C4 /* DAMyBackOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyBackOrderViewController.xib; sourceTree = "<group>"; };
+		0A739E64183B01F800AA48C4 /* DAMyBackOrderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyBackOrderViewCell.xib; sourceTree = "<group>"; };
+		0A739E66183B0A4100AA48C4 /* DAMyBackOrderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyBackOrderViewCell.h; sourceTree = "<group>"; };
+		0A739E67183B0A4100AA48C4 /* DAMyBackOrderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyBackOrderViewCell.m; sourceTree = "<group>"; };
+		0A739E6A183B244F00AA48C4 /* DrawPatternLockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawPatternLockView.h; sourceTree = "<group>"; };
+		0A739E6B183B244F00AA48C4 /* DrawPatternLockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawPatternLockView.m; sourceTree = "<group>"; };
+		0A739E6C183B244F00AA48C4 /* DrawPatternLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawPatternLockViewController.h; sourceTree = "<group>"; };
+		0A739E6D183B244F00AA48C4 /* DrawPatternLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawPatternLockViewController.m; sourceTree = "<group>"; };
 		0A7AF0A21835C2E200635376 /* SMVerticalSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMVerticalSegmentedControl.h; sourceTree = "<group>"; };
 		0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMVerticalSegmentedControl.m; sourceTree = "<group>"; };
 		0A7AF0A8183600C900635376 /* DADrinkQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADrinkQueueViewController.h; sourceTree = "<group>"; };
@@ -696,6 +712,7 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0A739E69183B23E500AA48C4 /* DrawPatternLockView */,
 				0A7AF0A11835C2C900635376 /* SMVerticalSegmentedControl */,
 				0A8C2F44182E33A70080F15F /* TVQuiltLayout */,
 				0A5D288A182BD01400847578 /* Popup */,
@@ -868,6 +885,17 @@
 				0A5D288E182BD03600847578 /* UIViewController+MJPopupViewController.m */,
 			);
 			name = Popup;
+			sourceTree = "<group>";
+		};
+		0A739E69183B23E500AA48C4 /* DrawPatternLockView */ = {
+			isa = PBXGroup;
+			children = (
+				0A739E6A183B244F00AA48C4 /* DrawPatternLockView.h */,
+				0A739E6B183B244F00AA48C4 /* DrawPatternLockView.m */,
+				0A739E6C183B244F00AA48C4 /* DrawPatternLockViewController.h */,
+				0A739E6D183B244F00AA48C4 /* DrawPatternLockViewController.m */,
+			);
+			name = DrawPatternLockView;
 			sourceTree = "<group>";
 		};
 		0A7AF0A11835C2C900635376 /* SMVerticalSegmentedControl */ = {
@@ -1204,6 +1232,12 @@
 				2886BAFF1836250D00A496AC /* DAProcessionViewCell.h */,
 				2886BB001836250D00A496AC /* DAProcessionViewCell.m */,
 				2886BB081839F15000A496AC /* DAProcessionViewCell.xib */,
+				0A739E5F183B019D00AA48C4 /* DAMyBackOrderViewController.h */,
+				0A739E60183B019D00AA48C4 /* DAMyBackOrderViewController.m */,
+				0A739E61183B019D00AA48C4 /* DAMyBackOrderViewController.xib */,
+				0A739E66183B0A4100AA48C4 /* DAMyBackOrderViewCell.h */,
+				0A739E67183B0A4100AA48C4 /* DAMyBackOrderViewCell.m */,
+				0A739E64183B01F800AA48C4 /* DAMyBackOrderViewCell.xib */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -1491,6 +1525,7 @@
 				0A8C2F5F182E430F0080F15F /* 秋润雪燕33.png in Resources */,
 				0AEBE5C41831C21300B01A5E /* DAMyMenuBookPopupController.xib in Resources */,
 				0AA533A21828BEE80087EFF1 /* DAMyBookViewController.xib in Resources */,
+				0A739E63183B019D00AA48C4 /* DAMyBackOrderViewController.xib in Resources */,
 				0AEBE5AA1831162700B01A5E /* 砂锅鸡.jpg in Resources */,
 				0AEBE5A61831162700B01A5E /* 清蒸蛇肉.jpg in Resources */,
 				0A8C2F61182E430F0080F15F /* 松茸清汤海虎翅11.png in Resources */,
@@ -1592,6 +1627,7 @@
 				0AB11394183349A10011828A /* DAMyOrderLoginViewController.xib in Resources */,
 				0AEBE5841831162700B01A5E /* 干锅鸭头.jpg in Resources */,
 				0AEBE57C1831162700B01A5E /* 刺身拼盘.jpg in Resources */,
+				0A739E65183B01F800AA48C4 /* DAMyBackOrderViewCell.xib in Resources */,
 				0AEBE58D1831162700B01A5E /* 烤鸡.jpg in Resources */,
 				0A07BD0B1828ECF800A350BC /* DAMyFilterViewController.xib in Resources */,
 				0AB4B3AD1838D4CC00D77D7E /* DAQueueDrinkListCell.xib in Resources */,
@@ -1651,6 +1687,7 @@
 				0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */,
 				0A7AF0BA183606B900635376 /* DAQueueItemTableViewController.m in Sources */,
 				286797B5183502E40032BC72 /* DAMyTableReservationController.m in Sources */,
+				0A739E6E183B244F00AA48C4 /* DrawPatternLockView.m in Sources */,
 				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
 				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
@@ -1662,6 +1699,7 @@
 				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
 				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
 				28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */,
+				0A739E62183B019D00AA48C4 /* DAMyBackOrderViewController.m in Sources */,
 				0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */,
 				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
 				2886BB071839AD8100A496AC /* DAProcession.m in Sources */,
@@ -1673,6 +1711,7 @@
 				28FFB64B18332272003443D1 /* NSNumber+Util.m in Sources */,
 				0A5D288F182BD03600847578 /* MJPopupBackgroundView.m in Sources */,
 				28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */,
+				0A739E68183B0A4100AA48C4 /* DAMyBackOrderViewCell.m in Sources */,
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
 				0A7AF0B5183600EE00635376 /* DAItemViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
@@ -1692,6 +1731,7 @@
 				28FFB64518332272003443D1 /* DADelegateUtil.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
 				0AB4B3B11838DE3700D77D7E /* DAPreferentialViewController.m in Sources */,
+				0A739E6F183B244F00AA48C4 /* DrawPatternLockViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */,
 				0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */,

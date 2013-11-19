@@ -12,6 +12,7 @@
 #import <TribeSDK/DAMyTable.h>
 #import "DAPopTableViewController.h"
 #import "NSString+Util.h"
+#import "DAMyBackOrderViewController.h"
 
 UIViewController *parentVC;
 
@@ -158,10 +159,24 @@ UIViewController *parentVC;
     UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
     [parentVC.navigationController pushViewController:menubookVC animated:YES];
 }
+
 - (IBAction)backOrder:(id)sender {
     NSLog(@"fdfas");
+    UIButton *btn = (UIButton *)sender;
+    DAMyBackOrderViewController *vc = [[DAMyBackOrderViewController alloc] initWithNibName:@"DAMyBackOrderViewController" bundle:nil];
+    
+    NSMutableArray *wList = [NSMutableArray array];
+    for (int i = 0; i < 50; i++) {
+        [wList addObject:[NSString stringWithFormat:@"%d", i]];
+    }
+    
+    
+    self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
+    self.popover.popoverContentSize = CGSizeMake(320, 400);
+    [self.popover presentPopoverFromRect:btn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 
 }
+
 - (IBAction)payTheBill:(id)sender {
     [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];
