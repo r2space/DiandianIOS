@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <TribeSDK/DAMyTable.h>
 
 @interface DAMyTableViewCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *tableTitle;
 @property (strong, nonatomic) IBOutlet UILabel *tableState;
+@property (strong, nonatomic) IBOutlet UILabel *unFinishedCount;
+@property (strong, nonatomic) IBOutlet UILabel *unFinishedCountMask;
 @property (weak, nonatomic) IBOutlet UIImageView *imgTable;
 @property (weak, nonatomic) IBOutlet UIView *viewMask;
 @property (weak, nonatomic) IBOutlet UIView *viewLabel;
 
-- (void)setData:(NSString*)title setState:(NSString*)state;
+- (void)setData:(DAMyTable*)mytable;
 @end

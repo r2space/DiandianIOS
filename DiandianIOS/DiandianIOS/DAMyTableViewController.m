@@ -17,6 +17,7 @@
 #import "DAQueueMasterViewController.h"
 #import "DAProcessionViewController.h"
 #import <TribeSDK/DAMyTable.h>
+#import "NSString+Util.h"
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate>
 {
@@ -46,6 +47,18 @@
     isProcessionIntoTable = false;
     
     [self loadFromFile];
+    
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch=[event.allTouches anyObject];
+    if (![touch.view isEqual:self.collectionView]) {
+        isStartChangeTable = NO;
+        isProcessionIntoTable = NO;
+        [self setTableFlicker:false];
+        
+    }
 }
 
 -(void)loadFromFile{
@@ -103,7 +116,7 @@
     DAMyTableViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     DAMyTable *t = [dataList objectAtIndex:indexPath.row];
-    [cell setData:t.name setState:t.state];
+    [cell setData:t];
     
     //NSString *imageName = [@"eating" isEqualToString:t.state] ? @"sample-table.jpg" : @"sample-table1.jpg";
     cell.imgTable.image = [UIImage imageNamed:@"sample-table.jpg"];
@@ -152,10 +165,13 @@
         
         return;
     } else if (isProcessionIntoTable) {
-        t.state = @"eating";
+        if ([@"empty" isEqualToString:t.state])
+        {
+            t.state = @"eating";
 
-        isProcessionIntoTable = false;
-        [self setTableFlicker:false];
+            isProcessionIntoTable = false;
+            [self setTableFlicker:false];
+        }
         return;
     } else {
         if ([@"empty" isEqualToString:t.state]) {
@@ -186,7 +202,10 @@
 }
 - (void)processionOrderFool:(NSString *)processionId
 {
-    
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+    UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+    [self.navigationController pushViewController:menubookVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

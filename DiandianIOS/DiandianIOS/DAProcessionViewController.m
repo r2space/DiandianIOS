@@ -78,6 +78,26 @@
 }
 
 - (IBAction)addProcession:(id)sender {
+    static NSInteger tempId = 100000;
+    NSInteger num = 0;
+    if (dataList && dataList.count > 0) {
+        DAProcession *lastProcession;
+        lastProcession = [dataList objectAtIndex:(dataList.count - 1)];
+        num = [lastProcession.num integerValue];
+    }
+    
+    DAProcession *p = [[DAProcession alloc]init];
+    p.processionId = [NSString stringWithFormat:@"%d", tempId++];
+    p.num = [NSString stringWithFormat:@"%d", ++num];
+    p.numOfPeople = @"4";
+    p.order = false;
+    
+    [dataList addObject:p];
+    [self.tableView reloadData];
+    
+    // Scroll to botttom
+    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:(dataList.count - 1) inSection:0];
+    [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -96,6 +116,12 @@
     [cell initData:[dataList objectAtIndex:indexPath.row] parentViewController:parentVC];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [dataList removeObjectAtIndex:indexPath.row];
+    [self.tableView reloadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
