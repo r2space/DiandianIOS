@@ -134,10 +134,5 @@
     <resources>
         <image name="sample_table_back.jpg" width="1024" height="768"/>
         <image name="top_bg3.png" width="161" height="44"/>
-        <image name="top_bg3.png" width="161" height="44"/>
-        <image name="top_bg3.png" width="161" height="44"/>
-        <image name="top_bg3.png" width="161" height="44"/>
-        <image name="top_bg3.png" width="161" height="44"/>
-        <image name="top_bg3.png" width="161" height="44"/>
     </resources>
 </document>
