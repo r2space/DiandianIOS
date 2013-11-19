@@ -23,6 +23,7 @@
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate, DATakeoutDelegate>
 {
+    NSMutableArray *btnList ;
     MSGridView *gridView;
     NSMutableArray *dataList;
     BOOL isTableFlicker;
@@ -49,8 +50,38 @@
     isProcessionIntoTable = false;
     
     [self loadFromFile];
+    [self initTopmenu];
+}
+
+- (void) initTopmenu
+{
+    self.topmenuLabel.layer.cornerRadius = 15.0;
+    self.topmenuLabel.layer.masksToBounds = YES;
+    
+    
+    self.topmenuView.layer.shadowColor = UIColor.blackColor.CGColor;
+    self.topmenuView.layer.shadowRadius = 2;
+    self.topmenuView.layer.shadowOpacity = 0.6;
+    self.topmenuView.layer.shadowOffset = CGSizeMake(0, 1);
+    
+    btnList =  [[NSMutableArray alloc] init];
+    [btnList addObject:[self.view viewWithTag:100]];
+    [btnList addObject:[self.view viewWithTag:101]];
+    [btnList addObject:[self.view viewWithTag:200]];
+    [btnList addObject:[self.view viewWithTag:201]];
+    [btnList addObject:[self.view viewWithTag:202]];
+    
+    [btnList addObject:[self.view viewWithTag:203]];
+    
+    for (UIButton *btn in btnList) {
+        btn.layer.shadowColor = UIColor.blackColor.CGColor;
+        btn.layer.shadowRadius = 2;
+        btn.layer.shadowOpacity = 0.6;
+        btn.layer.shadowOffset = CGSizeMake(0, 1);
+    }
     
 }
+
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {

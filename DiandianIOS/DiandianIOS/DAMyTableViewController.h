@@ -15,7 +15,10 @@
 @protocol DATableViewDelegate;
 @interface DAMyTableViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property (weak, nonatomic) IBOutlet UIView *topmenuView;
+@property (weak, nonatomic) IBOutlet UILabel *topmenuLabel;
+
 - (IBAction)onReturnTouched:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *btnMenuList;
 @property (weak, nonatomic) IBOutlet UIButton *btnAccount;
