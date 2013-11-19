@@ -35,7 +35,7 @@
 {
   [super viewDidLoad];
   
-  self.view.backgroundColor = [UIColor darkGrayColor];
+  self.view.backgroundColor = [UIColor whiteColor];
 
   for (int i=0; i<MATRIX_SIZE; i++) {
     for (int j=0; j<MATRIX_SIZE; j++) {
@@ -85,31 +85,40 @@
 
 
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  CGPoint pt = [[touches anyObject] locationInView:self.view];
-  UIView *touched = [self.view hitTest:pt withEvent:event];
-  
-  DrawPatternLockView *v = (DrawPatternLockView*)self.view;
-  [v drawLineFromLastDotTo:pt];
-
-  if (touched!=self.view) {
-    NSLog(@"touched view tag: %d ", touched.tag);
-    
-    BOOL found = NO;
-    for (NSNumber *tag in _paths) {
-      found = tag.integerValue==touched.tag;
-      if (found)
-        break;
+    @try {
+        CGPoint pt = [[touches anyObject] locationInView:self.view];
+        UIView *touched = [self.view hitTest:pt withEvent:event];
+        
+        DrawPatternLockView *v = (DrawPatternLockView*)self.view;
+        [v drawLineFromLastDotTo:pt];
+        
+        if (touched!=self.view) {
+            NSLog(@"touched view tag: %d ", touched.tag);
+            
+            BOOL found = NO;
+            for (NSNumber *tag in _paths) {
+                found = tag.integerValue==touched.tag;
+                if (found)
+                break;
+            }
+            
+            if (found)
+            return;
+            
+            [_paths addObject:[NSNumber numberWithInt:touched.tag]];
+            [v addDotView:touched];
+            
+            UIImageView* iv = (UIImageView*)touched;
+            iv.highlighted = YES;
+        }
     }
-    
-    if (found)
-      return;
+    @catch (NSException *exception) {
 
-    [_paths addObject:[NSNumber numberWithInt:touched.tag]];
-    [v addDotView:touched];
+    }
+    @finally {
 
-    UIImageView* iv = (UIImageView*)touched;
-    iv.highlighted = YES;
-  }
+    }
+  
 
 }
 

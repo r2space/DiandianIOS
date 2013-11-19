@@ -25,42 +25,52 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-  NSLog(@"drawrect...");
-  
-  if (!_trackPointValue)
-    return;
+    NSLog(@"drawrect...");
+    @try {
+        if (!_trackPointValue)
+            return;
 
-  CGContextRef context = UIGraphicsGetCurrentContext();
-  CGContextSetLineWidth(context, 10.0);
-  CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
-  CGFloat components[] = {0.5, 0.5, 0.5, 0.8};
-  CGColorRef color = CGColorCreate(colorspace, components);
-  CGContextSetStrokeColorWithColor(context, color);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetLineWidth(context, 10.0);
+        CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+        CGFloat components[] = {0.5, 0.5, 0.5, 0.8};
+        CGColorRef color = CGColorCreate(colorspace, components);
+        CGContextSetStrokeColorWithColor(context, color);
 
-  CGPoint from;
-  UIView *lastDot;
-  for (UIView *dotView in _dotViews) {
-    from = dotView.center;
-    NSLog(@"drwaing dotview: %@", dotView);
-    NSLog(@"\tdrawing from: %f, %f", from.x, from.y);
+        CGPoint from;
 
-    if (!lastDot)
-      CGContextMoveToPoint(context, from.x, from.y);
-    else
-      CGContextAddLineToPoint(context, from.x, from.y);
-    
-    lastDot = dotView;
-  }
+        UIView *lastDot;
+        for (UIView *dotView in _dotViews) {
+            from = dotView.center;
+            NSLog(@"drwaing dotview: %@", dotView);
+            NSLog(@"\tdrawing from: %f, %f", from.x, from.y);
 
-  CGPoint pt = [_trackPointValue CGPointValue];
-  NSLog(@"\t to: %f, %f", pt.x, pt.y);
-  CGContextAddLineToPoint(context, pt.x, pt.y);
-  
-  CGContextStrokePath(context);
-  CGColorSpaceRelease(colorspace);
-  CGColorRelease(color);
+            if (!lastDot)
+            CGContextMoveToPoint(context, from.x, from.y);
+            else
+            CGContextAddLineToPoint(context, from.x, from.y);
 
-  _trackPointValue = nil;
+            lastDot = dotView;
+        }
+
+        CGPoint pt = [_trackPointValue CGPointValue];
+        NSLog(@"\t to: %f, %f", pt.x, pt.y);
+        CGContextAddLineToPoint(context, pt.x, pt.y);
+
+        CGContextStrokePath(context);
+        CGColorSpaceRelease(colorspace);
+        CGColorRelease(color);
+
+        _trackPointValue = nil;
+
+    }
+    @catch (NSException *exception) {
+        [self clearDotViews];
+    }
+    @finally {
+        _trackPointValue = nil;
+    }
+
 }
 
 

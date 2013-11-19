@@ -11,13 +11,15 @@
 @interface DAMyOrderLoginViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *labelName;
 @property (weak, nonatomic) IBOutlet UITextField *labelPassword;
+@property (weak, nonatomic) IBOutlet UILabel *labelStatus;
 
+@property (weak, nonatomic) IBOutlet UIView *drawpassword;
 
 @property (assign, nonatomic) id <DAMyOrderLoginDelegate>delegate;
 
 
 
-- (IBAction)fdfd:(id)sender;
+
 
 
 @end
