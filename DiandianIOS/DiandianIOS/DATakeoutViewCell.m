@@ -100,7 +100,7 @@
         vc.delegate = self;
         
         self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
-        self.popover.popoverContentSize = CGSizeMake(100, 400);
+        self.popover.popoverContentSize = CGSizeMake(100, 88);
         [self.popover presentPopoverFromRect:textField.frame inView: self permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
         return NO;
     }
@@ -115,7 +115,7 @@
         vc.delegate = self;
         
         self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
-        self.popover.popoverContentSize = CGSizeMake(100, 400);
+        self.popover.popoverContentSize = CGSizeMake(100, 88);
         [self.popover presentPopoverFromRect:textField.frame inView: self permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
         return NO;
     }
@@ -125,10 +125,21 @@
 - (void)popTableViewSelectRow:(NSString *)tag value:(NSString *)value
 {
     if ([@"type" isEqualToString:tag]) {
-        self.type.text = value;
+        if ([@"打包" isEqualToString:value]) {
+            takeout.type = @"takeout";
+        } else {
+            takeout.type = @"deliver";
+        }
+        [self showType];
+        [self showState];
     }
     if ([@"state" isEqualToString:tag]) {
-        self.state.text = value;
+        if ([@"送餐中" isEqualToString:value]) {
+            takeout.state = @"delivering";
+        } else {
+            takeout.state = @"nothing";
+        }
+        [self showState];
     }
     
     [self.popover dismissPopoverAnimated:YES];
