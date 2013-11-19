@@ -16,10 +16,12 @@
 #import "DABillViewController.h"
 #import "DAQueueMasterViewController.h"
 #import "DAProcessionViewController.h"
+#import "DATakeoutViewController.h"
+#import "DATakeoutViewController.h"
 #import <TribeSDK/DAMyTable.h>
 #import "NSString+Util.h"
 
-@interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate>
+@interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate, DATakeoutDelegate>
 {
     MSGridView *gridView;
     NSMutableArray *dataList;
@@ -208,6 +210,20 @@
     [self.navigationController pushViewController:menubookVC animated:YES];
 }
 
+-(void)takeoutOrder:(DATakeout *)takeout
+{
+    
+}
+
+- (void)takeoutOrderList:(DATakeout *)takeout
+{
+    
+}
+-(void)takeoutPay:(DATakeout *)takeout
+{
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -220,6 +236,9 @@
 }
 - (IBAction)showProcessionList:(id)sender {
     [DAProcessionViewController show:self];
+}
+- (IBAction)showTakeoutList:(id)sender {
+    [DATakeoutViewController show:self];
 }
 - (IBAction)showBillTouched:(id)sender {
     DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];

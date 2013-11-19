@@ -1,0 +1,50 @@
+ [
+  {
+  "takeoutId":"1001" ,
+  "num":"1"    ,
+  "type": "takeout",
+  "phoneNumber": "",
+  "state": "nothing",
+  "menuId": "101"
+  },
+  {
+  "takeoutId":"1002" ,
+  "num":"2"    ,
+  "type": "takeout",
+  "phoneNumber": "",
+  "state": "nothing",
+  "menuId": "101"
+  },
+  {
+  "takeoutId":"1003" ,
+  "num":"3"    ,
+  "type": "deliver",
+  "phoneNumber": "18888888888",
+  "state": "delivering",
+  "menuId": "101"
+  },
+  {
+  "takeoutId":"1004" ,
+  "num":"4"    ,
+  "type": "deliver",
+  "phoneNumber": "18888888888",
+  "state": "delivering",
+  "menuId": "101"
+  },
+  {
+  "takeoutId":"1005" ,
+  "num":"5"    ,
+  "type": "deliver",
+  "phoneNumber": "18888888888",
+  "state": "nothing",
+  "menuId": "101"
+  },
+  {
+  "takeoutId":"1006" ,
+  "num":"6"    ,
+  "type": "takeout",
+  "phoneNumber": "",
+  "state": "nothing",
+  "menuId": "101"
+  },
+]
