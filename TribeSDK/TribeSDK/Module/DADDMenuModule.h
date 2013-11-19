@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "DAAFHttpClient.h"
+#import "DAMyMenu.h"
+#import "DAMyMenuList.h"
 
-@interface DAMenuModule : NSObject
+@interface DADDMenuModule : NSObject
 
+
+-(void) getList:(void (^)(NSError *err, DAMyMenuList * list))callback;
 @end

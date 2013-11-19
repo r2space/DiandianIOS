@@ -74,6 +74,9 @@
     for (NSDictionary *aModuleDict in parsedElements){
         [menuList addObject:[[DAMyMenu alloc ]initWithDictionary:aModuleDict]];
     }
+//    [[DADDMenuModule alloc]getList:^(NSError *err, DAMyMenuList *list) {
+//        NSLog(@"list  %@"  ,list);
+//    }];
 }
 
 

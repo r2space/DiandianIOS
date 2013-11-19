@@ -19,8 +19,8 @@
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        _sharedClient = [[DAAFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[DACommon getServerAddress]]];
-        
+//        _sharedClient = [[DAAFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[DACommon getServerAddress]]];
+        _sharedClient = [[DAAFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[DACommon getServerAddress]]];        
         // 设定当前网络状态
         _sharedClient.isReachable = [Reachability reachabilityWithHostname:[DACommon getServerHost]].isReachable;
         
