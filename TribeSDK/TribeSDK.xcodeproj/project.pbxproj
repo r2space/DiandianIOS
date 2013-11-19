@@ -38,6 +38,8 @@
 		0A1DBAB4182B2AC50045787A /* DAMyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1DBAB2182B2AC50045787A /* DAMyMenu.m */; };
 		0A641A4517E99B8A00002CE7 /* DAYiWorkstationModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A641A4317E99B8A00002CE7 /* DAYiWorkstationModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A641A4617E99B8A00002CE7 /* DAYiWorkstationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A641A4417E99B8A00002CE7 /* DAYiWorkstationModule.m */; };
+		0A739E5D183B011100AA48C4 /* DADDMenuModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A739E5B183B011100AA48C4 /* DADDMenuModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A739E5E183B011100AA48C4 /* DADDMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A739E5C183B011100AA48C4 /* DADDMenuModule.m */; };
 		0A8C2F42182E125D0080F15F /* DAMyMenuList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A8C2F40182E125D0080F15F /* DAMyMenuList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A8C2F43182E125D0080F15F /* DAMyMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F41182E125D0080F15F /* DAMyMenuList.m */; };
 		0ABE9E9C17F3165900BE1D91 /* DAYiSettingModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ABE9E9A17F3165900BE1D91 /* DAYiSettingModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -307,6 +309,8 @@
 		0A1DBAB2182B2AC50045787A /* DAMyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenu.m; sourceTree = "<group>"; };
 		0A641A4317E99B8A00002CE7 /* DAYiWorkstationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAYiWorkstationModule.h; sourceTree = "<group>"; };
 		0A641A4417E99B8A00002CE7 /* DAYiWorkstationModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAYiWorkstationModule.m; sourceTree = "<group>"; };
+		0A739E5B183B011100AA48C4 /* DADDMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADDMenuModule.h; sourceTree = "<group>"; };
+		0A739E5C183B011100AA48C4 /* DADDMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADDMenuModule.m; sourceTree = "<group>"; };
 		0A8C2F40182E125D0080F15F /* DAMyMenuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuList.h; sourceTree = "<group>"; };
 		0A8C2F41182E125D0080F15F /* DAMyMenuList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuList.m; sourceTree = "<group>"; };
 		0ABE9E9A17F3165900BE1D91 /* DAYiSettingModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAYiSettingModule.h; sourceTree = "<group>"; };
@@ -641,6 +645,8 @@
 				0ABE9E9B17F3165900BE1D91 /* DAYiSettingModule.m */,
 				47AB2093180EC20D00A511DD /* DAYiConferenceModule.h */,
 				47AB2094180EC20D00A511DD /* DAYiConferenceModule.m */,
+				0A739E5B183B011100AA48C4 /* DADDMenuModule.h */,
+				0A739E5C183B011100AA48C4 /* DADDMenuModule.m */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -941,6 +947,7 @@
 				0A1DBAB3182B2AC50045787A /* DAMyMenu.h in Headers */,
 				0A8C2F42182E125D0080F15F /* DAMyMenuList.h in Headers */,
 				28FFB6171830DBFE003443D1 /* DAMyTable.h in Headers */,
+				0A739E5D183B011100AA48C4 /* DADDMenuModule.h in Headers */,
 				47AB2095180EC20D00A511DD /* DAYiConferenceModule.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1123,6 +1130,7 @@
 				F2E4A52D175B2EF900BC839D /* DAPurchase.m in Sources */,
 				F2E4A532175C8C1A00BC839D /* DAPurchaseList.m in Sources */,
 				F2E4A537175C8F8A00BC839D /* DAPurchaseModule.m in Sources */,
+				0A739E5E183B011100AA48C4 /* DADDMenuModule.m in Sources */,
 				F29ACD6A176873E100AC0B68 /* DAContact.m in Sources */,
 				F29ACD6F1768753600AC0B68 /* DAContactList.m in Sources */,
 				F23297B1176DC373003DF0BE /* DAApns.m in Sources */,

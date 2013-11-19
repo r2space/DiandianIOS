@@ -85,4 +85,6 @@
 #import <TribeSDK/DAMyMenu.h>
 #import <TribeSDK/DAMyMenuList.h>
 
+#import <TribeSDK/DADDMenuModule.h>
+
 #endif
