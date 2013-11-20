@@ -12,8 +12,7 @@
 @interface DAMyTableViewCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *tableTitle;
 @property (strong, nonatomic) IBOutlet UILabel *tableState;
-@property (strong, nonatomic) IBOutlet UILabel *unFinishedCount;
-@property (strong, nonatomic) IBOutlet UILabel *unFinishedCountMask;
+@property (strong, nonatomic) IBOutlet UIButton *unfinishedCount;
 @property (weak, nonatomic) IBOutlet UIImageView *imgTable;
 @property (weak, nonatomic) IBOutlet UIView *viewMask;
 @property (weak, nonatomic) IBOutlet UIView *viewLabel;
