@@ -33,7 +33,6 @@
 		0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD8D182A3E9600A350BC /* DAMenuModule.m */; };
 		0A12D3BE183C9CA000B8F930 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */; };
 		0A12D3C0183C9CA800B8F930 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */; };
-		0A12D3C2183CA74600B8F930 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3C1183CA74600B8F930 /* QuartzCore.framework */; };
 		0A12D3C4183CA75600B8F930 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3C3183CA75600B8F930 /* CFNetwork.framework */; };
 		0A1530C0182FD4ED00A13EB8 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1530BF182FD4ED00A13EB8 /* mask.png */; };
 		0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1DBAB5182B3A7D0045787A /* bg_first.png */; };
@@ -169,6 +168,10 @@
 		0AB78B84183CB46500979BD0 /* Jastor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B38183CB46500979BD0 /* Jastor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0AB78B85183CB46500979BD0 /* JastorRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B3A183CB46500979BD0 /* JastorRuntimeHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0AB78B86183CB46500979BD0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B3D183CB46500979BD0 /* Reachability.m */; };
+		0AB78B89183CD0E300979BD0 /* DALoginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B88183CD0E300979BD0 /* DALoginModule.m */; };
+		0AB78B8C183CD11000979BD0 /* DAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B8B183CD11000979BD0 /* DAUser.m */; };
+		0AB78B8F183CD16000979BD0 /* DAGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B8E183CD15F00979BD0 /* DAGroup.m */; };
+		0AB78B92183CD7DC00979BD0 /* DAItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B91183CD7DC00979BD0 /* DAItem.m */; };
 		0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */; };
 		0AEBE51B1830B10900B01A5E /* DAOrderThumbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */; };
 		0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */; };
@@ -579,6 +582,14 @@
 		0AB78B3A183CB46500979BD0 /* JastorRuntimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JastorRuntimeHelper.m; sourceTree = "<group>"; };
 		0AB78B3C183CB46500979BD0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		0AB78B3D183CB46500979BD0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		0AB78B87183CD0E300979BD0 /* DALoginModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALoginModule.h; sourceTree = "<group>"; };
+		0AB78B88183CD0E300979BD0 /* DALoginModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALoginModule.m; sourceTree = "<group>"; };
+		0AB78B8A183CD11000979BD0 /* DAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUser.h; sourceTree = "<group>"; };
+		0AB78B8B183CD11000979BD0 /* DAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUser.m; sourceTree = "<group>"; };
+		0AB78B8D183CD15F00979BD0 /* DAGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGroup.h; sourceTree = "<group>"; };
+		0AB78B8E183CD15F00979BD0 /* DAGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGroup.m; sourceTree = "<group>"; };
+		0AB78B90183CD7DC00979BD0 /* DAItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAItem.h; sourceTree = "<group>"; };
+		0AB78B91183CD7DC00979BD0 /* DAItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAItem.m; sourceTree = "<group>"; };
 		0AEBE5171830B10900B01A5E /* DAOrderThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderThumbViewController.h; sourceTree = "<group>"; };
 		0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderThumbViewController.m; sourceTree = "<group>"; };
 		0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderThumbViewController.xib; sourceTree = "<group>"; };
@@ -778,7 +789,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A12D3C4183CA75600B8F930 /* CFNetwork.framework in Frameworks */,
-				0A12D3C2183CA74600B8F930 /* QuartzCore.framework in Frameworks */,
 				0A12D3C0183C9CA800B8F930 /* MobileCoreServices.framework in Frameworks */,
 				0A12D3BE183C9CA000B8F930 /* SystemConfiguration.framework in Frameworks */,
 				0AA956FB18274DCA0098D60C /* CoreGraphics.framework in Frameworks */,
@@ -910,6 +920,8 @@
 		0A07BD6F182A0A0500A350BC /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				0AB78B87183CD0E300979BD0 /* DALoginModule.h */,
+				0AB78B88183CD0E300979BD0 /* DALoginModule.m */,
 				0AB78ADC183CB46400979BD0 /* DADDMenuModule.h */,
 				0AB78ADD183CB46400979BD0 /* DADDMenuModule.m */,
 				0A07BD8C182A3E9600A350BC /* DAMenuModule.h */,
@@ -1444,6 +1456,10 @@
 		2886BB041839AD1E00A496AC /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				0AB78B8D183CD15F00979BD0 /* DAGroup.h */,
+				0AB78B8E183CD15F00979BD0 /* DAGroup.m */,
+				0AB78B8A183CD11000979BD0 /* DAUser.h */,
+				0AB78B8B183CD11000979BD0 /* DAUser.m */,
 				0AB78ADF183CB46400979BD0 /* DAMyMenu.h */,
 				0AB78AE0183CB46400979BD0 /* DAMyMenu.m */,
 				0AB78AE1183CB46400979BD0 /* DAMyMenuList.h */,
@@ -1454,6 +1470,8 @@
 				2886BB061839AD8100A496AC /* DAProcession.m */,
 				287FA993183B11A000E02051 /* DATakeout.h */,
 				287FA994183B11AA00E02051 /* DATakeout.m */,
+				0AB78B90183CD7DC00979BD0 /* DAItem.h */,
+				0AB78B91183CD7DC00979BD0 /* DAItem.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -1874,6 +1892,7 @@
 				0A5D2890182BD03600847578 /* UIViewController+MJPopupViewController.m in Sources */,
 				2886BB011836250D00A496AC /* DAProcessionViewCell.m in Sources */,
 				28FFB64618332272003443D1 /* DADevice.m in Sources */,
+				0AB78B89183CD0E300979BD0 /* DALoginModule.m in Sources */,
 				287FA990183B057400E02051 /* DATakeoutViewCell.m in Sources */,
 				0AB78B84183CB46500979BD0 /* Jastor.m in Sources */,
 				2886BAFD18360F5800A496AC /* DAProcessionViewController.m in Sources */,
@@ -1903,6 +1922,7 @@
 				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
 				0AB78B5E183CB46500979BD0 /* DAMyTable.m in Sources */,
+				0AB78B8F183CD16000979BD0 /* DAGroup.m in Sources */,
 				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
 				F2AB4C0D182E1E2B0067E450 /* DAOrderGroupViewCell.m in Sources */,
 				0A7AF0BF183606D300635376 /* DAQueueFoodTableViewController.m in Sources */,
@@ -1920,6 +1940,7 @@
 				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
 				2886BB071839AD8100A496AC /* DAProcession.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
+				0AB78B8C183CD11000979BD0 /* DAUser.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
 				287FA995183B11AA00E02051 /* DATakeout.m in Sources */,
 				0AB78B5B183CB46500979BD0 /* DADDMenuModule.m in Sources */,
@@ -1961,6 +1982,7 @@
 				0AB78B85183CB46500979BD0 /* JastorRuntimeHelper.m in Sources */,
 				0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
+				0AB78B92183CD7DC00979BD0 /* DAItem.m in Sources */,
 				28FFB64718332272003443D1 /* DAImageUtil.m in Sources */,
 				0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */,
 				0A7AF0C41836070000635376 /* DAQueueDrinkTableViewController.m in Sources */,

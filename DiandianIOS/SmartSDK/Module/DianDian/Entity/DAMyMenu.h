@@ -8,10 +8,14 @@
 
 
 #import "Jastor.h"
+#import "DAItem.h"
+
 
 @interface DAMyMenu : Jastor
 
 @property(retain, nonatomic) NSString *name;
+@property(retain, nonatomic) NSNumber *page;
+@property(retain, nonatomic) NSArray  *items;
 @property(retain, nonatomic) NSString *title;
 @property(retain, nonatomic) NSString *image;
 @property(retain, nonatomic) NSString *price;

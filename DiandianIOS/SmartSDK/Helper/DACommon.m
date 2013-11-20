@@ -61,7 +61,7 @@
 
 + (NSString *) getServerAddress
 {
-    return [DACommon getServerAddress:YES];
+    return [DACommon getServerAddress:NO];
 }
 
 + (NSString *) getServerHost
@@ -74,7 +74,6 @@
     NSString *protocal = isSecure ? @"https" : @"http";
     NSString *address = [[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress];
     NSInteger port = [[NSUserDefaults standardUserDefaults] integerForKey:kServerPort];
-    
     
     NSString *url = [NSString stringWithFormat:@"%@://%@", protocal, address];
     if (port == 80) {

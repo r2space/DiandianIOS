@@ -7,12 +7,13 @@
 //
 
 #import "DAMyMenuList.h"
+#import "DAMyMenu.h"
 
 @implementation DAMyMenuList
 @synthesize items;
 
 +(Class) items_class {
-    return [DAMyMenuList class];
+    return [DAMyMenu class];
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder

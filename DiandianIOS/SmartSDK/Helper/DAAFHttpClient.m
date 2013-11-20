@@ -20,7 +20,7 @@
     
     dispatch_once(&onceToken, ^{
         _sharedClient = [[DAAFHttpClient alloc] initWithBaseURL:[NSURL URLWithString:[DACommon getServerAddress]]];
-        
+        NSLog(@"dfd %@" ,[DACommon getServerAddress]);
         // 设定当前网络状态
         _sharedClient.isReachable = [Reachability reachabilityWithHostname:[DACommon getServerHost]].isReachable;
         
@@ -65,7 +65,7 @@
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
     [self setDefaultHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
-    [super getPath:path parameters:parameters success:success failure:failure];
+    [super getPath:[self appendCsrf:path] parameters:parameters success:success failure:failure];
 }
 
 - (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure

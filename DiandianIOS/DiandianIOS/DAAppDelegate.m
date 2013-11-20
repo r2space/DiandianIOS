@@ -8,6 +8,9 @@
 
 #import "DAAppDelegate.h"
 #import "DASettings.h"
+#import "DACommon.h"
+#import "DALoginModule.h"
+#import "DADDMenuModule.h"
 
 
 #define kInfoPlistKeyServerAddress  @"ServerAddress"
@@ -18,14 +21,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    if ([[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress] == nil) {
-//        NSString *serverAddress = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerAddress];
-//        NSNumber *serverPort = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerPort];
-//        [[NSUserDefaults standardUserDefaults] setObject:serverAddress forKey:kServerAddress];
-//        [[NSUserDefaults standardUserDefaults] setInteger:serverPort.integerValue forKey:kServerPort];
-//    }
-    
     [DASettings registerDefaultsFromSettingsBundle];
+    
+    NSString *s = [[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress];
+    NSLog(@"%@",s);
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress] == nil) {
+        NSString *serverAddress = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerAddress];
+        NSNumber *serverPort = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerPort];
+        NSLog(@"kServerAddress  : %@  conn   host %@  port  %@" ,kServerAddress,serverAddress ,serverPort);
+        [[NSUserDefaults standardUserDefaults] setObject:serverAddress forKey:kServerAddress];
+        [[NSUserDefaults standardUserDefaults] setInteger:serverPort.integerValue forKey:kServerPort];
+    }
+    [[DALoginModule alloc]yukarilogin:@"admin" password:@"admin" code:nil callback:^(NSError *error, DAUser *user) {
+        NSLog(@"login success  user %@",user);
+    }];
+    
+    
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
     return YES;

@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Jastor.h"
 @interface DAMyMenuList : Jastor <NSCoding>
-@property (retain, nonatomic) NSArray *items;
-
+@property (retain, nonatomic) NSArray   *items;
+@property (retain, nonatomic) NSString  *total;
 @end

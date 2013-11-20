@@ -12,6 +12,9 @@
 #import "UIViewController+MJPopupViewController.h"
 #import "DAMyMenuBookPopupController.h"
 #import "DAAnimation.h"
+#import "DAMyMenuList.h"
+#import "DADDMenuModule.h"
+
 #define MENU_FRAME_WIDTH    876
 #define MENU_FRAME_HEIGHT   694
 
@@ -60,14 +63,10 @@
     defaultLayout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
     [self initMenus];
     
-//    [[DANotificationModule alloc]getNotificationListByType:0 start:0 count:0
-//                                                  callback:^(NSError *error, DANotificationList *notificationList) {
-//                                                      
-//    
-//                                                  }];
-//    [[DADDMenuModule alloc]getList:^(NSError *err, DAMyMenuList *list) {
-//      
-//    }];
+    [[DADDMenuModule alloc]getList:^(NSError *err, DAMyMenuList *list) {
+        NSLog(@"sdfdfdf %@"  ,list );
+    }];
+    
 }
 
 - (void) initMenus
