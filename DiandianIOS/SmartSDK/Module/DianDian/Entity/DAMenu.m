@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import "DAMyMenu.h"
+#import "DAMenu.h"
 
-@implementation DAMyMenu
+@implementation DAMenu
 
 
 @synthesize items,name,image,type,price,index,amount;

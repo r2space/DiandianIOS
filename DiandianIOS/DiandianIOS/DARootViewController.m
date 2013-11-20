@@ -13,12 +13,16 @@
 #import "DAMyOrderViewController.h"
 #import "DAMyMenuBookViewController.h"
 #import "DAOrderThumbViewController.h"
+#import "SmartSDK.h"
 
 
 @interface DARootViewController ()
 {
     DAMyOrderViewController *orderView;
     DAOrderThumbViewController *thumbView;
+    
+    //api
+    DAMenuList *dataList;
 
 }
 @end
@@ -67,6 +71,7 @@
     self.orderListView.layer.shadowRadius = 2;
     self.orderListView.layer.shadowOpacity = 0.6;
     self.orderListView.layer.shadowOffset = CGSizeMake(0, 1);
+    [self fetch];
 }
 
 - (void)fadeInWorkstationMenu{
@@ -83,6 +88,13 @@
                      }];
     [thumbView.view removeFromSuperview];
     
+}
+
+- (void) fetch
+{
+    [[DADDMenuModule alloc]getList:^(NSError *err, DAMenuList *list) {
+        NSLog(@"sdfdfdf %@"  ,list );
+    }];
 }
 
 - (void)fadeOutWorkstationMenu{

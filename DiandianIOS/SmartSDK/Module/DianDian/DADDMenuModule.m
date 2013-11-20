@@ -7,17 +7,18 @@
 //
 
 #import "DADDMenuModule.h"
+#import "SmartSDK.h"
 
 @implementation DADDMenuModule
 
--(void) getList:(void (^)(NSError *err, DAMyMenuList *list))callback
+-(void) getList:(void (^)(NSError *err, DAMenuList *list))callback
 {
     NSString *path = [NSString stringWithFormat:@"/menu/list.json"];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (callback) {
-            callback(nil, [[DAMyMenuList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
+            callback(nil, [[DAMenuList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]]);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DAMyMenu.h"
+#import "SmartSDK.h"
 
 
 @interface DAMyBigMenuBookCell : UICollectionViewCell
 
 
-@property (nonatomic, strong) DAMyMenu *menuData;
+@property (nonatomic, strong) DAMenu *menuData;
 - (IBAction)addMenu:(id)sender;
 
 @end

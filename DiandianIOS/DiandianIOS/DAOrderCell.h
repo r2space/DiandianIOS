@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "UIViewController+MJPopupViewController.h"
-#import "DAMyMenu.h"
+#import "SmartSDK.h"
 
 @interface DAOrderCell : UITableViewCell
 
-- (DAOrderCell *) initWithOrder : (DAMyMenu *)menu tableView:(UITableView *) tableView;
+- (DAOrderCell *) initWithOrder : (DAMenu *)menu tableView:(UITableView *) tableView;
 - (IBAction)addAmount:(id)sender;
 - (IBAction)delAmount:(id)sender;
 

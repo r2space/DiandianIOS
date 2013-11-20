@@ -153,8 +153,8 @@
 		0AB78B41183CB46500979BD0 /* DAJsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA2183CB46400979BD0 /* DAJsonHelper.m */; };
 		0AB78B42183CB46500979BD0 /* DARequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA5183CB46400979BD0 /* DARequestHelper.m */; };
 		0AB78B5B183CB46500979BD0 /* DADDMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78ADD183CB46400979BD0 /* DADDMenuModule.m */; };
-		0AB78B5C183CB46500979BD0 /* DAMyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE0183CB46400979BD0 /* DAMyMenu.m */; };
-		0AB78B5D183CB46500979BD0 /* DAMyMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE2183CB46400979BD0 /* DAMyMenuList.m */; };
+		0AB78B5C183CB46500979BD0 /* DAMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE0183CB46400979BD0 /* DAMenu.m */; };
+		0AB78B5D183CB46500979BD0 /* DAMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE2183CB46400979BD0 /* DAMenuList.m */; };
 		0AB78B5E183CB46500979BD0 /* DAMyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE4183CB46400979BD0 /* DAMyTable.m */; };
 		0AB78B7B183CB46500979BD0 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B24183CB46500979BD0 /* AFHTTPClient.m */; };
 		0AB78B7C183CB46500979BD0 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B26183CB46500979BD0 /* AFHTTPRequestOperation.m */; };
@@ -551,10 +551,10 @@
 		0AB78AA5183CB46400979BD0 /* DARequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARequestHelper.m; sourceTree = "<group>"; };
 		0AB78ADC183CB46400979BD0 /* DADDMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADDMenuModule.h; path = ../SmartSDK/Module/DianDian/DADDMenuModule.h; sourceTree = "<group>"; };
 		0AB78ADD183CB46400979BD0 /* DADDMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADDMenuModule.m; path = ../SmartSDK/Module/DianDian/DADDMenuModule.m; sourceTree = "<group>"; };
-		0AB78ADF183CB46400979BD0 /* DAMyMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMyMenu.h; path = ../SmartSDK/Module/DianDian/Entity/DAMyMenu.h; sourceTree = "<group>"; };
-		0AB78AE0183CB46400979BD0 /* DAMyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMyMenu.m; path = ../SmartSDK/Module/DianDian/Entity/DAMyMenu.m; sourceTree = "<group>"; };
-		0AB78AE1183CB46400979BD0 /* DAMyMenuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMyMenuList.h; path = ../SmartSDK/Module/DianDian/Entity/DAMyMenuList.h; sourceTree = "<group>"; };
-		0AB78AE2183CB46400979BD0 /* DAMyMenuList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMyMenuList.m; path = ../SmartSDK/Module/DianDian/Entity/DAMyMenuList.m; sourceTree = "<group>"; };
+		0AB78ADF183CB46400979BD0 /* DAMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenu.h; path = ../SmartSDK/Module/DianDian/Entity/DAMenu.h; sourceTree = "<group>"; };
+		0AB78AE0183CB46400979BD0 /* DAMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenu.m; path = ../SmartSDK/Module/DianDian/Entity/DAMenu.m; sourceTree = "<group>"; };
+		0AB78AE1183CB46400979BD0 /* DAMenuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenuList.h; path = ../SmartSDK/Module/DianDian/Entity/DAMenuList.h; sourceTree = "<group>"; };
+		0AB78AE2183CB46400979BD0 /* DAMenuList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenuList.m; path = ../SmartSDK/Module/DianDian/Entity/DAMenuList.m; sourceTree = "<group>"; };
 		0AB78AE3183CB46400979BD0 /* DAMyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMyTable.h; path = ../SmartSDK/Module/DianDian/Entity/DAMyTable.h; sourceTree = "<group>"; };
 		0AB78AE4183CB46400979BD0 /* DAMyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMyTable.m; path = ../SmartSDK/Module/DianDian/Entity/DAMyTable.m; sourceTree = "<group>"; };
 		0AB78B23183CB46500979BD0 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -590,6 +590,7 @@
 		0AB78B8E183CD15F00979BD0 /* DAGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGroup.m; sourceTree = "<group>"; };
 		0AB78B90183CD7DC00979BD0 /* DAItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAItem.h; sourceTree = "<group>"; };
 		0AB78B91183CD7DC00979BD0 /* DAItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAItem.m; sourceTree = "<group>"; };
+		0AB78B93183CDC4A00979BD0 /* SmartSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartSDK.h; sourceTree = "<group>"; };
 		0AEBE5171830B10900B01A5E /* DAOrderThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderThumbViewController.h; sourceTree = "<group>"; };
 		0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderThumbViewController.m; sourceTree = "<group>"; };
 		0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderThumbViewController.xib; sourceTree = "<group>"; };
@@ -1248,6 +1249,7 @@
 			children = (
 				0AB78A9A183CB46400979BD0 /* Helper */,
 				0AB78B21183CB46500979BD0 /* Thirdparty */,
+				0AB78B93183CDC4A00979BD0 /* SmartSDK.h */,
 			);
 			path = SmartSDK;
 			sourceTree = "<group>";
@@ -1458,20 +1460,20 @@
 			children = (
 				0AB78B8D183CD15F00979BD0 /* DAGroup.h */,
 				0AB78B8E183CD15F00979BD0 /* DAGroup.m */,
-				0AB78B8A183CD11000979BD0 /* DAUser.h */,
-				0AB78B8B183CD11000979BD0 /* DAUser.m */,
-				0AB78ADF183CB46400979BD0 /* DAMyMenu.h */,
-				0AB78AE0183CB46400979BD0 /* DAMyMenu.m */,
-				0AB78AE1183CB46400979BD0 /* DAMyMenuList.h */,
-				0AB78AE2183CB46400979BD0 /* DAMyMenuList.m */,
+				0AB78B90183CD7DC00979BD0 /* DAItem.h */,
+				0AB78B91183CD7DC00979BD0 /* DAItem.m */,
+				0AB78ADF183CB46400979BD0 /* DAMenu.h */,
+				0AB78AE0183CB46400979BD0 /* DAMenu.m */,
+				0AB78AE1183CB46400979BD0 /* DAMenuList.h */,
+				0AB78AE2183CB46400979BD0 /* DAMenuList.m */,
 				0AB78AE3183CB46400979BD0 /* DAMyTable.h */,
 				0AB78AE4183CB46400979BD0 /* DAMyTable.m */,
 				2886BB051839AD8100A496AC /* DAProcession.h */,
 				2886BB061839AD8100A496AC /* DAProcession.m */,
 				287FA993183B11A000E02051 /* DATakeout.h */,
 				287FA994183B11AA00E02051 /* DATakeout.m */,
-				0AB78B90183CD7DC00979BD0 /* DAItem.h */,
-				0AB78B91183CD7DC00979BD0 /* DAItem.m */,
+				0AB78B8A183CD11000979BD0 /* DAUser.h */,
+				0AB78B8B183CD11000979BD0 /* DAUser.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -1900,7 +1902,7 @@
 				0AB78B41183CB46500979BD0 /* DAJsonHelper.m in Sources */,
 				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
 				2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */,
-				0AB78B5D183CB46500979BD0 /* DAMyMenuList.m in Sources */,
+				0AB78B5D183CB46500979BD0 /* DAMenuList.m in Sources */,
 				28FFB64A18332272003443D1 /* DASettings.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
@@ -1958,7 +1960,7 @@
 				0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */,
 				0AB78B80183CB46500979BD0 /* AFPropertyListRequestOperation.m in Sources */,
 				28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */,
-				0AB78B5C183CB46500979BD0 /* DAMyMenu.m in Sources */,
+				0AB78B5C183CB46500979BD0 /* DAMenu.m in Sources */,
 				0A7AF0C91836075200635376 /* DAQueueItemListViewController.m in Sources */,
 				47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */,
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,

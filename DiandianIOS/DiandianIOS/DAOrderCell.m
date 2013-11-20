@@ -10,7 +10,7 @@
 
 @implementation DAOrderCell
 //int amount = 0;
-- (DAOrderCell *) initWithOrder : (DAMyMenu *)menu tableView:(UITableView *) tableView
+- (DAOrderCell *) initWithOrder : (DAMenu *)menu tableView:(UITableView *) tableView
 {
     NSString *identifier = @"DAOrderCell";
     DAOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];

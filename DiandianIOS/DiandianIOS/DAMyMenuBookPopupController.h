@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DAMyMenu.h"
+#import "SmartSDK.h"
 
 
 @protocol DAMyMenuBookPopupDelegate;
@@ -19,7 +19,7 @@
 - (IBAction)backThumbTouched:(id)sender;
 
 @property (retain, nonatomic) NSString *tableNO;
-@property (retain, nonatomic) DAMyMenu *menuData;
+@property (retain, nonatomic) DAMenu *menuData;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;

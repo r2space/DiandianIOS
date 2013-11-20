@@ -12,8 +12,7 @@
 #import "UIViewController+MJPopupViewController.h"
 #import "DAMyMenuBookPopupController.h"
 #import "DAAnimation.h"
-#import "DAMyMenuList.h"
-#import "DADDMenuModule.h"
+#import "SmartSDK.h"
 
 #define MENU_FRAME_WIDTH    876
 #define MENU_FRAME_HEIGHT   694
@@ -63,9 +62,7 @@
     defaultLayout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
     [self initMenus];
     
-    [[DADDMenuModule alloc]getList:^(NSError *err, DAMyMenuList *list) {
-        NSLog(@"sdfdfdf %@"  ,list );
-    }];
+
     
 }
 
@@ -97,7 +94,7 @@
                                                                 error:&anError];
     
     for (NSDictionary *aModuleDict in parsedElements){
-        [menuList addObject:[[DAMyMenu alloc ]initWithDictionary:aModuleDict]];
+        [menuList addObject:[[DAMenu alloc ]initWithDictionary:aModuleDict]];
     }
     
 }
@@ -120,7 +117,7 @@
     // we're going to use a custom UICollectionViewCell, which will hold an image and its label
     //
     
-    DAMyMenu *data = [menuList objectAtIndex:indexPath.row];
+    DAMenu *data = [menuList objectAtIndex:indexPath.row];
     DAMyMenuBookCell *cell;
     NSString *cellIdentifier ;
     NSNumber *nsRow = [[NSNumber alloc] initWithInt:1];
@@ -250,7 +247,7 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAMyMenu *data = [menuList objectAtIndex:indexPath.row];
+    DAMenu *data = [menuList objectAtIndex:indexPath.row];
     [self popupDetail:data];
     
 }
@@ -258,11 +255,11 @@
 
 -(void) popupDetailMenu :(NSNotification *) sender
 {
-    DAMyMenu * menu  = (DAMyMenu *)[sender object];
+    DAMenu * menu  = (DAMenu *)[sender object];
     [self popupDetail:menu];
 }
 
--(void) popupDetail :(DAMyMenu *) menu
+-(void) popupDetail :(DAMenu *) menu
 {
 
     DAMyMenuBookPopupController *secondDetailViewController = [[DAMyMenuBookPopupController alloc] initWithNibName:@"DAMyMenuBookPopupController" bundle:nil];
@@ -279,7 +276,7 @@
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [self loadFromDisk];
    
-    for (DAMyMenu *menu in menuList) {
+    for (DAMenu *menu in menuList) {
         if ([menu.type isEqualToString:obj]) {
             [tmpList addObject:menu];
             

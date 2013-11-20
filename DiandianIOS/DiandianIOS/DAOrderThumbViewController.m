@@ -30,7 +30,7 @@
     [super viewDidLoad];
     self.tableNO = @"01";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderReload:) name:@"orderReload" object:nil];
-    self.dataList = [DAMyMenuList alloc];
+    self.dataList = [DAMenuList alloc];
     self.dataList.items = [[NSArray alloc] init];
     UINib *cellNib = [UINib nibWithNibName:@"DAMyOrderCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAMyOrderCell"];
@@ -39,8 +39,8 @@
 - (void)orderReload :(NSNotification*) notification
 {
     
-    DAMyMenu *obj = [notification object];
-    for (DAMyMenu *menu in self.dataList.items) {
+    DAMenu *obj = [notification object];
+    for (DAMenu *menu in self.dataList.items) {
         if (menu._id == obj._id) {
             int amount = [menu.amount integerValue] + 1;
             menu.amount = [NSString stringWithFormat:@"%d", amount];
@@ -108,7 +108,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger row = [indexPath row];
-    DAMyMenu *menudata = [self.dataList.items objectAtIndex:row];
+    DAMenu *menudata = [self.dataList.items objectAtIndex:row];
     static NSString *CellWithIdentifier = @"DAMyOrderCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 86, 76)];
@@ -172,7 +172,7 @@
 -(void)confirmButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
     
     [self loadTableFromDisk];
-    for (DAMyMenu *menu in self.dataList.items) {
+    for (DAMenu *menu in self.dataList.items) {
         menu.status = [NSString stringWithFormat:@"doing"];
         
     }
@@ -198,7 +198,7 @@
 -(void)loadAmountPrice
 {
     int amountPrice = 0 ;
-    for (DAMyMenu *menu in self.dataList.items) {
+    for (DAMenu *menu in self.dataList.items) {
         amountPrice = amountPrice + [menu.price integerValue] * [menu.amount integerValue];
     }
     self.labelAmount.text = [NSString stringWithFormat:@"总价:%d元" ,amountPrice];

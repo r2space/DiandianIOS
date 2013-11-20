@@ -41,7 +41,7 @@
 //    NSArray *list = [NSArray arrayWithObjects:@"fd",@"sdfdf",nil];
 
     
-    self.dataList = [DAMyMenuList alloc];
+    self.dataList = [DAMenuList alloc];
     self.dataList.items = [[NSArray alloc] init];
 
     self.tableView.delegate = self;
@@ -59,7 +59,7 @@
 -(void)loadAmountPrice
 {
     int amountPrice = 0 ;
-    for (DAMyMenu *menu in self.dataList.items) {
+    for (DAMenu *menu in self.dataList.items) {
         amountPrice = amountPrice + [menu.price integerValue] * [menu.amount integerValue];
     }
     self.labelAmount.text = [NSString stringWithFormat:@"总价:%d元" ,amountPrice];
@@ -104,8 +104,8 @@
 - (void)orderReload :(NSNotification*) notification
 {
 
-    DAMyMenu *obj = [notification object];
-    for (DAMyMenu *menu in self.dataList.items) {
+    DAMenu *obj = [notification object];
+    for (DAMenu *menu in self.dataList.items) {
         if (menu._id == obj._id) {
             int amount = [menu.amount integerValue] + 1;
             menu.amount = [NSString stringWithFormat:@"%d", amount];
@@ -132,7 +132,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger row = [indexPath row];
-    DAMyMenu *menudata = [self.dataList.items objectAtIndex:row];
+    DAMenu *menudata = [self.dataList.items objectAtIndex:row];
     static NSString *CellWithIdentifier = @"DAOrderCell";
     DAOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     
@@ -239,7 +239,7 @@
 -(void)confirmButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
     
     [self loadTableFromDisk];
-    for (DAMyMenu *menu in self.dataList.items) {
+    for (DAMenu *menu in self.dataList.items) {
         menu.status = [NSString stringWithFormat:@"doing"];
         
     }
@@ -277,7 +277,7 @@
 
     
     NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
-    for (DAMyMenu *mymenu in self.dataList.items) {
+    for (DAMenu *mymenu in self.dataList.items) {
         if (![mymenu._id isEqualToString:btn._id]) {
             [tmpArray addObject:mymenu];
         }
@@ -288,7 +288,7 @@
 -(void) addAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
     
-    for (DAMyMenu *menu in self.dataList.items) {
+    for (DAMenu *menu in self.dataList.items) {
         if ([menu._id isEqualToString: btn._id]) {
             int amount = [menu.amount integerValue] + 1;
             menu.amount = [NSString stringWithFormat:@"%d", amount];

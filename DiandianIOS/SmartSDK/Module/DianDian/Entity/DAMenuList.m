@@ -6,14 +6,14 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import "DAMyMenuList.h"
-#import "DAMyMenu.h"
+#import "DAMenuList.h"
+#import "DAMenu.h"
 
-@implementation DAMyMenuList
+@implementation DAMenuList
 @synthesize items;
 
 +(Class) items_class {
-    return [DAMyMenu class];
+    return [DAMenu class];
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder

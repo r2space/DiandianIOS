@@ -104,7 +104,7 @@
 -(void)loadAmountPrice
 {
     int amountPrice = 0 ;
-    for (DAMyMenu *menu in self.orderList.items) {
+    for (DAMenu *menu in self.orderList.items) {
         amountPrice = amountPrice + [menu.price integerValue] * [menu.amount integerValue];
     }
     self.amountPriceLabel.text = [NSString stringWithFormat:@"总价 : %d 元" ,amountPrice];
@@ -122,7 +122,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAMyMenu *menu = [self.orderList.items objectAtIndex:indexPath.row];
+    DAMenu *menu = [self.orderList.items objectAtIndex:indexPath.row];
     static NSString *CellWithIdentifier = @"DADetailOrderCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:9];
@@ -151,7 +151,7 @@
 -(void) deleteAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
     
-    for (DAMyMenu *menu in self.orderList.items) {
+    for (DAMenu *menu in self.orderList.items) {
         if (menu._id == btn._id) {
             if (![menu.amount isEqualToString:@"1"]) {
                 int amount = [menu.amount integerValue] - 1;
@@ -166,7 +166,7 @@
 -(void) addAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
     
-    for (DAMyMenu *menu in self.orderList.items) {
+    for (DAMenu *menu in self.orderList.items) {
         if (menu._id == btn._id) {
             int amount = [menu.amount integerValue] + 1;
             menu.amount = [NSString stringWithFormat:@"%d", amount];
@@ -209,9 +209,9 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"执行删除操作");
-    DAMyMenu *menu = [self.orderList.items objectAtIndex:indexPath.row];
+    DAMenu *menu = [self.orderList.items objectAtIndex:indexPath.row];
     NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
-    for (DAMyMenu *mymenu in self.orderList.items) {
+    for (DAMenu *mymenu in self.orderList.items) {
         if (menu._id != mymenu._id) {
             [tmpArray addObject:mymenu];
         }

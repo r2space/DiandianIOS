@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DAMyMenuList.h"
+#import "SmartSDK.h"
 
 @interface DAOrderThumbViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) DAMyMenuList *dataList;
+@property (nonatomic, retain) DAMenuList *dataList;
 @property (nonatomic, retain) NSString *tableNO;
 @property (weak, nonatomic) IBOutlet UILabel *labelTableName;
 @property (weak, nonatomic) IBOutlet UILabel *labelAmount;
