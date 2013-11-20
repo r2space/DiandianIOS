@@ -84,5 +84,6 @@
 
 #import <SmartSDKIOS/DAMyMenu.h>
 #import <SmartSDKIOS/DAMyMenuList.h>
+#import <SmartSDKIOS/DADDMenuModule.h>
 
 #endif

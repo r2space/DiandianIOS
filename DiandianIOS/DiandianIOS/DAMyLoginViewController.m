@@ -9,7 +9,7 @@
 #import "DAMyLoginViewController.h"
 #import "DAMyTableViewController.h"
 #import "UIViewController+MJPopupViewController.h"
-#import <TribeSDK/DAMyTable.h>
+#import <SmartSDKIOS/DAMyTable.h>
 #import "DAPopTableViewController.h"
 #import "NSString+Util.h"
 

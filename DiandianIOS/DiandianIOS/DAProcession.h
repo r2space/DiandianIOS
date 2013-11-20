@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TribeSDK/Jastor.h"
+#import "SmartSDKIOS/Jastor.h"
 
 @interface DAProcession : Jastor
 

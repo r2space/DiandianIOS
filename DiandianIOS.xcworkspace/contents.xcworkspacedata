@@ -5,6 +5,6 @@
       location = "group:DiandianIOS/DiandianIOS.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:TribeSDK/TribeSDK.xcodeproj">
+      location = "group:SmartSDKIOS/SmartSDKIOS.xcodeproj">
    </FileRef>
 </Workspace>

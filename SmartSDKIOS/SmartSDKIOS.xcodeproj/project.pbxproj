@@ -21,12 +21,19 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0A12D3B4183C999100B8F930 /* DADDMenuModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A12D3AB183C999100B8F930 /* DADDMenuModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A12D3B5183C999100B8F930 /* DADDMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A12D3AC183C999100B8F930 /* DADDMenuModule.m */; };
+		0A12D3B6183C999100B8F930 /* DAMyMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A12D3AE183C999100B8F930 /* DAMyMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A12D3B7183C999100B8F930 /* DAMyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A12D3AF183C999100B8F930 /* DAMyMenu.m */; };
+		0A12D3B8183C999100B8F930 /* DAMyMenuList.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A12D3B0183C999100B8F930 /* DAMyMenuList.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A12D3B9183C999100B8F930 /* DAMyMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A12D3B1183C999100B8F930 /* DAMyMenuList.m */; };
+		0A12D3BA183C999100B8F930 /* DAMyTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A12D3B2183C999100B8F930 /* DAMyTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A12D3BB183C999100B8F930 /* DAMyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A12D3B3183C999100B8F930 /* DAMyTable.m */; };
 		F2AB4D6D182F83A00067E450 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AB4D6C182F83A00067E450 /* Foundation.framework */; };
 		F2AB4D72182F83A00067E450 /* SmartSDKIOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = F2AB4D71182F83A00067E450 /* SmartSDKIOS.h */; };
 		F2AB4D74182F83A00067E450 /* SmartSDKIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4D73182F83A00067E450 /* SmartSDKIOS.m */; };
 		F2AB4D7B182F83A00067E450 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AB4D7A182F83A00067E450 /* XCTest.framework */; };
 		F2AB4D7C182F83A00067E450 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AB4D6C182F83A00067E450 /* Foundation.framework */; };
-		F2AB4D7E182F83A00067E450 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AB4D7D182F83A00067E450 /* UIKit.framework */; };
 		F2AB4D81182F83A00067E450 /* libSmartSDKIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2AB4D69182F83A00067E450 /* libSmartSDKIOS.a */; };
 		F2AB4D87182F83A00067E450 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2AB4D85182F83A00067E450 /* InfoPlist.strings */; };
 		F2AB4D89182F83A00067E450 /* SmartSDKIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4D88182F83A00067E450 /* SmartSDKIOSTests.m */; };
@@ -98,10 +105,6 @@
 		F2AB4E6B182F84040067E450 /* DAMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4DE1182F84040067E450 /* DAMessage.m */; };
 		F2AB4E6C182F84040067E450 /* DAMessageList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4DE3182F84040067E450 /* DAMessageList.m */; };
 		F2AB4E6D182F84040067E450 /* DAMessageList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4DE3182F84040067E450 /* DAMessageList.m */; };
-		F2AB4E6E182F84040067E450 /* DAMyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4DE5182F84040067E450 /* DAMyMenu.m */; };
-		F2AB4E6F182F84040067E450 /* DAMyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4DE5182F84040067E450 /* DAMyMenu.m */; };
-		F2AB4E70182F84040067E450 /* DAMyMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4DE7182F84040067E450 /* DAMyMenuList.m */; };
-		F2AB4E71182F84040067E450 /* DAMyMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4DE7182F84040067E450 /* DAMyMenuList.m */; };
 		F2AB4E72182F84040067E450 /* DANotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4DE9182F84040067E450 /* DANotification.m */; };
 		F2AB4E73182F84040067E450 /* DANotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4DE9182F84040067E450 /* DANotification.m */; };
 		F2AB4E74182F84040067E450 /* DANotificationList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4DEB182F84040067E450 /* DANotificationList.m */; };
@@ -217,8 +220,6 @@
 		F2F7A40F182F86FE007E1849 /* DALayoutList.h in Headers */ = {isa = PBXBuildFile; fileRef = F2AB4DDE182F84040067E450 /* DALayoutList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2F7A410182F86FE007E1849 /* DAMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = F2AB4DE0182F84040067E450 /* DAMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2F7A411182F86FE007E1849 /* DAMessageList.h in Headers */ = {isa = PBXBuildFile; fileRef = F2AB4DE2182F84040067E450 /* DAMessageList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2F7A412182F86FE007E1849 /* DAMyMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = F2AB4DE4182F84040067E450 /* DAMyMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F2F7A413182F86FE007E1849 /* DAMyMenuList.h in Headers */ = {isa = PBXBuildFile; fileRef = F2AB4DE6182F84040067E450 /* DAMyMenuList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2F7A414182F86FE007E1849 /* DANotification.h in Headers */ = {isa = PBXBuildFile; fileRef = F2AB4DE8182F84040067E450 /* DANotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2F7A415182F86FE007E1849 /* DANotificationList.h in Headers */ = {isa = PBXBuildFile; fileRef = F2AB4DEA182F84040067E450 /* DANotificationList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2F7A416182F86FE007E1849 /* DAPublishLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = F2AB4DEC182F84040067E450 /* DAPublishLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -266,6 +267,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A12D3AB183C999100B8F930 /* DADDMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADDMenuModule.h; sourceTree = "<group>"; };
+		0A12D3AC183C999100B8F930 /* DADDMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADDMenuModule.m; sourceTree = "<group>"; };
+		0A12D3AE183C999100B8F930 /* DAMyMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenu.h; sourceTree = "<group>"; };
+		0A12D3AF183C999100B8F930 /* DAMyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenu.m; sourceTree = "<group>"; };
+		0A12D3B0183C999100B8F930 /* DAMyMenuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuList.h; sourceTree = "<group>"; };
+		0A12D3B1183C999100B8F930 /* DAMyMenuList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuList.m; sourceTree = "<group>"; };
+		0A12D3B2183C999100B8F930 /* DAMyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTable.h; sourceTree = "<group>"; };
+		0A12D3B3183C999100B8F930 /* DAMyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTable.m; sourceTree = "<group>"; };
 		F2AB4D69182F83A00067E450 /* libSmartSDKIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSmartSDKIOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2AB4D6C182F83A00067E450 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F2AB4D70182F83A00067E450 /* SmartSDKIOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartSDKIOS-Prefix.pch"; sourceTree = "<group>"; };
@@ -273,7 +282,6 @@
 		F2AB4D73182F83A00067E450 /* SmartSDKIOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartSDKIOS.m; sourceTree = "<group>"; };
 		F2AB4D79182F83A00067E450 /* SmartSDKIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartSDKIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2AB4D7A182F83A00067E450 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F2AB4D7D182F83A00067E450 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F2AB4D84182F83A00067E450 /* SmartSDKIOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartSDKIOSTests-Info.plist"; sourceTree = "<group>"; };
 		F2AB4D86182F83A00067E450 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F2AB4D88182F83A00067E450 /* SmartSDKIOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartSDKIOSTests.m; sourceTree = "<group>"; };
@@ -346,10 +354,6 @@
 		F2AB4DE1182F84040067E450 /* DAMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMessage.m; sourceTree = "<group>"; };
 		F2AB4DE2182F84040067E450 /* DAMessageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMessageList.h; sourceTree = "<group>"; };
 		F2AB4DE3182F84040067E450 /* DAMessageList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMessageList.m; sourceTree = "<group>"; };
-		F2AB4DE4182F84040067E450 /* DAMyMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenu.h; sourceTree = "<group>"; };
-		F2AB4DE5182F84040067E450 /* DAMyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenu.m; sourceTree = "<group>"; };
-		F2AB4DE6182F84040067E450 /* DAMyMenuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuList.h; sourceTree = "<group>"; };
-		F2AB4DE7182F84040067E450 /* DAMyMenuList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuList.m; sourceTree = "<group>"; };
 		F2AB4DE8182F84040067E450 /* DANotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotification.h; sourceTree = "<group>"; };
 		F2AB4DE9182F84040067E450 /* DANotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DANotification.m; sourceTree = "<group>"; };
 		F2AB4DEA182F84040067E450 /* DANotificationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DANotificationList.h; sourceTree = "<group>"; };
@@ -440,7 +444,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2AB4D7B182F83A00067E450 /* XCTest.framework in Frameworks */,
-				F2AB4D7E182F83A00067E450 /* UIKit.framework in Frameworks */,
 				F2AB4D81182F83A00067E450 /* libSmartSDKIOS.a in Frameworks */,
 				F2AB4D7C182F83A00067E450 /* Foundation.framework in Frameworks */,
 			);
@@ -449,6 +452,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A12D3AA183C999100B8F930 /* DianDian */ = {
+			isa = PBXGroup;
+			children = (
+				0A12D3AB183C999100B8F930 /* DADDMenuModule.h */,
+				0A12D3AC183C999100B8F930 /* DADDMenuModule.m */,
+				0A12D3AD183C999100B8F930 /* Entity */,
+			);
+			path = DianDian;
+			sourceTree = "<group>";
+		};
+		0A12D3AD183C999100B8F930 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				0A12D3AE183C999100B8F930 /* DAMyMenu.h */,
+				0A12D3AF183C999100B8F930 /* DAMyMenu.m */,
+				0A12D3B0183C999100B8F930 /* DAMyMenuList.h */,
+				0A12D3B1183C999100B8F930 /* DAMyMenuList.m */,
+				0A12D3B2183C999100B8F930 /* DAMyTable.h */,
+				0A12D3B3183C999100B8F930 /* DAMyTable.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		F2AB4D60182F83A00067E450 = {
 			isa = PBXGroup;
 			children = (
@@ -475,7 +501,6 @@
 				F2AB4EAA182F843F0067E450 /* MobileCoreServices.framework */,
 				F2AB4D6C182F83A00067E450 /* Foundation.framework */,
 				F2AB4D7A182F83A00067E450 /* XCTest.framework */,
-				F2AB4D7D182F83A00067E450 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -541,6 +566,7 @@
 		F2AB4DA3182F84030067E450 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				0A12D3AA183C999100B8F930 /* DianDian */,
 				F2AB4EC3182F86380067E450 /* Addon */,
 				F2AB4DA4182F84030067E450 /* Core */,
 				F2AB4DCD182F84040067E450 /* Tribe */,
@@ -633,10 +659,6 @@
 				F2AB4DE1182F84040067E450 /* DAMessage.m */,
 				F2AB4DE2182F84040067E450 /* DAMessageList.h */,
 				F2AB4DE3182F84040067E450 /* DAMessageList.m */,
-				F2AB4DE4182F84040067E450 /* DAMyMenu.h */,
-				F2AB4DE5182F84040067E450 /* DAMyMenu.m */,
-				F2AB4DE6182F84040067E450 /* DAMyMenuList.h */,
-				F2AB4DE7182F84040067E450 /* DAMyMenuList.m */,
 				F2AB4DE8182F84040067E450 /* DANotification.h */,
 				F2AB4DE9182F84040067E450 /* DANotification.m */,
 				F2AB4DEA182F84040067E450 /* DANotificationList.h */,
@@ -806,8 +828,6 @@
 				F2F7A40F182F86FE007E1849 /* DALayoutList.h in Headers */,
 				F2F7A410182F86FE007E1849 /* DAMessage.h in Headers */,
 				F2F7A411182F86FE007E1849 /* DAMessageList.h in Headers */,
-				F2F7A412182F86FE007E1849 /* DAMyMenu.h in Headers */,
-				F2F7A413182F86FE007E1849 /* DAMyMenuList.h in Headers */,
 				F2F7A414182F86FE007E1849 /* DANotification.h in Headers */,
 				F2F7A415182F86FE007E1849 /* DANotificationList.h in Headers */,
 				F2F7A416182F86FE007E1849 /* DAPublishLayout.h in Headers */,
@@ -848,6 +868,10 @@
 				F2F7A422182F8B13007E1849 /* DAYiWorkstationModule.h in Headers */,
 				F2F7A423182F8B13007E1849 /* DAYiConference.h in Headers */,
 				F2F7A424182F8B13007E1849 /* DAYiNotice.h in Headers */,
+				0A12D3B6183C999100B8F930 /* DAMyMenu.h in Headers */,
+				0A12D3B4183C999100B8F930 /* DADDMenuModule.h in Headers */,
+				0A12D3BA183C999100B8F930 /* DAMyTable.h in Headers */,
+				0A12D3B8183C999100B8F930 /* DAMyMenuList.h in Headers */,
 				F2F7A425182F8B13007E1849 /* DAYiSetting.h in Headers */,
 				F2F7A426182F8B13007E1849 /* DAYiSettingList.h in Headers */,
 				F2F7A427182F8B13007E1849 /* DAYiWorkStation.h in Headers */,
@@ -960,11 +984,11 @@
 				F2AB4E62182F84040067E450 /* DAContact.m in Sources */,
 				F2AB4E28182F84040067E450 /* DAAFHttpClient.m in Sources */,
 				F2AB4E52182F84040067E450 /* DAGroupList.m in Sources */,
-				F2AB4E6E182F84040067E450 /* DAMyMenu.m in Sources */,
 				F2AB4E42182F84040067E450 /* DACategory.m in Sources */,
 				F2AB4EA6182F84040067E450 /* JastorRuntimeHelper.m in Sources */,
 				F2AB4E5A182F84040067E450 /* DALoginModule.m in Sources */,
 				F2AB4E4A182F84040067E450 /* DAFileDetail.m in Sources */,
+				0A12D3B9183C999100B8F930 /* DAMyMenuList.m in Sources */,
 				F2AB4E54182F84040067E450 /* DAUser.m in Sources */,
 				F2AB4E58182F84040067E450 /* DALayoutModule.m in Sources */,
 				F2AB4E7C182F84040067E450 /* DAShortmailList.m in Sources */,
@@ -981,7 +1005,7 @@
 				F2AB4EA4182F84040067E450 /* Jastor.m in Sources */,
 				F2AB4E94182F84040067E450 /* AFHTTPRequestOperation.m in Sources */,
 				F2AB4E92182F84040067E450 /* AFHTTPClient.m in Sources */,
-				F2AB4E70182F84040067E450 /* DAMyMenuList.m in Sources */,
+				0A12D3B5183C999100B8F930 /* DADDMenuModule.m in Sources */,
 				F2AB4E38182F84040067E450 /* DAGroupModule.m in Sources */,
 				F2AB4E84182F84040067E450 /* DAYiWorkstationModule.m in Sources */,
 				F2AB4D74182F83A00067E450 /* SmartSDKIOS.m in Sources */,
@@ -1019,11 +1043,13 @@
 				F2AB4E90182F84040067E450 /* DAYiWorkStationMenu.m in Sources */,
 				F2AB4EA8182F84040067E450 /* Reachability.m in Sources */,
 				F2AB4E36182F84040067E450 /* DAFileModule.m in Sources */,
+				0A12D3B7183C999100B8F930 /* DAMyMenu.m in Sources */,
 				F2AB4E2C182F84040067E450 /* DACommon.m in Sources */,
 				F2AB4E4C182F84040067E450 /* DAFileHistory.m in Sources */,
 				F2AB4E4E182F84040067E450 /* DAFileList.m in Sources */,
 				F2AB4E3C182F84040067E450 /* DAUserModule.m in Sources */,
 				F2AB4EA2182F84040067E450 /* UIImageView+AFNetworking.m in Sources */,
+				0A12D3BB183C999100B8F930 /* DAMyTable.m in Sources */,
 				F2AB4E44182F84040067E450 /* DADeviceConfirm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1038,7 +1064,6 @@
 				F2AB4E63182F84040067E450 /* DAContact.m in Sources */,
 				F2AB4E29182F84040067E450 /* DAAFHttpClient.m in Sources */,
 				F2AB4E53182F84040067E450 /* DAGroupList.m in Sources */,
-				F2AB4E6F182F84040067E450 /* DAMyMenu.m in Sources */,
 				F2AB4E43182F84040067E450 /* DACategory.m in Sources */,
 				F2AB4EA7182F84040067E450 /* JastorRuntimeHelper.m in Sources */,
 				F2AB4E5B182F84040067E450 /* DALoginModule.m in Sources */,
@@ -1057,7 +1082,6 @@
 				F2AB4EA5182F84040067E450 /* Jastor.m in Sources */,
 				F2AB4E95182F84040067E450 /* AFHTTPRequestOperation.m in Sources */,
 				F2AB4E93182F84040067E450 /* AFHTTPClient.m in Sources */,
-				F2AB4E71182F84040067E450 /* DAMyMenuList.m in Sources */,
 				F2AB4E39182F84040067E450 /* DAGroupModule.m in Sources */,
 				F2AB4E85182F84040067E450 /* DAYiWorkstationModule.m in Sources */,
 				F2AB4D89182F83A00067E450 /* SmartSDKIOSTests.m in Sources */,
@@ -1195,6 +1219,7 @@
 		F2AB4D8D182F83A00067E450 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				DSTROOT = /tmp/SmartSDKIOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartSDKIOS/SmartSDKIOS-Prefix.pch";
@@ -1202,12 +1227,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = /Headers;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
 		F2AB4D8E182F83A00067E450 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = armv7;
 				DSTROOT = /tmp/SmartSDKIOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmartSDKIOS/SmartSDKIOS-Prefix.pch";
@@ -1215,6 +1242,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = /Headers;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};

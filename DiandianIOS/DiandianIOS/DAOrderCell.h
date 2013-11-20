@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIViewController+MJPopupViewController.h"
-#import <TribeSDK/TribeSDKHeader.h>
+#import <SmartSDKIOS/Header.h>
 
 @interface DAOrderCell : UITableViewCell
 

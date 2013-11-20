@@ -31,6 +31,9 @@
 		0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD88182A363000A350BC /* DAMyTableViewController.m */; };
 		0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD89182A363000A350BC /* DAMyTableViewController.xib */; };
 		0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD8D182A3E9600A350BC /* DAMenuModule.m */; };
+		0A12D3BC183C9B5600B8F930 /* SmartSDKIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D39B183C97D200B8F930 /* SmartSDKIOS.framework */; };
+		0A12D3BE183C9CA000B8F930 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */; };
+		0A12D3C0183C9CA800B8F930 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */; };
 		0A1530C0182FD4ED00A13EB8 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1530BF182FD4ED00A13EB8 /* mask.png */; };
 		0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1DBAB5182B3A7D0045787A /* bg_first.png */; };
 		0A24A2D11838C18D00B340BE /* DAQueueItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A24A2D01838C18D00B340BE /* DAQueueItemListCell.xib */; };
@@ -40,7 +43,6 @@
 		0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */; };
 		0A3DB730182B1F5100170F0C /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72F182B1F5100170F0C /* table.png */; };
 		0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */; };
-		0A3DB929182B29EC00170F0C /* TribeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3DB928182B29EC00170F0C /* TribeSDK.framework */; };
 		0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BC8182878DA009CDF6D /* DAViewController.m */; };
 		0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BDB1828A040009CDF6D /* DABookViewController.m */; };
 		0A5D2835182B6E2F00847578 /* table1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2834182B6E2F00847578 /* table1.png */; };
@@ -110,7 +112,6 @@
 		0A924AAF18348A810004C973 /* DAMyTableListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924AAD18348A810004C973 /* DAMyTableListViewController.m */; };
 		0A924AB018348A810004C973 /* DAMyTableListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A924AAE18348A810004C973 /* DAMyTableListViewController.xib */; };
 		0A924AB21834908E0004C973 /* DAMyItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A924AB11834908E0004C973 /* DAMyItemCell.xib */; };
-		0A926CF8182F28AE00A2F49E /* TribeSDK in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A926CF7182F28AE00A2F49E /* TribeSDK */; };
 		0A95E5D6183B673E0026017C /* dot_off1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A95E5D4183B673E0026017C /* dot_off1.png */; };
 		0A95E5D7183B673E0026017C /* dot_on1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A95E5D5183B673E0026017C /* dot_on1.png */; };
 		0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */; };
@@ -353,6 +354,9 @@
 		0A07BD89182A363000A350BC /* DAMyTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableViewController.xib; sourceTree = "<group>"; };
 		0A07BD8C182A3E9600A350BC /* DAMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMenuModule.h; sourceTree = "<group>"; };
 		0A07BD8D182A3E9600A350BC /* DAMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMenuModule.m; sourceTree = "<group>"; };
+		0A12D39B183C97D200B8F930 /* SmartSDKIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SmartSDKIOS.framework; path = "../SmartSDKIOS/build/Debug-framework/SmartSDKIOS.framework"; sourceTree = "<group>"; };
+		0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0A1530BF182FD4ED00A13EB8 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
 		0A1DBAB5182B3A7D0045787A /* bg_first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_first.png; sourceTree = "<group>"; };
 		0A24A2D01838C18D00B340BE /* DAQueueItemListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueItemListCell.xib; sourceTree = "<group>"; };
@@ -363,7 +367,6 @@
 		0A3DB72F182B1F5100170F0C /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
 		0A3DB731182B21B500170F0C /* DAMyMenuBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuBookCell.h; sourceTree = "<group>"; };
 		0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuBookCell.m; sourceTree = "<group>"; };
-		0A3DB928182B29EC00170F0C /* TribeSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TribeSDK.framework; path = "../TribeSDK/build/Debug-framework/TribeSDK.framework"; sourceTree = "<group>"; };
 		0A577BC7182878DA009CDF6D /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
 		0A577BC8182878DA009CDF6D /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
 		0A577BDA1828A040009CDF6D /* DABookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABookViewController.h; sourceTree = "<group>"; };
@@ -462,7 +465,6 @@
 		0A924AAD18348A810004C973 /* DAMyTableListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableListViewController.m; sourceTree = "<group>"; };
 		0A924AAE18348A810004C973 /* DAMyTableListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableListViewController.xib; sourceTree = "<group>"; };
 		0A924AB11834908E0004C973 /* DAMyItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyItemCell.xib; sourceTree = "<group>"; };
-		0A926CF7182F28AE00A2F49E /* TribeSDK */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = TribeSDK; path = "../TribeSDK/build/Debug-framework/TribeSDK.framework/Versions/A/TribeSDK"; sourceTree = "<group>"; };
 		0A95E5D4183B673E0026017C /* dot_off1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot_off1.png; sourceTree = "<group>"; };
 		0A95E5D5183B673E0026017C /* dot_on1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot_on1.png; sourceTree = "<group>"; };
 		0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAMenuBookView.storyboard; sourceTree = "<group>"; };
@@ -708,8 +710,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A926CF8182F28AE00A2F49E /* TribeSDK in Frameworks */,
-				0A3DB929182B29EC00170F0C /* TribeSDK.framework in Frameworks */,
+				0A12D3C0183C9CA800B8F930 /* MobileCoreServices.framework in Frameworks */,
+				0A12D3BE183C9CA000B8F930 /* SystemConfiguration.framework in Frameworks */,
+				0A12D3BC183C9B5600B8F930 /* SmartSDKIOS.framework in Frameworks */,
 				0AA956FB18274DCA0098D60C /* CoreGraphics.framework in Frameworks */,
 				0AA956FD18274DCA0098D60C /* UIKit.framework in Frameworks */,
 				0AA956F918274DCA0098D60C /* Foundation.framework in Frameworks */,
@@ -1025,8 +1028,9 @@
 		0AA956F718274DCA0098D60C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0A926CF7182F28AE00A2F49E /* TribeSDK */,
-				0A3DB928182B29EC00170F0C /* TribeSDK.framework */,
+				0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */,
+				0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */,
+				0A12D39B183C97D200B8F930 /* SmartSDKIOS.framework */,
 				0AA956F818274DCA0098D60C /* Foundation.framework */,
 				0AA956FA18274DCA0098D60C /* CoreGraphics.framework */,
 				0AA956FC18274DCA0098D60C /* UIKit.framework */,
@@ -1938,7 +1942,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
+					"/Users/Antony/Desktop/DAC/developer/DiandianIOS/SmartSDKIOS/build/Debug-framework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -1946,7 +1950,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../TribeSDK/build/Debug-iphoneos",
+					"$(SRCROOT)/../SmartSDKIOS/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
@@ -1965,7 +1969,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../TribeSDK/build/Debug-framework\"",
+					"/Users/Antony/Desktop/DAC/developer/DiandianIOS/SmartSDKIOS/build/Debug-framework",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -1973,7 +1977,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../TribeSDK/build/Debug-iphoneos",
+					"$(SRCROOT)/../SmartSDKIOS/build/Debug-iphoneos",
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;

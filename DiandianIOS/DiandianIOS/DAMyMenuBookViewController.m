@@ -59,6 +59,15 @@
     
     defaultLayout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
     [self initMenus];
+    
+//    [[DANotificationModule alloc]getNotificationListByType:0 start:0 count:0
+//                                                  callback:^(NSError *error, DANotificationList *notificationList) {
+//                                                      
+//    
+//                                                  }];
+//    [[DADDMenuModule alloc]getList:^(NSError *err, DAMyMenuList *list) {
+//      
+//    }];
 }
 
 - (void) initMenus

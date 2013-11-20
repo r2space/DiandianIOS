@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <TribeSDK/DAMyTable.h>
+#import <SmartSDKIOS/DAMyTable.h>
 #import "DAPopTableViewController.h"
 
 @protocol DAMyTableConfirmDelegate;

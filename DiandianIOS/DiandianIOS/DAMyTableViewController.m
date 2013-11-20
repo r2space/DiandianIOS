@@ -18,7 +18,7 @@
 #import "DAProcessionViewController.h"
 #import "DATakeoutViewController.h"
 #import "DATakeoutViewController.h"
-#import <TribeSDK/DAMyTable.h>
+#import <SmartSDKIOS/DAMyTable.h>
 #import "NSString+Util.h"
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate, DATakeoutDelegate>
