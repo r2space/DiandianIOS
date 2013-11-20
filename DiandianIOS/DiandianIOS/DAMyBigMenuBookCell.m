@@ -28,9 +28,4 @@
 }
 */
 
-- (IBAction)addMenu:(id)sender {
-    NSLog(@"dfdaf  data  %@  " ,self.menuData.name);
-    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"orderReload" object:self.menuData];
-    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
-}
 @end

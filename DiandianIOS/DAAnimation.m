@@ -7,8 +7,41 @@
 //
 
 #import "DAAnimation.h"
+#import "DAMyMenuBookViewController.h"
+#define MENU_FRAME_WIDTH    876
+#define MENU_FRAME_HEIGHT   694
 
 @implementation DAAnimation
+
+
+// 增加来一份的动画
++(void) addOrderAnimation :(UIButton*)button withSupview:(DAMyMenuBookViewController *)withSupview
+{
+    
+    UIView *buttonSuperview = [button superview];
+    UIView *cellSuperview  = [buttonSuperview superview];
+    UIImageView *subimage = (UIImageView *)[buttonSuperview viewWithTag:102];
+    CGRect markRect = [cellSuperview convertRect:subimage.bounds toView:withSupview.view];
+    UIImageView *tempView = [[UIImageView alloc]initWithFrame:markRect];
+    tempView.image = subimage.image;
+    
+    //    [tempView didMoveToWindow];
+    [withSupview.view.superview addSubview:tempView];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        tempView.frame = CGRectMake(0, 0, 70, 50);
+        //        tempView.center = CGPointMake(20, 66);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.5 animations:^{
+            tempView.frame = CGRectMake(-110, 0, 70, 50);
+            //        tempView.center = CGPointMake(20, 66);
+        } completion:^(BOOL finished) {
+            
+            
+        }];
+        
+    }];
+}
 
 // 追加UIView闪烁效果
 // 因为圆脚效果和阴影不能很好的同时存在，所以通过在superview中追加阴影层来实现

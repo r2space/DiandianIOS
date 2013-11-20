@@ -11,10 +11,16 @@
 #import "DAMyMenuBookCell.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "DAMyMenuBookPopupController.h"
+#import "DAAnimation.h"
+#define MENU_FRAME_WIDTH    876
+#define MENU_FRAME_HEIGHT   694
 
 @interface DAMyMenuBookViewController () <DAMyMenuBookPopupDelegate>
 {
-    MSGridView *gridView;
+    
+    //api
+    int pageItemCount;
+
     NSMutableArray *menuList;
     BOOL listType;
     UICollectionViewFlowLayout *defaultLayout;
@@ -45,18 +51,29 @@
     
     RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
     layout.direction = UICollectionViewScrollDirectionHorizontal;
-    layout.blockPixels = CGSizeMake(291 ,230);
+    layout.blockPixels = CGSizeMake(292 ,230);
     layout.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:) name:@"filterReload" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popupDetailMenu:) name:@"popupDetailMenu" object:nil];
     
     defaultLayout = (UICollectionViewFlowLayout *) self.collectionView.collectionViewLayout;
+    [self initMenus];
 }
+
+- (void) initMenus
+{
+    //option
+    
+    pageItemCount = 6;
+    
+    
+}
+
 - (void) viewDidAppear:(BOOL)animated {
     [self.collectionView reloadData];
-    self.pageControl.numberOfPages = [menuList count] / 5 ;
-    if ([menuList count] % 5 !=0) {
+    self.pageControl.numberOfPages = [menuList count] / pageItemCount ;
+    if ([menuList count] % pageItemCount !=0) {
         self.pageControl.numberOfPages = self.pageControl.numberOfPages + 1;
     }
     
@@ -74,9 +91,7 @@
     for (NSDictionary *aModuleDict in parsedElements){
         [menuList addObject:[[DAMyMenu alloc ]initWithDictionary:aModuleDict]];
     }
-//    [[DADDMenuModule alloc]getList:^(NSError *err, DAMyMenuList *list) {
-//        NSLog(@"list  %@"  ,list);
-//    }];
+    
 }
 
 
@@ -156,7 +171,8 @@
 }
 
 -(void)addMenu:(UIButton*)button{
-
+    
+    [DAAnimation addOrderAnimation:button withSupview:self];
 }
 #pragma mark – RFQuiltLayoutDelegate
 
@@ -210,11 +226,13 @@
 - (UIEdgeInsets)insetsForItemAtIndexPath:(NSIndexPath *)indexPath {
     return UIEdgeInsetsMake(2, 2, 2, 2);
 }
+
+
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 {
 
-    int page = (int)targetContentOffset->x /874;
-    if (targetContentOffset->x /874 > (int)targetContentOffset->x /874) {
+    int page = (int)targetContentOffset->x / MENU_FRAME_WIDTH ;
+    if (targetContentOffset->x / MENU_FRAME_WIDTH > (int)targetContentOffset->x / MENU_FRAME_WIDTH) {
         page = page + 1;
     }
     self.pageControl.currentPage = page;
@@ -282,7 +300,7 @@
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
 	// update the scroll view to the appropriate page
     CGRect bounds = self.collectionView.bounds;
-    bounds.origin.x = 874.0 * page;
+    bounds.origin.x = MENU_FRAME_WIDTH * page;
     bounds.origin.y = 0;
     [self.collectionView scrollRectToVisible:bounds animated:animated];
 }

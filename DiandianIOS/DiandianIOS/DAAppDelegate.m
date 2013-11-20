@@ -9,10 +9,22 @@
 #import "DAAppDelegate.h"
 #import "DASettings.h"
 
+
+#define kInfoPlistKeyServerAddress  @"ServerAddress"
+#define kInfoPlistKeyServerPort     @"ServerPort"
+
+
 @implementation DAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress] == nil) {
+        NSString *serverAddress = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerAddress];
+        NSNumber *serverPort = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerPort];
+        [[NSUserDefaults standardUserDefaults] setObject:serverAddress forKey:kServerAddress];
+        [[NSUserDefaults standardUserDefaults] setInteger:serverPort.integerValue forKey:kServerPort];
+    }
+    
     [DASettings registerDefaultsFromSettingsBundle];
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
