@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SmartSDKIOS/Header.h>
+#import "DAMyMenu.h"
+
 
 @protocol DAMyMenuBookPopupDelegate;
 @interface DAMyMenuBookPopupController : UIViewController

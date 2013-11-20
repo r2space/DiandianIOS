@@ -9,7 +9,7 @@
 #import "DAMyTableConfirmController.h"
 #import "DABillViewController.h"
 #import "UIViewController+MJPopupViewController.h"
-#import <SmartSDKIOS/DAMyTable.h>
+#import "DAMyTable.h"
 #import "DAPopTableViewController.h"
 #import "NSString+Util.h"
 #import "DAMyBackOrderViewController.h"

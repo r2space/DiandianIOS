@@ -31,9 +31,10 @@
 		0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD88182A363000A350BC /* DAMyTableViewController.m */; };
 		0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD89182A363000A350BC /* DAMyTableViewController.xib */; };
 		0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD8D182A3E9600A350BC /* DAMenuModule.m */; };
-		0A12D3BC183C9B5600B8F930 /* SmartSDKIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D39B183C97D200B8F930 /* SmartSDKIOS.framework */; };
 		0A12D3BE183C9CA000B8F930 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */; };
 		0A12D3C0183C9CA800B8F930 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */; };
+		0A12D3C2183CA74600B8F930 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3C1183CA74600B8F930 /* QuartzCore.framework */; };
+		0A12D3C4183CA75600B8F930 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3C3183CA75600B8F930 /* CFNetwork.framework */; };
 		0A1530C0182FD4ED00A13EB8 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1530BF182FD4ED00A13EB8 /* mask.png */; };
 		0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1DBAB5182B3A7D0045787A /* bg_first.png */; };
 		0A24A2D11838C18D00B340BE /* DAQueueItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A24A2D01838C18D00B340BE /* DAQueueItemListCell.xib */; };
@@ -147,6 +148,27 @@
 		0AB4B3AD1838D4CC00D77D7E /* DAQueueDrinkListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4B3AC1838D4CC00D77D7E /* DAQueueDrinkListCell.xib */; };
 		0AB4B3B11838DE3700D77D7E /* DAPreferentialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4B3AF1838DE3700D77D7E /* DAPreferentialViewController.m */; };
 		0AB4B3B21838DE3700D77D7E /* DAPreferentialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4B3B01838DE3700D77D7E /* DAPreferentialViewController.xib */; };
+		0AB78B3E183CB46500979BD0 /* DAAFHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78A9C183CB46400979BD0 /* DAAFHttpClient.m */; };
+		0AB78B3F183CB46500979BD0 /* DAAFHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78A9E183CB46400979BD0 /* DAAFHttpOperation.m */; };
+		0AB78B40183CB46500979BD0 /* DACommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA0183CB46400979BD0 /* DACommon.m */; };
+		0AB78B41183CB46500979BD0 /* DAJsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA2183CB46400979BD0 /* DAJsonHelper.m */; };
+		0AB78B42183CB46500979BD0 /* DARequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA5183CB46400979BD0 /* DARequestHelper.m */; };
+		0AB78B5B183CB46500979BD0 /* DADDMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78ADD183CB46400979BD0 /* DADDMenuModule.m */; };
+		0AB78B5C183CB46500979BD0 /* DAMyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE0183CB46400979BD0 /* DAMyMenu.m */; };
+		0AB78B5D183CB46500979BD0 /* DAMyMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE2183CB46400979BD0 /* DAMyMenuList.m */; };
+		0AB78B5E183CB46500979BD0 /* DAMyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE4183CB46400979BD0 /* DAMyTable.m */; };
+		0AB78B7B183CB46500979BD0 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B24183CB46500979BD0 /* AFHTTPClient.m */; };
+		0AB78B7C183CB46500979BD0 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B26183CB46500979BD0 /* AFHTTPRequestOperation.m */; };
+		0AB78B7D183CB46500979BD0 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B28183CB46500979BD0 /* AFImageRequestOperation.m */; };
+		0AB78B7E183CB46500979BD0 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B2A183CB46500979BD0 /* AFJSONRequestOperation.m */; };
+		0AB78B7F183CB46500979BD0 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B2C183CB46500979BD0 /* AFNetworkActivityIndicatorManager.m */; };
+		0AB78B80183CB46500979BD0 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B2F183CB46500979BD0 /* AFPropertyListRequestOperation.m */; };
+		0AB78B81183CB46500979BD0 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B31183CB46500979BD0 /* AFURLConnectionOperation.m */; };
+		0AB78B82183CB46500979BD0 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B33183CB46500979BD0 /* AFXMLRequestOperation.m */; };
+		0AB78B83183CB46500979BD0 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B35183CB46500979BD0 /* UIImageView+AFNetworking.m */; };
+		0AB78B84183CB46500979BD0 /* Jastor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B38183CB46500979BD0 /* Jastor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0AB78B85183CB46500979BD0 /* JastorRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B3A183CB46500979BD0 /* JastorRuntimeHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0AB78B86183CB46500979BD0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B3D183CB46500979BD0 /* Reachability.m */; };
 		0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */; };
 		0AEBE51B1830B10900B01A5E /* DAOrderThumbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */; };
 		0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */; };
@@ -354,9 +376,10 @@
 		0A07BD89182A363000A350BC /* DAMyTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableViewController.xib; sourceTree = "<group>"; };
 		0A07BD8C182A3E9600A350BC /* DAMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMenuModule.h; sourceTree = "<group>"; };
 		0A07BD8D182A3E9600A350BC /* DAMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMenuModule.m; sourceTree = "<group>"; };
-		0A12D39B183C97D200B8F930 /* SmartSDKIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SmartSDKIOS.framework; path = "../SmartSDKIOS/build/Debug-framework/SmartSDKIOS.framework"; sourceTree = "<group>"; };
 		0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0A12D3C1183CA74600B8F930 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0A12D3C3183CA75600B8F930 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A1530BF182FD4ED00A13EB8 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
 		0A1DBAB5182B3A7D0045787A /* bg_first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_first.png; sourceTree = "<group>"; };
 		0A24A2D01838C18D00B340BE /* DAQueueItemListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueItemListCell.xib; sourceTree = "<group>"; };
@@ -512,6 +535,50 @@
 		0AB4B3AE1838DE3700D77D7E /* DAPreferentialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPreferentialViewController.h; sourceTree = "<group>"; };
 		0AB4B3AF1838DE3700D77D7E /* DAPreferentialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPreferentialViewController.m; sourceTree = "<group>"; };
 		0AB4B3B01838DE3700D77D7E /* DAPreferentialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPreferentialViewController.xib; sourceTree = "<group>"; };
+		0AB78A9B183CB46400979BD0 /* DAAFHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAFHttpClient.h; sourceTree = "<group>"; };
+		0AB78A9C183CB46400979BD0 /* DAAFHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAFHttpClient.m; sourceTree = "<group>"; };
+		0AB78A9D183CB46400979BD0 /* DAAFHttpOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAFHttpOperation.h; sourceTree = "<group>"; };
+		0AB78A9E183CB46400979BD0 /* DAAFHttpOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAFHttpOperation.m; sourceTree = "<group>"; };
+		0AB78A9F183CB46400979BD0 /* DACommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACommon.h; sourceTree = "<group>"; };
+		0AB78AA0183CB46400979BD0 /* DACommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACommon.m; sourceTree = "<group>"; };
+		0AB78AA1183CB46400979BD0 /* DAJsonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAJsonHelper.h; sourceTree = "<group>"; };
+		0AB78AA2183CB46400979BD0 /* DAJsonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAJsonHelper.m; sourceTree = "<group>"; };
+		0AB78AA3183CB46400979BD0 /* DAMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMacros.h; sourceTree = "<group>"; };
+		0AB78AA4183CB46400979BD0 /* DARequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARequestHelper.h; sourceTree = "<group>"; };
+		0AB78AA5183CB46400979BD0 /* DARequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARequestHelper.m; sourceTree = "<group>"; };
+		0AB78ADC183CB46400979BD0 /* DADDMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADDMenuModule.h; path = ../SmartSDK/Module/DianDian/DADDMenuModule.h; sourceTree = "<group>"; };
+		0AB78ADD183CB46400979BD0 /* DADDMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADDMenuModule.m; path = ../SmartSDK/Module/DianDian/DADDMenuModule.m; sourceTree = "<group>"; };
+		0AB78ADF183CB46400979BD0 /* DAMyMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMyMenu.h; path = ../SmartSDK/Module/DianDian/Entity/DAMyMenu.h; sourceTree = "<group>"; };
+		0AB78AE0183CB46400979BD0 /* DAMyMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMyMenu.m; path = ../SmartSDK/Module/DianDian/Entity/DAMyMenu.m; sourceTree = "<group>"; };
+		0AB78AE1183CB46400979BD0 /* DAMyMenuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMyMenuList.h; path = ../SmartSDK/Module/DianDian/Entity/DAMyMenuList.h; sourceTree = "<group>"; };
+		0AB78AE2183CB46400979BD0 /* DAMyMenuList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMyMenuList.m; path = ../SmartSDK/Module/DianDian/Entity/DAMyMenuList.m; sourceTree = "<group>"; };
+		0AB78AE3183CB46400979BD0 /* DAMyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMyTable.h; path = ../SmartSDK/Module/DianDian/Entity/DAMyTable.h; sourceTree = "<group>"; };
+		0AB78AE4183CB46400979BD0 /* DAMyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMyTable.m; path = ../SmartSDK/Module/DianDian/Entity/DAMyTable.m; sourceTree = "<group>"; };
+		0AB78B23183CB46500979BD0 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		0AB78B24183CB46500979BD0 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		0AB78B25183CB46500979BD0 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		0AB78B26183CB46500979BD0 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		0AB78B27183CB46500979BD0 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		0AB78B28183CB46500979BD0 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		0AB78B29183CB46500979BD0 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		0AB78B2A183CB46500979BD0 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		0AB78B2B183CB46500979BD0 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		0AB78B2C183CB46500979BD0 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		0AB78B2D183CB46500979BD0 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		0AB78B2E183CB46500979BD0 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		0AB78B2F183CB46500979BD0 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		0AB78B30183CB46500979BD0 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		0AB78B31183CB46500979BD0 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		0AB78B32183CB46500979BD0 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		0AB78B33183CB46500979BD0 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		0AB78B34183CB46500979BD0 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		0AB78B35183CB46500979BD0 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		0AB78B37183CB46500979BD0 /* Jastor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jastor.h; sourceTree = "<group>"; };
+		0AB78B38183CB46500979BD0 /* Jastor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jastor.m; sourceTree = "<group>"; };
+		0AB78B39183CB46500979BD0 /* JastorRuntimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JastorRuntimeHelper.h; sourceTree = "<group>"; };
+		0AB78B3A183CB46500979BD0 /* JastorRuntimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JastorRuntimeHelper.m; sourceTree = "<group>"; };
+		0AB78B3C183CB46500979BD0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		0AB78B3D183CB46500979BD0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0AEBE5171830B10900B01A5E /* DAOrderThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderThumbViewController.h; sourceTree = "<group>"; };
 		0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderThumbViewController.m; sourceTree = "<group>"; };
 		0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderThumbViewController.xib; sourceTree = "<group>"; };
@@ -710,9 +777,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A12D3C4183CA75600B8F930 /* CFNetwork.framework in Frameworks */,
+				0A12D3C2183CA74600B8F930 /* QuartzCore.framework in Frameworks */,
 				0A12D3C0183C9CA800B8F930 /* MobileCoreServices.framework in Frameworks */,
 				0A12D3BE183C9CA000B8F930 /* SystemConfiguration.framework in Frameworks */,
-				0A12D3BC183C9B5600B8F930 /* SmartSDKIOS.framework in Frameworks */,
 				0AA956FB18274DCA0098D60C /* CoreGraphics.framework in Frameworks */,
 				0AA956FD18274DCA0098D60C /* UIKit.framework in Frameworks */,
 				0AA956F918274DCA0098D60C /* Foundation.framework in Frameworks */,
@@ -842,6 +910,8 @@
 		0A07BD6F182A0A0500A350BC /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				0AB78ADC183CB46400979BD0 /* DADDMenuModule.h */,
+				0AB78ADD183CB46400979BD0 /* DADDMenuModule.m */,
 				0A07BD8C182A3E9600A350BC /* DAMenuModule.h */,
 				0A07BD8D182A3E9600A350BC /* DAMenuModule.m */,
 			);
@@ -1028,9 +1098,10 @@
 		0AA956F718274DCA0098D60C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A12D3C3183CA75600B8F930 /* CFNetwork.framework */,
+				0A12D3C1183CA74600B8F930 /* QuartzCore.framework */,
 				0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */,
 				0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */,
-				0A12D39B183C97D200B8F930 /* SmartSDKIOS.framework */,
 				0AA956F818274DCA0098D60C /* Foundation.framework */,
 				0AA956FA18274DCA0098D60C /* CoreGraphics.framework */,
 				0AA956FC18274DCA0098D60C /* UIKit.framework */,
@@ -1158,6 +1229,89 @@
 				0AB4B3AC1838D4CC00D77D7E /* DAQueueDrinkListCell.xib */,
 			);
 			name = DrinkCell;
+			sourceTree = "<group>";
+		};
+		0AB78A98183CB46400979BD0 /* SmartSDK */ = {
+			isa = PBXGroup;
+			children = (
+				0AB78A9A183CB46400979BD0 /* Helper */,
+				0AB78B21183CB46500979BD0 /* Thirdparty */,
+			);
+			path = SmartSDK;
+			sourceTree = "<group>";
+		};
+		0AB78A9A183CB46400979BD0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0AB78A9B183CB46400979BD0 /* DAAFHttpClient.h */,
+				0AB78A9C183CB46400979BD0 /* DAAFHttpClient.m */,
+				0AB78A9D183CB46400979BD0 /* DAAFHttpOperation.h */,
+				0AB78A9E183CB46400979BD0 /* DAAFHttpOperation.m */,
+				0AB78A9F183CB46400979BD0 /* DACommon.h */,
+				0AB78AA0183CB46400979BD0 /* DACommon.m */,
+				0AB78AA1183CB46400979BD0 /* DAJsonHelper.h */,
+				0AB78AA2183CB46400979BD0 /* DAJsonHelper.m */,
+				0AB78AA3183CB46400979BD0 /* DAMacros.h */,
+				0AB78AA4183CB46400979BD0 /* DARequestHelper.h */,
+				0AB78AA5183CB46400979BD0 /* DARequestHelper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		0AB78B21183CB46500979BD0 /* Thirdparty */ = {
+			isa = PBXGroup;
+			children = (
+				0AB78B22183CB46500979BD0 /* AFNetworking */,
+				0AB78B36183CB46500979BD0 /* Jastor */,
+				0AB78B3B183CB46500979BD0 /* Reachability */,
+			);
+			path = Thirdparty;
+			sourceTree = "<group>";
+		};
+		0AB78B22183CB46500979BD0 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				0AB78B23183CB46500979BD0 /* AFHTTPClient.h */,
+				0AB78B24183CB46500979BD0 /* AFHTTPClient.m */,
+				0AB78B25183CB46500979BD0 /* AFHTTPRequestOperation.h */,
+				0AB78B26183CB46500979BD0 /* AFHTTPRequestOperation.m */,
+				0AB78B27183CB46500979BD0 /* AFImageRequestOperation.h */,
+				0AB78B28183CB46500979BD0 /* AFImageRequestOperation.m */,
+				0AB78B29183CB46500979BD0 /* AFJSONRequestOperation.h */,
+				0AB78B2A183CB46500979BD0 /* AFJSONRequestOperation.m */,
+				0AB78B2B183CB46500979BD0 /* AFNetworkActivityIndicatorManager.h */,
+				0AB78B2C183CB46500979BD0 /* AFNetworkActivityIndicatorManager.m */,
+				0AB78B2D183CB46500979BD0 /* AFNetworking.h */,
+				0AB78B2E183CB46500979BD0 /* AFPropertyListRequestOperation.h */,
+				0AB78B2F183CB46500979BD0 /* AFPropertyListRequestOperation.m */,
+				0AB78B30183CB46500979BD0 /* AFURLConnectionOperation.h */,
+				0AB78B31183CB46500979BD0 /* AFURLConnectionOperation.m */,
+				0AB78B32183CB46500979BD0 /* AFXMLRequestOperation.h */,
+				0AB78B33183CB46500979BD0 /* AFXMLRequestOperation.m */,
+				0AB78B34183CB46500979BD0 /* UIImageView+AFNetworking.h */,
+				0AB78B35183CB46500979BD0 /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		0AB78B36183CB46500979BD0 /* Jastor */ = {
+			isa = PBXGroup;
+			children = (
+				0AB78B37183CB46500979BD0 /* Jastor.h */,
+				0AB78B38183CB46500979BD0 /* Jastor.m */,
+				0AB78B39183CB46500979BD0 /* JastorRuntimeHelper.h */,
+				0AB78B3A183CB46500979BD0 /* JastorRuntimeHelper.m */,
+			);
+			path = Jastor;
+			sourceTree = "<group>";
+		};
+		0AB78B3B183CB46500979BD0 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				0AB78B3C183CB46500979BD0 /* Reachability.h */,
+				0AB78B3D183CB46500979BD0 /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		0AEBE52B1831161B00B01A5E /* group */ = {
@@ -1290,6 +1444,12 @@
 		2886BB041839AD1E00A496AC /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				0AB78ADF183CB46400979BD0 /* DAMyMenu.h */,
+				0AB78AE0183CB46400979BD0 /* DAMyMenu.m */,
+				0AB78AE1183CB46400979BD0 /* DAMyMenuList.h */,
+				0AB78AE2183CB46400979BD0 /* DAMyMenuList.m */,
+				0AB78AE3183CB46400979BD0 /* DAMyTable.h */,
+				0AB78AE4183CB46400979BD0 /* DAMyTable.m */,
 				2886BB051839AD8100A496AC /* DAProcession.h */,
 				2886BB061839AD8100A496AC /* DAProcession.m */,
 				287FA993183B11A000E02051 /* DATakeout.h */,
@@ -1314,6 +1474,7 @@
 		28FFB62F18332213003443D1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				0AB78A98183CB46400979BD0 /* SmartSDK */,
 				28FFB6301833223E003443D1 /* DAUtil */,
 			);
 			name = Libraries;
@@ -1707,18 +1868,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AB78B81183CB46500979BD0 /* AFURLConnectionOperation.m in Sources */,
 				28FFB64418332272003443D1 /* DADateUtil.m in Sources */,
+				0AB78B7F183CB46500979BD0 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				0A5D2890182BD03600847578 /* UIViewController+MJPopupViewController.m in Sources */,
 				2886BB011836250D00A496AC /* DAProcessionViewCell.m in Sources */,
 				28FFB64618332272003443D1 /* DADevice.m in Sources */,
 				287FA990183B057400E02051 /* DATakeoutViewCell.m in Sources */,
+				0AB78B84183CB46500979BD0 /* Jastor.m in Sources */,
 				2886BAFD18360F5800A496AC /* DAProcessionViewController.m in Sources */,
+				0AB78B42183CB46500979BD0 /* DARequestHelper.m in Sources */,
+				0AB78B41183CB46500979BD0 /* DAJsonHelper.m in Sources */,
 				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
 				2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */,
+				0AB78B5D183CB46500979BD0 /* DAMyMenuList.m in Sources */,
 				28FFB64A18332272003443D1 /* DASettings.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
 				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,
+				0AB78B3E183CB46500979BD0 /* DAAFHttpClient.m in Sources */,
 				0A924AAF18348A810004C973 /* DAMyTableListViewController.m in Sources */,
 				F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */,
 				0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */,
@@ -1728,19 +1896,25 @@
 				0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */,
 				0AEBE5C31831C21300B01A5E /* DAMyMenuBookPopupController.m in Sources */,
 				0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */,
+				0AB78B82183CB46500979BD0 /* AFXMLRequestOperation.m in Sources */,
 				0A7AF0BA183606B900635376 /* DAQueueItemTableViewController.m in Sources */,
+				0AB78B7D183CB46500979BD0 /* AFImageRequestOperation.m in Sources */,
 				0A739E6E183B244F00AA48C4 /* DrawPatternLockView.m in Sources */,
 				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
+				0AB78B5E183CB46500979BD0 /* DAMyTable.m in Sources */,
 				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
 				F2AB4C0D182E1E2B0067E450 /* DAOrderGroupViewCell.m in Sources */,
 				0A7AF0BF183606D300635376 /* DAQueueFoodTableViewController.m in Sources */,
+				0AB78B86183CB46500979BD0 /* Reachability.m in Sources */,
 				0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */,
+				0AB78B40183CB46500979BD0 /* DACommon.m in Sources */,
 				0A7AF0AB183600C900635376 /* DADrinkQueueViewController.m in Sources */,
 				28FFB64C18332272003443D1 /* NSString+Util.m in Sources */,
 				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
 				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
 				28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */,
+				0AB78B3F183CB46500979BD0 /* DAAFHttpOperation.m in Sources */,
 				0A739E62183B019D00AA48C4 /* DAMyBackOrderViewController.m in Sources */,
 				0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */,
 				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
@@ -1748,7 +1922,9 @@
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
 				287FA995183B11AA00E02051 /* DATakeout.m in Sources */,
+				0AB78B5B183CB46500979BD0 /* DADDMenuModule.m in Sources */,
 				0A7AF0CE1836076600635376 /* DAQueueFoodListViewController.m in Sources */,
+				0AB78B83183CB46500979BD0 /* UIImageView+AFNetworking.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
 				0A5D289B182C6EFF00847578 /* DAMyLoginViewController.m in Sources */,
 				28FFB64B18332272003443D1 /* NSNumber+Util.m in Sources */,
@@ -1759,15 +1935,19 @@
 				0A7AF0B5183600EE00635376 /* DAItemViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
 				0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */,
+				0AB78B80183CB46500979BD0 /* AFPropertyListRequestOperation.m in Sources */,
 				28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */,
+				0AB78B5C183CB46500979BD0 /* DAMyMenu.m in Sources */,
 				0A7AF0C91836075200635376 /* DAQueueItemListViewController.m in Sources */,
 				47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */,
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,
 				0A07BD681829DC8100A350BC /* MSGridView.m in Sources */,
 				0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */,
 				287FA98C183B053500E02051 /* DATakeoutViewController.m in Sources */,
+				0AB78B7E183CB46500979BD0 /* AFJSONRequestOperation.m in Sources */,
 				0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */,
 				28414E9918349EFC009210AF /* DAAnimation.m in Sources */,
+				0AB78B7B183CB46500979BD0 /* AFHTTPClient.m in Sources */,
 				0A07BD051828EC1B00A350BC /* DAMyOrderViewController.m in Sources */,
 				0A7AF0B0183600E400635376 /* DAFoodViewController.m in Sources */,
 				0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */,
@@ -1778,6 +1958,7 @@
 				0A739E6F183B244F00AA48C4 /* DrawPatternLockViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */,
+				0AB78B85183CB46500979BD0 /* JastorRuntimeHelper.m in Sources */,
 				0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
 				28FFB64718332272003443D1 /* DAImageUtil.m in Sources */,
@@ -1786,6 +1967,7 @@
 				28FFB650183322B2003443D1 /* NSData+Base64.m in Sources */,
 				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
 				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
+				0AB78B7C183CB46500979BD0 /* AFHTTPRequestOperation.m in Sources */,
 				0A7AF0DE183612EF00635376 /* DAQueueMasterViewController.m in Sources */,
 				0AEBE5C81831D69000B01A5E /* DARemarkPopoverViewController.m in Sources */,
 				0A07BD76182A0E7B00A350BC /* DAOrderCell.m in Sources */,
@@ -1935,26 +2117,24 @@
 		0AA9572B18274DCA0098D60C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv7;
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = (
+					armv7,
+					arm64,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/Antony/Desktop/DAC/developer/DiandianIOS/SmartSDKIOS/build/Debug-framework",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
 				INFOPLIST_FILE = "DiandianIOS/DiandianIOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../SmartSDKIOS/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1962,26 +2142,24 @@
 		0AA9572C18274DCA0098D60C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = armv7;
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = (
+					armv7,
+					arm64,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/Antony/Desktop/DAC/developer/DiandianIOS/SmartSDKIOS/build/Debug-framework",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
 				INFOPLIST_FILE = "DiandianIOS/DiandianIOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../SmartSDKIOS/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

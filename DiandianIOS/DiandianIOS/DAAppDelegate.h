@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SmartSDKIOS/Header.h>
+
 
 @interface DAAppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -141,3 +141,13 @@ Podfile.lock
 .svn
 *.xcuserstate
 *.xccheckout
+cer/CertificateSigningRequest.certSigningRequest
+cer/DiandianIOS.mobileprovision
+cer/Multiple-Upload-Samples.zip
+cer/Multiple-Upload-Samples/multiple-device-upload-ios.deviceids
+cer/Multiple-Upload-Samples/multiple-device-upload-ios.txt
+cer/Multiple-Upload-Samples/multiple-device-upload-mac.txt
+cer/Profile_DiandianIOS.mobileprovision
+cer/iOS_Team_Provisioning_Profile_jpcodreamartsDiandianIOS.mobileprovision
+cer/ios_distribution.cer
+cer/证书.cer

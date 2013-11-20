@@ -18,12 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress] == nil) {
-        NSString *serverAddress = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerAddress];
-        NSNumber *serverPort = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerPort];
-        [[NSUserDefaults standardUserDefaults] setObject:serverAddress forKey:kServerAddress];
-        [[NSUserDefaults standardUserDefaults] setInteger:serverPort.integerValue forKey:kServerPort];
-    }
+//    if ([[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress] == nil) {
+//        NSString *serverAddress = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerAddress];
+//        NSNumber *serverPort = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerPort];
+//        [[NSUserDefaults standardUserDefaults] setObject:serverAddress forKey:kServerAddress];
+//        [[NSUserDefaults standardUserDefaults] setInteger:serverPort.integerValue forKey:kServerPort];
+//    }
     
     [DASettings registerDefaultsFromSettingsBundle];
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);

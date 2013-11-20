@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SmartSDKIOS/Header.h>
+#import "DAMyMenuList.h"
 
 @interface DAOrderThumbViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 

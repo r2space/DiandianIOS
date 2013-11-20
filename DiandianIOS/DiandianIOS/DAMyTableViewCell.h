@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SmartSDKIOS/DAMyTable.h>
+#import "DAMyTable.h"
 
 @interface DAMyTableViewCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *tableTitle;

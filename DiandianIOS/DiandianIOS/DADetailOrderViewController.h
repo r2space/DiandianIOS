@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SmartSDKIOS/Header.h>
+#import "DAMyMenuList.h"
+#import "DAMyMenu.h"
+
 @protocol DADetailOrderDelegate;
 @interface DADetailOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIPopoverControllerDelegate>
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SmartSDKIOS/Jastor.h"
+#import "Jastor.h"
 
 @interface DATakeout : Jastor
 

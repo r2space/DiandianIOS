@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SmartSDKIOS/Header.h>
 #import "MSGridView.h"
 #import "DABookCell.h"
 #import "CustomLayout.h"

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <SmartSDKIOS/Header.h>
+#import "DAMyMenu.h"
 
 @interface DAMyMenuBookCell : UICollectionViewCell
 
