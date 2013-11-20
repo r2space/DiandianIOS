@@ -18,6 +18,18 @@
                         <rect key="frame" x="4" y="20" width="181" height="175"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSt-nB-l1X">
+                        <rect key="frame" x="137" y="38" width="49" height="46"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                        <state key="normal" title="数量" backgroundImage="btn_round_red.png">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="showUnfinishedMenuList:" destination="zQa-zO-Ab7" eventType="touchUpInside" id="PoT-7N-Uax"/>
+                        </connections>
+                    </button>
                     <view alpha="0.39999999999999963" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E9P-WB-nf7">
                         <rect key="frame" x="4" y="20" width="181" height="175"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -36,21 +48,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mV-Of-j5K">
-                        <rect key="frame" x="156" y="68" width="28" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.9407194257" green="0.0" blue="0.066420981370000007" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.69312021683673475" green="0.69312021683673475" blue="0.69312021683673475" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="highlightedColor" cocoaTouchSystemColor="darkTextColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="数量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMS-wh-zvH">
-                        <rect key="frame" x="156" y="68" width="28" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
-                        <nil key="highlightedColor"/>
-                        <size key="shadowOffset" width="13" height="-1"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -58,14 +55,14 @@
             <connections>
                 <outlet property="imgTable" destination="Edt-Gx-nOD" id="wC8-Gl-0eM"/>
                 <outlet property="tableTitle" destination="aUb-p6-ecs" id="z6E-na-LQn"/>
-                <outlet property="unFinishedCount" destination="TMS-wh-zvH" id="YXR-zi-Fly"/>
-                <outlet property="unFinishedCountMask" destination="8mV-Of-j5K" id="2Xd-0t-Gqw"/>
+                <outlet property="unfinishedCount" destination="eSt-nB-l1X" id="2db-QD-39s"/>
                 <outlet property="viewLabel" destination="Qxb-7k-jMP" id="Hws-ri-gVG"/>
                 <outlet property="viewMask" destination="E9P-WB-nf7" id="HHn-Gt-gj1"/>
             </connections>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="btn_round_red.png" width="300" height="300"/>
         <image name="sample-table.jpg" width="450" height="450"/>
     </resources>
 </document>

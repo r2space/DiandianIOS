@@ -8,8 +8,12 @@
 
 #import "DAMyTableViewCell.h"
 #import "NSString+Util.h"
+#import "DAPopTableViewController.h"
 
 @implementation DAMyTableViewCell
+{
+    UIPopoverController *popover;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -28,18 +32,12 @@
     self.tableState.text = @"";    // clear state
     
     // 设置未上菜的量
-    //self.unFinishedCountMask.layer.borderWidth = 1;
-    self.unFinishedCountMask.layer.cornerRadius = 5.0;
-    //self.unFinishedCountMask.layer.borderColor = UIColor.blackColor.CGColor;
-    
     if ([NSString isEmpty:mytable.unfinishedCount] || [@"0" isEqualToString:mytable.unfinishedCount]) {
-        [self.unFinishedCountMask setHidden:YES];
-        [self.unFinishedCount setHidden:YES];
-        self.unFinishedCount.text = @"";
+        [self.unfinishedCount setHidden:YES];
+        [self.unfinishedCount setTitle:@"" forState:UIControlStateNormal];
     } else {
-        [self.unFinishedCountMask setHidden:NO];
-        [self.unFinishedCount setHidden:NO];
-        self.unFinishedCount.text = mytable.unfinishedCount;
+        [self.unfinishedCount setHidden:NO];
+        [self.unfinishedCount setTitle:mytable.unfinishedCount forState:UIControlStateNormal];
     }
     
     // 这个好像被外面给覆盖了
@@ -51,5 +49,20 @@
         self.tableState.text = @"就餐中";
     }
     
+}
+- (IBAction)showUnfinishedMenuList:(id)sender {
+    DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
+    
+    NSMutableArray *wList = [NSMutableArray array];
+    [wList addObject:[NSString stringWithFormat:@"鱼香肉丝"]];
+    [wList addObject:[NSString stringWithFormat:@"天外飞仙"]];
+    [wList addObject:[NSString stringWithFormat:@"啤酒1瓶"]];
+    
+    [vc initData:@"type" list:wList];
+    //vc.delegate = self;
+    
+    popover = [[UIPopoverController alloc]initWithContentViewController:vc];
+    popover.popoverContentSize = CGSizeMake(200, 300);
+    [popover presentPopoverFromRect:self.unfinishedCount.frame inView: self permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
 }
 @end
