@@ -20,11 +20,15 @@
 #import "DATakeoutViewController.h"
 #import "DAMyTable.h"
 #import "NSString+Util.h"
+#import "DADeskProxy.h"
+#import "ProgressHUD.h"
+
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate, DATakeoutDelegate>
 {
+    
+    DADeskList *deskList;
     NSMutableArray *btnList ;
-    MSGridView *gridView;
     NSMutableArray *dataList;
     BOOL isTableFlicker;
     BOOL isStartChangeTable;
@@ -40,6 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     dataList = [[NSMutableArray alloc] init];
     UINib *cellNib = [UINib nibWithNibName:@"DAMyTableViewCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyTableViewCell"];
@@ -49,8 +54,13 @@
     isTableFlicker = false;
     isProcessionIntoTable = false;
     
-    [self loadFromFile];
+    
     [self initTopmenu];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self loadFromFile];
 }
 
 - (void) initTopmenu
@@ -69,9 +79,9 @@
     [btnList addObject:[self.view viewWithTag:101]];
     [btnList addObject:[self.view viewWithTag:200]];
     [btnList addObject:[self.view viewWithTag:201]];
-    [btnList addObject:[self.view viewWithTag:202]];
-    
-    [btnList addObject:[self.view viewWithTag:203]];
+//    [btnList addObject:[self.view viewWithTag:202]];
+//    
+//    [btnList addObject:[self.view viewWithTag:203]];
     
     for (UIButton *btn in btnList) {
         btn.layer.shadowColor = UIColor.blackColor.CGColor;
@@ -95,27 +105,28 @@
 }
 
 -(void)loadFromFile{
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"table" ofType:@"json"];
-    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
+    [ProgressHUD show:nil];
     
-    NSError *anError = nil;
-    NSArray *items = [NSJSONSerialization JSONObjectWithData:elementsData
-                                                              options:NSJSONReadingAllowFragments
-                                                                error:&anError];
-    
-    for (NSDictionary *d in items){
-        [dataList addObject: [[DAMyTable alloc]initWithDictionary:d]];
-    }
+    [[DADeskModule alloc] getDeskListWithArchiveName:FILE_DESK_LIST callback:^(NSError *err, DADeskList *list) {
+        dataList = [[NSMutableArray alloc]init];
+        for (DADesk *d in list.items){
+            [dataList addObject: d];
+        }
+        [self.collectionView reloadData];
+        [ProgressHUD dismiss];
+    }];
 }
-- (DAMyTable*)getDataByTableId:(NSString*)tableId
+
+
+- (DADesk*)getDataByTableId:(NSString*)tableId
 {
     if (dataList == nil || dataList.count <= 0) {
         return nil;
     }
     
-    for (DAMyTable *t in dataList) {
-        if ([t.tableId isEqualToString:tableId]) {
-            return t;
+    for (DADesk *d in dataList) {
+        if ([d.tableId isEqualToString:tableId]) {
+            return d;
         }
     }
     
@@ -129,10 +140,19 @@
 }
 
 - (void)startTableButtonClicked:(DAMyLoginViewController*)loginViewViewController{
+    
+    DAMyLoginViewController *loginVC = loginViewViewController;
+
+    [DADeskProxy initDesk:loginVC.myDesk._id userId:loginVC.waitterId.text type:@"0" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
+        NSLog(@"DADeskProxy initDesk    %@"  ,service);
+    }];
+
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
     UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
     [self.navigationController pushViewController:menubookVC animated:YES];
+    
+    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
@@ -148,8 +168,8 @@
     
     DAMyTableViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    DAMyTable *t = [dataList objectAtIndex:indexPath.row];
-    [cell setData:t];
+    DADesk *desk = [dataList objectAtIndex:indexPath.row];
+    [cell setData:desk];
     
     //NSString *imageName = [@"eating" isEqualToString:t.state] ? @"sample-table.jpg" : @"sample-table1.jpg";
     cell.imgTable.image = [UIImage imageNamed:@"sample-table.jpg"];
@@ -166,14 +186,20 @@
     cell.viewLabel.layer.masksToBounds = YES;
     
     // 设置空桌的效果
-    if (![@"empty" isEqualToString:t.state])
-    {
+    
+    // 这个好像被外面给覆盖了
+    if (desk.service !=nil) {
+        
         cell.viewMask.hidden = YES;
-    }else {
+        
+    } else {
         cell.viewMask.hidden = NO;
+
     }
+    
+    
     // 设置换桌的动画效果
-    if (isTableFlicker && [@"empty" isEqualToString:t.state]) {
+    if (isTableFlicker && [@"empty" isEqualToString:desk.state]) {
         [DAAnimation addFlickerShadow:cell.imgTable shadowColor:[UIColor greenColor] shadowRadius:5.0];
     } else {
         [DAAnimation removeFlickerShadow:cell.imgTable];
@@ -185,12 +211,12 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAMyTable * t = [dataList objectAtIndex:indexPath.row];
+    DADesk * desk = [dataList objectAtIndex:indexPath.row];
     
     if (isStartChangeTable) {
-        if ([@"empty" isEqualToString:t.state]) {
-            DAMyTable *fromT = [self getDataByTableId:changeTableId];
-            [fromT swap:t];
+        if ([@"empty" isEqualToString:desk.state]) {
+            DADesk *fromT = [self getDataByTableId:changeTableId];
+            [fromT swap:desk];
 
             isStartChangeTable = false;
             [self setTableFlicker:false];
@@ -198,19 +224,19 @@
         
         return;
     } else if (isProcessionIntoTable) {
-        if ([@"empty" isEqualToString:t.state])
+        if ([@"empty" isEqualToString:desk.state])
         {
-            t.state = @"eating";
+            desk.state = @"eating";
 
             isProcessionIntoTable = false;
             [self setTableFlicker:false];
         }
         return;
     } else {
-        if ([@"empty" isEqualToString:t.state]) {
-            [DAMyLoginViewController show: t parentView:self ];
+        if (desk.service != nil) {
+            [DAMyTableConfirmController show: desk parentView:self ];
         } else {
-            [DAMyTableConfirmController show: t parentView:self ];
+            [DAMyLoginViewController show: desk parentView:self ];
         }
     }
     

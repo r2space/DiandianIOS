@@ -32,7 +32,7 @@
     return constraints;
 }
 
-- (DAMyMenuBookCell *)initWithObj:(DAMenu *)menu collectionView:(UICollectionView *)collectionView  cellIdentifier: (NSString *)cellIdentifier indexPath:(NSIndexPath *)indexPath row:(NSNumber *)row column:(NSNumber *)column
+- (DAMyMenuBookCell *)initWithObj:(DAItem *)menu collectionView:(UICollectionView *)collectionView  cellIdentifier: (NSString *)cellIdentifier indexPath:(NSIndexPath *)indexPath row:(NSNumber *)row column:(NSNumber *)column
 {
     DAMyMenuBookCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
@@ -50,7 +50,8 @@
         imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 900, 720)];
     }
     
-    [imageView setImage: [UIImage imageNamed:menu.image]];
+    [imageView setImage: [UIImage imageNamed:@"茶香虾.jpg"]];
+    
     [((UIImageView *)[cell viewWithTag:12]).superview addSubview:imageView];
     UIView *maskView = [cell viewWithTag:101];
 

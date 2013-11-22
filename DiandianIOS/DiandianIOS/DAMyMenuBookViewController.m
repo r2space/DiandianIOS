@@ -13,6 +13,7 @@
 #import "DAMyMenuBookPopupController.h"
 #import "DAAnimation.h"
 #import "SmartSDK.h"
+#import "ProgressHUD.h"
 
 #define MENU_FRAME_WIDTH    876
 #define MENU_FRAME_HEIGHT   694
@@ -22,8 +23,10 @@
     
     //api
     int pageItemCount;
-
-    NSMutableArray *menuList;
+    
+    NSMutableArray *dataList;
+    DAMenuList *menuList;
+    int menuIndex;
     BOOL listType;
     UICollectionViewFlowLayout *defaultLayout;
 }
@@ -44,9 +47,9 @@
 {
     [super viewDidLoad];
 
-    menuList = [[NSMutableArray alloc ] init];
+    dataList = [[NSMutableArray alloc ] init];
+    menuIndex = 0;
     listType = YES;
-    [self loadFromDisk];
     UINib *cellNib = [UINib nibWithNibName:@"DAMyMenuBookCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyMenuBookCell"];
 
@@ -77,25 +80,30 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [self.collectionView reloadData];
-    self.pageControl.numberOfPages = [menuList count] / pageItemCount ;
-    if ([menuList count] % pageItemCount !=0) {
+    
+    DAMenu *menu = [menuList.items objectAtIndex:menuIndex];
+    self.pageControl.numberOfPages = [menu.items count] / pageItemCount ;
+    if ([menu.items count] % pageItemCount !=0) {
         self.pageControl.numberOfPages = self.pageControl.numberOfPages + 1;
     }
     
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self loadFromDisk];
+}
+
 -(void)loadFromDisk{
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"json"];
-    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
     
-    NSError *anError = nil;
-    NSArray *parsedElements = [NSJSONSerialization JSONObjectWithData:elementsData
-                                                              options:NSJSONReadingAllowFragments
-                                                                error:&anError];
+    menuList = [[DAMenuList alloc]unarchiveObjectWithFileWithName:FILE_MENU_LIST];
     
-    for (NSDictionary *aModuleDict in parsedElements){
-        [menuList addObject:[[DAMenu alloc ]initWithDictionary:aModuleDict]];
+    DAMenu *menu = [menuList.items objectAtIndex:menuIndex];
+    for (DAItem *aItem in menu.items){
+        [dataList addObject:aItem ];
     }
+    [self.collectionView reloadData];
+
     
 }
 
@@ -108,16 +116,18 @@
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
-    return [menuList count];
+    return [dataList count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
     
-    // we're going to use a custom UICollectionViewCell, which will hold an image and its label
-    //
     
-    DAMenu *data = [menuList objectAtIndex:indexPath.row];
+    
+    
+    DAItem *data = [[DAItem alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
+    
+    
     DAMyMenuBookCell *cell;
     NSString *cellIdentifier ;
     NSNumber *nsRow = [[NSNumber alloc] initWithInt:1];
@@ -162,6 +172,7 @@
     cell.menuData = data;
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
+//    titleLabel.text = data.name;
     titleLabel.text = data.name;
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:102];
     [imageView setImage:[ UIImage imageNamed:data.image]];
@@ -183,49 +194,8 @@
 
 - (CGSize) blockSizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (!listType) {
-      return  CGSizeMake(3, 3);
-    }
-//    if(indexPath.row >= menuList.count)
-//        NSLog(@"Asking for index paths of non-existant cells!! %d from %d cells", indexPath.row, menuList.count);
-    
-//    if (indexPath.row % 10 == 0)
-//        return CGSizeMake(3, 1);
-//    if (indexPath.row % 11 == 0)
-//        return CGSizeMake(2, 1);
-//    else if (indexPath.row % 7 == 0)
-//        return CGSizeMake(1, 3);
-//    else if (indexPath.row % 8 == 0)
-//        return CGSizeMake(1, 2);
-//    else if(indexPath.row % 3 == 0)
-//        return CGSizeMake(2, 2);
-    NSNumber *rows = [[NSNumber alloc]initWithInt:6];
-    
-    if (indexPath.row % [rows integerValue] == 0) {
-        return CGSizeMake(2, 2);
-    } else if(indexPath.row % [rows integerValue] == 1){
-        return CGSizeMake(1, 1);
-    } else if(indexPath.row % [rows integerValue] == 2){
-        return CGSizeMake(1, 1);
-    } else if(indexPath.row % [rows integerValue] == 3){
-        return CGSizeMake(1, 1);
-    } else if(indexPath.row % [rows integerValue] == 4){
-        return CGSizeMake(1, 1);
-    } else if(indexPath.row % [rows integerValue] == 5){
-        return CGSizeMake(1, 1);
-    } else if(indexPath.row % [rows integerValue] == 6){
-        return CGSizeMake(1, 1);
-//    } else if(indexPath.row % [rows integerValue] == 7){
-//        return CGSizeMake(1, 1);
-    } else {
-        return CGSizeMake(1, 1);
-    }
-    
-    
-    
-    if (indexPath.row == 0) return CGSizeMake(5, 5);
-    
-    return CGSizeMake(1, 1);
+    DAItem *data = [[DAItem alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
+    return  CGSizeMake([data.row intValue], [data.column intValue]);
 }
 
 - (UIEdgeInsets)insetsForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -247,7 +217,7 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAMenu *data = [menuList objectAtIndex:indexPath.row];
+    DAItem *data = [[DAItem alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
     [self popupDetail:data];
     
 }
@@ -255,11 +225,11 @@
 
 -(void) popupDetailMenu :(NSNotification *) sender
 {
-    DAMenu * menu  = (DAMenu *)[sender object];
+    DAItem * menu  = (DAItem *)[sender object];
     [self popupDetail:menu];
 }
 
--(void) popupDetail :(DAMenu *) menu
+-(void) popupDetail :(DAItem *) menu
 {
 
     DAMyMenuBookPopupController *secondDetailViewController = [[DAMyMenuBookPopupController alloc] initWithNibName:@"DAMyMenuBookPopupController" bundle:nil];
@@ -276,18 +246,19 @@
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [self loadFromDisk];
    
-    for (DAMenu *menu in menuList) {
-        if ([menu.type isEqualToString:obj]) {
-            [tmpList addObject:menu];
+    for (DAMenu *menu in menuList.items) {
+        if ([menu.name isEqualToString:obj]) {
+            [tmpList addObjectsFromArray:menu.items];
             
         }
     
     }
-    menuList = [[NSMutableArray alloc]initWithArray:tmpList];
+    
+    dataList = [[NSMutableArray alloc]initWithArray:tmpList];
     [self.collectionView reloadData];
     
-    self.pageControl.numberOfPages = [menuList count] / 5 ;
-    if ([menuList count] % 5 !=0) {
+    self.pageControl.numberOfPages = [dataList count] / 5 ;
+    if ([dataList count] % 5 !=0) {
         self.pageControl.numberOfPages = self.pageControl.numberOfPages + 1;
     }
     self.pageControl.currentPage = 0;

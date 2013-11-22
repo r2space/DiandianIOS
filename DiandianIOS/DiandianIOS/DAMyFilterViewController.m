@@ -8,11 +8,12 @@
 
 #import "DAMyFilterViewController.h"
 #import "CCSegmentedControl.h"
+#import "SmartSDK.h"
 
 @interface DAMyFilterViewController ()
 {
     NSMutableArray *elements;
-    
+    DAMenuList *menuList;
 }
 @end
 
@@ -31,6 +32,10 @@
 {
     [super viewDidLoad];
     elements = [[NSMutableArray alloc] init];
+    
+    
+    
+    
     [self loadFromDisk];
     // Do any additional setup after loading the view from its nib.
     CCSegmentedControl* segmentedControl = [[CCSegmentedControl alloc] initWithItems:elements];
@@ -50,16 +55,11 @@
 }
 
 -(void)loadFromDisk{
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"type" ofType:@"json"];
-    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
     
-    NSError *anError = nil;
-    NSArray *parsedElements = [NSJSONSerialization JSONObjectWithData:elementsData
-                                                              options:NSJSONReadingAllowFragments
-                                                                error:&anError];
+    menuList = [[DAMenuList alloc]unarchiveObjectWithFileWithName:FILE_MENU_LIST];
     
-    for (NSDictionary *aModuleDict in parsedElements){
-        NSString *type =[NSString stringWithFormat:@"      %@      " ,[aModuleDict objectForKey:@"name"]];
+    for (DAMenu *aMenu in menuList.items){
+        NSString *type =[NSString stringWithFormat:@"      %@      " ,aMenu.name];
         [elements addObject:type];
     }
 }
@@ -71,7 +71,9 @@
     NSString *index = [NSString stringWithFormat:@"%d",segmentedControl.selectedSegmentIndex];
     NSLog(@"%s line:%d segment has changed to %@", __FUNCTION__, __LINE__, index);
     
-    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:index];
+    DAMenu *menu = [menuList.items objectAtIndex:[index intValue]];
+    
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:menu.name];
     
     [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
     

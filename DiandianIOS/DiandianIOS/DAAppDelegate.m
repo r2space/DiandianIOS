@@ -9,8 +9,8 @@
 #import "DAAppDelegate.h"
 #import "DASettings.h"
 #import "DACommon.h"
-#import "DALoginModule.h"
-#import "DADDMenuModule.h"
+#import "SmartSDK.h"
+
 
 
 #define kInfoPlistKeyServerAddress  @"ServerAddress"
@@ -39,9 +39,48 @@
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
+    [[DASocketIO sharedClient:self] conn];
+    
     return YES;
 }
-							
+
+
+# pragma mark -
+# pragma mark socket.IO-objc delegate methods
+
+- (void) socketIODidConnect:(SocketIO *)socket
+{
+    NSLog(@"socket.io connected.");
+}
+
+- (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet
+{
+    NSLog(@"didReceiveEvent()");
+    //
+    //    SocketIOCallback cb = ^(id argsData) {
+    //        NSDictionary *response = argsData;
+    //        // do something with response
+    //        NSLog(@"ack arrived: %@", response);
+    //
+    //        // test forced disconnect
+    ////        [socketIO disconnectForced];
+    //    };
+    //    [socketIO sendEvent:@"my other event" withData:@"佛挡杀佛第三方地方发呆" andAcknowledge:cb];
+}
+
+- (void) socketIO:(SocketIO *)socket onError:(NSError *)error
+{
+    NSLog(@"onError() %@", error);
+}
+
+
+- (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error
+{
+    NSLog(@"socket.io disconnected. did error occur? %@", error);
+}
+
+# pragma mark -
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -52,11 +91,19 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    NSLog(@"后台3");
+    if (![[DASocketIO sharedClient:self] isConnected]) {
+        [[DASocketIO sharedClient:self] conn];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    NSLog(@"后台2");
+    if (![[DASocketIO sharedClient:self] isConnected]) {
+        [[DASocketIO sharedClient:self] conn];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -67,6 +114,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    NSLog(@"后台1");
+    [DASocketIO sharedClient:self];
 }
 
 void uncaughtExceptionHandler(NSException *exception) {

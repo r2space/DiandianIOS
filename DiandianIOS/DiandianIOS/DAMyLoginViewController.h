@@ -7,16 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DAMyTable.h"
+#import "SmartSDK.h"
+
 #import "DAPopTableViewController.h"
 
 @protocol DAMyLoginDelegate;
 @interface DAMyLoginViewController : UIViewController<DAPopTableViewDelegate, UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *tableName;
+@property (strong, nonatomic) IBOutlet UITextField *numOfPepole;
+@property (strong, nonatomic) IBOutlet UITextField *waitterId;
+@property (strong, nonatomic) IBOutlet UITextField *waitterPassword;
+@property (weak, nonatomic) IBOutlet UILabel *labelLock;
+
+@property (strong, nonatomic) IBOutlet UIPopoverController *popover;
+
+@property (retain, nonatomic) NSString *myDeskId;
+@property (retain, nonatomic) DADesk *myDesk;
+
+
 @property (assign, nonatomic) id <DAMyLoginDelegate>delegate;
 - (IBAction)closePopup:(id)sender;
 - (IBAction)startTable:(id)sender;
 
-+ (void) show:(DAMyTable*)thisTable parentView :(UIViewController *) parentView;
++ (void) show:(DADesk *)thisTable parentView :(UIViewController *) parentView;
 
 @end
 

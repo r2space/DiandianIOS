@@ -12,17 +12,16 @@
 #import "DAMyTable.h"
 #import "DAPopTableViewController.h"
 #import "NSString+Util.h"
+#import "DrawPatternLockViewController.h"
+#import "ProgressHUD.h"
+
 
 @interface DAMyLoginViewController ()
-@property (strong, nonatomic) IBOutlet UITextField *tableName;
-@property (strong, nonatomic) IBOutlet UITextField *numOfPepole;
-@property (strong, nonatomic) IBOutlet UITextField *waitterId;
-@property (strong, nonatomic) IBOutlet UITextField *waitterPassword;
+{
+    DrawPatternLockViewController *lockVC;
+    BOOL lockStatus;
+}
 
-@property (strong, nonatomic) IBOutlet UIPopoverController *popover;
-
-@property (retain, nonatomic) NSString *myTableId;
-@property (retain, nonatomic) DAMyTable *myTable;
 @end
 
 @implementation DAMyLoginViewController
@@ -35,8 +34,29 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    lockVC = [[DrawPatternLockViewController alloc] init];
     self.numOfPepole.delegate = self;
     self.waitterId.delegate = self;
+    
+    lockStatus = NO;
+}
+
+- (void)lockEntered:(NSString*)key {
+    NSLog(@"key: %@", key);
+    
+    if (![key isEqualToString:@"010509"]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"错误"
+                                                            message:@"手势错误!"
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"重新输入", nil];
+        [alertView show];
+    } else {
+        self.labelLock.text = @"通过";
+        lockStatus = YES;
+        [lockVC.view removeFromSuperview];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,7 +65,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-+ (void) show:(DAMyTable*)thisTable parentView :(UIViewController *) parentView
++ (void) show:(DADesk *)thisTable parentView :(UIViewController *) parentView
 {
     DAMyLoginViewController *vc = [[DAMyLoginViewController alloc]initWithNibName:@"DAMyLoginViewController" bundle:nil];
     vc.delegate = (id)parentView;
@@ -54,37 +74,38 @@
     [vc setTable:thisTable];
 }
 
-- (void) setTable:(DAMyTable*)thisTable
+- (void) setTable:(DADesk *)thisDesk
 {
-    self.myTableId = thisTable.tableId;
-    [self loadTableInfo:thisTable];
+    self.myDeskId = thisDesk.tableId;
+    [self loadTableInfo:thisDesk];
+    self.myDesk = thisDesk;
     
-    self.tableName.text = self.myTable.name;
-    self.numOfPepole.text = self.myTable.numOfPepole;
-    self.waitterId.text = self.myTable.waitterId;
+    self.tableName.text = self.myDesk.name;
+    self.numOfPepole.text = self.myDesk.numOfPepole;
+    self.waitterId.text = self.myDesk.waitterId;
     self.waitterPassword.text = @"";
     
     [self saveTableInfo];
 }
 
--(void) loadTableInfo:(DAMyTable*) defaultMyTable
+-(void) loadTableInfo:(DADesk *) defaultmyDesk
 {
-    self.myTable = nil;
+    self.myDesk = nil;
 
     NSString *path = [self tableInfoPath];
     if(path != nil){
-        // Get MyTable
-        self.myTable = [NSKeyedUnarchiver unarchiveObjectWithFile: path];
-        if (self.myTable == nil) {
-            self.myTable = defaultMyTable;
+        // Get myDesk
+        self.myDesk = [NSKeyedUnarchiver unarchiveObjectWithFile: path];
+        if (self.myDesk == nil) {
+            self.myDesk = defaultmyDesk;
         }
         // Init waitterId
         NSString *lastWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey: @"LastWaiterId"];
         if ([NSString isNotEmpty:lastWaitterId]) {
-            self.myTable.waitterId = lastWaitterId;
+            self.myDesk.waitterId = lastWaitterId;
         }
         // Init numOfPepole
-        self.myTable.numOfPepole = (self.myTable.numOfPepole == nil) ? @"4" : self.myTable.numOfPepole;
+        self.myDesk.numOfPepole = (self.myDesk.numOfPepole == nil) ? @"4" : self.myDesk.numOfPepole;
     }
 //    if (self.myTable == nil) { // init myTable
 //        NSMutableDictionary * t = [NSMutableDictionary dictionaryWithCapacity:5];
@@ -100,16 +121,16 @@
     NSLog(@"%@",[defaults objectForKey:@"LastWaiterId"]);
     //[defaults synchronize];
     
-    self.myTable.numOfPepole = self.numOfPepole.text;
-    self.myTable.waitterId = self.waitterId.text;
+    self.myDesk.numOfPepole = self.numOfPepole.text;
+    self.myDesk.waitterId = self.waitterId.text;
     
     NSString *path = [self tableInfoPath];
     if(path != nil){
-        BOOL f = [NSKeyedArchiver archiveRootObject:self.myTable toFile:path];
+        BOOL f = [NSKeyedArchiver archiveRootObject:self.myDesk toFile:path];
         if (f) {
             return YES;
         } else {
-            NSLog(@"save DAMyTable info fail.");
+            NSLog(@"save DAmyDesk info fail.");
         }
     } else {
         NSLog(@"Path don't exists!");
@@ -124,7 +145,7 @@
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
         NSString *path =[[paths objectAtIndex:0]
-                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_table_info_%@", self.myTableId]];
+                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_table_info_%@", self.myDeskId]];
         return path;
     }
     return nil;
@@ -143,11 +164,25 @@
 - (IBAction)startTable:(id)sender {
     
     [self saveTableInfo];
-    // TODO: 密码check
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(startTableButtonClicked:)]) {
-        [self.delegate startTableButtonClicked:self];
+
+    if(self.waitterId.text.length == 0){
+        [ProgressHUD showError:@"请选择操作员。"];
+        return;
     }
+    if(self.numOfPepole.text.length == 0){
+        [ProgressHUD showError:@"用餐人数。"];
+        return;
+    }
+    if (lockStatus) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(startTableButtonClicked:)]) {
+            [self.delegate startTableButtonClicked:self];
+        }
+    } else {
+        [ProgressHUD showError:@"请验证您的手势密码。"];
+    }
+    
+    
+    
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -210,6 +245,16 @@
     }
     
     [self.popover dismissPopoverAnimated:YES];
+}
+
+
+- (IBAction)passwordTouched:(id)sender {
+    // Do any additional setup after loading the view from its nib.
+    
+    [lockVC setTarget:self withAction:@selector(lockEntered:)];
+    lockVC.view.frame = CGRectMake(0, 0, 556, 349);
+    [self addChildViewController:lockVC];
+    [self.view addSubview:lockVC.view];
 }
 
 @end

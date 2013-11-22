@@ -8,6 +8,8 @@
 
 #import "DAMyOrderLoginViewController.h"
 #import "DrawPatternLockViewController.h"
+#import "ProgressHUD.h"
+
 
 @interface DAMyOrderLoginViewController ()
 {
@@ -33,16 +35,14 @@
 
     
 }
+
+
+
 - (void)lockEntered:(NSString*)key {
     NSLog(@"key: %@", key);
     
     if (![key isEqualToString:@"010509"]) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"错误"
-                                                            message:@"手势错误!"
-                                                           delegate:nil
-                                                  cancelButtonTitle:nil
-                                                  otherButtonTitles:@"重新输入", nil];
-        [alertView show];
+        [ProgressHUD showError:@"手势密码验证错误。"];
     } else {
         self.labelStatus.text = @"通过";
         [lockVC.view removeFromSuperview];
@@ -81,7 +81,7 @@
         }
         
     } else {
-        NSLog(@"密码错误");
+        [ProgressHUD showError:@"请验证手势密码"];
         
     }
 }

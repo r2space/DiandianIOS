@@ -19,7 +19,7 @@
 - (IBAction)backThumbTouched:(id)sender;
 
 @property (retain, nonatomic) NSString *tableNO;
-@property (retain, nonatomic) DAMenu *menuData;
+@property (retain, nonatomic) DAItem *menuData;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;

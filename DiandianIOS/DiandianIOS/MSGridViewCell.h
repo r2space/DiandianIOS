@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DAMenuModule.h"
+#import "SmartSDK.h"
+
 #define contentbuffer 2
 @interface MSGridViewCell : UIView <UIGestureRecognizerDelegate>
 @property (nonatomic,strong) NSString *reuseIdentifier;
 @property (nonatomic,strong) UIView *contentView;
 
-@property (nonatomic,strong) DAMenuModule *menuData;
+@property (nonatomic,strong) DAItem *menuData;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)identifier menuData:(DAMenuModule *)menuData;
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)identifier menuData:(DAItem *)menuData;
 @end

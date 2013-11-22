@@ -12,7 +12,7 @@
 #import "DAMenuList.h"
 
 
-@interface DADDMenuModule : NSObject
+@interface DAMenuModule : NSObject
 
 
 -(void) getList:(void (^)(NSError *err, DAMenuList * list))callback;

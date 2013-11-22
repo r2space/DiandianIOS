@@ -17,7 +17,7 @@
 
 @implementation MSGridViewCell
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)identifier menuData:(DAMenuModule *)menuData
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)identifier menuData:(DAItem *)menuData
 {
     self = [super initWithFrame:frame];
     if (self) {

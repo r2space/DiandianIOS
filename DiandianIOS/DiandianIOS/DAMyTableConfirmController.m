@@ -13,6 +13,7 @@
 #import "DAPopTableViewController.h"
 #import "NSString+Util.h"
 #import "DAMyBackOrderViewController.h"
+#import "SmartSDK.h"
 
 UIViewController *parentVC;
 
@@ -25,7 +26,7 @@ UIViewController *parentVC;
 @property (strong, nonatomic) IBOutlet UIPopoverController *popover;
 
 @property (retain, nonatomic) NSString *myTableId;
-@property (retain, nonatomic) DAMyTable *myTable;
+@property (retain, nonatomic) DADesk *myDesk;
 
 @end
 
@@ -48,7 +49,7 @@ UIViewController *parentVC;
     // Dispose of any resources that can be recreated.
 }
 
-+ (void) show:(DAMyTable*)thisTable parentView :(UIViewController *) parentView
++ (void) show:(DADesk *)thisTable parentView :(UIViewController *) parentView
 {
     DAMyTableConfirmController *vc = [[DAMyTableConfirmController alloc]initWithNibName:@"DAMyTableConfirmController" bundle:nil];
     vc.delegate = (id)parentView;
@@ -58,32 +59,32 @@ UIViewController *parentVC;
     [vc setTable:thisTable];
 }
 
-- (void) setTable:(DAMyTable*)thisTable
+- (void) setTable:(DADesk *)thisTable
 {
     self.myTableId = thisTable.tableId;
     [self loadTableInfo:thisTable];
     
-    self.tableName.text = self.myTable.name;
-    self.numOfPepole.text = self.myTable.numOfPepole;
-    self.durationTime.text = self.myTable.durationTime;
-    self.unfinishedCount.text = self.myTable.unfinishedCount;
+    self.tableName.text = self.myDesk.name;
+    self.numOfPepole.text = self.myDesk.numOfPepole;
+    self.durationTime.text = self.myDesk.durationTime;
+    self.unfinishedCount.text = self.myDesk.unfinishedCount;
 }
 
--(void) loadTableInfo:(DAMyTable*) defaultMyTable
+-(void) loadTableInfo:(DADesk *) defaultMyTable
 {
-    self.myTable = nil;
+    self.myDesk = nil;
 
     NSString *path = [self tableInfoPath];
     if(path != nil){
         // Get MyTable
-        self.myTable = [NSKeyedUnarchiver unarchiveObjectWithFile: path];
-        if (self.myTable == nil) {
-            self.myTable = defaultMyTable;
+        self.myDesk = [NSKeyedUnarchiver unarchiveObjectWithFile: path];
+        if (self.myDesk == nil) {
+            self.myDesk = defaultMyTable;
         }
         // Init waitterId
         NSString *lastWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey: @"LastWaiterId"];
         if ([NSString isNotEmpty:lastWaitterId]) {
-            self.myTable.waitterId = lastWaitterId;
+            self.myDesk.waitterId = lastWaitterId;
         }
     }
 }

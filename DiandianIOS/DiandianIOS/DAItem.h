@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "Jastor.h"
 
-@interface DAItem : Jastor
+@interface DAItem : Jastor <NSCoding>
 
 
+@property(retain, nonatomic) NSString *_id;
 @property(retain, nonatomic) NSString *name;
 @property(retain, nonatomic) NSString *price;
 @property(retain, nonatomic) NSString *index;
@@ -19,7 +20,9 @@
 @property(retain, nonatomic) NSString *column;
 @property(retain, nonatomic) NSString *type;
 @property(retain, nonatomic) NSString *image;
-@property(retain, nonatomic) NSString *_id;
 
+
+@property(retain, nonatomic) NSString *amount;
+@property(retain, nonatomic) NSString *status;
 
 @end

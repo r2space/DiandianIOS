@@ -7,8 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Jastor.h"
-@interface DAMenuList : Jastor <NSCoding>
+#import "DAEntity.h"
+
+@interface DAMenuList : DAEntity<NSCoding>
 @property (retain, nonatomic) NSArray   *items;
 @property (retain, nonatomic) NSString  *total;
+
+-(BOOL ) archiveRootObject;
+-(DAMenuList *) unarchiveObjectWithFile;
+
 @end

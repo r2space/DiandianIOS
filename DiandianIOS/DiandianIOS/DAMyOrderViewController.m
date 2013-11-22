@@ -132,7 +132,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger row = [indexPath row];
-    DAMenu *menudata = [self.dataList.items objectAtIndex:row];
+    DAItem *menudata = [self.dataList.items objectAtIndex:row];
     static NSString *CellWithIdentifier = @"DAOrderCell";
     DAOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     
@@ -233,6 +233,8 @@
     [self loadTableFromDisk];
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self tableViewReload];
+    //提交订单
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

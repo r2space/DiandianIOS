@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#import "MSGridView.h"
 #import "DABookCell.h"
 #import "RFQuiltLayout.h"
+#import "SmartSDK.h"
+
 
 @protocol DATableViewDelegate;
 @interface DAMyTableViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+{
+    
+}
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (weak, nonatomic) IBOutlet UIView *topmenuView;

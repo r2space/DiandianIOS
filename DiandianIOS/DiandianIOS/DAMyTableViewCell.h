@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DAMyTable.h"
+#import "SmartSDK.h"
 
 @interface DAMyTableViewCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *tableTitle;
@@ -17,5 +17,5 @@
 @property (weak, nonatomic) IBOutlet UIView *viewMask;
 @property (weak, nonatomic) IBOutlet UIView *viewLabel;
 
-- (void)setData:(DAMyTable*)mytable;
+- (void)setData:(DADesk *)mytable;
 @end

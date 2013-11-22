@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DASocketIO.h"
 
 
-@interface DAAppDelegate : UIResponder <UIApplicationDelegate>
+@interface DAAppDelegate : UIResponder <UIApplicationDelegate,SocketIODelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

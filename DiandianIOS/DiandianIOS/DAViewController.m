@@ -10,6 +10,7 @@
 #import "DAOrderQueueViewController.h"
 #import "DABillViewController.h"
 #import "DAMyTableViewController.h"
+#import "SmartSDK.h"
 
 @interface DAViewController ()
 
@@ -32,7 +33,14 @@
 	// Do any additional setup after loading the view.
     DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:NO];
+    [self fetch];
 }
+
+- (void) fetch
+{
+    [DADeskProxy initApp];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

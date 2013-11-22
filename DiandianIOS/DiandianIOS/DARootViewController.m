@@ -71,7 +71,6 @@
     self.orderListView.layer.shadowRadius = 2;
     self.orderListView.layer.shadowOpacity = 0.6;
     self.orderListView.layer.shadowOffset = CGSizeMake(0, 1);
-    [self fetch];
 }
 
 - (void)fadeInWorkstationMenu{
@@ -90,12 +89,7 @@
     
 }
 
-- (void) fetch
-{
-    [[DADDMenuModule alloc]getList:^(NSError *err, DAMenuList *list) {
-        NSLog(@"sdfdfdf %@"  ,list );
-    }];
-}
+
 
 - (void)fadeOutWorkstationMenu{
     

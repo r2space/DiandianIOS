@@ -40,28 +40,20 @@
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.name  forKey:@"name"];
-    [aCoder encodeObject:self.image forKey:@"image"];
-    [aCoder encodeObject:self.price forKey:@"price"];
-    [aCoder encodeObject:self.type  forKey:@"type"];
-    [aCoder encodeObject:self.index forKey:@"index"];
-    [aCoder encodeObject:self.amount    forKey:@"amount"];
-    [aCoder encodeObject:self.status    forKey:@"status"];
     [aCoder encodeObject:self._id   forKey:@"_id"];
+    [aCoder encodeObject:self.name  forKey:@"name"];
+    [aCoder encodeObject:self.page forKey:@"page"];
+    [aCoder encodeObject:self.items forKey:@"items"];
 
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super init];
-    self.name = [aDecoder decodeObjectForKey:@"name"];
-    self.image = [aDecoder decodeObjectForKey:@"image"];
-    self.price = [aDecoder decodeObjectForKey:@"price"];
-    self.type = [aDecoder decodeObjectForKey:@"type"];
-    self.index = [aDecoder decodeObjectForKey:@"index"];
-    self.amount = [aDecoder decodeObjectForKey:@"amount"];
-    self.status = [aDecoder decodeObjectForKey:@"status"];
     self._id = [aDecoder decodeObjectForKey:@"_id"];
+    self.name = [aDecoder decodeObjectForKey:@"name"];
+    self.page = [aDecoder decodeObjectForKey:@"page"];
+    self.items = [aDecoder decodeObjectForKey:@"items"];
 
     return self;
 }

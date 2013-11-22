@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DAMyTable.h"
+#import "SmartSDK.h"
 #import "DAPopTableViewController.h"
 
 @protocol DAMyTableConfirmDelegate;
@@ -15,7 +15,7 @@
 @property (assign, nonatomic) id <DAMyTableConfirmDelegate>delegate;
 - (IBAction)closePopup:(id)sender;
 
-+ (void) show:(DAMyTable*)thisTable parentView :(UIViewController *) parentView;
++ (void) show:(DADesk *)thisTable parentView :(UIViewController *) parentView;
 
 @end
 

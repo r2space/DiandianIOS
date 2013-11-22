@@ -9,6 +9,8 @@
 #import "DAMyTableViewCell.h"
 #import "NSString+Util.h"
 #import "DAPopTableViewController.h"
+#import "SmartSDK.h"
+
 
 @implementation DAMyTableViewCell
 {
@@ -24,10 +26,10 @@
     return self;
 }
 
-- (void)setData:(DAMyTable*)mytable
+- (void)setData:(DADesk *)mytable
 {
     // Set title
-    self.tableTitle.text = mytable.tableId;
+    self.tableTitle.text = mytable.name;
     // Set state
     self.tableState.text = @"";    // clear state
     
@@ -41,12 +43,19 @@
     }
     
     // 这个好像被外面给覆盖了
-    if ([@"empty" isEqualToString:mytable.state]) {
+    if (mytable.service !=nil) {
+        
+        if ([@"0" isEqualToString:mytable.service.status]) {
+            [self.tableState setTextColor:[UIColor redColor]];
+            self.tableState.text = @"就餐中";
+        } else {
+            [self.tableState setTextColor:[UIColor redColor]];
+            self.tableState.text = @"就餐中";
+        }
+        
+    } else {
         [self.tableState setTextColor:[UIColor blackColor]];
         self.tableState.text = @"";
-    } else if ([@"eating" isEqualToString:mytable.state]) {
-        [self.tableState setTextColor:[UIColor redColor]];
-        self.tableState.text = @"就餐中";
     }
     
 }

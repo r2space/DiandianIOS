@@ -30,7 +30,6 @@
 		0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */; };
 		0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD88182A363000A350BC /* DAMyTableViewController.m */; };
 		0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD89182A363000A350BC /* DAMyTableViewController.xib */; };
-		0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD8D182A3E9600A350BC /* DAMenuModule.m */; };
 		0A12D3BE183C9CA000B8F930 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */; };
 		0A12D3C0183C9CA800B8F930 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */; };
 		0A12D3C4183CA75600B8F930 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3C3183CA75600B8F930 /* CFNetwork.framework */; };
@@ -43,6 +42,21 @@
 		0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */; };
 		0A3DB730182B1F5100170F0C /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72F182B1F5100170F0C /* table.png */; };
 		0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */; };
+		0A40FDE4183CEDB400427613 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A40FDE3183CEDB400427613 /* Security.framework */; };
+		0A40FDE6183CEDCD00427613 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A40FDE5183CEDCD00427613 /* libicucore.dylib */; };
+		0A40FDEC183DF2F300427613 /* DADeskModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDEB183DF2F300427613 /* DADeskModule.m */; };
+		0A40FDEF183DF34E00427613 /* DADesk.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDEE183DF34E00427613 /* DADesk.m */; };
+		0A40FDF2183DF4FD00427613 /* DADeskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDF1183DF4FD00427613 /* DADeskList.m */; };
+		0A40FDF5183DF60200427613 /* DAEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDF4183DF60200427613 /* DAEntity.m */; };
+		0A40FDF9183DFAF700427613 /* DADeskProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDF8183DFAF700427613 /* DADeskProxy.m */; };
+		0A40FDFC183E2B4200427613 /* DAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDFB183E2B4200427613 /* DAService.m */; };
+		0A40FDFF183EE2B500427613 /* DAServiceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDFE183EE2B500427613 /* DAServiceModule.m */; };
+		0A40FE02183EE58F00427613 /* DAServiceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE01183EE58F00427613 /* DAServiceProxy.m */; };
+		0A40FE07183EFBCE00427613 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A40FE04183EFBCE00427613 /* ProgressHUD.bundle */; };
+		0A40FE08183EFBCE00427613 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE06183EFBCE00427613 /* ProgressHUD.m */; };
+		0A40FE0C183F1C6800427613 /* DAOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE0B183F1C6800427613 /* DAOrder.m */; };
+		0A40FE0F183F1FE700427613 /* DAOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE0E183F1FE700427613 /* DAOrderList.m */; };
+		0A40FE14183F290000427613 /* DASocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE13183F290000427613 /* DASocketIO.m */; };
 		0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BC8182878DA009CDF6D /* DAViewController.m */; };
 		0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BDB1828A040009CDF6D /* DABookViewController.m */; };
 		0A5D2835182B6E2F00847578 /* table1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2834182B6E2F00847578 /* table1.png */; };
@@ -152,7 +166,7 @@
 		0AB78B40183CB46500979BD0 /* DACommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA0183CB46400979BD0 /* DACommon.m */; };
 		0AB78B41183CB46500979BD0 /* DAJsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA2183CB46400979BD0 /* DAJsonHelper.m */; };
 		0AB78B42183CB46500979BD0 /* DARequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA5183CB46400979BD0 /* DARequestHelper.m */; };
-		0AB78B5B183CB46500979BD0 /* DADDMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78ADD183CB46400979BD0 /* DADDMenuModule.m */; };
+		0AB78B5B183CB46500979BD0 /* DAMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78ADD183CB46400979BD0 /* DAMenuModule.m */; };
 		0AB78B5C183CB46500979BD0 /* DAMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE0183CB46400979BD0 /* DAMenu.m */; };
 		0AB78B5D183CB46500979BD0 /* DAMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE2183CB46400979BD0 /* DAMenuList.m */; };
 		0AB78B5E183CB46500979BD0 /* DAMyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE4183CB46400979BD0 /* DAMyTable.m */; };
@@ -172,6 +186,21 @@
 		0AB78B8C183CD11000979BD0 /* DAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B8B183CD11000979BD0 /* DAUser.m */; };
 		0AB78B8F183CD16000979BD0 /* DAGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B8E183CD15F00979BD0 /* DAGroup.m */; };
 		0AB78B92183CD7DC00979BD0 /* DAItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B91183CD7DC00979BD0 /* DAItem.m */; };
+		0AB78BF2183CE9BE00979BD0 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BCE183CE9BE00979BD0 /* SBJson4Parser.m */; };
+		0AB78BF3183CE9BE00979BD0 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BD0183CE9BE00979BD0 /* SBJson4StreamParser.m */; };
+		0AB78BF4183CE9BE00979BD0 /* SBJson4StreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BD2183CE9BE00979BD0 /* SBJson4StreamParserState.m */; };
+		0AB78BF5183CE9BE00979BD0 /* SBJson4StreamTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BD4183CE9BE00979BD0 /* SBJson4StreamTokeniser.m */; };
+		0AB78BF6183CE9BE00979BD0 /* SBJson4StreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BD6183CE9BE00979BD0 /* SBJson4StreamWriter.m */; };
+		0AB78BF7183CE9BE00979BD0 /* SBJson4StreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BD8183CE9BE00979BD0 /* SBJson4StreamWriterState.m */; };
+		0AB78BF8183CE9BE00979BD0 /* SBJson4Writer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BDA183CE9BE00979BD0 /* SBJson4Writer.m */; };
+		0AB78BF9183CE9BE00979BD0 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BDC183CE9BE00979BD0 /* SocketIO.m */; };
+		0AB78BFA183CE9BE00979BD0 /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BDE183CE9BE00979BD0 /* SocketIOJSONSerialization.m */; };
+		0AB78BFB183CE9BE00979BD0 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BE0183CE9BE00979BD0 /* SocketIOPacket.m */; };
+		0AB78BFC183CE9BE00979BD0 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BE3183CE9BE00979BD0 /* SocketIOTransportWebsocket.m */; };
+		0AB78BFD183CE9BE00979BD0 /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BE5183CE9BE00979BD0 /* SocketIOTransportXHR.m */; };
+		0AB78C00183CE9BE00979BD0 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BE9183CE9BE00979BD0 /* base64.c */; };
+		0AB78C01183CE9BE00979BD0 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BEC183CE9BE00979BD0 /* NSData+SRB64Additions.m */; };
+		0AB78C02183CE9BE00979BD0 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78BEF183CE9BE00979BD0 /* SRWebSocket.m */; };
 		0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */; };
 		0AEBE51B1830B10900B01A5E /* DAOrderThumbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */; };
 		0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */; };
@@ -377,8 +406,6 @@
 		0A07BD87182A363000A350BC /* DAMyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTableViewController.h; sourceTree = "<group>"; };
 		0A07BD88182A363000A350BC /* DAMyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableViewController.m; sourceTree = "<group>"; };
 		0A07BD89182A363000A350BC /* DAMyTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableViewController.xib; sourceTree = "<group>"; };
-		0A07BD8C182A3E9600A350BC /* DAMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMenuModule.h; sourceTree = "<group>"; };
-		0A07BD8D182A3E9600A350BC /* DAMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMenuModule.m; sourceTree = "<group>"; };
 		0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0A12D3C1183CA74600B8F930 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -393,6 +420,33 @@
 		0A3DB72F182B1F5100170F0C /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
 		0A3DB731182B21B500170F0C /* DAMyMenuBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuBookCell.h; sourceTree = "<group>"; };
 		0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuBookCell.m; sourceTree = "<group>"; };
+		0A40FDE3183CEDB400427613 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0A40FDE5183CEDCD00427613 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		0A40FDEA183DF2F300427613 /* DADeskModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADeskModule.h; sourceTree = "<group>"; };
+		0A40FDEB183DF2F300427613 /* DADeskModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADeskModule.m; sourceTree = "<group>"; };
+		0A40FDED183DF34E00427613 /* DADesk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADesk.h; sourceTree = "<group>"; };
+		0A40FDEE183DF34E00427613 /* DADesk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADesk.m; sourceTree = "<group>"; };
+		0A40FDF0183DF4FD00427613 /* DADeskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADeskList.h; sourceTree = "<group>"; };
+		0A40FDF1183DF4FD00427613 /* DADeskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADeskList.m; sourceTree = "<group>"; };
+		0A40FDF3183DF60200427613 /* DAEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAEntity.h; sourceTree = "<group>"; };
+		0A40FDF4183DF60200427613 /* DAEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAEntity.m; sourceTree = "<group>"; };
+		0A40FDF7183DFAF700427613 /* DADeskProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADeskProxy.h; sourceTree = "<group>"; };
+		0A40FDF8183DFAF700427613 /* DADeskProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADeskProxy.m; sourceTree = "<group>"; };
+		0A40FDFA183E2B4200427613 /* DAService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAService.h; sourceTree = "<group>"; };
+		0A40FDFB183E2B4200427613 /* DAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAService.m; sourceTree = "<group>"; };
+		0A40FDFD183EE2B500427613 /* DAServiceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAServiceModule.h; sourceTree = "<group>"; };
+		0A40FDFE183EE2B500427613 /* DAServiceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAServiceModule.m; sourceTree = "<group>"; };
+		0A40FE00183EE58F00427613 /* DAServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAServiceProxy.h; sourceTree = "<group>"; };
+		0A40FE01183EE58F00427613 /* DAServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAServiceProxy.m; sourceTree = "<group>"; };
+		0A40FE04183EFBCE00427613 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		0A40FE05183EFBCE00427613 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		0A40FE06183EFBCE00427613 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		0A40FE0A183F1C6800427613 /* DAOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrder.h; sourceTree = "<group>"; };
+		0A40FE0B183F1C6800427613 /* DAOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrder.m; sourceTree = "<group>"; };
+		0A40FE0D183F1FE700427613 /* DAOrderList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOrderList.h; path = Entities/DAOrderList.h; sourceTree = "<group>"; };
+		0A40FE0E183F1FE700427613 /* DAOrderList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOrderList.m; path = Entities/DAOrderList.m; sourceTree = "<group>"; };
+		0A40FE12183F290000427613 /* DASocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASocketIO.h; path = Helper/DASync/DASocketIO.h; sourceTree = "<group>"; };
+		0A40FE13183F290000427613 /* DASocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASocketIO.m; path = Helper/DASync/DASocketIO.m; sourceTree = "<group>"; };
 		0A577BC7182878DA009CDF6D /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
 		0A577BC8182878DA009CDF6D /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
 		0A577BDA1828A040009CDF6D /* DABookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABookViewController.h; sourceTree = "<group>"; };
@@ -549,8 +603,8 @@
 		0AB78AA3183CB46400979BD0 /* DAMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMacros.h; sourceTree = "<group>"; };
 		0AB78AA4183CB46400979BD0 /* DARequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARequestHelper.h; sourceTree = "<group>"; };
 		0AB78AA5183CB46400979BD0 /* DARequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARequestHelper.m; sourceTree = "<group>"; };
-		0AB78ADC183CB46400979BD0 /* DADDMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADDMenuModule.h; path = ../SmartSDK/Module/DianDian/DADDMenuModule.h; sourceTree = "<group>"; };
-		0AB78ADD183CB46400979BD0 /* DADDMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADDMenuModule.m; path = ../SmartSDK/Module/DianDian/DADDMenuModule.m; sourceTree = "<group>"; };
+		0AB78ADC183CB46400979BD0 /* DAMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenuModule.h; path = ../SmartSDK/Module/DianDian/DAMenuModule.h; sourceTree = "<group>"; };
+		0AB78ADD183CB46400979BD0 /* DAMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenuModule.m; path = ../SmartSDK/Module/DianDian/DAMenuModule.m; sourceTree = "<group>"; };
 		0AB78ADF183CB46400979BD0 /* DAMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenu.h; path = ../SmartSDK/Module/DianDian/Entity/DAMenu.h; sourceTree = "<group>"; };
 		0AB78AE0183CB46400979BD0 /* DAMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenu.m; path = ../SmartSDK/Module/DianDian/Entity/DAMenu.m; sourceTree = "<group>"; };
 		0AB78AE1183CB46400979BD0 /* DAMenuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenuList.h; path = ../SmartSDK/Module/DianDian/Entity/DAMenuList.h; sourceTree = "<group>"; };
@@ -591,6 +645,39 @@
 		0AB78B90183CD7DC00979BD0 /* DAItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAItem.h; sourceTree = "<group>"; };
 		0AB78B91183CD7DC00979BD0 /* DAItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAItem.m; sourceTree = "<group>"; };
 		0AB78B93183CDC4A00979BD0 /* SmartSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartSDK.h; sourceTree = "<group>"; };
+		0AB78BCC183CE9BE00979BD0 /* SBJson4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4.h; sourceTree = "<group>"; };
+		0AB78BCD183CE9BE00979BD0 /* SBJson4Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Parser.h; sourceTree = "<group>"; };
+		0AB78BCE183CE9BE00979BD0 /* SBJson4Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Parser.m; sourceTree = "<group>"; };
+		0AB78BCF183CE9BE00979BD0 /* SBJson4StreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamParser.h; sourceTree = "<group>"; };
+		0AB78BD0183CE9BE00979BD0 /* SBJson4StreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamParser.m; sourceTree = "<group>"; };
+		0AB78BD1183CE9BE00979BD0 /* SBJson4StreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamParserState.h; sourceTree = "<group>"; };
+		0AB78BD2183CE9BE00979BD0 /* SBJson4StreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamParserState.m; sourceTree = "<group>"; };
+		0AB78BD3183CE9BE00979BD0 /* SBJson4StreamTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamTokeniser.h; sourceTree = "<group>"; };
+		0AB78BD4183CE9BE00979BD0 /* SBJson4StreamTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamTokeniser.m; sourceTree = "<group>"; };
+		0AB78BD5183CE9BE00979BD0 /* SBJson4StreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamWriter.h; sourceTree = "<group>"; };
+		0AB78BD6183CE9BE00979BD0 /* SBJson4StreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamWriter.m; sourceTree = "<group>"; };
+		0AB78BD7183CE9BE00979BD0 /* SBJson4StreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4StreamWriterState.h; sourceTree = "<group>"; };
+		0AB78BD8183CE9BE00979BD0 /* SBJson4StreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4StreamWriterState.m; sourceTree = "<group>"; };
+		0AB78BD9183CE9BE00979BD0 /* SBJson4Writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4Writer.h; sourceTree = "<group>"; };
+		0AB78BDA183CE9BE00979BD0 /* SBJson4Writer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJson4Writer.m; sourceTree = "<group>"; };
+		0AB78BDB183CE9BE00979BD0 /* SocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIO.h; sourceTree = "<group>"; };
+		0AB78BDC183CE9BE00979BD0 /* SocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
+		0AB78BDD183CE9BE00979BD0 /* SocketIOJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOJSONSerialization.h; sourceTree = "<group>"; };
+		0AB78BDE183CE9BE00979BD0 /* SocketIOJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOJSONSerialization.m; sourceTree = "<group>"; };
+		0AB78BDF183CE9BE00979BD0 /* SocketIOPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOPacket.h; sourceTree = "<group>"; };
+		0AB78BE0183CE9BE00979BD0 /* SocketIOPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOPacket.m; sourceTree = "<group>"; };
+		0AB78BE1183CE9BE00979BD0 /* SocketIOTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransport.h; sourceTree = "<group>"; };
+		0AB78BE2183CE9BE00979BD0 /* SocketIOTransportWebsocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportWebsocket.h; sourceTree = "<group>"; };
+		0AB78BE3183CE9BE00979BD0 /* SocketIOTransportWebsocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportWebsocket.m; sourceTree = "<group>"; };
+		0AB78BE4183CE9BE00979BD0 /* SocketIOTransportXHR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportXHR.h; sourceTree = "<group>"; };
+		0AB78BE5183CE9BE00979BD0 /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = "<group>"; };
+		0AB78BE9183CE9BE00979BD0 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		0AB78BEA183CE9BE00979BD0 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		0AB78BEB183CE9BE00979BD0 /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
+		0AB78BEC183CE9BE00979BD0 /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
+		0AB78BED183CE9BE00979BD0 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		0AB78BEE183CE9BE00979BD0 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		0AB78BEF183CE9BE00979BD0 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		0AEBE5171830B10900B01A5E /* DAOrderThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderThumbViewController.h; sourceTree = "<group>"; };
 		0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderThumbViewController.m; sourceTree = "<group>"; };
 		0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderThumbViewController.xib; sourceTree = "<group>"; };
@@ -789,6 +876,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A40FDE6183CEDCD00427613 /* libicucore.dylib in Frameworks */,
+				0A40FDE4183CEDB400427613 /* Security.framework in Frameworks */,
 				0A12D3C4183CA75600B8F930 /* CFNetwork.framework in Frameworks */,
 				0A12D3C0183C9CA800B8F930 /* MobileCoreServices.framework in Frameworks */,
 				0A12D3BE183C9CA000B8F930 /* SystemConfiguration.framework in Frameworks */,
@@ -814,6 +903,7 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0A40FE03183EFBAB00427613 /* ProgressHUD */,
 				0A739E69183B23E500AA48C4 /* DrawPatternLockView */,
 				0A7AF0A11835C2C900635376 /* SMVerticalSegmentedControl */,
 				0A8C2F44182E33A70080F15F /* TVQuiltLayout */,
@@ -923,10 +1013,12 @@
 			children = (
 				0AB78B87183CD0E300979BD0 /* DALoginModule.h */,
 				0AB78B88183CD0E300979BD0 /* DALoginModule.m */,
-				0AB78ADC183CB46400979BD0 /* DADDMenuModule.h */,
-				0AB78ADD183CB46400979BD0 /* DADDMenuModule.m */,
-				0A07BD8C182A3E9600A350BC /* DAMenuModule.h */,
-				0A07BD8D182A3E9600A350BC /* DAMenuModule.m */,
+				0AB78ADC183CB46400979BD0 /* DAMenuModule.h */,
+				0AB78ADD183CB46400979BD0 /* DAMenuModule.m */,
+				0A40FDEA183DF2F300427613 /* DADeskModule.h */,
+				0A40FDEB183DF2F300427613 /* DADeskModule.m */,
+				0A40FDFD183EE2B500427613 /* DAServiceModule.h */,
+				0A40FDFE183EE2B500427613 /* DAServiceModule.m */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -961,6 +1053,56 @@
 		0A3DB728182A73F700170F0C /* Menubook */ = {
 			isa = PBXGroup;
 			children = (
+				0A40FE09183F1A2E00427613 /* MenubookCell */,
+				0A9DA5C21828764800037E73 /* DARootViewController.h */,
+				0A9DA5C31828764800037E73 /* DARootViewController.m */,
+				0A9DA5C51828766100037E73 /* DARootView.storyboard */,
+				0A07BD071828ECF800A350BC /* DAMyFilterViewController.h */,
+				0A07BD081828ECF800A350BC /* DAMyFilterViewController.m */,
+				0A07BD091828ECF800A350BC /* DAMyFilterViewController.xib */,
+				0A07BD5E1829DC0900A350BC /* DAMyMenuBookViewController.h */,
+				0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */,
+				0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */,
+				0AEBE5C01831C21300B01A5E /* DAMyMenuBookPopupController.h */,
+				0AEBE5C11831C21300B01A5E /* DAMyMenuBookPopupController.m */,
+				0AEBE5C21831C21300B01A5E /* DAMyMenuBookPopupController.xib */,
+				0AB11390183349A10011828A /* DAMyOrderLoginViewController.h */,
+				0AB11391183349A10011828A /* DAMyOrderLoginViewController.m */,
+				0AB11392183349A10011828A /* DAMyOrderLoginViewController.xib */,
+				0A07BD021828EC1B00A350BC /* DAMyOrderViewController.h */,
+				0A07BD031828EC1B00A350BC /* DAMyOrderViewController.m */,
+				0A07BD041828EC1B00A350BC /* DAMyOrderViewController.xib */,
+				0A5D2893182BD23700847578 /* DADetailOrderViewController.h */,
+				0A5D2894182BD23700847578 /* DADetailOrderViewController.m */,
+				0A5D2895182BD23700847578 /* DADetailOrderViewController.xib */,
+			);
+			name = Menubook;
+			sourceTree = "<group>";
+		};
+		0A40FDF6183DFAA400427613 /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				0A40FDF7183DFAF700427613 /* DADeskProxy.h */,
+				0A40FDF8183DFAF700427613 /* DADeskProxy.m */,
+				0A40FE00183EE58F00427613 /* DAServiceProxy.h */,
+				0A40FE01183EE58F00427613 /* DAServiceProxy.m */,
+			);
+			name = Proxy;
+			sourceTree = "<group>";
+		};
+		0A40FE03183EFBAB00427613 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				0A40FE04183EFBCE00427613 /* ProgressHUD.bundle */,
+				0A40FE05183EFBCE00427613 /* ProgressHUD.h */,
+				0A40FE06183EFBCE00427613 /* ProgressHUD.m */,
+			);
+			name = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		0A40FE09183F1A2E00427613 /* MenubookCell */ = {
+			isa = PBXGroup;
+			children = (
 				0A07BD74182A0E7B00A350BC /* DAOrderCell.h */,
 				0A07BD75182A0E7B00A350BC /* DAOrderCell.m */,
 				0AA533971828AD7D0087EFF1 /* DAOrderCell.xib */,
@@ -981,7 +1123,16 @@
 				0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */,
 				0AEBE51F1830EDAA00B01A5E /* DAMyOrderCell.xib */,
 			);
-			name = Menubook;
+			name = MenubookCell;
+			sourceTree = "<group>";
+		};
+		0A40FE11183F28DC00427613 /* DASync */ = {
+			isa = PBXGroup;
+			children = (
+				0A40FE12183F290000427613 /* DASocketIO.h */,
+				0A40FE13183F290000427613 /* DASocketIO.m */,
+			);
+			name = DASync;
 			sourceTree = "<group>";
 		};
 		0A5D288A182BD01400847578 /* Popup */ = {
@@ -1111,6 +1262,8 @@
 		0AA956F718274DCA0098D60C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A40FDE5183CEDCD00427613 /* libicucore.dylib */,
+				0A40FDE3183CEDB400427613 /* Security.framework */,
 				0A12D3C3183CA75600B8F930 /* CFNetwork.framework */,
 				0A12D3C1183CA74600B8F930 /* QuartzCore.framework */,
 				0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */,
@@ -1126,6 +1279,7 @@
 		0AA956FE18274DCA0098D60C /* DiandianIOS */ = {
 			isa = PBXGroup;
 			children = (
+				0A40FDF6183DFAA400427613 /* Proxy */,
 				0A07BD571829D27E00A350BC /* Resources */,
 				0A07BD4D1829CB3800A350BC /* Thirdparty */,
 				0A07BD6F182A0A0500A350BC /* Module */,
@@ -1187,9 +1341,6 @@
 				0AA9573018279AE90098D60C /* DAMenuBookViewController.h */,
 				0AA9573118279AE90098D60C /* DAMenuBookViewController.m */,
 				0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */,
-				0A9DA5C21828764800037E73 /* DARootViewController.h */,
-				0A9DA5C31828764800037E73 /* DARootViewController.m */,
-				0A9DA5C51828766100037E73 /* DARootView.storyboard */,
 				28C97A301828D86A0099FE4A /* DAOpenTableViewCell.h */,
 				28C97A311828D86A0099FE4A /* DAOpenTableViewCell.m */,
 				0A577BDA1828A040009CDF6D /* DABookViewController.h */,
@@ -1201,24 +1352,9 @@
 				0AA5339E1828BEE80087EFF1 /* DAMyBookViewController.h */,
 				0AA5339F1828BEE80087EFF1 /* DAMyBookViewController.m */,
 				0AA533A01828BEE80087EFF1 /* DAMyBookViewController.xib */,
-				0A07BD021828EC1B00A350BC /* DAMyOrderViewController.h */,
-				0A07BD031828EC1B00A350BC /* DAMyOrderViewController.m */,
-				0A07BD041828EC1B00A350BC /* DAMyOrderViewController.xib */,
-				0A5D2893182BD23700847578 /* DADetailOrderViewController.h */,
-				0A5D2894182BD23700847578 /* DADetailOrderViewController.m */,
-				0A5D2895182BD23700847578 /* DADetailOrderViewController.xib */,
 				0AEBE5C51831D69000B01A5E /* DARemarkPopoverViewController.h */,
 				0AEBE5C61831D69000B01A5E /* DARemarkPopoverViewController.m */,
 				0AEBE5C71831D69000B01A5E /* DARemarkPopoverViewController.xib */,
-				0A07BD071828ECF800A350BC /* DAMyFilterViewController.h */,
-				0A07BD081828ECF800A350BC /* DAMyFilterViewController.m */,
-				0A07BD091828ECF800A350BC /* DAMyFilterViewController.xib */,
-				0A07BD5E1829DC0900A350BC /* DAMyMenuBookViewController.h */,
-				0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */,
-				0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */,
-				0AEBE5C01831C21300B01A5E /* DAMyMenuBookPopupController.h */,
-				0AEBE5C11831C21300B01A5E /* DAMyMenuBookPopupController.m */,
-				0AEBE5C21831C21300B01A5E /* DAMyMenuBookPopupController.xib */,
 				0A07BD7B182A20DC00A350BC /* DAMyOrderDetailViewController.h */,
 				0A07BD7C182A20DC00A350BC /* DAMyOrderDetailViewController.m */,
 				0A5D2891182BD1FD00847578 /* DAMyOrderDetailViewController.xib */,
@@ -1226,12 +1362,6 @@
 				0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */,
 				0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */,
 				0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */,
-				0A5D2898182C6EFF00847578 /* DAMyLoginViewController.h */,
-				0A5D2899182C6EFF00847578 /* DAMyLoginViewController.m */,
-				0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */,
-				0AB11390183349A10011828A /* DAMyOrderLoginViewController.h */,
-				0AB11391183349A10011828A /* DAMyOrderLoginViewController.m */,
-				0AB11392183349A10011828A /* DAMyOrderLoginViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1247,6 +1377,7 @@
 		0AB78A98183CB46400979BD0 /* SmartSDK */ = {
 			isa = PBXGroup;
 			children = (
+				0A40FE11183F28DC00427613 /* DASync */,
 				0AB78A9A183CB46400979BD0 /* Helper */,
 				0AB78B21183CB46500979BD0 /* Thirdparty */,
 				0AB78B93183CDC4A00979BD0 /* SmartSDK.h */,
@@ -1275,6 +1406,7 @@
 		0AB78B21183CB46500979BD0 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0AB78BC8183CE9BE00979BD0 /* SocketIO */,
 				0AB78B22183CB46500979BD0 /* AFNetworking */,
 				0AB78B36183CB46500979BD0 /* Jastor */,
 				0AB78B3B183CB46500979BD0 /* Reachability */,
@@ -1326,6 +1458,62 @@
 				0AB78B3D183CB46500979BD0 /* Reachability.m */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		0AB78BC8183CE9BE00979BD0 /* SocketIO */ = {
+			isa = PBXGroup;
+			children = (
+				0AB78BE6183CE9BE00979BD0 /* SocketRocket */,
+				0AB78BC9183CE9BE00979BD0 /* json-framework */,
+				0AB78BDB183CE9BE00979BD0 /* SocketIO.h */,
+				0AB78BDC183CE9BE00979BD0 /* SocketIO.m */,
+				0AB78BDD183CE9BE00979BD0 /* SocketIOJSONSerialization.h */,
+				0AB78BDE183CE9BE00979BD0 /* SocketIOJSONSerialization.m */,
+				0AB78BDF183CE9BE00979BD0 /* SocketIOPacket.h */,
+				0AB78BE0183CE9BE00979BD0 /* SocketIOPacket.m */,
+				0AB78BE1183CE9BE00979BD0 /* SocketIOTransport.h */,
+				0AB78BE2183CE9BE00979BD0 /* SocketIOTransportWebsocket.h */,
+				0AB78BE3183CE9BE00979BD0 /* SocketIOTransportWebsocket.m */,
+				0AB78BE4183CE9BE00979BD0 /* SocketIOTransportXHR.h */,
+				0AB78BE5183CE9BE00979BD0 /* SocketIOTransportXHR.m */,
+			);
+			path = SocketIO;
+			sourceTree = "<group>";
+		};
+		0AB78BC9183CE9BE00979BD0 /* json-framework */ = {
+			isa = PBXGroup;
+			children = (
+				0AB78BCC183CE9BE00979BD0 /* SBJson4.h */,
+				0AB78BCD183CE9BE00979BD0 /* SBJson4Parser.h */,
+				0AB78BCE183CE9BE00979BD0 /* SBJson4Parser.m */,
+				0AB78BCF183CE9BE00979BD0 /* SBJson4StreamParser.h */,
+				0AB78BD0183CE9BE00979BD0 /* SBJson4StreamParser.m */,
+				0AB78BD1183CE9BE00979BD0 /* SBJson4StreamParserState.h */,
+				0AB78BD2183CE9BE00979BD0 /* SBJson4StreamParserState.m */,
+				0AB78BD3183CE9BE00979BD0 /* SBJson4StreamTokeniser.h */,
+				0AB78BD4183CE9BE00979BD0 /* SBJson4StreamTokeniser.m */,
+				0AB78BD5183CE9BE00979BD0 /* SBJson4StreamWriter.h */,
+				0AB78BD6183CE9BE00979BD0 /* SBJson4StreamWriter.m */,
+				0AB78BD7183CE9BE00979BD0 /* SBJson4StreamWriterState.h */,
+				0AB78BD8183CE9BE00979BD0 /* SBJson4StreamWriterState.m */,
+				0AB78BD9183CE9BE00979BD0 /* SBJson4Writer.h */,
+				0AB78BDA183CE9BE00979BD0 /* SBJson4Writer.m */,
+			);
+			path = "json-framework";
+			sourceTree = "<group>";
+		};
+		0AB78BE6183CE9BE00979BD0 /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				0AB78BE9183CE9BE00979BD0 /* base64.c */,
+				0AB78BEA183CE9BE00979BD0 /* base64.h */,
+				0AB78BEB183CE9BE00979BD0 /* NSData+SRB64Additions.h */,
+				0AB78BEC183CE9BE00979BD0 /* NSData+SRB64Additions.m */,
+				0AB78BED183CE9BE00979BD0 /* SocketRocket-Prefix.pch */,
+				0AB78BEE183CE9BE00979BD0 /* SRWebSocket.h */,
+				0AB78BEF183CE9BE00979BD0 /* SRWebSocket.m */,
+			);
+			path = SocketRocket;
 			sourceTree = "<group>";
 		};
 		0AEBE52B1831161B00B01A5E /* group */ = {
@@ -1412,6 +1600,9 @@
 		0AEBE5CA1831F2EF00B01A5E /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				0A5D2898182C6EFF00847578 /* DAMyLoginViewController.h */,
+				0A5D2899182C6EFF00847578 /* DAMyLoginViewController.m */,
+				0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */,
 				0A07BD87182A363000A350BC /* DAMyTableViewController.h */,
 				0A07BD88182A363000A350BC /* DAMyTableViewController.m */,
 				0A07BD89182A363000A350BC /* DAMyTableViewController.xib */,
@@ -1458,6 +1649,8 @@
 		2886BB041839AD1E00A496AC /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				0A40FDF3183DF60200427613 /* DAEntity.h */,
+				0A40FDF4183DF60200427613 /* DAEntity.m */,
 				0AB78B8D183CD15F00979BD0 /* DAGroup.h */,
 				0AB78B8E183CD15F00979BD0 /* DAGroup.m */,
 				0AB78B90183CD7DC00979BD0 /* DAItem.h */,
@@ -1474,6 +1667,16 @@
 				287FA994183B11AA00E02051 /* DATakeout.m */,
 				0AB78B8A183CD11000979BD0 /* DAUser.h */,
 				0AB78B8B183CD11000979BD0 /* DAUser.m */,
+				0A40FDED183DF34E00427613 /* DADesk.h */,
+				0A40FDEE183DF34E00427613 /* DADesk.m */,
+				0A40FDF0183DF4FD00427613 /* DADeskList.h */,
+				0A40FDF1183DF4FD00427613 /* DADeskList.m */,
+				0A40FDFA183E2B4200427613 /* DAService.h */,
+				0A40FDFB183E2B4200427613 /* DAService.m */,
+				0A40FE0A183F1C6800427613 /* DAOrder.h */,
+				0A40FE0B183F1C6800427613 /* DAOrder.m */,
+				0A40FE0D183F1FE700427613 /* DAOrderList.h */,
+				0A40FE0E183F1FE700427613 /* DAOrderList.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -1849,6 +2052,7 @@
 				0AEBE58A1831162700B01A5E /* 机芯炒鳝片.jpg in Resources */,
 				0AB11394183349A10011828A /* DAMyOrderLoginViewController.xib in Resources */,
 				0AEBE5841831162700B01A5E /* 干锅鸭头.jpg in Resources */,
+				0A40FE07183EFBCE00427613 /* ProgressHUD.bundle in Resources */,
 				0AEBE57C1831162700B01A5E /* 刺身拼盘.jpg in Resources */,
 				0A739E65183B01F800AA48C4 /* DAMyBackOrderViewCell.xib in Resources */,
 				0AEBE58D1831162700B01A5E /* 烤鸡.jpg in Resources */,
@@ -1904,14 +2108,21 @@
 				2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */,
 				0AB78B5D183CB46500979BD0 /* DAMenuList.m in Sources */,
 				28FFB64A18332272003443D1 /* DASettings.m in Sources */,
+				0A40FDEF183DF34E00427613 /* DADesk.m in Sources */,
+				0AB78BF8183CE9BE00979BD0 /* SBJson4Writer.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
 				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,
+				0AB78C01183CE9BE00979BD0 /* NSData+SRB64Additions.m in Sources */,
+				0A40FE0F183F1FE700427613 /* DAOrderList.m in Sources */,
 				0AB78B3E183CB46500979BD0 /* DAAFHttpClient.m in Sources */,
 				0A924AAF18348A810004C973 /* DAMyTableListViewController.m in Sources */,
+				0AB78C00183CE9BE00979BD0 /* base64.c in Sources */,
 				F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */,
+				0A40FE14183F290000427613 /* DASocketIO.m in Sources */,
 				0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */,
 				0AA9570518274DCA0098D60C /* main.m in Sources */,
+				0A40FDEC183DF2F300427613 /* DADeskModule.m in Sources */,
 				0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */,
 				0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */,
 				0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */,
@@ -1933,19 +2144,28 @@
 				0AB78B40183CB46500979BD0 /* DACommon.m in Sources */,
 				0A7AF0AB183600C900635376 /* DADrinkQueueViewController.m in Sources */,
 				28FFB64C18332272003443D1 /* NSString+Util.m in Sources */,
+				0AB78BF9183CE9BE00979BD0 /* SocketIO.m in Sources */,
+				0AB78BFA183CE9BE00979BD0 /* SocketIOJSONSerialization.m in Sources */,
 				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
 				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
+				0AB78BFC183CE9BE00979BD0 /* SocketIOTransportWebsocket.m in Sources */,
 				28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */,
+				0A40FDFC183E2B4200427613 /* DAService.m in Sources */,
 				0AB78B3F183CB46500979BD0 /* DAAFHttpOperation.m in Sources */,
 				0A739E62183B019D00AA48C4 /* DAMyBackOrderViewController.m in Sources */,
 				0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */,
+				0A40FDF5183DF60200427613 /* DAEntity.m in Sources */,
 				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
 				2886BB071839AD8100A496AC /* DAProcession.m in Sources */,
 				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
+				0AB78C02183CE9BE00979BD0 /* SRWebSocket.m in Sources */,
 				0AB78B8C183CD11000979BD0 /* DAUser.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
+				0AB78BF4183CE9BE00979BD0 /* SBJson4StreamParserState.m in Sources */,
+				0AB78BFB183CE9BE00979BD0 /* SocketIOPacket.m in Sources */,
+				0A40FDFF183EE2B500427613 /* DAServiceModule.m in Sources */,
 				287FA995183B11AA00E02051 /* DATakeout.m in Sources */,
-				0AB78B5B183CB46500979BD0 /* DADDMenuModule.m in Sources */,
+				0AB78B5B183CB46500979BD0 /* DAMenuModule.m in Sources */,
 				0A7AF0CE1836076600635376 /* DAQueueFoodListViewController.m in Sources */,
 				0AB78B83183CB46500979BD0 /* UIImageView+AFNetworking.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
@@ -1953,11 +2173,12 @@
 				28FFB64B18332272003443D1 /* NSNumber+Util.m in Sources */,
 				0A5D288F182BD03600847578 /* MJPopupBackgroundView.m in Sources */,
 				28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */,
+				0AB78BF3183CE9BE00979BD0 /* SBJson4StreamParser.m in Sources */,
 				0A739E68183B0A4100AA48C4 /* DAMyBackOrderViewCell.m in Sources */,
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
 				0A7AF0B5183600EE00635376 /* DAItemViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
-				0A07BD8E182A3E9600A350BC /* DAMenuModule.m in Sources */,
+				0AB78BF6183CE9BE00979BD0 /* SBJson4StreamWriter.m in Sources */,
 				0AB78B80183CB46500979BD0 /* AFPropertyListRequestOperation.m in Sources */,
 				28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */,
 				0AB78B5C183CB46500979BD0 /* DAMenu.m in Sources */,
@@ -1966,11 +2187,14 @@
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,
 				0A07BD681829DC8100A350BC /* MSGridView.m in Sources */,
 				0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */,
+				0AB78BFD183CE9BE00979BD0 /* SocketIOTransportXHR.m in Sources */,
 				287FA98C183B053500E02051 /* DATakeoutViewController.m in Sources */,
 				0AB78B7E183CB46500979BD0 /* AFJSONRequestOperation.m in Sources */,
+				0A40FDF2183DF4FD00427613 /* DADeskList.m in Sources */,
 				0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */,
 				28414E9918349EFC009210AF /* DAAnimation.m in Sources */,
 				0AB78B7B183CB46500979BD0 /* AFHTTPClient.m in Sources */,
+				0A40FE0C183F1C6800427613 /* DAOrder.m in Sources */,
 				0A07BD051828EC1B00A350BC /* DAMyOrderViewController.m in Sources */,
 				0A7AF0B0183600E400635376 /* DAFoodViewController.m in Sources */,
 				0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */,
@@ -1978,19 +2202,25 @@
 				28FFB64518332272003443D1 /* DADelegateUtil.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
 				0AB4B3B11838DE3700D77D7E /* DAPreferentialViewController.m in Sources */,
+				0AB78BF2183CE9BE00979BD0 /* SBJson4Parser.m in Sources */,
 				0A739E6F183B244F00AA48C4 /* DrawPatternLockViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */,
 				0AB78B85183CB46500979BD0 /* JastorRuntimeHelper.m in Sources */,
 				0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
+				0AB78BF7183CE9BE00979BD0 /* SBJson4StreamWriterState.m in Sources */,
 				0AB78B92183CD7DC00979BD0 /* DAItem.m in Sources */,
+				0A40FE08183EFBCE00427613 /* ProgressHUD.m in Sources */,
 				28FFB64718332272003443D1 /* DAImageUtil.m in Sources */,
+				0AB78BF5183CE9BE00979BD0 /* SBJson4StreamTokeniser.m in Sources */,
+				0A40FDF9183DFAF700427613 /* DADeskProxy.m in Sources */,
 				0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */,
 				0A7AF0C41836070000635376 /* DAQueueDrinkTableViewController.m in Sources */,
 				28FFB650183322B2003443D1 /* NSData+Base64.m in Sources */,
 				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
 				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
+				0A40FE02183EE58F00427613 /* DAServiceProxy.m in Sources */,
 				0AB78B7C183CB46500979BD0 /* AFHTTPRequestOperation.m in Sources */,
 				0A7AF0DE183612EF00635376 /* DAQueueMasterViewController.m in Sources */,
 				0AEBE5C81831D69000B01A5E /* DARemarkPopoverViewController.m in Sources */,

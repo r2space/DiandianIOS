@@ -13,9 +13,11 @@
 
 @interface DAMenu : Jastor
 
+@property(retain, nonatomic) NSString *_id;
 @property(retain, nonatomic) NSString *name;
 @property(retain, nonatomic) NSNumber *page;
 @property(retain, nonatomic) NSArray  *items;
+
 @property(retain, nonatomic) NSString *title;
 @property(retain, nonatomic) NSString *image;
 @property(retain, nonatomic) NSString *price;
@@ -23,7 +25,7 @@
 @property(retain, nonatomic) NSString *index;
 @property(retain, nonatomic) NSString *amount;
 @property(retain, nonatomic) NSString *status;
-@property(retain, nonatomic) NSString *_id;
+
 
 
 @end

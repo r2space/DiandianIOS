@@ -6,14 +6,13 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import "DADDMenuModule.h"
 #import "SmartSDK.h"
 
-@implementation DADDMenuModule
+@implementation DAMenuModule
 
 -(void) getList:(void (^)(NSError *err, DAMenuList *list))callback
 {
-    NSString *path = [NSString stringWithFormat:@"/menu/list.json"];
+    NSString *path = [NSString stringWithFormat:API_MENU_LIST];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
