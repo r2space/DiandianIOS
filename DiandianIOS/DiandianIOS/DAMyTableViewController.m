@@ -224,7 +224,7 @@ static DAMyTableViewController *activity;
     // 设置空桌的效果
     
     // 这个好像被外面给覆盖了
-    if ([desk isEmpty]) {
+    if (![desk isEmpty]) {
         
         cell.viewMask.hidden = YES;
         

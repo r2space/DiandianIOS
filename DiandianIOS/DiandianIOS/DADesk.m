@@ -21,11 +21,31 @@
 }
 - (BOOL)isEmpty
 {
-    return self.service == nil || self.service.status == 0;
+    if (self.service == nil)
+    {
+        return YES;
+    } else if (self.service.status == nil)
+    {
+        return YES;
+    } else if ([@"0" isEqualToString: [NSString stringWithFormat:@"%@",self.service.status]])
+    {
+        return YES;
+    }
+    return NO;
 }
 - (BOOL)isHasUnfinished
 {
-    return (self.service != nil && self.service.unfinishedCount != nil && self.service.unfinishedCount != 0);
+    if (self.service == nil)
+    {
+        return NO;
+    } else if (self.service.unfinishedCount == nil)
+    {
+        return NO;
+    } else if ([@"0" isEqualToString: [NSString stringWithFormat:@"%@",self.service.unfinishedCount]])
+    {
+        return NO;
+    }
+    return YES;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
