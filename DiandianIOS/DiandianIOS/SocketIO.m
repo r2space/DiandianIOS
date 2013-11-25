@@ -533,8 +533,9 @@ NSString* const SocketIOException = @"SocketIOException";
                 break;
             }
             case 5: {
-                DEBUGLOG(@"event");
+                DEBUGLOG(@"socket io event" );
                 if (packet.data && ![packet.data isEqualToString:@""]) {
+                    NSLog(@"\n\n\n\n\n###############args  %@  \n\n\n\n\n" ,packet.data);
                     NSDictionary *json = [packet dataAsJSON];
                     packet.name = [json objectForKey:@"name"];
                     packet.args = [json objectForKey:@"args"];

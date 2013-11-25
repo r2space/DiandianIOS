@@ -25,6 +25,9 @@
     [aCoder encodeObject:self.back forKey:@"back"];
     [aCoder encodeObject:self.valid forKey:@"valid"];
     [aCoder encodeObject:self.remark forKey:@"remark"];
+
+    [aCoder encodeObject:self.isNew forKey:@" isNew"];
+   
     
 }
 
@@ -43,11 +46,15 @@
     self.valid = [aDecoder decodeObjectForKey:@"valid"];
     self.remark = [aDecoder decodeObjectForKey:@"remark"];
     
+    self.isNew = [aDecoder decodeObjectForKey:@"isNew"];
+    
+    
+    
     return self;
 }
 
 -(NSDictionary*)toDictionary{
-    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:8];
+    NSMutableDictionary * dict = [[NSMutableDictionary alloc]init];
     [dict setValue:self.deskId forKey:@"deskId"];
     [dict setValue:self.serviceId forKey:@"serviceId"];
     [dict setValue:self.userId forKey:@"userId"];
@@ -57,6 +64,10 @@
     [dict setValue:self.back forKey:@"back"];
     [dict setValue:self.valid forKey:@"valid"];
     [dict setValue:self.remark forKey:@"remark"];
+    
+    [dict setValue:self.isNew forKey:@"isNew"];
+
+    
     return dict;
 }
 

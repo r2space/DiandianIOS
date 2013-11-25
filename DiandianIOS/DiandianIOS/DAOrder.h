@@ -9,7 +9,7 @@
 #import "DAEntity.h"
 #import "SmartSDK.h"
 
-@interface DAOrder : DAEntity
+@interface DAOrder : DAEntity<NSCoding>
 
 @property (retain, nonatomic) NSString  *deskId;
 @property (retain, nonatomic) NSString  *serviceId;

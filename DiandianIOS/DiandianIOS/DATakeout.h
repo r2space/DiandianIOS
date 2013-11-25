@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Jastor.h"
 
-@interface DATakeout : Jastor
+@interface DATakeout : Jastor<NSCoding>
 
 @property(retain, nonatomic) NSString *takeoutId;
 @property(retain, nonatomic) NSString *num;

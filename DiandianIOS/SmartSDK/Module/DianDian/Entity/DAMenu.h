@@ -11,7 +11,7 @@
 #import "DAItem.h"
 
 
-@interface DAMenu : Jastor
+@interface DAMenu : Jastor<NSCoding>
 
 @property(retain, nonatomic) NSString *_id;
 @property(retain, nonatomic) NSString *name;

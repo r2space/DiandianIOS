@@ -60,28 +60,36 @@
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet
 {
-
-    NSDictionary *dic = [packet dataAsJSON];
-    NSArray *args = [dic objectForKey:@"args"];
-    for (NSDictionary *argDic in args) {
-        
-        NSString *action = [argDic objectForKey:@"action"];
-        id data = [argDic objectForKey:@"data"];
-        [DADispatch dealWithAction:action data:data];
+    @try {
+        NSDictionary *dic = [packet dataAsJSON];
+        NSArray *args = [dic objectForKey:@"args"];
+        for (NSDictionary *argDic in args) {
+            
+            NSString *action = [argDic objectForKey:@"action"];
+            id data = [argDic objectForKey:@"data"];
+            [DADispatch dealWithAction:action data:data];
+            
+        }
+    }
+    @catch (NSException *exception) {
         
     }
+    @finally {
+        
+    }
+
     
 }
 
 - (void) socketIO:(SocketIO *)socket onError:(NSError *)error
 {
-    NSLog(@"onError() %@", error);
+    NSLog(@"\n\n\n\n\n\n  onError() %@", error);
 }
 
 
 - (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error
 {
-    NSLog(@"socket.io disconnected. did error occur? %@", error);
+    NSLog(@"\n\n\n\n\n\n   socket.io disconnected. did error occur? %@", error);
 }
 
 # pragma mark -

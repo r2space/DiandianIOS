@@ -56,10 +56,11 @@
 
 - (void)ioRefreshOrderList : (NSNotification*) notification
 {
-    [ProgressHUD show:@"推送消息"];
-    NSArray *obj = [notification object];
+//    [ProgressHUD show:@"推送消息"];
+    NSDictionary *obj = [notification object];
+    NSArray *items = [obj objectForKey:@"items"];
     NSMutableArray *tmpArray = [[NSMutableArray alloc]init];
-    for (NSDictionary *orderdic in obj) {
+    for (NSDictionary *orderdic in items) {
         DAOrder *order = [[DAOrder alloc ]initWithDictionary:orderdic];
         [tmpArray addObject:order];
     }
@@ -69,7 +70,7 @@
     dataList = [[DAMyOrderList alloc]init];
     dataList.items = [[NSArray alloc]initWithArray:tmpArray];
     [self.collectionView reloadData];
-    [ProgressHUD dismiss];
+//    [ProgressHUD dismiss];
 }
 
 

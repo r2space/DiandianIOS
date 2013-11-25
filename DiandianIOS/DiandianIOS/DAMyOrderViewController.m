@@ -74,7 +74,7 @@
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
 
-        self.dataList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
+//        self.dataList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
         
         [self.tableView reloadData];
         
@@ -94,7 +94,7 @@
         BOOL fs = [self.dataList archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
         
         if (fs) {
-            NSLog(@"xieru");
+            NSLog(@"xieru self.curService._id %@"  , self.curService._id);
         }
     }
     [self.tableView reloadData];
@@ -112,7 +112,7 @@
     _order.itemId = obj._id;
     _order.deskId = self.curService.deskId;
     _order.serviceId = self.curService._id;
-    _order.isNew = @"YES";
+    _order.isNew = [NSString stringWithFormat:@"YES"];
     
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [tmpList addObject:_order];
@@ -240,8 +240,12 @@
     //提交订单
     DASocketIO *socket = [DASocketIO sharedClient:self];
     [socket conn];
+    
+    DAMyOrderList *tmpList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
+    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:[self.dataList toArray] forKey:@"orderList"];
+    [dic setValue:[tmpList toArray] forKey:@"orderList"];
+    [dic setValue:self.curService.deskId forKey:@"deskId"];
     [socket sendJSONwithAction:@"addOrder" data:[[NSDictionary alloc]initWithDictionary:dic]];
     
     [self.navigationController popViewControllerAnimated:YES];

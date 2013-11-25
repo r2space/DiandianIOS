@@ -14,13 +14,13 @@
 #define GroupTypeOrganization   @"2"
 
 
-@interface GroupName : Jastor
+@interface GroupName : Jastor<NSCoding>
 @property(retain, nonatomic) NSString* letter_zh;
 @property(retain, nonatomic) NSString* name_zh;
 @end
 
 
-@interface GroupPhoto : Jastor
+@interface GroupPhoto : Jastor<NSCoding>
 @property (retain, nonatomic) NSString *small;
 @property (retain, nonatomic) NSString *middle;
 @property (retain, nonatomic) NSString *big;
@@ -31,7 +31,7 @@
 @end
 
 
-@interface DAGroup : Jastor
+@interface DAGroup : Jastor<NSCoding>
 
 // TODO 服务器返回的JSON结构中有的地方是id有的地方是_id，需要进行统一
 @property (retain, nonatomic) NSString* _id;

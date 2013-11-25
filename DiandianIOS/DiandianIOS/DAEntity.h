@@ -8,7 +8,7 @@
 
 #import "Jastor.h"
 
-@interface DAEntity : Jastor
+@interface DAEntity : Jastor<NSCoding>
 
 @property (retain, nonatomic) NSString *_id;
 @property (retain, nonatomic) NSString *createat;

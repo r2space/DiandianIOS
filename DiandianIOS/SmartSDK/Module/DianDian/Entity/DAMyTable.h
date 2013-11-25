@@ -9,7 +9,7 @@
 
 #import "Jastor.h"
 
-@interface DAMyTable: Jastor
+@interface DAMyTable: Jastor<NSCoding>
 
 @property(retain, nonatomic) NSString *tableId;
 @property(retain, nonatomic) NSString *name;

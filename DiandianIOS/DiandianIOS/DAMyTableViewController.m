@@ -62,12 +62,12 @@ static DAMyTableViewController *activity;
     
     [self initTopmenu];
     
-    
+    [self loadFromFile];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [self loadFromFile];
+    
 }
 
 + (void) receive:(NSString*)action data:(id)data
@@ -94,6 +94,7 @@ static DAMyTableViewController *activity;
             }
         }
     }
+//        [self loadFromFile];
 }
 - (void) initTopmenu
 {
@@ -139,7 +140,7 @@ static DAMyTableViewController *activity;
 -(void)loadFromFile{
     [ProgressHUD show:nil];
     
-    [[DADeskModule alloc] getDeskListWithArchiveName:FILE_DESK_LIST callback:^(NSError *err, DADeskList *list) {
+    [[DADeskModule alloc] getDeskListWithArchiveName:nil callback:^(NSError *err, DADeskList *list) {
         dataList = [[NSMutableArray alloc]init];
         for (DADesk *d in list.items){
             [dataList addObject: d];
@@ -176,7 +177,7 @@ static DAMyTableViewController *activity;
     DAMyLoginViewController *loginVC = loginViewViewController;
 
     [ProgressHUD show:nil];
-    [DADeskProxy initDesk:loginVC.myDesk._id userId:loginVC.waitterId.text type:@"0" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
+    [DADeskProxy initDesk:loginVC.myDesk._id userId:loginVC.waitterId.text type:@"1" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
         UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
         DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];

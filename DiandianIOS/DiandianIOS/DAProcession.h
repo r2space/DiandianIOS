@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Jastor.h"
 
-@interface DAProcession : Jastor
+@interface DAProcession : Jastor<NSCoding>
 
 @property(retain, nonatomic) NSString *processionId;
 @property(retain, nonatomic) NSString *num;

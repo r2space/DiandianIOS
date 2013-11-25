@@ -9,7 +9,7 @@
 #import "DAEntity.h"
 
 
-@interface DAMyOrderList : DAEntity
+@interface DAMyOrderList : DAEntity<NSCoding>
 
 @property (retain, nonatomic) NSArray   *items;
 @property (retain, nonatomic) NSNumber  *totalItems;

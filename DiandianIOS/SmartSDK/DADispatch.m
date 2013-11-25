@@ -20,11 +20,6 @@
         
         [DAOrderProxy refreshOrderList:data];
         
-    } else {
-        
-        
-        
-        [DAOrderProxy refreshOrderList:data];
     }
  
     if ([@"refresh_desk" isEqualToString:action]) {

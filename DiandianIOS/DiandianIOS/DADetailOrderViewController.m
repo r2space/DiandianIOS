@@ -86,10 +86,10 @@
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
         
-        BOOL fs = [self.orderList archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
-        if (fs) {
-            NSLog(@"xieru");
-        }
+//        BOOL fs = [self.orderList archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
+//        if (fs) {
+//            NSLog(@"xieru");
+//        }
     }
     [self.tableView reloadData];
     [self loadAmountPrice];
