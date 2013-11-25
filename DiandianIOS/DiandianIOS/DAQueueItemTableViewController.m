@@ -128,7 +128,9 @@
         [tmpList addObject:d];
     }
     dataList.items = [[NSArray alloc] initWithArray:tmpList];
+  
     [self.tableView reloadData];
+    
 }
 
 

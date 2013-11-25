@@ -139,24 +139,14 @@
 
 
 - (void)loadFromFile {
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"queue_detail" ofType:@"json"];
-    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
-    
-    NSError *anError = nil;
-    NSArray *items = [NSJSONSerialization JSONObjectWithData:elementsData
-                                                     options:NSJSONReadingAllowFragments
-                                                       error:&anError];
-    
-    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
-    for (NSDictionary *d in items){
-        [tmpList addObject:d];
-    }
+
     [[DAOrderModule alloc]getAllOrderList:0 count:20 callback:^(NSError *err, DAMyOrderList *list) {
-        
+        dataList = list;
+        [self.collectionView reloadData];
     }];
     
     
-    [self.collectionView reloadData];
+    
 }
 
 
