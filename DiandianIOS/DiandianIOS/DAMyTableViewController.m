@@ -24,6 +24,7 @@
 #import "ProgressHUD.h"
 #import "DARootViewController.h"
 
+static DAMyTableViewController *activity;
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate, DATakeoutDelegate>
 {
@@ -39,12 +40,15 @@
 @end
 
 @implementation DAMyTableViewController
-
+{
+    
+}
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    activity = self;
     
     dataList = [[NSMutableArray alloc] init];
     UINib *cellNib = [UINib nibWithNibName:@"DAMyTableViewCell" bundle:nil];
@@ -57,6 +61,8 @@
     
     
     [self initTopmenu];
+    
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -64,14 +70,28 @@
     [self loadFromFile];
 }
 
-- (void) reciveMessage:(NSString*)action data:(id)data
++ (void) receive:(NSString*)action data:(id)data
 {
-    DADesk *new = [[DADesk alloc] initWithDictionary:data];
-    for (DADesk *desk in dataList) {
-        if ([desk.tableId isEqualToString:new.tableId]) {
-            [desk swap:desk];
-            [self.collectionView reloadData];
-            break;
+    if (activity != nil && [activity isViewLoaded]) {
+        [activity receiveMessage:action data:data];
+    }
+}
+
+- (void) receiveMessage:(NSString*)action data:(id)data
+{
+    NSDictionary *dic =  [data objectForKey:@"service"];
+    NSLog(@"service  dic %@" ,dic );
+    
+    // 更新桌信息
+    if ([@"refresh_desk" isEqualToString:action]) {
+        DADesk *new = [[DADesk alloc] initWithDictionary:data];
+        for (int i=0; i < dataList.count; i++) {
+            DADesk *desk = [dataList objectAtIndex:i];
+            if ([desk._id isEqualToString:new._id]) {
+                [dataList replaceObjectAtIndex:i withObject:new];
+                [self.collectionView reloadData];
+                break;
+            }
         }
     }
 }
@@ -204,7 +224,7 @@
     // 设置空桌的效果
     
     // 这个好像被外面给覆盖了
-    if (desk.service !=nil) {
+    if ([desk isEmpty]) {
         
         cell.viewMask.hidden = YES;
         
@@ -215,7 +235,7 @@
     
     
     // 设置换桌的动画效果
-    if (isTableFlicker && [@"empty" isEqualToString:desk.state]) {
+    if (isTableFlicker && [desk isEmpty]) {
         [DAAnimation addFlickerShadow:cell.imgTable shadowColor:[UIColor greenColor] shadowRadius:5.0];
     } else {
         [DAAnimation removeFlickerShadow:cell.imgTable];
@@ -230,9 +250,10 @@
     DADesk * desk = [dataList objectAtIndex:indexPath.row];
     
     if (isStartChangeTable) {
-        if ([@"empty" isEqualToString:desk.state]) {
-            DADesk *fromT = [self getDataByTableId:changeTableId];
-            [fromT swap:desk];
+        if ([desk isEmpty]) {
+            //DADesk *fromT = [self getDataByTableId:changeTableId];
+            // TODO: 改成用 [dataList replaceObjectAtIndex:i withObject:new];
+            //[fromT swap:desk];
 
             isStartChangeTable = false;
             [self setTableFlicker:false];
@@ -240,7 +261,7 @@
         
         return;
     } else if (isProcessionIntoTable) {
-        if ([@"empty" isEqualToString:desk.state])
+        if ([desk isEmpty])
         {
             desk.state = @"eating";
 
@@ -249,7 +270,7 @@
         }
         return;
     } else {
-        if (desk.service != nil) {
+        if (![desk isEmpty]) {
             [DAMyTableConfirmController show: desk parentView:self ];
         } else {
             [DAMyLoginViewController show: desk parentView:self ];

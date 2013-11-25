@@ -30,7 +30,7 @@
 @property(retain, nonatomic) NSString *durationTime;
 @property(retain, nonatomic) NSString *unfinishedCount;
 
--(void)swap:(DADesk *)otherTable;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
-
+- (BOOL)isEmpty;
+- (BOOL)isHasUnfinished;
 @end

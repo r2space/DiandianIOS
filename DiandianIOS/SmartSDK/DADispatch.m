@@ -8,6 +8,7 @@
 
 #import "DADispatch.h"
 #import "DAOrderProxy.h"
+#import "DAMyTableViewController.h"
 
 @implementation DADispatch
 
@@ -26,6 +27,9 @@
         [DAOrderProxy refreshOrderList:data];
     }
  
+    if ([@"refresh_desk" isEqualToString:action]) {
+        [DAMyTableViewController receive:action data:data];
+    }
     
 }
 

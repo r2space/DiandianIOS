@@ -12,10 +12,10 @@
 
 @property (retain, nonatomic) NSString *_id;
 @property (retain, nonatomic) NSString *deskId;
-@property (retain, nonatomic) NSString *type;
-@property (retain, nonatomic) NSString *status;
-@property (retain, nonatomic) NSString *people;
-@property (retain, nonatomic) NSString *unfinishedCount;
+@property (retain, nonatomic) NSNumber *type;
+@property (retain, nonatomic) NSNumber *status;
+@property (retain, nonatomic) NSNumber *people;
+@property (retain, nonatomic) NSNumber *unfinishedCount;
 @property (retain, nonatomic) NSString *billNum;
 @property (retain, nonatomic) NSString *orderNo;
 @property (retain, nonatomic) NSString *phone;

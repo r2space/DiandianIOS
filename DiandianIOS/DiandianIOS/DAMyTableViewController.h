@@ -32,4 +32,6 @@
 - (IBAction)showMenuList:(id)sender;
 - (IBAction)showOrderQueueTouched:(id)sender;
 
++ (void) receive:(NSString*)action data:(id)data;
+- (void) receiveMessage:(NSString*)action data:(id)data;
 @end

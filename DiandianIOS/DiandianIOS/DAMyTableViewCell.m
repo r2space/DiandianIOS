@@ -33,26 +33,28 @@
     // Set state
     self.tableState.text = @"";    // clear state
     
+    DAService *service = mytable.service;
     // 设置未上菜的量
-    if ([NSString isEmpty:mytable.unfinishedCount] || [@"0" isEqualToString:mytable.unfinishedCount]) {
+    if (![mytable isHasUnfinished]) {
         [self.unfinishedCount setHidden:YES];
         [self.unfinishedCount setTitle:@"" forState:UIControlStateNormal];
     } else {
         [self.unfinishedCount setHidden:NO];
-        [self.unfinishedCount setTitle:mytable.unfinishedCount forState:UIControlStateNormal];
+        [self.unfinishedCount setTitle:[NSString stringWithFormat:@"%@",service.unfinishedCount] forState:UIControlStateNormal];
+        //NSLog(@"==== %@" , service.unfinishedCount);
     }
     
     // 这个好像被外面给覆盖了
     if (mytable.service !=nil) {
-        
-        if ([@"0" isEqualToString:mytable.service.status]) {
-            [self.tableState setTextColor:[UIColor redColor]];
-            self.tableState.text = @"就餐中";
-        } else {
-            [self.tableState setTextColor:[UIColor redColor]];
-            self.tableState.text = @"就餐中";
-        }
-        
+//        
+//        if (service != nil && [@"0" isEqualToString:service.status]) {
+//            [self.tableState setTextColor:[UIColor redColor]];
+//            self.tableState.text = @"就餐中";
+//        } else {
+//            [self.tableState setTextColor:[UIColor redColor]];
+//            self.tableState.text = @"就餐中";
+//        }
+//        
     } else {
         [self.tableState setTextColor:[UIColor blackColor]];
         self.tableState.text = @"";
