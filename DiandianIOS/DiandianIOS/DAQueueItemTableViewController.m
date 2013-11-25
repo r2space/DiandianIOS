@@ -7,10 +7,12 @@
 //
 
 #import "DAQueueItemTableViewController.h"
+#import "ProgressHUD.h"
 
 @interface DAQueueItemTableViewController ()
 {
-    NSArray *dataList;
+    DAMyOrderList *dataList;
+    DAMenuList *menuList;
 }
 @end
 
@@ -30,12 +32,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    dataList =  [[NSArray alloc ]init];
+    dataList =  [[DAMyOrderList alloc ]init];
+    dataList.items = [[NSArray alloc]init];
+    menuList = [[DAMenuList alloc]unarchiveObjectWithFileWithName:FILE_MENU_LIST];
     // Do any additional setup after loading the view from its nib.
     UINib *cellNib = [UINib nibWithNibName:@"DAQueueTableCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAQueueTableCell"];
     [self loadFromFile];
+
+    
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -54,7 +61,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return dataList.count;
+    return dataList.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,7 +69,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DAQueueTableCell"];
     
     
-    NSDictionary *row = [dataList objectAtIndex:indexPath.row];
+    NSDictionary *row = [dataList.items objectAtIndex:indexPath.row];
     UILabel *lblName = (UILabel *)[cell viewWithTag:10];
     lblName.text = [row objectForKey:@"name"];
     
@@ -96,14 +103,14 @@
 {
     [self loadFromFile];
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
-    for (NSDictionary *d in dataList){
+    for (NSDictionary *d in dataList.items){
         NSString *disTableNo = [d objectForKey:@"table"];
         if ([self.curTableNO isEqualToString:disTableNo]) {
             [tmpList addObject:d];
         }
         
     }
-    dataList = [[NSArray alloc] initWithArray:tmpList];
+    dataList.items = [[NSArray alloc] initWithArray:tmpList];
     [self.tableView reloadData];
 }
 
@@ -120,7 +127,7 @@
     for (NSDictionary *d in items){
         [tmpList addObject:d];
     }
-    dataList = [[NSArray alloc] initWithArray:tmpList];
+    dataList.items = [[NSArray alloc] initWithArray:tmpList];
     [self.tableView reloadData];
 }
 

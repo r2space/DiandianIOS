@@ -12,14 +12,21 @@
 #define API_MENU_LIST       @"/api/menu/list.json"
 #define API_DESK_LIST       @"/api/desk/list.json"
 #define API_START_SERVICE   @"/api/service/start.json"
+#define API_ALL_ORDER_LIST  @"/api/order/list.json?start=%d&count=%d"
 
 #define FILE_MENU_LIST @"___data_menu_list_"
 #define FILE_DESK_LIST @"___data_desk_list_"
+
+#define FILE_ORDER_LIST(deskId) \
+[NSString stringWithFormat:@"data_%@_orderList",(deskId)]
+
 
 #import "DAMenuModule.h"
 #import "DALoginModule.h"
 #import "DADeskModule.h"
 #import "DAServiceModule.h"
+#import "DAOrderModule.h"
+
 
 
 #import "DAGroup.h"
@@ -35,7 +42,8 @@
 #import "DADeskList.h"
 #import "DAService.h"
 #import "DAOrder.h"
-#import "DAOrderList.h"
+#import "DAMyOrderList.h"
+
 
 
 #endif

@@ -16,4 +16,6 @@
 
 +(void) initDesk :(NSString *) deskId  userId :(NSString *) userId  type:(NSString *)type people:(NSString *)people callback:(void (^)(NSError *err, DAService *service))callback;
 
++(void) refreshDesk:(NSDictionary *) deskDic;
+
 @end

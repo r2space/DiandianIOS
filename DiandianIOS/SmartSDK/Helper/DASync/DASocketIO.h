@@ -14,5 +14,5 @@
 -(void)conn;
 
 
--(void)sendEvent:(NSString *)event data:(NSObject *)data;
+-(void)sendJSONwithAction:(NSString *)action  data:(NSDictionary *)data ;
 @end

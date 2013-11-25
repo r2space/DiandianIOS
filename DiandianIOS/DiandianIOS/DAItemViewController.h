@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmartSDK.h"
 
 @interface DAItemViewController : UIViewController
 

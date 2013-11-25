@@ -22,6 +22,7 @@
 #import "NSString+Util.h"
 #import "DADeskProxy.h"
 #import "ProgressHUD.h"
+#import "DARootViewController.h"
 
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate, DATakeoutDelegate>
@@ -154,14 +155,18 @@
     
     DAMyLoginViewController *loginVC = loginViewViewController;
 
+    [ProgressHUD show:nil];
     [DADeskProxy initDesk:loginVC.myDesk._id userId:loginVC.waitterId.text type:@"0" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
-        NSLog(@"DADeskProxy initDesk    %@"  ,service);
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+        UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+        DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+        menubookVC.curService = service;
+        [ProgressHUD dismiss];
+        [self.navigationController pushViewController:menubookVC animated:YES];
+        
     }];
 
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
-    UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
-    [self.navigationController pushViewController:menubookVC animated:YES];
+    
     
     
 }

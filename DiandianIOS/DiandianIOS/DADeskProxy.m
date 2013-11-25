@@ -25,4 +25,11 @@
     }];
 }
 
++(void) refreshDesk:(NSDictionary *) deskDic
+{
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:deskDic];
+    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
+    
+}
+
 @end

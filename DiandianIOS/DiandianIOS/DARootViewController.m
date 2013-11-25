@@ -65,6 +65,9 @@
     
     thumbView = [[DAOrderThumbViewController alloc] initWithNibName:@"DAOrderThumbViewController" bundle:nil];
     orderView = [[DAMyOrderViewController alloc] initWithNibName:@"DAMyOrderViewController" bundle:nil];
+    
+    orderView.curService = self.curService;
+    
     [self addChildViewController:orderView];
     [self.orderListView addSubview:orderView.view];
     self.orderListView.layer.shadowColor = UIColor.blackColor.CGColor;

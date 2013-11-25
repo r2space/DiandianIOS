@@ -70,10 +70,8 @@
     NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
-        NSString *arrayPath =[[paths objectAtIndex:0]
-                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_%@_orderList",self.tableNO]];
         
-        self.orderList = [NSKeyedUnarchiver unarchiveObjectWithFile: arrayPath];
+        self.orderList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
         [self.tableView reloadData];
         return YES;
     }
@@ -87,12 +85,9 @@
     NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
-        NSString *arrayPath =[[paths objectAtIndex:0]
-                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_%@_orderList",self.tableNO]];
         
-        BOOL f = [NSKeyedArchiver archiveRootObject:self.orderList toFile:arrayPath];
-        
-        if (f) {
+        BOOL fs = [self.orderList archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
+        if (fs) {
             NSLog(@"xieru");
         }
     }
@@ -104,8 +99,8 @@
 -(void)loadAmountPrice
 {
     int amountPrice = 0 ;
-    for (DAMenu *menu in self.orderList.items) {
-        amountPrice = amountPrice + [menu.price integerValue] * [menu.amount integerValue];
+    for (DAOrder *order in self.orderList.items) {
+        amountPrice = amountPrice + [order.item.price integerValue] * [order.item.amount integerValue];
     }
     self.amountPriceLabel.text = [NSString stringWithFormat:@"总价 : %d 元" ,amountPrice];
     
@@ -122,24 +117,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAMenu *menu = [self.orderList.items objectAtIndex:indexPath.row];
+    DAOrder *orderItem = [self.orderList.items objectAtIndex:indexPath.row];
     static NSString *CellWithIdentifier = @"DADetailOrderCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:9];
-    imageView.image = [UIImage imageNamed:menu.image];
+    imageView.image = [UIImage imageNamed:orderItem.item.image];
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:10];
-    nameLabel.text = menu.name;
+    nameLabel.text = orderItem.item.name;
     UILabel *pirceLabel = (UILabel *)[cell viewWithTag:11];
-    pirceLabel.text = [NSString stringWithFormat:@"%@元/盘",menu.price];
+    pirceLabel.text = [NSString stringWithFormat:@"%@元/盘",orderItem.item.price];
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:13];
-    amountLabel.text = [NSString stringWithFormat:@"%@份" ,menu.amount];
+    amountLabel.text = [NSString stringWithFormat:@"%@份" ,orderItem.item.amount];
     
     DAOrderAddAmountBtn *addBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:20];
     DAOrderAddAmountBtn *deleteBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:21];
 
-    addBtn._id = menu._id;
+    addBtn._id = orderItem.item._id;
 
-    deleteBtn._id = menu._id;
+    deleteBtn._id = orderItem.item._id;
     [addBtn addTarget:self
                action:@selector(addAmount:) forControlEvents:UIControlEventTouchUpInside];
     

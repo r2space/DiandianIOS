@@ -169,7 +169,7 @@
 
     cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:nsRow column:nsColumn];
     
-    cell.menuData = data;
+    cell.itemData = data;
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
 //    titleLabel.text = data.name;

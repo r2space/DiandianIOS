@@ -15,5 +15,6 @@
 
 -(BOOL ) archiveRootObject;
 -(DAMenuList *) unarchiveObjectWithFile;
+-(NSMutableArray*)toArray;
 
 @end

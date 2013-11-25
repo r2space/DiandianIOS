@@ -30,9 +30,13 @@
     [self connectToHost:@"10.2.3.201" onPort:3000];
 }
 
--(void)sendEvent:(NSString *)event data:(NSObject *)data
+-(void)sendJSONwithAction:(NSString *)action  data:(NSDictionary *)data
 {
-    [self sendEvent:event withData:data];
+    NSMutableDictionary *tmpDic = [[NSMutableDictionary alloc] init];
+    [tmpDic setObject:action forKey:@"action"];
+    [tmpDic setObject:data forKey:@"data"];
+    [self sendEvent:@"message" withData:tmpDic];
+    
 }
 
 @end

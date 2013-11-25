@@ -82,8 +82,9 @@
 */
 
 - (IBAction)addMenu:(id)sender {
-    NSLog(@"dfdaf  data  %@  " ,self.menuData.name);
-    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"orderReload" object:self.menuData];
-    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
+    NSLog(@"add order item  %@  " ,self.itemData.name);
+    NSNotification *addOrderNotification = [NSNotification notificationWithName:@"addOrder" object:self.itemData];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:addOrderNotification];
 }
 @end

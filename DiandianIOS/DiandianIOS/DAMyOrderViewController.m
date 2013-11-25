@@ -13,6 +13,8 @@
 #import "DADetailOrderViewController.h"
 #import "DAOrderRecipeBtn.h"
 #import "DAMyOrderLoginViewController.h"
+#import "DASocketIO.h"
+
 
 @interface DAMyOrderViewController ()<DADetailOrderDelegate>
 {
@@ -41,12 +43,12 @@
 //    NSArray *list = [NSArray arrayWithObjects:@"fd",@"sdfdf",nil];
 
     
-    self.dataList = [DAMenuList alloc];
+    self.dataList = [DAMyOrderList alloc];
     self.dataList.items = [[NSArray alloc] init];
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orderReload:) name:@"orderReload" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOrder:) name:@"addOrder" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationSetRecipe:) name:@"setRecipe" object:nil];
     
@@ -58,9 +60,10 @@
 }
 -(void)loadAmountPrice
 {
+    
     int amountPrice = 0 ;
-    for (DAMenu *menu in self.dataList.items) {
-        amountPrice = amountPrice + [menu.price integerValue] * [menu.amount integerValue];
+    for (DAOrder *order in self.dataList.items) {
+        amountPrice = amountPrice + [order.item.price integerValue];
     }
     self.labelAmount.text = [NSString stringWithFormat:@"总价:%d元" ,amountPrice];
     
@@ -70,12 +73,13 @@
     NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
-        NSString *arrayPath =[[paths objectAtIndex:0]
-                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_%@_orderList",self.tableNO]];
+
+        self.dataList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
         
-        self.dataList = [NSKeyedUnarchiver unarchiveObjectWithFile: arrayPath];
         [self.tableView reloadData];
+        
         return YES;
+        
     }
     
     
@@ -87,11 +91,9 @@
     NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
-        NSString *arrayPath =[[paths objectAtIndex:0]
-                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_%@_orderList",self.tableNO]];
-        BOOL f = [NSKeyedArchiver archiveRootObject:self.dataList toFile:arrayPath];
+        BOOL fs = [self.dataList archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
         
-        if (f) {
+        if (fs) {
             NSLog(@"xieru");
         }
     }
@@ -101,22 +103,18 @@
 }
 
 
-- (void)orderReload :(NSNotification*) notification
+- (void)addOrder :(NSNotification*) notification
 {
 
-    DAMenu *obj = [notification object];
-    for (DAMenu *menu in self.dataList.items) {
-        if (menu._id == obj._id) {
-            int amount = [menu.amount integerValue] + 1;
-            menu.amount = [NSString stringWithFormat:@"%d", amount];
-            [self tableViewReload];
-            return;
-        }
-    }
-    NSLog(@"%@",obj);
+    DAItem *obj = [notification object];
+    DAOrder *_order = [[DAOrder alloc]init];
+    _order.item = obj;
+    _order.itemId = obj._id;
+    _order.deskId = self.curService.deskId;
+    _order.serviceId = self.curService._id;
+    
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
-    obj.amount = @"1";
-    [tmpList addObject:obj];
+    [tmpList addObject:_order];
     [tmpList addObjectsFromArray:self.dataList.items];
     self.dataList.items = [[NSArray alloc] initWithArray:tmpList];
     [self tableViewReload];
@@ -132,27 +130,28 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger row = [indexPath row];
-    DAItem *menudata = [self.dataList.items objectAtIndex:row];
+    DAOrder *orderdata = [self.dataList.items objectAtIndex:row];
+    DAItem *item = orderdata.item;
     static NSString *CellWithIdentifier = @"DAOrderCell";
     DAOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:12];
-    titleLabel.text = menudata.name;
-    amountLabel.text = [NSString stringWithFormat:@"%@份", menudata.amount];
-    if (menudata.status!=nil && [menudata.status isEqualToString:@"doing"]) {
-        
-        return cell;
-    }
+    titleLabel.text = item.name;
+    amountLabel.text = [NSString stringWithFormat:@"%@份", item.amount];
+//    if (item.status!=nil && [item.status isEqualToString:@"doing"]) {
+//        
+//        return cell;
+//    }
 
     DAOrderAddAmountBtn *deleteBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:123];
     DAOrderRecipeBtn *recipeBtn = (DAOrderRecipeBtn *)[cell viewWithTag:31];
 
-    deleteBtn.name = menudata.name;
-    deleteBtn._id = menudata._id;
+    deleteBtn.name = item.name;
+    deleteBtn._id = item._id;
     
-    recipeBtn.name = menudata.name;
-    recipeBtn.orderId = menudata.name;
+    recipeBtn.name = item.name;
+    recipeBtn.orderId = item._id;
 
     [deleteBtn addTarget:self
                action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
@@ -215,6 +214,8 @@
     secondDetailViewController.delegate = self;
     secondDetailViewController.tableNO = self.tableNO;
     
+    secondDetailViewController.curService = self.curService;
+    
     [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
     
 }
@@ -234,6 +235,12 @@
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self tableViewReload];
     //提交订单
+    DASocketIO *socket = [DASocketIO sharedClient:self];
+    [socket conn];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:[self.dataList toArray] forKey:@"orderList"];
+
+    [socket sendJSONwithAction:@"addOrder" data:[[NSDictionary alloc]initWithDictionary:dic]];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
