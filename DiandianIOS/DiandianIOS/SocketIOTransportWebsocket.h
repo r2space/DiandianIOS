@@ -1,6 +1,6 @@
 //
-//  SocketIOJSONSerialization.h
-//  v0.4.1 ARC
+//  SocketIOTransportWebsocket.h
+//  v0.4.0.1 ARC
 //
 //  based on
 //  socketio-cocoa https://github.com/fpotter/socketio-cocoa
@@ -23,9 +23,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SocketIOJSONSerialization : NSObject
+#import "SRWebSocket.h"
+#import "SocketIOTransport.h"
 
-+ (id) objectFromJSONData:(NSData *)data error:(NSError **)error;
-+ (NSString *) JSONStringFromObject:(id)object error:(NSError **)error;
+@interface SocketIOTransportWebsocket : NSObject <SocketIOTransport, SRWebSocketDelegate>
+{
+    SRWebSocket *_webSocket;
+}
+
+@property (nonatomic, unsafe_unretained) id <SocketIOTransportDelegate> delegate;
 
 @end
