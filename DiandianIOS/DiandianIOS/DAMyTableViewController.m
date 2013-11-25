@@ -63,6 +63,17 @@
     [self loadFromFile];
 }
 
+- (void) reciveMessage:(NSString*)action data:(id)data
+{
+    DADesk *new = [[DADesk alloc] initWithDictionary:data];
+    for (DADesk *desk in dataList) {
+        if ([desk.tableId isEqualToString:new.tableId]) {
+            [desk swap:desk];
+            [self.collectionView reloadData];
+            break;
+        }
+    }
+}
 - (void) initTopmenu
 {
     self.topmenuLabel.layer.cornerRadius = 15.0;
