@@ -112,6 +112,7 @@
     _order.itemId = obj._id;
     _order.deskId = self.curService.deskId;
     _order.serviceId = self.curService._id;
+    _order.isNew = @"YES";
     
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [tmpList addObject:_order];
@@ -234,12 +235,13 @@
     [self loadTableFromDisk];
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self tableViewReload];
+    
+    
     //提交订单
     DASocketIO *socket = [DASocketIO sharedClient:self];
     [socket conn];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:[self.dataList toArray] forKey:@"orderList"];
-
     [socket sendJSONwithAction:@"addOrder" data:[[NSDictionary alloc]initWithDictionary:dic]];
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -324,5 +326,21 @@
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+- (void)loadOrderList
+{
+    if ( self.serviceId !=nil && self.serviceId.length >0 ) {
+        
+        [[DAOrderModule alloc]getOrderListByServiceId:self.serviceId callback:^(NSError *err, DAMyOrderList *list) {
+            
+            [list archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.serviceId )];
+            [self loadTableFromDisk];
+            
+        }];
+        
+    }
+    
+}
+
 
 @end

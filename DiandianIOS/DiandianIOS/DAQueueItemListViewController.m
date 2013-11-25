@@ -15,6 +15,8 @@
     DAMyOrderList *dataList;
     NSIndexPath *oldIndexPath;
     UICollectionViewCell * oldcell;
+    DAMenuList *menuList;
+    NSMutableArray *itemList;
 }
 @end
 
@@ -34,12 +36,18 @@
     [super viewDidLoad];
     dataList =  [[DAMyOrderList alloc ]init];
     dataList.items = [[NSArray alloc]init];
+    itemList = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view from its nib.
     UINib *cellNib = [UINib nibWithNibName:@"DAQueueItemListCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAQueueItemListCell"];
     [self loadFromFile];
 
-    
+    menuList = [[DAMenuList alloc]unarchiveObjectWithFileWithName:FILE_MENU_LIST];
+    for (DAMenu *menu in menuList.items) {
+        for (DAItem *item in menu.items) {
+            [itemList addObject:item];
+        }
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ioRefreshOrderList:) name:@"ioRefreshOrderList" object:nil];
     
@@ -90,17 +98,28 @@
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     DAOrder *row = [dataList.items objectAtIndex:indexPath.row];
-    
+    DAItem *item = [self getItemById:row.itemId];
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:10];
-    imgItem.image = [UIImage imageNamed:@"top_bg3.png"];
+    imgItem.image = [UIImage imageNamed:item.image];
     UILabel *lblName = (UILabel *)[cell viewWithTag:11];
-    lblName.text = @"xxxxxx";
+    lblName.text = item.name;
     UILabel *lblWaitingTime = (UILabel *)[cell viewWithTag:12];
-    lblWaitingTime.text = @"dddddd";
+    lblWaitingTime.text =  @"dddddd";
     cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
+
+-(DAItem *)getItemById:(NSString *)itemId
+{
+    for (NSDictionary *item in itemList) {
+        if ([itemId isEqualToString:[item objectForKey:@"_id"]]) {
+            return [[DAItem alloc] initWithDictionary:item];
+        }
+    }
+    return nil;
+}
+
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DAOrder *row = [dataList.items objectAtIndex:indexPath.row];

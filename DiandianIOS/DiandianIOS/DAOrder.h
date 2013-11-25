@@ -23,4 +23,6 @@
 @property (retain, nonatomic) NSString *valid;
 @property (retain, nonatomic) NSString *remark;
 
+@property (retain, nonatomic) NSString *isNew;
+
 @end

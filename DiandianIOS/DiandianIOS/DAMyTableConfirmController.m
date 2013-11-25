@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 DAC. All rights reserved.
 //
 
+
+
 #import "DAMyTableConfirmController.h"
 #import "DABillViewController.h"
 #import "UIViewController+MJPopupViewController.h"
@@ -14,6 +16,7 @@
 #import "NSString+Util.h"
 #import "DAMyBackOrderViewController.h"
 #import "SmartSDK.h"
+#import "DARootViewController.h"
 
 UIViewController *parentVC;
 
@@ -157,7 +160,8 @@ UIViewController *parentVC;
     [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     
     UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
-    UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+    DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+    menubookVC.curService ;
     [parentVC.navigationController pushViewController:menubookVC animated:YES];
 }
 
