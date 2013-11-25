@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *orderListView;
 
 @property (nonatomic, retain) DAService *curService;
+@property (nonatomic, retain) NSString  *serviceId;
 
 - (IBAction)backAction:(id)sender;
 - (IBAction)fadeIn:(id)sender;

@@ -41,6 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.serviceId = @"5293312b34223ceb29000021";
 	// Do any additional setup after loading the view.
 
     
@@ -94,22 +95,7 @@
 
 
 
-- (void)fadeOutWorkstationMenu{
-    
-    //    CGPoint menuCenter = menuScrollView.center;
-    
-    [UIView animateWithDuration:0.5
-                     animations:^(void){
-                         self.orderListView.center = CGPointMake(148   , 384);
-                         self.orderListView.frame = CGRectMake(0, 0, 60, 768);
-                         thumbView = [[DAOrderThumbViewController alloc] initWithNibName:@"DAOrderThumbViewController" bundle:nil];
-                         [self addChildViewController:thumbView];
-                         [self.orderListView addSubview:thumbView.view];
-                     }];
-    [orderView.view removeFromSuperview];
-    
-    
-}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -125,7 +111,6 @@
     [self fadeInWorkstationMenu];
 }
 
-- (IBAction)fadeOut:(id)sender {
-    [self fadeOutWorkstationMenu];
-}
+
+
 @end

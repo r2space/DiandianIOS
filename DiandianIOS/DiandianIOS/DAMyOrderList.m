@@ -35,7 +35,10 @@
     
     for (DAOrder *order in self.items) {
         NSDictionary *orderDic = [order toDictionary];
-        [tmpList addObject:orderDic];
+        if (order.isNew !=nil && [@"YES" isEqualToString:order.isNew]) {
+            [tmpList addObject:orderDic];
+        }
+
     }
     return tmpList;
 }

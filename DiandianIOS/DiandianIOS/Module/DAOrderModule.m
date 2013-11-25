@@ -33,4 +33,24 @@
     
 }
 
+
+-(void) getOrderListByServiceId :(NSString *) servicdId callback:(void (^)(NSError *err, DAMyOrderList *list))callback
+{
+    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_LIST_BY_SERVICEID,servicdId];
+    
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+}
 @end
