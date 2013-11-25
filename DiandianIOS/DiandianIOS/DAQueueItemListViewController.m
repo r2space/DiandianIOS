@@ -7,10 +7,12 @@
 //
 
 #import "DAQueueItemListViewController.h"
+#import "ProgressHUD.h"
 
 @interface DAQueueItemListViewController ()
 {
-    NSArray *dataList;
+
+    DAMyOrderList *dataList;
     NSIndexPath *oldIndexPath;
     UICollectionViewCell * oldcell;
 }
@@ -30,14 +32,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    dataList =  [[NSArray alloc ]init];
+    dataList =  [[DAMyOrderList alloc ]init];
+    dataList.items = [[NSArray alloc]init];
     // Do any additional setup after loading the view from its nib.
     UINib *cellNib = [UINib nibWithNibName:@"DAQueueItemListCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAQueueItemListCell"];
     [self loadFromFile];
 
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ioRefreshOrderList:) name:@"ioRefreshOrderList" object:nil];
+    
     // Do any additional setup after loading the view from its nib.
 }
+
+- (void)ioRefreshOrderList : (NSNotification*) notification
+{
+    [ProgressHUD show:@"推送消息"];
+    NSArray *obj = [notification object];
+    NSMutableArray *tmpArray = [[NSMutableArray alloc]init];
+    for (NSDictionary *orderdic in obj) {
+        DAOrder *order = [[DAOrder alloc ]initWithDictionary:orderdic];
+        [tmpArray addObject:order];
+    }
+    
+    [tmpArray addObjectsFromArray:dataList.items];
+    
+    dataList = [[DAMyOrderList alloc]init];
+    dataList.items = [[NSArray alloc]initWithArray:tmpArray];
+    [self.collectionView reloadData];
+    [ProgressHUD dismiss];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -48,7 +74,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
-    return [dataList count];
+    return [dataList.items count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -63,24 +89,24 @@
     static NSString *cellIdentifier = @"DAQueueItemListCell";
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    NSDictionary *row = [dataList objectAtIndex:indexPath.row];
+    DAOrder *row = [dataList.items objectAtIndex:indexPath.row];
     
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:10];
-    imgItem.image = [UIImage imageNamed:[row objectForKey:@"image"]];
+    imgItem.image = [UIImage imageNamed:@"top_bg3.png"];
     UILabel *lblName = (UILabel *)[cell viewWithTag:11];
-    lblName.text = [row objectForKey:@"name"];
+    lblName.text = @"xxxxxx";
     UILabel *lblWaitingTime = (UILabel *)[cell viewWithTag:12];
-    lblWaitingTime.text = [row objectForKey:@"waitingtime"];
+    lblWaitingTime.text = @"dddddd";
     cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *row = [dataList objectAtIndex:indexPath.row];
+    DAOrder *row = [dataList.items objectAtIndex:indexPath.row];
     NSLog(@"%@", row);
-    NSString *tableNO = [row objectForKey:@"table"];
-    NSString *name = [row objectForKey:@"name"];
+    NSString *tableNO = row.deskId;
+    NSString *name = row.deskId;
     self.selectItemBlock(name,tableNO);
     
     NSArray *cells = [self.collectionView visibleCells];
@@ -125,7 +151,11 @@
     for (NSDictionary *d in items){
         [tmpList addObject:d];
     }
-    dataList = [[NSArray alloc] initWithArray:tmpList];
+    [[DAOrderModule alloc]getAllOrderList:0 count:20 callback:^(NSError *err, DAMyOrderList *list) {
+        
+    }];
+    
+    
     [self.collectionView reloadData];
 }
 
@@ -133,18 +163,11 @@
 - (void)filterItem:(NSString *)itemId tableNO:(NSString *)tableNo
 {
     
-    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
-    for (NSDictionary *d in dataList){
-        NSString *table = [d objectForKey:@"table"];
-        NSString *name =  [d objectForKey:@"name"];
-        if ([table isEqualToString:tableNo] && [name isEqualToString:itemId]) {
-            
-        } else {
-            [tmpList addObject:d];
-        }
-        
-    }
-    dataList = [[NSArray alloc] initWithArray:tmpList];
+//    
+//    [[DAOrderModule alloc]getAllOrderList:0 count:20 callback:^(NSError *err, DAOrderList *list) {
+//        dataList = list;
+//    }];
+
     [self.collectionView reloadData];
     
     

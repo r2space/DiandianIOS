@@ -55,7 +55,6 @@
 		0A40FE07183EFBCE00427613 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A40FE04183EFBCE00427613 /* ProgressHUD.bundle */; };
 		0A40FE08183EFBCE00427613 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE06183EFBCE00427613 /* ProgressHUD.m */; };
 		0A40FE0C183F1C6800427613 /* DAOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE0B183F1C6800427613 /* DAOrder.m */; };
-		0A40FE0F183F1FE700427613 /* DAOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE0E183F1FE700427613 /* DAOrderList.m */; };
 		0A40FE14183F290000427613 /* DASocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE13183F290000427613 /* DASocketIO.m */; };
 		0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BC8182878DA009CDF6D /* DAViewController.m */; };
 		0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BDB1828A040009CDF6D /* DABookViewController.m */; };
@@ -131,6 +130,10 @@
 		0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */; };
 		0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C31828764800037E73 /* DARootViewController.m */; };
 		0A9DA5C61828766200037E73 /* DARootView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C51828766100037E73 /* DARootView.storyboard */; };
+		0AA031A418432A4A00C66590 /* DAOrderModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031A318432A4A00C66590 /* DAOrderModule.m */; };
+		0AA031A8184334D100C66590 /* DADispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031A7184334D100C66590 /* DADispatch.m */; };
+		0AA031AB1843350A00C66590 /* DAOrderProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031AA1843350900C66590 /* DAOrderProxy.m */; };
+		0AA031B418434A1E00C66590 /* DAMyOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031B318434A1E00C66590 /* DAMyOrderList.m */; };
 		0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533911828AD690087EFF1 /* DABookViewController.xib */; };
 		0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533971828AD7D0087EFF1 /* DAOrderCell.xib */; };
 		0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533991828B7FE0087EFF1 /* DABookCell.xib */; };
@@ -443,8 +446,6 @@
 		0A40FE06183EFBCE00427613 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		0A40FE0A183F1C6800427613 /* DAOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrder.h; sourceTree = "<group>"; };
 		0A40FE0B183F1C6800427613 /* DAOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrder.m; sourceTree = "<group>"; };
-		0A40FE0D183F1FE700427613 /* DAOrderList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOrderList.h; path = Entities/DAOrderList.h; sourceTree = "<group>"; };
-		0A40FE0E183F1FE700427613 /* DAOrderList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOrderList.m; path = Entities/DAOrderList.m; sourceTree = "<group>"; };
 		0A40FE12183F290000427613 /* DASocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASocketIO.h; path = Helper/DASync/DASocketIO.h; sourceTree = "<group>"; };
 		0A40FE13183F290000427613 /* DASocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASocketIO.m; path = Helper/DASync/DASocketIO.m; sourceTree = "<group>"; };
 		0A577BC7182878DA009CDF6D /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
@@ -551,6 +552,14 @@
 		0A9DA5C21828764800037E73 /* DARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARootViewController.h; sourceTree = "<group>"; };
 		0A9DA5C31828764800037E73 /* DARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARootViewController.m; sourceTree = "<group>"; };
 		0A9DA5C51828766100037E73 /* DARootView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DARootView.storyboard; sourceTree = "<group>"; };
+		0AA031A218432A4A00C66590 /* DAOrderModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOrderModule.h; path = Module/DAOrderModule.h; sourceTree = "<group>"; };
+		0AA031A318432A4A00C66590 /* DAOrderModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOrderModule.m; path = Module/DAOrderModule.m; sourceTree = "<group>"; };
+		0AA031A6184334D100C66590 /* DADispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADispatch.h; sourceTree = "<group>"; };
+		0AA031A7184334D100C66590 /* DADispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADispatch.m; sourceTree = "<group>"; };
+		0AA031A91843350900C66590 /* DAOrderProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOrderProxy.h; path = Proxy/DAOrderProxy.h; sourceTree = "<group>"; };
+		0AA031AA1843350900C66590 /* DAOrderProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOrderProxy.m; path = Proxy/DAOrderProxy.m; sourceTree = "<group>"; };
+		0AA031B218434A1E00C66590 /* DAMyOrderList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderList.h; sourceTree = "<group>"; };
+		0AA031B318434A1E00C66590 /* DAMyOrderList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderList.m; sourceTree = "<group>"; };
 		0AA533941828AD750087EFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DABookViewController.xib; sourceTree = "<group>"; };
 		0AA533981828AD800087EFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DAOrderCell.xib; sourceTree = "<group>"; };
 		0AA533991828B7FE0087EFF1 /* DABookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABookCell.xib; sourceTree = "<group>"; };
@@ -1019,6 +1028,8 @@
 				0A40FDEB183DF2F300427613 /* DADeskModule.m */,
 				0A40FDFD183EE2B500427613 /* DAServiceModule.h */,
 				0A40FDFE183EE2B500427613 /* DAServiceModule.m */,
+				0AA031A218432A4A00C66590 /* DAOrderModule.h */,
+				0AA031A318432A4A00C66590 /* DAOrderModule.m */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -1086,6 +1097,8 @@
 				0A40FDF8183DFAF700427613 /* DADeskProxy.m */,
 				0A40FE00183EE58F00427613 /* DAServiceProxy.h */,
 				0A40FE01183EE58F00427613 /* DAServiceProxy.m */,
+				0AA031A91843350900C66590 /* DAOrderProxy.h */,
+				0AA031AA1843350900C66590 /* DAOrderProxy.m */,
 			);
 			name = Proxy;
 			sourceTree = "<group>";
@@ -1129,6 +1142,7 @@
 		0A40FE11183F28DC00427613 /* DASync */ = {
 			isa = PBXGroup;
 			children = (
+				0AA031A51843340300C66590 /* Dispatch */,
 				0A40FE12183F290000427613 /* DASocketIO.h */,
 				0A40FE13183F290000427613 /* DASocketIO.m */,
 			);
@@ -1237,6 +1251,15 @@
 				0A8C2F46182E33BF0080F15F /* RFQuiltLayout.m */,
 			);
 			name = TVQuiltLayout;
+			sourceTree = "<group>";
+		};
+		0AA031A51843340300C66590 /* Dispatch */ = {
+			isa = PBXGroup;
+			children = (
+				0AA031A6184334D100C66590 /* DADispatch.h */,
+				0AA031A7184334D100C66590 /* DADispatch.m */,
+			);
+			name = Dispatch;
 			sourceTree = "<group>";
 		};
 		0AA956EC18274DCA0098D60C = {
@@ -1675,8 +1698,8 @@
 				0A40FDFB183E2B4200427613 /* DAService.m */,
 				0A40FE0A183F1C6800427613 /* DAOrder.h */,
 				0A40FE0B183F1C6800427613 /* DAOrder.m */,
-				0A40FE0D183F1FE700427613 /* DAOrderList.h */,
-				0A40FE0E183F1FE700427613 /* DAOrderList.m */,
+				0AA031B218434A1E00C66590 /* DAMyOrderList.h */,
+				0AA031B318434A1E00C66590 /* DAMyOrderList.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -2105,16 +2128,17 @@
 				0AB78B42183CB46500979BD0 /* DARequestHelper.m in Sources */,
 				0AB78B41183CB46500979BD0 /* DAJsonHelper.m in Sources */,
 				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
+				0AA031B418434A1E00C66590 /* DAMyOrderList.m in Sources */,
 				2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */,
 				0AB78B5D183CB46500979BD0 /* DAMenuList.m in Sources */,
 				28FFB64A18332272003443D1 /* DASettings.m in Sources */,
+				0AA031AB1843350A00C66590 /* DAOrderProxy.m in Sources */,
 				0A40FDEF183DF34E00427613 /* DADesk.m in Sources */,
 				0AB78BF8183CE9BE00979BD0 /* SBJson4Writer.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
 				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,
 				0AB78C01183CE9BE00979BD0 /* NSData+SRB64Additions.m in Sources */,
-				0A40FE0F183F1FE700427613 /* DAOrderList.m in Sources */,
 				0AB78B3E183CB46500979BD0 /* DAAFHttpClient.m in Sources */,
 				0A924AAF18348A810004C973 /* DAMyTableListViewController.m in Sources */,
 				0AB78C00183CE9BE00979BD0 /* base64.c in Sources */,
@@ -2152,6 +2176,7 @@
 				28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */,
 				0A40FDFC183E2B4200427613 /* DAService.m in Sources */,
 				0AB78B3F183CB46500979BD0 /* DAAFHttpOperation.m in Sources */,
+				0AA031A8184334D100C66590 /* DADispatch.m in Sources */,
 				0A739E62183B019D00AA48C4 /* DAMyBackOrderViewController.m in Sources */,
 				0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */,
 				0A40FDF5183DF60200427613 /* DAEntity.m in Sources */,
@@ -2221,6 +2246,7 @@
 				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
 				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
 				0A40FE02183EE58F00427613 /* DAServiceProxy.m in Sources */,
+				0AA031A418432A4A00C66590 /* DAOrderModule.m in Sources */,
 				0AB78B7C183CB46500979BD0 /* AFHTTPRequestOperation.m in Sources */,
 				0A7AF0DE183612EF00635376 /* DAQueueMasterViewController.m in Sources */,
 				0AEBE5C81831D69000B01A5E /* DARemarkPopoverViewController.m in Sources */,

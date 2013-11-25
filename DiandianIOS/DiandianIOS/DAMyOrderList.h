@@ -7,12 +7,13 @@
 //
 
 #import "DAEntity.h"
-#import "SmartSDK.h"
 
 
-@interface DAOrderList : DAEntity
+@interface DAMyOrderList : DAEntity
 
 @property (retain, nonatomic) NSArray   *items;
 @property (retain, nonatomic) NSNumber  *totalItems;
 
+
+-(NSMutableArray*)toArray;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmartSDK.h"
 
 typedef void (^SelectItemBlock)(NSString *itemId , NSString *tableNO);
 

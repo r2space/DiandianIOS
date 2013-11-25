@@ -24,6 +24,8 @@
 @property (retain, nonatomic) NSString *myDeskId;
 @property (retain, nonatomic) DADesk *myDesk;
 
+@property (retain, nonatomic) DAService *curService;
+
 
 @property (assign, nonatomic) id <DAMyLoginDelegate>delegate;
 - (IBAction)closePopup:(id)sender;

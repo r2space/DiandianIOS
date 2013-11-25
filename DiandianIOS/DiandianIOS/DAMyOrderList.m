@@ -6,9 +6,9 @@
 //  Copyright (c) 2013年 DAC. All rights reserved.
 //
 
-#import "DAOrderList.h"
+#import "SmartSDK.h"
 
-@implementation DAOrderList
+@implementation DAMyOrderList
 
 +(Class) items_class {
     return [DAOrder class];
@@ -28,6 +28,16 @@
     self.totalItems = [aDecoder decodeObjectForKey:@"totalItems"];
     
     return  self;
+}
+
+-(NSMutableArray*)toArray{
+    NSMutableArray *tmpList = [[NSMutableArray alloc]init];
+    
+    for (DAOrder *order in self.items) {
+        NSDictionary *orderDic = [order toDictionary];
+        [tmpList addObject:orderDic];
+    }
+    return tmpList;
 }
 
 

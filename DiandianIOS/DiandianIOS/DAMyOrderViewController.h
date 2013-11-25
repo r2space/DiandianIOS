@@ -11,15 +11,20 @@
 #import "DAOrderCell.h"
 #import "DAOrderAddAmountBtn.h"
 #import "SmartSDK.h"
+#import "DASocketIO.h"
 
-@interface DAMyOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
+@interface DAMyOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,SocketIODelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelAmount;
-@property (nonatomic, retain) DAMenuList *dataList;
-@property (nonatomic, retain) NSString *tableNO;
 
-@property (nonatomic, retain) DAService *service;
+@property (nonatomic, retain) DAMyOrderList *dataList;
+
+
+@property (nonatomic, retain) NSString *tableNO;
+@property (nonatomic, retain) NSString *deskId;
+
+@property (nonatomic, retain) DAService *curService;
 
 - (IBAction)backTopMenu:(id)sender;
 

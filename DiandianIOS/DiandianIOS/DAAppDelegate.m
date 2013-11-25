@@ -10,6 +10,11 @@
 #import "DASettings.h"
 #import "DACommon.h"
 #import "SmartSDK.h"
+#import "SocketIOPacket.h"
+#import "SocketIOJSONSerialization.h"
+
+#import "DADispatch.h"
+
 
 
 
@@ -55,17 +60,17 @@
 
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet
 {
-    NSLog(@"didReceiveEvent()");
-    //
-    //    SocketIOCallback cb = ^(id argsData) {
-    //        NSDictionary *response = argsData;
-    //        // do something with response
-    //        NSLog(@"ack arrived: %@", response);
-    //
-    //        // test forced disconnect
-    ////        [socketIO disconnectForced];
-    //    };
-    //    [socketIO sendEvent:@"my other event" withData:@"佛挡杀佛第三方地方发呆" andAcknowledge:cb];
+
+    NSDictionary *dic = [packet dataAsJSON];
+    NSArray *args = [dic objectForKey:@"args"];
+    for (NSDictionary *argDic in args) {
+        
+        NSString *action = [argDic objectForKey:@"action"];
+        id data = [argDic objectForKey:@"data"];
+        [DADispatch dealWithAction:action data:data];
+        
+    }
+    
 }
 
 - (void) socketIO:(SocketIO *)socket onError:(NSError *)error

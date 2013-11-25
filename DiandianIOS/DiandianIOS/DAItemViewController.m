@@ -11,12 +11,15 @@
 #import "DAQueueItemListViewController.h"
 #import "DAQueueItemListViewController.h"
 #import "DAOrderGroupViewController.h"
+#import "ProgressHUD.h"
 
 static DAQueueItemListViewController *vc;
 static DAQueueItemTableViewController *vct;
 
 @interface DAItemViewController ()
-
+{
+   
+}
 
 @end
 
@@ -37,13 +40,14 @@ static DAQueueItemTableViewController *vct;
     vct = [[DAQueueItemTableViewController alloc] initWithNibName:@"DAQueueItemTableViewController" bundle:nil];
     vc = [[DAQueueItemListViewController alloc] initWithNibName:@"DAQueueItemListViewController" bundle:nil];
     
+    
+    
     [self initLayer];
     [self initItemList];
     [self initTableList];
 
-    
-    
 }
+
 
 -(void)initItemList
 {

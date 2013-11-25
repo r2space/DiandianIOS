@@ -59,4 +59,15 @@
     return [NSKeyedUnarchiver unarchiveObjectWithFile: fileName];
 }
 
+-(NSMutableArray*)toArray{
+    NSMutableArray *tmpList = [[NSMutableArray alloc]init];
+    
+    for (DAMenu *order in self.items) {
+        NSDictionary *orderDic = [order toDictionary];
+        [tmpList addObject:orderDic];
+    }
+    return tmpList;
+}
+
+
 @end

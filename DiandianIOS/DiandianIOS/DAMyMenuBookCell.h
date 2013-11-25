@@ -11,9 +11,9 @@
 
 @interface DAMyMenuBookCell : UICollectionViewCell
 
-- (DAMyMenuBookCell *)initWithObj:(DAItem *)menu collectionView:(UICollectionView *)collectionView  cellIdentifier: (NSString *)cellIdentifier indexPath:(NSIndexPath *)indexPath row:(NSNumber *)row column:(NSNumber *)column;
+- (DAMyMenuBookCell *)initWithObj:(DAItem *)item collectionView:(UICollectionView *)collectionView  cellIdentifier: (NSString *)cellIdentifier indexPath:(NSIndexPath *)indexPath row:(NSNumber *)row column:(NSNumber *)column;
 
-@property (nonatomic, strong) DAItem *menuData;
+@property (nonatomic, strong) DAItem *itemData;
 
 - (IBAction)addMenu:(id)sender;
 

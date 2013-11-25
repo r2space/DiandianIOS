@@ -14,11 +14,13 @@
 @interface DADetailOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIPopoverControllerDelegate>
 
 
+
 @property (weak, nonatomic) IBOutlet UILabel *amountPriceLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (retain, nonatomic) DAMenuList *orderList;
-@property (retain, nonatomic) NSString *tableNO;
+@property (retain, nonatomic) DAMyOrderList *orderList;
 
+@property (retain, nonatomic) NSString *tableNO;
+@property (retain, nonatomic) DAService *curService;
 
 @property (assign, nonatomic) id <DADetailOrderDelegate>delegate;
 - (IBAction)closePopup:(id)sender;

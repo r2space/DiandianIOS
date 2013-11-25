@@ -46,4 +46,20 @@
     return self;
 }
 
+-(NSDictionary*)toDictionary{
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:8];
+    [dict setValue:self.deskId forKey:@"deskId"];
+    [dict setValue:self.serviceId forKey:@"serviceId"];
+    [dict setValue:self.userId forKey:@"userId"];
+    [dict setValue:self.itemId forKey:@"itemId"];
+    [dict setValue:self.orderSeq forKey:@"orderSeq"];
+    [dict setValue:self.type forKey:@"type"];
+    [dict setValue:self.back forKey:@"back"];
+    [dict setValue:self.valid forKey:@"valid"];
+    [dict setValue:self.remark forKey:@"remark"];
+    return dict;
+}
+
+
+
 @end
