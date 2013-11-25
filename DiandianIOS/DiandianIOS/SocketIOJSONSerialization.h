@@ -1,6 +1,6 @@
 //
-//  SocketIOTransportXHR.h
-//  v0.4.1 ARC
+//  SocketIOJSONSerialization.h
+//  v0.4.0.1 ARC
 //
 //  based on
 //  socketio-cocoa https://github.com/fpotter/socketio-cocoa
@@ -23,17 +23,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "SocketIOTransport.h"
+@interface SocketIOJSONSerialization : NSObject
 
-@interface SocketIOTransportXHR : NSObject <SocketIOTransport, NSURLConnectionDelegate>
-{
-    NSString *_url;
-    NSMutableData *_data;
-    NSMutableDictionary *_polls;
-    BOOL _isClosed;
-}
-
-@property (nonatomic, weak) id <SocketIOTransportDelegate> delegate;
-@property (nonatomic) BOOL isClosed;
++ (id) objectFromJSONData:(NSData *)data error:(NSError **)error;
++ (NSString *) JSONStringFromObject:(id)object error:(NSError **)error;
 
 @end
