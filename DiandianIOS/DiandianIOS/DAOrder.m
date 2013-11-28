@@ -19,6 +19,7 @@
     [aCoder encodeObject:self.userId forKey:@"userId"];
     [aCoder encodeObject:self.itemId forKey:@"itemId"];
     [aCoder encodeObject:self.orderSeq forKey:@"orderSeq"];
+    [aCoder encodeObject:self.orderNum forKey:@"orderNum"];
     [aCoder encodeObject:self.service forKey:@"service"];
     [aCoder encodeObject:self.item forKey:@"item"];
     [aCoder encodeObject:self.type forKey:@"type"];
@@ -39,6 +40,7 @@
     self.userId = [aDecoder decodeObjectForKey:@"userId"];
     self.itemId = [aDecoder decodeObjectForKey:@"itemId"];
     self.orderSeq = [aDecoder decodeObjectForKey:@"orderSeq"];
+    self.orderNum = [aDecoder decodeObjectForKey:@"orderNum"];
     self.service = [aDecoder decodeObjectForKey:@"service"];
     self.item = [aDecoder decodeObjectForKey:@"item"];
     self.type = [aDecoder decodeObjectForKey:@"type"];
@@ -53,23 +55,32 @@
     return self;
 }
 
--(NSDictionary*)toDictionary{
-    NSMutableDictionary * dict = [[NSMutableDictionary alloc]init];
-    [dict setValue:self.deskId forKey:@"deskId"];
-    [dict setValue:self.serviceId forKey:@"serviceId"];
-    [dict setValue:self.userId forKey:@"userId"];
-    [dict setValue:self.itemId forKey:@"itemId"];
-    [dict setValue:self.orderSeq forKey:@"orderSeq"];
-    [dict setValue:self.type forKey:@"type"];
-    [dict setValue:self.back forKey:@"back"];
-    [dict setValue:self.valid forKey:@"valid"];
-    [dict setValue:self.remark forKey:@"remark"];
-    
-    [dict setValue:self.isNew forKey:@"isNew"];
-
-    
-    return dict;
+-(id)initWithDictionary:(NSDictionary *)dictionary
+{
+    self = [super initWithDictionary:dictionary];
+    if (self.amount == nil || [self.amount intValue] ==0) {
+        self.amount = [NSNumber numberWithInt:1];
+    }
+    return self;
 }
+
+//-(NSDictionary*)toDictionary{
+//    NSMutableDictionary * dict = [[NSMutableDictionary alloc]init];
+//    [dict setValue:self.deskId forKey:@"deskId"];
+//    [dict setValue:self.serviceId forKey:@"serviceId"];
+//    [dict setValue:self.userId forKey:@"userId"];
+//    [dict setValue:self.itemId forKey:@"itemId"];
+//    [dict setValue:self.orderSeq forKey:@"orderSeq"];
+//    [dict setValue:self.type forKey:@"type"];
+//    [dict setValue:self.back forKey:@"back"];
+//    [dict setValue:self.valid forKey:@"valid"];
+//    [dict setValue:self.remark forKey:@"remark"];
+//    
+//    [dict setValue:self.isNew forKey:@"isNew"];
+//
+//    
+//    return dict;
+//}
 
 
 

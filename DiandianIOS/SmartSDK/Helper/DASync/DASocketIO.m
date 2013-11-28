@@ -7,6 +7,9 @@
 //
 
 #import "DASocketIO.h"
+#define kInfoPlistKeyServerAddress  @"ServerAddress"
+#define kInfoPlistKeyServerPort     @"ServerPort"
+
 
 @implementation DASocketIO
 
@@ -27,7 +30,9 @@
 
 -(void)conn
 {
-    [self connectToHost:@"10.2.3.201" onPort:3000];
+    NSString *address = @"10.2.3.243";
+    NSInteger port = 3000;
+    [self connectToHost:address onPort:port];
 }
 
 -(void)sendJSONwithAction:(NSString *)action  data:(NSDictionary *)data

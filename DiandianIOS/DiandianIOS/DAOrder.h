@@ -8,6 +8,8 @@
 
 #import "DAEntity.h"
 #import "SmartSDK.h"
+#import "DADesk.h"
+
 
 @interface DAOrder : DAEntity<NSCoding>
 
@@ -15,14 +17,21 @@
 @property (retain, nonatomic) NSString  *serviceId;
 @property (retain, nonatomic) NSString  *userId;
 @property (retain, nonatomic) NSString  *itemId;
-@property (retain, nonatomic) NSString  *orderSeq;
+@property (retain, nonatomic) NSNumber  *orderSeq;
+@property (retain, nonatomic) NSNumber  *orderNum;
+@property (retain, nonatomic) NSDictionary  *desk;
 @property (retain, nonatomic) DAService *service;
 @property (retain, nonatomic) DAItem   *item;
+
 @property (retain, nonatomic) NSString *type;
 @property (retain, nonatomic) NSString *back;
 @property (retain, nonatomic) NSString *valid;
 @property (retain, nonatomic) NSString *remark;
 
+@property (retain, nonatomic) NSNumber *amount;
 @property (retain, nonatomic) NSString *isNew;
+
+@property (retain, nonatomic) NSMutableArray *oneItems;
+
 
 @end

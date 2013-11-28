@@ -7,19 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Jastor.h"
+#import "DAEntity.h"
 
-@interface DAItem : Jastor <NSCoding>
+@interface DAItem : DAEntity <NSCoding>
 
-
-@property(retain, nonatomic) NSString *_id;
-@property(retain, nonatomic) NSString *name;
-@property(retain, nonatomic) NSString *price;
-@property(retain, nonatomic) NSString *index;
-@property(retain, nonatomic) NSString *row;
-@property(retain, nonatomic) NSString *column;
-@property(retain, nonatomic) NSString *type;
-@property(retain, nonatomic) NSString *image;
+@property(retain, nonatomic) NSString *itemName;
+@property(retain, nonatomic) NSString *itemPriceNormal;
+@property(retain, nonatomic) NSString *itemPriceHalf;
+@property(retain, nonatomic) NSString *itemPriceDiscount;
+@property(retain, nonatomic) NSString *itemType;
+@property(retain, nonatomic) NSString *itemComment;
+@property(retain, nonatomic) NSString *itemMaterial;
+@property(retain, nonatomic) NSString *itemMethod;
+@property(retain, nonatomic) NSString *bigimage;
+@property(retain, nonatomic) NSString *smallimage;
 
 
 @property(retain, nonatomic) NSString *amount;

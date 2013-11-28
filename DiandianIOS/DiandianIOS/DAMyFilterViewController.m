@@ -73,7 +73,7 @@
     
     DAMenu *menu = [menuList.items objectAtIndex:[index intValue]];
     
-    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:menu.name];
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:menu];
     
     [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
     

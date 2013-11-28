@@ -14,6 +14,8 @@
 #import "DAAnimation.h"
 #import "SmartSDK.h"
 #import "ProgressHUD.h"
+#import "DAMenuProxy.h"
+
 
 #define MENU_FRAME_WIDTH    876
 #define MENU_FRAME_HEIGHT   694
@@ -125,7 +127,7 @@
     
     
     
-    DAItem *data = [[DAItem alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
+    DAItemLayout *data = [[DAItemLayout alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
     
     
     DAMyMenuBookCell *cell;
@@ -167,18 +169,20 @@
         }
     }
 
-    cell = [[DAMyMenuBookCell alloc] initWithObj:data collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:nsRow column:nsColumn];
+    cell = [[DAMyMenuBookCell alloc] initWithObj:data.item collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:nsRow column:nsColumn];
     
-    cell.itemData = data;
+    cell.itemData = data.item;
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
 //    titleLabel.text = data.name;
-    titleLabel.text = data.name;
+    titleLabel.text = data.item.itemName;
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:102];
-    [imageView setImage:[ UIImage imageNamed:data.image]];
+
+    [imageView setImage:[DAMenuProxy getImageFromDisk:data.item.smallimage]];
+    
     UIButton *addBtn = (UIButton *)[cell viewWithTag:13];
     UILabel *labelAmount = (UILabel *)[cell viewWithTag:19];
-    labelAmount.text = [NSString stringWithFormat:@"%@元",data.price];
+    labelAmount.text = [NSString stringWithFormat:@"大%@元/小%@元",data.item.itemPriceNormal, data.item.itemPriceHalf];
 
     [addBtn addTarget:self
             action:@selector(addMenu:) forControlEvents:UIControlEventTouchUpInside];
@@ -194,7 +198,7 @@
 
 - (CGSize) blockSizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    DAItem *data = [[DAItem alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
+    DAItemLayout *data = [[DAItemLayout alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
     return  CGSizeMake([data.row intValue], [data.column intValue]);
 }
 
@@ -217,8 +221,8 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAItem *data = [[DAItem alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
-    [self popupDetail:data];
+    DAItemLayout *data = [[DAItemLayout alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
+    [self popupDetail:data.item];
     
 }
 
@@ -242,27 +246,20 @@
 
 - (void)filterReload : (NSNotification*) notification
 {
-    NSString *obj = [notification object];
+    DAMenu *menu = [notification object];
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [self loadFromDisk];
-   
-    for (DAMenu *menu in menuList.items) {
-        if ([menu.name isEqualToString:obj]) {
-            [tmpList addObjectsFromArray:menu.items];
-            
-        }
+    [tmpList addObjectsFromArray:menu.items];
     
-    }
     
     dataList = [[NSMutableArray alloc]initWithArray:tmpList];
+
     [self.collectionView reloadData];
     
-    self.pageControl.numberOfPages = [dataList count] / 5 ;
-    if ([dataList count] % 5 !=0) {
-        self.pageControl.numberOfPages = self.pageControl.numberOfPages + 1;
-    }
+    self.pageControl.numberOfPages = [menu.page integerValue];
     self.pageControl.currentPage = 0;
     [self gotoPage:NO];
+    
 }
 - (void)cancelButtonClicked:(DAMyMenuBookPopupController*) popupViewController
 {

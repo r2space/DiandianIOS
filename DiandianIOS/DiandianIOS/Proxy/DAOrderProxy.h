@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SmartSDK.h"
 
 @interface DAOrderProxy : NSObject
 
 //+(void) proxyDeskOrderList :
 
 +(void) refreshOrderList:(NSArray *) orderDic;
+
++(void) getOldOrderListByServiceId:(NSString *)serviceId callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
+
 
 
 @end

@@ -19,9 +19,6 @@
 		0A07BD5D1829D2B900A350BC /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD5C1829D2B900A350BC /* menu.json */; };
 		0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */; };
 		0A07BD621829DC0900A350BC /* DAMyMenuBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */; };
-		0A07BD681829DC8100A350BC /* MSGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD651829DC8100A350BC /* MSGridView.m */; };
-		0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD671829DC8100A350BC /* MSGridViewCell.m */; };
-		0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD6B182A003E00A350BC /* MSBookMenu.m */; };
 		0A07BD6E182A031000A350BC /* cai_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD6D182A031000A350BC /* cai_2.png */; };
 		0A07BD73182A0BBD00A350BC /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD72182A0BBD00A350BC /* Util.m */; };
 		0A07BD76182A0E7B00A350BC /* DAOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD75182A0E7B00A350BC /* DAOrderCell.m */; };
@@ -149,6 +146,9 @@
 		0AA032051843558300C66590 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031FE1843558300C66590 /* base64.c */; };
 		0AA032061843558300C66590 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA032011843558300C66590 /* NSData+SRB64Additions.m */; };
 		0AA032071843558300C66590 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA032041843558300C66590 /* SRWebSocket.m */; };
+		0AA0320A1844452400C66590 /* DAItemLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA032091844452400C66590 /* DAItemLayout.m */; };
+		0AA0320D18445E0C00C66590 /* DAMenuProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA0320C18445E0C00C66590 /* DAMenuProxy.m */; };
+		0AA032101844DC1D00C66590 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA0320F1844DC1D00C66590 /* Tool.m */; };
 		0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533911828AD690087EFF1 /* DABookViewController.xib */; };
 		0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533971828AD7D0087EFF1 /* DAOrderCell.xib */; };
 		0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533991828B7FE0087EFF1 /* DABookCell.xib */; };
@@ -204,8 +204,6 @@
 		0AB78B8C183CD11000979BD0 /* DAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B8B183CD11000979BD0 /* DAUser.m */; };
 		0AB78B8F183CD16000979BD0 /* DAGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B8E183CD15F00979BD0 /* DAGroup.m */; };
 		0AB78B92183CD7DC00979BD0 /* DAItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B91183CD7DC00979BD0 /* DAItem.m */; };
-		0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */; };
-		0AEBE51B1830B10900B01A5E /* DAOrderThumbViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */; };
 		0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */; };
 		0AEBE5201830EDAA00B01A5E /* DAMyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE51F1830EDAA00B01A5E /* DAMyOrderCell.xib */; };
 		0AEBE5241831027600B01A5E /* price_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5231831027600B01A5E /* price_tag.png */; };
@@ -390,12 +388,6 @@
 		0A07BD5E1829DC0900A350BC /* DAMyMenuBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuBookViewController.h; sourceTree = "<group>"; };
 		0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuBookViewController.m; sourceTree = "<group>"; };
 		0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyMenuBookViewController.xib; sourceTree = "<group>"; };
-		0A07BD641829DC8100A350BC /* MSGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridView.h; sourceTree = "<group>"; };
-		0A07BD651829DC8100A350BC /* MSGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridView.m; sourceTree = "<group>"; };
-		0A07BD661829DC8100A350BC /* MSGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSGridViewCell.h; sourceTree = "<group>"; };
-		0A07BD671829DC8100A350BC /* MSGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSGridViewCell.m; sourceTree = "<group>"; };
-		0A07BD6A182A003E00A350BC /* MSBookMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSBookMenu.h; sourceTree = "<group>"; };
-		0A07BD6B182A003E00A350BC /* MSBookMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSBookMenu.m; sourceTree = "<group>"; };
 		0A07BD6D182A031000A350BC /* cai_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cai_2.png; sourceTree = "<group>"; };
 		0A07BD71182A0BBD00A350BC /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		0A07BD72182A0BBD00A350BC /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
@@ -593,6 +585,12 @@
 		0AA032021843558300C66590 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
 		0AA032031843558300C66590 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
 		0AA032041843558300C66590 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		0AA032081844452400C66590 /* DAItemLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAItemLayout.h; sourceTree = "<group>"; };
+		0AA032091844452400C66590 /* DAItemLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAItemLayout.m; sourceTree = "<group>"; };
+		0AA0320B18445E0C00C66590 /* DAMenuProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMenuProxy.h; sourceTree = "<group>"; };
+		0AA0320C18445E0C00C66590 /* DAMenuProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMenuProxy.m; sourceTree = "<group>"; };
+		0AA0320E1844DC1D00C66590 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		0AA0320F1844DC1D00C66590 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
 		0AA533941828AD750087EFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DABookViewController.xib; sourceTree = "<group>"; };
 		0AA533981828AD800087EFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DAOrderCell.xib; sourceTree = "<group>"; };
 		0AA533991828B7FE0087EFF1 /* DABookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABookCell.xib; sourceTree = "<group>"; };
@@ -687,9 +685,6 @@
 		0AB78B90183CD7DC00979BD0 /* DAItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAItem.h; sourceTree = "<group>"; };
 		0AB78B91183CD7DC00979BD0 /* DAItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAItem.m; sourceTree = "<group>"; };
 		0AB78B93183CDC4A00979BD0 /* SmartSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartSDK.h; sourceTree = "<group>"; };
-		0AEBE5171830B10900B01A5E /* DAOrderThumbViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderThumbViewController.h; sourceTree = "<group>"; };
-		0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderThumbViewController.m; sourceTree = "<group>"; };
-		0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderThumbViewController.xib; sourceTree = "<group>"; };
 		0AEBE51C1830ED9800B01A5E /* DAMyOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderCell.h; sourceTree = "<group>"; };
 		0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderCell.m; sourceTree = "<group>"; };
 		0AEBE51F1830EDAA00B01A5E /* DAMyOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyOrderCell.xib; sourceTree = "<group>"; };
@@ -920,7 +915,6 @@
 				0A5D288A182BD01400847578 /* Popup */,
 				0A07BD77182A204800A350BC /* CWPopup */,
 				0A07BD70182A0B9600A350BC /* Common */,
-				0A07BD631829DC6900A350BC /* MSGridView */,
 				0A07BD4E1829CB6900A350BC /* CCSegmentedControl */,
 			);
 			name = Thirdparty;
@@ -1005,19 +999,6 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		0A07BD631829DC6900A350BC /* MSGridView */ = {
-			isa = PBXGroup;
-			children = (
-				0A07BD641829DC8100A350BC /* MSGridView.h */,
-				0A07BD651829DC8100A350BC /* MSGridView.m */,
-				0A07BD661829DC8100A350BC /* MSGridViewCell.h */,
-				0A07BD671829DC8100A350BC /* MSGridViewCell.m */,
-				0A07BD6A182A003E00A350BC /* MSBookMenu.h */,
-				0A07BD6B182A003E00A350BC /* MSBookMenu.m */,
-			);
-			name = MSGridView;
-			sourceTree = "<group>";
-		};
 		0A07BD6F182A0A0500A350BC /* Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -1100,6 +1081,8 @@
 				0A40FE01183EE58F00427613 /* DAServiceProxy.m */,
 				0AA031A91843350900C66590 /* DAOrderProxy.h */,
 				0AA031AA1843350900C66590 /* DAOrderProxy.m */,
+				0AA0320B18445E0C00C66590 /* DAMenuProxy.h */,
+				0AA0320C18445E0C00C66590 /* DAMenuProxy.m */,
 			);
 			name = Proxy;
 			sourceTree = "<group>";
@@ -1438,9 +1421,6 @@
 				0A07BD7B182A20DC00A350BC /* DAMyOrderDetailViewController.h */,
 				0A07BD7C182A20DC00A350BC /* DAMyOrderDetailViewController.m */,
 				0A5D2891182BD1FD00847578 /* DAMyOrderDetailViewController.xib */,
-				0AEBE5171830B10900B01A5E /* DAOrderThumbViewController.h */,
-				0AEBE5181830B10900B01A5E /* DAOrderThumbViewController.m */,
-				0AEBE5191830B10900B01A5E /* DAOrderThumbViewController.xib */,
 				0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */,
 			);
 			name = View;
@@ -1479,6 +1459,8 @@
 				0AB78AA3183CB46400979BD0 /* DAMacros.h */,
 				0AB78AA4183CB46400979BD0 /* DARequestHelper.h */,
 				0AB78AA5183CB46400979BD0 /* DARequestHelper.m */,
+				0AA0320E1844DC1D00C66590 /* Tool.h */,
+				0AA0320F1844DC1D00C66590 /* Tool.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1700,6 +1682,8 @@
 				0A40FE0B183F1C6800427613 /* DAOrder.m */,
 				0AA031B218434A1E00C66590 /* DAMyOrderList.h */,
 				0AA031B318434A1E00C66590 /* DAMyOrderList.m */,
+				0AA032081844452400C66590 /* DAItemLayout.h */,
+				0AA032091844452400C66590 /* DAItemLayout.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -1986,7 +1970,6 @@
 				0AEBE5791831162700B01A5E /* 茶香虾.jpg in Resources */,
 				0AEBE5921831162700B01A5E /* 凉拌莴笋.jpg in Resources */,
 				0AEBE5B51831162700B01A5E /* 香煎肥牛.jpg in Resources */,
-				0AEBE51B1830B10900B01A5E /* DAOrderThumbViewController.xib in Resources */,
 				0AEBE57D1831162700B01A5E /* 葱油鸡胗.jpg in Resources */,
 				0A8C2F58182E430F0080F15F /* 虫草金钩翅13.png in Resources */,
 				0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */,
@@ -2139,6 +2122,7 @@
 				0AA031F71843555900C66590 /* SocketIO.m in Sources */,
 				0A40FDEF183DF34E00427613 /* DADesk.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
+				0AA0320D18445E0C00C66590 /* DAMenuProxy.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
 				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,
 				0AB78B3E183CB46500979BD0 /* DAAFHttpClient.m in Sources */,
@@ -2152,7 +2136,6 @@
 				0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */,
 				0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */,
 				0AA031F51843555900C66590 /* SBJson4StreamWriterState.m in Sources */,
-				0A07BD6C182A003E00A350BC /* MSBookMenu.m in Sources */,
 				0AEBE5C31831C21300B01A5E /* DAMyMenuBookPopupController.m in Sources */,
 				0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */,
 				0AB78B82183CB46500979BD0 /* AFXMLRequestOperation.m in Sources */,
@@ -2187,7 +2170,6 @@
 				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
 				2886BB071839AD8100A496AC /* DAProcession.m in Sources */,
 				0AA031F41843555900C66590 /* SBJson4StreamWriter.m in Sources */,
-				0A07BD691829DC8100A350BC /* MSGridViewCell.m in Sources */,
 				0AB78B8C183CD11000979BD0 /* DAUser.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
 				0A40FDFF183EE2B500427613 /* DAServiceModule.m in Sources */,
@@ -2207,17 +2189,17 @@
 				0AA031FB1843555900C66590 /* SocketIOTransportXHR.m in Sources */,
 				0AB78B80183CB46500979BD0 /* AFPropertyListRequestOperation.m in Sources */,
 				28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */,
+				0AA032101844DC1D00C66590 /* Tool.m in Sources */,
 				0AB78B5C183CB46500979BD0 /* DAMenu.m in Sources */,
 				0A7AF0C91836075200635376 /* DAQueueItemListViewController.m in Sources */,
 				47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */,
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,
-				0A07BD681829DC8100A350BC /* MSGridView.m in Sources */,
 				0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */,
 				287FA98C183B053500E02051 /* DATakeoutViewController.m in Sources */,
 				0AB78B7E183CB46500979BD0 /* AFJSONRequestOperation.m in Sources */,
 				0AA032071843558300C66590 /* SRWebSocket.m in Sources */,
 				0A40FDF2183DF4FD00427613 /* DADeskList.m in Sources */,
-				0AEBE51A1830B10900B01A5E /* DAOrderThumbViewController.m in Sources */,
+				0AA0320A1844452400C66590 /* DAItemLayout.m in Sources */,
 				28414E9918349EFC009210AF /* DAAnimation.m in Sources */,
 				0AB78B7B183CB46500979BD0 /* AFHTTPClient.m in Sources */,
 				0A40FE0C183F1C6800427613 /* DAOrder.m in Sources */,
@@ -2398,10 +2380,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = (
-					armv7,
-					arm64,
-				);
+				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2414,7 +2393,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2423,10 +2402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = (
-					armv7,
-					arm64,
-				);
+				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2439,7 +2415,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

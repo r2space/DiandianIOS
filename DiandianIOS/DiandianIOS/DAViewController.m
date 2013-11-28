@@ -10,6 +10,8 @@
 #import "DAOrderQueueViewController.h"
 #import "DABillViewController.h"
 #import "DAMyTableViewController.h"
+#import "DAMenuProxy.h"
+
 #import "SmartSDK.h"
 
 @interface DAViewController ()
@@ -39,6 +41,7 @@
 - (void) fetch
 {
     [DADeskProxy initApp];
+    
 }
 
 

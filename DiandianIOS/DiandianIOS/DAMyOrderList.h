@@ -13,6 +13,7 @@
 
 @property (retain, nonatomic) NSArray   *items;
 @property (retain, nonatomic) NSNumber  *totalItems;
+@property (retain, nonatomic) NSArray   *oldItems;
 
 
 -(NSMutableArray*)toArray;

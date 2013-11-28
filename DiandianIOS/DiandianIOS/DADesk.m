@@ -13,9 +13,9 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
     DADesk *data = [super initWithDictionary:dictionary];
-    if(data.state == nil){
-        data.state = @"empty";
-    }
+//    if(data.state == nil){
+//        data.state = @"empty";
+//    }
     
     return data;
 }
@@ -61,15 +61,9 @@
     [aCoder encodeObject:self.type   forKey:@"type"];
     [aCoder encodeObject:self.service   forKey:@"service"];
     
-    [aCoder encodeObject:self.tableId   forKey:@"tableId"];
     [aCoder encodeObject:self.name  forKey:@"name"];
     [aCoder encodeObject:self.type forKey:@"type"];
-    [aCoder encodeObject:self.state forKey:@"state"];
-    [aCoder encodeObject:self.numOfPepole forKey:@"numOfPepole"];
-    [aCoder encodeObject:self.waitterId forKey:@"waitterId"];
-    [aCoder encodeObject:self.durationTime forKey:@"durationTime"];
-    [aCoder encodeObject:self.unfinishedCount forKey:@"unfinishedCount"];
-    
+
 
     
 }
@@ -88,14 +82,10 @@
     self.type = [aDecoder decodeObjectForKey:@"type"];
     self.service = [aDecoder decodeObjectForKey:@"service"];
     
-    self.tableId = [aDecoder decodeObjectForKey:@"tableId"];
+    
     self.name = [aDecoder decodeObjectForKey:@"name"];
     self.type = [aDecoder decodeObjectForKey:@"type"];
-    self.state = [aDecoder decodeObjectForKey:@"state"];
-    self.numOfPepole = [aDecoder decodeObjectForKey:@"numOfPepole"];
-    self.waitterId = [aDecoder decodeObjectForKey:@"waitterId"];
-    self.durationTime = [aDecoder decodeObjectForKey:@"durationTime"];
-    self.unfinishedCount = [aDecoder decodeObjectForKey:@"unfinishedCount"];
+    
     
     return self;
 }

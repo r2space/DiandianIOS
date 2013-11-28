@@ -18,6 +18,8 @@
 #import "SmartSDK.h"
 #import "DARootViewController.h"
 
+#import "Tool.h"
+
 UIViewController *parentVC;
 
 @interface DAMyTableConfirmController ()
@@ -28,7 +30,6 @@ UIViewController *parentVC;
 
 @property (strong, nonatomic) IBOutlet UIPopoverController *popover;
 
-@property (retain, nonatomic) NSString *myTableId;
 @property (retain, nonatomic) DADesk *myDesk;
 
 @end
@@ -45,6 +46,13 @@ UIViewController *parentVC;
     // Do any additional setup after loading the view from its nib.
     self.numOfPepole.delegate = self;
 }
+-(void) viewDidAppear:(BOOL)animated
+{
+    self.tableName.text = self.myDesk.name;
+    self.numOfPepole.text = [self.curService.people stringValue];
+    self.durationTime.text = [Tool stringFromISODateString:self.curService.createat];
+    self.unfinishedCount.text = [self.curService.unfinishedCount stringValue];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -52,25 +60,21 @@ UIViewController *parentVC;
     // Dispose of any resources that can be recreated.
 }
 
-+ (void) show:(DADesk *)thisTable parentView :(UIViewController *) parentView
++ (void) show:(DADesk *)thisDesk parentView :(UIViewController *) parentView
 {
     DAMyTableConfirmController *vc = [[DAMyTableConfirmController alloc]initWithNibName:@"DAMyTableConfirmController" bundle:nil];
     vc.delegate = (id)parentView;
     [parentView  presentPopupViewController:vc animationType:MJPopupViewAnimationFade];
     
     parentVC = (id)parentView;
-    [vc setTable:thisTable];
+    [vc setTable:thisDesk];
 }
 
 - (void) setTable:(DADesk *)thisTable
 {
-    self.myTableId = thisTable.tableId;
     [self loadTableInfo:thisTable];
-    
-    self.tableName.text = self.myDesk.name;
-    self.numOfPepole.text = self.myDesk.numOfPepole;
-    self.durationTime.text = self.myDesk.durationTime;
-    self.unfinishedCount.text = self.myDesk.unfinishedCount;
+    self.curService = thisTable.service;
+
 }
 
 -(void) loadTableInfo:(DADesk *) defaultMyTable
@@ -87,7 +91,7 @@ UIViewController *parentVC;
         // Init waitterId
         NSString *lastWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey: @"LastWaiterId"];
         if ([NSString isNotEmpty:lastWaitterId]) {
-            self.myDesk.waitterId = lastWaitterId;
+            //设置last  服务员id
         }
     }
 }
@@ -98,7 +102,7 @@ UIViewController *parentVC;
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
         NSString *path =[[paths objectAtIndex:0]
-                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_table_info_%@", self.myTableId]];
+                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_table_info_%@", self.myDesk._id]];
         return path;
     }
     return nil;
@@ -151,18 +155,21 @@ UIViewController *parentVC;
 //  换桌
 - (IBAction)changeTable:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(changeTable:)]) {
-        [self.delegate changeTable:self.myTableId];
+        [self.delegate changeTable:self.myDesk._id];
     }
     
     [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
 }
 - (IBAction)appendOrder:(id)sender {
-    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    
     
     UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
     DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
-    menubookVC.curService ;
+    menubookVC.curService = self.curService;
+    menubookVC.willAddItem = @"YES";
     [parentVC.navigationController pushViewController:menubookVC animated:YES];
+    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    
 }
 
 - (IBAction)backOrder:(id)sender {

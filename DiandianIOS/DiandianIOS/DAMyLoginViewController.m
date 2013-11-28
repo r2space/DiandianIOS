@@ -41,6 +41,11 @@
     lockStatus = NO;
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    self.tableName.text = self.curDesk.name;
+}
+
 - (void)lockEntered:(NSString*)key {
     NSLog(@"key: %@", key);
     
@@ -69,44 +74,31 @@
 {
     DAMyLoginViewController *vc = [[DAMyLoginViewController alloc]initWithNibName:@"DAMyLoginViewController" bundle:nil];
     vc.delegate = (id)parentView;
-    [parentView  presentPopupViewController:vc animationType:MJPopupViewAnimationFade];
-    
-    [vc setTable:thisTable];
-}
 
-- (void) setTable:(DADesk *)thisDesk
-{
-    self.myDeskId = thisDesk.tableId;
-    [self loadTableInfo:thisDesk];
-    self.myDesk = thisDesk;
     
-    self.tableName.text = self.myDesk.name;
-    self.numOfPepole.text = self.myDesk.numOfPepole;
-    self.waitterId.text = self.myDesk.waitterId;
-    self.waitterPassword.text = @"";
-    
-    [self saveTableInfo];
+    [parentView  presentPopupViewController:vc animationType:MJPopupViewAnimationFade];
 }
 
 -(void) loadTableInfo:(DADesk *) defaultmyDesk
 {
-    self.myDesk = nil;
-
-    NSString *path = [self tableInfoPath];
-    if(path != nil){
-        // Get myDesk
-        self.myDesk = [NSKeyedUnarchiver unarchiveObjectWithFile: path];
-        if (self.myDesk == nil) {
-            self.myDesk = defaultmyDesk;
-        }
-        // Init waitterId
-        NSString *lastWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey: @"LastWaiterId"];
-        if ([NSString isNotEmpty:lastWaitterId]) {
-            self.myDesk.waitterId = lastWaitterId;
-        }
-        // Init numOfPepole
-        self.myDesk.numOfPepole = (self.myDesk.numOfPepole == nil) ? @"4" : self.myDesk.numOfPepole;
-    }
+//
+//
+//    NSString *path = [self tableInfoPath];
+//    if(path != nil){
+//        // Get myDesk
+//        self.myDesk = [NSKeyedUnarchiver unarchiveObjectWithFile: path];
+//        if (self.myDesk == nil) {
+//            self.myDesk = defaultmyDesk;
+//        }
+//        // Init waitterId
+//        NSString *lastWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey: @"LastWaiterId"];
+//        if ([NSString isNotEmpty:lastWaitterId]) {
+////            self.myDesk.waitterId = lastWaitterId;
+//        }
+//        
+//        
+//        
+//    }
 //    if (self.myTable == nil) { // init myTable
 //        NSMutableDictionary * t = [NSMutableDictionary dictionaryWithCapacity:5];
 //        [t setObject:@"_id" forKey:self.myTableId];
@@ -120,13 +112,13 @@
     [defaults setObject:self.waitterId.text forKey: @"LastWaiterId"];
     NSLog(@"%@",[defaults objectForKey:@"LastWaiterId"]);
     //[defaults synchronize];
-    
-    self.myDesk.numOfPepole = self.numOfPepole.text;
-    self.myDesk.waitterId = self.waitterId.text;
+//    
+//    self.myDesk.numOfPepole = self.numOfPepole.text;
+//    self.myDesk.waitterId = self.waitterId.text;
     
     NSString *path = [self tableInfoPath];
     if(path != nil){
-        BOOL f = [NSKeyedArchiver archiveRootObject:self.myDesk toFile:path];
+        BOOL f = [NSKeyedArchiver archiveRootObject:self.curDesk toFile:path];
         if (f) {
             return YES;
         } else {
@@ -145,7 +137,7 @@
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
         NSString *path =[[paths objectAtIndex:0]
-                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_table_info_%@", self.myDeskId]];
+                              stringByAppendingPathComponent:[NSString stringWithFormat:@"data_table_info_%@", self.curDesk._id]];
         return path;
     }
     return nil;
@@ -208,8 +200,7 @@
         self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
         self.popover.popoverContentSize = CGSizeMake(100, 400);
         [self.popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    } else if ([textField isEqual:self.waitterId])
-    {
+    } else if ([textField isEqual:self.waitterId]) {
         DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
         
         NSMutableArray *wList = [NSMutableArray array];

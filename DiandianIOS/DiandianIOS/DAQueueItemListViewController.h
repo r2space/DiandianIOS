@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SmartSDK.h"
 
-typedef void (^SelectItemBlock)(NSString *itemId , NSString *tableNO);
+typedef void (^SelectItemBlock)(NSArray *orderIds , NSString *deskId);
+typedef double NSTimeInterval;
 
 @interface DAQueueItemListViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 

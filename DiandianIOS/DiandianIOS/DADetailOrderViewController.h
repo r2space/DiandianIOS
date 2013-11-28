@@ -14,13 +14,17 @@
 @interface DADetailOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIPopoverControllerDelegate>
 
 
-
+//显示总价的label
 @property (weak, nonatomic) IBOutlet UILabel *amountPriceLabel;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (retain, nonatomic) DAMyOrderList *orderList;
 
-@property (retain, nonatomic) NSString *tableNO;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+//显示总价的 新建的orderList
+@property (retain, nonatomic) DAMyOrderList *orderList;
+//显示总价的 已点单的orderList
+@property (nonatomic, retain) DAMyOrderList *oldOrderDataList;
+
 @property (retain, nonatomic) DAService *curService;
+
 
 @property (assign, nonatomic) id <DADetailOrderDelegate>delegate;
 - (IBAction)closePopup:(id)sender;

@@ -6,7 +6,8 @@
 //  Copyright (c) 2013年 LI LIN. All rights reserved.
 //
 
-#import "DAMenu.h"
+#import "SmartSDK.h"
+
 
 @implementation DAMenu
 
@@ -15,7 +16,7 @@
 
 
 +(Class) items_class {
-    return [DAItem class];
+    return [DAItemLayout class];
 }
 
 -(id)initWithDictionary:(NSDictionary *)aDict{

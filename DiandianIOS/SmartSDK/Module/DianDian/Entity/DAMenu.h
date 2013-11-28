@@ -7,11 +7,10 @@
 //
 
 
-#import "Jastor.h"
-#import "DAItem.h"
+#import "DAEntity.h"
 
 
-@interface DAMenu : Jastor<NSCoding>
+@interface DAMenu : DAEntity<NSCoding>
 
 @property(retain, nonatomic) NSString *_id;
 @property(retain, nonatomic) NSString *name;

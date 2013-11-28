@@ -12,7 +12,7 @@
 #define kHTTPHeaderCsrftoken    @"csrftoken"
 #define kHTTPHeaderUserID       @"userid"
 #define kURLLogin               @"simplelogin?name=%@&pass=%@"
-#define kURLYiLogin               @"simplelogin?name=%@&pass=%@&code=%@"
+#define kURLYiLogin               @"simplelogin?name=%@&password=%@"
 #define kURLLogout              @"simplelogout?token=%@"
 
 @implementation DALoginModule
@@ -28,7 +28,7 @@
         code :(NSString *)code
       callback:(void (^)(NSError *error, DAUser *user))callback
 {
-    NSString *path = [NSString stringWithFormat:kURLYiLogin, name, password,code];
+    NSString *path = [NSString stringWithFormat:kURLYiLogin, name, password];
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
         
         NSDictionary *headers = [operation.response allHeaderFields];

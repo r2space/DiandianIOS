@@ -7,6 +7,7 @@
 //
 
 #import "DAMyMenuBookPopupController.h"
+#import "DAMenuProxy.h"
 
 @interface DAMyMenuBookPopupController ()<DAMyMenuBookPopupDelegate>
 
@@ -35,9 +36,11 @@
 }
 - (void) initUI
 {
-    self.labelName.text = self.menuData.name;
-    self.labelAmount.text = self.menuData.amount;
-    [self.viewImage setImage:[UIImage imageNamed:self.menuData.image]];
+    
+    self.labelName.text = self.menuData.itemName;
+    self.labelAmount.text = [NSString stringWithFormat:@"%@",self.menuData.amount];
+    [self.viewImage setImage:[DAMenuProxy getImageFromDisk:self.menuData.bigimage]];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,7 +56,7 @@
 }
 
 - (IBAction)orderTouched:(id)sender {
-    NSLog(@"dfdaf  data  %@  " ,self.menuData.name);
+    NSLog(@"dfdaf  data  %@  " ,self.menuData.itemName);
     NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"orderReload" object:self.menuData];
     [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
 }

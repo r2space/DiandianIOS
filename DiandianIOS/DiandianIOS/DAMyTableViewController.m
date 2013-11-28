@@ -23,6 +23,7 @@
 #import "DADeskProxy.h"
 #import "ProgressHUD.h"
 #import "DARootViewController.h"
+#import "DAMenuProxy.h"
 
 static DAMyTableViewController *activity;
 
@@ -62,12 +63,12 @@ static DAMyTableViewController *activity;
     
     [self initTopmenu];
     
-    [self loadFromFile];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    
+    [super viewDidAppear:animated];
+    [self loadFromFile];
 }
 
 + (void) receive:(NSString*)action data:(id)data
@@ -112,10 +113,7 @@ static DAMyTableViewController *activity;
     [btnList addObject:[self.view viewWithTag:101]];
     [btnList addObject:[self.view viewWithTag:200]];
     [btnList addObject:[self.view viewWithTag:201]];
-//    [btnList addObject:[self.view viewWithTag:202]];
-//    
-//    [btnList addObject:[self.view viewWithTag:203]];
-    
+ 
     for (UIButton *btn in btnList) {
         btn.layer.shadowColor = UIColor.blackColor.CGColor;
         btn.layer.shadowRadius = 2;
@@ -158,7 +156,7 @@ static DAMyTableViewController *activity;
     }
     
     for (DADesk *d in dataList) {
-        if ([d.tableId isEqualToString:tableId]) {
+        if ([d._id isEqualToString:tableId]) {
             return d;
         }
     }
@@ -177,14 +175,16 @@ static DAMyTableViewController *activity;
     DAMyLoginViewController *loginVC = loginViewViewController;
 
     [ProgressHUD show:nil];
-    [DADeskProxy initDesk:loginVC.myDesk._id userId:loginVC.waitterId.text type:@"1" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
-        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    [DADeskProxy initDesk:loginVC.curDesk._id userId:loginVC.waitterId.text type:@"1" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
+
         UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
         DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
         menubookVC.curService = service;
+        
+        NSLog(@"debug : deskId : %@  serviceId  :   %@ " ,service.deskId, service._id);
         [ProgressHUD dismiss];
         [self.navigationController pushViewController:menubookVC animated:YES];
-        
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     }];
 
     
@@ -264,7 +264,6 @@ static DAMyTableViewController *activity;
     } else if (isProcessionIntoTable) {
         if ([desk isEmpty])
         {
-            desk.state = @"eating";
 
             isProcessionIntoTable = false;
             [self setTableFlicker:false];
@@ -274,7 +273,12 @@ static DAMyTableViewController *activity;
         if (![desk isEmpty]) {
             [DAMyTableConfirmController show: desk parentView:self ];
         } else {
-            [DAMyLoginViewController show: desk parentView:self ];
+            DAMyLoginViewController *vc = [[DAMyLoginViewController alloc]initWithNibName:@"DAMyLoginViewController" bundle:nil];
+            vc.delegate = self;
+            vc.curDesk  = desk;
+            [self  presentPopupViewController:vc animationType:MJPopupViewAnimationFade];
+            
+//            [DAMyLoginViewController show: desk parentView:self ];
         }
     }
     
@@ -356,4 +360,11 @@ static DAMyTableViewController *activity;
     [self.navigationController pushViewController:viewController animated:YES];
 
 }
+
+- (IBAction)testUpdateMenuListTouched:(id)sender {
+    [DAMenuProxy getMenuListApiList];
+}
+
+
+
 @end

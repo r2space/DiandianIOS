@@ -13,7 +13,7 @@
 @protocol DAMyTableConfirmDelegate;
 @interface DAMyTableConfirmController : UIViewController<DAPopTableViewDelegate, UITextFieldDelegate>
 @property (assign, nonatomic) id <DAMyTableConfirmDelegate>delegate;
-
+@property (retain, nonatomic) DAService *curService;
 
 
 - (IBAction)closePopup:(id)sender;

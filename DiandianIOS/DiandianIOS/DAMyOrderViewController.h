@@ -20,17 +20,13 @@
 
 @property (nonatomic, retain) DAMyOrderList *dataList;
 
-@property (nonatomic, retain) DAMyOrderList *oldDataList;
-
-
-@property (nonatomic, retain) NSString *tableNO;
-@property (nonatomic, retain) NSString *deskId;
-
 @property (nonatomic, retain) DAService *curService;
-@property (nonatomic, retain) NSString *serviceId;
 
 - (IBAction)backTopMenu:(id)sender;
 
 - (IBAction)putDone:(id)sender;
 - (IBAction)overOrder:(id)sender;
+
+- (void) loadOldItem;
+
 @end

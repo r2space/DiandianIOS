@@ -12,18 +12,17 @@
 #import "DAMyFilterViewController.h"
 #import "DAMyOrderViewController.h"
 #import "DAMyMenuBookViewController.h"
-#import "DAOrderThumbViewController.h"
+
 #import "SmartSDK.h"
 
 
 @interface DARootViewController ()
 {
     DAMyOrderViewController *orderView;
-    DAOrderThumbViewController *thumbView;
     
     //api
     DAMenuList *dataList;
-
+    BOOL isAddItem;
 }
 @end
 
@@ -41,14 +40,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.serviceId = @"5293312b34223ceb29000021";
-	// Do any additional setup after loading the view.
-
-    
-//    DAMyBookViewController *my = [[DAMyBookViewController alloc] initWithNibName:@"DAMyBookViewController" bundle:nil];
-//    [self addChildViewController:my];
-//
-//    [self.MenuGird addSubview:my.view];//添加到self.view
+    isAddItem = NO;
+    if ([@"YES" isEqualToString:self.willAddItem]) {
+        isAddItem = YES;
+    }
     
     DAMyMenuBookViewController *book = [[DAMyMenuBookViewController alloc] initWithNibName:@"DAMyMenuBookViewController" bundle:nil];
     [self addChildViewController:book];
@@ -64,7 +59,6 @@
     
     
     
-    thumbView = [[DAOrderThumbViewController alloc] initWithNibName:@"DAOrderThumbViewController" bundle:nil];
     orderView = [[DAMyOrderViewController alloc] initWithNibName:@"DAMyOrderViewController" bundle:nil];
     
     orderView.curService = self.curService;
@@ -75,25 +69,16 @@
     self.orderListView.layer.shadowRadius = 2;
     self.orderListView.layer.shadowOpacity = 0.6;
     self.orderListView.layer.shadowOffset = CGSizeMake(0, 1);
+    
+
 }
 
-- (void)fadeInWorkstationMenu{
-    
-    //    CGPoint menuCenter = menuScrollView.center;
-    
-    [UIView animateWithDuration:0.5
-                     animations:^(void){
-                         self.orderListView.center = CGPointMake(148   , 384);
-                         self.orderListView.frame = CGRectMake(0, 0, 296, 768);
-                         orderView = [[DAMyOrderViewController alloc] initWithNibName:@"DAMyOrderViewController" bundle:nil];
-                         [self addChildViewController:orderView];
-                         [self.orderListView addSubview:orderView.view];
-                     }];
-    [thumbView.view removeFromSuperview];
-    
+-(void)viewDidAppear:(BOOL)animated
+{
+    if (isAddItem) {
+        [orderView loadOldItem];
+    }
 }
-
-
 
 
 
@@ -107,9 +92,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)fadeIn:(id)sender {
-    [self fadeInWorkstationMenu];
-}
+
 
 
 

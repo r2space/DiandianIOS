@@ -10,6 +10,11 @@
 #import "DAOrderAddAmountBtn.h"
 #import "DAMyOrderLoginViewController.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "DAMenuModule.h"
+#import "DAMenuProxy.h"
+#import "ProgressHUD.h"
+
+
 #define AMOUNT_LABEL_TAG 101
 
 
@@ -65,6 +70,11 @@
     
 }
 
+-(void) viewDidAppear:(BOOL)animated
+{
+    
+}
+
 -(BOOL) loadTableFromDisk
 {
     NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
@@ -99,9 +109,27 @@
 -(void)loadAmountPrice
 {
     int amountPrice = 0 ;
+    
+    
+    //新菜单 总价
     for (DAOrder *order in self.orderList.items) {
-        amountPrice = amountPrice + [order.item.price integerValue] * [order.item.amount integerValue];
+        if (order.amount == nil || [order.amount integerValue] == 0) {
+            order.amount = [NSNumber numberWithInt:1];
+        }
+        amountPrice = amountPrice + [order.item.itemPriceNormal integerValue] * [order.amount integerValue];
     }
+    
+    
+    //老菜单 总价
+    for (NSArray *oldArray in self.oldOrderDataList.oldItems) {
+        for (DAOrder *order in oldArray) {
+            if (order.amount == nil || [order.amount integerValue] == 0) {
+                order.amount = [NSNumber numberWithInt:1];
+            }
+            amountPrice = amountPrice + [order.item.itemPriceNormal integerValue] * [order.amount integerValue];
+        }
+    }
+    
     self.amountPriceLabel.text = [NSString stringWithFormat:@"总价 : %d 元" ,amountPrice];
     
 }
@@ -117,30 +145,54 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAOrder *orderItem = [self.orderList.items objectAtIndex:indexPath.row];
     static NSString *CellWithIdentifier = @"DADetailOrderCell";
+    DAOrder *orderItem;
+    if (indexPath.section == 0) {
+        orderItem = [self.orderList.items objectAtIndex:indexPath.row];
+    } else {
+        NSArray *curOrderItemList = [self.oldOrderDataList.oldItems objectAtIndex:(indexPath.section - 1)];
+        orderItem = [curOrderItemList objectAtIndex:indexPath.row];
+    }
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:9];
-    imageView.image = [UIImage imageNamed:orderItem.item.image];
+
+    imageView.image = [DAMenuProxy getImageFromDisk:orderItem.item.smallimage];
+    
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:10];
-    nameLabel.text = orderItem.item.name;
+    nameLabel.text = orderItem.item.itemName;
     UILabel *pirceLabel = (UILabel *)[cell viewWithTag:11];
-    pirceLabel.text = [NSString stringWithFormat:@"%@元/盘",orderItem.item.price];
+    //TODO  半分
+    pirceLabel.text = [NSString stringWithFormat:@"%@元/盘",orderItem.item.itemPriceNormal];
+    
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:13];
-    amountLabel.text = [NSString stringWithFormat:@"%@份" ,orderItem.item.amount];
+    //TODO  两份合成一份  orderItem.item.amount
+    amountLabel.text = [NSString stringWithFormat:@"%@份" , orderItem.amount];
+    
+    UITextField *remarkField = (UITextField * ) [cell viewWithTag:14];
     
     DAOrderAddAmountBtn *addBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:20];
     DAOrderAddAmountBtn *deleteBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:21];
-
     addBtn._id = orderItem.item._id;
-
-    deleteBtn._id = orderItem.item._id;
-    [addBtn addTarget:self
-               action:@selector(addAmount:) forControlEvents:UIControlEventTouchUpInside];
     
-    [deleteBtn addTarget:self
-                  action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
+    deleteBtn._id = orderItem.item._id;
+    
+    if (indexPath.section == 0) {
+        [addBtn addTarget:self
+                   action:@selector(addAmount:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [deleteBtn addTarget:self
+                      action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
+        [remarkField setEnabled:YES];
+    } else {
+        [addBtn setHidden:YES];
+        [deleteBtn setHidden:YES];
+        [remarkField setEnabled:NO];
+        cell.backgroundColor = [UIColor lightGrayColor];
+    }
     return cell;
+
+    
 }
 
 -(void) deleteAmount :(id)sender {
@@ -173,15 +225,39 @@
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    int num = 1;
+    if (self.oldOrderDataList.oldItems.count > 0) {
+        num += self.oldOrderDataList.oldItems.count;
+    }
+    return num;
 }
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    
+    if (section == 0) {
+        return @"新订单";
+    }
+    return [NSString stringWithFormat:@"%d号单",section];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [indexPath row];
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return [self.orderList.items count];
+    } else {
+        NSArray *curArray = [self.oldOrderDataList.oldItems objectAtIndex:(section - 1)];
+        if (curArray!=nil && [curArray count] > 0) {
+            return [curArray count];
+        } else {
+            return 0;
+        }
+
+    }
     
-    return [self.orderList.items count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -201,18 +277,28 @@
 {
 }
 
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    return NO;
+}
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"执行删除操作");
-    DAMenu *menu = [self.orderList.items objectAtIndex:indexPath.row];
-    NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
-    for (DAMenu *mymenu in self.orderList.items) {
-        if (menu._id != mymenu._id) {
-            [tmpArray addObject:mymenu];
+    if (indexPath.section == 0) {
+        
+        NSLog(@"执行删除操作");
+        DAMenu *menu = [self.orderList.items objectAtIndex:indexPath.row];
+        NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
+        for (DAMenu *mymenu in self.orderList.items) {
+            if (menu._id != mymenu._id) {
+                [tmpArray addObject:mymenu];
+            }
         }
+        self.orderList.items = [[NSArray alloc]initWithArray:tmpArray];
+        [self tableViewReload];
+    } else {
+        [ProgressHUD showError:@"已经点的菜就不能删了啊,嘻嘻嘻"];
     }
-    self.orderList.items = [[NSArray alloc]initWithArray:tmpArray];
-    [self tableViewReload];
     
 }
 

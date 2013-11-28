@@ -38,8 +38,6 @@
     // Do any additional setup after loading the view from its nib.
     UINib *cellNib = [UINib nibWithNibName:@"DAQueueTableCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAQueueTableCell"];
-    [self loadFromFile];
-
     
 }
 
@@ -66,18 +64,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
+    DADesk *desk = [[DADesk alloc]initWithDictionary:order.desk];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DAQueueTableCell"];
-    
-    
-    NSDictionary *row = [dataList.items objectAtIndex:indexPath.row];
+
     UILabel *lblName = (UILabel *)[cell viewWithTag:10];
-    lblName.text = [row objectForKey:@"name"];
+    lblName.text = desk.name;
     
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:11];
-    imgItem.image = [UIImage imageNamed:[row objectForKey:@"image"]];
+    imgItem.image = [UIImage imageNamed:@"sample-table.jpg"];
     
-    UILabel *lblProcess = (UILabel *)[cell viewWithTag:12];
-    lblProcess.text = [row objectForKey:@"process"];
+//    UILabel *lblProcess = (UILabel *)[cell viewWithTag:12];
+//    lblProcess.text = [row objectForKey:@"process"];
     
     
     return cell;
@@ -90,48 +88,33 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.curItemId.length > 0 && self.curTableNO.length > 0) {
-        self.selectTableBlock(self.curItemId,self.curTableNO);
-        self.curItemId = @"";
-        self.curTableNO = @"";
-        [self loadFromFile];
-    }
+    DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
+    DADesk *desk = [[DADesk alloc]initWithDictionary:order.desk];
+    
+    self.selectDeskBlock(order._id , desk._id);
+    
     
 }
 
-- (void)filterTable
+- (void)filterTable:(NSArray *)orderIds deskId:(NSString *)deskId
 {
-    [self loadFromFile];
-    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
-    for (NSDictionary *d in dataList.items){
-        NSString *disTableNo = [d objectForKey:@"table"];
-        if ([self.curTableNO isEqualToString:disTableNo]) {
-            [tmpList addObject:d];
+    dataList.items = [[NSArray alloc]init];
+    
+    [[DAOrderModule alloc] getDeskListByOrderIds:orderIds callback:^(NSError *err, DAMyOrderList *list) {
+        NSMutableArray *tmpDeskList = [[NSMutableArray alloc]init];
+
+        for (DAOrder *order in list.items) {
+            [tmpDeskList addObject:order];
         }
+        NSLog(@"debug filterTable  %@", list);
+        dataList.items = [[NSArray alloc] initWithArray:tmpDeskList];
+        [self.tableView reloadData];
         
-    }
-    dataList.items = [[NSArray alloc] initWithArray:tmpList];
-    [self.tableView reloadData];
+    }];
+    
+    
 }
 
-- (void)loadFromFile {
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"queue_group" ofType:@"json"];
-    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
-    
-    NSError *anError = nil;
-    NSArray *items = [NSJSONSerialization JSONObjectWithData:elementsData
-                                                     options:NSJSONReadingAllowFragments
-                                                       error:&anError];
-    
-    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
-    for (NSDictionary *d in items){
-        [tmpList addObject:d];
-    }
-    dataList.items = [[NSArray alloc] initWithArray:tmpList];
-  
-    [self.tableView reloadData];
-    
-}
 
 
 @end

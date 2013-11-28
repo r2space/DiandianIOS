@@ -19,7 +19,7 @@
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.items forKey:@"items" ];
-    [aCoder encodeObject:self.total forKey:@"total" ];
+    [aCoder encodeObject:self.totalItems forKey:@"totalItems" ];
     
 }
 
@@ -27,7 +27,7 @@
 {
     self = [super init];
     self.items = [aDecoder decodeObjectForKey:@"items"];
-    self.total = [aDecoder decodeObjectForKey:@"total"];
+    self.totalItems = [aDecoder decodeObjectForKey:@"totalItems"];
     
     return  self;
 }

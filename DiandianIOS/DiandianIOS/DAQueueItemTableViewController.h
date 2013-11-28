@@ -10,16 +10,16 @@
 #import "SmartSDK.h"
 
 
-typedef void (^SelectTableBlock)(NSString *itemId , NSString *tableNO);
+typedef void (^SelectDeskBlock)(NSString *orderId , NSString *deskId);
 
 @interface DAQueueItemTableViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, copy) SelectTableBlock selectTableBlock;
+@property (nonatomic, copy) SelectDeskBlock selectDeskBlock;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property(retain, nonatomic) NSString* curItemId;
-@property(retain, nonatomic) NSString* curTableNO;
-- (void)filterTable;
+@property(retain, nonatomic) NSString* curOrderId;
+
+- (void)filterTable:(NSArray *)orderIds deskId:(NSString *)deskId;
 
 
 @end

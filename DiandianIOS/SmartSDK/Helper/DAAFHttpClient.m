@@ -65,7 +65,7 @@
 - (void)getPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure
 {
     [self setDefaultHeader:@"Content-Type" value:@"application/x-www-form-urlencoded"];
-    [super getPath:[self appendCsrf:path] parameters:parameters success:success failure:failure];
+    [super getPath:path parameters:parameters success:success failure:failure];
 }
 
 - (void)postPath:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(AFHTTPRequestOperation *, id))success failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure

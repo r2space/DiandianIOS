@@ -14,29 +14,34 @@
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
+    [super encodeWithCoder:aCoder];
     
-    [aCoder encodeObject:self._id   forKey:@"_id"];
-    [aCoder encodeObject:self.name  forKey:@"name"];
-    [aCoder encodeObject:self.price forKey:@"price"];
-    [aCoder encodeObject:self.index forKey:@"index"];
-    [aCoder encodeObject:self.row  forKey:@"row"];
-    [aCoder encodeObject:self.column forKey:@"column"];
-    [aCoder encodeObject:self.type  forKey:@"type"];
-    [aCoder encodeObject:self.image forKey:@"image"];
+    [aCoder encodeObject:self.itemName   forKey:@"itemName"];
+    [aCoder encodeObject:self.itemPriceNormal  forKey:@"itemPriceNormal"];
+    [aCoder encodeObject:self.itemPriceHalf forKey:@"itemPriceHalf"];
+    [aCoder encodeObject:self.itemPriceDiscount forKey:@"itemPriceDiscount"];
+    [aCoder encodeObject:self.itemType  forKey:@"itemType"];
+    [aCoder encodeObject:self.itemComment forKey:@"itemComment"];
+    [aCoder encodeObject:self.itemMaterial  forKey:@"itemMaterial"];
+    [aCoder encodeObject:self.itemMethod forKey:@"itemMethod"];
+    [aCoder encodeObject:self.bigimage forKey:@"bigimage"];
+    [aCoder encodeObject:self.smallimage forKey:@"smallimage"];
     
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super init];
-    self._id = [aDecoder decodeObjectForKey:@"_id"];
-    self.name = [aDecoder decodeObjectForKey:@"name"];
-    self.price = [aDecoder decodeObjectForKey:@"price"];
-    self.index = [aDecoder decodeObjectForKey:@"index"];
-    self.row = [aDecoder decodeObjectForKey:@"row"];
-    self.column = [aDecoder decodeObjectForKey:@"column"];
-    self.type = [aDecoder decodeObjectForKey:@"type"];
-    self.image = [aDecoder decodeObjectForKey:@"image"];
+    self = [super initWithCoder:aDecoder];
+    self.itemName = [aDecoder decodeObjectForKey:@"itemName"];
+    self.itemPriceNormal = [aDecoder decodeObjectForKey:@"itemPriceNormal"];
+    self.itemPriceHalf = [aDecoder decodeObjectForKey:@"itemPriceHalf"];
+    self.itemPriceDiscount = [aDecoder decodeObjectForKey:@"itemPriceDiscount"];
+    self.itemType = [aDecoder decodeObjectForKey:@"itemType"];
+    self.itemComment = [aDecoder decodeObjectForKey:@"itemComment"];
+    self.itemMaterial = [aDecoder decodeObjectForKey:@"itemMaterial"];
+    self.itemMethod = [aDecoder decodeObjectForKey:@"itemMethod"];
+    self.bigimage = [aDecoder decodeObjectForKey:@"bigimage"];
+    self.smallimage = [aDecoder decodeObjectForKey:@"smallimage"];
     
     return self;
 }

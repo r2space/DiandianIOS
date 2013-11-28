@@ -7,7 +7,12 @@
 //
 
 #import "DAQueueItemListViewController.h"
+
+#import "DAMenuProxy.h"
+
 #import "ProgressHUD.h"
+
+#import "Tool.h"
 
 @interface DAQueueItemListViewController ()
 {
@@ -17,6 +22,7 @@
     UICollectionViewCell * oldcell;
     DAMenuList *menuList;
     NSMutableArray *itemList;
+    NSDate *nowData;
 }
 @end
 
@@ -40,7 +46,7 @@
     // Do any additional setup after loading the view from its nib.
     UINib *cellNib = [UINib nibWithNibName:@"DAQueueItemListCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAQueueItemListCell"];
-    [self loadFromFile];
+    
 
     menuList = [[DAMenuList alloc]unarchiveObjectWithFileWithName:FILE_MENU_LIST];
     for (DAMenu *menu in menuList.items) {
@@ -53,24 +59,31 @@
     
     // Do any additional setup after loading the view from its nib.
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self loadFromFile];
+}
 
 - (void)ioRefreshOrderList : (NSNotification*) notification
 {
-//    [ProgressHUD show:@"推送消息"];
-    NSDictionary *obj = [notification object];
-    NSArray *items = [obj objectForKey:@"items"];
-    NSMutableArray *tmpArray = [[NSMutableArray alloc]init];
-    for (NSDictionary *orderdic in items) {
-        DAOrder *order = [[DAOrder alloc ]initWithDictionary:orderdic];
-        [tmpArray addObject:order];
-    }
-    
-    [tmpArray addObjectsFromArray:dataList.items];
-    
-    dataList = [[DAMyOrderList alloc]init];
-    dataList.items = [[NSArray alloc]initWithArray:tmpArray];
-    [self.collectionView reloadData];
-//    [ProgressHUD dismiss];
+////    [ProgressHUD show:@"推送消息"];
+//    NSDictionary *obj = [notification object];
+//    NSArray *items = [obj objectForKey:@"items"];
+//    NSMutableArray *tmpArray = [[NSMutableArray alloc]init];
+//    for (NSDictionary *orderdic in items) {
+//        DAOrder *order = [[DAOrder alloc ]initWithDictionary:orderdic];
+//        [tmpArray addObject:order];
+//    }
+//    
+//    [tmpArray addObjectsFromArray:dataList.items];
+//    
+//    dataList = [[DAMyOrderList alloc]init];
+//    dataList.items = [[NSArray alloc]initWithArray:tmpArray];
+//    [self.collectionView reloadData];
+////    [ProgressHUD dismiss];
+    [self loadFromFile];
 }
 
 
@@ -89,45 +102,33 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
     
-    // we're going to use a custom UICollectionViewCell, which will hold an image and its label
-    //
-    
-    
-    
-    
     static NSString *cellIdentifier = @"DAQueueItemListCell";
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     DAOrder *row = [dataList.items objectAtIndex:indexPath.row];
-    DAItem *item = [self getItemById:row.itemId];
+
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:10];
-    imgItem.image = [UIImage imageNamed:item.image];
+    imgItem.image = [DAMenuProxy getImageFromDisk:row.item.smallimage];
     UILabel *lblName = (UILabel *)[cell viewWithTag:11];
-    lblName.text = item.name;
+    lblName.text = row.item.itemName;
     UILabel *lblWaitingTime = (UILabel *)[cell viewWithTag:12];
-    lblWaitingTime.text =  @"dddddd";
+    
+    UILabel *lblCountDesk = (UILabel *)[cell viewWithTag:13];
+    lblCountDesk.text = [NSString stringWithFormat:@"%d桌" ,[row.oneItems count]];
+    
+    lblWaitingTime.text = [Tool stringFromISODateString:row.createat];
     cell.backgroundColor = [UIColor clearColor];
     
     return cell;
-}
-
--(DAItem *)getItemById:(NSString *)itemId
-{
-    for (NSDictionary *item in itemList) {
-        if ([itemId isEqualToString:[item objectForKey:@"_id"]]) {
-            return [[DAItem alloc] initWithDictionary:item];
-        }
-    }
-    return nil;
 }
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DAOrder *row = [dataList.items objectAtIndex:indexPath.row];
     NSLog(@"%@", row);
-    NSString *tableNO = row.deskId;
-    NSString *name = row.deskId;
-    self.selectItemBlock(name,tableNO);
+    NSString *deskId = row.deskId;
+    NSArray *oneItems =  row.oneItems;
+    self.selectItemBlock(oneItems,deskId);
     
     NSArray *cells = [self.collectionView visibleCells];
     for (UICollectionViewCell * cObj in cells) {
@@ -160,28 +161,54 @@
 
 - (void)loadFromFile {
 
+    [ProgressHUD show:nil];
     [[DAOrderModule alloc]getAllOrderList:0 count:20 callback:^(NSError *err, DAMyOrderList *list) {
         dataList = list;
-        [self.collectionView reloadData];
+        [self getOneDataList:list];
+        [ProgressHUD dismiss];
     }];
     
+}
+
+- (void ) getOneDataList:(DAMyOrderList *) orderList
+{
+    dataList = [[DAMyOrderList alloc]init];
+    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     
+    for (int i = 0 ; i < orderList.items.count ; i ++) {
+        DAOrder *order = [orderList.items objectAtIndex:i];
+        BOOL hasOneItem = NO;
+        if ([tmpList count] > 0 ) {
+            for (int j = 0 ; j < [tmpList count] ; j ++) {
+                DAOrder *tmpOrder = [tmpList objectAtIndex:j];
+                if ([tmpOrder.itemId isEqualToString:order.itemId]) {
+                    hasOneItem = YES;
+                    
+                }
+            }
+        }
+        if (!hasOneItem) {
+            order.oneItems = [[NSMutableArray alloc]init];
+            [order.oneItems addObject:order._id];
+            [tmpList addObject: order];
+        } else {
+            for (DAOrder *oneOrder in tmpList) {
+                if (oneOrder.itemId == order.itemId) {
+                    [oneOrder.oneItems addObject:order._id];
+                }
+            }
+        }
+        
+    }
     
+    dataList.items = [[NSArray alloc]initWithArray:tmpList];
+    [self.collectionView reloadData];
 }
 
 
 - (void)filterItem:(NSString *)itemId tableNO:(NSString *)tableNo
 {
-    
-//    
-//    [[DAOrderModule alloc]getAllOrderList:0 count:20 callback:^(NSError *err, DAOrderList *list) {
-//        dataList = list;
-//    }];
-
-    [self.collectionView reloadData];
-    
-    
-    
+    [self loadFromFile];
 }
 
 

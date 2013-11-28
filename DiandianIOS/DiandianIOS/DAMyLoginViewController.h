@@ -21,8 +21,7 @@
 
 @property (strong, nonatomic) IBOutlet UIPopoverController *popover;
 
-@property (retain, nonatomic) NSString *myDeskId;
-@property (retain, nonatomic) DADesk *myDesk;
+@property (retain, nonatomic) DADesk *curDesk;
 
 @property (retain, nonatomic) DAService *curService;
 
