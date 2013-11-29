@@ -17,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *viewMask;
 @property (weak, nonatomic) IBOutlet UIView *viewLabel;
 
+@property (retain, nonatomic) DADesk *curDesk;
+
 - (void)setData:(DADesk *)mytable;
 @end

@@ -10,6 +10,7 @@
 #import "NSString+Util.h"
 #import "DAPopTableViewController.h"
 #import "SmartSDK.h"
+#import "DAOrderProxy.h"
 
 
 @implementation DAMyTableViewCell
@@ -63,17 +64,24 @@
 }
 - (IBAction)showUnfinishedMenuList:(id)sender {
     DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
-    
+    NSLog(@"my desk %@ ",self.curDesk);
     NSMutableArray *wList = [NSMutableArray array];
-    [wList addObject:[NSString stringWithFormat:@"鱼香肉丝"]];
-    [wList addObject:[NSString stringWithFormat:@"天外飞仙"]];
-    [wList addObject:[NSString stringWithFormat:@"啤酒1瓶"]];
     
-    [vc initData:@"type" list:wList];
+    
+    [[DAOrderModule alloc] getOrderListByServiceId:self.curDesk.service._id withBack:@"0" callback:^(NSError *err, DAMyOrderList *list) {
+        DAMyOrderList *dataList = [DAOrderProxy getOneDataList:list];
+        for (DAOrder *_order in dataList.items) {
+            [wList addObject:_order];
+        }
+        [vc initData:@"type" list:wList];
+    }];
+    
     //vc.delegate = self;
     
     popover = [[UIPopoverController alloc]initWithContentViewController:vc];
     popover.popoverContentSize = CGSizeMake(200, 300);
-//    [popover presentPopoverFromRect:self.unfinishedCount.frame inView: self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    
+    [popover presentPopoverFromRect:self.unfinishedCount.frame inView: self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 @end

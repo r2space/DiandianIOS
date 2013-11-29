@@ -87,7 +87,7 @@
     if ([order.type integerValue ] == 0) {
         labItemName.text = order.item.itemName;
     } else {
-        labItemName.text = [NSString stringWithFormat:@"(小)%@",order.item.itemName] ;
+        labItemName.text = [NSString stringWithFormat:@"%@ (小)",order.item.itemName] ;
     }
     
     UILabel *labItemCount = (UILabel *)[cell viewWithTag:11];

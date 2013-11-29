@@ -207,7 +207,7 @@ static DAMyTableViewController *activity;
     
     DADesk *desk = [dataList objectAtIndex:indexPath.row];
     [cell setData:desk];
-    
+    cell.curDesk = desk;
     //NSString *imageName = [@"eating" isEqualToString:t.state] ? @"sample-table.jpg" : @"sample-table1.jpg";
     cell.imgTable.image = [UIImage imageNamed:@"sample-table.jpg"];
     

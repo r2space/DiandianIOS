@@ -162,10 +162,12 @@
         [ProgressHUD showError:@"请选择操作员。"];
         return;
     }
+    self.numOfPepole.text = [NSString stringWithFormat:@"%d",3];
     if(self.numOfPepole.text.length == 0){
         [ProgressHUD showError:@"用餐人数。"];
         return;
     }
+
     if (lockStatus) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(startTableButtonClicked:)]) {
             [self.delegate startTableButtonClicked:self];

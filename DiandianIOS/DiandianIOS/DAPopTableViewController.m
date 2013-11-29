@@ -8,6 +8,7 @@
 
 #import "DAPopTableViewController.h"
 #import "DAPopTableViewCell.h"
+#import "SmartSDK.h"
 
 @interface DAPopTableViewController ()
 
@@ -32,6 +33,7 @@
 {
     targetTag = tag;
     listData = list;
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -63,8 +65,13 @@
 {
     static NSString *CellIdentifier = @"Cell";
     DAPopTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    DAOrder *order = [listData objectAtIndex:indexPath.row];
+    if ([order.type integerValue] == 0) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %d份",order.item.itemName,[order.oneItems count]];
+    } else {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %d份 (小)",order.item.itemName,[order.oneItems count]];
+    }
     
-    cell.textLabel.text = [listData objectAtIndex:indexPath.row];
     
     return cell;
 }
