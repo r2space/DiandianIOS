@@ -74,6 +74,6 @@
     
     popover = [[UIPopoverController alloc]initWithContentViewController:vc];
     popover.popoverContentSize = CGSizeMake(200, 300);
-    [popover presentPopoverFromRect:self.unfinishedCount.frame inView: self permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
+//    [popover presentPopoverFromRect:self.unfinishedCount.frame inView: self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 @end

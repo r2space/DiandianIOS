@@ -165,4 +165,81 @@
 }
 
 
+-(void)addDevice:(NSString *)deviceId userId :(NSString * )userId token:(NSString *)token  callback:(void (^)(NSError *error, DAMyDevice *device))callback
+{
+    NSString *path = API_DEVICE_ADD;
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    [params setObject:userId forKey:@"userId"];
+    [params setObject:deviceId forKey:@"deviceId"];
+    [params setObject:token forKey:@"token"];
+    
+    [[DAAFHttpClient sharedClient] postPath:path  parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyDevice *data = [[DAMyDevice alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+
+}
+
+
+- (void) updatePattern:(NSString *)Pattern userId:(NSString * )userId callback:(void (^)(NSError *error, DAUser *user))callback
+{
+    NSString *path = API_UESR_UPDATEPATTERN;
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    [params setObject:Pattern forKey:@"pattern"];
+    [params setObject:userId forKey:@"uid"];
+    
+    [[DAAFHttpClient sharedClient] postPath:path  parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAUser *data = [[DAUser alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+}
+
+//API_UESR_UPDATEPattern
+
+//API_UESR_CHECKPATTERN
+
+-(void) checkPattern:(NSString *)Pattern userId:(NSString *)userId callback:(void (^)(NSError *, NSDictionary *))callback
+{
+    NSString *path = API_UESR_CHECKPATTERN;
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    [params setObject:Pattern forKey:@"pattern"];
+    [params setObject:userId forKey:@"uid"];
+    
+    
+    [[DAAFHttpClient sharedClient] postPath:path  parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *data = [responseObject valueForKeyPath:@"data"];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+}
+
 @end

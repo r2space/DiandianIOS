@@ -62,7 +62,7 @@
         if ([tmpList count] > 0 ) {
             for (int j = 0 ; j < [tmpList count] ; j ++) {
                 DAOrder *tmpOrder = [tmpList objectAtIndex:j];
-                if ([tmpOrder.itemId isEqualToString:order.itemId]) {
+                if ([tmpOrder.itemId isEqualToString:order.itemId] && [tmpOrder.type isEqualToNumber:order.type]) {
                     hasOneItem = YES;
                     
                 }
@@ -74,7 +74,7 @@
             [tmpList addObject: order];
         } else {
             for (DAOrder *oneOrder in tmpList) {
-                if (oneOrder.itemId == order.itemId) {
+                if (oneOrder.itemId == order.itemId && [oneOrder.type isEqualToNumber:order.type]) {
                     [oneOrder.oneItems addObject:order._id];
                 }
             }

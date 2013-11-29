@@ -24,7 +24,10 @@
 #define API_SETORDER_DONE_BY_ID @"/api/order/doneOrder.json?orderId=%@"
 #define API_SETORDER_BACK_BY_ID @"/api/order/backOrder.json?orderId=%@"
 #define API_SETORDER_BACK @"/api/order/backOrder.json"
+#define API_DEVICE_ADD @"/api/device/add.json"
 
+#define API_UESR_UPDATEPATTERN @"/api/admin/user/updatePattern.json"
+#define API_UESR_CHECKPATTERN @"/api/admin/user/checkPattern.json"
 
 #define FILE_MENU_LIST @"___data_menu_list_"
 #define FILE_DESK_LIST @"___data_desk_list_"
@@ -38,7 +41,6 @@
 #import "DADeskModule.h"
 #import "DAServiceModule.h"
 #import "DAOrderModule.h"
-
 
 
 #import "DAGroup.h"
@@ -56,7 +58,7 @@
 #import "DAOrder.h"
 #import "DAMyOrderList.h"
 #import "DAItemLayout.h"
-
+#import "DAMyDevice.h"
 
 
 #endif

@@ -31,6 +31,11 @@
     int menuIndex;
     BOOL listType;
     UICollectionViewFlowLayout *defaultLayout;
+    NSTimer *timer;
+    BOOL timerFlag;
+    NSMutableArray *adImageList;
+    UIImageView *adImageView;
+    int adIndex;
 }
 @end
 
@@ -48,7 +53,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    timerFlag = YES;
     dataList = [[NSMutableArray alloc ] init];
     menuIndex = 0;
     listType = YES;
@@ -94,6 +99,11 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [self loadFromDisk];
+    timer = [NSTimer scheduledTimerWithTimeInterval:3
+                                             target:self
+                                           selector:@selector(timerEvent:)
+                                           userInfo:nil
+                                            repeats:YES];
 }
 
 -(void)loadFromDisk{
@@ -170,22 +180,47 @@
     }
 
     cell = [[DAMyMenuBookCell alloc] initWithObj:data.item collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:nsRow column:nsColumn];
-    
     cell.itemData = data.item;
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
-//    titleLabel.text = data.name;
-    titleLabel.text = data.item.itemName;
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:102];
-
-    [imageView setImage:[DAMenuProxy getImageFromDisk:data.item.smallimage]];
-    
     UIButton *addBtn = (UIButton *)[cell viewWithTag:13];
     UIButton *addSmallBtn = (UIButton *)[cell viewWithTag:14];
     UILabel *labelAmount = (UILabel *)[cell viewWithTag:19];
+    
+    titleLabel.text = data.item.itemName;
+    [imageView setImage:[DAMenuProxy getImageFromDisk:data.item.smallimage]];
+    
+
+    
+    if ([data.item.type integerValue] == 10) {
+        [titleLabel setHidden:YES];
+        
+        NSMutableArray *imageList = [[NSMutableArray alloc] init];
+        [imageList addObject:data.item.smallimage];
+        [imageList addObject:data.item.bigimage];
+        // 创建定时器
+        adImageList = imageList;
+        adImageView = imageView;
+        timerFlag = NO;
+        [addBtn setHidden:YES];
+        [addSmallBtn setHidden:YES];
+        [labelAmount setHidden:YES];
+    } else {
+        [titleLabel setHidden:NO];
+        [addBtn setHidden:NO];
+        [addSmallBtn setHidden:NO];
+        [labelAmount setHidden:NO];
+        timerFlag = YES;
+        
+    }
+    
     if (data.item.itemPriceHalf!=nil && data.item.itemPriceHalf.length > 0 ) {
         labelAmount.text = [NSString stringWithFormat:@"大%@元/小%@元",data.item.itemPriceNormal, data.item.itemPriceHalf];
-        [addSmallBtn setHidden:NO];
+        if ([data.item.type integerValue] != 10) {
+            [addSmallBtn setHidden:NO];
+        }
+        
     } else {
         labelAmount.text = [NSString stringWithFormat:@"%@元",data.item.itemPriceNormal];
         [addSmallBtn setHidden:YES];
@@ -194,11 +229,34 @@
                    action:@selector(addSmallMenu:) forControlEvents:UIControlEventTouchUpInside];
     }
     
+
     [addBtn addTarget:self
             action:@selector(addMenu:) forControlEvents:UIControlEventTouchUpInside];
+
+    
     
     return cell;
 }
+
+// 定时获取消息。发生滚动时，停止定时器
+- (void)timerEvent:(NSTimer *)timer
+{
+    if (!timerFlag) {
+        timerFlag = YES;
+            [adImageView setImage:[DAMenuProxy getImageFromDisk:[adImageList objectAtIndex:adIndex]]];
+            
+            
+            adIndex = adIndex + 1;
+            if (adIndex == [adImageList count]) {
+                adIndex = 0;
+            }
+            timerFlag = NO;
+        
+    }
+    
+    
+}
+
 
 -(void)addSmallMenu:(UIButton*)button
 {
@@ -237,8 +295,12 @@
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     DAItemLayout *data = [[DAItemLayout alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
-    [self popupDetail:data.item];
+    if ([data.item.type integerValue] != 10) {
+        [self popupDetail:data.item];
+    }
+    
     
 }
 

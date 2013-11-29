@@ -48,19 +48,20 @@
 
 - (void)lockEntered:(NSString*)key {
     NSLog(@"key: %@", key);
+    NSString *userId = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
+    [[DALoginModule alloc]checkPattern:key userId:userId callback:^(NSError *error, NSDictionary *user) {
+        NSLog(@"user key %@" ,user);
+        NSNumber *isRight = [user objectForKey:@"isRight"];
+        
+        if (![isRight boolValue]) {
+            [ProgressHUD showError:@"手势密码验证错误。"];
+        } else {
+            self.labelLock.text = @"通过";
+            lockStatus = YES;
+            [lockVC.view removeFromSuperview];
+        }
+    }];
     
-    if (![key isEqualToString:@"010509"]) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"错误"
-                                                            message:@"手势错误!"
-                                                           delegate:nil
-                                                  cancelButtonTitle:nil
-                                                  otherButtonTitles:@"重新输入", nil];
-        [alertView show];
-    } else {
-        self.labelLock.text = @"通过";
-        lockStatus = YES;
-        [lockVC.view removeFromSuperview];
-    }
     
 }
 

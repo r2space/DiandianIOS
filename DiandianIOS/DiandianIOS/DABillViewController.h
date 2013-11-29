@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SmartSDK.h"
-
+@class DAService;
 @interface DABillViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *lblTotal;
 @property (weak, nonatomic) IBOutlet UILabel *lblOff;

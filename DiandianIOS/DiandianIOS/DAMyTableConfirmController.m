@@ -184,15 +184,19 @@ UIViewController *parentVC;
     vc.curService = self.curService;
     
     self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
-    self.popover.popoverContentSize = CGSizeMake(320, 400);
+    self.popover.popoverContentSize = CGSizeMake(485, 400);
     [self.popover presentPopoverFromRect:btn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 
 }
 
 - (IBAction)payTheBill:(id)sender {
-    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-    DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];
+
+    DABillViewController *viewController = [[DABillViewController alloc]
+                                            initWithNibName:@"DABillViewController" bundle:nil];
+    viewController.curService = self.curService;
+    
     [parentVC.navigationController pushViewController:viewController animated:YES];
+    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
 }
 
 @end

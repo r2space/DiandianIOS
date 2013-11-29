@@ -65,6 +65,7 @@
 // TODO 服务器返回的JSON结构中有的地方是id有的地方是_id，需要进行统一
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *_id;
+@property (retain, nonatomic) NSDictionary *extend;
 @property (retain, nonatomic) UserName *name;
 @property (retain, nonatomic) UserPhoto *photo;
 @property (retain, nonatomic) NSArray *following;

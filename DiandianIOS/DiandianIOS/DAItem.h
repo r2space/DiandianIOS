@@ -21,6 +21,7 @@
 @property(retain, nonatomic) NSString *itemMethod;
 @property(retain, nonatomic) NSString *bigimage;
 @property(retain, nonatomic) NSString *smallimage;
+@property(retain, nonatomic) NSNumber *type;
 
 
 @property(retain, nonatomic) NSString *amount;

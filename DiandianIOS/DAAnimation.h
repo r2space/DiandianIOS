@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^ImageUpBlock)(NSString *image ,int it);
 @interface DAAnimation : NSObject
 
+
+
+
++(void) addAdAnimation :(UIImageView *)imageView imageList: (NSArray *) imageList;
 //增加订单效果
 +(void) addOrderAnimation :(UIButton*)button withSupview:(id)withSupview;
 +(void) addSmallOrderAnimation :(UIButton*)button withSupview:(id)withSupview;

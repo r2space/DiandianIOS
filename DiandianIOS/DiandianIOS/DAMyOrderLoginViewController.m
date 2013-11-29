@@ -9,6 +9,7 @@
 #import "DAMyOrderLoginViewController.h"
 #import "DrawPatternLockViewController.h"
 #import "ProgressHUD.h"
+#import "SmartSDK.h"
 
 
 @interface DAMyOrderLoginViewController ()
@@ -40,13 +41,18 @@
 
 - (void)lockEntered:(NSString*)key {
     NSLog(@"key: %@", key);
-    
-    if (![key isEqualToString:@"010509"]) {
-        [ProgressHUD showError:@"手势密码验证错误。"];
-    } else {
-        self.labelStatus.text = @"通过";
-        [lockVC.view removeFromSuperview];
-    }
+    NSString *userId = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
+    [[DALoginModule alloc]checkPattern:key userId:userId callback:^(NSError *error, NSDictionary *user) {
+        NSLog(@"user key %@" ,user);
+        NSNumber *isRight = [user objectForKey:@"isRight"];
+        
+        if (![isRight boolValue]) {
+            [ProgressHUD showError:@"手势密码验证错误。"];
+        } else {
+            self.labelStatus.text = @"通过";
+            [lockVC.view removeFromSuperview];
+        }
+    }];
     
 }
 

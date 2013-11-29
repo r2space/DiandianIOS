@@ -116,7 +116,11 @@
         if (order.amount == nil || [order.amount integerValue] == 0) {
             order.amount = [NSNumber numberWithInt:1];
         }
-        amountPrice = amountPrice + [order.item.itemPriceNormal integerValue] * [order.amount integerValue];
+        if( [order.type integerValue] == 0){
+            amountPrice = amountPrice + [order.item.itemPriceNormal integerValue];
+        } else {
+            amountPrice = amountPrice + [order.item.itemPriceHalf integerValue];
+        }
     }
     
     
@@ -126,7 +130,12 @@
             if (order.amount == nil || [order.amount integerValue] == 0) {
                 order.amount = [NSNumber numberWithInt:1];
             }
-            amountPrice = amountPrice + [order.item.itemPriceNormal integerValue] * [order.amount integerValue];
+            if( [order.type integerValue] == 0){
+                amountPrice = amountPrice + [order.item.itemPriceNormal integerValue] * [order.amount integerValue];
+            } else {
+                amountPrice = amountPrice + [order.item.itemPriceHalf integerValue] * [order.amount integerValue];
+            }
+            
         }
     }
     
@@ -199,6 +208,8 @@
         [remarkField setEnabled:NO];
         cell.backgroundColor = [UIColor lightGrayColor];
     }
+    [addBtn setHidden:YES];
+    [deleteBtn setHidden:YES];
     return cell;
 
     

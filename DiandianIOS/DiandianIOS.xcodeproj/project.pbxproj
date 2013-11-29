@@ -75,6 +75,10 @@
 		0A739E6F183B244F00AA48C4 /* DrawPatternLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A739E6D183B244F00AA48C4 /* DrawPatternLockViewController.m */; };
 		0A739E72183B2AB400AA48C4 /* dot_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A739E70183B2AB400AA48C4 /* dot_off.png */; };
 		0A739E73183B2AB400AA48C4 /* dot_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A739E71183B2AB400AA48C4 /* dot_on.png */; };
+		0A7502901848622800665B6C /* DAMyDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A75028F1848622800665B6C /* DAMyDevice.m */; };
+		0A750294184863E400665B6C /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A750293184863E400665B6C /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0A750296184866F500665B6C /* libeposprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A750295184866F500665B6C /* libeposprint.a */; };
+		0A75029A1848696400665B6C /* DAPrintProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502991848696400665B6C /* DAPrintProxy.m */; };
 		0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */; };
 		0A7AF0AB183600C900635376 /* DADrinkQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0A9183600C900635376 /* DADrinkQueueViewController.m */; };
 		0A7AF0AC183600C900635376 /* DADrinkQueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0AA183600C900635376 /* DADrinkQueueViewController.xib */; };
@@ -477,6 +481,14 @@
 		0A739E6D183B244F00AA48C4 /* DrawPatternLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawPatternLockViewController.m; sourceTree = "<group>"; };
 		0A739E70183B2AB400AA48C4 /* dot_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot_off.png; sourceTree = "<group>"; };
 		0A739E71183B2AB400AA48C4 /* dot_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot_on.png; sourceTree = "<group>"; };
+		0A75028E1848622800665B6C /* DAMyDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyDevice.h; sourceTree = "<group>"; };
+		0A75028F1848622800665B6C /* DAMyDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyDevice.m; sourceTree = "<group>"; };
+		0A750292184863E400665B6C /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		0A750293184863E400665B6C /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		0A750295184866F500665B6C /* libeposprint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libeposprint.a; sourceTree = "<group>"; };
+		0A7502971848670400665B6C /* ePOS-Print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ePOS-Print.h"; sourceTree = "<group>"; };
+		0A7502981848696400665B6C /* DAPrintProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPrintProxy.h; sourceTree = "<group>"; };
+		0A7502991848696400665B6C /* DAPrintProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPrintProxy.m; sourceTree = "<group>"; };
 		0A7AF0A21835C2E200635376 /* SMVerticalSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMVerticalSegmentedControl.h; sourceTree = "<group>"; };
 		0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMVerticalSegmentedControl.m; sourceTree = "<group>"; };
 		0A7AF0A8183600C900635376 /* DADrinkQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADrinkQueueViewController.h; sourceTree = "<group>"; };
@@ -892,6 +904,7 @@
 				0A12D3BE183C9CA000B8F930 /* SystemConfiguration.framework in Frameworks */,
 				0AA956FB18274DCA0098D60C /* CoreGraphics.framework in Frameworks */,
 				0AA956FD18274DCA0098D60C /* UIKit.framework in Frameworks */,
+				0A750296184866F500665B6C /* libeposprint.a in Frameworks */,
 				0AA956F918274DCA0098D60C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1088,6 +1101,8 @@
 				0AA031AA1843350900C66590 /* DAOrderProxy.m */,
 				0AA0320B18445E0C00C66590 /* DAMenuProxy.h */,
 				0AA0320C18445E0C00C66590 /* DAMenuProxy.m */,
+				0A7502981848696400665B6C /* DAPrintProxy.h */,
+				0A7502991848696400665B6C /* DAPrintProxy.m */,
 			);
 			name = Proxy;
 			sourceTree = "<group>";
@@ -1162,6 +1177,15 @@
 				0A739E6D183B244F00AA48C4 /* DrawPatternLockViewController.m */,
 			);
 			name = DrawPatternLockView;
+			sourceTree = "<group>";
+		};
+		0A750291184863CC00665B6C /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				0A750292184863E400665B6C /* OpenUDID.h */,
+				0A750293184863E400665B6C /* OpenUDID.m */,
+			);
+			name = OpenUDID;
 			sourceTree = "<group>";
 		};
 		0A7AF0A11835C2C900635376 /* SMVerticalSegmentedControl */ = {
@@ -1330,6 +1354,8 @@
 		0AA956F718274DCA0098D60C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A7502971848670400665B6C /* ePOS-Print.h */,
+				0A750295184866F500665B6C /* libeposprint.a */,
 				0A40FDE5183CEDCD00427613 /* libicucore.dylib */,
 				0A40FDE3183CEDB400427613 /* Security.framework */,
 				0A12D3C3183CA75600B8F930 /* CFNetwork.framework */,
@@ -1476,6 +1502,7 @@
 		0AB78B21183CB46500979BD0 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0A750291184863CC00665B6C /* OpenUDID */,
 				0AB78B22183CB46500979BD0 /* AFNetworking */,
 				0AB78B36183CB46500979BD0 /* Jastor */,
 				0AB78B3B183CB46500979BD0 /* Reachability */,
@@ -1692,6 +1719,8 @@
 				0AA031B318434A1E00C66590 /* DAMyOrderList.m */,
 				0AA032081844452400C66590 /* DAItemLayout.h */,
 				0AA032091844452400C66590 /* DAItemLayout.m */,
+				0A75028E1848622800665B6C /* DAMyDevice.h */,
+				0A75028F1848622800665B6C /* DAMyDevice.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -2162,6 +2191,8 @@
 				0AB78B86183CB46500979BD0 /* Reachability.m in Sources */,
 				0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */,
 				0AB78B40183CB46500979BD0 /* DACommon.m in Sources */,
+				0A750294184863E400665B6C /* OpenUDID.m in Sources */,
+				0A75029A1848696400665B6C /* DAPrintProxy.m in Sources */,
 				0A7AF0AB183600C900635376 /* DADrinkQueueViewController.m in Sources */,
 				28FFB64C18332272003443D1 /* NSString+Util.m in Sources */,
 				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
@@ -2247,6 +2278,7 @@
 				F2AB4C02182E03480067E450 /* DAOrderGroupViewController.m in Sources */,
 				F2AB4BFD182E030A0067E450 /* DAOrderDetailViewController.m in Sources */,
 				0A7AF0D31836077B00635376 /* DAQueueDrinkListViewController.m in Sources */,
+				0A7502901848622800665B6C /* DAMyDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2400,7 +2432,7 @@
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
 				INFOPLIST_FILE = "DiandianIOS/DiandianIOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /Users/Antony/Desktop/DAC/developer/DiandianIOS/DiandianIOS;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
 				VALID_ARCHS = armv7;
@@ -2422,7 +2454,7 @@
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
 				INFOPLIST_FILE = "DiandianIOS/DiandianIOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /Users/Antony/Desktop/DAC/developer/DiandianIOS/DiandianIOS;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
 				VALID_ARCHS = armv7;

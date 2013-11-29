@@ -84,7 +84,12 @@
     DAMyBackOrderViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DAMyBackOrderViewCell"];
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
     UILabel *labItemName = (UILabel *)[cell viewWithTag:10];
-    labItemName.text = order.item.itemName;
+    if ([order.type integerValue ] == 0) {
+        labItemName.text = order.item.itemName;
+    } else {
+        labItemName.text = [NSString stringWithFormat:@"(小)%@",order.item.itemName] ;
+    }
+    
     UILabel *labItemCount = (UILabel *)[cell viewWithTag:11];
     NSInteger oneCount = [order.oneItems count];
     labItemCount.text = [NSString stringWithFormat:@"已点%d份" ,oneCount];

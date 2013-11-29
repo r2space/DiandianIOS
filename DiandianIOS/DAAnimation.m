@@ -8,10 +8,36 @@
 
 #import "DAAnimation.h"
 #import "DAMyMenuBookViewController.h"
+#import "DAMenuProxy.h"
+
 #define MENU_FRAME_WIDTH    876
 #define MENU_FRAME_HEIGHT   694
 
 @implementation DAAnimation
+
+//广告的动画
++(void) addAdAnimation :(UIImageView *)imageView imageList: (NSArray *) imageList
+{
+//    int count = [imageList count];
+//    ImageUpBlock imageupBlock;
+//    int it = 0;
+//    imageupBlock = ^(NSString *image,int i){
+//        [DAAnimation changeImage:imageView image:image it:i callback:^(int imageIt) {
+//            if (imageIt == count) {
+//                imageIt = 0;
+//            }
+//            NSString *imageStr =  [imageList objectAtIndex:imageIt];
+//            imageupBlock(imageStr ,imageIt);
+//        }];
+//    };
+//    imageupBlock([imageList objectAtIndex:it],1);
+
+}
++(void)changeImage:(UIImageView *)imageView image:(NSString *)image it:(int)it callback:(void (^)(int imageIt ))callback
+{
+    
+    
+}
 
 // 增加来一份的动画
 +(void) addSmallOrderAnimation :(UIButton*)button withSupview:(DAMyMenuBookViewController *)withSupview

@@ -48,7 +48,20 @@
     [DADeskProxy initApp];
     
 }
-
+-(void) viewDidAppear:(BOOL)animated
+{
+    DASettingViewController *loginViewController = [[DASettingViewController alloc] initWithNibName:nil bundle:nil];
+    loginViewController.startupBlock=^(){
+        DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
+        [self.navigationController pushViewController:viewController animated:YES];
+    };
+    // init navigation ctrl
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning
 {

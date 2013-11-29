@@ -112,7 +112,12 @@
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:10];
     imgItem.image = [DAMenuProxy getImageFromDisk:row.item.smallimage];
     UILabel *lblName = (UILabel *)[cell viewWithTag:11];
-    lblName.text = row.item.itemName;
+    if ([row.type integerValue] == 0) {
+        lblName.text = row.item.itemName;
+    } else {
+        lblName.text = [NSString stringWithFormat:@"%@(小份)",row.item.itemName];
+    }
+    
     UILabel *lblWaitingTime = (UILabel *)[cell viewWithTag:12];
     
     UILabel *lblCountDesk = (UILabel *)[cell viewWithTag:13];

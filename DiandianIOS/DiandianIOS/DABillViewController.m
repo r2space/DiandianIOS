@@ -57,6 +57,13 @@
     [self initTopmenu];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@" sever : %@  deskId : %@ 结账",self.curService._id ,self.curService.deskId);
+}
+
+
 - (void) initTopmenu
 {
     self.viewTopmenuLabel.layer.cornerRadius = 15.0;

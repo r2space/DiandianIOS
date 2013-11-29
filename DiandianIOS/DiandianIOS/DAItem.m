@@ -26,6 +26,8 @@
     [aCoder encodeObject:self.itemMethod forKey:@"itemMethod"];
     [aCoder encodeObject:self.bigimage forKey:@"bigimage"];
     [aCoder encodeObject:self.smallimage forKey:@"smallimage"];
+    [aCoder encodeObject:self.type forKey:@"type"];
+    
     
 }
 
@@ -42,6 +44,7 @@
     self.itemMethod = [aDecoder decodeObjectForKey:@"itemMethod"];
     self.bigimage = [aDecoder decodeObjectForKey:@"bigimage"];
     self.smallimage = [aDecoder decodeObjectForKey:@"smallimage"];
+    self.type = [aDecoder decodeObjectForKey:@"type"];
     
     return self;
 }

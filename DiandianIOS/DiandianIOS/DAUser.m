@@ -101,6 +101,9 @@
     [aCoder encodeObject:self.road forKey:@"road"];
     [aCoder encodeObject:self.zip forKey:@"zip"];
 
+    
+    
+
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -215,6 +218,7 @@
     [aCoder encodeObject:self.lang forKey:@"lang"];
     [aCoder encodeObject:self.title forKey:@"title"];
     [aCoder encodeObject:self.authority forKey:@"authority"];
+    [aCoder encodeObject:self.extend forKey:@"extend"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -230,7 +234,7 @@
     self.lang = [aDecoder decodeObjectForKey:@"lang"];
     self.title = [aDecoder decodeObjectForKey:@"title"];
     self.authority = [aDecoder decodeObjectForKey:@"authority"];
-    
+    self.extend = [aDecoder decodeObjectForKey:@"extend"];
     
     return self;
 }

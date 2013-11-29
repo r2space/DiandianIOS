@@ -10,6 +10,8 @@
 #import "DrawPatternLockViewController.h"
 #import "DAMenuProxy.h"
 #import "ProgressHUD.h"
+#import "OpenUDID.h"
+
 
 @interface DASettingViewController ()
 {
@@ -98,6 +100,7 @@
         [ProgressHUD showSuccess:@"登录成功"];
         
         [[NSUserDefaults standardUserDefaults] setValue:userName forKey:@"jp.co.dreamarts.smart.diandian.username"];
+        [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.userId"];
         [[NSUserDefaults standardUserDefaults] setValue:password forKey:@"jp.co.dreamarts.smart.diandian.password"];
         [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
         
@@ -138,6 +141,7 @@
     
     if (isLogin) {
         NSLog(@"key: %@", key);
+        NSString *userId = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
         if (!setLock1 && !setLock2 && !lockStatus) {
             setPassword1 = key;
             setLock1 = YES;
@@ -148,10 +152,13 @@
             if ([setPassword1 isEqualToString:key]) {
                 setPassword2 = key;
                 setLock2 = YES;
-                [lockVC.view removeFromSuperview];
-                [ProgressHUD showError:@"手势密码设置成功。"];
-                setPassword = key;
-                lockStatus = YES;
+                [[DALoginModule alloc]updatePattern:key userId:userId callback:^(NSError *error, DAUser *user) {
+                    [lockVC.view removeFromSuperview];
+                    [ProgressHUD showError:@"手势密码设置成功。"];
+                    setPassword = key;
+                    lockStatus = YES;
+                }];
+                
             } else {
                 setPassword1 = @"";
                 setLock1 = NO;
@@ -168,9 +175,24 @@
         self.startupBlock();
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
-        [ProgressHUD showSuccess:@"请登录"];
+        [ProgressHUD showError:@"请登录"];
     }
     
+}
+- (IBAction)onDeviceApplyTouched:(id)sender {
+    if (isLogin) {
+        
+        NSString *userId = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];;
+        NSString *uuid = [OpenUDID value];
+        NSString *deviceId = uuid;
+        NSString *token = @"asdf";
+        [[DALoginModule alloc] addDevice:deviceId userId:userId token:token callback:^(NSError *error, DAMyDevice *device) {
+            NSLog(@"device   %@",device);
+            [ProgressHUD showSuccess:@"设备申请成功  可以使用"];
+        }];
+    } else {
+        [ProgressHUD showError:@"请登录"];
+    }
 }
 
 @end
