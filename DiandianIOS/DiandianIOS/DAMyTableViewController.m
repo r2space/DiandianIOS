@@ -82,20 +82,20 @@ static DAMyTableViewController *activity;
 {
     NSDictionary *dic =  [data objectForKey:@"service"];
     NSLog(@"service  dic %@" ,dic );
-    
-    // 更新桌信息
-    if ([@"refresh_desk" isEqualToString:action]) {
-        DADesk *new = [[DADesk alloc] initWithDictionary:data];
-        for (int i=0; i < dataList.count; i++) {
-            DADesk *desk = [dataList objectAtIndex:i];
-            if ([desk._id isEqualToString:new._id]) {
-                [dataList replaceObjectAtIndex:i withObject:new];
-                [self.collectionView reloadData];
-                break;
-            }
-        }
-    }
-//        [self loadFromFile];
+//    
+//    // 更新桌信息
+//    if ([@"refresh_desk" isEqualToString:action]) {
+//        DADesk *new = [[DADesk alloc] initWithDictionary:data];
+//        for (int i=0; i < dataList.count; i++) {
+//            DADesk *desk = [dataList objectAtIndex:i];
+//            if ([desk._id isEqualToString:new._id]) {
+//                [dataList replaceObjectAtIndex:i withObject:new];
+//                [self.collectionView reloadData];
+//                break;
+//            }
+//        }
+//    }
+        [self loadFromFile];
 }
 - (void) initTopmenu
 {
@@ -362,9 +362,16 @@ static DAMyTableViewController *activity;
 }
 
 - (IBAction)testUpdateMenuListTouched:(id)sender {
-    [DAMenuProxy getMenuListApiList];
+    
 }
 
+- (IBAction)onLogoutTouched:(id)sender {
+    [[DALoginModule alloc] logout:@"diandian" callback:^(NSError *error) {
+        [[NSUserDefaults standardUserDefaults]  setObject:@"NO" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+}
 
 
 @end

@@ -9,7 +9,7 @@
 #import "DAEntity.h"
 #import "SmartSDK.h"
 #import "DADesk.h"
-
+#import "DAItem.h"
 
 @interface DAOrder : DAEntity<NSCoding>
 
@@ -23,7 +23,7 @@
 @property (retain, nonatomic) DAService *service;
 @property (retain, nonatomic) DAItem   *item;
 
-@property (retain, nonatomic) NSString *type;
+@property (retain, nonatomic) NSNumber *type;
 @property (retain, nonatomic) NSString *back;
 @property (retain, nonatomic) NSString *valid;
 @property (retain, nonatomic) NSString *remark;

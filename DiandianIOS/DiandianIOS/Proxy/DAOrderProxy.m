@@ -49,4 +49,42 @@
     }];
 }
 
+
+
++ (DAMyOrderList* ) getOneDataList:(DAMyOrderList *) orderList
+{
+    DAMyOrderList *tempDataList = [[DAMyOrderList alloc]init];
+    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
+    
+    for (int i = 0 ; i < orderList.items.count ; i ++) {
+        DAOrder *order = [orderList.items objectAtIndex:i];
+        BOOL hasOneItem = NO;
+        if ([tmpList count] > 0 ) {
+            for (int j = 0 ; j < [tmpList count] ; j ++) {
+                DAOrder *tmpOrder = [tmpList objectAtIndex:j];
+                if ([tmpOrder.itemId isEqualToString:order.itemId]) {
+                    hasOneItem = YES;
+                    
+                }
+            }
+        }
+        if (!hasOneItem) {
+            order.oneItems = [[NSMutableArray alloc]init];
+            [order.oneItems addObject:order._id];
+            [tmpList addObject: order];
+        } else {
+            for (DAOrder *oneOrder in tmpList) {
+                if (oneOrder.itemId == order.itemId) {
+                    [oneOrder.oneItems addObject:order._id];
+                }
+            }
+        }
+        
+    }
+    tempDataList.items = [[NSArray alloc]initWithArray:tmpList];
+    return tempDataList;
+}
+
+
+
 @end

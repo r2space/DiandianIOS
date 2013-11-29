@@ -12,6 +12,8 @@
 
 #import "ProgressHUD.h"
 
+#import "DAOrderProxy.h"
+
 #import "Tool.h"
 
 @interface DAQueueItemListViewController ()
@@ -162,49 +164,13 @@
 - (void)loadFromFile {
 
     [ProgressHUD show:nil];
-    [[DAOrderModule alloc]getAllOrderList:0 count:20 callback:^(NSError *err, DAMyOrderList *list) {
-        dataList = list;
-        [self getOneDataList:list];
+    [[DAOrderModule alloc]getOrderListWithBack:@"0" start:0 count:20 callback:^(NSError *err, DAMyOrderList *list) {
+        dataList = [DAOrderProxy getOneDataList:list];
+        [self.collectionView reloadData];
         [ProgressHUD dismiss];
     }];
     
 }
-
-- (void ) getOneDataList:(DAMyOrderList *) orderList
-{
-    dataList = [[DAMyOrderList alloc]init];
-    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
-    
-    for (int i = 0 ; i < orderList.items.count ; i ++) {
-        DAOrder *order = [orderList.items objectAtIndex:i];
-        BOOL hasOneItem = NO;
-        if ([tmpList count] > 0 ) {
-            for (int j = 0 ; j < [tmpList count] ; j ++) {
-                DAOrder *tmpOrder = [tmpList objectAtIndex:j];
-                if ([tmpOrder.itemId isEqualToString:order.itemId]) {
-                    hasOneItem = YES;
-                    
-                }
-            }
-        }
-        if (!hasOneItem) {
-            order.oneItems = [[NSMutableArray alloc]init];
-            [order.oneItems addObject:order._id];
-            [tmpList addObject: order];
-        } else {
-            for (DAOrder *oneOrder in tmpList) {
-                if (oneOrder.itemId == order.itemId) {
-                    [oneOrder.oneItems addObject:order._id];
-                }
-            }
-        }
-        
-    }
-    
-    dataList.items = [[NSArray alloc]initWithArray:tmpList];
-    [self.collectionView reloadData];
-}
-
 
 - (void)filterItem:(NSString *)itemId tableNO:(NSString *)tableNo
 {

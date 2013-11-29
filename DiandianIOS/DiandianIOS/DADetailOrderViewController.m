@@ -160,10 +160,16 @@
     imageView.image = [DAMenuProxy getImageFromDisk:orderItem.item.smallimage];
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:10];
-    nameLabel.text = orderItem.item.itemName;
     UILabel *pirceLabel = (UILabel *)[cell viewWithTag:11];
     //TODO  半分
-    pirceLabel.text = [NSString stringWithFormat:@"%@元/盘",orderItem.item.itemPriceNormal];
+    if ([orderItem.type integerValue] == 0) {
+        nameLabel.text = orderItem.item.itemName;
+        pirceLabel.text = [NSString stringWithFormat:@"%@元/盘",orderItem.item.itemPriceNormal];
+    } else {
+        nameLabel.text = [NSString stringWithFormat:@"%@(小)",orderItem.item.itemName];
+        pirceLabel.text = [NSString stringWithFormat:@"%@元/盘",orderItem.item.itemPriceHalf];
+    }
+    
     
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:13];
     //TODO  两份合成一份  orderItem.item.amount
@@ -183,7 +189,10 @@
         
         [deleteBtn addTarget:self
                       action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
+        [addBtn setHidden:NO];
+        [deleteBtn setHidden:NO];
         [remarkField setEnabled:YES];
+        cell.backgroundColor = [UIColor clearColor];
     } else {
         [addBtn setHidden:YES];
         [deleteBtn setHidden:YES];

@@ -82,9 +82,15 @@
 */
 
 - (IBAction)addMenu:(id)sender {
-    NSLog(@"add order item  %@  " ,self.itemData.itemName);
-    NSNotification *addOrderNotification = [NSNotification notificationWithName:@"addOrder" object:self.itemData];
+    NSNotification *addOrderNotification = [NSNotification notificationWithName:@"menu_addOrder" object:self.itemData];
     
     [[NSNotificationCenter defaultCenter] postNotification:addOrderNotification];
 }
+
+- (IBAction)addSmallItem:(id)sender {
+    NSNotification *notice = [NSNotification notificationWithName:@"menu_addSmallItem" object:self.itemData];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:notice];
+}
+
 @end

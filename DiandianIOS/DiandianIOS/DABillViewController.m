@@ -118,6 +118,7 @@
     DABillDetailViewController *c = [[DABillDetailViewController alloc] initWithNibName:nil bundle:nil];
     c.finfishList = finishList;
     c.cancelList = cancelList;
+    
     c.chanelBlock = ^() {
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     };

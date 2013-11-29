@@ -99,6 +99,8 @@
 		0A7AF0DA18360B5000635376 /* da_data_queue_drink.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0D918360B5000635376 /* da_data_queue_drink.json */; };
 		0A7AF0DE183612EF00635376 /* DAQueueMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0DC183612EF00635376 /* DAQueueMasterViewController.m */; };
 		0A7AF0DF183612EF00635376 /* DAQueueMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0DD183612EF00635376 /* DAQueueMasterViewController.xib */; };
+		0A7EA1EE1847426D00A9E287 /* DASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EA1EC1847426D00A9E287 /* DASettingViewController.m */; };
+		0A7EA1EF1847426D00A9E287 /* DASettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7EA1ED1847426D00A9E287 /* DASettingViewController.xib */; };
 		0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F3E182DDDD70080F15F /* CustomLayout.m */; };
 		0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F46182E33BF0080F15F /* RFQuiltLayout.m */; };
 		0A8C2F56182E430F0080F15F /* 虫草炖官燕12.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A8C2F48182E430F0080F15F /* 虫草炖官燕12.png */; };
@@ -510,6 +512,9 @@
 		0A7AF0DB183612EF00635376 /* DAQueueMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQueueMasterViewController.h; sourceTree = "<group>"; };
 		0A7AF0DC183612EF00635376 /* DAQueueMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQueueMasterViewController.m; sourceTree = "<group>"; };
 		0A7AF0DD183612EF00635376 /* DAQueueMasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueMasterViewController.xib; sourceTree = "<group>"; };
+		0A7EA1EB1847426D00A9E287 /* DASettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASettingViewController.h; sourceTree = SOURCE_ROOT; };
+		0A7EA1EC1847426D00A9E287 /* DASettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASettingViewController.m; sourceTree = SOURCE_ROOT; };
+		0A7EA1ED1847426D00A9E287 /* DASettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASettingViewController.xib; sourceTree = SOURCE_ROOT; };
 		0A8C2F3D182DDDD70080F15F /* CustomLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayout.h; sourceTree = "<group>"; };
 		0A8C2F3E182DDDD70080F15F /* CustomLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayout.m; sourceTree = "<group>"; };
 		0A8C2F45182E33BF0080F15F /* RFQuiltLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFQuiltLayout.h; sourceTree = "<group>"; };
@@ -1357,6 +1362,9 @@
 				0AA9571118274DCA0098D60C /* DADetailViewController.m */,
 				0A577BC7182878DA009CDF6D /* DAViewController.h */,
 				0A577BC8182878DA009CDF6D /* DAViewController.m */,
+				0A7EA1EB1847426D00A9E287 /* DASettingViewController.h */,
+				0A7EA1EC1847426D00A9E287 /* DASettingViewController.m */,
+				0A7EA1ED1847426D00A9E287 /* DASettingViewController.xib */,
 				0AA9571318274DCA0098D60C /* Images.xcassets */,
 				0AA956FF18274DCA0098D60C /* Supporting Files */,
 			);
@@ -1961,6 +1969,7 @@
 				2886BAFE18360F5800A496AC /* DAProcessionViewController.xib in Resources */,
 				0AEBE5A21831162700B01A5E /* 清炒时蔬.jpg in Resources */,
 				0AEBE5931831162700B01A5E /* 凉拌猪耳.jpg in Resources */,
+				0A7EA1EF1847426D00A9E287 /* DASettingViewController.xib in Resources */,
 				287FA997183B3E5D00E02051 /* takeout.json in Resources */,
 				0AEBE5911831162700B01A5E /* 凉拌芹菜苗.jpg in Resources */,
 				0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */,
@@ -2124,6 +2133,7 @@
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0AA0320D18445E0C00C66590 /* DAMenuProxy.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
+				0A7EA1EE1847426D00A9E287 /* DASettingViewController.m in Sources */,
 				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,
 				0AB78B3E183CB46500979BD0 /* DAAFHttpClient.m in Sources */,
 				0A924AAF18348A810004C973 /* DAMyTableListViewController.m in Sources */,

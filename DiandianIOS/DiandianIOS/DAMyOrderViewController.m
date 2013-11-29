@@ -20,6 +20,7 @@
 @interface DAMyOrderViewController ()<DADetailOrderDelegate>
 {
     DAMyOrderList *oldOrderDataList;
+    DAMyOrderList *backOrderDataList;
 }
 @end
 
@@ -44,7 +45,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOrder:) name:@"addOrder" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOrder:) name:@"menu_addOrder" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addSmallItem:) name:@"menu_addSmallItem" object:nil];
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationSetRecipe:) name:@"setRecipe" object:nil];
     
@@ -60,6 +63,7 @@
     [DAOrderProxy getOldOrderListByServiceId:self.curService._id callback:^(NSError *err, DAMyOrderList *list) {
         NSLog(@"getOldOrderListByServiceId  %s  %d" ,__FUNCTION__,__LINE__);
         oldOrderDataList = list;
+        [self loadAmountPrice];
     }];
 }
 
@@ -70,6 +74,16 @@
     for (DAOrder *order in self.dataList.items) {
         amountPrice = amountPrice + [order.item.itemPriceNormal integerValue];
     }
+    //老菜单 总价
+    for (NSArray *oldArray in oldOrderDataList.oldItems) {
+        for (DAOrder *order in oldArray) {
+            if (order.amount == nil || [order.amount integerValue] == 0) {
+                order.amount = [NSNumber numberWithInt:1];
+            }
+            amountPrice = amountPrice + [order.item.itemPriceNormal integerValue] * [order.amount integerValue];
+        }
+    }
+    
     self.labelAmount.text = [NSString stringWithFormat:@"总价:%d元" ,amountPrice];
     
 }
@@ -78,8 +92,6 @@
     NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
-
-//        self.dataList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
         
         [self.tableView reloadData];
         
@@ -107,6 +119,24 @@
     
 }
 
+- (void)addSmallItem :(NSNotification*) notification
+{
+    DAItem *obj = [notification object];
+    DAOrder *_order = [[DAOrder alloc]init];
+    _order.item = obj;
+    _order.itemId = obj._id;
+    _order.deskId = self.curService.deskId;
+    _order.serviceId = self.curService._id;
+    _order.isNew = [NSString stringWithFormat:@"YES"];
+    _order.type = [NSString stringWithFormat:@"1"];
+    
+    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
+    [tmpList addObject:_order];
+    [tmpList addObjectsFromArray:self.dataList.items];
+    self.dataList.items = [[NSArray alloc] initWithArray:tmpList];
+    [self tableViewReload];
+    
+}
 
 - (void)addOrder :(NSNotification*) notification
 {
@@ -118,6 +148,7 @@
     _order.deskId = self.curService.deskId;
     _order.serviceId = self.curService._id;
     _order.isNew = [NSString stringWithFormat:@"YES"];
+    _order.type = [NSString stringWithFormat:@"0"];
     
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [tmpList addObject:_order];
@@ -145,10 +176,7 @@
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:12];
     titleLabel.text = item.itemName;
     amountLabel.text = [NSString stringWithFormat:@"%@份", item.amount];
-//    if (item.status!=nil && [item.status isEqualToString:@"doing"]) {
-//        
-//        return cell;
-//    }
+    
 
     DAOrderAddAmountBtn *deleteBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:123];
     DAOrderRecipeBtn *recipeBtn = (DAOrderRecipeBtn *)[cell viewWithTag:31];
@@ -159,9 +187,9 @@
     recipeBtn.name = item.itemName;
     recipeBtn.orderId = item._id;
 
-    [deleteBtn addTarget:self
-               action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
-    [recipeBtn addTarget:self action:@selector(updateRecipe: ) forControlEvents:UIControlEventTouchUpInside];
+//    [deleteBtn addTarget:self
+//               action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
+//    [recipeBtn addTarget:self action:@selector(updateRecipe: ) forControlEvents:UIControlEventTouchUpInside];
 
 
     return cell;
@@ -174,7 +202,8 @@
 {
     return [indexPath row];
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     
     return [self.dataList.items count];
 }
@@ -194,10 +223,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DAItemLayout *itemLayout = [[DAItemLayout alloc]initWithDictionary:[self.dataList.items objectAtIndex:indexPath.row]];
-    
-    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"popupDetailMenu" object:itemLayout.item];
-    
+    NSLog(@"DAMyOrderViewController   ");
+    DAOrder *_order = [self.dataList.items objectAtIndex:indexPath.row];
+//
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"popupDetailMenu" object:_order.item];
+//
     [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
     
 }
@@ -236,17 +266,15 @@
 -(void)backButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
     [self loadTableFromDisk];
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-    [self tableViewReload];
     
     
     //SOCKETIO提交订单
     DASocketIO *socket = [DASocketIO sharedClient:self];
     [socket conn];
     
-    DAMyOrderList *tmpList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:[tmpList toArray] forKey:@"orderList"];
+    [dic setValue:[self.dataList toArray] forKey:@"orderList"];
     [dic setValue:self.curService.deskId forKey:@"deskId"];
     [socket sendJSONwithAction:@"addOrder" data:[[NSDictionary alloc]initWithDictionary:dic]];
     
@@ -283,11 +311,6 @@
     secondDetailViewController.delegate = self;
     [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
 }
-
-
-- (IBAction)overOrder:(id)sender {
-}
-
 
 -(void) deleteAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;

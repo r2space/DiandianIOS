@@ -90,10 +90,20 @@
 {
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
     DADesk *desk = [[DADesk alloc]initWithDictionary:order.desk];
-    
-    self.selectDeskBlock(order._id , desk._id);
-    
-    
+
+    [ProgressHUD show:nil];
+    [[DAOrderModule alloc] setDoneOrder:order._id callback:^(NSError *err, DAOrder *list) {
+        [ProgressHUD dismiss];
+        self.selectDeskBlock(order._id , desk._id);
+    }];
+    NSMutableArray *tempList = [[NSMutableArray alloc]init];
+    for (DAOrder *tmpOrder in dataList.items) {
+        if (![tmpOrder._id isEqualToString:order._id]) {
+            [tempList addObject:tmpOrder];
+        }
+    }
+    dataList.items = [[NSArray alloc] initWithArray:tempList];
+    [self.tableView reloadData];
 }
 
 - (void)filterTable:(NSArray *)orderIds deskId:(NSString *)deskId

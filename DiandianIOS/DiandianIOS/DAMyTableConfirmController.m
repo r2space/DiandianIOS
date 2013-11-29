@@ -181,7 +181,7 @@ UIViewController *parentVC;
     for (int i = 0; i < 50; i++) {
         [wList addObject:[NSString stringWithFormat:@"%d", i]];
     }
-    
+    vc.curService = self.curService;
     
     self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
     self.popover.popoverContentSize = CGSizeMake(320, 400);

@@ -181,19 +181,35 @@
     [imageView setImage:[DAMenuProxy getImageFromDisk:data.item.smallimage]];
     
     UIButton *addBtn = (UIButton *)[cell viewWithTag:13];
+    UIButton *addSmallBtn = (UIButton *)[cell viewWithTag:14];
     UILabel *labelAmount = (UILabel *)[cell viewWithTag:19];
-    labelAmount.text = [NSString stringWithFormat:@"大%@元/小%@元",data.item.itemPriceNormal, data.item.itemPriceHalf];
-
+    if (data.item.itemPriceHalf!=nil && data.item.itemPriceHalf.length > 0 ) {
+        labelAmount.text = [NSString stringWithFormat:@"大%@元/小%@元",data.item.itemPriceNormal, data.item.itemPriceHalf];
+        [addSmallBtn setHidden:NO];
+    } else {
+        labelAmount.text = [NSString stringWithFormat:@"%@元",data.item.itemPriceNormal];
+        [addSmallBtn setHidden:YES];
+        //添加小份动画
+        [addSmallBtn addTarget:self
+                   action:@selector(addSmallMenu:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
     [addBtn addTarget:self
             action:@selector(addMenu:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
 
+-(void)addSmallMenu:(UIButton*)button
+{
+    [DAAnimation addSmallOrderAnimation:button withSupview:self];
+}
+    
 -(void)addMenu:(UIButton*)button{
     
     [DAAnimation addOrderAnimation:button withSupview:self];
 }
+
 #pragma mark – RFQuiltLayoutDelegate
 
 - (CGSize) blockSizeForItemAtIndexPath:(NSIndexPath *)indexPath {

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmartSDK.h"
 
 @interface DABillViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *lblTotal;
@@ -16,6 +17,7 @@
 - (IBAction)onDetailTaped:(id)sender;
 - (IBAction)onBackTouched:(id)sender;
 
+@property (nonatomic, retain) DAService *curService;
 
 @property (weak, nonatomic) IBOutlet UIView *viewTopmenu;
 @property (weak, nonatomic) IBOutlet UILabel *viewTopmenuLabel;

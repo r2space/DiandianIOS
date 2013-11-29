@@ -12,7 +12,7 @@
 
 //增加订单效果
 +(void) addOrderAnimation :(UIButton*)button withSupview:(id)withSupview;
-
++(void) addSmallOrderAnimation :(UIButton*)button withSupview:(id)withSupview;
 // UIView追加闪烁阴影效果
 + (void) addFlickerShadow:(UIView*)view shadowColor:(UIColor*)color shadowRadius:(float)shadowRadius;
 // UIView移除闪烁阴影效果
