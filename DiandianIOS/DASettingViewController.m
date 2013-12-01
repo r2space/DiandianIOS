@@ -11,6 +11,7 @@
 #import "DAMenuProxy.h"
 #import "ProgressHUD.h"
 #import "OpenUDID.h"
+#import "DAPrintProxy.h"
 
 
 @interface DASettingViewController ()
@@ -135,6 +136,29 @@
         [ProgressHUD showSuccess:@"请登录"];
     }
     
+}
+- (IBAction)onTestPrintTouched:(id)sender {
+    DAPrintProxy *print = [[DAPrintProxy alloc] init];
+
+    [print addLine:@"单号：0021 包：4 下单时间：18:30"];
+    [print addSplit];
+    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+    [print addLine:@"红烧排骨（大份） 1份"];
+    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+    [print addLine:@"红烧排骨（大份） 1份"];
+    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+    [print addLine:@"红烧排骨（大份） 1份"];
+    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+    [print addLine:@"红烧排骨（大份） 1份"];
+    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+    [print addLine:@"红烧排骨（大份） 1份"];
+    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+    [print addLine:@"红烧排骨（大份） 1份"];
+    [print addLine:@"asdfasdfasdf"];
+    [print addSplit];
+
+    [print printText];
+
 }
 
 - (void)lockEntered:(NSString*)key {

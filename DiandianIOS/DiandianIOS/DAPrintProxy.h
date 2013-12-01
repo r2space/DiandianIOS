@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "ePOS-Print.h"
+#import "SmartSDK.h"
+@class  DAMyOrderList;
 
 @interface DAPrintProxy : NSObject
 
@@ -17,4 +19,6 @@
 - (void)addSplit:(int)length;
 - (int)printText;
 
+
++(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum;
 @end

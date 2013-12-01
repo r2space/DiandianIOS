@@ -15,7 +15,7 @@
 #import "DAMyOrderLoginViewController.h"
 #import "DASocketIO.h"
 #import "DAOrderProxy.h"
-
+#import "DAPrintProxy.h"
 
 @interface DAMyOrderViewController ()<DADetailOrderDelegate>
 {
@@ -304,6 +304,10 @@
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setValue:[self.dataList toArray] forKey:@"orderList"];
+        
+        [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:self.curService._id orderNum:@"10001"];
+        
+        
         [dic setValue:self.curService.deskId forKey:@"deskId"];
         [socket sendJSONwithAction:@"addOrder" data:[[NSDictionary alloc]initWithDictionary:dic]];
         

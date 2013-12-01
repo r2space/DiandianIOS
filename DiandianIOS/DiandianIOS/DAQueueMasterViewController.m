@@ -18,6 +18,9 @@
     DAItemViewController *orderGroupViewController;
     DADrinkQueueViewController *drinkChildView;
     
+    NSTimer         *timer;         // 涮新用计时器
+    BOOL            puaseTimer;
+    
 }
 @end
 
@@ -63,6 +66,32 @@
         btn.layer.shadowOpacity = 0.6;
         btn.layer.shadowOffset = CGSizeMake(0, 1);
     }
+    
+    [self initPrint];
+    
+}
+
+-(void)initPrint
+{
+    // 创建定时器
+    puaseTimer = NO;
+    timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                             target:self
+                                           selector:@selector(timerEvent:)
+                                           userInfo:nil
+                                            repeats:YES];
+    // 启动定时器
+    [timer fire];
+}
+
+// 定时获取消息。发生滚动时，停止定时器
+- (void)timerEvent:(NSTimer *)timer
+{
+    if (puaseTimer) {
+        return;
+    }
+
+    NSLog(@"timer  status  "  );
     
 }
 

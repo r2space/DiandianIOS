@@ -14,6 +14,7 @@ typedef void (^StartUpBlock)();
 
 @property (weak, nonatomic) IBOutlet UITextField *labUsername;
 @property (weak, nonatomic) IBOutlet UITextField *labPassword;
+@property (weak, nonatomic) IBOutlet UITextField *labPrintIP;
 
 @property (nonatomic, copy) StartUpBlock startupBlock;
 

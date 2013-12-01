@@ -22,6 +22,35 @@ enum PrintErrorStatus
     NSMutableArray *lines;
 }
 
++(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum
+{
+    
+    DAPrintProxy *print = [[DAPrintProxy alloc] init];
+    
+    [print addLine:[NSString stringWithFormat:@"单号:%@ 包： %@ 下单时间：18:30",deskName,orderNum]];
+    
+    [print addSplit];
+    for (DAOrder *order in orderList.items) {
+        
+        NSString *line;
+        if ([order.type  integerValue] == 0) {
+            line = [NSString stringWithFormat:@"%@ 1份 .." ,order.item.itemName];
+        } else {
+            line = [NSString stringWithFormat:@"%@ （小份） 1份 .." ,order.item.itemName];
+        }
+        
+        
+        [print addLine:line];
+    }
+    
+    [print addSplit];
+    
+    [print printText];
+
+    
+}
+
+
 - (id)init {
     self = [super init];
     if (self != nil) {
@@ -217,5 +246,8 @@ enum PrintErrorStatus
     
     return result;
 }
+
+
+
 
 @end

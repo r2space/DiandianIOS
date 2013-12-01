@@ -277,8 +277,6 @@ static DAMyTableViewController *activity;
             vc.delegate = self;
             vc.curDesk  = desk;
             [self  presentPopupViewController:vc animationType:MJPopupViewAnimationFade];
-            
-//            [DAMyLoginViewController show: desk parentView:self ];
         }
     }
     
