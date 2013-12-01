@@ -8,18 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "ePOS-Print.h"
-#define SEND_TIMEOUT    10 * 1000
-#define SIZEWIDTH_MAX   8
+
 @interface DAPrintProxy : NSObject
-{
-    EposPrint *printer_;
-    NSString* printername_;
-    int language_;
-    NSString *textData_;
-    
-}
-- (id)initWithPrinter:(EposPrint*)printer
-          printername:(NSString*)printername
-             language:(int)language;
+
+- (void)addLine:(NSString *)text;
+- (void)addLineBreak;
+- (void)addSplit;
+- (void)addSplit:(int)length;
+- (int)printText;
 
 @end

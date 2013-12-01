@@ -8,224 +8,214 @@
 
 #import "DAPrintProxy.h"
 
-@implementation DAPrintProxy
+#define SEND_TIMEOUT    10 * 1000
+#define PRINT_NAME      @"TM-T88V"
 
-
-- (id)initWithPrinter:(EposPrint*)printer
-          printername:(NSString*)printername
-             language:(int)language
+enum PrintErrorStatus
 {
+	PRINT_ERROR = -1,
+	PRINT_SUCCESS = 0
+};
+
+@implementation DAPrintProxy
+{
+    NSMutableArray *lines;
+}
+
+- (id)init {
     self = [super init];
-    if (self) {
-        printer_ = printer ;
-        printername_ = printername ;
-        language_ = language;
-        
+    if (self != nil) {
+        lines = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
--(void)openPrinter
-{
-    //open
-    EposPrint *_printer = [[EposPrint alloc] init];
-    if(_printer == nil){
-        return ;
-    }
-    int result = [_printer openPrinter:EPOS_OC_DEVTYPE_TCP DeviceName:@"10.2.3.149" Enabled:[self getStatusMonitorEnabled] Interval:[self getInterval]];
-    if(result != EPOS_OC_SUCCESS){
-        
-        return;
-    }
-    printer_ = _printer;
-    
-    [printer_ setStatusChangeEventCallback:@selector(onStatusChange:Status:) Target:self];
-    [printer_ setBatteryStatusChangeEventCallback:@selector(onBatteryStatusChange:Battery:) Target:self];
-    
-}
-- (void)onStatusChange:(NSString *)deviceName Status:(NSNumber *)status
-{
-    NSLog(@"onStatusChange deviceName%@",deviceName);
-    NSLog(@"onStatusChange status%@",status);
+- (void)addLine:(NSString *)text {
+    [lines addObject:text];
 }
 
-- (void)onBatteryStatusChange:(NSString *)deviceName Battery:(NSNumber *)battery
-{
-    NSLog(@"onBatteryStatusChange deviceName%@",deviceName);
-    NSLog(@"onBatteryStatusChange status%@",battery);
+- (void)addLineBreak {
+    [lines addObject:@"\n"];
 }
 
-- (long)getInterval
+- (void)addSplit
 {
-    return 1000;
-}
-- (int)getStatusMonitorEnabled
-{
-//    if(switchStatusMonitor_.on){
-        return EPOS_OC_TRUE;
-//    }else{
-//        return EPOS_OC_FALSE;
-//    }
+    [self addSplit:48];
 }
 
-- (void)printText
+- (void)addSplit:(int)length
 {
-    if(textData_.length == 0){
-        NSLog(@"errmsg_notext");
-        return ;
+    NSString *split = [@"" stringByPaddingToLength:length withString:@"_" startingAtIndex:0];
+    [lines addObject:split];
+}
+
+- (EposPrint *)getPrinter
+{
+    EposPrint *printer = [[EposPrint alloc] init];
+    
+    // open
+    int result = [printer openPrinter:EPOS_OC_DEVTYPE_TCP DeviceName:@"10.2.3.149"];
+    if (result != EPOS_OC_SUCCESS) {
+        return nil;
     }
     
-    
-    //create builder
-    EposBuilder *builder = [[EposBuilder alloc] initWithPrinterModel:printername_ Lang:EPOS_OC_MODEL_CHINESE];
+    return printer;
+}
+
+- (int)printText
+{
+    // create builder
+    EposBuilder *builder = [[EposBuilder alloc] initWithPrinterModel:PRINT_NAME Lang:EPOS_OC_MODEL_CHINESE];
     if(builder == nil){
-        return ;
+        return PRINT_ERROR;
     }
     
-    //add command
-    int result = [builder addTextFont:[self getBuilderFont]];
+    // set language
+    int result = [builder addTextLang:EPOS_OC_LANG_ZH_CN];
     if(result != EPOS_OC_SUCCESS){
-        NSLog(@"ddTextFont");
-        return ;
+        return PRINT_ERROR;
     }
     
-    result = [builder addTextAlign:[self getBuilderAlign]];
+    // print text
+    for (NSString *line in lines) {
+        result = [builder addText:[line stringByAppendingString:@"\n" ]];
+        if(result != EPOS_OC_SUCCESS){
+            return PRINT_ERROR;
+        }
+    }
+
+    // feed
+    result = [builder addFeedUnit:30];
     if(result != EPOS_OC_SUCCESS){
-        NSLog(@"addTextAlign");
-        return ;
+        return PRINT_ERROR;
     }
     
-    result = [builder addTextLineSpace:[self getBuilderLineSpace]];
-    if(result != EPOS_OC_SUCCESS){
-        NSLog(@"addTextLineSpace");
-        return ;
+    // cut
+    result = [builder addCut:EPOS_OC_CUT_FEED];
+    if (result != EPOS_OC_SUCCESS) {
+        return PRINT_ERROR;
     }
     
-    result = [builder addTextLang:[self getBuilderLanguage]];
-    if(result != EPOS_OC_SUCCESS){
-        NSLog(@"addTextLang");
-        return ;
-    }
+    // open printer
+    EposPrint *printer = [self getPrinter];
     
-    result = [builder addTextSize:[self getBuilderSizeW] Height:[self getBuilderSizeH]];
-    if(result != EPOS_OC_SUCCESS){
-        NSLog(@"addTextSize");
-        
-        return ;
-    }
-    
-    result = [builder addTextStyle:EPOS_OC_FALSE Ul:[self getBuilderStyleUnderline] Em:[self getBuilderStyleBold] Color:EPOS_OC_COLOR_1];
-    if(result != EPOS_OC_SUCCESS){
-        NSLog(@"addTextStyle");
-        return ;
-    }
-    
-    result = [builder addTextPosition:[self getBuilderXPosition]];
-    if(result != EPOS_OC_SUCCESS){
-        NSLog(@"addTextPosition");
-        return ;
-    }
-    
-    result = [builder addText:[self getBuilderText]];
-    if(result != EPOS_OC_SUCCESS){
-        NSLog(@"addText");
-        
-        return ;
-    }
-    
-    result = [builder addFeedUnit:[self getBuilderFeedUnit]];
-    if(result != EPOS_OC_SUCCESS){
-        NSLog(@"addFeedUnit");
-        return ;
-    }
-    
-    //send builder data
+    // send builder data
     unsigned long status = 0;
     unsigned long battery = 0;
-    result = [printer_ sendData:builder Timeout:SEND_TIMEOUT Status:&status Battery:&battery];
+    result = [printer sendData:builder Timeout:SEND_TIMEOUT Status:&status Battery:&battery];
+    if (result != EPOS_OC_SUCCESS) {
+        return PRINT_ERROR;
+    }
     
-    //remove builder
+    // clear data & close print
+    [lines removeAllObjects];
+    [printer closePrinter];
+    
+    // remove builder
     [builder clearCommandBuffer];
+    
+    return PRINT_SUCCESS;
 }
 
-- (int)getBuilderFont
+// convert EposPrint result to text
+- (NSString*)getEposResultText:(int)result
 {
-//    switch(fontList_.selectIndex){
-//        case 1:
-//            return EPOS_OC_FONT_B;
-//        case 2:
-//            return EPOS_OC_FONT_C;
-//        case 0:
-//        default:
-            return EPOS_OC_FONT_A;
-//    }
+    switch(result){
+        case EPOS_OC_SUCCESS:
+            return @"SUCCESS";
+        case EPOS_OC_ERR_PARAM:
+            return @"ERR_PARAM";
+        case EPOS_OC_ERR_OPEN:
+            return @"ERR_OPEN";
+        case EPOS_OC_ERR_CONNECT:
+            return @"ERR_CONNECT";
+        case EPOS_OC_ERR_TIMEOUT:
+            return @"ERR_TIMEOUT";
+        case EPOS_OC_ERR_MEMORY:
+            return @"ERR_MEMORY";
+        case EPOS_OC_ERR_ILLEGAL:
+            return @"ERR_ILLEGAL";
+        case EPOS_OC_ERR_PROCESSING:
+            return @"ERR_PROCESSING";
+        case EPOS_OC_ERR_UNSUPPORTED:
+            return @"ERR_UNSUPPORTED";
+        case EPOS_OC_ERR_OFF_LINE:
+            return @"ERR_OFF_LINE";
+        case EPOS_OC_ERR_FAILURE:
+            return @"ERR_FAILURE";
+        default:
+            return [NSString stringWithFormat:@"%d", result];
+    }
 }
 
-- (int)getBuilderAlign
+// covnert EposPrint status to text
+- (NSString*)getEposStatusText:(unsigned long)status
 {
-//    switch(alignList_.selectIndex){
-//        case 1:
-//            return EPOS_OC_ALIGN_CENTER;
-//        case 2:
-            return EPOS_OC_ALIGN_RIGHT;
-//        case 0:
-//        default:
-//            return EPOS_OC_ALIGN_LEFT;
-//    }
+    NSString *result = @"";
+    
+    for(int bit = 0; bit < 32; bit++){
+        unsigned int value = 1 << bit;
+        if((value & status) != 0){
+            NSString *msg = @"";
+            switch(value){
+                case EPOS_OC_ST_NO_RESPONSE:
+                    msg = @"NO_RESPONSE";
+                    break;
+                case EPOS_OC_ST_PRINT_SUCCESS:
+                    msg = @"PRINT_SUCCESS";
+                    break;
+                case EPOS_OC_ST_DRAWER_KICK:
+                    msg = @"DRAWER_KICK";
+                    break;
+                case EPOS_OC_ST_OFF_LINE:
+                    msg = @"OFF_LINE";
+                    break;
+                case EPOS_OC_ST_COVER_OPEN:
+                    msg = @"COVER_OPEN";
+                    break;
+                case EPOS_OC_ST_PAPER_FEED:
+                    msg = @"PAPER_FEED";
+                    break;
+                case EPOS_OC_ST_WAIT_ON_LINE:
+                    msg = @"WAIT_ON_LINE";
+                    break;
+                case EPOS_OC_ST_PANEL_SWITCH:
+                    msg = @"PANEL_SWITCH";
+                    break;
+                case EPOS_OC_ST_MECHANICAL_ERR:
+                    msg = @"MECHANICAL_ERR";
+                    break;
+                case EPOS_OC_ST_AUTOCUTTER_ERR:
+                    msg = @"AUTOCUTTER_ERR";
+                    break;
+                case EPOS_OC_ST_UNRECOVER_ERR:
+                    msg = @"UNRECOVER_ERR";
+                    break;
+                case EPOS_OC_ST_AUTORECOVER_ERR:
+                    msg = @"AUTORECOVER_ERR";
+                    break;
+                case EPOS_OC_ST_RECEIPT_NEAR_END:
+                    msg = @"RECEIPT_NEAR_END";
+                    break;
+                case EPOS_OC_ST_RECEIPT_END:
+                    msg = @"RECEIPT_END";
+                    break;
+                case EPOS_OC_ST_BUZZER:
+                    break;
+                default:
+                    return [NSString stringWithFormat:@"%d", value];
+                    break;
+            }
+            if(msg.length != 0){
+                if(result.length != 0){
+                    result = [result stringByAppendingString:@"\n"];
+                }
+                result = [result stringByAppendingString:msg];
+            }
+        }
+    }
+    
+    return result;
 }
-
-- (long)getBuilderLineSpace
-{
-    return 10;
-}
-
-- (int)getBuilderLanguage
-{
-    return EPOS_OC_LANG_ZH_CN;
-}
-
-- (long)getBuilderSizeW
-{
-    return 400;
-}
-
-- (long)getBuilderSizeH
-{
-    return 400;
-}
-
-- (int)getBuilderStyleBold
-{
-//    if(switchStyleBold_.on){
-//        return EPOS_OC_TRUE;
-//    }else{
-        return EPOS_OC_FALSE;
-//    }
-}
-
-- (int)getBuilderStyleUnderline
-{
-//    if(switchStyleUnderline_.on){
-//        return EPOS_OC_TRUE;
-//    }else{
-        return EPOS_OC_FALSE;
-//    }
-}
-
-- (long)getBuilderXPosition
-{
-    return 10;
-}
-
-- (NSString *)getBuilderText
-{
-    return textData_;
-}
-
-- (long)getBuilderFeedUnit
-{
-    return 10;
-}
-
 
 @end
