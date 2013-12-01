@@ -7,10 +7,13 @@
 //
 
 #import "DAQueueDrinkTableViewController.h"
+#import "ProgressHUD.h"
+#import "DAOrderProxy.h"
+
 
 @interface DAQueueDrinkTableViewController ()
 {
-    NSArray *dataList;
+    DAMyOrderList *dataList;
 }
 @end
 
@@ -29,12 +32,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    dataList =  [[NSArray alloc ]init];
+    dataList =  [[DAMyOrderList alloc ]init];
+    dataList.items = [[NSArray alloc]init];
+    
     // Do any additional setup after loading the view from its nib.
     UINib *cellNib = [UINib nibWithNibName:@"DAQueueTableCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAQueueTableCell"];
-    [self loadFromFile];
 
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self loadFromFile];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,7 +64,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return dataList.count;
+    return [dataList.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,15 +72,16 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DAQueueTableCell"];
     
     
-    NSDictionary *row = [dataList objectAtIndex:indexPath.row];
+    DAOrder *row = [dataList.items objectAtIndex:indexPath.row];
     UILabel *lblName = (UILabel *)[cell viewWithTag:10];
-    lblName.text = [row objectForKey:@"name"];
+    lblName.text = row.desk.name;
     
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:11];
-    imgItem.image = [UIImage imageNamed:[row objectForKey:@"image"]];
+    imgItem.image = [UIImage imageNamed:@"sample-table.jpg"];
     
     UILabel *lblProcess = (UILabel *)[cell viewWithTag:12];
-    lblProcess.text = [row objectForKey:@"process"];
+    lblProcess.hidden = NO;
+    lblProcess.text = [NSString stringWithFormat:@"%d个" ,[row.oneItems count]];
     
     
     return cell;
@@ -81,24 +92,25 @@
     return 160;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
+    DADesk *desk = order.desk;
+    
+    self.deskClickCallback(order.serviceId,desk._id);
+}
 
 
 
 - (void)loadFromFile {
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"queue_group" ofType:@"json"];
-    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
+    [ProgressHUD show:nil];
+    [[DAOrderModule alloc] getDeskListOfNeItemOrder:^(NSError *err, DAMyOrderList *list) {
+        dataList = [DAOrderProxy getOneDeskDataList:list];
+        [self.tableView reloadData];
+        [ProgressHUD dismiss];
+        
+    }];
     
-    NSError *anError = nil;
-    NSArray *items = [NSJSONSerialization JSONObjectWithData:elementsData
-                                                     options:NSJSONReadingAllowFragments
-                                                       error:&anError];
-    
-    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
-    for (NSDictionary *d in items){
-        [tmpList addObject:d];
-    }
-    dataList = [[NSArray alloc] initWithArray:tmpList];
-    [self.tableView reloadData];
 }
 
 

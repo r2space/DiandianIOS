@@ -18,6 +18,7 @@
 +(void) getOldOrderListByServiceId:(NSString *)serviceId callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
 + (DAMyOrderList* ) getOneDataList:(DAMyOrderList *) orderList;
++ (DAMyOrderList* ) getOneDeskDataList:(DAMyOrderList *) orderList;
 
 
 @end

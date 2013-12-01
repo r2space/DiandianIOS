@@ -22,6 +22,8 @@
     [aCoder encodeObject:self.orderNum forKey:@"orderNum"];
     [aCoder encodeObject:self.service forKey:@"service"];
     [aCoder encodeObject:self.item forKey:@"item"];
+    [aCoder encodeObject:self.itemType forKey:@"itemType"];
+    
     [aCoder encodeObject:self.type forKey:@"type"];
     [aCoder encodeObject:self.back forKey:@"back"];
     [aCoder encodeObject:self.valid forKey:@"valid"];
@@ -39,10 +41,13 @@
     self.serviceId = [aDecoder decodeObjectForKey:@"serviceId"];
     self.userId = [aDecoder decodeObjectForKey:@"userId"];
     self.itemId = [aDecoder decodeObjectForKey:@"itemId"];
+    self.itemType = [aDecoder decodeObjectForKey:@"itemType"];
+    self.item = [aDecoder decodeObjectForKey:@"item"];
+    
     self.orderSeq = [aDecoder decodeObjectForKey:@"orderSeq"];
     self.orderNum = [aDecoder decodeObjectForKey:@"orderNum"];
     self.service = [aDecoder decodeObjectForKey:@"service"];
-    self.item = [aDecoder decodeObjectForKey:@"item"];
+
     self.type = [aDecoder decodeObjectForKey:@"type"];
     self.back = [aDecoder decodeObjectForKey:@"back"];
     self.valid = [aDecoder decodeObjectForKey:@"valid"];

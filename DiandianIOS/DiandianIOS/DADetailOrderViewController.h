@@ -10,6 +10,9 @@
 #import "SmartSDK.h"
 
 
+typedef void(^ConfirmBlock)();
+typedef void(^CancelBlock)();
+
 @protocol DADetailOrderDelegate;
 @interface DADetailOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIPopoverControllerDelegate>
 
@@ -22,6 +25,9 @@
 @property (retain, nonatomic) DAMyOrderList *orderList;
 //显示总价的 已点单的orderList
 @property (nonatomic, retain) DAMyOrderList *oldOrderDataList;
+
+@property (nonatomic, copy) ConfirmBlock confirmCallback;
+@property (nonatomic, copy) CancelBlock cancelCallback;
 
 @property (retain, nonatomic) DAService *curService;
 

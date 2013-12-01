@@ -7,10 +7,14 @@
 //
 
 #import "DAQueueDrinkListViewController.h"
+#import "ProgressHUD.h"
+#import "DAOrderProxy.h"
+#import "Tool.h"
+
 
 @interface DAQueueDrinkListViewController ()
 {
-    NSArray *dataList;
+    DAMyOrderList *dataList;
 }
 @end
 
@@ -44,7 +48,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
-    return [dataList count];
+    return [dataList.items count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -59,41 +63,41 @@
     static NSString *cellIdentifier = @"DAQueueDrinkListCell";
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    NSDictionary *row = [dataList objectAtIndex:indexPath.row];
+    DAOrder *row = [dataList.items objectAtIndex:indexPath.row];
     
 
     UILabel *lblName = (UILabel *)[cell viewWithTag:10];
-    lblName.text = [row objectForKey:@"name"];
+    lblName.text = row.item.itemName;
     UILabel *lblWaitingTime = (UILabel *)[cell viewWithTag:11];
-    lblWaitingTime.text = [row objectForKey:@"waitingtime"];
+    lblWaitingTime.text = [Tool stringFromISODateString:row.createat];
+    
     UILabel *lblAmount = (UILabel *)[cell viewWithTag:12];
-    lblAmount.text = [row objectForKey:@"amount"];
+    lblAmount.text = [NSString stringWithFormat:@"%d份",[row.oneItems count]] ;
     
     return cell;
 }
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *row = [dataList objectAtIndex:indexPath.row];
-    NSLog(@"%@", row);
+//    NSDictionary *row = @"lblName";
+//    NSLog(@"%@", row);
     
 }
 
 - (void)loadFromFile {
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"queue_drink" ofType:@"json"];
-    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
+
     
-    NSError *anError = nil;
-    NSArray *items = [NSJSONSerialization JSONObjectWithData:elementsData
-                                                     options:NSJSONReadingAllowFragments
-                                                       error:&anError];
-    
-    NSMutableArray *tmpList = [[NSMutableArray alloc] init];
-    for (NSDictionary *d in items){
-        [tmpList addObject:d];
-    }
-    dataList = [[NSArray alloc] initWithArray:tmpList];
-    [self.collectionView reloadData];
 }
 
+
+-(void ) getQueueListWithServiceId:(NSString *)serviceId deskId:(NSString *)deskId
+{
+    [ProgressHUD show:nil];
+    [[DAOrderModule alloc]getOrderNEItemListByServiceId:serviceId callback:^(NSError *err, DAMyOrderList *list) {
+        dataList = [DAOrderProxy getOneDataList:list];
+        [self.collectionView reloadData];
+        [ProgressHUD dismiss];
+    }];
+    
+}
 
 @end

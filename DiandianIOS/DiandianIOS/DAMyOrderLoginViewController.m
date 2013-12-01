@@ -34,15 +34,17 @@
     [super viewDidLoad];
     lockVC = [[DrawPatternLockViewController alloc] init];
 
-    
+    self.labelName.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
 }
 
 
 
 - (void)lockEntered:(NSString*)key {
     NSLog(@"key: %@", key);
-    NSString *userId = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
-    [[DALoginModule alloc]checkPattern:key userId:userId callback:^(NSError *error, NSDictionary *user) {
+    
+    NSString *WaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+    
+    [[DALoginModule alloc]checkPattern:key userId:WaitterId callback:^(NSError *error, NSDictionary *user) {
         NSLog(@"user key %@" ,user);
         NSNumber *isRight = [user objectForKey:@"isRight"];
         
@@ -80,21 +82,25 @@
 
 - (IBAction)confirmOrderTouched:(id)sender {
     
-    if ([self.labelName.text isEqualToString:@"嘀嗒嘀嗒"] && [self.labelStatus.text isEqualToString:@"通过"]) {
-
+    if ([self.labelStatus.text isEqualToString:@"通过"]) {
+        //验证后直接开台
         if (self.delegate && [self.delegate respondsToSelector:@selector(confirmOrderButtonClicked:)]) {
             [self.delegate confirmOrderButtonClicked:self];
         }
         
     } else {
         [ProgressHUD showError:@"请验证手势密码"];
+        [lockVC setTarget:self withAction:@selector(lockEntered:)];
+        lockVC.view.frame = CGRectMake(0, 0, 556, 349);
+        [self addChildViewController:lockVC];
+        [self.view addSubview:lockVC.view];
         
     }
 }
 
 - (IBAction)cancelOrderTouched:(id)sender {
 
-    if ([self.labelName.text isEqualToString:@"嘀嗒嘀嗒"] && [self.labelStatus.text isEqualToString:@"通过"]){
+    if ([self.labelStatus.text isEqualToString:@"通过"]){
         if (self.delegate && [self.delegate respondsToSelector:@selector(cancelOrderButtonClicked:)]) {
             [self.delegate cancelOrderButtonClicked:self];
         }

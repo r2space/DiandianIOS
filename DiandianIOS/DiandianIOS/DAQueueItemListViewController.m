@@ -169,11 +169,12 @@
 - (void)loadFromFile {
 
     [ProgressHUD show:nil];
-    [[DAOrderModule alloc]getOrderListWithBack:@"0" start:0 count:20 callback:^(NSError *err, DAMyOrderList *list) {
+    [[DAOrderModule alloc]getOrderItemList:^(NSError *err, DAMyOrderList *list) {
         dataList = [DAOrderProxy getOneDataList:list];
         [self.collectionView reloadData];
         [ProgressHUD dismiss];
     }];
+    
     
 }
 

@@ -77,7 +77,7 @@
     }
 	return NO;
 }
-- (void)popTableViewSelectRow:(NSString *)tag value:(NSString *)value
+- (void)popTableViewSelectRow:(NSString *)tag value:(id)value
 {
     if ([@"pepole" isEqualToString:tag]) {
         self.numOfPeople.text = value;

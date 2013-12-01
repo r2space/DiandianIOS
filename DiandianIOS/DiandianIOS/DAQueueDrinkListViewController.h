@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmartSDK.h"
+
+typedef void(^ItemClickCallback)(NSString *deskId,NSString *orderId);
 
 @interface DAQueueDrinkListViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+
+@property (nonatomic, copy) ItemClickCallback itemClickCallback;
+
+-(void ) getQueueListWithServiceId:(NSString *)serviceId deskId:(NSString *)deskId;
 
 @end

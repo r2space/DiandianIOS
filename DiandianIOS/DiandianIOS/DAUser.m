@@ -153,6 +153,7 @@
 @implementation DAUser
 @synthesize id, _id;
 
+
 - (id)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super initWithDictionary:dictionary];
@@ -181,40 +182,22 @@
     }
 }
 
--(NSString *)getUserName
-{
-    return self.name.name_zh;
-}
-
--(NSString *) getUserPhotoId
-{
-    return self.photo.big;
-}
 
 -(UIImage *) getUserDefaultPhotoImage
 {
     return [UIImage imageNamed:@"user_thumb.png"];
 }
 
--(UIImage *) getUserPhotoImage
-{
-    return [DACommon getCatchedImage: [self getUserPhotoId] defaultImage:[self getUserDefaultPhotoImage]];
-}
-
--(BOOL) isUserPhotoCatched
-{
-    return [DACommon isImageCatched:[self getUserPhotoId]];
-}
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.id forKey:@"id"];
     [aCoder encodeObject:self._id forKey:@"_id"];
     [aCoder encodeObject:self.name forKey:@"name"];
-    [aCoder encodeObject:self.photo forKey:@"photo"];
+
     [aCoder encodeObject:self.following forKey:@"following"];
-    [aCoder encodeObject:self.address forKey:@"address"];
-    [aCoder encodeObject:self.tel forKey:@"tel"];
+
+
     [aCoder encodeObject:self.lang forKey:@"lang"];
     [aCoder encodeObject:self.title forKey:@"title"];
     [aCoder encodeObject:self.authority forKey:@"authority"];
@@ -227,10 +210,10 @@
     self.id = [aDecoder decodeObjectForKey:@"id"];
     [self set_id:[aDecoder decodeObjectForKey:@"_id"]];
     self.name = [aDecoder decodeObjectForKey:@"name"];
-    self.photo = [aDecoder decodeObjectForKey:@"photo"];
+
     self.following = [aDecoder decodeObjectForKey:@"following"];
-    self.address = [aDecoder decodeObjectForKey:@"address"];
-    self.tel = [aDecoder decodeObjectForKey:@"tel"];
+
+
     self.lang = [aDecoder decodeObjectForKey:@"lang"];
     self.title = [aDecoder decodeObjectForKey:@"title"];
     self.authority = [aDecoder decodeObjectForKey:@"authority"];

@@ -10,12 +10,12 @@
 
 @protocol DAPopTableViewDelegate<NSObject>
 //@optional
-- (void)popTableViewSelectRow:(NSString*) tag value:(NSString*) value;
+- (void)popTableViewSelectRow:(NSString*) tag value:(id) value;
 @end
 
 
 @interface DAPopTableViewController : UITableViewController
-
+@property (retain, nonatomic) NSString* cellType;
 @property (assign, nonatomic) id <DAPopTableViewDelegate>delegate;
 
 -(void)initData:(NSString*) tag list:(NSArray*) list;

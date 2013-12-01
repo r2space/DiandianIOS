@@ -30,7 +30,7 @@
 
 -(void)conn
 {
-    NSString *address = @"10.2.3.243";
+    NSString *address = @"10.2.3.237";
     NSInteger port = 3000;
     [self connectToHost:address onPort:port];
 }

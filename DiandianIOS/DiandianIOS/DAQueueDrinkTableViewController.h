@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmartSDK.h"
+
+typedef void(^DeskClickCallback)(NSString *deskId , NSString *serviceId);
 
 @interface DAQueueDrinkTableViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic, copy) DeskClickCallback deskClickCallback;
 
 @end

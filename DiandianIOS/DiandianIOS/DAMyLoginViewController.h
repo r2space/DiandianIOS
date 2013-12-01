@@ -15,7 +15,10 @@
 @interface DAMyLoginViewController : UIViewController<DAPopTableViewDelegate, UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *tableName;
 @property (strong, nonatomic) IBOutlet UITextField *numOfPepole;
+
 @property (strong, nonatomic) IBOutlet UITextField *waitterId;
+
+
 @property (strong, nonatomic) IBOutlet UITextField *waitterPassword;
 @property (weak, nonatomic) IBOutlet UILabel *labelLock;
 

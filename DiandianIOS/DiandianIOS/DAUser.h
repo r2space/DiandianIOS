@@ -66,28 +66,19 @@
 @property (retain, nonatomic) NSString *id;
 @property (retain, nonatomic) NSString *_id;
 @property (retain, nonatomic) NSDictionary *extend;
-@property (retain, nonatomic) UserName *name;
-@property (retain, nonatomic) UserPhoto *photo;
+@property (retain, nonatomic) NSString *name;
 @property (retain, nonatomic) NSArray *following;
 @property (retain, nonatomic) NSArray *follower;
 @property (retain, nonatomic) NSString *uid;
-@property (retain, nonatomic) DAGroup *department;
-@property (retain, nonatomic) UserCustom *custom;
-@property (retain, nonatomic) UserTel *tel;
-@property (retain, nonatomic) UserAddress *address;
+
 @property (retain, nonatomic) NSString *lang;
 @property (retain, nonatomic) UserAuthority *authority;
 @property (retain, nonatomic) NSString *title;
 
--(NSString *)getUserName;
--(NSString *)getUserPhotoId;
--(UIImage *) getUserPhotoImage;
+
 -(BOOL ) hasApproveAuthority;
 -(BOOL ) hasContentsAuthority;
 
-
-
--(BOOL) isUserPhotoCatched;
 @end
 
 

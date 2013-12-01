@@ -65,7 +65,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
-    DADesk *desk = [[DADesk alloc]initWithDictionary:order.desk];
+    DADesk *desk = order.desk;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DAQueueTableCell"];
 
     UILabel *lblName = (UILabel *)[cell viewWithTag:10];
@@ -89,7 +89,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
-    DADesk *desk = [[DADesk alloc]initWithDictionary:order.desk];
+    DADesk *desk = order.desk;
 
     [ProgressHUD show:nil];
     [[DAOrderModule alloc] setDoneOrder:order._id callback:^(NSError *err, DAOrder *list) {

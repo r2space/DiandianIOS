@@ -9,17 +9,29 @@
 #ifndef DiandianIOS_SmartSDK_h
 #define DiandianIOS_SmartSDK_h
 
+
+#define API_ALL_USER_LIST       @"/api/user/list.json"
+
 #define API_MENU_LIST       @"/api/menu/list.json"
 #define API_DESK_LIST       @"/api/desk/list.json"
 #define API_START_SERVICE   @"/api/service/start.json"
 #define API_ALL_ORDER_LIST  @"/api/order/list.json?start=%d&count=%d"
+
+
+#define API_ALL_ORDER_ITEM_LIST  @"/api/order/itemList.json?type=%@&serviceId=%@"
+
+
 #define API_ALL_ORDER_LIST_BY_BACK  @"/api/order/list.json?start=%d&count=%d&back=%@"
 #define API_ALL_ORDER_LIST_BY_SERVICEID  @"/api/order/list.json?serviceId=%@"
+
 
 #define API_ALL_ORDER_LIST_WITH_BACK  @"/api/order/list.json?serviceId=%@&back=%@"
 
 #define API_ORDERS_DESK_BY_IDS(orderIds) \
-[NSString stringWithFormat:@"/api/order/deskList.json?orderIds=%@",(orderIds)]
+[NSString stringWithFormat:@"/api/order/deskList.json?orderIds=%@&type=item",(orderIds)]
+
+#define API_ORDERS_DESK_BY_TYPE(type) \
+[NSString stringWithFormat:@"/api/order/deskList.json?type=%@",(type)]
 
 #define API_SETORDER_DONE_BY_ID @"/api/order/doneOrder.json?orderId=%@"
 #define API_SETORDER_BACK_BY_ID @"/api/order/backOrder.json?orderId=%@"
@@ -41,6 +53,7 @@
 #import "DADeskModule.h"
 #import "DAServiceModule.h"
 #import "DAOrderModule.h"
+#import "DAUserModule.h"
 
 
 #import "DAGroup.h"
@@ -59,6 +72,7 @@
 #import "DAMyOrderList.h"
 #import "DAItemLayout.h"
 #import "DAMyDevice.h"
+#import "DAUserList.h"
 
 
 #endif

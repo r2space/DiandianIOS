@@ -10,8 +10,13 @@
 #import "DAQueueDrinkListViewController.h"
 #import "DAQueueDrinkTableViewController.h"
 
-@interface DADrinkQueueViewController ()
+static DAQueueDrinkListViewController  *vc;
+static DAQueueDrinkTableViewController *vct;
 
+@interface DADrinkQueueViewController ()
+{
+
+}
 @end
 
 @implementation DADrinkQueueViewController
@@ -49,7 +54,8 @@
 -(void)initItemList
 {
     
-    DAQueueDrinkListViewController *vc = [[DAQueueDrinkListViewController alloc] initWithNibName:@"DAQueueDrinkListViewController" bundle:nil];
+    vc = [[DAQueueDrinkListViewController alloc] initWithNibName:@"DAQueueDrinkListViewController" bundle:nil];
+    
     vc.view.frame = CGRectMake(0, 0, 814, 684);
     
     [self addChildViewController:vc];
@@ -60,7 +66,10 @@
 -(void)initTableList
 {
     
-    DAQueueDrinkTableViewController *vct = [[DAQueueDrinkTableViewController alloc] initWithNibName:@"DAQueueItemTableViewController" bundle:nil];
+    vct = [[DAQueueDrinkTableViewController alloc] initWithNibName:@"DAQueueItemTableViewController" bundle:nil];
+    vct.deskClickCallback = ^(NSString *serviceId,NSString *deskId){
+        [vc getQueueListWithServiceId:serviceId deskId:deskId];
+    };
     vct.view.frame = CGRectMake(0, 0, 160.0, 668.0);
     [self addChildViewController:vct];
     [self.viewTablelist addSubview:vct.view];

@@ -25,7 +25,6 @@
 - (IBAction)backTopMenu:(id)sender;
 
 - (IBAction)putDone:(id)sender;
-- (IBAction)overOrder:(id)sender;
 
 - (void) loadOldItem;
 

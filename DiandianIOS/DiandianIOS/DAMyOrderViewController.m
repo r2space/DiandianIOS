@@ -21,6 +21,7 @@
 {
     DAMyOrderList *oldOrderDataList;
     DAMyOrderList *backOrderDataList;
+    NSString *curWaitterUserId;
 }
 @end
 
@@ -38,6 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    curWaitterUserId = [[NSUserDefaults standardUserDefaults]  objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+    
     
     self.dataList = [DAMyOrderList alloc];
     self.dataList.items = [[NSArray alloc] init];
@@ -63,6 +66,7 @@
     [DAOrderProxy getOldOrderListByServiceId:self.curService._id callback:^(NSError *err, DAMyOrderList *list) {
         NSLog(@"getOldOrderListByServiceId  %s  %d" ,__FUNCTION__,__LINE__);
         oldOrderDataList = list;
+        [self.tableView reloadData];
         [self loadAmountPrice];
     }];
 }
@@ -135,10 +139,12 @@
     DAOrder *_order = [[DAOrder alloc]init];
     _order.item = obj;
     _order.itemId = obj._id;
+    _order.itemType = obj.type;
+    _order.userId = curWaitterUserId;
     _order.deskId = self.curService.deskId;
     _order.serviceId = self.curService._id;
     _order.isNew = [NSString stringWithFormat:@"YES"];
-    _order.type = [NSString stringWithFormat:@"1"];
+    _order.type = [NSNumber numberWithInt:1];
     
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [tmpList addObject:_order];
@@ -155,10 +161,12 @@
     DAOrder *_order = [[DAOrder alloc]init];
     _order.item = obj;
     _order.itemId = obj._id;
+    _order.itemType = obj.type;
+    _order.userId = curWaitterUserId;
     _order.deskId = self.curService.deskId;
     _order.serviceId = self.curService._id;
     _order.isNew = [NSString stringWithFormat:@"YES"];
-    _order.type = [NSString stringWithFormat:@"0"];
+    _order.type = [NSNumber numberWithInt:0];
     
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [tmpList addObject:_order];
@@ -177,7 +185,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger row = [indexPath row];
-    DAOrder *orderdata = [self.dataList.items objectAtIndex:row];
+    DAOrder *orderdata;
+    if (indexPath.section == 0) {
+        orderdata = [self.dataList.items objectAtIndex:row];
+    } else {
+        NSArray *curOrderItemList = [oldOrderDataList.oldItems objectAtIndex:(indexPath.section - 1)];
+        orderdata = [curOrderItemList objectAtIndex:indexPath.row];
+    }
     DAItem *item = orderdata.item;
     static NSString *CellWithIdentifier = @"DAOrderCell";
     DAOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier forIndexPath:indexPath];
@@ -200,22 +214,50 @@
 //    [deleteBtn addTarget:self
 //               action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
 //    [recipeBtn addTarget:self action:@selector(updateRecipe: ) forControlEvents:UIControlEventTouchUpInside];
-
+    if (indexPath.section == 0) {
+        cell.backgroundColor = [UIColor clearColor];
+    } else {
+        cell.backgroundColor = [UIColor lightGrayColor];
+    }
 
     return cell;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    int num = 1;
+    if (oldOrderDataList.oldItems.count > 0) {
+        num += oldOrderDataList.oldItems.count;
+    }
+    return num;
 }
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    
+    if (section == 0) {
+        return @"新订单";
+    }
+    return [NSString stringWithFormat:@"%d号单",section];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [indexPath row];
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return [self.dataList.items count];
+    if (section == 0) {
+        return [self.dataList.items count];
+    } else {
+        NSArray *curArray = [oldOrderDataList.oldItems objectAtIndex:(section - 1)];
+        if (curArray!=nil && [curArray count] > 0) {
+            return [curArray count];
+        } else {
+            return 0;
+        }
+        
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -242,11 +284,6 @@
     
 }
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSLog(@"执行删除操作");
-//}
-
 
 - (IBAction)backTopMenu:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
@@ -258,10 +295,30 @@
     detailOrderVC.delegate = self;
     detailOrderVC.oldOrderDataList = oldOrderDataList;
     detailOrderVC.curService = self.curService;
+    detailOrderVC.confirmCallback = ^(){
+        [self loadTableFromDisk];
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+        //SOCKETIO提交订单
+        DASocketIO *socket = [DASocketIO sharedClient:self];
+        [socket conn];
+        
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setValue:[self.dataList toArray] forKey:@"orderList"];
+        [dic setValue:self.curService.deskId forKey:@"deskId"];
+        [socket sendJSONwithAction:@"addOrder" data:[[NSDictionary alloc]initWithDictionary:dic]];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    };
+    detailOrderVC.cancelCallback = ^(){
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+        [self.navigationController popViewControllerAnimated:YES];
+    };
+    
     
     [self presentPopupViewController:detailOrderVC animationType:MJPopupViewAnimationFade];
     
 }
+
 -(void)updateRecipe:(id)sender 
 {
     DAOrderRecipeBtn *btn = (DAOrderRecipeBtn *)sender;
@@ -276,12 +333,9 @@
 -(void)backButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
     [self loadTableFromDisk];
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-    
-    
     //SOCKETIO提交订单
     DASocketIO *socket = [DASocketIO sharedClient:self];
     [socket conn];
-    
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:[self.dataList toArray] forKey:@"orderList"];
@@ -290,6 +344,7 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 -(void)confirmButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
     
@@ -335,6 +390,7 @@
     self.dataList.items = [[NSArray alloc]initWithArray:tmpArray];
     [self tableViewReload];
 }
+
 -(void) addAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
     

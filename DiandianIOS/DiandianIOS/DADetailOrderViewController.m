@@ -325,17 +325,15 @@
 - (void)confirmOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
 {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(backButtonClicked:)]) {
-        [self.delegate backButtonClicked:self];
-    }
+    //确认订单 并提交
+    self.confirmCallback();
 
 }
 - (void)cancelOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
 {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(backButtonClicked:)]) {
-        [self.delegate backButtonClicked:self];
-    }
+    //取消 返回桌台
+    self.cancelCallback();
 }
 - (void)backmenuButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
 {

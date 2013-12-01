@@ -171,6 +171,94 @@
     }];
 }
 
+//获得 非菜品类型Order  的订单一览With 餐桌的信息。
+-(void) getDeskListOfNeItemOrder:(void (^)(NSError *err, DAMyOrderList *list))callback
+{
+    NSString *path = API_ORDERS_DESK_BY_TYPE(@"neItem");
+    
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+    
+}
+
+// 获得 主食酒水类型的  order 的接口
+-(void) getOrderNEItemListByServiceId:(NSString *)serviceId callback:(void (^)(NSError *err, DAMyOrderList *list))callback
+{
+    
+    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,@"neItem",serviceId];
+    
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+}
+
+-(void) getOrderItemList:(void (^)(NSError *err, DAMyOrderList *list))callback
+{
+    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,@"item",@""];
+    
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+}
+
+
+-(void) getOrderItemListByServiceId:(void (^)(NSError *err, DAMyOrderList *list))callback
+{
+    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,@"item"];
+    
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+}
+
+
+
+
 -(void) getOrderListByServiceId :(NSString *) servicdId withBack:(NSString *)withBack callback:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
     NSString *path = [NSString stringWithFormat:API_ALL_ORDER_LIST_WITH_BACK,servicdId,withBack];

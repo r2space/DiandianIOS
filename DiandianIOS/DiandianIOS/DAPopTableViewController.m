@@ -18,6 +18,7 @@
 {
     NSArray* listData;
     NSString* targetTag;
+    
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -39,8 +40,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+//    listData = [[NSArray alloc]init];
     [self.tableView registerClass:[DAPopTableViewCell class] forCellReuseIdentifier:@"Cell"];
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,13 +68,27 @@
 {
     static NSString *CellIdentifier = @"Cell";
     DAPopTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    DAOrder *order = [listData objectAtIndex:indexPath.row];
-    if ([order.type integerValue] == 0) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ %d份",order.item.itemName,[order.oneItems count]];
-    } else {
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ %d份 (小)",order.item.itemName,[order.oneItems count]];
-    }
+    if ([@"people" isEqualToString:targetTag]) {
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@",[listData objectAtIndex:indexPath.row]];
+        
+    }  else if ([@"user" isEqualToString:targetTag]) {
+        
+        DAUser *user = [listData objectAtIndex:indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@",user.name];
+        
     
+    } else {
+        
+        DAOrder *order = [listData objectAtIndex:indexPath.row];
+        if ([order.type integerValue] == 0) {
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %d份",order.item.itemName,[order.oneItems count]];
+        } else {
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %d份 (小)",order.item.itemName,[order.oneItems count]];
+        }
+        
+   
+    }
     
     return cell;
 }
@@ -79,8 +96,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.delegate != nil) {
-        [self.delegate popTableViewSelectRow:targetTag value:[listData objectAtIndex:indexPath.row]];
+        if ([@"user" isEqualToString:targetTag]) {
+            DAUser *user = [listData objectAtIndex:indexPath.row];
+            
+            [self.delegate popTableViewSelectRow:targetTag value:user];
+            
+        }
+        if ([@"people" isEqualToString:targetTag]) {
+            
+            [self.delegate popTableViewSelectRow:targetTag value:[listData objectAtIndex:indexPath.row]];
+        }
     }
+
+   
 }
 
 /*

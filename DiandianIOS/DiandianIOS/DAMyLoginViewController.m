@@ -19,6 +19,7 @@
 @interface DAMyLoginViewController ()
 {
     DrawPatternLockViewController *lockVC;
+    NSString *curWaitterUserId;
     BOOL lockStatus;
 }
 
@@ -41,27 +42,50 @@
     lockStatus = NO;
 }
 
+
+
 - (void) viewDidAppear:(BOOL)animated
 {
     self.tableName.text = self.curDesk.name;
+    NSString *WaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+    NSString *WaitterName = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
+    curWaitterUserId = WaitterId;
+    self.waitterId.text = WaitterName;
+    
 }
 
 - (void)lockEntered:(NSString*)key {
     NSLog(@"key: %@", key);
-    NSString *userId = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
-    [[DALoginModule alloc]checkPattern:key userId:userId callback:^(NSError *error, NSDictionary *user) {
-        NSLog(@"user key %@" ,user);
-        NSNumber *isRight = [user objectForKey:@"isRight"];
+    if (curWaitterUserId != nil && curWaitterUserId.length > 0) {
         
-        if (![isRight boolValue]) {
-            [ProgressHUD showError:@"手势密码验证错误。"];
-        } else {
-            self.labelLock.text = @"通过";
-            lockStatus = YES;
-            [lockVC.view removeFromSuperview];
-        }
-    }];
     
+        [[DALoginModule alloc]checkPattern:key userId:curWaitterUserId callback:^(NSError *error, NSDictionary *user) {
+            NSLog(@"user key %@" ,user);
+            NSNumber *isRight = [user objectForKey:@"isRight"];
+            
+            if (![isRight boolValue]) {
+                [ProgressHUD showError:@"手势密码验证错误。"];
+            } else {
+                self.labelLock.text = @"通过";
+                lockStatus = YES;
+                [lockVC.view removeFromSuperview];
+                if (lockStatus) {
+                    if (self.delegate && [self.delegate respondsToSelector:@selector(startTableButtonClicked:)]) {
+                        [self.delegate startTableButtonClicked:self];
+                    }
+                }
+                //验证后直接开台
+            }
+        }];
+        
+    } else {
+        [ProgressHUD showError:@"请选择服务员。"];
+    }
+    
+    if([@"090807" isEqualToString:key]){
+        lockStatus = NO;
+        [lockVC.view removeFromSuperview];
+    }
     
 }
 
@@ -174,6 +198,10 @@
         }
     } else {
         [ProgressHUD showError:@"请验证您的手势密码。"];
+        [lockVC setTarget:self withAction:@selector(lockEntered:)];
+        lockVC.view.frame = CGRectMake(0, 0, 556, 349);
+        [self addChildViewController:lockVC];
+        [self.view addSubview:lockVC.view];
     }
     
     
@@ -197,9 +225,10 @@
         for (int i = 0; i < 50; i++) {
             [wList addObject:[NSString stringWithFormat:@"%d", i]];
         }
-        [vc initData:@"pepole" list:wList];
+
+        [vc initData:@"people" list:wList];
         vc.delegate = self;
-        
+        [vc.tableView reloadData];
         self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
         self.popover.popoverContentSize = CGSizeMake(100, 400);
         [self.popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
@@ -207,34 +236,39 @@
         DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
         
         NSMutableArray *wList = [NSMutableArray array];
-        [wList addObject:@"张三"];
-        [wList addObject:@"李四"];
-        [wList addObject:@"王二麻子"];
-        [wList addObject:@"木头六"];
-        [wList addObject:@"张之洞"];
-        [wList addObject:@"纪晓岚"];
-        [wList addObject:@"赵德芳"];
-        [wList addObject:@"越德昭"];
-        [wList addObject:@"老杨"];
-        [wList addObject:@"小杨"];
-        [wList addObject:@"杨胜利"];
-        [wList addObject:@"胜利"];
-        [wList addObject:@"胜利杨"];
-        [vc initData:@"waitter" list:wList];
-        vc.delegate = self;
+
         
-        self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
-        self.popover.popoverContentSize = CGSizeMake(120, 400);
-        [self.popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        [[DAUserModule alloc]getAllUserList:^(NSError *err, DAUserList *list) {
+            for (DAUser *user in list.items) {
+                [wList addObject:user];
+            }
+            [vc initData:@"user" list:wList];
+            vc.delegate = self;
+            
+            self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
+            self.popover.popoverContentSize = CGSizeMake(120, 400);
+            [self.popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }];
+        
+
+        
     }
 	return NO;
 }
 
-- (void)popTableViewSelectRow:(NSString *)tag value:(NSString *)value
+- (void)popTableViewSelectRow:(NSString *)tag value:(id)value
 {
-    if ([@"waitter" isEqualToString:tag]) {
-        self.waitterId.text = value;
-    } else if ([@"pepole" isEqualToString:tag]) {
+    if ([@"user" isEqualToString:tag]) {
+        DAUser *user  = value;
+        self.waitterId.text = user.name;
+        curWaitterUserId = user._id;
+        
+        [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:user.name forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
+        
+        
+    } else if ([@"people" isEqualToString:tag]) {
         self.numOfPepole.text = value;
     }
     
@@ -244,11 +278,11 @@
 
 - (IBAction)passwordTouched:(id)sender {
     // Do any additional setup after loading the view from its nib.
-    
     [lockVC setTarget:self withAction:@selector(lockEntered:)];
     lockVC.view.frame = CGRectMake(0, 0, 556, 349);
     [self addChildViewController:lockVC];
     [self.view addSubview:lockVC.view];
+
 }
 
 

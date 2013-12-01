@@ -21,6 +21,16 @@
 
 -(void) getOrderListByServiceId :(NSString *) servicdId callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
+-(void) getDeskListOfNeItemOrder:(void (^)(NSError *err, DAMyOrderList *list))callback;
+
+-(void) getOrderNEItemListByServiceId:(NSString *)serviceId callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
+
+
+-(void) getOrderItemList:(void (^)(NSError *err, DAMyOrderList *list))callback;
+
+-(void) getOrderNEItemList:(void (^)(NSError *err, DAMyOrderList *list))callback;
+
+
 -(void) getOrderListByServiceId :(NSString *) servicdId withBack:(NSString *)withBack callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
 -(void) getDeskListByOrderIds :(NSArray *) orderIds callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
