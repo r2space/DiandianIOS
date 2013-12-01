@@ -17,7 +17,7 @@
 - (void)addLineBreak;
 - (void)addSplit;
 - (void)addSplit:(int)length;
-- (int)printText;
+- (int)printText:(NSString *)ip;
 
 
 +(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum;
