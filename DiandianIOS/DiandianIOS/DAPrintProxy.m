@@ -49,12 +49,12 @@ enum PrintErrorStatus
     [lines addObject:split];
 }
 
-- (EposPrint *)getPrinter
+- (EposPrint *)getPrinter:(NSString *)ip
 {
     EposPrint *printer = [[EposPrint alloc] init];
     
     // open
-    int result = [printer openPrinter:EPOS_OC_DEVTYPE_TCP DeviceName:@"10.2.3.149"];
+    int result = [printer openPrinter:EPOS_OC_DEVTYPE_TCP DeviceName:ip];
     if (result != EPOS_OC_SUCCESS) {
         return nil;
     }
@@ -62,7 +62,7 @@ enum PrintErrorStatus
     return printer;
 }
 
-- (int)printText
+- (int)printText:(NSString *)ip
 {
     // create builder
     EposBuilder *builder = [[EposBuilder alloc] initWithPrinterModel:PRINT_NAME Lang:EPOS_OC_MODEL_CHINESE];
@@ -97,7 +97,7 @@ enum PrintErrorStatus
     }
     
     // open printer
-    EposPrint *printer = [self getPrinter];
+    EposPrint *printer = [self getPrinter:ip];
     
     // send builder data
     unsigned long status = 0;

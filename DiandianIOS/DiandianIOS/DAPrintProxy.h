@@ -15,6 +15,6 @@
 - (void)addLineBreak;
 - (void)addSplit;
 - (void)addSplit:(int)length;
-- (int)printText;
+- (int)printText:(NSString *)ip;
 
 @end
