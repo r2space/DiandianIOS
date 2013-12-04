@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmartSDK.h"
+
 typedef void (^ChanelBlock)();
 
 @interface DABillDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
@@ -14,4 +16,8 @@ typedef void (^ChanelBlock)();
 @property (retain,nonatomic) NSMutableArray *finfishList;
 @property (retain,nonatomic) NSMutableArray *cancelList;
 @property (nonatomic, copy) ChanelBlock chanelBlock;
+
+@property (nonatomic, retain) DAService *curService;
+
+
 @end

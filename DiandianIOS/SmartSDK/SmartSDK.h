@@ -12,9 +12,17 @@
 
 #define API_ALL_USER_LIST       @"/api/user/list.json"
 
-#define API_MENU_LIST       @"/api/menu/list.json"
-#define API_DESK_LIST       @"/api/desk/list.json"
-#define API_START_SERVICE   @"/api/service/start.json"
+#define API_MENU_LIST           @"/api/menu/list.json"
+#define API_DESK_LIST           @"/api/desk/list.json"
+
+#define API_GET_TAKEOUT_SERVICELIST       @"/api/service/takeoutList.json"
+
+#define API_START_SERVICE       @"/api/service/start.json"
+#define API_CHANGE_SERVICE      @"/api/service/change.json"
+#define API_GET_BILL            @"/api/bill/get.json?serviceId=%@"
+#define API_STOP_BILL           @"/api/bill/stop.json"
+
+
 #define API_ALL_ORDER_LIST  @"/api/order/list.json?start=%d&count=%d"
 
 
@@ -34,8 +42,11 @@
 [NSString stringWithFormat:@"/api/order/deskList.json?type=%@",(type)]
 
 #define API_SETORDER_DONE_BY_ID @"/api/order/doneOrder.json?orderId=%@"
+#define API_SETORDER_DONE_BY_IDS @"/api/order/doneOrder.json?orderIds=%@"
+
 #define API_SETORDER_BACK_BY_ID @"/api/order/backOrder.json?orderId=%@"
 #define API_SETORDER_BACK @"/api/order/backOrder.json"
+#define API_ORDER_ADD       @"/api/order/add.json"
 #define API_DEVICE_ADD @"/api/device/add.json"
 
 #define API_UESR_UPDATEPATTERN @"/api/admin/user/updatePattern.json"
@@ -73,6 +84,7 @@
 #import "DAItemLayout.h"
 #import "DAMyDevice.h"
 #import "DAUserList.h"
-
+#import "DABill.h"
+#import "DAServiceList.h"
 
 #endif

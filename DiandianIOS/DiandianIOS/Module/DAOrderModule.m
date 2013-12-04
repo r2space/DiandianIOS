@@ -10,6 +10,32 @@
 #import "SmartSDK.h"
 
 @implementation DAOrderModule
+
+-(void) addOrder:(NSArray * )orderList serviceId:(NSString *)serviceId deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *list))callback
+{
+    NSString *path = API_ORDER_ADD;
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    [params setObject:orderList forKey:@"orderList"];
+    [params setObject:serviceId forKey:@"serviceId"];
+    [params setObject:deskId forKey:@"deskId"];
+    
+    [[DAAFHttpClient sharedClient] postPath:path  parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+}
+
+
 -(void) setBackOrderWithArray:(NSArray *) orderIds deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *order))callback
 {
     NSString *path = API_SETORDER_BACK;
@@ -72,6 +98,35 @@
         
     }];
 }
+
+- (void) setDoneOrderWithArrayIds :(NSArray *) orderIds callback:(void (^)(NSError *err, DAMyOrderList *list))callback
+{
+    NSMutableString *ids = [[NSMutableString alloc]init];
+    for (int i = 0 ;i < [orderIds count] ;i ++) {
+        if (i != 0) {
+            [ids appendString:@","];
+        }
+        [ids appendString:[orderIds objectAtIndex:i]];
+    }
+    
+    NSString *path = [NSString stringWithFormat:API_SETORDER_DONE_BY_IDS,ids];
+    
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+}
+
 
 -(void) getDeskListByOrderIds :(NSArray *) orderIds callback:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
@@ -238,7 +293,7 @@
 
 -(void) getOrderItemListByServiceId:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
-    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,@"item"];
+    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,@"item",@""];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];

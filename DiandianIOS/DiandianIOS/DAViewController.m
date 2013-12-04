@@ -37,9 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-//    DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
-//    [self.navigationController pushViewController:viewController animated:NO];
+
     [self fetch];
 }
 

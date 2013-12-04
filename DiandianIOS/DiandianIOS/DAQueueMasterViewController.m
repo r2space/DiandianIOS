@@ -67,7 +67,7 @@
         btn.layer.shadowOffset = CGSizeMake(0, 1);
     }
     
-    [self initPrint];
+//    [self initPrint];
     
 }
 

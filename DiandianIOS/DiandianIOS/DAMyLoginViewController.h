@@ -26,6 +26,8 @@
 
 @property (retain, nonatomic) DADesk *curDesk;
 
+@property (retain, nonatomic) NSString *curUserId;
+
 @property (retain, nonatomic) DAService *curService;
 
 

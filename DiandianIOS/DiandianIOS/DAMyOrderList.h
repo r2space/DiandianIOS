@@ -14,7 +14,9 @@
 @property (retain, nonatomic) NSArray   *items;
 @property (retain, nonatomic) NSNumber  *totalItems;
 @property (retain, nonatomic) NSArray   *oldItems;
-
+@property (retain, nonatomic) NSString  *orderNum;
+@property (retain, nonatomic) NSString  *deskName;
+@property (retain, nonatomic) NSString  *now;
 
 -(NSMutableArray*)toArray;
 @end

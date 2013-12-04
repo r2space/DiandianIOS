@@ -17,10 +17,6 @@
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         DADeskList *data = [[DADeskList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
-                            
-//        if (archiveName.length > 0) {
-//            [data archiveRootObjectWithName:archiveName];
-//        }
         
         if (callback) {
             callback(nil, data);

@@ -10,12 +10,17 @@
 #import "DATakeoutViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "DAPopTableViewController.h"
+
+
+#import "DARootViewController.h"
+#import "DABillViewController.h"
+
 #import "NSString+Util.h"
 #import "Util.h"
 
 @interface DATakeoutViewCell()
 @property (strong, nonatomic) IBOutlet UITextField *type;
-@property (strong, nonatomic) IBOutlet UILabel *num;
+
 @property (strong, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (strong, nonatomic) IBOutlet UITextField *state;
 
@@ -27,7 +32,7 @@
 @implementation DATakeoutViewCell
 {
     UIViewController *parentVC;
-    DATakeout* takeout;
+    DAService* takeoutService;
 }
 
 
@@ -39,133 +44,53 @@
     }
     return self;
 }
-- (void) initData:(DATakeout*)t parentViewController:(UIViewController*)parent
+- (void) initData:(DAService*) service parentViewController:(UIViewController*)parent
 {
     parentVC = parent;
-    takeout = t;
+    takeoutService = service;
     
     self.delegate = (id)parentVC;
     
     // Num
-    self.num.text = takeout.num;
+//    self.num.text = takeout.num;
     // Type
-    [self showType];
+    
     
     // Phone Number
-    self.phoneNumber.text = takeout.phoneNumber;
+    self.phoneNumber.text = takeoutService.phone;
     
     // State
-    [self showState];
-}
-
-- (void) showType
-{
-    self.type.delegate = self;
-    if ([@"takeout" isEqualToString:takeout.type]) {
-        self.type.text = @"打包";
-        self.type.backgroundColor = [Util colorWithHexString:@"#8CD5DC"];
-    } else if([@"deliver" isEqualToString:takeout.type]) {
-        self.type.backgroundColor = [Util colorWithHexString:@"#E23B38"];
-        self.type.text = @"外送";
-    }
-}
-- (void) showState
-{
-    self.state.delegate = self;
-    if ([@"nothing" isEqualToString:takeout.state]) {
-        self.state.backgroundColor = [Util colorWithHexString:@"#8CD5DC"];
-        self.state.text = @"无";
-    } else if ([@"delivering" isEqualToString:takeout.state]) {
-        self.state.backgroundColor = [Util colorWithHexString:@"#E23B38"];
-        self.state.text = @"外送中";
-    }
     
-    if ([@"takeout" isEqualToString:takeout.type]) {
-        [self.state setHidden:YES];
-    } else if([@"deliver" isEqualToString:takeout.type]) {
-        [self.state setHidden:NO];
-    }
-}
-
-- (BOOL) textFieldShouldBeginEditing: (UITextField *)textField
-{
-    if ([textField isEqual:self.type]) {
-        DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
-        
-        NSMutableArray *wList = [NSMutableArray array];
-        [wList addObject:[NSString stringWithFormat:@"打包"]];
-        [wList addObject:[NSString stringWithFormat:@"外送"]];
-        
-        [vc initData:@"type" list:wList];
-        vc.delegate = self;
-        
-        self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
-        self.popover.popoverContentSize = CGSizeMake(100, 88);
-        [self.popover presentPopoverFromRect:textField.frame inView: self permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-        return NO;
-    }
-    if ([textField isEqual:self.state]) {
-        DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
-        
-        NSMutableArray *wList = [NSMutableArray array];
-        [wList addObject:[NSString stringWithFormat:@"无"]];
-        [wList addObject:[NSString stringWithFormat:@"送餐中"]];
-        
-        [vc initData:@"state" list:wList];
-        vc.delegate = self;
-        
-        self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
-        self.popover.popoverContentSize = CGSizeMake(100, 88);
-        [self.popover presentPopoverFromRect:textField.frame inView: self permittedArrowDirections:UIPopoverArrowDirectionLeft animated:YES];
-        return NO;
-    }
-	
-    return YES;
-}
-- (void)popTableViewSelectRow:(NSString *)tag value:(NSString *)value
-{
-    if ([@"type" isEqualToString:tag]) {
-        if ([@"打包" isEqualToString:value]) {
-            takeout.type = @"takeout";
-        } else {
-            takeout.type = @"deliver";
-        }
-        [self showType];
-        [self showState];
-    }
-    if ([@"state" isEqualToString:tag]) {
-        if ([@"送餐中" isEqualToString:value]) {
-            takeout.state = @"delivering";
-        } else {
-            takeout.state = @"nothing";
-        }
-        [self showState];
-    }
     
-    [self.popover dismissPopoverAnimated:YES];
-}
-- (IBAction)takeoutOrder:(id)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(takeoutOrder:)]) {
-        [self.delegate takeoutOrder:takeout];
-    }
 }
 
-- (IBAction)takeoutOrderList:(id)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(takeoutOrderList:)]) {
-        [self.delegate takeoutOrderList:takeout];
-    }
-}
-- (IBAction)takeoutPay:(id)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(takeoutPay:)]) {
-        [self.delegate takeoutPay:takeout];
-    }
-}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (IBAction)onMenuBookTouched:(id)sender {
+    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+    DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+    menubookVC.curService = takeoutService;
+    [parentVC.navigationController pushViewController:menubookVC animated:YES];
+    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+}
+
+- (IBAction)onOrderListTouched:(id)sender {
+    
+}
+
+- (IBAction)onBillTouched:(id)sender {
+    DABillViewController *viewController = [[DABillViewController alloc]
+                                            initWithNibName:@"DABillViewController" bundle:nil];
+    viewController.curService = takeoutService;
+    
+    [parentVC.navigationController pushViewController:viewController animated:YES];
+    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
 }
 
 @end

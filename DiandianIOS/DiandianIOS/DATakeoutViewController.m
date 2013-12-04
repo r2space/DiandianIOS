@@ -13,6 +13,8 @@
 #import "DATakeoutViewCell.h"
 #import "DATakeout.h"
 
+#import "DATakeoutLoginViewController.h"
+
 UIViewController *parentVC;
 
 @interface DATakeoutViewController ()
@@ -21,7 +23,8 @@ UIViewController *parentVC;
 
 @implementation DATakeoutViewController
 {
-    NSMutableArray *dataList;
+    DAServiceList *dataList;
+    int listNum;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,13 +40,21 @@ UIViewController *parentVC;
 {
     [super viewDidLoad];
     
+    dataList = [[DAServiceList alloc] init];
+    dataList.items = [[NSArray alloc] init];
+    
     UINib *cellNib = [UINib nibWithNibName:@"DATakeoutViewCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DATakeoutViewCell"];
     
-    [self loadFromFile];
+    
     
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self loadFromApi];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -61,19 +72,12 @@ UIViewController *parentVC;
     //[vc setTable:thisTable];
 }
 
--(void)loadFromFile{
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"takeout" ofType:@"json"];
-    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
-    
-    NSError *anError = nil;
-    NSArray *items = [NSJSONSerialization JSONObjectWithData:elementsData
-                                                     options:NSJSONReadingAllowFragments
-                                                       error:&anError];
-    dataList = [[NSMutableArray alloc]init];
-    for (NSDictionary *d in items){
-        [dataList addObject: [[DATakeout alloc]initWithDictionary:d]];
-    }
-    [self.tableView reloadData];
+-(void)loadFromApi{
+    listNum = 0;
+    [[DAServiceModule alloc] getTakeoutServiceList:^(NSError *err, DAServiceList *list) {
+        dataList = list ;
+        [self.tableView reloadData];
+    }];
 }
 
 - (IBAction)closePopup:(id)sender
@@ -84,28 +88,16 @@ UIViewController *parentVC;
 }
 
 - (IBAction)addTakeout:(id)sender {
-    static NSInteger tempId = 100000;
-    NSInteger num = 0;
-    if (dataList && dataList.count > 0) {
-        DATakeout *last;
-        last = [dataList objectAtIndex:(dataList.count - 1)];
-        num = [last.num integerValue];
-    }
     
-    DATakeout *t = [[DATakeout alloc]init];
-    t.takeoutId = [NSString stringWithFormat:@"%d", tempId++];
-    t.num = [NSString stringWithFormat:@"%d", ++num];
-    t.phoneNumber = @"";
-    t.type = @"takeout";
-    t.state = @"nothing";
-    t.menuId = t.num;// 临时的值，需要后台传过来
+    DATakeoutLoginViewController *takeoutLoginVC = [[DATakeoutLoginViewController alloc]initWithNibName:@"DATakeoutLoginViewController" bundle:nil];
+
+    takeoutLoginVC.confirmCallback = ^(){
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+        [self loadFromApi];
+    };
+    [self  presentPopupViewController:takeoutLoginVC animationType:MJPopupViewAnimationFade];
     
-    [dataList addObject:t];
-    [self.tableView reloadData];
     
-    // Scroll to botttom
-    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:(dataList.count - 1) inSection:0];
-    [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -115,13 +107,15 @@ UIViewController *parentVC;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return dataList.count;
+    return [dataList.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DATakeoutViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DATakeoutViewCell"];
-    [cell initData:[dataList objectAtIndex:indexPath.row] parentViewController:parentVC];
+    DAService *service = [dataList.items objectAtIndex:indexPath.row];
+    [cell initData:service parentViewController:parentVC];
+    cell.num.text = [NSString stringWithFormat:@"%d",listNum++];
     return cell;
 }
 

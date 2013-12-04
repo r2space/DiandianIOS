@@ -90,6 +90,8 @@
     }
     [[DALoginModule alloc]yukarilogin:userName password:password code:nil callback:^(NSError *error, DAUser *user) {
         
+        
+        NSLog(@"ERROR  %@  " ,error);
         NSLog(@"login success  user %@",user);
         if (error!=nil) {
             isLogin = NO;
@@ -157,7 +159,7 @@
     [print addLine:@"asdfasdfasdf"];
     [print addSplit];
 
-    [print printText];
+    [print printText:self.labPrintIP.text];
 
 }
 

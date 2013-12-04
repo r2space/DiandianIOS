@@ -11,9 +11,13 @@
 #import "UIViewController+MJPopupViewController.h"
 #import "DAPreferentialViewController.h"
 
+#define kMaxNumber                       100000
+
 @interface DABillViewController ()
 {
     NSMutableArray *btnList;
+    DABill *billData;
+    NSInteger *payType;
 }
 @end
 
@@ -39,28 +43,29 @@
     
     finishList = [[NSMutableArray alloc] init];
     cancelList = [[NSMutableArray alloc] init];
+    payType = 0;
+    self.textOff.text = @"1";
+    self.textReduce.text = @"0";
     
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"bill" ofType:@"json"];
-    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
     
-    NSError *anError = nil;
-    NSArray *items = [NSJSONSerialization JSONObjectWithData:elementsData
-                                                     options:NSJSONReadingAllowFragments
-                                                       error:&anError];
 
-    
-    for (NSDictionary *d in items){
-        [finishList addObject:d];
-    }
-
-    [self reload];
     [self initTopmenu];
+    self.keyboardView = [[ZenKeyboard alloc] initWithFrame:self.viewKeyboard.frame];
+    [self.view addSubview:self.keyboardView];
+    self.keyboardView.textField = self.textPay;
+    
+    self.textPay.inputView=[[UIView alloc]initWithFrame:CGRectZero];
+    self.textOff.inputView=[[UIView alloc]initWithFrame:CGRectZero];
+    self.textReduce.inputView=[[UIView alloc]initWithFrame:CGRectZero];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    NSLog(@" sever : %@  deskId : %@ 结账",self.curService._id ,self.curService.deskId);
+    [self reload];
+    NSLog(@" sever : %@  deskId : %@ 结账",self.curService._id ,@"");
+//    [self.textPay becomeFirstResponder];
 }
 
 
@@ -77,7 +82,6 @@
     
     btnList =  [[NSMutableArray alloc] init];
     [btnList addObject:[self.view viewWithTag:100]];
-    [btnList addObject:[self.view viewWithTag:201]];
     
     [btnList addObject:[self.view viewWithTag:203]];
     
@@ -92,27 +96,20 @@
 
 -(void)reload
 {
-    float total = 0;
-    float pay = 0.0;
-    float off = 0.0;
-    float reduce = 0.0;
+    [[DAServiceModule alloc]getBillByServiceId:self.curService._id callback:^(NSError *err, DABill *bill) {
+        billData = bill;
+        self.lblTotal.text = [NSString stringWithFormat:@"%.02f元",[bill.amount floatValue]];
+        //判断是否是  外卖
+        if ([self.curService.type integerValue] == 3) {
+            self.lblDeskName.text = [NSString stringWithFormat:@"外卖"];
+        } else {
+            self.lblDeskName.text = [NSString stringWithFormat:@"桌号：%@",bill.desk.name];
+        }
+
+        float off = [billData.amount floatValue] * [self.textOff.text floatValue] - [self.textReduce.text floatValue];
+        self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
+    }];
     
-    for (NSDictionary *d in finishList){
-        float price = [[d objectForKey:@"price"] floatValue];
-        int amount = [[d objectForKey:@"amount"] floatValue];
-        total += price*amount;
-        off -= (1-[[d objectForKey:@"off"] floatValue]) * price * amount;
-    }
-    
-    reduce = -50;
-    
-    pay = total + off +reduce;
-    
-    //TODO 小数抹除的方式
-    self.lblTotal.text = [NSString stringWithFormat:@"%.02f元",total];
-    self.lblOff.text = [NSString stringWithFormat:@"%.02f元",off];
-    self.lblReduce.text = [NSString stringWithFormat:@"%.02f元",reduce];
-    self.lblPay.text = [NSString stringWithFormat:@"%.02f元",pay];
 }
 
 - (void)didReceiveMemoryWarning
@@ -123,8 +120,7 @@
 
 - (IBAction)onDetailTaped:(id)sender {
     DABillDetailViewController *c = [[DABillDetailViewController alloc] initWithNibName:nil bundle:nil];
-    c.finfishList = finishList;
-    c.cancelList = cancelList;
+    c.curService = self.curService;
     
     c.chanelBlock = ^() {
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
@@ -144,6 +140,31 @@
     [self presentPopupViewController:c animationType:MJPopupViewAnimationFade dismissed:^{
         [self reload];
     }];
+}
+
+- (IBAction)onBeginEditing:(id)sender {
+    UITextField *text = (UITextField *)sender;
+    self.keyboardView.num = [[NSMutableString alloc] init];
+    self.keyboardView.textField  = text;
+}
+- (IBAction)onStopBillTouched:(id)sender {
+    [[DAServiceModule alloc]stopService:self.curService._id amount:[billData.amount stringValue] profit:self.textPay.text agio:self.textOff.text  preferential:self.textReduce.text payType:[NSString stringWithFormat:@"%d" ,(int)payType] callback:^(NSError *err, DAService *service)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
+- (IBAction)onChangeOff:(id)sender {
+
+    float off = [billData.amount floatValue] * [self.textOff.text floatValue] - [self.textReduce.text floatValue];    
+    self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
+    
+}
+
+- (IBAction)onPayTypeTouched:(UISegmentedControl *)sender {
+    NSInteger *Index = (NSInteger *)sender.selectedSegmentIndex;
+    payType = Index;
+    
 }
 
 - (IBAction)onBackTouched:(id)sender {

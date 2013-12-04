@@ -16,6 +16,7 @@
 #import "DASocketIO.h"
 #import "DAOrderProxy.h"
 #import "DAPrintProxy.h"
+#import "ProgressHUD.h"
 
 @interface DAMyOrderViewController ()<DADetailOrderDelegate>
 {
@@ -298,20 +299,33 @@
     detailOrderVC.confirmCallback = ^(){
         [self loadTableFromDisk];
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-        //SOCKETIO提交订单
-        DASocketIO *socket = [DASocketIO sharedClient:self];
-        [socket conn];
-        
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setValue:[self.dataList toArray] forKey:@"orderList"];
-        
-        [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:self.curService._id orderNum:@"10001"];
         
         
-        [dic setValue:self.curService.deskId forKey:@"deskId"];
-        [socket sendJSONwithAction:@"addOrder" data:[[NSDictionary alloc]initWithDictionary:dic]];
+        //改为接口提交订单
+
+        [ProgressHUD show:nil];
+        NSString *deskId = [NSString stringWithFormat:@""];
         
-        [self.navigationController popViewControllerAnimated:YES];
+        if ([self.curService.type integerValue] == 3) {
+            
+        } else {
+            deskId = [NSString stringWithFormat:@"%@" ,self.curService.deskId];
+        }
+        
+        [[DAOrderModule alloc] addOrder:[self.dataList toArray] serviceId:self.curService._id deskId:deskId callback:^(NSError *err, DAMyOrderList *list) {
+            
+            if ([self.curService.type integerValue] == 3) {
+                [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone];
+            } else {
+                [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@""];
+            }
+            
+            [ProgressHUD dismiss];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }];
+        
+        
     };
     detailOrderVC.cancelCallback = ^(){
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];

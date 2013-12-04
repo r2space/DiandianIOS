@@ -23,6 +23,10 @@
 
 
 @implementation DAAppDelegate
+{
+    NSTimer         *daemonIO;         // 涮新用计时器
+    BOOL            puaseTimer;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -60,8 +64,32 @@
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
     [[DASocketIO sharedClient:self] conn];
-    
+    [self initDaemon];
     return YES;
+}
+
+-(void)initDaemon
+{
+    // 创建定时器
+    puaseTimer = NO;
+    daemonIO = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                             target:self
+                                           selector:@selector(daemonEvent:)
+                                           userInfo:nil
+                                            repeats:YES];
+    // 启动定时器
+    [daemonIO fire];
+}
+
+- (void)daemonEvent:(NSTimer *)timer
+{
+    if ([[DASocketIO sharedClient:self] isConnected]) {
+        return;
+    }
+    
+    NSLog(@"DASocketIO restart "  );
+    [[DASocketIO sharedClient:self] conn];
+    
 }
 
 
@@ -105,6 +133,10 @@
 - (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error
 {
     NSLog(@"\n\n\n\n\n\n   socket.io disconnected. did error occur? %@", error);
+    if (![[DASocketIO sharedClient:self]  isConnected]) {
+        [[DASocketIO sharedClient:self] conn];
+    }
+    
 }
 
 # pragma mark -

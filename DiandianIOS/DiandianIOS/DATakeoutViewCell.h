@@ -13,6 +13,10 @@
 
 @interface DATakeoutViewCell : UITableViewCell<DAPopTableViewDelegate, UITextFieldDelegate>
 @property (assign, nonatomic) id <DATakeoutDelegate>delegate;
-- (void) initData:(DATakeout*)t parentViewController:(UIViewController*)parent;
+
+@property (strong, nonatomic) IBOutlet UILabel *num;
+
+
+- (void) initData:(DAService*) service parentViewController:(UIViewController*)parent;
 
 @end

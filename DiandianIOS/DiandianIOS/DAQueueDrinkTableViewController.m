@@ -38,9 +38,13 @@
     // Do any additional setup after loading the view from its nib.
     UINib *cellNib = [UINib nibWithNibName:@"DAQueueTableCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAQueueTableCell"];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ioRefreshOrderList:) name:@"ioRefreshOrderList" object:nil];
 }
-
+- (void)ioRefreshOrderList : (NSNotification*) notification
+{
+    
+    [self loadFromFile];
+}
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];

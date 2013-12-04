@@ -7,9 +7,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DABillViewController">
             <connections>
+                <outlet property="lblDeskName" destination="jXB-LY-IMh" id="1ks-Rb-X5n"/>
                 <outlet property="lblPay" destination="Cat-FQ-y5p" id="wH8-cE-7We"/>
                 <outlet property="lblTotal" destination="1Te-8C-tC9" id="XhO-zw-Z2C"/>
+                <outlet property="textOff" destination="bIN-FA-5It" id="XaU-TJ-chY"/>
+                <outlet property="textPay" destination="7iV-9G-aWI" id="ebW-JY-xj2"/>
+                <outlet property="textReduce" destination="Bba-eN-i4C" id="MCT-au-Jxy"/>
                 <outlet property="view" destination="2" id="3"/>
+                <outlet property="viewKeyboard" destination="0rT-uP-gBJ" id="MYA-Np-Kp6"/>
                 <outlet property="viewTopmenu" destination="MDb-by-p9K" id="oc7-XV-1la"/>
                 <outlet property="viewTopmenuLabel" destination="JYz-fp-yLi" id="xao-Ic-QkI"/>
             </connections>
@@ -49,17 +54,6 @@
                                 <action selector="onBackTouched:" destination="-1" eventType="touchUpInside" id="u8V-RG-F6q"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="201" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGB-eK-IYJ">
-                            <rect key="frame" x="748" y="7" width="72" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="优惠" backgroundImage="top_bg3.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="onPreferentialTouched:" destination="-1" eventType="touchUpInside" id="A38-co-7Yv"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
@@ -88,7 +82,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cat-FQ-y5p">
-                    <rect key="frame" x="410" y="549" width="183" height="51"/>
+                    <rect key="frame" x="390" y="549" width="229" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -101,9 +95,12 @@
                     <state key="normal" title="结账">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="onStopBillTouched:" destination="-1" eventType="touchUpInside" id="uo4-yy-Lts"/>
+                    </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="桌号：5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXB-LY-IMh">
-                    <rect key="frame" x="245" y="160" width="170" height="42"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="桌号：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXB-LY-IMh">
+                    <rect key="frame" x="245" y="160" width="542" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                     <nil key="highlightedColor"/>
@@ -115,7 +112,7 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Te-8C-tC9">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Te-8C-tC9">
                     <rect key="frame" x="385" y="268" width="170" height="53"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="30"/>
@@ -149,12 +146,20 @@
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="onBeginEditing:" destination="-1" eventType="editingDidBegin" id="Ltc-ZH-GZv"/>
+                        <action selector="onChangeOff:" destination="-1" eventType="editingDidEnd" id="Stx-CK-CE4"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bIN-FA-5It">
                     <rect key="frame" x="385" y="341" width="133" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="onBeginEditing:" destination="-1" eventType="editingDidBegin" id="nSe-O9-Y6o"/>
+                        <action selector="onChangeOff:" destination="-1" eventType="editingDidEnd" id="nli-9F-UQ5"/>
+                    </connections>
                 </textField>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" highlighted="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gdk-aY-7ji">
                     <rect key="frame" x="390" y="484" width="123" height="29"/>
@@ -163,13 +168,27 @@
                         <segment title="现金"/>
                         <segment title="刷卡"/>
                     </segments>
+                    <connections>
+                        <action selector="onPayTypeTouched:" destination="-1" eventType="valueChanged" id="Zaf-we-DZP"/>
+                    </connections>
                 </segmentedControl>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7iV-9G-aWI">
-                    <rect key="frame" x="404" y="631" width="133" height="30"/>
+                    <rect key="frame" x="404" y="627" width="133" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                    </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="onBeginEditing:" destination="-1" eventType="editingDidBegin" id="Wlp-L3-zSC"/>
+                    </connections>
                 </textField>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0rT-uP-gBJ">
+                    <rect key="frame" x="637" y="494" width="320" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

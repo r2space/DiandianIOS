@@ -29,7 +29,7 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <action selector="takeoutOrder:" destination="lDc-Ie-FdK" eventType="touchUpInside" id="3bJ-Iv-k79"/>
+                            <action selector="onMenuBookTouched:" destination="lDc-Ie-FdK" eventType="touchUpInside" id="JSN-b0-WlO"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iep-Ag-iNg">
@@ -40,7 +40,7 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <action selector="takeoutPay:" destination="lDc-Ie-FdK" eventType="touchUpInside" id="PMm-Nz-eEH"/>
+                            <action selector="onBillTouched:" destination="lDc-Ie-FdK" eventType="touchUpInside" id="Nki-tQ-51z"/>
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6a-ef-RCH">
@@ -51,34 +51,20 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <action selector="takeoutOrderList:" destination="lDc-Ie-FdK" eventType="touchUpInside" id="GPn-yp-tLA"/>
+                            <action selector="onOrderListTouched:" destination="lDc-Ie-FdK" eventType="touchUpInside" id="dyF-GB-wNE"/>
                         </connections>
                     </button>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="电话" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="utz-7H-A4Q">
-                        <rect key="frame" x="186" y="7" width="144" height="30"/>
+                        <rect key="frame" x="133" y="7" width="204" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="状态" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kcC-UJ-77T">
-                        <rect key="frame" x="347" y="7" width="107" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="类型" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rep-uS-nGS">
-                        <rect key="frame" x="64" y="6" width="91" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="num" destination="DMV-yr-qCS" id="rtK-v2-Ydk"/>
                 <outlet property="phoneNumber" destination="utz-7H-A4Q" id="saN-by-KBQ"/>
-                <outlet property="state" destination="kcC-UJ-77T" id="Osx-Un-WLu"/>
-                <outlet property="type" destination="Rep-uS-nGS" id="ybb-xE-sev"/>
             </connections>
         </tableViewCell>
     </objects>

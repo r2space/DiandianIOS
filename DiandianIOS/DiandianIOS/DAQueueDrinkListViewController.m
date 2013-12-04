@@ -39,6 +39,7 @@
     [self loadFromFile];
 }
 
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -80,7 +81,21 @@
 {
 //    NSDictionary *row = @"lblName";
 //    NSLog(@"%@", row);
-    
+    DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
+
+    [ProgressHUD show:nil];
+    [[DAOrderModule alloc] setDoneOrderWithArrayIds:order.oneItems callback:^(NSError *err, DAMyOrderList *list) {
+        [ProgressHUD dismiss];
+        self.itemClickCallback();
+    }];
+    NSMutableArray *tempList = [[NSMutableArray alloc]init];
+    for (DAOrder *tmpOrder in dataList.items) {
+        if (![tmpOrder._id isEqualToString:order._id]) {
+            [tempList addObject:tmpOrder];
+        }
+    }
+    dataList.items = [[NSArray alloc]initWithArray:tempList];
+    [self.collectionView reloadData];
 }
 
 - (void)loadFromFile {
@@ -94,6 +109,7 @@
     [ProgressHUD show:nil];
     [[DAOrderModule alloc]getOrderNEItemListByServiceId:serviceId callback:^(NSError *err, DAMyOrderList *list) {
         dataList = [DAOrderProxy getOneDataList:list];
+//        dataList = list;
         [self.collectionView reloadData];
         [ProgressHUD dismiss];
     }];

@@ -10,7 +10,9 @@
 #import "DABillDetailViewCell.h"
 
 @interface DABillDetailViewController ()
-
+{
+    DAMyOrderList *dataList;
+}
 @end
 
 @implementation DABillDetailViewController
@@ -28,9 +30,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    dataList = [[DAMyOrderList alloc]init];
+    dataList.items = [[NSArray alloc]init];
     UINib *cellNib = [UINib nibWithNibName:@"DABillDetailViewCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DABillDetailViewCell"];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self loadFromApi];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,44 +58,49 @@
     NSDictionary *d;
     if (indexPath.section == 0) {
         d = [_finfishList objectAtIndex:indexPath.row];
-        [cell.btnOperation setTitle:@"退菜" forState:UIControlStateNormal];
+        [cell.btnOperation setTitle:@"免单" forState:UIControlStateNormal];
+        DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
+        
+        cell.lblName.text = order.item.itemName;
+        
+        if ([order.type integerValue ] == 0) {
+            cell.lblPrice.text =[NSString stringWithFormat:@"%@元",order.item.itemPriceNormal];
+        } else {
+            cell.lblPrice.text =[NSString stringWithFormat:@"%@元",order.item.itemPriceHalf];
+        }
+        
+        cell.lblAmount.text =[NSString stringWithFormat:@"%d",1];
+        
+        
     } else {
         d = [_cancelList objectAtIndex:indexPath.row];
         [cell.btnOperation setTitle:@"取消" forState:UIControlStateNormal];
     }
     
-    
-    float price = [[d objectForKey:@"price"] floatValue];
-    int amount = [[d objectForKey:@"amount"] floatValue];
-    float off = [[d objectForKey:@"off"] floatValue];
-    cell.lblName.text = [d objectForKey:@"name"];
-    cell.lblPrice.text =[NSString stringWithFormat:@"%.02f元",price];
-    cell.lblAmount.text =[NSString stringWithFormat:@"%d",amount];
-    cell.lblOff.text =[NSString stringWithFormat:@"%.02f折",off];
-    cell.lblPay.text =[NSString stringWithFormat:@"%.02f元",price*amount*off];
+
     return cell;
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *d;
-    if (indexPath.section == 0) {
-        d = [_finfishList objectAtIndex:indexPath.row];
-        [_finfishList removeObjectAtIndex:indexPath.row];
-        [_cancelList addObject:d];
-    } else {
-        d = [_cancelList objectAtIndex:indexPath.row];
-        [_cancelList removeObjectAtIndex:indexPath.row];
-        [_finfishList addObject:d];
-    }
-    [self.tableView reloadData];
+//    NSDictionary *d;
+//    if (indexPath.section == 0) {
+//        d = [_finfishList objectAtIndex:indexPath.row];
+//        [_finfishList removeObjectAtIndex:indexPath.row];
+//        [_cancelList addObject:d];
+//    } else {
+//        d = [_cancelList objectAtIndex:indexPath.row];
+//        [_cancelList removeObjectAtIndex:indexPath.row];
+//        [_finfishList addObject:d];
+//    }
+//    [self.tableView reloadData];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return _finfishList.count;
+        return [dataList.items count];
     } else {
         return _cancelList.count;
     }
@@ -98,7 +112,7 @@
         return @"已点";
     }
     if (section == 1) {
-        return @"退菜";
+        return @"免单";
     }
     
     return nil;
@@ -113,4 +127,18 @@
 {
     return 2;
 }
+
+
+- (void) loadFromApi
+{
+    
+    [[DAOrderModule alloc] getOrderListByServiceId:self.curService._id callback:^(NSError *err, DAMyOrderList *list) {
+        
+        dataList = list;
+        [self.tableView reloadData];
+        
+    }];
+    
+}
+
 @end

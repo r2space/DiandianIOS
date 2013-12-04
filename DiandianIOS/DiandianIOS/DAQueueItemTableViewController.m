@@ -96,6 +96,7 @@
         [ProgressHUD dismiss];
         self.selectDeskBlock(order._id , desk._id);
     }];
+    
     NSMutableArray *tempList = [[NSMutableArray alloc]init];
     for (DAOrder *tmpOrder in dataList.items) {
         if (![tmpOrder._id isEqualToString:order._id]) {

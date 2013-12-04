@@ -120,18 +120,18 @@ UIViewController *parentVC;
 - (BOOL) textFieldShouldBeginEditing: (UITextField *)textField
 {
     if ([textField isEqual:self.numOfPepole]) {
-        DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
-        
-        NSMutableArray *wList = [NSMutableArray array];
-        for (int i = 0; i < 50; i++) {
-            [wList addObject:[NSString stringWithFormat:@"%d", i]];
-        }
-        [vc initData:@"pepole" list:wList];
-        vc.delegate = self;
-        
-        self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
-        self.popover.popoverContentSize = CGSizeMake(100, 400);
-        [self.popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+//        DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
+//        
+//        NSMutableArray *wList = [NSMutableArray array];
+//        for (int i = 0; i < 50; i++) {
+//            [wList addObject:[NSString stringWithFormat:@"%d", i]];
+//        }
+//        [vc initData:@"pepole" list:wList];
+//        vc.delegate = self;
+//        
+//        self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
+//        self.popover.popoverContentSize = CGSizeMake(100, 400);
+//        [self.popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 	return NO;
 }
@@ -155,7 +155,7 @@ UIViewController *parentVC;
 //  换桌
 - (IBAction)changeTable:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(changeTable:)]) {
-        [self.delegate changeTable:self.myDesk._id];
+        [self.delegate changeTable:self.curService._id];
     }
     
     [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
@@ -176,11 +176,7 @@ UIViewController *parentVC;
     NSLog(@"fdfas");
     UIButton *btn = (UIButton *)sender;
     DAMyBackOrderViewController *vc = [[DAMyBackOrderViewController alloc] initWithNibName:@"DAMyBackOrderViewController" bundle:nil];
-    
-    NSMutableArray *wList = [NSMutableArray array];
-    for (int i = 0; i < 50; i++) {
-        [wList addObject:[NSString stringWithFormat:@"%d", i]];
-    }
+
     vc.curService = self.curService;
     
     self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];

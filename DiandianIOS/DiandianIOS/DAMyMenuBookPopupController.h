@@ -18,14 +18,24 @@
 - (IBAction)orderTouched:(id)sender;
 - (IBAction)backThumbTouched:(id)sender;
 
-@property (retain, nonatomic) NSString *tableNO;
-@property (retain, nonatomic) DAItem *menuData;
+
+@property (retain, nonatomic) DAItem        *curItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;
 @property (weak, nonatomic) IBOutlet UIImageView *viewImage;
 @property (weak, nonatomic) IBOutlet UILabel *labelMaterial;
 @property (weak, nonatomic) IBOutlet UILabel *labelAmount;
+
+
+@property (weak, nonatomic) IBOutlet UITextView *textItemMaterial;
+@property (weak, nonatomic) IBOutlet UITextView *textItemComment;
+@property (weak, nonatomic) IBOutlet UITextView *textItemMethod;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnSmallAdd;
+
+
+
 
 @end
 

@@ -10,6 +10,8 @@
 #import "SmartSDK.h"
 #import "DAPopTableViewController.h"
 
+typedef void(^ChangeDesk)(NSString *serviceId);
+
 @protocol DAMyTableConfirmDelegate;
 @interface DAMyTableConfirmController : UIViewController<DAPopTableViewDelegate, UITextFieldDelegate>
 @property (assign, nonatomic) id <DAMyTableConfirmDelegate>delegate;
@@ -17,6 +19,7 @@
 
 
 - (IBAction)closePopup:(id)sender;
+
 
 + (void) show:(DADesk *)thisTable parentView :(UIViewController *) parentView;
 

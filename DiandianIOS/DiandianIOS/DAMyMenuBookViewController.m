@@ -311,14 +311,13 @@
     [self popupDetail:menu];
 }
 
--(void) popupDetail :(DAItem *) menu
+-(void) popupDetail :(DAItem *) item
 {
 
-    DAMyMenuBookPopupController *secondDetailViewController = [[DAMyMenuBookPopupController alloc] initWithNibName:@"DAMyMenuBookPopupController" bundle:nil];
-    secondDetailViewController.delegate = self;
-    secondDetailViewController.tableNO = self.tableNO;
-    secondDetailViewController.menuData = menu;
-    [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];
+    DAMyMenuBookPopupController *menuBookPopupVC = [[DAMyMenuBookPopupController alloc] initWithNibName:@"DAMyMenuBookPopupController" bundle:nil];
+    menuBookPopupVC.delegate = self;
+    menuBookPopupVC.curItem = item;
+    [self presentPopupViewController:menuBookPopupVC animationType:MJPopupViewAnimationFade];
     
 }
 

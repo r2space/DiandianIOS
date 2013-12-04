@@ -19,7 +19,7 @@
 
 +(void) initDesk :(NSString *) deskId  userId :(NSString *) userId  type:(NSString *)type people:(NSString *)people callback:(void (^)(NSError *err, DAService *service))callback
 {
-    [[DAServiceModule alloc] startService:deskId userId:userId type:type people:people callback:^(NSError *err, DAService *service) {
+    [[DAServiceModule alloc] startService:deskId userId:userId type:type people:people  phone:@"" callback:^(NSError *err, DAService *service) {
         
         callback(nil , service);
     }];

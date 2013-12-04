@@ -11,13 +11,36 @@
 #import "DAService.h"
 #import "SmartSDK.h"
 
+@class DABill;
+@class DAServiceList;
+
 @interface DAServiceModule : NSObject
 
+- (void) getTakeoutServiceList:(void (^)(NSError *err, DAServiceList *list))callback;
 
 -(void) startService:(NSString *)deskId
               userId:(NSString *)userId
                 type:(NSString *)type
               people:(NSString *)people
+               phone:(NSString *)phone
             callback:(void (^)(NSError *err, DAService *service))callback;
+
+
+-(void) changeService :(NSString *)serviceId
+                deskId:(NSString *)deskId
+                userId:(NSString *)userId
+              callback:(void (^)(NSError *err, DAService *service))callback;
+
+-(void) getBillByServiceId : (NSString * )serviceId
+                  callback :(void (^)(NSError *err, DABill *bill))callback;
+
+
+-(void) stopService:(NSString *) serviceId
+             amount:(NSString *) amount
+             profit:(NSString *) profit
+               agio:(NSString *) agio
+       preferential:(NSString *) preferential
+            payType:(NSString *) payType
+           callback:(void (^)(NSError *err, DAService *service))callback;
 
 @end

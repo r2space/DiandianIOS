@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DATakeout.h"
+#import "SmartSDK.h"
 
 @protocol DATakeoutDelegate;
 

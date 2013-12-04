@@ -15,6 +15,8 @@
 
 @interface DAOrderModule : NSObject
 
+-(void) addOrder:(NSArray * )orderList serviceId:(NSString *)serviceId deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
+
 -(void) getAllOrderList:(int)start count:(int)count callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
 -(void) getOrderListWithBack:(NSString *)back start :(int)start count:(int)count callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
@@ -36,6 +38,8 @@
 -(void) getDeskListByOrderIds :(NSArray *) orderIds callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
 -(void) setDoneOrder:(NSString *) orderId  callback:(void (^)(NSError *err, DAOrder *list))callback;
+
+- (void) setDoneOrderWithArrayIds :(NSArray *) orderIds callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
 -(void) setBackOrder:(NSString *) orderId  callback:(void (^)(NSError *err, DAOrder *list))callback;
 

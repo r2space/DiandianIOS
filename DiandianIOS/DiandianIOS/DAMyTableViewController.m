@@ -36,7 +36,7 @@ static DAMyTableViewController *activity;
     BOOL isTableFlicker;
     BOOL isStartChangeTable;
     BOOL isProcessionIntoTable;
-    NSString * changeTableId;
+    NSString * changeServiceId;
 }
 @end
 
@@ -175,7 +175,7 @@ static DAMyTableViewController *activity;
     DAMyLoginViewController *loginVC = loginViewViewController;
 
     [ProgressHUD show:nil];
-    [DADeskProxy initDesk:loginVC.curDesk._id userId:loginVC.waitterId.text type:@"1" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
+    [DADeskProxy initDesk:loginVC.curDesk._id userId:loginVC.curUserId type:@"1" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
 
         UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
         DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
@@ -252,12 +252,22 @@ static DAMyTableViewController *activity;
     
     if (isStartChangeTable) {
         if ([desk isEmpty]) {
-            //DADesk *fromT = [self getDataByTableId:changeTableId];
+//            DADesk *fromT = [self getDataByTableId:changeTableId];
             // TODO: 改成用 [dataList replaceObjectAtIndex:i withObject:new];
             //[fromT swap:desk];
+            NSString *curWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+            
+            if (curWaitterId == nil || curWaitterId.length ==0) {
+                curWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
+            }
+            
+            [[DAServiceModule alloc]changeService:changeServiceId deskId:desk._id userId:curWaitterId callback:^(NSError *err, DAService *service) {
+                
+                isStartChangeTable = NO;
+                [self setTableFlicker:NO];
+                [self loadFromFile];
+            }];
 
-            isStartChangeTable = false;
-            [self setTableFlicker:false];
         }
         
         return;
@@ -281,12 +291,14 @@ static DAMyTableViewController *activity;
     }
     
 }
-- (void)changeTable:(NSString *)tableId
+- (void)changeTable:(NSString *)serviceId
 {
-    changeTableId = tableId;
-    isStartChangeTable = true;
+    changeServiceId = serviceId;
+    isStartChangeTable = YES;
     [self setTableFlicker:YES];
 }
+
+
 - (void) setTableFlicker:(BOOL)enabled
 {
     isTableFlicker = enabled;

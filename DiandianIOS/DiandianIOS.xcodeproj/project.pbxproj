@@ -55,6 +55,26 @@
 		0A40FE08183EFBCE00427613 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE06183EFBCE00427613 /* ProgressHUD.m */; };
 		0A40FE0C183F1C6800427613 /* DAOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE0B183F1C6800427613 /* DAOrder.m */; };
 		0A40FE14183F290000427613 /* DASocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE13183F290000427613 /* DASocketIO.m */; };
+		0A54D6A4184C6B8800BBA9C4 /* DABill.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54D6A3184C6B8800BBA9C4 /* DABill.m */; };
+		0A54D6A8184C712400BBA9C4 /* ZenKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54D6A7184C712400BBA9C4 /* ZenKeyboard.m */; };
+		0A54D6B5184C726900BBA9C4 /* BackgroundTexture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6A9184C726900BBA9C4 /* BackgroundTexture@2x.png */; };
+		0A54D6B6184C726900BBA9C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6AA184C726900BBA9C4 /* Default-568h@2x.png */; };
+		0A54D6B7184C726900BBA9C4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6AB184C726900BBA9C4 /* Default.png */; };
+		0A54D6B8184C726900BBA9C4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6AC184C726900BBA9C4 /* Default@2x.png */; };
+		0A54D6B9184C726900BBA9C4 /* GenericSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6AD184C726900BBA9C4 /* GenericSeparator@2x.png */; };
+		0A54D6BA184C726900BBA9C4 /* KeyboardBackgroundTextured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6AE184C726900BBA9C4 /* KeyboardBackgroundTextured@2x.png */; };
+		0A54D6BB184C726900BBA9C4 /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6AF184C726900BBA9C4 /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png */; };
+		0A54D6BC184C726900BBA9C4 /* KeyboardNumericEntryKeyPressedTextured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6B0184C726900BBA9C4 /* KeyboardNumericEntryKeyPressedTextured@2x.png */; };
+		0A54D6BD184C726900BBA9C4 /* KeyboardNumericEntryKeyTextured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6B1184C726900BBA9C4 /* KeyboardNumericEntryKeyTextured@2x.png */; };
+		0A54D6BE184C726900BBA9C4 /* KeyboardNumericEntryViewGridLinesTextured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6B2184C726900BBA9C4 /* KeyboardNumericEntryViewGridLinesTextured@2x.png */; };
+		0A54D6BF184C726900BBA9C4 /* KeyboardTopShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6B3184C726900BBA9C4 /* KeyboardTopShadow@2x.png */; };
+		0A54D6C0184C726900BBA9C4 /* Snapshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6B4184C726900BBA9C4 /* Snapshot.png */; };
+		0A54D6C3184D772B00BBA9C4 /* DAServiceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54D6C2184D772B00BBA9C4 /* DAServiceList.m */; };
+		0A54D6C7184D81C400BBA9C4 /* DATakeoutLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54D6C5184D81C400BBA9C4 /* DATakeoutLoginViewController.m */; };
+		0A54D6C8184D81C400BBA9C4 /* DATakeoutLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6C6184D81C400BBA9C4 /* DATakeoutLoginViewController.xib */; };
+		0A54D6CB184D842800BBA9C4 /* DABaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54D6CA184D842800BBA9C4 /* DABaseViewController.m */; };
+		0A54D6CE184EC8E300BBA9C4 /* menubook_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6CD184EC8E300BBA9C4 /* menubook_bg.png */; };
+		0A54D6D0184ECC3D00BBA9C4 /* menubook_sidebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6CF184ECC3D00BBA9C4 /* menubook_sidebg.png */; };
 		0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BC8182878DA009CDF6D /* DAViewController.m */; };
 		0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BDB1828A040009CDF6D /* DABookViewController.m */; };
 		0A5D2835182B6E2F00847578 /* table1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2834182B6E2F00847578 /* table1.png */; };
@@ -432,6 +452,31 @@
 		0A40FE0B183F1C6800427613 /* DAOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrder.m; sourceTree = "<group>"; };
 		0A40FE12183F290000427613 /* DASocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASocketIO.h; path = Helper/DASync/DASocketIO.h; sourceTree = "<group>"; };
 		0A40FE13183F290000427613 /* DASocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASocketIO.m; path = Helper/DASync/DASocketIO.m; sourceTree = "<group>"; };
+		0A54D6A2184C6B8800BBA9C4 /* DABill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DABill.h; path = Entities/DABill.h; sourceTree = "<group>"; };
+		0A54D6A3184C6B8800BBA9C4 /* DABill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DABill.m; path = Entities/DABill.m; sourceTree = "<group>"; };
+		0A54D6A6184C712400BBA9C4 /* ZenKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenKeyboard.h; sourceTree = "<group>"; };
+		0A54D6A7184C712400BBA9C4 /* ZenKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenKeyboard.m; sourceTree = "<group>"; };
+		0A54D6A9184C726900BBA9C4 /* BackgroundTexture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundTexture@2x.png"; sourceTree = "<group>"; };
+		0A54D6AA184C726900BBA9C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0A54D6AB184C726900BBA9C4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		0A54D6AC184C726900BBA9C4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		0A54D6AD184C726900BBA9C4 /* GenericSeparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GenericSeparator@2x.png"; sourceTree = "<group>"; };
+		0A54D6AE184C726900BBA9C4 /* KeyboardBackgroundTextured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardBackgroundTextured@2x.png"; sourceTree = "<group>"; };
+		0A54D6AF184C726900BBA9C4 /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png"; sourceTree = "<group>"; };
+		0A54D6B0184C726900BBA9C4 /* KeyboardNumericEntryKeyPressedTextured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardNumericEntryKeyPressedTextured@2x.png"; sourceTree = "<group>"; };
+		0A54D6B1184C726900BBA9C4 /* KeyboardNumericEntryKeyTextured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardNumericEntryKeyTextured@2x.png"; sourceTree = "<group>"; };
+		0A54D6B2184C726900BBA9C4 /* KeyboardNumericEntryViewGridLinesTextured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardNumericEntryViewGridLinesTextured@2x.png"; sourceTree = "<group>"; };
+		0A54D6B3184C726900BBA9C4 /* KeyboardTopShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardTopShadow@2x.png"; sourceTree = "<group>"; };
+		0A54D6B4184C726900BBA9C4 /* Snapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Snapshot.png; sourceTree = "<group>"; };
+		0A54D6C1184D772B00BBA9C4 /* DAServiceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAServiceList.h; path = Entities/DAServiceList.h; sourceTree = "<group>"; };
+		0A54D6C2184D772B00BBA9C4 /* DAServiceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAServiceList.m; path = Entities/DAServiceList.m; sourceTree = "<group>"; };
+		0A54D6C4184D81C400BBA9C4 /* DATakeoutLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DATakeoutLoginViewController.h; path = Table/DATakeoutLoginViewController.h; sourceTree = "<group>"; };
+		0A54D6C5184D81C400BBA9C4 /* DATakeoutLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DATakeoutLoginViewController.m; path = Table/DATakeoutLoginViewController.m; sourceTree = "<group>"; };
+		0A54D6C6184D81C400BBA9C4 /* DATakeoutLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DATakeoutLoginViewController.xib; path = Table/DATakeoutLoginViewController.xib; sourceTree = "<group>"; };
+		0A54D6C9184D842800BBA9C4 /* DABaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DABaseViewController.h; path = View/Common/DABaseViewController.h; sourceTree = "<group>"; };
+		0A54D6CA184D842800BBA9C4 /* DABaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DABaseViewController.m; path = View/Common/DABaseViewController.m; sourceTree = "<group>"; };
+		0A54D6CD184EC8E300BBA9C4 /* menubook_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_bg.png; sourceTree = "<group>"; };
+		0A54D6CF184ECC3D00BBA9C4 /* menubook_sidebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_sidebg.png; sourceTree = "<group>"; };
 		0A577BC7182878DA009CDF6D /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
 		0A577BC8182878DA009CDF6D /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
 		0A577BDA1828A040009CDF6D /* DABookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABookViewController.h; sourceTree = "<group>"; };
@@ -891,6 +936,7 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0A54D6A5184C710D00BBA9C4 /* ZenKeyboard */,
 				0AA031D51843553700C66590 /* SocketIO */,
 				0A40FE03183EFBAB00427613 /* ProgressHUD */,
 				0A739E69183B23E500AA48C4 /* DrawPatternLockView */,
@@ -916,6 +962,18 @@
 		0A07BD521829CC8A00A350BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0A54D6A9184C726900BBA9C4 /* BackgroundTexture@2x.png */,
+				0A54D6AA184C726900BBA9C4 /* Default-568h@2x.png */,
+				0A54D6AB184C726900BBA9C4 /* Default.png */,
+				0A54D6AC184C726900BBA9C4 /* Default@2x.png */,
+				0A54D6AD184C726900BBA9C4 /* GenericSeparator@2x.png */,
+				0A54D6AE184C726900BBA9C4 /* KeyboardBackgroundTextured@2x.png */,
+				0A54D6AF184C726900BBA9C4 /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png */,
+				0A54D6B0184C726900BBA9C4 /* KeyboardNumericEntryKeyPressedTextured@2x.png */,
+				0A54D6B1184C726900BBA9C4 /* KeyboardNumericEntryKeyTextured@2x.png */,
+				0A54D6B2184C726900BBA9C4 /* KeyboardNumericEntryViewGridLinesTextured@2x.png */,
+				0A54D6B3184C726900BBA9C4 /* KeyboardTopShadow@2x.png */,
+				0A54D6B4184C726900BBA9C4 /* Snapshot.png */,
 				28D0DCAA183C79E500583675 /* btn_round_red.png */,
 				0AB113971833AC040011828A /* chazi1.png */,
 				0AB1138E183343660011828A /* 虚线.png */,
@@ -946,6 +1004,7 @@
 		0A07BD571829D27E00A350BC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0A54D6CC184EC8CB00BBA9C4 /* menubook */,
 				0AB113951833770F0011828A /* Settings.bundle */,
 				0AEBE5CB1831FFC200B01A5E /* icon */,
 				0AEBE52B1831161B00B01A5E /* group */,
@@ -1045,8 +1104,8 @@
 				0A40FDF8183DFAF700427613 /* DADeskProxy.m */,
 				0A40FE00183EE58F00427613 /* DAServiceProxy.h */,
 				0A40FE01183EE58F00427613 /* DAServiceProxy.m */,
-				0AA031A91843350900C66590 /* DAOrderProxy.h */,
 				0AA031AA1843350900C66590 /* DAOrderProxy.m */,
+				0AA031A91843350900C66590 /* DAOrderProxy.h */,
 				0AA0320B18445E0C00C66590 /* DAMenuProxy.h */,
 				0AA0320C18445E0C00C66590 /* DAMenuProxy.m */,
 				0A7502981848696400665B6C /* DAPrintProxy.h */,
@@ -1099,6 +1158,24 @@
 				0A40FE13183F290000427613 /* DASocketIO.m */,
 			);
 			name = DASync;
+			sourceTree = "<group>";
+		};
+		0A54D6A5184C710D00BBA9C4 /* ZenKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				0A54D6A6184C712400BBA9C4 /* ZenKeyboard.h */,
+				0A54D6A7184C712400BBA9C4 /* ZenKeyboard.m */,
+			);
+			name = ZenKeyboard;
+			sourceTree = "<group>";
+		};
+		0A54D6CC184EC8CB00BBA9C4 /* menubook */ = {
+			isa = PBXGroup;
+			children = (
+				0A54D6CD184EC8E300BBA9C4 /* menubook_bg.png */,
+				0A54D6CF184ECC3D00BBA9C4 /* menubook_sidebg.png */,
+			);
+			name = menubook;
 			sourceTree = "<group>";
 		};
 		0A5D288A182BD01400847578 /* Popup */ = {
@@ -1201,6 +1278,8 @@
 		0A7AF0E01836131A00635376 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0A54D6C9184D842800BBA9C4 /* DABaseViewController.h */,
+				0A54D6CA184D842800BBA9C4 /* DABaseViewController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1618,6 +1697,9 @@
 				0A739E66183B0A4100AA48C4 /* DAMyBackOrderViewCell.h */,
 				0A739E67183B0A4100AA48C4 /* DAMyBackOrderViewCell.m */,
 				0A739E64183B01F800AA48C4 /* DAMyBackOrderViewCell.xib */,
+				0A54D6C4184D81C400BBA9C4 /* DATakeoutLoginViewController.h */,
+				0A54D6C5184D81C400BBA9C4 /* DATakeoutLoginViewController.m */,
+				0A54D6C6184D81C400BBA9C4 /* DATakeoutLoginViewController.xib */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -1671,6 +1753,10 @@
 				0AA032091844452400C66590 /* DAItemLayout.m */,
 				0A75028E1848622800665B6C /* DAMyDevice.h */,
 				0A75028F1848622800665B6C /* DAMyDevice.m */,
+				0A54D6A2184C6B8800BBA9C4 /* DABill.h */,
+				0A54D6A3184C6B8800BBA9C4 /* DABill.m */,
+				0A54D6C1184D772B00BBA9C4 /* DAServiceList.h */,
+				0A54D6C2184D772B00BBA9C4 /* DAServiceList.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -1873,9 +1959,11 @@
 				0AEBE5871831162700B01A5E /* 海蛎三吃.jpg in Resources */,
 				0AEBE5DA1832139700B01A5E /* clipboard@2x.png in Resources */,
 				0A7AF0BB183606B900635376 /* DAQueueItemTableViewController.xib in Resources */,
+				0A54D6CE184EC8E300BBA9C4 /* menubook_bg.png in Resources */,
 				0A924AB21834908E0004C973 /* DAMyItemCell.xib in Resources */,
 				F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */,
 				0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */,
+				0A54D6BD184C726900BBA9C4 /* KeyboardNumericEntryKeyTextured@2x.png in Resources */,
 				0AEBE59A1831162700B01A5E /* 木耳蛰头.jpg in Resources */,
 				0AEBE5BE1831162700B01A5E /* 炸蛎黄.jpg in Resources */,
 				F2AB4C17182E26710067E450 /* queue_detail.json in Resources */,
@@ -1893,9 +1981,12 @@
 				0AEBE5D11832052600B01A5E /* top_bg.png in Resources */,
 				F2AB4C0A182E1E120067E450 /* DAOrderGroupViewCell.xib in Resources */,
 				0AEBE5831831162700B01A5E /* 干锅虾.jpg in Resources */,
+				0A54D6B5184C726900BBA9C4 /* BackgroundTexture@2x.png in Resources */,
 				0A7AF0D818360B3A00635376 /* da_data_queue_food.json in Resources */,
+				0A54D6C0184C726900BBA9C4 /* Snapshot.png in Resources */,
 				0A739E72183B2AB400AA48C4 /* dot_off.png in Resources */,
 				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
+				0A54D6BB184C726900BBA9C4 /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png in Resources */,
 				0AEBE5B81831162700B01A5E /* 腌黄瓜.jpg in Resources */,
 				0A7AF0DF183612EF00635376 /* DAQueueMasterViewController.xib in Resources */,
 				0AEBE5B11831162700B01A5E /* 头菜炒粉.jpg in Resources */,
@@ -1924,7 +2015,10 @@
 				0A5D2897182BD23700847578 /* DADetailOrderViewController.xib in Resources */,
 				0AEBE5B21831162700B01A5E /* 乌东面.jpg in Resources */,
 				0AEBE5BD1831162700B01A5E /* 炸鸡排.jpg in Resources */,
+				0A54D6B9184C726900BBA9C4 /* GenericSeparator@2x.png in Resources */,
 				0AEBE5BA1831162700B01A5E /* 鱼翅汤.jpg in Resources */,
+				0A54D6B7184C726900BBA9C4 /* Default.png in Resources */,
+				0A54D6BF184C726900BBA9C4 /* KeyboardTopShadow@2x.png in Resources */,
 				0AEBE58E1831162700B01A5E /* 烤羊排.jpg in Resources */,
 				0AEBE5981831162700B01A5E /* 秘制肉丸.jpg in Resources */,
 				0A5D28A1182CA9AA00847578 /* DADetailOrderCell.xib in Resources */,
@@ -1961,6 +2055,7 @@
 				0AEBE5B01831162700B01A5E /* 泰椒腊肉.jpg in Resources */,
 				0A95E5D6183B673E0026017C /* dot_off1.png in Resources */,
 				0A7AF0C0183606D300635376 /* DAQueueFoodTableViewController.xib in Resources */,
+				0A54D6B6184C726900BBA9C4 /* Default-568h@2x.png in Resources */,
 				0AEBE5901831162700B01A5E /* 老汤炖鸡.jpg in Resources */,
 				0A739E73183B2AB400AA48C4 /* dot_on.png in Resources */,
 				0A7AF0AC183600C900635376 /* DADrinkQueueViewController.xib in Resources */,
@@ -1973,6 +2068,7 @@
 				0AEBE5761831162700B01A5E /* 鲅鱼饼子29元.jpg in Resources */,
 				47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */,
 				0A7AF0B6183600EE00635376 /* DAItemViewController.xib in Resources */,
+				0A54D6C8184D81C400BBA9C4 /* DATakeoutLoginViewController.xib in Resources */,
 				0A07BD6E182A031000A350BC /* cai_2.png in Resources */,
 				0AEBE5821831162700B01A5E /* 干锅千叶豆腐.jpg in Resources */,
 				0AB113981833AC040011828A /* chazi1.png in Resources */,
@@ -1988,20 +2084,24 @@
 				47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */,
 				0AEBE52A18310D3800B01A5E /* stain_bg1.png in Resources */,
 				0AEBE5881831162700B01A5E /* 红烧大连小鲍鱼.jpg in Resources */,
+				0A54D6D0184ECC3D00BBA9C4 /* menubook_sidebg.png in Resources */,
 				0AEBE59C1831162700B01A5E /* 南瓜饼.jpg in Resources */,
 				F2AB4BF8182DDDB90067E450 /* DAOrderQueueViewController.xib in Resources */,
 				287FA992183B06D600E02051 /* DATakeoutViewCell.xib in Resources */,
 				0A7AF0DA18360B5000635376 /* da_data_queue_drink.json in Resources */,
 				0A7AF0B1183600E400635376 /* DAFoodViewController.xib in Resources */,
 				0AEBE58B1831162700B01A5E /* 家常豆腐.jpg in Resources */,
+				0A54D6BC184C726900BBA9C4 /* KeyboardNumericEntryKeyPressedTextured@2x.png in Resources */,
 				0AEBE5CE1831FFCB00B01A5E /* newspaper-mini.png in Resources */,
 				0AEBE5241831027600B01A5E /* price_tag.png in Resources */,
 				0A95E5D7183B673E0026017C /* dot_on1.png in Resources */,
 				0A7AF0D41836077B00635376 /* DAQueueDrinkListViewController.xib in Resources */,
 				0AEBE5D718320B9100B01A5E /* price_mask1.png in Resources */,
 				0AEBE5861831162700B01A5E /* 怪味牛肉.jpg in Resources */,
+				0A54D6BE184C726900BBA9C4 /* KeyboardNumericEntryViewGridLinesTextured@2x.png in Resources */,
 				0A5D289C182C6EFF00847578 /* DAMyLoginViewController.xib in Resources */,
 				0A924AA61834899A0004C973 /* DAMyOrderQueueViewController.xib in Resources */,
+				0A54D6BA184C726900BBA9C4 /* KeyboardBackgroundTextured@2x.png in Resources */,
 				0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */,
 				0AEBE5811831162700B01A5E /* 风干肠16元.jpg in Resources */,
 				F2AB4C08182E15B30067E450 /* DAOrderDetailViewCell.xib in Resources */,
@@ -2031,6 +2131,7 @@
 				0A40FE07183EFBCE00427613 /* ProgressHUD.bundle in Resources */,
 				0AEBE57C1831162700B01A5E /* 刺身拼盘.jpg in Resources */,
 				0A739E65183B01F800AA48C4 /* DAMyBackOrderViewCell.xib in Resources */,
+				0A54D6B8184C726900BBA9C4 /* Default@2x.png in Resources */,
 				0AEBE58D1831162700B01A5E /* 烤鸡.jpg in Resources */,
 				0A07BD0B1828ECF800A350BC /* DAMyFilterViewController.xib in Resources */,
 				0AB4B3AD1838D4CC00D77D7E /* DAQueueDrinkListCell.xib in Resources */,
@@ -2079,6 +2180,7 @@
 				2886BAFD18360F5800A496AC /* DAProcessionViewController.m in Sources */,
 				0AB78B42183CB46500979BD0 /* DARequestHelper.m in Sources */,
 				0AB78B41183CB46500979BD0 /* DAJsonHelper.m in Sources */,
+				0A54D6C7184D81C400BBA9C4 /* DATakeoutLoginViewController.m in Sources */,
 				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
 				0AA032051843558300C66590 /* base64.c in Sources */,
 				0AA031B418434A1E00C66590 /* DAMyOrderList.m in Sources */,
@@ -2155,6 +2257,7 @@
 				28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */,
 				0A739E68183B0A4100AA48C4 /* DAMyBackOrderViewCell.m in Sources */,
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
+				0A54D6A8184C712400BBA9C4 /* ZenKeyboard.m in Sources */,
 				0A7AF0B5183600EE00635376 /* DAItemViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
 				0AA031FB1843555900C66590 /* SocketIOTransportXHR.m in Sources */,
@@ -2169,6 +2272,7 @@
 				0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */,
 				287FA98C183B053500E02051 /* DATakeoutViewController.m in Sources */,
 				0AB78B7E183CB46500979BD0 /* AFJSONRequestOperation.m in Sources */,
+				0A54D6A4184C6B8800BBA9C4 /* DABill.m in Sources */,
 				0AA032071843558300C66590 /* SRWebSocket.m in Sources */,
 				0A40FDF2183DF4FD00427613 /* DADeskList.m in Sources */,
 				0AA0320A1844452400C66590 /* DAItemLayout.m in Sources */,
@@ -2188,6 +2292,7 @@
 				0AB78B85183CB46500979BD0 /* JastorRuntimeHelper.m in Sources */,
 				0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
+				0A54D6C3184D772B00BBA9C4 /* DAServiceList.m in Sources */,
 				0AB78B92183CD7DC00979BD0 /* DAItem.m in Sources */,
 				0A40FE08183EFBCE00427613 /* ProgressHUD.m in Sources */,
 				28FFB64718332272003443D1 /* DAImageUtil.m in Sources */,
@@ -2210,6 +2315,7 @@
 				F2AB4C02182E03480067E450 /* DAOrderGroupViewController.m in Sources */,
 				F2AB4BFD182E030A0067E450 /* DAOrderDetailViewController.m in Sources */,
 				0A7AF0D31836077B00635376 /* DAQueueDrinkListViewController.m in Sources */,
+				0A54D6CB184D842800BBA9C4 /* DABaseViewController.m in Sources */,
 				0A7502901848622800665B6C /* DAMyDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,12 +22,17 @@ enum PrintErrorStatus
     NSMutableArray *lines;
 }
 
-+(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum
++(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout
 {
     
     DAPrintProxy *print = [[DAPrintProxy alloc] init];
     
-    [print addLine:[NSString stringWithFormat:@"单号:%@ 包： %@ 下单时间：18:30",deskName,orderNum]];
+    if (takeout.length > 0) {
+        [print addLine:[NSString stringWithFormat:@"单号:%@ 外卖的手机号：%@ 下单时间：%@",orderNum,takeout,now]];
+    } else {
+        [print addLine:[NSString stringWithFormat:@"单号:%@ 包： %@ 下单时间：%@",orderNum,deskName,now]];
+    }
+
     
     [print addSplit];
     for (DAOrder *order in orderList.items) {
@@ -45,7 +50,7 @@ enum PrintErrorStatus
     
     [print addSplit];
     
-    [print printText];
+    [print printText:@"10.2.3.149"];
 
     
 }
@@ -98,10 +103,12 @@ enum PrintErrorStatus
     if(builder == nil){
         return PRINT_ERROR;
     }
-    
-    // set language
+
+
+    //add command
     int result = [builder addTextLang:EPOS_OC_LANG_ZH_CN];
     if(result != EPOS_OC_SUCCESS){
+        
         return PRINT_ERROR;
     }
     
@@ -112,18 +119,38 @@ enum PrintErrorStatus
             return PRINT_ERROR;
         }
     }
+   
+    
+    // set language
+//    result = [builder addTextLang:EPOS_OC_LANG_ZH_CN];
+//    if(result != EPOS_OC_SUCCESS){
+//        return PRINT_ERROR;
+//    }
+    //add command
+    result = [builder addTextFont:EPOS_OC_FONT_A];
+    if(result != EPOS_OC_SUCCESS){
 
+        return PRINT_ERROR;
+    }
+
+    result = [builder addTextSize:8 Height:8];
+    if(result != EPOS_OC_SUCCESS){
+        return PRINT_ERROR;
+    }
+    
     // feed
     result = [builder addFeedUnit:30];
     if(result != EPOS_OC_SUCCESS){
         return PRINT_ERROR;
     }
     
+    
     // cut
     result = [builder addCut:EPOS_OC_CUT_FEED];
     if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
+    
     
     // open printer
     EposPrint *printer = [self getPrinter:ip];

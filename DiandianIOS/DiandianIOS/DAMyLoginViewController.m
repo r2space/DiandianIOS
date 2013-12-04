@@ -50,6 +50,7 @@
     NSString *WaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
     NSString *WaitterName = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
     curWaitterUserId = WaitterId;
+    self.curUserId = WaitterId;
     self.waitterId.text = WaitterName;
     
 }
@@ -229,6 +230,7 @@
         [vc initData:@"people" list:wList];
         vc.delegate = self;
         [vc.tableView reloadData];
+        //
         self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
         self.popover.popoverContentSize = CGSizeMake(100, 400);
         [self.popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
@@ -261,6 +263,7 @@
     if ([@"user" isEqualToString:tag]) {
         DAUser *user  = value;
         self.waitterId.text = user.name;
+        self.curUserId = user._id;
         curWaitterUserId = user._id;
         
         [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];

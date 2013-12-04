@@ -17,4 +17,6 @@ typedef void(^DeskClickCallback)(NSString *deskId , NSString *serviceId);
 
 @property (nonatomic, copy) DeskClickCallback deskClickCallback;
 
+- (void)loadFromFile;
+
 @end

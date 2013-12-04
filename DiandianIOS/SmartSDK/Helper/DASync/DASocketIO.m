@@ -9,7 +9,8 @@
 #import "DASocketIO.h"
 #define kInfoPlistKeyServerAddress  @"ServerAddress"
 #define kInfoPlistKeyServerPort     @"ServerPort"
-
+#define kServerAddress      @"jp.co.dreamarts.smart.sdk.server.address"
+#define kServerPort         @"jp.co.dreamarts.smart.sdk.server.port"
 
 @implementation DASocketIO
 
@@ -30,8 +31,10 @@
 
 -(void)conn
 {
-    NSString *address = @"10.2.3.237";
-    NSInteger port = 3000;
+    NSString *address = [[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress];
+    NSInteger port = [[NSUserDefaults standardUserDefaults] integerForKey:kServerPort];
+//    NSString *address = @"10.2.3.237";
+//    NSInteger port = 3000;
     [self connectToHost:address onPort:port];
 }
 

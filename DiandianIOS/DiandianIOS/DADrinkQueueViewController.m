@@ -55,7 +55,9 @@ static DAQueueDrinkTableViewController *vct;
 {
     
     vc = [[DAQueueDrinkListViewController alloc] initWithNibName:@"DAQueueDrinkListViewController" bundle:nil];
-    
+    vc.itemClickCallback = ^(){
+        [vct loadFromFile];
+    };
     vc.view.frame = CGRectMake(0, 0, 814, 684);
     
     [self addChildViewController:vc];

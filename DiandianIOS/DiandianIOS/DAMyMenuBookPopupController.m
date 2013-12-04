@@ -23,11 +23,7 @@
     }
     return self;
 }
-//@property (weak, nonatomic) IBOutlet UILabel *labelName;
-//@property (weak, nonatomic) IBOutlet UILabel *labelPrice;
-//@property (weak, nonatomic) IBOutlet UIImageView *viewImage;
-//@property (weak, nonatomic) IBOutlet UILabel *labelMaterial;
-//@property (weak, nonatomic) IBOutlet UILabel *labelAmount;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,9 +33,24 @@
 - (void) initUI
 {
     
-    self.labelName.text = self.menuData.itemName;
-    self.labelAmount.text = [NSString stringWithFormat:@"%@",self.menuData.amount];
-    [self.viewImage setImage:[DAMenuProxy getImageFromDisk:self.menuData.bigimage]];
+    self.labelName.text = self.curItem.itemName;
+    
+
+    
+    self.textItemMethod.text = [NSString stringWithFormat:@"%@", self.curItem.itemMethod];
+    self.textItemComment.text = [NSString stringWithFormat:@"%@",self.curItem.itemComment];
+    self.textItemMaterial.text = [NSString stringWithFormat:@"%@" ,self.curItem.itemMaterial];
+    
+    [self.viewImage setImage:[DAMenuProxy getImageFromDisk:self.curItem.bigimage]];
+    
+    
+    if ( self.curItem.itemPriceHalf!=nil&&self.curItem.itemPriceHalf.length >0 ) {
+        self.labelPrice.text = [NSString stringWithFormat:@"大%@元/小%@元",self.curItem.itemPriceNormal,self.curItem.itemPriceHalf];
+        [self.btnSmallAdd setHidden:NO];
+    } else {
+        self.labelPrice.text = [NSString stringWithFormat:@"%@元",self.curItem.itemPriceNormal];
+        [self.btnSmallAdd setHidden:YES];
+    }
     
 }
 
@@ -56,9 +67,21 @@
 }
 
 - (IBAction)orderTouched:(id)sender {
-    NSLog(@"dfdaf  data  %@  " ,self.menuData.itemName);
-    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"orderReload" object:self.menuData];
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"orderReload" object:self.curItem];
     [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
+}
+
+
+- (IBAction)onAddTouched:(id)sender {
+    NSNotification *addOrderNotification = [NSNotification notificationWithName:@"menu_addOrder" object:self.curItem];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:addOrderNotification];
+}
+
+- (IBAction)onAddSmallTouched:(id)sender {
+    NSNotification *notice = [NSNotification notificationWithName:@"menu_addSmallItem" object:self.curItem];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:notice];
 }
 
 - (IBAction)backThumbTouched:(id)sender {
