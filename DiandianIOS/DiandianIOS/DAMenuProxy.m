@@ -77,8 +77,14 @@
     for (DAMenu *menu in  menuList.items) {
         for (NSDictionary *layoutDic in menu.items) {
             DAItemLayout *layoutObj = [[DAItemLayout alloc ]initWithDictionary:layoutDic];
-            [tempList addObject:layoutObj.item.smallimage];
-            [tempList addObject:layoutObj.item.bigimage];
+            if (layoutObj.item !=nil) {
+                if (layoutObj.item.smallimage !=nil) {
+                    [tempList addObject:layoutObj.item.smallimage];
+                }
+                if (layoutObj.item.bigimage != nil) {
+                    [tempList addObject:layoutObj.item.bigimage];
+                }
+            }
             
         }
     }

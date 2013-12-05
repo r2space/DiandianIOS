@@ -22,7 +22,7 @@ enum PrintErrorStatus
     NSMutableArray *lines;
 }
 
-+(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout
++(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout tips:(NSString *)tips
 {
     
     DAPrintProxy *print = [[DAPrintProxy alloc] init];
@@ -32,16 +32,19 @@ enum PrintErrorStatus
     } else {
         [print addLine:[NSString stringWithFormat:@"单号:%@ 包： %@ 下单时间：%@",orderNum,deskName,now]];
     }
-
+    
+    if (tips.length > 0) {
+        [print addLine:[NSString stringWithFormat:@"备注:%@  ",tips]];
+    }
     
     [print addSplit];
     for (DAOrder *order in orderList.items) {
         
         NSString *line;
         if ([order.type  integerValue] == 0) {
-            line = [NSString stringWithFormat:@"%@ 1份 .." ,order.item.itemName];
+            line = [NSString stringWithFormat:@"%@ 1份 " ,order.item.itemName];
         } else {
-            line = [NSString stringWithFormat:@"%@ （小份） 1份 .." ,order.item.itemName];
+            line = [NSString stringWithFormat:@"%@ （小份） 1份 " ,order.item.itemName];
         }
         
         
@@ -111,6 +114,16 @@ enum PrintErrorStatus
         
         return PRINT_ERROR;
     }
+    result = [builder addTextFont:EPOS_OC_FONT_A];
+    if(result != EPOS_OC_SUCCESS){
+        
+        return PRINT_ERROR;
+    }
+    
+    result = [builder addTextSize:2 Height:2];
+    if(result != EPOS_OC_SUCCESS){
+        return PRINT_ERROR;
+    }
     
     // print text
     for (NSString *line in lines) {
@@ -127,16 +140,7 @@ enum PrintErrorStatus
 //        return PRINT_ERROR;
 //    }
     //add command
-    result = [builder addTextFont:EPOS_OC_FONT_A];
-    if(result != EPOS_OC_SUCCESS){
-
-        return PRINT_ERROR;
-    }
-
-    result = [builder addTextSize:8 Height:8];
-    if(result != EPOS_OC_SUCCESS){
-        return PRINT_ERROR;
-    }
+    
     
     // feed
     result = [builder addFeedUnit:30];

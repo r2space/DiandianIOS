@@ -52,6 +52,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOrder:) name:@"menu_addOrder" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addSmallItem:) name:@"menu_addSmallItem" object:nil];
 
+    //
+    UIImageView *imageview = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    [imageview setImage:[UIImage imageNamed:@"menubook_sidemiddle.png"]];
+    [self.tableView setBackgroundView:imageview];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationSetRecipe:) name:@"setRecipe" object:nil];
     
@@ -216,10 +220,15 @@
 //               action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
 //    [recipeBtn addTarget:self action:@selector(updateRecipe: ) forControlEvents:UIControlEventTouchUpInside];
     if (indexPath.section == 0) {
-        cell.backgroundColor = [UIColor clearColor];
+
+//        cell.backgroundColor = [UIColor clearColor];
+        titleLabel.textColor = [UIColor blackColor];
     } else {
-        cell.backgroundColor = [UIColor lightGrayColor];
+//        cell.backgroundColor = [UIColor lightGrayColor];
+        titleLabel.textColor = [UIColor darkGrayColor];
     }
+    cell.backgroundColor = [UIColor clearColor];
+    
 
     return cell;
 }
@@ -231,9 +240,32 @@
     }
     return num;
 }
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIImageView *image= [[UIImageView alloc] initWithFrame:CGRectMake(0, 0.0, 140, 0)];
+    image.backgroundColor= [UIColor clearColor];
+    
+    UILabel * headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    headerLabel.backgroundColor = [UIColor clearColor];
+    headerLabel.opaque = NO;
+    headerLabel.textColor = [UIColor blackColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:12];
+    headerLabel.frame = CGRectMake(10.0, 0.0, 140.0, 44.0);
+    
+    if (section == 0) {
+        headerLabel.text = @"新订单";
+    } else {
+        headerLabel.text = [NSString stringWithFormat:@"%d号单",section];
+    }
+    
+    [image addSubview:headerLabel];
+    
+    return image;
+}
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    
+
     if (section == 0) {
         return @"新订单";
     }
@@ -263,7 +295,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 73;
+    return 44;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -276,12 +308,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"DAMyOrderViewController   ");
-    DAOrder *_order = [self.dataList.items objectAtIndex:indexPath.row];
-//
-    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"popupDetailMenu" object:_order.item];
-//
-    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
+
+    if (indexPath.section == 0) {
+        
+        DAOrder *_order = [self.dataList.items objectAtIndex:indexPath.row];
+        
+        NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"popupDetailMenu" object:_order.item];
+        
+        [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
+        
+    } else {
+        
+        NSArray *curArray = [oldOrderDataList.oldItems objectAtIndex:(indexPath.section - 1)];
+        DAOrder *_order  = [curArray objectAtIndex:indexPath.row];
+        
+        NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"popupDetailMenu" object:_order.item];
+        
+        [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
+        
+    }
+    
     
 }
 
@@ -296,7 +342,7 @@
     detailOrderVC.delegate = self;
     detailOrderVC.oldOrderDataList = oldOrderDataList;
     detailOrderVC.curService = self.curService;
-    detailOrderVC.confirmCallback = ^(){
+    detailOrderVC.confirmCallback = ^(NSString *tips){
         [self loadTableFromDisk];
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
         
@@ -315,9 +361,9 @@
         [[DAOrderModule alloc] addOrder:[self.dataList toArray] serviceId:self.curService._id deskId:deskId callback:^(NSError *err, DAMyOrderList *list) {
             
             if ([self.curService.type integerValue] == 3) {
-                [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone];
+                [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone tips:@""];
             } else {
-                [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@""];
+                [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@"" tips:tips];
             }
             
             [ProgressHUD dismiss];
@@ -436,6 +482,8 @@
 
 - (void)confirmOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController;
 {
+    
+    
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }

@@ -177,6 +177,12 @@ static DAMyTableViewController *activity;
     [ProgressHUD show:nil];
     [DADeskProxy initDesk:loginVC.curDesk._id userId:loginVC.curUserId type:@"1" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
 
+        if ([service._status integerValue ] != 200) {
+            [ProgressHUD showError:service._error];
+            [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+            return ;
+        }
+        
         UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
         DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
         menubookVC.curService = service;
@@ -377,8 +383,15 @@ static DAMyTableViewController *activity;
 
 - (IBAction)onLogoutTouched:(id)sender {
     [[DALoginModule alloc] logout:@"diandian" callback:^(NSError *error) {
-        [[NSUserDefaults standardUserDefaults]  setObject:@"NO" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
+        
+        [[NSUserDefaults standardUserDefaults]  removeObjectForKey:@"jp.co.dreamarts.smart.diandian.username"];
+        
+        [[NSUserDefaults standardUserDefaults]  removeObjectForKey:@"jp.co.dreamarts.smart.diandian.password"];
+        
+        
         [self.navigationController popViewControllerAnimated:YES];
+        
     }];
     
 }

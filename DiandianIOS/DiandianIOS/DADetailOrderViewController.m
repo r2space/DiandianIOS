@@ -324,10 +324,12 @@
 
 - (void)confirmOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
 {
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-    //确认订单 并提交
-    self.confirmCallback();
 
+    NSLog(@"下单备注   %@" ,loginViewViewController.labelTips.text);
+    //确认订单 并提交
+    self.confirmCallback(loginViewViewController.labelTips.text);
+    
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
 }
 - (void)cancelOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
 {

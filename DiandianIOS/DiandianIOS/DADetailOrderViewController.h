@@ -10,7 +10,7 @@
 #import "SmartSDK.h"
 
 
-typedef void(^ConfirmBlock)();
+typedef void(^ConfirmBlock)(NSString *tips);
 typedef void(^CancelBlock)();
 
 @protocol DADetailOrderDelegate;

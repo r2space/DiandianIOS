@@ -18,9 +18,11 @@
 
 #import "ProgressHUD.h"
 
-
+static DASettingViewController *loginViewController;
 @interface DAViewController ()
+{
 
+}
 @end
 
 @implementation DAViewController
@@ -38,6 +40,41 @@
 {
     [super viewDidLoad];
 
+    loginViewController = [[DASettingViewController alloc] initWithNibName:nil bundle:nil];
+    
+    NSString *_username = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.username"];
+    
+    NSString *_password = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.password"];
+    
+    [[NSUserDefaults standardUserDefaults]  setObject:@"NO" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
+    
+    
+    if (_username.length == 0 || _password.length == 0) {
+        
+    } else {
+        [[DALoginModule alloc]yukarilogin:_username password:_password code:nil callback:^(NSError *error, DAUser *user) {
+            
+            if (error != nil) {
+                [[NSUserDefaults standardUserDefaults]  setObject:@"NO" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
+                return ;
+            }
+            NSLog(@"用户自动登录");
+            
+            [[NSUserDefaults standardUserDefaults]  setObject:@"YES" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.userId"];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:user.userName forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
+            //自动登录
+            DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
+            [self.navigationController pushViewController:viewController animated:NO];
+
+        }];
+    }
+    
+    
     [self fetch];
 }
 
@@ -48,17 +85,8 @@
 }
 -(void) viewDidAppear:(BOOL)animated
 {
-    DASettingViewController *loginViewController = [[DASettingViewController alloc] initWithNibName:nil bundle:nil];
-    loginViewController.startupBlock=^(){
-        DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
-        [self.navigationController pushViewController:viewController animated:YES];
-    };
-    // init navigation ctrl
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
-    navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
-    
-    [self presentViewController:navigationController animated:YES completion:nil];
+
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,7 +109,6 @@
 
 - (IBAction)onStartTouched:(id)sender {
     // is not logged in
-    DASettingViewController *loginViewController = [[DASettingViewController alloc] initWithNibName:nil bundle:nil];
     loginViewController.startupBlock=^(){
         DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
         [self.navigationController pushViewController:viewController animated:YES];

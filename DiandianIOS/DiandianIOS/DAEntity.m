@@ -19,6 +19,9 @@
     [aCoder encodeObject:self.createby forKey:@"createby"];
     [aCoder encodeObject:self.editat forKey:@"editat"];
     [aCoder encodeObject:self.editby forKey:@"editby"];
+    
+    [aCoder encodeObject:self._status forKey:@"_status"];
+    [aCoder encodeObject:self._error forKey:@"_error"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -29,6 +32,8 @@
     self.createby = [aDecoder decodeObjectForKey:@"createby"];
     self.editat = [aDecoder decodeObjectForKey:@"editat"];
     self.editby = [aDecoder decodeObjectForKey:@"editby"];
+    self._status = [aDecoder decodeObjectForKey:@"_status"];
+    self._error = [aDecoder decodeObjectForKey:@"_error"];
     
     return self;
 }

@@ -16,6 +16,9 @@
 @property (retain, nonatomic) NSString *editat;
 @property (retain, nonatomic) NSString *editby;
 
+@property (retain, nonatomic) NSNumber *_status;
+@property (retain, nonatomic) NSString *_error;
+
 
 -(void)encodeWithCoder:(NSCoder *)aCoder;
 -(id)initWithCoder:(NSCoder *)aDecoder;

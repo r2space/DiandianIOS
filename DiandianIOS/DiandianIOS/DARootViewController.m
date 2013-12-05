@@ -47,11 +47,8 @@
     
     DAMyMenuBookViewController *book = [[DAMyMenuBookViewController alloc] initWithNibName:@"DAMyMenuBookViewController" bundle:nil];
     [self addChildViewController:book];
-    [self.MenuGird addSubview:book.view];//添加到self.view
-    self.MenuGird.layer.shadowColor = UIColor.blackColor.CGColor;
-    self.MenuGird.layer.shadowRadius = 2;
-    self.MenuGird.layer.shadowOpacity = 0.6;
-    self.MenuGird.layer.shadowOffset = CGSizeMake(0, 1);
+    [self.MenuGird addSubview:book.view];
+    
     
     DAMyFilterViewController *filter = [[DAMyFilterViewController alloc] initWithNibName:@"DAMyFilterViewController" bundle:nil];
     [self addChildViewController:filter];
@@ -65,10 +62,7 @@
     
     [self addChildViewController:orderView];
     [self.orderListView addSubview:orderView.view];
-    self.orderListView.layer.shadowColor = UIColor.blackColor.CGColor;
-    self.orderListView.layer.shadowRadius = 2;
-    self.orderListView.layer.shadowOpacity = 0.6;
-    self.orderListView.layer.shadowOffset = CGSizeMake(0, 1);
+    
     
 
 }

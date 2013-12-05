@@ -41,27 +41,10 @@
         [[NSUserDefaults standardUserDefaults] setObject:serverAddress forKey:kServerAddress];
         [[NSUserDefaults standardUserDefaults] setInteger:serverPort.integerValue forKey:kServerPort];
     }
-    NSString *_username = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.username"];
-    
-    NSString *_password = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.password"];
-    
-    [[NSUserDefaults standardUserDefaults]  setObject:@"NO" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
-
-    
-    if (_username.length == 0 || _password.length == 0) {
- 
-    } else {
-        [[DALoginModule alloc]yukarilogin:_username password:_password code:nil callback:^(NSError *error, DAUser *user) {
-            NSLog(@"login success  user %@",user);
-            [[NSUserDefaults standardUserDefaults]  setObject:@"YES" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
-            [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.userId"];
-        }];
-    }
     
     
     
-    
-    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+//    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
     [[DASocketIO sharedClient:self] conn];
     [self initDaemon];

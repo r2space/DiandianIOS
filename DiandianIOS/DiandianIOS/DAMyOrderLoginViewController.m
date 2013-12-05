@@ -15,6 +15,8 @@
 @interface DAMyOrderLoginViewController ()
 {
     DrawPatternLockViewController *lockVC;
+    NSString *willSave;
+    int errorCount;
 }
 @end
 
@@ -33,7 +35,9 @@
 {
     [super viewDidLoad];
     lockVC = [[DrawPatternLockViewController alloc] init];
-
+    willSave = [NSString stringWithFormat:@"confirm"];
+    //判断输入三次返回
+    errorCount = 0 ;
     self.labelName.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
 }
 
@@ -49,10 +53,27 @@
         NSNumber *isRight = [user objectForKey:@"isRight"];
         
         if (![isRight boolValue]) {
+            errorCount++;
             [ProgressHUD showError:@"手势密码验证错误。"];
+            if (errorCount == 3) {
+                [lockVC.view removeFromSuperview];
+            }
+
         } else {
-            self.labelStatus.text = @"通过";
-            [lockVC.view removeFromSuperview];
+
+            if ([willSave isEqualToString:@"confirm"]) {
+                //验证后直接开台
+                if (self.delegate && [self.delegate respondsToSelector:@selector(confirmOrderButtonClicked:)]) {
+                    [self.delegate confirmOrderButtonClicked:self];
+                }
+                
+            }
+            if ([willSave isEqualToString:@"cancel"]) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(cancelOrderButtonClicked:)]) {
+                    [self.delegate cancelOrderButtonClicked:self];
+                }
+                
+            }
         }
     }];
     
@@ -63,48 +84,27 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-//- (void)backmenuButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController;
-//- (void)cancelOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController;
-//- (void)confirmOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController;
--(void) touchedConfirmOrder:(id)sender
-{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(confirmOrderButtonClicked:)]) {
-        [self.delegate confirmOrderButtonClicked:self];
-    }
-}
 
--(void) touchedCancelOrder :(id)sender
-{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(cancelOrderButtonClicked:)]) {
-        [self.delegate cancelOrderButtonClicked:self];
-    }
-}
 
 - (IBAction)confirmOrderTouched:(id)sender {
-    
-    if ([self.labelStatus.text isEqualToString:@"通过"]) {
-        //验证后直接开台
-        if (self.delegate && [self.delegate respondsToSelector:@selector(confirmOrderButtonClicked:)]) {
-            [self.delegate confirmOrderButtonClicked:self];
-        }
-        
-    } else {
-        [ProgressHUD showError:@"请验证手势密码"];
-        [lockVC setTarget:self withAction:@selector(lockEntered:)];
-        lockVC.view.frame = CGRectMake(0, 0, 556, 349);
-        [self addChildViewController:lockVC];
-        [self.view addSubview:lockVC.view];
-        
-    }
+    willSave = [NSString stringWithFormat:@"confirm"];
+    errorCount = 0 ;
+    [ProgressHUD showError:@"请验证手势密码"];
+    [lockVC setTarget:self withAction:@selector(lockEntered:)];
+    lockVC.view.frame = CGRectMake(0, 0, 556, 349);
+    [self addChildViewController:lockVC];
+    [self.view addSubview:lockVC.view];
 }
 
 - (IBAction)cancelOrderTouched:(id)sender {
-
-    if ([self.labelStatus.text isEqualToString:@"通过"]){
-        if (self.delegate && [self.delegate respondsToSelector:@selector(cancelOrderButtonClicked:)]) {
-            [self.delegate cancelOrderButtonClicked:self];
-        }
-    }
+    
+    willSave = [NSString stringWithFormat:@"cancel"];
+    errorCount = 0;
+    [ProgressHUD showError:@"请验证手势密码"];
+    [lockVC setTarget:self withAction:@selector(lockEntered:)];
+    lockVC.view.frame = CGRectMake(0, 0, 556, 349);
+    [self addChildViewController:lockVC];
+    [self.view addSubview:lockVC.view];
     
 }
 
@@ -114,13 +114,6 @@
     }
 
 }
-- (IBAction)passwordTouched:(id)sender {
-    // Do any additional setup after loading the view from its nib.
-    
-    [lockVC setTarget:self withAction:@selector(lockEntered:)];
-    lockVC.view.frame = CGRectMake(0, 0, 468, 300);
-    [self addChildViewController:lockVC];
-    [self.view addSubview:lockVC.view];
-}
+
 
 @end

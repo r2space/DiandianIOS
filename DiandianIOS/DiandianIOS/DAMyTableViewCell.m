@@ -47,15 +47,7 @@
     
     // 这个好像被外面给覆盖了
     if (mytable.service !=nil) {
-//        
-//        if (service != nil && [@"0" isEqualToString:service.status]) {
-//            [self.tableState setTextColor:[UIColor redColor]];
-//            self.tableState.text = @"就餐中";
-//        } else {
-//            [self.tableState setTextColor:[UIColor redColor]];
-//            self.tableState.text = @"就餐中";
-//        }
-//        
+        
     } else {
         [self.tableState setTextColor:[UIColor blackColor]];
         self.tableState.text = @"";

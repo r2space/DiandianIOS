@@ -17,8 +17,8 @@
 #import "DAMenuProxy.h"
 
 
-#define MENU_FRAME_WIDTH    876
-#define MENU_FRAME_HEIGHT   694
+#define MENU_FRAME_WIDTH    882
+#define MENU_FRAME_HEIGHT   701
 
 @interface DAMyMenuBookViewController () <DAMyMenuBookPopupDelegate>
 {
@@ -63,7 +63,7 @@
     
     RFQuiltLayout* layout = (id)[self.collectionView collectionViewLayout];
     layout.direction = UICollectionViewScrollDirectionHorizontal;
-    layout.blockPixels = CGSizeMake(292 ,230);
+    layout.blockPixels = CGSizeMake(294 ,233);
     layout.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(filterReload:) name:@"filterReload" object:nil];
     
@@ -144,41 +144,8 @@
     NSString *cellIdentifier ;
     NSNumber *nsRow = [[NSNumber alloc] initWithInt:1];
     NSNumber *nsColumn = [[NSNumber alloc] initWithInt:1];
-    if (!listType) {
-        cellIdentifier = @"DAMyBigMenuBookCell";
-        nsRow = [[NSNumber alloc] initWithInt:3];
-        nsColumn = [[NSNumber alloc] initWithInt:3];
-
-    } else {
-        cellIdentifier = @"DAMyMenuBookCell";
-        NSNumber *rows = [[NSNumber alloc]initWithInt:5];
-        if (indexPath.row % [rows integerValue] == 0) {
-            nsRow = [[NSNumber alloc] initWithInt:1];
-            nsColumn = [[NSNumber alloc] initWithInt:1];
-        } else if(indexPath.row % [rows integerValue] == 1){
-            nsRow = [[NSNumber alloc] initWithInt:2];
-            nsColumn = [[NSNumber alloc] initWithInt:2];
-        } else if(indexPath.row % [rows integerValue] == 2){
-            nsRow = [[NSNumber alloc] initWithInt:1];
-            nsColumn = [[NSNumber alloc] initWithInt:1];
-        } else if(indexPath.row % [rows integerValue] == 3){
-            nsRow = [[NSNumber alloc] initWithInt:1];
-            nsColumn = [[NSNumber alloc] initWithInt:2];
-        } else if(indexPath.row % [rows integerValue] == 4){
-            nsRow = [[NSNumber alloc] initWithInt:1];
-            nsColumn = [[NSNumber alloc] initWithInt:1];
-        } else if(indexPath.row % [rows integerValue] == 5){
-            nsRow = [[NSNumber alloc] initWithInt:1];
-            nsColumn = [[NSNumber alloc] initWithInt:1];
-        } else if(indexPath.row % [rows integerValue] == 6){
-            nsRow = [[NSNumber alloc] initWithInt:2];
-            nsColumn = [[NSNumber alloc] initWithInt:2];
-        } else if(indexPath.row % [rows integerValue] == 7){
-            nsRow = [[NSNumber alloc] initWithInt:1];
-            nsColumn = [[NSNumber alloc] initWithInt:1];
-        }
-    }
-
+    cellIdentifier = @"DAMyMenuBookCell";
+    
     cell = [[DAMyMenuBookCell alloc] initWithObj:data.item collectionView:collectionView cellIdentifier:cellIdentifier indexPath:indexPath row:nsRow column:nsColumn];
     cell.itemData = data.item;
     
@@ -190,6 +157,13 @@
     
     titleLabel.text = data.item.itemName;
     [imageView setImage:[DAMenuProxy getImageFromDisk:data.item.smallimage]];
+
+    imageView.layer.cornerRadius = 10;
+    imageView.layer.masksToBounds = YES;
+    
+    
+    cell.layer.cornerRadius = 10;
+    cell.layer.masksToBounds = YES;
     
 
     
@@ -214,25 +188,50 @@
         timerFlag = YES;
         
     }
-    
-    if (data.item.itemPriceHalf!=nil && data.item.itemPriceHalf.length > 0 ) {
-        labelAmount.text = [NSString stringWithFormat:@"大%@元/小%@元",data.item.itemPriceNormal, data.item.itemPriceHalf];
-        if ([data.item.type integerValue] != 10) {
-            [addSmallBtn setHidden:NO];
-        }
-        
-    } else {
+//    
+//    if (data.item.itemPriceHalf!=nil && data.item.itemPriceHalf.length > 0 ) {
+//        labelAmount.text = [NSString stringWithFormat:@"大%@元/小%@元",data.item.itemPriceNormal, data.item.itemPriceHalf];
+//        if ([data.item.type integerValue] != 10) {
+//            [addSmallBtn setHidden:NO];
+//        }
+//        
+//    } else {
         labelAmount.text = [NSString stringWithFormat:@"%@元",data.item.itemPriceNormal];
         [addSmallBtn setHidden:YES];
         //添加小份动画
-        [addSmallBtn addTarget:self
-                   action:@selector(addSmallMenu:) forControlEvents:UIControlEventTouchUpInside];
-    }
+//        [addSmallBtn addTarget:self
+//                   action:@selector(addSmallMenu:) forControlEvents:UIControlEventTouchUpInside];
+//    }
     
 
     [addBtn addTarget:self
             action:@selector(addMenu:) forControlEvents:UIControlEventTouchUpInside];
 
+    float  x = 191;
+    float  y = 186;
+    float  mx = 402;
+    float  my = 391;
+    if ([data.row intValue] == 1 && [data.column intValue] == 1 ) {
+        [addBtn setFrame:CGRectMake(x,y,83 ,27.5)];
+        UIView *addBtnBackgroud = (UIView *)[cell viewWithTag:401];
+        UIView *maskBackgroud = (UIView *)[cell viewWithTag:101];
+        [maskBackgroud setFrame:CGRectMake(maskBackgroud.frame.origin.x ,y , maskBackgroud.frame.size.width , 27.5)];
+        [addBtnBackgroud setFrame:CGRectMake(x,y,83 ,27.5)];
+        [labelAmount setFrame:CGRectMake(100, y, labelAmount.frame.size.width, labelAmount.frame.size.height)];
+        [titleLabel setFrame:CGRectMake(10, y, titleLabel.frame.size.width, titleLabel.frame.size.height)];
+    } else if([data.row intValue] == 2 && [data.column intValue] == 2 )  {
+        [addBtn setFrame:CGRectMake(mx,my,166 ,55)];
+        UIView *addBtnBackgroud = (UIView *)[cell viewWithTag:401];
+        UIView *maskBackgroud = (UIView *)[cell viewWithTag:101];
+        [maskBackgroud setFrame:CGRectMake(0 ,my , maskBackgroud.frame.size.width , 55)];
+        [addBtnBackgroud setFrame:CGRectMake(mx,my,166 ,55)];
+        [labelAmount setFrame:CGRectMake(100, my + 10 , labelAmount.frame.size.width, labelAmount.frame.size.height)];
+        [titleLabel setFrame:CGRectMake(10, my + 10 , titleLabel.frame.size.width, titleLabel.frame.size.height)];
+    }
+    
+
+
+    
     
     
     return cell;
@@ -277,7 +276,7 @@
 }
 
 - (UIEdgeInsets)insetsForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return UIEdgeInsetsMake(2, 2, 2, 2);
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 

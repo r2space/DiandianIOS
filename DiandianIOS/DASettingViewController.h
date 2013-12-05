@@ -20,4 +20,7 @@ typedef void (^StartUpBlock)();
 
 @property (weak, nonatomic) IBOutlet UILabel *labLoginstatus;
 
+-(void)dismissVC;
+
+
 @end

@@ -13,11 +13,6 @@
 @interface DAOrderCell : UITableViewCell
 
 - (DAOrderCell *) initWithOrder : (DAMenu *)menu tableView:(UITableView *) tableView;
-- (IBAction)addAmount:(id)sender;
-- (IBAction)delAmount:(id)sender;
 
-//@property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-- (IBAction)setRecipe:(UIButton *)sender;
-@property (weak, nonatomic) IBOutlet UIButton *setRecipeBtn;
 
 @end

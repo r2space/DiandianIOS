@@ -54,6 +54,7 @@
     NSString *_password = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.password"];
     
     NSString *_isLogin = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
+    
     if (_username != nil && _username.length >0 ) {
         self.labUsername.text = _username;
     }
@@ -92,6 +93,14 @@
         
         
         NSLog(@"ERROR  %@  " ,error);
+        if (error != nil) {
+            isLogin = NO;
+            [ProgressHUD showError:@"登录失败"];
+            
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.diandian.isLogin"];
+            return;
+        }
+        
         NSLog(@"login success  user %@",user);
         if (error!=nil) {
             isLogin = NO;
@@ -103,8 +112,15 @@
         [ProgressHUD showSuccess:@"登录成功"];
         
         [[NSUserDefaults standardUserDefaults] setValue:userName forKey:@"jp.co.dreamarts.smart.diandian.username"];
-        [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.userId"];
         [[NSUserDefaults standardUserDefaults] setValue:password forKey:@"jp.co.dreamarts.smart.diandian.password"];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.userId"];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:user.userName forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
+        
+        
         [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
         
         
@@ -205,6 +221,8 @@
     }
     
 }
+
+
 - (IBAction)onDeviceApplyTouched:(id)sender {
     if (isLogin) {
         
@@ -219,6 +237,10 @@
     } else {
         [ProgressHUD showError:@"请登录"];
     }
+}
+-(void)dismissVC
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

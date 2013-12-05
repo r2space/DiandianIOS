@@ -282,11 +282,6 @@
     
     CAShapeLayer* layer = (CAShapeLayer *)self.layer;
     layer.fillColor = [UIColor colorWithRed:0.961 green:0.961 blue:0.961 alpha:1].CGColor;
-    self.layer.backgroundColor = UIColor.clearColor.CGColor;
-    self.layer.shadowColor = UIColor.blackColor.CGColor;
-    self.layer.shadowRadius = 2;
-    self.layer.shadowOpacity = 0.6;
-    self.layer.shadowOffset = CGSizeMake(0, 1);
     
     self.selectedStainView = [[DefaultStainView alloc] init];
     self.selectedStainView.backgroundColor = [UIColor colorWithRed:0.816 green:0.816 blue:0.816 alpha:1];

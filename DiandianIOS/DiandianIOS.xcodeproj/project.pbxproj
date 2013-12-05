@@ -75,6 +75,15 @@
 		0A54D6CB184D842800BBA9C4 /* DABaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54D6CA184D842800BBA9C4 /* DABaseViewController.m */; };
 		0A54D6CE184EC8E300BBA9C4 /* menubook_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6CD184EC8E300BBA9C4 /* menubook_bg.png */; };
 		0A54D6D0184ECC3D00BBA9C4 /* menubook_sidebg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6CF184ECC3D00BBA9C4 /* menubook_sidebg.png */; };
+		0A54D6D2184ED10800BBA9C4 /* menubook_sidetop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6D1184ED10800BBA9C4 /* menubook_sidetop.png */; };
+		0A54D6D4184ED1D400BBA9C4 /* menubook_sidemiddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6D3184ED1D400BBA9C4 /* menubook_sidemiddle.png */; };
+		0A54D6D6184ED1DD00BBA9C4 /* menubook_sidebottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6D5184ED1DD00BBA9C4 /* menubook_sidebottom.png */; };
+		0A54D6D8184EEC4B00BBA9C4 /* menubook_sidetop1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6D7184EEC4B00BBA9C4 /* menubook_sidetop1.png */; };
+		0A54D6DA184F0FCD00BBA9C4 /* menubook_top.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6D9184F0FCD00BBA9C4 /* menubook_top.png */; };
+		0A54D6DD184F1EA600BBA9C4 /* menubook_g.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6DB184F1EA600BBA9C4 /* menubook_g.png */; };
+		0A54D6DE184F1EA600BBA9C4 /* menubook_grbotton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6DC184F1EA600BBA9C4 /* menubook_grbotton.png */; };
+		0A54D6E0184F2B1F00BBA9C4 /* menubook_word.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6DF184F2B1F00BBA9C4 /* menubook_word.png */; };
+		0A54D6E2184F321C00BBA9C4 /* menubook_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6E1184F321C00BBA9C4 /* menubook_background.png */; };
 		0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BC8182878DA009CDF6D /* DAViewController.m */; };
 		0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BDB1828A040009CDF6D /* DABookViewController.m */; };
 		0A5D2835182B6E2F00847578 /* table1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2834182B6E2F00847578 /* table1.png */; };
@@ -477,6 +486,15 @@
 		0A54D6CA184D842800BBA9C4 /* DABaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DABaseViewController.m; path = View/Common/DABaseViewController.m; sourceTree = "<group>"; };
 		0A54D6CD184EC8E300BBA9C4 /* menubook_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_bg.png; sourceTree = "<group>"; };
 		0A54D6CF184ECC3D00BBA9C4 /* menubook_sidebg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_sidebg.png; sourceTree = "<group>"; };
+		0A54D6D1184ED10800BBA9C4 /* menubook_sidetop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_sidetop.png; sourceTree = "<group>"; };
+		0A54D6D3184ED1D400BBA9C4 /* menubook_sidemiddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_sidemiddle.png; sourceTree = "<group>"; };
+		0A54D6D5184ED1DD00BBA9C4 /* menubook_sidebottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_sidebottom.png; sourceTree = "<group>"; };
+		0A54D6D7184EEC4B00BBA9C4 /* menubook_sidetop1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_sidetop1.png; sourceTree = "<group>"; };
+		0A54D6D9184F0FCD00BBA9C4 /* menubook_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_top.png; sourceTree = "<group>"; };
+		0A54D6DB184F1EA600BBA9C4 /* menubook_g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_g.png; sourceTree = "<group>"; };
+		0A54D6DC184F1EA600BBA9C4 /* menubook_grbotton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_grbotton.png; sourceTree = "<group>"; };
+		0A54D6DF184F2B1F00BBA9C4 /* menubook_word.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_word.png; sourceTree = "<group>"; };
+		0A54D6E1184F321C00BBA9C4 /* menubook_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menubook_background.png; sourceTree = "<group>"; };
 		0A577BC7182878DA009CDF6D /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
 		0A577BC8182878DA009CDF6D /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
 		0A577BDA1828A040009CDF6D /* DABookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABookViewController.h; sourceTree = "<group>"; };
@@ -1172,8 +1190,17 @@
 		0A54D6CC184EC8CB00BBA9C4 /* menubook */ = {
 			isa = PBXGroup;
 			children = (
+				0A54D6E1184F321C00BBA9C4 /* menubook_background.png */,
+				0A54D6DF184F2B1F00BBA9C4 /* menubook_word.png */,
+				0A54D6DB184F1EA600BBA9C4 /* menubook_g.png */,
+				0A54D6DC184F1EA600BBA9C4 /* menubook_grbotton.png */,
+				0A54D6D7184EEC4B00BBA9C4 /* menubook_sidetop1.png */,
 				0A54D6CD184EC8E300BBA9C4 /* menubook_bg.png */,
 				0A54D6CF184ECC3D00BBA9C4 /* menubook_sidebg.png */,
+				0A54D6D1184ED10800BBA9C4 /* menubook_sidetop.png */,
+				0A54D6D3184ED1D400BBA9C4 /* menubook_sidemiddle.png */,
+				0A54D6D5184ED1DD00BBA9C4 /* menubook_sidebottom.png */,
+				0A54D6D9184F0FCD00BBA9C4 /* menubook_top.png */,
 			);
 			name = menubook;
 			sourceTree = "<group>";
@@ -1977,6 +2004,7 @@
 				0AEBE57F1831162700B01A5E /* 大红袍猪腰.jpg in Resources */,
 				0A3DB72C182A7B8700170F0C /* DAMyBigMenuBookCell.xib in Resources */,
 				0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */,
+				0A54D6D6184ED1DD00BBA9C4 /* menubook_sidebottom.png in Resources */,
 				F2AB4BFE182E030A0067E450 /* DAOrderDetailViewController.xib in Resources */,
 				0AEBE5D11832052600B01A5E /* top_bg.png in Resources */,
 				F2AB4C0A182E1E120067E450 /* DAOrderGroupViewCell.xib in Resources */,
@@ -1984,6 +2012,7 @@
 				0A54D6B5184C726900BBA9C4 /* BackgroundTexture@2x.png in Resources */,
 				0A7AF0D818360B3A00635376 /* da_data_queue_food.json in Resources */,
 				0A54D6C0184C726900BBA9C4 /* Snapshot.png in Resources */,
+				0A54D6D4184ED1D400BBA9C4 /* menubook_sidemiddle.png in Resources */,
 				0A739E72183B2AB400AA48C4 /* dot_off.png in Resources */,
 				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
 				0A54D6BB184C726900BBA9C4 /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png in Resources */,
@@ -2010,6 +2039,8 @@
 				0AEBE5281831087F00B01A5E /* filter_bg1.png in Resources */,
 				0AEBE5771831162700B01A5E /* 白斩鸡.jpg in Resources */,
 				28FFB62D18322E20003443D1 /* DAPopTableViewController.xib in Resources */,
+				0A54D6E0184F2B1F00BBA9C4 /* menubook_word.png in Resources */,
+				0A54D6DD184F1EA600BBA9C4 /* menubook_g.png in Resources */,
 				0AB1138F183343660011828A /* 虚线.png in Resources */,
 				0AEBE5D31832071300B01A5E /* top_bg1.png in Resources */,
 				0A5D2897182BD23700847578 /* DADetailOrderViewController.xib in Resources */,
@@ -2018,6 +2049,7 @@
 				0A54D6B9184C726900BBA9C4 /* GenericSeparator@2x.png in Resources */,
 				0AEBE5BA1831162700B01A5E /* 鱼翅汤.jpg in Resources */,
 				0A54D6B7184C726900BBA9C4 /* Default.png in Resources */,
+				0A54D6D2184ED10800BBA9C4 /* menubook_sidetop.png in Resources */,
 				0A54D6BF184C726900BBA9C4 /* KeyboardTopShadow@2x.png in Resources */,
 				0AEBE58E1831162700B01A5E /* 烤羊排.jpg in Resources */,
 				0AEBE5981831162700B01A5E /* 秘制肉丸.jpg in Resources */,
@@ -2072,6 +2104,7 @@
 				0A07BD6E182A031000A350BC /* cai_2.png in Resources */,
 				0AEBE5821831162700B01A5E /* 干锅千叶豆腐.jpg in Resources */,
 				0AB113981833AC040011828A /* chazi1.png in Resources */,
+				0A54D6E2184F321C00BBA9C4 /* menubook_background.png in Resources */,
 				0AF2C9CD1839DE9400A74B72 /* queue_drink.json in Resources */,
 				0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */,
 				0A7AF0D618360B2400635376 /* da_data_queue_item.json in Resources */,
@@ -2093,6 +2126,7 @@
 				0AEBE58B1831162700B01A5E /* 家常豆腐.jpg in Resources */,
 				0A54D6BC184C726900BBA9C4 /* KeyboardNumericEntryKeyPressedTextured@2x.png in Resources */,
 				0AEBE5CE1831FFCB00B01A5E /* newspaper-mini.png in Resources */,
+				0A54D6DE184F1EA600BBA9C4 /* menubook_grbotton.png in Resources */,
 				0AEBE5241831027600B01A5E /* price_tag.png in Resources */,
 				0A95E5D7183B673E0026017C /* dot_on1.png in Resources */,
 				0A7AF0D41836077B00635376 /* DAQueueDrinkListViewController.xib in Resources */,
@@ -2106,6 +2140,7 @@
 				0AEBE5811831162700B01A5E /* 风干肠16元.jpg in Resources */,
 				F2AB4C08182E15B30067E450 /* DAOrderDetailViewCell.xib in Resources */,
 				0A924AB018348A810004C973 /* DAMyTableListViewController.xib in Resources */,
+				0A54D6DA184F0FCD00BBA9C4 /* menubook_top.png in Resources */,
 				0AEBE5AE1831162700B01A5E /* 水煮肉片.jpg in Resources */,
 				0AEBE5A81831162700B01A5E /* 肉末豆腐.jpg in Resources */,
 				F2AB4C03182E03480067E450 /* DAOrderGroupViewController.xib in Resources */,
@@ -2118,6 +2153,7 @@
 				0A24A2D31838C66100B340BE /* DAQueueTableCell.xib in Resources */,
 				0A5D2835182B6E2F00847578 /* table1.png in Resources */,
 				0AEBE59D1831162700B01A5E /* 牛拼盘.jpg in Resources */,
+				0A54D6D8184EEC4B00BBA9C4 /* menubook_sidetop1.png in Resources */,
 				0AEBE57E1831162700B01A5E /* 村妇梅肉.jpg in Resources */,
 				0AEBE5B41831162700B01A5E /* 咸鱼拼盘.jpg in Resources */,
 				0AEBE5781831162700B01A5E /* 百豆会.jpg in Resources */,
