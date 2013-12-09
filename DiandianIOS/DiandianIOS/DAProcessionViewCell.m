@@ -16,7 +16,12 @@
 
 @interface DAProcessionViewCell()
 @property (strong, nonatomic) IBOutlet UILabel *num;
+
 @property (strong, nonatomic) IBOutlet UITextField *numOfPeople;
+@property (weak, nonatomic) IBOutlet UITextField *textPhone;
+@property (weak, nonatomic) IBOutlet UITextField *textTime;
+@property (weak, nonatomic) IBOutlet UITextField *textDesk;
+
 @property (strong, nonatomic) IBOutlet UIButton *order;
 
 @property (strong, nonatomic) IBOutlet UIPopoverController *popover;
@@ -26,11 +31,10 @@
 @implementation DAProcessionViewCell
 {
     UIViewController *parentVC;
-    DAProcession* procession;
+    DASchedule* procession;
 }
 
-
-- (void) initData:(DAProcession*)p parentViewController:(UIViewController*)parent
+- (void) initData:(DASchedule*)p parentViewController:(UIViewController*)parent row:(int)row
 {
     parentVC = parent;
     procession = p;
@@ -39,24 +43,23 @@
 
     self.numOfPeople.delegate = self;
     
-    self.num.text = procession.num;
-    self.numOfPeople.text = procession.numOfPeople;
+    self.num.text = [NSString stringWithFormat:@"%d",row];
+    self.numOfPeople.text = procession.people;
+
+    self.textPhone.text = procession.phone;
+    self.textTime.text = procession.time;
+    self.textDesk.text = procession.desk;
     
-    if ([@"true" isEqualToString:procession.order]) {
-        [self.order setTitle:@"继续点餐" forState:UIControlStateNormal];
-    } else {
-        [self.order setTitle:@"开始点餐" forState:UIControlStateNormal];
-    }
     
 }
 - (IBAction)openMyTable:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(processionIntoTable:)]) {
-        [self.delegate processionIntoTable:procession.processionId];
+//        [self.delegate processionIntoTable:procession.processionId];
     }
 }
 - (IBAction)processionOrderFool:(id)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(processionOrderFool:)]) {
-        [self.delegate processionOrderFool:procession.processionId];
+//        [self.delegate processionOrderFool:procession.processionId];
     }
 }
 - (BOOL) textFieldShouldBeginEditing: (UITextField *)textField

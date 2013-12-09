@@ -5,7 +5,7 @@
 	<key>ServerPort</key>
 	<string>3000</string>
 	<key>ServerAddress</key>
-	<string>192.168.1.192</string>
+	<string>112.124.23.114</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CFBundleDevelopmentRegion</key>

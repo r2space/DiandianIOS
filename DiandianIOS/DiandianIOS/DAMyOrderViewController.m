@@ -68,7 +68,8 @@
 
 - (void) loadOldItem
 {
-    [DAOrderProxy getOldOrderListByServiceId:self.curService._id callback:^(NSError *err, DAMyOrderList *list) {
+
+    [DAOrderProxy getOldOrderListByServiceId:self.curService._id withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
         NSLog(@"getOldOrderListByServiceId  %s  %d" ,__FUNCTION__,__LINE__);
         oldOrderDataList = list;
         [self.tableView reloadData];
@@ -203,7 +204,14 @@
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:12];
-    titleLabel.text = item.itemName;
+    NSLog(@"orderdata.back  %@" ,orderdata.back);
+    if ([orderdata.back integerValue] == 2) {
+        titleLabel.text = [NSString stringWithFormat:@"(已退)%@",item.itemName];
+    } else {
+        titleLabel.text = item.itemName;
+    }
+    
+    
     amountLabel.text = [NSString stringWithFormat:@"%@份", item.amount];
     
 
@@ -492,7 +500,7 @@
 {
     if ( self.curService !=nil && self.curService._id.length >0 ) {
         
-        [[DAOrderModule alloc]getOrderListByServiceId:self.curService._id callback:^(NSError *err, DAMyOrderList *list) {
+        [[DAOrderModule alloc]getOrderListByServiceId:self.curService._id withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
             
             [list archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
             [self loadTableFromDisk];

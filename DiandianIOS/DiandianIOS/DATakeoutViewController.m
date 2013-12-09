@@ -40,6 +40,9 @@ UIViewController *parentVC;
 {
     [super viewDidLoad];
     
+    self.view.layer.cornerRadius = 10;
+    self.view.layer.masksToBounds = YES;
+    
     dataList = [[DAServiceList alloc] init];
     dataList.items = [[NSArray alloc] init];
     

@@ -27,6 +27,9 @@
 {
     [super viewDidLoad];
     
+    self.view.layer.cornerRadius = 10;
+    self.view.layer.masksToBounds = YES;
+    
     
 }
 
@@ -35,39 +38,13 @@
         [ProgressHUD showError:@"请输入外面电话号码"];
         return;
     }
-    [lockVC setTarget:self withAction:@selector(lockEntered:)];
-    lockVC.view.frame = CGRectMake(0, 0, 300, 300);
-    [self addChildViewController:lockVC];
-    [self.view addSubview:lockVC.view];
-}
-
-
-- (void)lockEntered:(NSString*)key {
-    NSLog(@"key: %@", key);
     NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
-    [[DALoginModule alloc]checkPattern:key userId:userId callback:^(NSError *error, NSDictionary *user) {
-        NSNumber *isRight = [user objectForKey:@"isRight"];
+    [ProgressHUD show:nil];
+    [[DAServiceModule alloc] startService:@"-1" userId:userId type:@"3" people:@"1" phone:self.textPhone.text callback:^(NSError *err, DAService *service) {
+        self.confirmCallback();
+        [ProgressHUD dismiss];
         
-        if (![isRight boolValue]) {
-            
-            [ProgressHUD showError:@"手势密码验证错误。"];
-            
-            
-        } else {
-            [[DAServiceModule alloc] startService:@"-1" userId:userId type:@"3" people:@"1" phone:self.textPhone.text callback:^(NSError *err, DAService *service) {
-                self.confirmCallback();
-                lockStatus = NO;
-                [lockVC.view removeFromSuperview];
-                
-            }];
-
-        }
     }];
-    
-    if([@"090807" isEqualToString:key]){
-        [lockVC.view removeFromSuperview];
-    }
-
     
 }
 

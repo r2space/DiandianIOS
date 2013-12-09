@@ -34,15 +34,18 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
-    self.view.backgroundColor = [self colorWithHexString:@"1b1a44"];
+    self.view.layer.cornerRadius = 10;
+    self.view.layer.masksToBounds = YES;
+    self.view.backgroundColor = [self colorWithHexString:@"707070"];
 
+    
   for (int i=0; i<MATRIX_SIZE; i++) {
     for (int j=0; j<MATRIX_SIZE; j++) {
-      UIImage *dotImage = [UIImage imageNamed:@"dot_off1.png"];
+      UIImage *dotImage = [UIImage imageNamed:@"botton_d.png"];
       UIImageView *imageView = [[UIImageView alloc] initWithImage:dotImage
-                                                 highlightedImage:[UIImage imageNamed:@"dot_on1.png"]];
-      imageView.frame = CGRectMake(0, 0, dotImage.size.width, dotImage.size.height);
+                                                 highlightedImage:[UIImage imageNamed:@"botton_on.png"]];
+        
+      imageView.frame = CGRectMake(0, 0, 60 , 60);
       imageView.userInteractionEnabled = YES;
       imageView.tag = j*MATRIX_SIZE + i + 1;
       [self.view addSubview:imageView];

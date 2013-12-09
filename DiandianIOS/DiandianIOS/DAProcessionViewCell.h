@@ -12,5 +12,5 @@
 #import "DAProcessionViewController.h"
 @interface DAProcessionViewCell : UITableViewCell<DAPopTableViewDelegate, UITextFieldDelegate>
 @property (assign, nonatomic) id <DAProcessionViewDelegate>delegate;
-- (void) initData:(DAProcession*)p parentViewController:(UIViewController*)parent;
+- (void) initData:(DASchedule*)p parentViewController:(UIViewController*)parent row:(int)row;
 @end

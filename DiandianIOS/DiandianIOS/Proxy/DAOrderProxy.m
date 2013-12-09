@@ -17,9 +17,9 @@
     [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
 }
 
-+(void) getOldOrderListByServiceId:(NSString *)serviceId callback:(void (^)(NSError *err, DAMyOrderList *list))callback
++(void) getOldOrderListByServiceId:(NSString *)serviceId withBack:(NSString * )withBack callback:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
-    [[DAOrderModule alloc] getOrderListByServiceId:serviceId callback:^(NSError *err, DAMyOrderList *list) {
+    [[DAOrderModule alloc] getOrderListByServiceId:serviceId withBack:withBack callback:^(NSError *err, DAMyOrderList *list) {
         int orderNum = 0;
         NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
         NSMutableArray *oldItems = [[NSMutableArray alloc] init];

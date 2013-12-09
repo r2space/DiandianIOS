@@ -15,7 +15,7 @@
 
 +(void) refreshOrderList:(NSArray *) orderDic;
 
-+(void) getOldOrderListByServiceId:(NSString *)serviceId callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
++(void) getOldOrderListByServiceId:(NSString *)serviceId withBack:(NSString * )withBack callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
 + (DAMyOrderList* ) getOneDataList:(DAMyOrderList *) orderList;
 + (DAMyOrderList* ) getOneDeskDataList:(DAMyOrderList *) orderList;

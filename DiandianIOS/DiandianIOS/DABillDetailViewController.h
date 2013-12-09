@@ -10,12 +10,14 @@
 #import "SmartSDK.h"
 
 typedef void (^ChanelBlock)();
+typedef void(^ParentReloadBlock)();
 
 @interface DABillDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (retain,nonatomic) NSMutableArray *finfishList;
 @property (retain,nonatomic) NSMutableArray *cancelList;
 @property (nonatomic, copy) ChanelBlock chanelBlock;
+@property (nonatomic, copy) ParentReloadBlock parentReloadBlock;
 
 @property (nonatomic, retain) DAService *curService;
 

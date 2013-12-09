@@ -214,10 +214,10 @@ static DAMyTableViewController *activity;
     DADesk *desk = [dataList objectAtIndex:indexPath.row];
     [cell setData:desk];
     cell.curDesk = desk;
-    //NSString *imageName = [@"eating" isEqualToString:t.state] ? @"sample-table.jpg" : @"sample-table1.jpg";
-    cell.imgTable.image = [UIImage imageNamed:@"sample-table.jpg"];
     
-    cell.imgTable.layer.backgroundColor = [UIColor redColor].CGColor;
+    
+    
+//    cell.imgTable.layer.backgroundColor = [UIColor clearColor].CGColor;
     cell.imgTable.layer.cornerRadius = 5.0;
     cell.imgTable.layer.masksToBounds = YES;
     //cell.imgTable.layer.mask = NO;
@@ -232,13 +232,11 @@ static DAMyTableViewController *activity;
     
     // 这个好像被外面给覆盖了
     if (![desk isEmpty]) {
-        
-        cell.viewMask.hidden = YES;
-        
+        cell.imgTable.image = [UIImage imageNamed:@"desk_bottonl.png"];
     } else {
-        cell.viewMask.hidden = NO;
-
+        cell.imgTable.image = [UIImage imageNamed:@"desk_bottond.png"];
     }
+    cell.backgroundColor = [UIColor clearColor];
     
     
     // 设置换桌的动画效果

@@ -15,8 +15,12 @@
 @interface DAMyOrderLoginViewController ()
 {
     DrawPatternLockViewController *lockVC;
+    UIPopoverController *popover;
     NSString *willSave;
     int errorCount;
+    NSMutableArray *wDataList;
+    
+    NSString *curWaitterUserId;
 }
 @end
 
@@ -34,6 +38,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.layer.cornerRadius = 10;
+    self.view.layer.masksToBounds = YES;
+    
+    
+    self.labelName.delegate = self;
+    
     lockVC = [[DrawPatternLockViewController alloc] init];
     willSave = [NSString stringWithFormat:@"confirm"];
     //判断输入三次返回
@@ -41,6 +51,17 @@
     self.labelName.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    wDataList = [NSMutableArray array];
+    
+    [[DAUserModule alloc]getAllUserList:^(NSError *err, DAUserList *list) {
+        for (DAUser *user in list.items) {
+            [wDataList addObject:user];
+        }
+    }];
+}
 
 
 - (void)lockEntered:(NSString*)key {
@@ -115,5 +136,38 @@
 
 }
 
+
+- (BOOL) textFieldShouldBeginEditing: (UITextField *)textField
+{
+    DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
+    
+    
+        [vc initData:@"user" list:wDataList];
+        vc.delegate = self;
+        
+        popover = [[UIPopoverController alloc]initWithContentViewController:vc];
+        popover.popoverContentSize = CGSizeMake(120, 400);
+        [popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
+        
+    
+    return NO;
+}
+
+- (void)popTableViewSelectRow:(NSString *)tag value:(id)value
+{
+    DAUser *user  = value;
+    self.labelName.text = user.name;
+    self.curUserId = user._id;
+    curWaitterUserId = user._id;
+    
+    [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:user.name forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
+    
+    
+    
+    [popover dismissPopoverAnimated:YES];
+}
 
 @end

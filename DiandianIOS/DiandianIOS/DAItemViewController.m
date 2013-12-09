@@ -77,11 +77,13 @@ static DAQueueItemTableViewController *vct;
     self.viewItemlist.layer.shadowRadius = 2;
     self.viewItemlist.layer.shadowOpacity = 0.6;
     self.viewItemlist.layer.shadowOffset = CGSizeMake(0, 1);
+    self.viewItemlist.backgroundColor = [UIColor clearColor];
     
     self.viewTablelist.layer.shadowColor = UIColor.blackColor.CGColor;
     self.viewTablelist.layer.shadowRadius = 2;
     self.viewTablelist.layer.shadowOpacity = 0.6;
     self.viewTablelist.layer.shadowOffset = CGSizeMake(0, 1);
+    self.viewTablelist.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning

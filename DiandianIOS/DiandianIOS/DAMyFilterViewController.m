@@ -42,13 +42,13 @@
     segmentedControl.frame = CGRectMake(0, 0, 862, 67);
     
     //设置背景图片，或者设置颜色，或者使用默认白色外观
-    segmentedControl.backgroundImage = [UIImage imageNamed:@"menubook_top"];
+    segmentedControl.backgroundImage = [UIImage imageNamed:@"menubook_top.png"];
 //    segmentedControl.backgroundColor = [UIColor grayColor];
     
     //阴影部分图片，不设置使用默认椭圆外观的stain
     UIImageView *stainView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_bg3.png"]];
-    stainView.layer.cornerRadius = 10;
-    stainView.layer.masksToBounds = YES;
+//    stainView.layer.cornerRadius = 3;
+//    stainView.layer.masksToBounds = YES;
     
     segmentedControl.selectedStainView = stainView;
     

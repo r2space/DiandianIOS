@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DAPopTableViewController.h"
 @protocol DAMyOrderLoginDelegate;
-@interface DAMyOrderLoginViewController : UIViewController
+
+@interface DAMyOrderLoginViewController : UIViewController<DAPopTableViewDelegate,UITextFieldDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *labelName;
 
 @property (weak, nonatomic) IBOutlet UITextField *labelTips;
-
+@property (retain, nonatomic) NSString *curUserId;
 
 @property (assign, nonatomic) id <DAMyOrderLoginDelegate>delegate;
 

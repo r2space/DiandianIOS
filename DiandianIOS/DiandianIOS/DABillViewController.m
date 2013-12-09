@@ -18,6 +18,7 @@
     NSMutableArray *btnList;
     DABill *billData;
     NSInteger *payType;
+    float offAmount;
 }
 @end
 
@@ -44,7 +45,8 @@
     finishList = [[NSMutableArray alloc] init];
     cancelList = [[NSMutableArray alloc] init];
     payType = 0;
-    self.textOff.text = @"1";
+    offAmount = 1.0;
+//    self.textOff.text = @"1";
     self.textReduce.text = @"0";
     
     
@@ -55,7 +57,7 @@
     self.keyboardView.textField = self.textPay;
     
     self.textPay.inputView=[[UIView alloc]initWithFrame:CGRectZero];
-    self.textOff.inputView=[[UIView alloc]initWithFrame:CGRectZero];
+//    self.textOff.inputView=[[UIView alloc]initWithFrame:CGRectZero];
     self.textReduce.inputView=[[UIView alloc]initWithFrame:CGRectZero];
 
 }
@@ -106,8 +108,9 @@
             self.lblDeskName.text = [NSString stringWithFormat:@"桌号：%@",bill.desk.name];
         }
 
-        float off = [billData.amount floatValue] * [self.textOff.text floatValue] - [self.textReduce.text floatValue];
+        float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
         self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
+        self.textPay.text = [NSString stringWithFormat:@"%d", [bill.amount integerValue]];
     }];
     
 }
@@ -121,6 +124,9 @@
 - (IBAction)onDetailTaped:(id)sender {
     DABillDetailViewController *c = [[DABillDetailViewController alloc] initWithNibName:nil bundle:nil];
     c.curService = self.curService;
+    c.parentReloadBlock = ^(){
+        [self reload];
+    };
     
     c.chanelBlock = ^() {
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
@@ -148,16 +154,23 @@
     self.keyboardView.textField  = text;
 }
 - (IBAction)onStopBillTouched:(id)sender {
-    [[DAServiceModule alloc]stopService:self.curService._id amount:[billData.amount stringValue] profit:self.textPay.text agio:self.textOff.text  preferential:self.textReduce.text payType:[NSString stringWithFormat:@"%d" ,(int)payType] callback:^(NSError *err, DAService *service)
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
+    [[DAServiceModule alloc]stopService:self.curService._id
+                                 amount:[billData.amount stringValue]
+                                 profit:self.textPay.text
+                                   agio:[NSString stringWithFormat:@"%f",offAmount]
+                           preferential:self.textReduce.text
+                                payType:[NSString stringWithFormat:@"%d" ,(int)payType]
+                               callback:^(NSError *err, DAService *service)
+                                    {
+                                        [self.navigationController popViewControllerAnimated:YES];
+                                    }];
 }
 
 - (IBAction)onChangeOff:(id)sender {
 
-    float off = [billData.amount floatValue] * [self.textOff.text floatValue] - [self.textReduce.text floatValue];    
+    float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
     self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
+    self.textPay.text = [NSString stringWithFormat:@"%d", (int)off];
     
 }
 
@@ -170,4 +183,29 @@
 - (IBAction)onBackTouched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)onChangeOffTouched:(UISegmentedControl *)sender {
+    int index = (int)sender.selectedSegmentIndex;
+    
+    if (index == 0) {
+        offAmount = 1.0;
+        
+    }
+    
+    if (index == 1) {
+        offAmount = 0.9;
+    }
+    
+    if (index == 2) {
+        offAmount = 0.8;
+    }
+    
+    if (index == 3) {
+        offAmount = 0.7;
+    }
+    float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
+    self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
+    self.textPay.text = [NSString stringWithFormat:@"%d", (int)off];
+}
+
 @end

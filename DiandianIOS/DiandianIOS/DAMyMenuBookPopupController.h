@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelMaterial;
 @property (weak, nonatomic) IBOutlet UILabel *labelAmount;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnClose;
 
 @property (weak, nonatomic) IBOutlet UITextView *textItemMaterial;
 @property (weak, nonatomic) IBOutlet UITextView *textItemComment;

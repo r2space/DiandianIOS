@@ -23,13 +23,23 @@
 #define API_STOP_BILL           @"/api/bill/stop.json"
 
 
+#define API_ADD_SCHEDULE        @"/api/schedule/add.json"
+#define API_REMOVE_SCHEDULE     @"/api/schedule/remove.json"
+#define API_LIST_SCHEDULE       @"/api/schedule/list.json?start=%d&count=%d"
+
+
+
+
+
+
+
 #define API_ALL_ORDER_LIST  @"/api/order/list.json?start=%d&count=%d"
 
 
 #define API_ALL_ORDER_ITEM_LIST  @"/api/order/itemList.json?type=%@&serviceId=%@"
 
 
-#define API_ALL_ORDER_LIST_BY_BACK  @"/api/order/list.json?start=%d&count=%d&back=%@"
+#define API_ALL_ORDER_LIST_BY_BACK  @"/api/order/list.json?serviceId=%@&back=%@"
 #define API_ALL_ORDER_LIST_BY_SERVICEID  @"/api/order/list.json?serviceId=%@"
 
 
@@ -45,6 +55,8 @@
 #define API_SETORDER_DONE_BY_IDS @"/api/order/doneOrder.json?orderIds=%@"
 
 #define API_SETORDER_BACK_BY_ID @"/api/order/backOrder.json?orderId=%@"
+
+#define API_SETORDER_FREE @"/api/order/freeOrder.json"
 #define API_SETORDER_BACK @"/api/order/backOrder.json"
 #define API_ORDER_ADD       @"/api/order/add.json"
 #define API_DEVICE_ADD @"/api/device/add.json"
@@ -65,6 +77,7 @@
 #import "DAServiceModule.h"
 #import "DAOrderModule.h"
 #import "DAUserModule.h"
+#import "DAScheduleModule.h"
 
 
 #import "DAGroup.h"
@@ -86,5 +99,7 @@
 #import "DAUserList.h"
 #import "DABill.h"
 #import "DAServiceList.h"
+#import "DASchedule.h"
+#import "DAScheduleList.h"
 
 #endif

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmartSDK.h"
+
 @protocol DAProcessionViewDelegate;
 
 @interface DAProcessionViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>

@@ -10,10 +10,8 @@
                 <outlet property="btnRemove" destination="of4-rF-Kgv" id="aSH-MP-Oki"/>
                 <outlet property="btnServing" destination="9s0-rQ-SaX" id="JGL-Fa-Hqf"/>
                 <outlet property="collectionView" destination="vMe-Xu-wQm" id="geR-yP-g1H"/>
-                <outlet property="topmenuLabel" destination="SzG-Jm-A9L" id="Vf2-jc-chb"/>
                 <outlet property="topmenuView" destination="ip3-CZ-sCu" id="SJB-ng-aZO"/>
                 <outlet property="view" destination="2" id="3"/>
-                <outlet property="viewTitle" destination="SzG-Jm-A9L" id="HeM-4G-u2t"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sample_table_back.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="eDM-n3-8zz">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="desk_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="eDM-n3-8zz">
                     <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -30,10 +28,10 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IeX-up-ACJ">
-                        <size key="itemSize" width="193" height="200"/>
+                        <size key="itemSize" width="179" height="149"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="5" minY="10" maxX="5" maxY="5"/>
+                        <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="0.0"/>
                     </collectionViewFlowLayout>
                     <cells/>
                     <connections>
@@ -42,13 +40,18 @@
                     </connections>
                 </collectionView>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ip3-CZ-sCu">
-                    <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="65"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9s0-rQ-SaX">
-                            <rect key="frame" x="714" y="7" width="72" height="30"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="desk_top.png" translatesAutoresizingMaskIntoConstraints="NO" id="CNW-fP-uHn">
+                            <rect key="frame" x="0.0" y="0.0" width="1024" height="65"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="上菜" backgroundImage="top_bg3.png">
+                        </imageView>
+                        <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9s0-rQ-SaX">
+                            <rect key="frame" x="904" y="12" width="100" height="41"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="上菜" backgroundImage="desk_topbotton.png">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -56,9 +59,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="of4-rF-Kgv">
-                            <rect key="frame" x="20" y="7" width="72" height="30"/>
+                            <rect key="frame" x="20" y="12" width="100" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="退出" backgroundImage="top_bg3.png">
+                            <state key="normal" title="退出" backgroundImage="desk_topbotton.png">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -66,45 +70,42 @@
                                 <action selector="testUpdateMenuListTouched:" destination="-1" eventType="touchUpInside" id="zFE-hH-XWH"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="201" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsf-FB-EL7">
-                            <rect key="frame" x="916" y="7" width="74" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="预定" backgroundImage="top_bg3.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="showProcessionList:" destination="-1" eventType="touchUpInside" id="lWc-10-aYw"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="滋 味 厨 房" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzG-Jm-A9L">
-                            <rect key="frame" x="416" y="0.0" width="193" height="54"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.84286610399999995" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="italicSystem" pointSize="28"/>
-                            <color key="textColor" red="0.0" green="0.25098040699958801" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                            <color key="shadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <size key="shadowOffset" width="0.0" height="1"/>
-                        </label>
                         <button opaque="NO" tag="200" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeF-aw-iy7">
-                            <rect key="frame" x="812" y="7" width="77" height="30"/>
+                            <rect key="frame" x="796" y="12" width="100" height="41"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="外卖" backgroundImage="top_bg3.png">
+                            <state key="normal" title="外卖" backgroundImage="desk_topbotton.png">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="showTakeoutList:" destination="-1" eventType="touchUpInside" id="wDe-DV-5uc"/>
                             </connections>
                         </button>
+                        <button opaque="NO" tag="201" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsf-FB-EL7">
+                            <rect key="frame" x="128" y="12" width="100" height="43"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="预定" backgroundImage="desk_topbotton.png">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="showProcessionList:" destination="-1" eventType="touchUpInside" id="lWc-10-aYw"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="desk_word.png" translatesAutoresizingMaskIntoConstraints="NO" id="nil-ig-zXx">
+                    <rect key="frame" x="330" y="29" width="364" height="83"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
         </view>
     </objects>
     <resources>
-        <image name="sample_table_back.jpg" width="1024" height="768"/>
-        <image name="top_bg3.png" width="161" height="44"/>
+        <image name="desk_bg.png" width="2048" height="1407"/>
+        <image name="desk_top.png" width="2048" height="129"/>
+        <image name="desk_topbotton.png" width="258" height="75"/>
+        <image name="desk_word.png" width="729" height="165"/>
     </resources>
 </document>

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#define KEYBOARD_NUMERIC_KEY_WIDTH 108
-#define KEYBOARD_NUMERIC_KEY_HEIGHT 53
+#define KEYBOARD_NUMERIC_KEY_WIDTH 80
+#define KEYBOARD_NUMERIC_KEY_HEIGHT 69
 
 @protocol ZenKeyboardDelegate <NSObject>
 

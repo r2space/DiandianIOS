@@ -27,6 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.layer.cornerRadius = 10;
+    self.view.layer.masksToBounds = YES;
+    
+    self.btnClose.layer.cornerRadius = 20;
+    self.btnClose.layer.masksToBounds = YES;
+    
     [self initUI];
     // Do any additional setup after loading the view from its nib.
 }

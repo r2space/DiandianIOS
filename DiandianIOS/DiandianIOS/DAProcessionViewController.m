@@ -10,6 +10,8 @@
 #import "UIViewController+MJPopupViewController.h"
 #import "DAProcessionViewCell.h"
 #import "DAProcession.h"
+#import "DAScheduleViewController.h"
+
 
 @interface DAProcessionViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -18,7 +20,7 @@
 
 @implementation DAProcessionViewController
 {
-    NSMutableArray *dataList;
+    DAScheduleList *dataList;
     UIViewController *parentVC;
 }
 
@@ -35,11 +37,15 @@
 {
     [super viewDidLoad];
     
+    self.view.layer.cornerRadius = 10;
+    self.view.layer.masksToBounds = YES;
+    
     UINib *cellNib = [UINib nibWithNibName:@"DAProcessionViewCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAProcessionViewCell"];
 
-    [self loadFromFile];
+    [self loadFromApi];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -55,19 +61,13 @@
     [parentView  presentPopupViewController:vc animationType:MJPopupViewAnimationFade];
 }
 
--(void)loadFromFile{
-    NSString *pathString = [[NSBundle mainBundle] pathForResource:@"procession" ofType:@"json"];
-    NSData *elementsData = [NSData dataWithContentsOfFile:pathString];
+-(void)loadFromApi{
+    [[DAScheduleModule alloc]getScheduleList:0 count:20 callback:^(NSError *err, DAScheduleList *list) {
+        dataList = list;
+        [self.tableView reloadData];
+    }];
     
-    NSError *anError = nil;
-    NSArray *items = [NSJSONSerialization JSONObjectWithData:elementsData
-                                                     options:NSJSONReadingAllowFragments
-                                                       error:&anError];
-    dataList = [[NSMutableArray alloc]init];
-    for (NSDictionary *d in items){
-        [dataList addObject: [[DAProcession alloc]initWithDictionary:d]];
-    }
-    [self.tableView reloadData];
+    
 }
 
 - (IBAction)closePopup:(id)sender
@@ -78,26 +78,15 @@
 }
 
 - (IBAction)addProcession:(id)sender {
-    static NSInteger tempId = 100000;
-    NSInteger num = 0;
-    if (dataList && dataList.count > 0) {
-        DAProcession *lastProcession;
-        lastProcession = [dataList objectAtIndex:(dataList.count - 1)];
-        num = [lastProcession.num integerValue];
-    }
+
+
+    DAScheduleViewController *scheduleVC = [[DAScheduleViewController alloc]initWithNibName:@"DAScheduleViewController" bundle:nil];
+    scheduleVC.closeCallback =^(){
+        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+        [self loadFromApi];
+    };
+    [self presentPopupViewController:scheduleVC animationType:MJPopupViewAnimationFade];
     
-    DAProcession *p = [[DAProcession alloc]init];
-    p.processionId = [NSString stringWithFormat:@"%d", tempId++];
-    p.num = [NSString stringWithFormat:@"%d", ++num];
-    p.numOfPeople = @"4";
-    p.order = false;
-    
-    [dataList addObject:p];
-    [self.tableView reloadData];
-    
-    // Scroll to botttom
-    NSIndexPath *lastRow = [NSIndexPath indexPathForRow:(dataList.count - 1) inSection:0];
-    [self.tableView scrollToRowAtIndexPath:lastRow atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -107,21 +96,25 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return dataList.count;
+    return [dataList.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DAProcessionViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DAProcessionViewCell"];
-    [cell initData:[dataList objectAtIndex:indexPath.row] parentViewController:parentVC];
+    DASchedule *schedule = [dataList.items objectAtIndex:indexPath.row];
+    [cell initData:schedule parentViewController:parentVC row:(indexPath.row + 1)];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [dataList removeObjectAtIndex:indexPath.row];
-    [self.tableView reloadData];
+    DASchedule *schedule = [dataList.items objectAtIndex:indexPath.row];
+    [[DAScheduleModule alloc]removeScheduleById:schedule._id callback:^(NSError *err, DASchedule *schedule) {
+        [self loadFromApi];
+        [self.tableView reloadData];
+    }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

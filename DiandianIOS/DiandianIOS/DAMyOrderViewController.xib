@@ -14,19 +14,19 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2">
-            <rect key="frame" x="0.0" y="0.0" width="140" height="768"/>
+            <rect key="frame" x="0.0" y="0.0" width="129" height="768"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YMr-4Z-wRK">
-                    <rect key="frame" x="0.0" y="67" width="140" height="583"/>
+                    <rect key="frame" x="0.0" y="67" width="129" height="583"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cqh-xM-XtQ">
-                    <rect key="frame" x="-1" y="0.0" width="143" height="67"/>
+                    <rect key="frame" x="-2" y="0.0" width="134" height="67"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="menubook_sidetop1.png">
+                    <state key="normal" backgroundImage="menubook_sidetop.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -34,7 +34,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menubook_sidebottom.png" translatesAutoresizingMaskIntoConstraints="NO" id="RYJ-k7-pbp">
-                    <rect key="frame" x="0.0" y="650" width="140" height="118"/>
+                    <rect key="frame" x="-2" y="650" width="134" height="118"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="总价：2000元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXQ-OH-Jfq">
@@ -44,7 +44,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menubook_word.png" translatesAutoresizingMaskIntoConstraints="NO" id="YIb-4h-Ncn">
-                    <rect key="frame" x="17" y="694" width="107" height="45"/>
+                    <rect key="frame" x="11" y="695" width="107" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
@@ -54,7 +54,7 @@
     </objects>
     <resources>
         <image name="menubook_sidebottom.png" width="280" height="236"/>
-        <image name="menubook_sidetop1.png" width="278" height="134"/>
+        <image name="menubook_sidetop.png" width="280" height="134"/>
         <image name="menubook_word.png" width="214" height="90"/>
     </resources>
 </document>

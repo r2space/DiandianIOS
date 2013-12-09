@@ -69,13 +69,17 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DAQueueTableCell"];
 
     UILabel *lblName = (UILabel *)[cell viewWithTag:10];
-    lblName.text = desk.name;
+    if (desk != nil && desk.name.length > 0) {
+        lblName.text = desk.name;
+    } else {
+        lblName.text = @"外卖";
+    }
+    
     
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:11];
-    imgItem.image = [UIImage imageNamed:@"sample-table.jpg"];
+    imgItem.image = [UIImage imageNamed:@"desk_bottonl.png"];
+    cell.backgroundColor = [UIColor clearColor];
     
-//    UILabel *lblProcess = (UILabel *)[cell viewWithTag:12];
-//    lblProcess.text = [row objectForKey:@"process"];
     
     
     return cell;
@@ -83,7 +87,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 160;
+    return 142;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

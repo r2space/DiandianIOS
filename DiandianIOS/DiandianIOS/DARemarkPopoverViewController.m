@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.view.layer.cornerRadius = 10;
+    self.view.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning

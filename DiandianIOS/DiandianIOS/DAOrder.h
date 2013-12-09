@@ -26,7 +26,7 @@
 @property (retain, nonatomic) NSNumber  *itemType;
 
 @property (retain, nonatomic) NSNumber *type;
-@property (retain, nonatomic) NSString *back;
+@property (retain, nonatomic) NSNumber *back;
 @property (retain, nonatomic) NSString *valid;
 @property (retain, nonatomic) NSString *remark;
 

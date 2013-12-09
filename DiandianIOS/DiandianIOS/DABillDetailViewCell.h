@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmartSDK.h"
+
+typedef void (^BackCallback)();
 
 @interface DABillDetailViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
@@ -15,5 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPay;
 @property (weak, nonatomic) IBOutlet UILabel *lblAmount;
 @property (weak, nonatomic) IBOutlet UIButton *btnOperation;
+
+@property (nonatomic,retain) DAOrder *order;
+
+@property (nonatomic ,copy) BackCallback backCallback;
 
 @end

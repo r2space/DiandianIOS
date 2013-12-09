@@ -21,6 +21,9 @@
     DrawPatternLockViewController *lockVC;
     NSString *curWaitterUserId;
     BOOL lockStatus;
+    BOOL peopleFlag;
+    
+    NSMutableArray *wDataList;
 }
 
 @end
@@ -38,20 +41,35 @@
     lockVC = [[DrawPatternLockViewController alloc] init];
     self.numOfPepole.delegate = self;
     self.waitterId.delegate = self;
-    
+    peopleFlag = NO;
     lockStatus = NO;
+    
+    self.view.layer.cornerRadius = 10;
+    self.view.layer.masksToBounds = YES;
+    
 }
 
 
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
+    wDataList = [NSMutableArray array];
     self.tableName.text = self.curDesk.name;
+    [[DAUserModule alloc]getAllUserList:^(NSError *err, DAUserList *list) {
+        for (DAUser *user in list.items) {
+            [wDataList addObject:user];
+        }
+    }];
+    
     NSString *WaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
     NSString *WaitterName = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
     curWaitterUserId = WaitterId;
     self.curUserId = WaitterId;
     self.waitterId.text = WaitterName;
+    
+    
     
 }
 
@@ -237,21 +255,21 @@
     } else if ([textField isEqual:self.waitterId]) {
         DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
         
-        NSMutableArray *wList = [NSMutableArray array];
 
-        
-        [[DAUserModule alloc]getAllUserList:^(NSError *err, DAUserList *list) {
-            for (DAUser *user in list.items) {
-                [wList addObject:user];
-            }
-            [vc initData:@"user" list:wList];
+
+        if (!peopleFlag) {
+            peopleFlag = YES;
+            
+            
+            [vc initData:@"user" list:wDataList];
             vc.delegate = self;
             
             self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
             self.popover.popoverContentSize = CGSizeMake(120, 400);
             [self.popover presentPopoverFromRect:textField.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        }];
-        
+            peopleFlag = NO;
+            
+        }
 
         
     }

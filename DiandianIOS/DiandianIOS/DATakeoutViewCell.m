@@ -17,11 +17,17 @@
 
 #import "NSString+Util.h"
 #import "Util.h"
+#import "Tool.h"
+
 
 @interface DATakeoutViewCell()
 @property (strong, nonatomic) IBOutlet UITextField *type;
 
+@property (weak, nonatomic) IBOutlet UILabel *labelCreateAt;
 @property (strong, nonatomic) IBOutlet UITextField *phoneNumber;
+
+@property (weak, nonatomic) IBOutlet UILabel *unFinish;
+
 @property (strong, nonatomic) IBOutlet UITextField *state;
 
 @property (strong, nonatomic) IBOutlet UIPopoverController *popover;
@@ -58,6 +64,8 @@
     
     // Phone Number
     self.phoneNumber.text = takeoutService.phone;
+    self.unFinish.text = [NSString stringWithFormat:@"%@",takeoutService.unfinishedCount];
+    self.labelCreateAt.text = [ Tool stringFromISODateString:takeoutService.createat];
     
     // State
     

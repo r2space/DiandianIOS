@@ -61,7 +61,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.layer.cornerRadius = 10;
+    self.view.layer.masksToBounds = YES;
     // Do any additional setup after loading the view from its nib.
+    self.tableView.layer.cornerRadius = 10;
+    self.tableView.layer.masksToBounds = YES;
     
     UINib *cellNib = [UINib nibWithNibName:@"DADetailOrderCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DADetailOrderCell"];
@@ -177,6 +181,12 @@
     } else {
         nameLabel.text = [NSString stringWithFormat:@"%@(小)",orderItem.item.itemName];
         pirceLabel.text = [NSString stringWithFormat:@"%@元/盘",orderItem.item.itemPriceHalf];
+    }
+    
+    if ([orderItem.back integerValue] == 2) {
+        nameLabel.text = [NSString stringWithFormat:@"%@(已退)", nameLabel.text];
+    } else {
+     
     }
     
     

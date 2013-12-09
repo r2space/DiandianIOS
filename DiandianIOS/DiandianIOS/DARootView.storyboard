@@ -28,7 +28,7 @@
                                 <color key="backgroundColor" red="0.27450980390000002" green="0.15686274510000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="6UJ-dq-TW2" userLabel="orderList">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="768"/>
+                                <rect key="frame" x="11" y="0.0" width="129" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </view>
                         </subviews>

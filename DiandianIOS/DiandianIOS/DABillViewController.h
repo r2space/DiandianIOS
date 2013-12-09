@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblPay;
 @property (weak, nonatomic) IBOutlet UILabel *lblDeskName;
 
-@property (weak, nonatomic) IBOutlet UITextField *textOff;
+//@property (weak, nonatomic) IBOutlet UITextField *textOff;
 @property (weak, nonatomic) IBOutlet UITextField *textReduce;
 @property (weak, nonatomic) IBOutlet UITextField *textPay;
 

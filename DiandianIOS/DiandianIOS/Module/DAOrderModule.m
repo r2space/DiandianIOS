@@ -60,6 +60,35 @@
 
 }
 
+
+
+-(void) setFreeOrderWithArray:(NSArray *) orderIds deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *order))callback
+{
+    NSString *path = API_SETORDER_FREE;
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    [params setObject:orderIds forKey:@"orderIds"];
+    [params setObject:deskId forKey:@"deskId"];
+    
+    [[DAAFHttpClient sharedClient] postPath:path  parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+        
+        if (callback) {
+            callback(nil, data);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        if (callback) {
+            callback(error, nil);
+        }
+        
+    }];
+    
+}
+
+
+
+
 -(void) setBackOrder:(NSString *) orderId  callback:(void (^)(NSError *err, DAOrder *list))callback
 {
     NSString *path = [NSString stringWithFormat:API_SETORDER_BACK_BY_ID,orderId];
@@ -166,7 +195,7 @@
 
 -(void) getOrderListWithBack:(NSString *)back start :(int)start count:(int)count callback:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
-    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_LIST_BY_BACK,start,count,back];
+    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_LIST_BY_BACK,@"",back];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
@@ -206,9 +235,9 @@
 }
 
 
--(void) getOrderListByServiceId :(NSString *) servicdId callback:(void (^)(NSError *err, DAMyOrderList *list))callback
+-(void) getOrderListByServiceId :(NSString *) servicdId  withBack:(NSString * )withBack callback:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
-    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_LIST_BY_SERVICEID,servicdId];
+    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_LIST_BY_BACK,servicdId,withBack];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
@@ -313,25 +342,4 @@
 
 
 
-
--(void) getOrderListByServiceId :(NSString *) servicdId withBack:(NSString *)withBack callback:(void (^)(NSError *err, DAMyOrderList *list))callback
-{
-    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_LIST_WITH_BACK,servicdId,withBack];
-    
-    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
-        
-        if (callback) {
-            callback(nil, data);
-        }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        if (callback) {
-            callback(error, nil);
-        }
-        
-    }];
-    
-}
 @end

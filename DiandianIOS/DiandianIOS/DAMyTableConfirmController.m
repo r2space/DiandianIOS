@@ -45,6 +45,9 @@ UIViewController *parentVC;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.numOfPepole.delegate = self;
+    
+    self.view.layer.cornerRadius = 10;
+    self.view.layer.masksToBounds = YES;
 }
 -(void) viewDidAppear:(BOOL)animated
 {
