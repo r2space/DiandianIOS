@@ -211,6 +211,9 @@
     float  y = 186;
     float  mx = 402;
     float  my = 391;
+    float  bx = 699;
+    float  by = 624;
+    
     if ([data.row intValue] == 1 && [data.column intValue] == 1 ) {
         [addBtn setFrame:CGRectMake(x,y,83 ,27.5)];
         UIView *addBtnBackgroud = (UIView *)[cell viewWithTag:401];
@@ -227,6 +230,14 @@
         [addBtnBackgroud setFrame:CGRectMake(mx,my,166 ,55)];
         [labelAmount setFrame:CGRectMake(100, my + 10 , labelAmount.frame.size.width, labelAmount.frame.size.height)];
         [titleLabel setFrame:CGRectMake(10, my + 10 , titleLabel.frame.size.width, titleLabel.frame.size.height)];
+    } else if ([data.row intValue] == 3 && [data.column intValue] == 3 )  {
+        [addBtn setFrame:CGRectMake(bx,by,166 ,55)];
+        UIView *addBtnBackgroud = (UIView *)[cell viewWithTag:401];
+        UIView *maskBackgroud = (UIView *)[cell viewWithTag:101];
+        [maskBackgroud setFrame:CGRectMake(0 ,by , maskBackgroud.frame.size.width , 55)];
+        [addBtnBackgroud setFrame:CGRectMake(bx,by,166 ,55)];
+        [labelAmount setFrame:CGRectMake(100, by + 10 , labelAmount.frame.size.width, labelAmount.frame.size.height)];
+        [titleLabel setFrame:CGRectMake(10, by + 10 , titleLabel.frame.size.width, titleLabel.frame.size.height)];
     }
     
 

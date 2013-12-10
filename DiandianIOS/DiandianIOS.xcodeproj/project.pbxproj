@@ -11,7 +11,6 @@
 		0A07BD061828EC1B00A350BC /* DAMyOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD041828EC1B00A350BC /* DAMyOrderViewController.xib */; };
 		0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD081828ECF800A350BC /* DAMyFilterViewController.m */; };
 		0A07BD0B1828ECF800A350BC /* DAMyFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD091828ECF800A350BC /* DAMyFilterViewController.xib */; };
-		0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD501829CB6900A350BC /* CCSegmentedControl.m */; };
 		0A07BD551829CC8A00A350BC /* segment_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD531829CC8A00A350BC /* segment_bg.png */; };
 		0A07BD561829CC8A00A350BC /* stain.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD541829CC8A00A350BC /* stain.png */; };
 		0A07BD591829D2A500A350BC /* type.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD581829D2A500A350BC /* type.json */; };
@@ -20,9 +19,7 @@
 		0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */; };
 		0A07BD621829DC0900A350BC /* DAMyMenuBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */; };
 		0A07BD6E182A031000A350BC /* cai_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD6D182A031000A350BC /* cai_2.png */; };
-		0A07BD73182A0BBD00A350BC /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD72182A0BBD00A350BC /* Util.m */; };
 		0A07BD76182A0E7B00A350BC /* DAOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD75182A0E7B00A350BC /* DAOrderCell.m */; };
-		0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD79182A204800A350BC /* UIViewController+CWPopup.m */; };
 		0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD7C182A20DC00A350BC /* DAMyOrderDetailViewController.m */; };
 		0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */; };
 		0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD88182A363000A350BC /* DAMyTableViewController.m */; };
@@ -31,8 +28,6 @@
 		0A12D3C0183C9CA800B8F930 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */; };
 		0A12D3C4183CA75600B8F930 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3C3183CA75600B8F930 /* CFNetwork.framework */; };
 		0A1530C0182FD4ED00A13EB8 /* mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1530BF182FD4ED00A13EB8 /* mask.png */; };
-		0A19D1BD184AEB4700A82CAE /* DAUserModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A19D1BC184AEB4700A82CAE /* DAUserModule.m */; };
-		0A19D1C0184AEB7200A82CAE /* DAUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A19D1BF184AEB7200A82CAE /* DAUserList.m */; };
 		0A1DBAB6182B3A7D0045787A /* bg_first.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A1DBAB5182B3A7D0045787A /* bg_first.png */; };
 		0A24A2D11838C18D00B340BE /* DAQueueItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A24A2D01838C18D00B340BE /* DAQueueItemListCell.xib */; };
 		0A24A2D31838C66100B340BE /* DAQueueTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A24A2D21838C66100B340BE /* DAQueueTableCell.xib */; };
@@ -50,20 +45,50 @@
 		0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */; };
 		0A40FDE4183CEDB400427613 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A40FDE3183CEDB400427613 /* Security.framework */; };
 		0A40FDE6183CEDCD00427613 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A40FDE5183CEDCD00427613 /* libicucore.dylib */; };
-		0A40FDEC183DF2F300427613 /* DADeskModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDEB183DF2F300427613 /* DADeskModule.m */; };
-		0A40FDEF183DF34E00427613 /* DADesk.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDEE183DF34E00427613 /* DADesk.m */; };
-		0A40FDF2183DF4FD00427613 /* DADeskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDF1183DF4FD00427613 /* DADeskList.m */; };
-		0A40FDF5183DF60200427613 /* DAEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDF4183DF60200427613 /* DAEntity.m */; };
-		0A40FDF9183DFAF700427613 /* DADeskProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDF8183DFAF700427613 /* DADeskProxy.m */; };
-		0A40FDFC183E2B4200427613 /* DAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDFB183E2B4200427613 /* DAService.m */; };
-		0A40FDFF183EE2B500427613 /* DAServiceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FDFE183EE2B500427613 /* DAServiceModule.m */; };
-		0A40FE02183EE58F00427613 /* DAServiceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE01183EE58F00427613 /* DAServiceProxy.m */; };
-		0A40FE07183EFBCE00427613 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A40FE04183EFBCE00427613 /* ProgressHUD.bundle */; };
-		0A40FE08183EFBCE00427613 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE06183EFBCE00427613 /* ProgressHUD.m */; };
 		0A40FE0C183F1C6800427613 /* DAOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE0B183F1C6800427613 /* DAOrder.m */; };
 		0A40FE14183F290000427613 /* DASocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE13183F290000427613 /* DASocketIO.m */; };
+		0A4E478818569ECB00CEC3DE /* DAEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E478718569ECB00CEC3DE /* DAEntity.m */; };
+		0A4E47971856A06A00CEC3DE /* DAUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E478A1856A06A00CEC3DE /* DAUserList.m */; };
+		0A4E47981856A06A00CEC3DE /* DADesk.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E478C1856A06A00CEC3DE /* DADesk.m */; };
+		0A4E47991856A06A00CEC3DE /* DADeskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E478E1856A06A00CEC3DE /* DADeskList.m */; };
+		0A4E479A1856A06A00CEC3DE /* DAGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47901856A06A00CEC3DE /* DAGroup.m */; };
+		0A4E479B1856A06A00CEC3DE /* DAItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47921856A06A00CEC3DE /* DAItem.m */; };
+		0A4E479C1856A06A00CEC3DE /* DAItemLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47941856A06A00CEC3DE /* DAItemLayout.m */; };
+		0A4E479D1856A06A00CEC3DE /* DAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47961856A06A00CEC3DE /* DAUser.m */; };
+		0A4E47A41856A0EC00CEC3DE /* DAMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E479F1856A0EC00CEC3DE /* DAMenu.m */; };
+		0A4E47A51856A0EC00CEC3DE /* DAMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47A11856A0EC00CEC3DE /* DAMenuList.m */; };
+		0A4E47A61856A0EC00CEC3DE /* DAMyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47A31856A0EC00CEC3DE /* DAMyTable.m */; };
+		0A4E47A91856F56500CEC3DE /* DANotificationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47A81856F56500CEC3DE /* DANotificationProxy.m */; };
+		0A4E47B218570FFC00CEC3DE /* DAPrintProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47AB18570FFC00CEC3DE /* DAPrintProxy.m */; };
+		0A4E47B318570FFC00CEC3DE /* DADeskProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47AD18570FFC00CEC3DE /* DADeskProxy.m */; };
+		0A4E47B418570FFC00CEC3DE /* DAMenuProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47AF18570FFC00CEC3DE /* DAMenuProxy.m */; };
+		0A4E47B518570FFC00CEC3DE /* DAServiceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47B118570FFC00CEC3DE /* DAServiceProxy.m */; };
+		0A4E47BE1857110D00CEC3DE /* DAUserModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47B71857110D00CEC3DE /* DAUserModule.m */; };
+		0A4E47BF1857110D00CEC3DE /* DADeskModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47B91857110D00CEC3DE /* DADeskModule.m */; };
+		0A4E47C01857110D00CEC3DE /* DALoginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47BB1857110D00CEC3DE /* DALoginModule.m */; };
+		0A4E47C11857110D00CEC3DE /* DAServiceModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47BD1857110D00CEC3DE /* DAServiceModule.m */; };
+		0A4E47C81857112300CEC3DE /* DAMyDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47C31857112300CEC3DE /* DAMyDevice.m */; };
+		0A4E47C91857112300CEC3DE /* DAService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47C51857112300CEC3DE /* DAService.m */; };
+		0A4E47CA1857112300CEC3DE /* DATakeout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47C71857112300CEC3DE /* DATakeout.m */; };
+		0A4E47CD1857117600CEC3DE /* ZenKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47CC1857117600CEC3DE /* ZenKeyboard.m */; };
+		0A4E47D1185711A100CEC3DE /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0A4E47CE185711A100CEC3DE /* ProgressHUD.bundle */; };
+		0A4E47D2185711A100CEC3DE /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47D0185711A100CEC3DE /* ProgressHUD.m */; };
+		0A4E47DD185711CC00CEC3DE /* botton_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4E47D3185711CC00CEC3DE /* botton_d.png */; };
+		0A4E47DE185711CC00CEC3DE /* botton_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4E47D4185711CC00CEC3DE /* botton_on.png */; };
+		0A4E47DF185711CC00CEC3DE /* dot_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4E47D5185711CC00CEC3DE /* dot_off.png */; };
+		0A4E47E0185711CC00CEC3DE /* dot_off1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4E47D6185711CC00CEC3DE /* dot_off1.png */; };
+		0A4E47E1185711CC00CEC3DE /* dot_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4E47D7185711CC00CEC3DE /* dot_on.png */; };
+		0A4E47E2185711CC00CEC3DE /* dot_on1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A4E47D8185711CC00CEC3DE /* dot_on1.png */; };
+		0A4E47E3185711CC00CEC3DE /* DrawPatternLockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47DA185711CC00CEC3DE /* DrawPatternLockView.m */; };
+		0A4E47E4185711CC00CEC3DE /* DrawPatternLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47DC185711CC00CEC3DE /* DrawPatternLockViewController.m */; };
+		0A4E47E7185711F000CEC3DE /* SMVerticalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47E6185711F000CEC3DE /* SMVerticalSegmentedControl.m */; };
+		0A4E47EA1857122900CEC3DE /* RFQuiltLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47E91857122900CEC3DE /* RFQuiltLayout.m */; };
+		0A4E47EE1857128800CEC3DE /* UIViewController+CWPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47ED1857128800CEC3DE /* UIViewController+CWPopup.m */; };
+		0A4E47F3185712B500CEC3DE /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47F0185712B500CEC3DE /* MJPopupBackgroundView.m */; };
+		0A4E47F4185712B500CEC3DE /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47F2185712B500CEC3DE /* UIViewController+MJPopupViewController.m */; };
+		0A4E47FB1857133900CEC3DE /* CCSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47FA1857133900CEC3DE /* CCSegmentedControl.m */; };
+		0A4E47FE1857137A00CEC3DE /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47FD1857137A00CEC3DE /* Util.m */; };
 		0A54D6A4184C6B8800BBA9C4 /* DABill.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54D6A3184C6B8800BBA9C4 /* DABill.m */; };
-		0A54D6A8184C712400BBA9C4 /* ZenKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A54D6A7184C712400BBA9C4 /* ZenKeyboard.m */; };
 		0A54D6B5184C726900BBA9C4 /* BackgroundTexture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6A9184C726900BBA9C4 /* BackgroundTexture@2x.png */; };
 		0A54D6B6184C726900BBA9C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6AA184C726900BBA9C4 /* Default-568h@2x.png */; };
 		0A54D6B7184C726900BBA9C4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D6AB184C726900BBA9C4 /* Default.png */; };
@@ -102,15 +127,11 @@
 		0A54D703185076EC00BBA9C4 /* desk_j.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D701185076EC00BBA9C4 /* desk_j.png */; };
 		0A54D704185076EC00BBA9C4 /* desk_jz.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D702185076EC00BBA9C4 /* desk_jz.png */; };
 		0A54D7061850793500BBA9C4 /* desk_jz1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D7051850793500BBA9C4 /* desk_jz1.png */; };
-		0A54D7081850827300BBA9C4 /* botton_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D7071850827300BBA9C4 /* botton_on.png */; };
-		0A54D70A1850832B00BBA9C4 /* botton_d.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A54D7091850832B00BBA9C4 /* botton_d.png */; };
 		0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BC8182878DA009CDF6D /* DAViewController.m */; };
 		0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A577BDB1828A040009CDF6D /* DABookViewController.m */; };
 		0A5D2835182B6E2F00847578 /* table1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2834182B6E2F00847578 /* table1.png */; };
 		0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D2837182B77A000847578 /* DAMyBigMenuBookCell.m */; };
 		0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D283D182B81F000847578 /* DAOrderAddAmountBtn.m */; };
-		0A5D288F182BD03600847578 /* MJPopupBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D288C182BD03600847578 /* MJPopupBackgroundView.m */; };
-		0A5D2890182BD03600847578 /* UIViewController+MJPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D288E182BD03600847578 /* UIViewController+MJPopupViewController.m */; };
 		0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2891182BD1FD00847578 /* DAMyOrderDetailViewController.xib */; };
 		0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D2894182BD23700847578 /* DADetailOrderViewController.m */; };
 		0A5D2897182BD23700847578 /* DADetailOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D2895182BD23700847578 /* DADetailOrderViewController.xib */; };
@@ -122,15 +143,8 @@
 		0A739E63183B019D00AA48C4 /* DAMyBackOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A739E61183B019D00AA48C4 /* DAMyBackOrderViewController.xib */; };
 		0A739E65183B01F800AA48C4 /* DAMyBackOrderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A739E64183B01F800AA48C4 /* DAMyBackOrderViewCell.xib */; };
 		0A739E68183B0A4100AA48C4 /* DAMyBackOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A739E67183B0A4100AA48C4 /* DAMyBackOrderViewCell.m */; };
-		0A739E6E183B244F00AA48C4 /* DrawPatternLockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A739E6B183B244F00AA48C4 /* DrawPatternLockView.m */; };
-		0A739E6F183B244F00AA48C4 /* DrawPatternLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A739E6D183B244F00AA48C4 /* DrawPatternLockViewController.m */; };
-		0A739E72183B2AB400AA48C4 /* dot_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A739E70183B2AB400AA48C4 /* dot_off.png */; };
-		0A739E73183B2AB400AA48C4 /* dot_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A739E71183B2AB400AA48C4 /* dot_on.png */; };
-		0A7502901848622800665B6C /* DAMyDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A75028F1848622800665B6C /* DAMyDevice.m */; };
 		0A750294184863E400665B6C /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A750293184863E400665B6C /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0A750296184866F500665B6C /* libeposprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A750295184866F500665B6C /* libeposprint.a */; };
-		0A75029A1848696400665B6C /* DAPrintProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7502991848696400665B6C /* DAPrintProxy.m */; };
-		0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */; };
 		0A7AF0AB183600C900635376 /* DADrinkQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0A9183600C900635376 /* DADrinkQueueViewController.m */; };
 		0A7AF0AC183600C900635376 /* DADrinkQueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0AA183600C900635376 /* DADrinkQueueViewController.xib */; };
 		0A7AF0B0183600E400635376 /* DAFoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0AE183600E400635376 /* DAFoodViewController.m */; };
@@ -157,7 +171,6 @@
 		0A7EA1EE1847426D00A9E287 /* DASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EA1EC1847426D00A9E287 /* DASettingViewController.m */; };
 		0A7EA1EF1847426D00A9E287 /* DASettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7EA1ED1847426D00A9E287 /* DASettingViewController.xib */; };
 		0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F3E182DDDD70080F15F /* CustomLayout.m */; };
-		0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F46182E33BF0080F15F /* RFQuiltLayout.m */; };
 		0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924AA31834899A0004C973 /* DAMyOrderQueueViewController.m */; };
 		0A924AA61834899A0004C973 /* DAMyOrderQueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A924AA41834899A0004C973 /* DAMyOrderQueueViewController.xib */; };
 		0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924AA818348A420004C973 /* DAMyItemListViewController.m */; };
@@ -165,8 +178,6 @@
 		0A924AAF18348A810004C973 /* DAMyTableListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924AAD18348A810004C973 /* DAMyTableListViewController.m */; };
 		0A924AB018348A810004C973 /* DAMyTableListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A924AAE18348A810004C973 /* DAMyTableListViewController.xib */; };
 		0A924AB21834908E0004C973 /* DAMyItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A924AB11834908E0004C973 /* DAMyItemCell.xib */; };
-		0A95E5D6183B673E0026017C /* dot_off1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A95E5D4183B673E0026017C /* dot_off1.png */; };
-		0A95E5D7183B673E0026017C /* dot_on1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A95E5D5183B673E0026017C /* dot_on1.png */; };
 		0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */; };
 		0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C31828764800037E73 /* DARootViewController.m */; };
 		0A9DA5C61828766200037E73 /* DARootView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C51828766100037E73 /* DARootView.storyboard */; };
@@ -189,8 +200,6 @@
 		0AA032051843558300C66590 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031FE1843558300C66590 /* base64.c */; };
 		0AA032061843558300C66590 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA032011843558300C66590 /* NSData+SRB64Additions.m */; };
 		0AA032071843558300C66590 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA032041843558300C66590 /* SRWebSocket.m */; };
-		0AA0320A1844452400C66590 /* DAItemLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA032091844452400C66590 /* DAItemLayout.m */; };
-		0AA0320D18445E0C00C66590 /* DAMenuProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA0320C18445E0C00C66590 /* DAMenuProxy.m */; };
 		0AA032101844DC1D00C66590 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA0320F1844DC1D00C66590 /* Tool.m */; };
 		0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533911828AD690087EFF1 /* DABookViewController.xib */; };
 		0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533971828AD7D0087EFF1 /* DAOrderCell.xib */; };
@@ -228,9 +237,6 @@
 		0AB78B41183CB46500979BD0 /* DAJsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA2183CB46400979BD0 /* DAJsonHelper.m */; };
 		0AB78B42183CB46500979BD0 /* DARequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA5183CB46400979BD0 /* DARequestHelper.m */; };
 		0AB78B5B183CB46500979BD0 /* DAMenuModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78ADD183CB46400979BD0 /* DAMenuModule.m */; };
-		0AB78B5C183CB46500979BD0 /* DAMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE0183CB46400979BD0 /* DAMenu.m */; };
-		0AB78B5D183CB46500979BD0 /* DAMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE2183CB46400979BD0 /* DAMenuList.m */; };
-		0AB78B5E183CB46500979BD0 /* DAMyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AE4183CB46400979BD0 /* DAMyTable.m */; };
 		0AB78B7B183CB46500979BD0 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B24183CB46500979BD0 /* AFHTTPClient.m */; };
 		0AB78B7C183CB46500979BD0 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B26183CB46500979BD0 /* AFHTTPRequestOperation.m */; };
 		0AB78B7D183CB46500979BD0 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B28183CB46500979BD0 /* AFImageRequestOperation.m */; };
@@ -243,10 +249,6 @@
 		0AB78B84183CB46500979BD0 /* Jastor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B38183CB46500979BD0 /* Jastor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0AB78B85183CB46500979BD0 /* JastorRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B3A183CB46500979BD0 /* JastorRuntimeHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0AB78B86183CB46500979BD0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B3D183CB46500979BD0 /* Reachability.m */; };
-		0AB78B89183CD0E300979BD0 /* DALoginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B88183CD0E300979BD0 /* DALoginModule.m */; };
-		0AB78B8C183CD11000979BD0 /* DAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B8B183CD11000979BD0 /* DAUser.m */; };
-		0AB78B8F183CD16000979BD0 /* DAGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B8E183CD15F00979BD0 /* DAGroup.m */; };
-		0AB78B92183CD7DC00979BD0 /* DAItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B91183CD7DC00979BD0 /* DAItem.m */; };
 		0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */; };
 		0AEBE5201830EDAA00B01A5E /* DAMyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE51F1830EDAA00B01A5E /* DAMyOrderCell.xib */; };
 		0AEBE5241831027600B01A5E /* price_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5231831027600B01A5E /* price_tag.png */; };
@@ -273,7 +275,6 @@
 		287FA98D183B053500E02051 /* DATakeoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287FA98B183B053500E02051 /* DATakeoutViewController.xib */; };
 		287FA990183B057400E02051 /* DATakeoutViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 287FA98F183B057400E02051 /* DATakeoutViewCell.m */; };
 		287FA992183B06D600E02051 /* DATakeoutViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 287FA991183B06D600E02051 /* DATakeoutViewCell.xib */; };
-		287FA995183B11AA00E02051 /* DATakeout.m in Sources */ = {isa = PBXBuildFile; fileRef = 287FA994183B11AA00E02051 /* DATakeout.m */; };
 		287FA997183B3E5D00E02051 /* takeout.json in Resources */ = {isa = PBXBuildFile; fileRef = 287FA996183B3E5D00E02051 /* takeout.json */; };
 		2886BAFD18360F5800A496AC /* DAProcessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2886BAFB18360F5800A496AC /* DAProcessionViewController.m */; };
 		2886BAFE18360F5800A496AC /* DAProcessionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2886BAFC18360F5800A496AC /* DAProcessionViewController.xib */; };
@@ -341,8 +342,6 @@
 		0A07BD071828ECF800A350BC /* DAMyFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyFilterViewController.h; sourceTree = "<group>"; };
 		0A07BD081828ECF800A350BC /* DAMyFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyFilterViewController.m; sourceTree = "<group>"; };
 		0A07BD091828ECF800A350BC /* DAMyFilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyFilterViewController.xib; sourceTree = "<group>"; };
-		0A07BD4F1829CB6900A350BC /* CCSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSegmentedControl.h; sourceTree = "<group>"; };
-		0A07BD501829CB6900A350BC /* CCSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSegmentedControl.m; sourceTree = "<group>"; };
 		0A07BD531829CC8A00A350BC /* segment_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = segment_bg.png; sourceTree = "<group>"; };
 		0A07BD541829CC8A00A350BC /* stain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stain.png; sourceTree = "<group>"; };
 		0A07BD581829D2A500A350BC /* type.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = type.json; sourceTree = "<group>"; };
@@ -352,12 +351,8 @@
 		0A07BD5F1829DC0900A350BC /* DAMyMenuBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuBookViewController.m; sourceTree = "<group>"; };
 		0A07BD601829DC0900A350BC /* DAMyMenuBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyMenuBookViewController.xib; sourceTree = "<group>"; };
 		0A07BD6D182A031000A350BC /* cai_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cai_2.png; sourceTree = "<group>"; };
-		0A07BD71182A0BBD00A350BC /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
-		0A07BD72182A0BBD00A350BC /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		0A07BD74182A0E7B00A350BC /* DAOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderCell.h; sourceTree = "<group>"; };
 		0A07BD75182A0E7B00A350BC /* DAOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderCell.m; sourceTree = "<group>"; };
-		0A07BD78182A204800A350BC /* UIViewController+CWPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CWPopup.h"; sourceTree = "<group>"; };
-		0A07BD79182A204800A350BC /* UIViewController+CWPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CWPopup.m"; sourceTree = "<group>"; };
 		0A07BD7B182A20DC00A350BC /* DAMyOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderDetailViewController.h; sourceTree = "<group>"; };
 		0A07BD7C182A20DC00A350BC /* DAMyOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderDetailViewController.m; sourceTree = "<group>"; };
 		0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAMyOrderDetailViewStoryboard.storyboard; sourceTree = "<group>"; };
@@ -369,10 +364,6 @@
 		0A12D3C1183CA74600B8F930 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0A12D3C3183CA75600B8F930 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A1530BF182FD4ED00A13EB8 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
-		0A19D1BB184AEB4700A82CAE /* DAUserModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserModule.h; sourceTree = "<group>"; };
-		0A19D1BC184AEB4700A82CAE /* DAUserModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserModule.m; sourceTree = "<group>"; };
-		0A19D1BE184AEB7200A82CAE /* DAUserList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUserList.h; sourceTree = "<group>"; };
-		0A19D1BF184AEB7200A82CAE /* DAUserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUserList.m; sourceTree = "<group>"; };
 		0A1DBAB5182B3A7D0045787A /* bg_first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_first.png; sourceTree = "<group>"; };
 		0A24A2D01838C18D00B340BE /* DAQueueItemListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueItemListCell.xib; sourceTree = "<group>"; };
 		0A24A2D21838C66100B340BE /* DAQueueTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueTableCell.xib; sourceTree = "<group>"; };
@@ -395,33 +386,88 @@
 		0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuBookCell.m; sourceTree = "<group>"; };
 		0A40FDE3183CEDB400427613 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0A40FDE5183CEDCD00427613 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		0A40FDEA183DF2F300427613 /* DADeskModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADeskModule.h; sourceTree = "<group>"; };
-		0A40FDEB183DF2F300427613 /* DADeskModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADeskModule.m; sourceTree = "<group>"; };
-		0A40FDED183DF34E00427613 /* DADesk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADesk.h; sourceTree = "<group>"; };
-		0A40FDEE183DF34E00427613 /* DADesk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADesk.m; sourceTree = "<group>"; };
-		0A40FDF0183DF4FD00427613 /* DADeskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADeskList.h; sourceTree = "<group>"; };
-		0A40FDF1183DF4FD00427613 /* DADeskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADeskList.m; sourceTree = "<group>"; };
-		0A40FDF3183DF60200427613 /* DAEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAEntity.h; sourceTree = "<group>"; };
-		0A40FDF4183DF60200427613 /* DAEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAEntity.m; sourceTree = "<group>"; };
-		0A40FDF7183DFAF700427613 /* DADeskProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADeskProxy.h; sourceTree = "<group>"; };
-		0A40FDF8183DFAF700427613 /* DADeskProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADeskProxy.m; sourceTree = "<group>"; };
-		0A40FDFA183E2B4200427613 /* DAService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAService.h; sourceTree = "<group>"; };
-		0A40FDFB183E2B4200427613 /* DAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAService.m; sourceTree = "<group>"; };
-		0A40FDFD183EE2B500427613 /* DAServiceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAServiceModule.h; sourceTree = "<group>"; };
-		0A40FDFE183EE2B500427613 /* DAServiceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAServiceModule.m; sourceTree = "<group>"; };
-		0A40FE00183EE58F00427613 /* DAServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAServiceProxy.h; sourceTree = "<group>"; };
-		0A40FE01183EE58F00427613 /* DAServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAServiceProxy.m; sourceTree = "<group>"; };
-		0A40FE04183EFBCE00427613 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
-		0A40FE05183EFBCE00427613 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
-		0A40FE06183EFBCE00427613 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		0A40FE0A183F1C6800427613 /* DAOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrder.h; sourceTree = "<group>"; };
 		0A40FE0B183F1C6800427613 /* DAOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrder.m; sourceTree = "<group>"; };
 		0A40FE12183F290000427613 /* DASocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASocketIO.h; path = Helper/DASync/DASocketIO.h; sourceTree = "<group>"; };
 		0A40FE13183F290000427613 /* DASocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASocketIO.m; path = Helper/DASync/DASocketIO.m; sourceTree = "<group>"; };
+		0A4E47811855FE8600CEC3DE /* DiandianIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DiandianIOS.entitlements; sourceTree = "<group>"; };
+		0A4E478618569EB000CEC3DE /* DAEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAEntity.h; path = Entities/DAEntity.h; sourceTree = "<group>"; };
+		0A4E478718569ECB00CEC3DE /* DAEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAEntity.m; path = Entities/DAEntity.m; sourceTree = "<group>"; };
+		0A4E47891856A06A00CEC3DE /* DAUserList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAUserList.h; path = Entities/DAUserList.h; sourceTree = "<group>"; };
+		0A4E478A1856A06A00CEC3DE /* DAUserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAUserList.m; path = Entities/DAUserList.m; sourceTree = "<group>"; };
+		0A4E478B1856A06A00CEC3DE /* DADesk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADesk.h; path = Entities/DADesk.h; sourceTree = "<group>"; };
+		0A4E478C1856A06A00CEC3DE /* DADesk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADesk.m; path = Entities/DADesk.m; sourceTree = "<group>"; };
+		0A4E478D1856A06A00CEC3DE /* DADeskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADeskList.h; path = Entities/DADeskList.h; sourceTree = "<group>"; };
+		0A4E478E1856A06A00CEC3DE /* DADeskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADeskList.m; path = Entities/DADeskList.m; sourceTree = "<group>"; };
+		0A4E478F1856A06A00CEC3DE /* DAGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAGroup.h; path = Entities/DAGroup.h; sourceTree = "<group>"; };
+		0A4E47901856A06A00CEC3DE /* DAGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAGroup.m; path = Entities/DAGroup.m; sourceTree = "<group>"; };
+		0A4E47911856A06A00CEC3DE /* DAItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAItem.h; path = Entities/DAItem.h; sourceTree = "<group>"; };
+		0A4E47921856A06A00CEC3DE /* DAItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAItem.m; path = Entities/DAItem.m; sourceTree = "<group>"; };
+		0A4E47931856A06A00CEC3DE /* DAItemLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAItemLayout.h; path = Entities/DAItemLayout.h; sourceTree = "<group>"; };
+		0A4E47941856A06A00CEC3DE /* DAItemLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAItemLayout.m; path = Entities/DAItemLayout.m; sourceTree = "<group>"; };
+		0A4E47951856A06A00CEC3DE /* DAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAUser.h; path = Entities/DAUser.h; sourceTree = "<group>"; };
+		0A4E47961856A06A00CEC3DE /* DAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAUser.m; path = Entities/DAUser.m; sourceTree = "<group>"; };
+		0A4E479E1856A0EC00CEC3DE /* DAMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenu.h; path = Entities/DAMenu.h; sourceTree = "<group>"; };
+		0A4E479F1856A0EC00CEC3DE /* DAMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenu.m; path = Entities/DAMenu.m; sourceTree = "<group>"; };
+		0A4E47A01856A0EC00CEC3DE /* DAMenuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenuList.h; path = Entities/DAMenuList.h; sourceTree = "<group>"; };
+		0A4E47A11856A0EC00CEC3DE /* DAMenuList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenuList.m; path = Entities/DAMenuList.m; sourceTree = "<group>"; };
+		0A4E47A21856A0EC00CEC3DE /* DAMyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMyTable.h; path = Entities/DAMyTable.h; sourceTree = "<group>"; };
+		0A4E47A31856A0EC00CEC3DE /* DAMyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMyTable.m; path = Entities/DAMyTable.m; sourceTree = "<group>"; };
+		0A4E47A71856F56500CEC3DE /* DANotificationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DANotificationProxy.h; path = Proxy/DANotificationProxy.h; sourceTree = "<group>"; };
+		0A4E47A81856F56500CEC3DE /* DANotificationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DANotificationProxy.m; path = Proxy/DANotificationProxy.m; sourceTree = "<group>"; };
+		0A4E47AA18570FFC00CEC3DE /* DAPrintProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPrintProxy.h; path = Proxy/DAPrintProxy.h; sourceTree = "<group>"; };
+		0A4E47AB18570FFC00CEC3DE /* DAPrintProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPrintProxy.m; path = Proxy/DAPrintProxy.m; sourceTree = "<group>"; };
+		0A4E47AC18570FFC00CEC3DE /* DADeskProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADeskProxy.h; path = Proxy/DADeskProxy.h; sourceTree = "<group>"; };
+		0A4E47AD18570FFC00CEC3DE /* DADeskProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADeskProxy.m; path = Proxy/DADeskProxy.m; sourceTree = "<group>"; };
+		0A4E47AE18570FFC00CEC3DE /* DAMenuProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenuProxy.h; path = Proxy/DAMenuProxy.h; sourceTree = "<group>"; };
+		0A4E47AF18570FFC00CEC3DE /* DAMenuProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenuProxy.m; path = Proxy/DAMenuProxy.m; sourceTree = "<group>"; };
+		0A4E47B018570FFC00CEC3DE /* DAServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAServiceProxy.h; path = Proxy/DAServiceProxy.h; sourceTree = "<group>"; };
+		0A4E47B118570FFC00CEC3DE /* DAServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAServiceProxy.m; path = Proxy/DAServiceProxy.m; sourceTree = "<group>"; };
+		0A4E47B61857110D00CEC3DE /* DAUserModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAUserModule.h; path = Module/DAUserModule.h; sourceTree = "<group>"; };
+		0A4E47B71857110D00CEC3DE /* DAUserModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAUserModule.m; path = Module/DAUserModule.m; sourceTree = "<group>"; };
+		0A4E47B81857110D00CEC3DE /* DADeskModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADeskModule.h; path = Module/DADeskModule.h; sourceTree = "<group>"; };
+		0A4E47B91857110D00CEC3DE /* DADeskModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADeskModule.m; path = Module/DADeskModule.m; sourceTree = "<group>"; };
+		0A4E47BA1857110D00CEC3DE /* DALoginModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DALoginModule.h; path = Module/DALoginModule.h; sourceTree = "<group>"; };
+		0A4E47BB1857110D00CEC3DE /* DALoginModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DALoginModule.m; path = Module/DALoginModule.m; sourceTree = "<group>"; };
+		0A4E47BC1857110D00CEC3DE /* DAServiceModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAServiceModule.h; path = Module/DAServiceModule.h; sourceTree = "<group>"; };
+		0A4E47BD1857110D00CEC3DE /* DAServiceModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAServiceModule.m; path = Module/DAServiceModule.m; sourceTree = "<group>"; };
+		0A4E47C21857112300CEC3DE /* DAMyDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMyDevice.h; path = Entities/DAMyDevice.h; sourceTree = "<group>"; };
+		0A4E47C31857112300CEC3DE /* DAMyDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMyDevice.m; path = Entities/DAMyDevice.m; sourceTree = "<group>"; };
+		0A4E47C41857112300CEC3DE /* DAService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAService.h; path = Entities/DAService.h; sourceTree = "<group>"; };
+		0A4E47C51857112300CEC3DE /* DAService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAService.m; path = Entities/DAService.m; sourceTree = "<group>"; };
+		0A4E47C61857112300CEC3DE /* DATakeout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DATakeout.h; path = Entities/DATakeout.h; sourceTree = "<group>"; };
+		0A4E47C71857112300CEC3DE /* DATakeout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DATakeout.m; path = Entities/DATakeout.m; sourceTree = "<group>"; };
+		0A4E47CB1857117600CEC3DE /* ZenKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZenKeyboard.h; path = Thirdparty/ZenKeyboard/ZenKeyboard.h; sourceTree = "<group>"; };
+		0A4E47CC1857117600CEC3DE /* ZenKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZenKeyboard.m; path = Thirdparty/ZenKeyboard/ZenKeyboard.m; sourceTree = "<group>"; };
+		0A4E47CE185711A100CEC3DE /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ProgressHUD.bundle; path = Thirdparty/ProgressHUD/ProgressHUD.bundle; sourceTree = "<group>"; };
+		0A4E47CF185711A100CEC3DE /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressHUD.h; path = Thirdparty/ProgressHUD/ProgressHUD.h; sourceTree = "<group>"; };
+		0A4E47D0185711A100CEC3DE /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressHUD.m; path = Thirdparty/ProgressHUD/ProgressHUD.m; sourceTree = "<group>"; };
+		0A4E47D3185711CC00CEC3DE /* botton_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = botton_d.png; path = Thirdparty/DrawPatternLockView/botton_d.png; sourceTree = "<group>"; };
+		0A4E47D4185711CC00CEC3DE /* botton_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = botton_on.png; path = Thirdparty/DrawPatternLockView/botton_on.png; sourceTree = "<group>"; };
+		0A4E47D5185711CC00CEC3DE /* dot_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dot_off.png; path = Thirdparty/DrawPatternLockView/dot_off.png; sourceTree = "<group>"; };
+		0A4E47D6185711CC00CEC3DE /* dot_off1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dot_off1.png; path = Thirdparty/DrawPatternLockView/dot_off1.png; sourceTree = "<group>"; };
+		0A4E47D7185711CC00CEC3DE /* dot_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dot_on.png; path = Thirdparty/DrawPatternLockView/dot_on.png; sourceTree = "<group>"; };
+		0A4E47D8185711CC00CEC3DE /* dot_on1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dot_on1.png; path = Thirdparty/DrawPatternLockView/dot_on1.png; sourceTree = "<group>"; };
+		0A4E47D9185711CC00CEC3DE /* DrawPatternLockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawPatternLockView.h; path = Thirdparty/DrawPatternLockView/DrawPatternLockView.h; sourceTree = "<group>"; };
+		0A4E47DA185711CC00CEC3DE /* DrawPatternLockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawPatternLockView.m; path = Thirdparty/DrawPatternLockView/DrawPatternLockView.m; sourceTree = "<group>"; };
+		0A4E47DB185711CC00CEC3DE /* DrawPatternLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawPatternLockViewController.h; path = Thirdparty/DrawPatternLockView/DrawPatternLockViewController.h; sourceTree = "<group>"; };
+		0A4E47DC185711CC00CEC3DE /* DrawPatternLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawPatternLockViewController.m; path = Thirdparty/DrawPatternLockView/DrawPatternLockViewController.m; sourceTree = "<group>"; };
+		0A4E47E5185711F000CEC3DE /* SMVerticalSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMVerticalSegmentedControl.h; path = Thirdparty/SMVerticalSegmentedControl/SMVerticalSegmentedControl.h; sourceTree = "<group>"; };
+		0A4E47E6185711F000CEC3DE /* SMVerticalSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMVerticalSegmentedControl.m; path = Thirdparty/SMVerticalSegmentedControl/SMVerticalSegmentedControl.m; sourceTree = "<group>"; };
+		0A4E47E81857122900CEC3DE /* RFQuiltLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RFQuiltLayout.h; path = Thirdparty/TVQuiltLayout/RFQuiltLayout.h; sourceTree = "<group>"; };
+		0A4E47E91857122900CEC3DE /* RFQuiltLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RFQuiltLayout.m; path = Thirdparty/TVQuiltLayout/RFQuiltLayout.m; sourceTree = "<group>"; };
+		0A4E47EC1857128800CEC3DE /* UIViewController+CWPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+CWPopup.h"; path = "Thirdparty/CWPopup/UIViewController+CWPopup.h"; sourceTree = "<group>"; };
+		0A4E47ED1857128800CEC3DE /* UIViewController+CWPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+CWPopup.m"; path = "Thirdparty/CWPopup/UIViewController+CWPopup.m"; sourceTree = "<group>"; };
+		0A4E47EF185712B500CEC3DE /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MJPopupBackgroundView.h; path = Thirdparty/Popup/MJPopupBackgroundView.h; sourceTree = "<group>"; };
+		0A4E47F0185712B500CEC3DE /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MJPopupBackgroundView.m; path = Thirdparty/Popup/MJPopupBackgroundView.m; sourceTree = "<group>"; };
+		0A4E47F1185712B500CEC3DE /* UIViewController+MJPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+MJPopupViewController.h"; path = "Thirdparty/Popup/UIViewController+MJPopupViewController.h"; sourceTree = "<group>"; };
+		0A4E47F2185712B500CEC3DE /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MJPopupViewController.m"; path = "Thirdparty/Popup/UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
+		0A4E47F91857133900CEC3DE /* CCSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCSegmentedControl.h; path = Thirdparty/CCSegmentedControl/CCSegmentedControl.h; sourceTree = "<group>"; };
+		0A4E47FA1857133900CEC3DE /* CCSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCSegmentedControl.m; path = Thirdparty/CCSegmentedControl/CCSegmentedControl.m; sourceTree = "<group>"; };
+		0A4E47FC1857137A00CEC3DE /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = Thirdparty/Common/Util.h; sourceTree = "<group>"; };
+		0A4E47FD1857137A00CEC3DE /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Util.m; path = Thirdparty/Common/Util.m; sourceTree = "<group>"; };
 		0A54D6A2184C6B8800BBA9C4 /* DABill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DABill.h; path = Entities/DABill.h; sourceTree = "<group>"; };
 		0A54D6A3184C6B8800BBA9C4 /* DABill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DABill.m; path = Entities/DABill.m; sourceTree = "<group>"; };
-		0A54D6A6184C712400BBA9C4 /* ZenKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenKeyboard.h; sourceTree = "<group>"; };
-		0A54D6A7184C712400BBA9C4 /* ZenKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenKeyboard.m; sourceTree = "<group>"; };
 		0A54D6A9184C726900BBA9C4 /* BackgroundTexture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundTexture@2x.png"; sourceTree = "<group>"; };
 		0A54D6AA184C726900BBA9C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0A54D6AB184C726900BBA9C4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -463,8 +509,6 @@
 		0A54D701185076EC00BBA9C4 /* desk_j.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = desk_j.png; path = Resources/assets/deskUI/desk_j.png; sourceTree = "<group>"; };
 		0A54D702185076EC00BBA9C4 /* desk_jz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = desk_jz.png; path = Resources/assets/deskUI/desk_jz.png; sourceTree = "<group>"; };
 		0A54D7051850793500BBA9C4 /* desk_jz1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = desk_jz1.png; path = Resources/assets/deskUI/desk_jz1.png; sourceTree = "<group>"; };
-		0A54D7071850827300BBA9C4 /* botton_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botton_on.png; sourceTree = "<group>"; };
-		0A54D7091850832B00BBA9C4 /* botton_d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = botton_d.png; sourceTree = "<group>"; };
 		0A577BC7182878DA009CDF6D /* DAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAViewController.h; sourceTree = "<group>"; };
 		0A577BC8182878DA009CDF6D /* DAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAViewController.m; sourceTree = "<group>"; };
 		0A577BDA1828A040009CDF6D /* DABookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABookViewController.h; sourceTree = "<group>"; };
@@ -474,10 +518,6 @@
 		0A5D2837182B77A000847578 /* DAMyBigMenuBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyBigMenuBookCell.m; sourceTree = "<group>"; };
 		0A5D283C182B81F000847578 /* DAOrderAddAmountBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderAddAmountBtn.h; sourceTree = "<group>"; };
 		0A5D283D182B81F000847578 /* DAOrderAddAmountBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderAddAmountBtn.m; sourceTree = "<group>"; };
-		0A5D288B182BD03600847578 /* MJPopupBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPopupBackgroundView.h; sourceTree = "<group>"; };
-		0A5D288C182BD03600847578 /* MJPopupBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPopupBackgroundView.m; sourceTree = "<group>"; };
-		0A5D288D182BD03600847578 /* UIViewController+MJPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MJPopupViewController.h"; sourceTree = "<group>"; };
-		0A5D288E182BD03600847578 /* UIViewController+MJPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MJPopupViewController.m"; sourceTree = "<group>"; };
 		0A5D2891182BD1FD00847578 /* DAMyOrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyOrderDetailViewController.xib; sourceTree = "<group>"; };
 		0A5D2893182BD23700847578 /* DADetailOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADetailOrderViewController.h; sourceTree = "<group>"; };
 		0A5D2894182BD23700847578 /* DADetailOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADetailOrderViewController.m; sourceTree = "<group>"; };
@@ -494,22 +534,10 @@
 		0A739E64183B01F800AA48C4 /* DAMyBackOrderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyBackOrderViewCell.xib; sourceTree = "<group>"; };
 		0A739E66183B0A4100AA48C4 /* DAMyBackOrderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyBackOrderViewCell.h; sourceTree = "<group>"; };
 		0A739E67183B0A4100AA48C4 /* DAMyBackOrderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyBackOrderViewCell.m; sourceTree = "<group>"; };
-		0A739E6A183B244F00AA48C4 /* DrawPatternLockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawPatternLockView.h; sourceTree = "<group>"; };
-		0A739E6B183B244F00AA48C4 /* DrawPatternLockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawPatternLockView.m; sourceTree = "<group>"; };
-		0A739E6C183B244F00AA48C4 /* DrawPatternLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawPatternLockViewController.h; sourceTree = "<group>"; };
-		0A739E6D183B244F00AA48C4 /* DrawPatternLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawPatternLockViewController.m; sourceTree = "<group>"; };
-		0A739E70183B2AB400AA48C4 /* dot_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot_off.png; sourceTree = "<group>"; };
-		0A739E71183B2AB400AA48C4 /* dot_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot_on.png; sourceTree = "<group>"; };
-		0A75028E1848622800665B6C /* DAMyDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyDevice.h; sourceTree = "<group>"; };
-		0A75028F1848622800665B6C /* DAMyDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyDevice.m; sourceTree = "<group>"; };
 		0A750292184863E400665B6C /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
 		0A750293184863E400665B6C /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
 		0A750295184866F500665B6C /* libeposprint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libeposprint.a; sourceTree = "<group>"; };
 		0A7502971848670400665B6C /* ePOS-Print.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ePOS-Print.h"; sourceTree = "<group>"; };
-		0A7502981848696400665B6C /* DAPrintProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPrintProxy.h; sourceTree = "<group>"; };
-		0A7502991848696400665B6C /* DAPrintProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPrintProxy.m; sourceTree = "<group>"; };
-		0A7AF0A21835C2E200635376 /* SMVerticalSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMVerticalSegmentedControl.h; sourceTree = "<group>"; };
-		0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMVerticalSegmentedControl.m; sourceTree = "<group>"; };
 		0A7AF0A8183600C900635376 /* DADrinkQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADrinkQueueViewController.h; sourceTree = "<group>"; };
 		0A7AF0A9183600C900635376 /* DADrinkQueueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADrinkQueueViewController.m; sourceTree = "<group>"; };
 		0A7AF0AA183600C900635376 /* DADrinkQueueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADrinkQueueViewController.xib; sourceTree = "<group>"; };
@@ -548,8 +576,6 @@
 		0A7EA1ED1847426D00A9E287 /* DASettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASettingViewController.xib; sourceTree = SOURCE_ROOT; };
 		0A8C2F3D182DDDD70080F15F /* CustomLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayout.h; sourceTree = "<group>"; };
 		0A8C2F3E182DDDD70080F15F /* CustomLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayout.m; sourceTree = "<group>"; };
-		0A8C2F45182E33BF0080F15F /* RFQuiltLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFQuiltLayout.h; sourceTree = "<group>"; };
-		0A8C2F46182E33BF0080F15F /* RFQuiltLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFQuiltLayout.m; sourceTree = "<group>"; };
 		0A924AA21834899A0004C973 /* DAMyOrderQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderQueueViewController.h; sourceTree = "<group>"; };
 		0A924AA31834899A0004C973 /* DAMyOrderQueueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderQueueViewController.m; sourceTree = "<group>"; };
 		0A924AA41834899A0004C973 /* DAMyOrderQueueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyOrderQueueViewController.xib; sourceTree = "<group>"; };
@@ -560,8 +586,6 @@
 		0A924AAD18348A810004C973 /* DAMyTableListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableListViewController.m; sourceTree = "<group>"; };
 		0A924AAE18348A810004C973 /* DAMyTableListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableListViewController.xib; sourceTree = "<group>"; };
 		0A924AB11834908E0004C973 /* DAMyItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyItemCell.xib; sourceTree = "<group>"; };
-		0A95E5D4183B673E0026017C /* dot_off1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot_off1.png; sourceTree = "<group>"; };
-		0A95E5D5183B673E0026017C /* dot_on1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot_on1.png; sourceTree = "<group>"; };
 		0A9DA5C0182874C900037E73 /* DAMenuBookView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DAMenuBookView.storyboard; sourceTree = "<group>"; };
 		0A9DA5C21828764800037E73 /* DARootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARootViewController.h; sourceTree = "<group>"; };
 		0A9DA5C31828764800037E73 /* DARootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARootViewController.m; sourceTree = "<group>"; };
@@ -607,10 +631,6 @@
 		0AA032021843558300C66590 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
 		0AA032031843558300C66590 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
 		0AA032041843558300C66590 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
-		0AA032081844452400C66590 /* DAItemLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAItemLayout.h; sourceTree = "<group>"; };
-		0AA032091844452400C66590 /* DAItemLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAItemLayout.m; sourceTree = "<group>"; };
-		0AA0320B18445E0C00C66590 /* DAMenuProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMenuProxy.h; sourceTree = "<group>"; };
-		0AA0320C18445E0C00C66590 /* DAMenuProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMenuProxy.m; sourceTree = "<group>"; };
 		0AA0320E1844DC1D00C66590 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		0AA0320F1844DC1D00C66590 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
 		0AA533941828AD750087EFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DABookViewController.xib; sourceTree = "<group>"; };
@@ -667,12 +687,6 @@
 		0AB78AA5183CB46400979BD0 /* DARequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARequestHelper.m; sourceTree = "<group>"; };
 		0AB78ADC183CB46400979BD0 /* DAMenuModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenuModule.h; path = ../SmartSDK/Module/DianDian/DAMenuModule.h; sourceTree = "<group>"; };
 		0AB78ADD183CB46400979BD0 /* DAMenuModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenuModule.m; path = ../SmartSDK/Module/DianDian/DAMenuModule.m; sourceTree = "<group>"; };
-		0AB78ADF183CB46400979BD0 /* DAMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenu.h; path = ../SmartSDK/Module/DianDian/Entity/DAMenu.h; sourceTree = "<group>"; };
-		0AB78AE0183CB46400979BD0 /* DAMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenu.m; path = ../SmartSDK/Module/DianDian/Entity/DAMenu.m; sourceTree = "<group>"; };
-		0AB78AE1183CB46400979BD0 /* DAMenuList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenuList.h; path = ../SmartSDK/Module/DianDian/Entity/DAMenuList.h; sourceTree = "<group>"; };
-		0AB78AE2183CB46400979BD0 /* DAMenuList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenuList.m; path = ../SmartSDK/Module/DianDian/Entity/DAMenuList.m; sourceTree = "<group>"; };
-		0AB78AE3183CB46400979BD0 /* DAMyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMyTable.h; path = ../SmartSDK/Module/DianDian/Entity/DAMyTable.h; sourceTree = "<group>"; };
-		0AB78AE4183CB46400979BD0 /* DAMyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMyTable.m; path = ../SmartSDK/Module/DianDian/Entity/DAMyTable.m; sourceTree = "<group>"; };
 		0AB78B23183CB46500979BD0 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		0AB78B24183CB46500979BD0 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		0AB78B25183CB46500979BD0 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -698,14 +712,6 @@
 		0AB78B3A183CB46500979BD0 /* JastorRuntimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JastorRuntimeHelper.m; sourceTree = "<group>"; };
 		0AB78B3C183CB46500979BD0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		0AB78B3D183CB46500979BD0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		0AB78B87183CD0E300979BD0 /* DALoginModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DALoginModule.h; sourceTree = "<group>"; };
-		0AB78B88183CD0E300979BD0 /* DALoginModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DALoginModule.m; sourceTree = "<group>"; };
-		0AB78B8A183CD11000979BD0 /* DAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAUser.h; sourceTree = "<group>"; };
-		0AB78B8B183CD11000979BD0 /* DAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAUser.m; sourceTree = "<group>"; };
-		0AB78B8D183CD15F00979BD0 /* DAGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAGroup.h; sourceTree = "<group>"; };
-		0AB78B8E183CD15F00979BD0 /* DAGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAGroup.m; sourceTree = "<group>"; };
-		0AB78B90183CD7DC00979BD0 /* DAItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAItem.h; sourceTree = "<group>"; };
-		0AB78B91183CD7DC00979BD0 /* DAItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAItem.m; sourceTree = "<group>"; };
 		0AB78B93183CDC4A00979BD0 /* SmartSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartSDK.h; sourceTree = "<group>"; };
 		0AEBE51C1830ED9800B01A5E /* DAMyOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderCell.h; sourceTree = "<group>"; };
 		0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderCell.m; sourceTree = "<group>"; };
@@ -740,8 +746,6 @@
 		287FA98E183B057400E02051 /* DATakeoutViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATakeoutViewCell.h; sourceTree = "<group>"; };
 		287FA98F183B057400E02051 /* DATakeoutViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATakeoutViewCell.m; sourceTree = "<group>"; };
 		287FA991183B06D600E02051 /* DATakeoutViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DATakeoutViewCell.xib; sourceTree = "<group>"; };
-		287FA993183B11A000E02051 /* DATakeout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DATakeout.h; sourceTree = "<group>"; };
-		287FA994183B11AA00E02051 /* DATakeout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DATakeout.m; sourceTree = "<group>"; };
 		287FA996183B3E5D00E02051 /* takeout.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = takeout.json; sourceTree = "<group>"; };
 		2886BAFA18360F5800A496AC /* DAProcessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAProcessionViewController.h; sourceTree = "<group>"; };
 		2886BAFB18360F5800A496AC /* DAProcessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAProcessionViewController.m; sourceTree = "<group>"; };
@@ -850,6 +854,8 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0A4E47F81857133000CEC3DE /* CCSegmentedControl */,
+				0A4E47EB1857127D00CEC3DE /* CWPopup */,
 				0A54D6A5184C710D00BBA9C4 /* ZenKeyboard */,
 				0AA031D51843553700C66590 /* SocketIO */,
 				0A40FE03183EFBAB00427613 /* ProgressHUD */,
@@ -857,20 +863,9 @@
 				0A7AF0A11835C2C900635376 /* SMVerticalSegmentedControl */,
 				0A8C2F44182E33A70080F15F /* TVQuiltLayout */,
 				0A5D288A182BD01400847578 /* Popup */,
-				0A07BD77182A204800A350BC /* CWPopup */,
 				0A07BD70182A0B9600A350BC /* Common */,
-				0A07BD4E1829CB6900A350BC /* CCSegmentedControl */,
 			);
 			name = Thirdparty;
-			sourceTree = "<group>";
-		};
-		0A07BD4E1829CB6900A350BC /* CCSegmentedControl */ = {
-			isa = PBXGroup;
-			children = (
-				0A07BD4F1829CB6900A350BC /* CCSegmentedControl.h */,
-				0A07BD501829CB6900A350BC /* CCSegmentedControl.m */,
-			);
-			path = CCSegmentedControl;
 			sourceTree = "<group>";
 		};
 		0A07BD521829CC8A00A350BC /* Images */ = {
@@ -942,18 +937,18 @@
 		0A07BD6F182A0A0500A350BC /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				0AB78B87183CD0E300979BD0 /* DALoginModule.h */,
-				0AB78B88183CD0E300979BD0 /* DALoginModule.m */,
+				0A4E47B61857110D00CEC3DE /* DAUserModule.h */,
+				0A4E47B71857110D00CEC3DE /* DAUserModule.m */,
+				0A4E47B81857110D00CEC3DE /* DADeskModule.h */,
+				0A4E47B91857110D00CEC3DE /* DADeskModule.m */,
+				0A4E47BA1857110D00CEC3DE /* DALoginModule.h */,
+				0A4E47BB1857110D00CEC3DE /* DALoginModule.m */,
+				0A4E47BC1857110D00CEC3DE /* DAServiceModule.h */,
+				0A4E47BD1857110D00CEC3DE /* DAServiceModule.m */,
 				0AB78ADC183CB46400979BD0 /* DAMenuModule.h */,
 				0AB78ADD183CB46400979BD0 /* DAMenuModule.m */,
-				0A40FDEA183DF2F300427613 /* DADeskModule.h */,
-				0A40FDEB183DF2F300427613 /* DADeskModule.m */,
-				0A40FDFD183EE2B500427613 /* DAServiceModule.h */,
-				0A40FDFE183EE2B500427613 /* DAServiceModule.m */,
 				0AA031A218432A4A00C66590 /* DAOrderModule.h */,
 				0AA031A318432A4A00C66590 /* DAOrderModule.m */,
-				0A19D1BB184AEB4700A82CAE /* DAUserModule.h */,
-				0A19D1BC184AEB4700A82CAE /* DAUserModule.m */,
 				0A3CD5B018515F8B00604CB6 /* DAScheduleModule.h */,
 				0A3CD5B118515F8B00604CB6 /* DAScheduleModule.m */,
 			);
@@ -963,19 +958,10 @@
 		0A07BD70182A0B9600A350BC /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				0A07BD71182A0BBD00A350BC /* Util.h */,
-				0A07BD72182A0BBD00A350BC /* Util.m */,
+				0A4E47FC1857137A00CEC3DE /* Util.h */,
+				0A4E47FD1857137A00CEC3DE /* Util.m */,
 			);
 			name = Common;
-			sourceTree = "<group>";
-		};
-		0A07BD77182A204800A350BC /* CWPopup */ = {
-			isa = PBXGroup;
-			children = (
-				0A07BD78182A204800A350BC /* UIViewController+CWPopup.h */,
-				0A07BD79182A204800A350BC /* UIViewController+CWPopup.m */,
-			);
-			path = CWPopup;
 			sourceTree = "<group>";
 		};
 		0A24A2CF1838C17000B340BE /* ItemCell */ = {
@@ -1029,16 +1015,18 @@
 		0A40FDF6183DFAA400427613 /* Proxy */ = {
 			isa = PBXGroup;
 			children = (
-				0A40FDF7183DFAF700427613 /* DADeskProxy.h */,
-				0A40FDF8183DFAF700427613 /* DADeskProxy.m */,
-				0A40FE00183EE58F00427613 /* DAServiceProxy.h */,
-				0A40FE01183EE58F00427613 /* DAServiceProxy.m */,
+				0A4E47AA18570FFC00CEC3DE /* DAPrintProxy.h */,
+				0A4E47AB18570FFC00CEC3DE /* DAPrintProxy.m */,
+				0A4E47AC18570FFC00CEC3DE /* DADeskProxy.h */,
+				0A4E47AD18570FFC00CEC3DE /* DADeskProxy.m */,
+				0A4E47AE18570FFC00CEC3DE /* DAMenuProxy.h */,
+				0A4E47AF18570FFC00CEC3DE /* DAMenuProxy.m */,
+				0A4E47B018570FFC00CEC3DE /* DAServiceProxy.h */,
+				0A4E47B118570FFC00CEC3DE /* DAServiceProxy.m */,
 				0AA031AA1843350900C66590 /* DAOrderProxy.m */,
 				0AA031A91843350900C66590 /* DAOrderProxy.h */,
-				0AA0320B18445E0C00C66590 /* DAMenuProxy.h */,
-				0AA0320C18445E0C00C66590 /* DAMenuProxy.m */,
-				0A7502981848696400665B6C /* DAPrintProxy.h */,
-				0A7502991848696400665B6C /* DAPrintProxy.m */,
+				0A4E47A71856F56500CEC3DE /* DANotificationProxy.h */,
+				0A4E47A81856F56500CEC3DE /* DANotificationProxy.m */,
 			);
 			name = Proxy;
 			sourceTree = "<group>";
@@ -1046,9 +1034,9 @@
 		0A40FE03183EFBAB00427613 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				0A40FE04183EFBCE00427613 /* ProgressHUD.bundle */,
-				0A40FE05183EFBCE00427613 /* ProgressHUD.h */,
-				0A40FE06183EFBCE00427613 /* ProgressHUD.m */,
+				0A4E47CE185711A100CEC3DE /* ProgressHUD.bundle */,
+				0A4E47CF185711A100CEC3DE /* ProgressHUD.h */,
+				0A4E47D0185711A100CEC3DE /* ProgressHUD.m */,
 			);
 			name = ProgressHUD;
 			sourceTree = "<group>";
@@ -1089,11 +1077,29 @@
 			name = DASync;
 			sourceTree = "<group>";
 		};
+		0A4E47EB1857127D00CEC3DE /* CWPopup */ = {
+			isa = PBXGroup;
+			children = (
+				0A4E47EC1857128800CEC3DE /* UIViewController+CWPopup.h */,
+				0A4E47ED1857128800CEC3DE /* UIViewController+CWPopup.m */,
+			);
+			name = CWPopup;
+			sourceTree = "<group>";
+		};
+		0A4E47F81857133000CEC3DE /* CCSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				0A4E47F91857133900CEC3DE /* CCSegmentedControl.h */,
+				0A4E47FA1857133900CEC3DE /* CCSegmentedControl.m */,
+			);
+			name = CCSegmentedControl;
+			sourceTree = "<group>";
+		};
 		0A54D6A5184C710D00BBA9C4 /* ZenKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				0A54D6A6184C712400BBA9C4 /* ZenKeyboard.h */,
-				0A54D6A7184C712400BBA9C4 /* ZenKeyboard.m */,
+				0A4E47CB1857117600CEC3DE /* ZenKeyboard.h */,
+				0A4E47CC1857117600CEC3DE /* ZenKeyboard.m */,
 			);
 			name = ZenKeyboard;
 			sourceTree = "<group>";
@@ -1145,10 +1151,10 @@
 		0A5D288A182BD01400847578 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
-				0A5D288B182BD03600847578 /* MJPopupBackgroundView.h */,
-				0A5D288C182BD03600847578 /* MJPopupBackgroundView.m */,
-				0A5D288D182BD03600847578 /* UIViewController+MJPopupViewController.h */,
-				0A5D288E182BD03600847578 /* UIViewController+MJPopupViewController.m */,
+				0A4E47EF185712B500CEC3DE /* MJPopupBackgroundView.h */,
+				0A4E47F0185712B500CEC3DE /* MJPopupBackgroundView.m */,
+				0A4E47F1185712B500CEC3DE /* UIViewController+MJPopupViewController.h */,
+				0A4E47F2185712B500CEC3DE /* UIViewController+MJPopupViewController.m */,
 			);
 			name = Popup;
 			sourceTree = "<group>";
@@ -1156,16 +1162,16 @@
 		0A739E69183B23E500AA48C4 /* DrawPatternLockView */ = {
 			isa = PBXGroup;
 			children = (
-				0A54D7091850832B00BBA9C4 /* botton_d.png */,
-				0A54D7071850827300BBA9C4 /* botton_on.png */,
-				0A95E5D4183B673E0026017C /* dot_off1.png */,
-				0A95E5D5183B673E0026017C /* dot_on1.png */,
-				0A739E70183B2AB400AA48C4 /* dot_off.png */,
-				0A739E71183B2AB400AA48C4 /* dot_on.png */,
-				0A739E6A183B244F00AA48C4 /* DrawPatternLockView.h */,
-				0A739E6B183B244F00AA48C4 /* DrawPatternLockView.m */,
-				0A739E6C183B244F00AA48C4 /* DrawPatternLockViewController.h */,
-				0A739E6D183B244F00AA48C4 /* DrawPatternLockViewController.m */,
+				0A4E47D3185711CC00CEC3DE /* botton_d.png */,
+				0A4E47D4185711CC00CEC3DE /* botton_on.png */,
+				0A4E47D5185711CC00CEC3DE /* dot_off.png */,
+				0A4E47D6185711CC00CEC3DE /* dot_off1.png */,
+				0A4E47D7185711CC00CEC3DE /* dot_on.png */,
+				0A4E47D8185711CC00CEC3DE /* dot_on1.png */,
+				0A4E47D9185711CC00CEC3DE /* DrawPatternLockView.h */,
+				0A4E47DA185711CC00CEC3DE /* DrawPatternLockView.m */,
+				0A4E47DB185711CC00CEC3DE /* DrawPatternLockViewController.h */,
+				0A4E47DC185711CC00CEC3DE /* DrawPatternLockViewController.m */,
 			);
 			name = DrawPatternLockView;
 			sourceTree = "<group>";
@@ -1182,8 +1188,8 @@
 		0A7AF0A11835C2C900635376 /* SMVerticalSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
-				0A7AF0A21835C2E200635376 /* SMVerticalSegmentedControl.h */,
-				0A7AF0A31835C2E200635376 /* SMVerticalSegmentedControl.m */,
+				0A4E47E5185711F000CEC3DE /* SMVerticalSegmentedControl.h */,
+				0A4E47E6185711F000CEC3DE /* SMVerticalSegmentedControl.m */,
 			);
 			name = SMVerticalSegmentedControl;
 			sourceTree = "<group>";
@@ -1253,8 +1259,8 @@
 		0A8C2F44182E33A70080F15F /* TVQuiltLayout */ = {
 			isa = PBXGroup;
 			children = (
-				0A8C2F45182E33BF0080F15F /* RFQuiltLayout.h */,
-				0A8C2F46182E33BF0080F15F /* RFQuiltLayout.m */,
+				0A4E47E81857122900CEC3DE /* RFQuiltLayout.h */,
+				0A4E47E91857122900CEC3DE /* RFQuiltLayout.m */,
 			);
 			name = TVQuiltLayout;
 			sourceTree = "<group>";
@@ -1366,6 +1372,7 @@
 		0AA956FE18274DCA0098D60C /* DiandianIOS */ = {
 			isa = PBXGroup;
 			children = (
+				0A4E47811855FE8600CEC3DE /* DiandianIOS.entitlements */,
 				0A40FDF6183DFAA400427613 /* Proxy */,
 				0A07BD571829D27E00A350BC /* Resources */,
 				0A07BD4D1829CB3800A350BC /* Thirdparty */,
@@ -1612,40 +1619,40 @@
 		2886BB041839AD1E00A496AC /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				0A40FDF3183DF60200427613 /* DAEntity.h */,
-				0A40FDF4183DF60200427613 /* DAEntity.m */,
-				0AB78B8D183CD15F00979BD0 /* DAGroup.h */,
-				0AB78B8E183CD15F00979BD0 /* DAGroup.m */,
-				0AB78B90183CD7DC00979BD0 /* DAItem.h */,
-				0AB78B91183CD7DC00979BD0 /* DAItem.m */,
-				0AB78ADF183CB46400979BD0 /* DAMenu.h */,
-				0AB78AE0183CB46400979BD0 /* DAMenu.m */,
-				0AB78AE1183CB46400979BD0 /* DAMenuList.h */,
-				0AB78AE2183CB46400979BD0 /* DAMenuList.m */,
-				0AB78AE3183CB46400979BD0 /* DAMyTable.h */,
-				0AB78AE4183CB46400979BD0 /* DAMyTable.m */,
+				0A4E47C21857112300CEC3DE /* DAMyDevice.h */,
+				0A4E47C31857112300CEC3DE /* DAMyDevice.m */,
+				0A4E47C41857112300CEC3DE /* DAService.h */,
+				0A4E47C51857112300CEC3DE /* DAService.m */,
+				0A4E47C61857112300CEC3DE /* DATakeout.h */,
+				0A4E47C71857112300CEC3DE /* DATakeout.m */,
+				0A4E479E1856A0EC00CEC3DE /* DAMenu.h */,
+				0A4E479F1856A0EC00CEC3DE /* DAMenu.m */,
+				0A4E47A01856A0EC00CEC3DE /* DAMenuList.h */,
+				0A4E47A11856A0EC00CEC3DE /* DAMenuList.m */,
+				0A4E47A21856A0EC00CEC3DE /* DAMyTable.h */,
+				0A4E47A31856A0EC00CEC3DE /* DAMyTable.m */,
+				0A4E47891856A06A00CEC3DE /* DAUserList.h */,
+				0A4E478A1856A06A00CEC3DE /* DAUserList.m */,
+				0A4E478B1856A06A00CEC3DE /* DADesk.h */,
+				0A4E478C1856A06A00CEC3DE /* DADesk.m */,
+				0A4E478D1856A06A00CEC3DE /* DADeskList.h */,
+				0A4E478E1856A06A00CEC3DE /* DADeskList.m */,
+				0A4E478F1856A06A00CEC3DE /* DAGroup.h */,
+				0A4E47901856A06A00CEC3DE /* DAGroup.m */,
+				0A4E47911856A06A00CEC3DE /* DAItem.h */,
+				0A4E47921856A06A00CEC3DE /* DAItem.m */,
+				0A4E47931856A06A00CEC3DE /* DAItemLayout.h */,
+				0A4E47941856A06A00CEC3DE /* DAItemLayout.m */,
+				0A4E47951856A06A00CEC3DE /* DAUser.h */,
+				0A4E47961856A06A00CEC3DE /* DAUser.m */,
+				0A4E478618569EB000CEC3DE /* DAEntity.h */,
+				0A4E478718569ECB00CEC3DE /* DAEntity.m */,
 				2886BB051839AD8100A496AC /* DAProcession.h */,
 				2886BB061839AD8100A496AC /* DAProcession.m */,
-				287FA993183B11A000E02051 /* DATakeout.h */,
-				287FA994183B11AA00E02051 /* DATakeout.m */,
-				0AB78B8A183CD11000979BD0 /* DAUser.h */,
-				0AB78B8B183CD11000979BD0 /* DAUser.m */,
-				0A19D1BE184AEB7200A82CAE /* DAUserList.h */,
-				0A19D1BF184AEB7200A82CAE /* DAUserList.m */,
-				0A40FDED183DF34E00427613 /* DADesk.h */,
-				0A40FDEE183DF34E00427613 /* DADesk.m */,
-				0A40FDF0183DF4FD00427613 /* DADeskList.h */,
-				0A40FDF1183DF4FD00427613 /* DADeskList.m */,
-				0A40FDFA183E2B4200427613 /* DAService.h */,
-				0A40FDFB183E2B4200427613 /* DAService.m */,
 				0A40FE0A183F1C6800427613 /* DAOrder.h */,
 				0A40FE0B183F1C6800427613 /* DAOrder.m */,
 				0AA031B218434A1E00C66590 /* DAMyOrderList.h */,
 				0AA031B318434A1E00C66590 /* DAMyOrderList.m */,
-				0AA032081844452400C66590 /* DAItemLayout.h */,
-				0AA032091844452400C66590 /* DAItemLayout.m */,
-				0A75028E1848622800665B6C /* DAMyDevice.h */,
-				0A75028F1848622800665B6C /* DAMyDevice.m */,
 				0A54D6A2184C6B8800BBA9C4 /* DABill.h */,
 				0A54D6A3184C6B8800BBA9C4 /* DABill.m */,
 				0A54D6C1184D772B00BBA9C4 /* DAServiceList.h */,
@@ -1821,6 +1828,17 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = DAC;
 				TargetAttributes = {
+					0AA956F418274DCA0098D60C = {
+						DevelopmentTeam = 8GD8HZ8DR6;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
+					};
 					0AA9571818274DCA0098D60C = {
 						TestTargetID = 0AA956F418274DCA0098D60C;
 					};
@@ -1862,6 +1880,7 @@
 				F2AB4C17182E26710067E450 /* queue_detail.json in Resources */,
 				F2A8CB831831CEB5002AD240 /* sample-table1.jpg in Resources */,
 				0A07BD551829CC8A00A350BC /* segment_bg.png in Resources */,
+				0A4E47D1185711A100CEC3DE /* ProgressHUD.bundle in Resources */,
 				0A07BD561829CC8A00A350BC /* stain.png in Resources */,
 				28D0DCAB183C79E500583675 /* btn_round_red.png in Resources */,
 				F2AB4C14182E21F90067E450 /* sample-table.jpg in Resources */,
@@ -1877,7 +1896,6 @@
 				0A7AF0D818360B3A00635376 /* da_data_queue_food.json in Resources */,
 				0A54D6C0184C726900BBA9C4 /* Snapshot.png in Resources */,
 				0A54D6D4184ED1D400BBA9C4 /* menubook_sidemiddle.png in Resources */,
-				0A739E72183B2AB400AA48C4 /* dot_off.png in Resources */,
 				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
 				0A54D6BB184C726900BBA9C4 /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png in Resources */,
 				0A7AF0DF183612EF00635376 /* DAQueueMasterViewController.xib in Resources */,
@@ -1890,7 +1908,6 @@
 				0A24A2D11838C18D00B340BE /* DAQueueItemListCell.xib in Resources */,
 				47A6ADAF182E188C00E80AA1 /* bill.json in Resources */,
 				0A7AF0CF1836076600635376 /* DAQueueFoodListViewController.xib in Resources */,
-				0A54D70A1850832B00BBA9C4 /* botton_d.png in Resources */,
 				47A6ADB4182E25B100E80AA1 /* DABillDetailViewController.xib in Resources */,
 				2886BB11183A1E2800A496AC /* queue_group.json in Resources */,
 				287FA98D183B053500E02051 /* DATakeoutViewController.xib in Resources */,
@@ -1899,6 +1916,7 @@
 				28FFB62D18322E20003443D1 /* DAPopTableViewController.xib in Resources */,
 				0A54D6E0184F2B1F00BBA9C4 /* menubook_word.png in Resources */,
 				0A54D6DD184F1EA600BBA9C4 /* menubook_g.png in Resources */,
+				0A4E47E2185711CC00CEC3DE /* dot_on1.png in Resources */,
 				0AB1138F183343660011828A /* 虚线.png in Resources */,
 				0A3CD5B618516B6200604CB6 /* multiply-sign@2x.png in Resources */,
 				0AEBE5D31832071300B01A5E /* top_bg1.png in Resources */,
@@ -1921,15 +1939,13 @@
 				28FFB62A18322E20003443D1 /* DAPopTableView.storyboard in Resources */,
 				0A3DB730182B1F5100170F0C /* table.png in Resources */,
 				0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */,
-				0A54D7081850827300BBA9C4 /* botton_on.png in Resources */,
+				0A4E47E0185711CC00CEC3DE /* dot_off1.png in Resources */,
 				F2AB4C15182E21F90067E450 /* sample-ticket.png in Resources */,
 				0AA9571418274DCA0098D60C /* Images.xcassets in Resources */,
 				0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */,
 				0A7AF0CA1836075200635376 /* DAQueueItemListViewController.xib in Resources */,
-				0A95E5D6183B673E0026017C /* dot_off1.png in Resources */,
 				0A7AF0C0183606D300635376 /* DAQueueFoodTableViewController.xib in Resources */,
 				0A54D6B6184C726900BBA9C4 /* Default-568h@2x.png in Resources */,
-				0A739E73183B2AB400AA48C4 /* dot_on.png in Resources */,
 				0A7AF0AC183600C900635376 /* DADrinkQueueViewController.xib in Resources */,
 				0AEBE5C91831D69000B01A5E /* DARemarkPopoverViewController.xib in Resources */,
 				0A54D703185076EC00BBA9C4 /* desk_j.png in Resources */,
@@ -1944,6 +1960,7 @@
 				0A54D6E2184F321C00BBA9C4 /* menubook_background.png in Resources */,
 				0AF2C9CD1839DE9400A74B72 /* queue_drink.json in Resources */,
 				0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */,
+				0A4E47E1185711CC00CEC3DE /* dot_on.png in Resources */,
 				0A7AF0D618360B2400635376 /* da_data_queue_item.json in Resources */,
 				0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */,
 				0A07BD5D1829D2B900A350BC /* menu.json in Resources */,
@@ -1953,8 +1970,10 @@
 				0A54D6D0184ECC3D00BBA9C4 /* menubook_sidebg.png in Resources */,
 				0A54D6F618505DC000BBA9C4 /* desk_bottonl.png in Resources */,
 				F2AB4BF8182DDDB90067E450 /* DAOrderQueueViewController.xib in Resources */,
+				0A4E47DD185711CC00CEC3DE /* botton_d.png in Resources */,
 				287FA992183B06D600E02051 /* DATakeoutViewCell.xib in Resources */,
 				0A7AF0DA18360B5000635376 /* da_data_queue_drink.json in Resources */,
+				0A4E47DF185711CC00CEC3DE /* dot_off.png in Resources */,
 				0A7AF0B1183600E400635376 /* DAFoodViewController.xib in Resources */,
 				0A54D6BC184C726900BBA9C4 /* KeyboardNumericEntryKeyPressedTextured@2x.png in Resources */,
 				0AEBE5CE1831FFCB00B01A5E /* newspaper-mini.png in Resources */,
@@ -1962,7 +1981,6 @@
 				0A54D6DE184F1EA600BBA9C4 /* menubook_grbotton.png in Resources */,
 				0A54D704185076EC00BBA9C4 /* desk_jz.png in Resources */,
 				0AEBE5241831027600B01A5E /* price_tag.png in Resources */,
-				0A95E5D7183B673E0026017C /* dot_on1.png in Resources */,
 				0A7AF0D41836077B00635376 /* DAQueueDrinkListViewController.xib in Resources */,
 				0AEBE5D718320B9100B01A5E /* price_mask1.png in Resources */,
 				0A54D6BE184C726900BBA9C4 /* KeyboardNumericEntryViewGridLinesTextured@2x.png in Resources */,
@@ -1979,13 +1997,13 @@
 				0AB4B3B21838DE3700D77D7E /* DAPreferentialViewController.xib in Resources */,
 				0AEBE5D5183209A500B01A5E /* price_mask.png in Resources */,
 				0A24A2D31838C66100B340BE /* DAQueueTableCell.xib in Resources */,
+				0A4E47DE185711CC00CEC3DE /* botton_on.png in Resources */,
 				0A5D2835182B6E2F00847578 /* table1.png in Resources */,
 				0A54D6D8184EEC4B00BBA9C4 /* menubook_sidetop1.png in Resources */,
 				0A07BD5B1829D2AF00A350BC /* table.json in Resources */,
 				0AEBE5DB1832139700B01A5E /* clipboard.png in Resources */,
 				0AA9570C18274DCA0098D60C /* Main.storyboard in Resources */,
 				0AB11394183349A10011828A /* DAMyOrderLoginViewController.xib in Resources */,
-				0A40FE07183EFBCE00427613 /* ProgressHUD.bundle in Resources */,
 				0A739E65183B01F800AA48C4 /* DAMyBackOrderViewCell.xib in Resources */,
 				0A54D6B8184C726900BBA9C4 /* Default@2x.png in Resources */,
 				0A07BD0B1828ECF800A350BC /* DAMyFilterViewController.xib in Resources */,
@@ -2018,42 +2036,41 @@
 				0AB78B81183CB46500979BD0 /* AFURLConnectionOperation.m in Sources */,
 				28FFB64418332272003443D1 /* DADateUtil.m in Sources */,
 				0AB78B7F183CB46500979BD0 /* AFNetworkActivityIndicatorManager.m in Sources */,
-				0A5D2890182BD03600847578 /* UIViewController+MJPopupViewController.m in Sources */,
 				2886BB011836250D00A496AC /* DAProcessionViewCell.m in Sources */,
 				28FFB64618332272003443D1 /* DADevice.m in Sources */,
-				0AB78B89183CD0E300979BD0 /* DALoginModule.m in Sources */,
 				287FA990183B057400E02051 /* DATakeoutViewCell.m in Sources */,
 				0AA032061843558300C66590 /* NSData+SRB64Additions.m in Sources */,
+				0A4E47F3185712B500CEC3DE /* MJPopupBackgroundView.m in Sources */,
 				0AB78B84183CB46500979BD0 /* Jastor.m in Sources */,
 				2886BAFD18360F5800A496AC /* DAProcessionViewController.m in Sources */,
 				0AB78B42183CB46500979BD0 /* DARequestHelper.m in Sources */,
+				0A4E47C01857110D00CEC3DE /* DALoginModule.m in Sources */,
+				0A4E47981856A06A00CEC3DE /* DADesk.m in Sources */,
+				0A4E47A51856A0EC00CEC3DE /* DAMenuList.m in Sources */,
 				0AB78B41183CB46500979BD0 /* DAJsonHelper.m in Sources */,
 				0A54D6C7184D81C400BBA9C4 /* DATakeoutLoginViewController.m in Sources */,
-				0A07BD511829CB6900A350BC /* CCSegmentedControl.m in Sources */,
+				0A4E47991856A06A00CEC3DE /* DADeskList.m in Sources */,
 				0AA032051843558300C66590 /* base64.c in Sources */,
 				0AA031B418434A1E00C66590 /* DAMyOrderList.m in Sources */,
 				2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */,
 				0AA031F81843555900C66590 /* SocketIOJSONSerialization.m in Sources */,
-				0AB78B5D183CB46500979BD0 /* DAMenuList.m in Sources */,
 				28FFB64A18332272003443D1 /* DASettings.m in Sources */,
 				0AA031AB1843350A00C66590 /* DAOrderProxy.m in Sources */,
 				0AA031F71843555900C66590 /* SocketIO.m in Sources */,
-				0A40FDEF183DF34E00427613 /* DADesk.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
-				0AA0320D18445E0C00C66590 /* DAMenuProxy.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
 				0A7EA1EE1847426D00A9E287 /* DASettingViewController.m in Sources */,
-				0A07BD73182A0BBD00A350BC /* Util.m in Sources */,
 				0AB78B3E183CB46500979BD0 /* DAAFHttpClient.m in Sources */,
+				0A4E47E7185711F000CEC3DE /* SMVerticalSegmentedControl.m in Sources */,
 				0A924AAF18348A810004C973 /* DAMyTableListViewController.m in Sources */,
 				F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */,
 				0A40FE14183F290000427613 /* DASocketIO.m in Sources */,
 				0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */,
 				0AA9570518274DCA0098D60C /* main.m in Sources */,
-				0A40FDEC183DF2F300427613 /* DADeskModule.m in Sources */,
+				0A4E47E4185711CC00CEC3DE /* DrawPatternLockViewController.m in Sources */,
 				0AA031F91843555900C66590 /* SocketIOPacket.m in Sources */,
 				0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */,
-				0A7AF0A41835C2E200635376 /* SMVerticalSegmentedControl.m in Sources */,
+				0A4E47C81857112300CEC3DE /* DAMyDevice.m in Sources */,
 				0AA031F51843555900C66590 /* SBJson4StreamWriterState.m in Sources */,
 				0A3CD5C01851900C00604CB6 /* DAScheduleViewController.m in Sources */,
 				0AEBE5C31831C21300B01A5E /* DAMyMenuBookPopupController.m in Sources */,
@@ -2061,63 +2078,63 @@
 				0AB78B82183CB46500979BD0 /* AFXMLRequestOperation.m in Sources */,
 				0A7AF0BA183606B900635376 /* DAQueueItemTableViewController.m in Sources */,
 				0AB78B7D183CB46500979BD0 /* AFImageRequestOperation.m in Sources */,
-				0A739E6E183B244F00AA48C4 /* DrawPatternLockView.m in Sources */,
+				0A4E47FE1857137A00CEC3DE /* Util.m in Sources */,
 				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
-				0AB78B5E183CB46500979BD0 /* DAMyTable.m in Sources */,
 				0A3CD5AF18515F0800604CB6 /* DAScheduleList.m in Sources */,
-				0AB78B8F183CD16000979BD0 /* DAGroup.m in Sources */,
 				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
+				0A4E47FB1857133900CEC3DE /* CCSegmentedControl.m in Sources */,
+				0A4E47971856A06A00CEC3DE /* DAUserList.m in Sources */,
 				0A3CD5AC18515E7F00604CB6 /* DASchedule.m in Sources */,
 				0A3CD5B218515F8B00604CB6 /* DAScheduleModule.m in Sources */,
+				0A4E47A61856A0EC00CEC3DE /* DAMyTable.m in Sources */,
 				F2AB4C0D182E1E2B0067E450 /* DAOrderGroupViewCell.m in Sources */,
 				0A7AF0BF183606D300635376 /* DAQueueFoodTableViewController.m in Sources */,
 				0AB78B86183CB46500979BD0 /* Reachability.m in Sources */,
+				0A4E47C11857110D00CEC3DE /* DAServiceModule.m in Sources */,
 				0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */,
 				0AB78B40183CB46500979BD0 /* DACommon.m in Sources */,
 				0A750294184863E400665B6C /* OpenUDID.m in Sources */,
-				0A75029A1848696400665B6C /* DAPrintProxy.m in Sources */,
+				0A4E47A41856A0EC00CEC3DE /* DAMenu.m in Sources */,
+				0A4E479B1856A06A00CEC3DE /* DAItem.m in Sources */,
 				0A7AF0AB183600C900635376 /* DADrinkQueueViewController.m in Sources */,
+				0A4E478818569ECB00CEC3DE /* DAEntity.m in Sources */,
+				0A4E47D2185711A100CEC3DE /* ProgressHUD.m in Sources */,
 				28FFB64C18332272003443D1 /* NSString+Util.m in Sources */,
-				0A07BD7A182A204800A350BC /* UIViewController+CWPopup.m in Sources */,
+				0A4E47E3185711CC00CEC3DE /* DrawPatternLockView.m in Sources */,
 				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
 				28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */,
-				0A40FDFC183E2B4200427613 /* DAService.m in Sources */,
 				0AB78B3F183CB46500979BD0 /* DAAFHttpOperation.m in Sources */,
+				0A4E47BE1857110D00CEC3DE /* DAUserModule.m in Sources */,
 				0AA031A8184334D100C66590 /* DADispatch.m in Sources */,
 				0AA031F11843555900C66590 /* SBJson4StreamParser.m in Sources */,
 				0A739E62183B019D00AA48C4 /* DAMyBackOrderViewController.m in Sources */,
 				0AA031FA1843555900C66590 /* SocketIOTransportWebsocket.m in Sources */,
 				0AA031F01843555900C66590 /* SBJson4Parser.m in Sources */,
-				0A8C2F47182E33BF0080F15F /* RFQuiltLayout.m in Sources */,
 				0AA031F61843555900C66590 /* SBJson4Writer.m in Sources */,
-				0A40FDF5183DF60200427613 /* DAEntity.m in Sources */,
 				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
 				2886BB071839AD8100A496AC /* DAProcession.m in Sources */,
 				0AA031F41843555900C66590 /* SBJson4StreamWriter.m in Sources */,
-				0AB78B8C183CD11000979BD0 /* DAUser.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
-				0A40FDFF183EE2B500427613 /* DAServiceModule.m in Sources */,
-				287FA995183B11AA00E02051 /* DATakeout.m in Sources */,
 				0AB78B5B183CB46500979BD0 /* DAMenuModule.m in Sources */,
 				0A7AF0CE1836076600635376 /* DAQueueFoodListViewController.m in Sources */,
 				0AB78B83183CB46500979BD0 /* UIImageView+AFNetworking.m in Sources */,
+				0A4E47B518570FFC00CEC3DE /* DAServiceProxy.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
 				0A5D289B182C6EFF00847578 /* DAMyLoginViewController.m in Sources */,
 				28FFB64B18332272003443D1 /* NSNumber+Util.m in Sources */,
-				0A5D288F182BD03600847578 /* MJPopupBackgroundView.m in Sources */,
 				28C97A321828D86A0099FE4A /* DAOpenTableViewCell.m in Sources */,
 				0A739E68183B0A4100AA48C4 /* DAMyBackOrderViewCell.m in Sources */,
 				0AA9571218274DCA0098D60C /* DADetailViewController.m in Sources */,
-				0A54D6A8184C712400BBA9C4 /* ZenKeyboard.m in Sources */,
+				0A4E479D1856A06A00CEC3DE /* DAUser.m in Sources */,
 				0A7AF0B5183600EE00635376 /* DAItemViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
 				0AA031FB1843555900C66590 /* SocketIOTransportXHR.m in Sources */,
 				0AB78B80183CB46500979BD0 /* AFPropertyListRequestOperation.m in Sources */,
-				0A19D1C0184AEB7200A82CAE /* DAUserList.m in Sources */,
+				0A4E479C1856A06A00CEC3DE /* DAItemLayout.m in Sources */,
+				0A4E47B318570FFC00CEC3DE /* DADeskProxy.m in Sources */,
 				28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */,
 				0AA032101844DC1D00C66590 /* Tool.m in Sources */,
-				0AB78B5C183CB46500979BD0 /* DAMenu.m in Sources */,
 				0A7AF0C91836075200635376 /* DAQueueItemListViewController.m in Sources */,
 				47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */,
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,
@@ -2126,49 +2143,51 @@
 				0AB78B7E183CB46500979BD0 /* AFJSONRequestOperation.m in Sources */,
 				0A54D6A4184C6B8800BBA9C4 /* DABill.m in Sources */,
 				0AA032071843558300C66590 /* SRWebSocket.m in Sources */,
-				0A40FDF2183DF4FD00427613 /* DADeskList.m in Sources */,
-				0AA0320A1844452400C66590 /* DAItemLayout.m in Sources */,
+				0A4E47A91856F56500CEC3DE /* DANotificationProxy.m in Sources */,
+				0A4E47C91857112300CEC3DE /* DAService.m in Sources */,
 				28414E9918349EFC009210AF /* DAAnimation.m in Sources */,
 				0AB78B7B183CB46500979BD0 /* AFHTTPClient.m in Sources */,
 				0A40FE0C183F1C6800427613 /* DAOrder.m in Sources */,
 				0A07BD051828EC1B00A350BC /* DAMyOrderViewController.m in Sources */,
 				0A7AF0B0183600E400635376 /* DAFoodViewController.m in Sources */,
 				0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */,
+				0A4E47BF1857110D00CEC3DE /* DADeskModule.m in Sources */,
 				0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */,
+				0A4E47B218570FFC00CEC3DE /* DAPrintProxy.m in Sources */,
 				28FFB64518332272003443D1 /* DADelegateUtil.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
 				0AB4B3B11838DE3700D77D7E /* DAPreferentialViewController.m in Sources */,
-				0A739E6F183B244F00AA48C4 /* DrawPatternLockViewController.m in Sources */,
+				0A4E47B418570FFC00CEC3DE /* DAMenuProxy.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */,
+				0A4E479A1856A06A00CEC3DE /* DAGroup.m in Sources */,
+				0A4E47EE1857128800CEC3DE /* UIViewController+CWPopup.m in Sources */,
 				0AB78B85183CB46500979BD0 /* JastorRuntimeHelper.m in Sources */,
 				0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */,
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
 				0A54D6C3184D772B00BBA9C4 /* DAServiceList.m in Sources */,
-				0AB78B92183CD7DC00979BD0 /* DAItem.m in Sources */,
-				0A40FE08183EFBCE00427613 /* ProgressHUD.m in Sources */,
+				0A4E47EA1857122900CEC3DE /* RFQuiltLayout.m in Sources */,
 				28FFB64718332272003443D1 /* DAImageUtil.m in Sources */,
-				0A40FDF9183DFAF700427613 /* DADeskProxy.m in Sources */,
 				0AA031F21843555900C66590 /* SBJson4StreamParserState.m in Sources */,
 				0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */,
 				0A7AF0C41836070000635376 /* DAQueueDrinkTableViewController.m in Sources */,
 				28FFB650183322B2003443D1 /* NSData+Base64.m in Sources */,
 				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
 				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
-				0A19D1BD184AEB4700A82CAE /* DAUserModule.m in Sources */,
-				0A40FE02183EE58F00427613 /* DAServiceProxy.m in Sources */,
 				0AA031F31843555900C66590 /* SBJson4StreamTokeniser.m in Sources */,
 				0AA031A418432A4A00C66590 /* DAOrderModule.m in Sources */,
 				0AB78B7C183CB46500979BD0 /* AFHTTPRequestOperation.m in Sources */,
+				0A4E47CD1857117600CEC3DE /* ZenKeyboard.m in Sources */,
 				0A7AF0DE183612EF00635376 /* DAQueueMasterViewController.m in Sources */,
 				0AEBE5C81831D69000B01A5E /* DARemarkPopoverViewController.m in Sources */,
 				0A07BD76182A0E7B00A350BC /* DAOrderCell.m in Sources */,
 				F2AB4C06182E11380067E450 /* DAOrderDetailViewCell.m in Sources */,
+				0A4E47CA1857112300CEC3DE /* DATakeout.m in Sources */,
 				F2AB4C02182E03480067E450 /* DAOrderGroupViewController.m in Sources */,
 				F2AB4BFD182E030A0067E450 /* DAOrderDetailViewController.m in Sources */,
 				0A7AF0D31836077B00635376 /* DAQueueDrinkListViewController.m in Sources */,
+				0A4E47F4185712B500CEC3DE /* UIViewController+MJPopupViewController.m in Sources */,
 				0A54D6CB184D842800BBA9C4 /* DABaseViewController.m in Sources */,
-				0A7502901848622800665B6C /* DAMyDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2251,7 +2270,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Production IOS Push Services: jp.co.dreamarts.DiandianIOS";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Production IOS Push Services: jp.co.dreamarts.DiandianIOS";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2269,6 +2289,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "C63387DA-A0E2-4467-8778-8A48E73550A7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -2291,7 +2312,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Production IOS Push Services: jp.co.dreamarts.DiandianIOS";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Production IOS Push Services: jp.co.dreamarts.DiandianIOS";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2302,6 +2324,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "C63387DA-A0E2-4467-8778-8A48E73550A7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -2315,16 +2338,17 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: jp.co.dreamarts.DiandianIOS";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: jp.co.dreamarts.DiandianIOS";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
 				INFOPLIST_FILE = "DiandianIOS/DiandianIOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = /Users/Antony/Desktop/DAC/developer/DiandianIOS/DiandianIOS;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
+				PROVISIONING_PROFILE = "58998F9D-3B36-4E34-81B4-56043CDBA061";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2337,16 +2361,17 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: jp.co.dreamarts.DiandianIOS";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: jp.co.dreamarts.DiandianIOS";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
 				INFOPLIST_FILE = "DiandianIOS/DiandianIOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = /Users/Antony/Desktop/DAC/developer/DiandianIOS/DiandianIOS;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
+				PROVISIONING_PROFILE = "58998F9D-3B36-4E34-81B4-56043CDBA061";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

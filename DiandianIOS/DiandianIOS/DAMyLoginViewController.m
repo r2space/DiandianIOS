@@ -22,7 +22,7 @@
     NSString *curWaitterUserId;
     BOOL lockStatus;
     BOOL peopleFlag;
-    
+    int errorCount;
     NSMutableArray *wDataList;
 }
 
@@ -39,6 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     lockVC = [[DrawPatternLockViewController alloc] init];
+    errorCount = 0 ;
     self.numOfPepole.delegate = self;
     self.waitterId.delegate = self;
     peopleFlag = NO;
@@ -83,7 +84,14 @@
             NSNumber *isRight = [user objectForKey:@"isRight"];
             
             if (![isRight boolValue]) {
+                errorCount++ ;
                 [ProgressHUD showError:@"手势密码验证错误。"];
+                if (errorCount == 3) {
+                    errorCount = 0;
+                    lockStatus = NO;
+                    [lockVC.view removeFromSuperview];
+                    
+                }
             } else {
                 self.labelLock.text = @"通过";
                 lockStatus = YES;
@@ -99,11 +107,6 @@
         
     } else {
         [ProgressHUD showError:@"请选择服务员。"];
-    }
-    
-    if([@"090807" isEqualToString:key]){
-        lockStatus = NO;
-        [lockVC.view removeFromSuperview];
     }
     
 }

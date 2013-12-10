@@ -28,4 +28,11 @@
     
 }
 
++(void )dealBecomeActiveAction:(NSString *)action data:(id)data
+{
+    if ([@"refresh_desk" isEqualToString:action]) {
+        [DAMyTableViewController receive:action data:data];
+    }
+}
+
 @end

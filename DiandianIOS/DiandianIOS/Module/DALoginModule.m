@@ -171,7 +171,7 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
     [params setObject:userId forKey:@"userId"];
     [params setObject:deviceId forKey:@"deviceId"];
-    [params setObject:token forKey:@"token"];
+    [params setObject:token forKey:@"devicetoken"];
     
     [[DAAFHttpClient sharedClient] postPath:path  parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         DAMyDevice *data = [[DAMyDevice alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];

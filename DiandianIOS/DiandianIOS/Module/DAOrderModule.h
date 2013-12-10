@@ -34,7 +34,6 @@
 
 -(void) setFreeOrderWithArray:(NSArray *) orderIds deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *order))callback;
 
--(void) getOrderListByServiceId :(NSString *) servicdId withBack:(NSString *)withBack callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
 -(void) getDeskListByOrderIds :(NSArray *) orderIds callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 

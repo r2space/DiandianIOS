@@ -10,6 +10,7 @@
 #import "SmartSDK.h"
 
 typedef void (^BackCallback)();
+typedef void (^FreeCallback)();
 
 @interface DABillDetailViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
@@ -22,5 +23,6 @@ typedef void (^BackCallback)();
 @property (nonatomic,retain) DAOrder *order;
 
 @property (nonatomic ,copy) BackCallback backCallback;
+@property (nonatomic ,copy) FreeCallback freeCallback;
 
 @end

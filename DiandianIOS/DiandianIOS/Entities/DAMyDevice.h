@@ -14,4 +14,5 @@
 @property (retain, nonatomic) NSString  *deviceid;
 @property (retain, nonatomic) NSString  *deviceuid;
 
+
 @end

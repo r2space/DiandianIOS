@@ -36,11 +36,7 @@
     // Do any additional setup after loading the view from its nib.
     self.view.layer.cornerRadius = 10;
     self.view.layer.masksToBounds = YES;
-    
-    doneOrderList = [[NSMutableArray alloc] init];
-    freeOrderList = [[NSMutableArray alloc] init];
-    undoneOrderList = [[NSMutableArray alloc] init];
-    backOrderList = [[NSMutableArray alloc] init];
+
     
     dataList = [[DAMyOrderList alloc]init];
     dataList.items = [[NSArray alloc]init];
@@ -67,28 +63,27 @@
     cellIdentifier = @"DABillDetailViewCell";
     
     DABillDetailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    NSDictionary *d;
    
 
         NSInteger section = indexPath.section;
-        if (section == 0) {
-            d = [doneOrderList objectAtIndex:indexPath.row];
+    DAOrder *order;
+    if (section == 0) {
+        order = [doneOrderList objectAtIndex:indexPath.row];
+        //        return @"已上菜单";
+    } else if (section == 1) {
+        order = [undoneOrderList objectAtIndex:indexPath.row];
+        //        return @"未上菜单";
+    } else if (section == 2) {
+        order = [backOrderList objectAtIndex:indexPath.row];
+        //        return @"退菜菜单";
+    } else {
+        order = [freeOrderList objectAtIndex:indexPath.row];
+        //        return @"免单菜单";
+    }
 
-            //        return @"已上菜单";
-        } else if (section == 1) {
-            d = [undoneOrderList objectAtIndex:indexPath.row];
-            //        return @"未上菜单";
-        } else if (section == 2) {
-            d = [backOrderList objectAtIndex:indexPath.row];
-            //        return @"退菜菜单";
-        } else {
-            d = [freeOrderList objectAtIndex:indexPath.row];
-            //        return @"免单菜单";
-        }
-        
 
         [cell.btnOperation setTitle:@"免单" forState:UIControlStateNormal];
-        DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
+    
         cell.order = order;
         cell.lblName.text = order.item.itemName;
         
@@ -105,16 +100,25 @@
             }
             
         };
+    
+        cell.freeCallback = ^(){
+            [self loadFromApi];
+        };
         NSLog(@" order  back  %@" , order.back);
         
         UIButton *backBtn = (UIButton *)[cell viewWithTag:402];
-        if ([order.back isEqualToNumber:[NSNumber numberWithInt:1]]) {
-            [backBtn setHidden:YES];
-        } else {
+        if ([order.back integerValue] == 0) {
             [backBtn setHidden:NO];
+        } else {
+            [backBtn setHidden:YES];
         }
-
-
+    
+        UIButton *freeBtn = (UIButton *)[cell viewWithTag:401];
+    if ([order.back integerValue] == 1) {
+        [freeBtn setHidden:NO];
+    } else {
+        [freeBtn setHidden:YES];
+    }
     
 
 
@@ -185,6 +189,10 @@
 
 - (void) loadFromApi
 {
+    doneOrderList = [[NSMutableArray alloc] init];
+    freeOrderList = [[NSMutableArray alloc] init];
+    undoneOrderList = [[NSMutableArray alloc] init];
+    backOrderList = [[NSMutableArray alloc] init];
     
     [[DAOrderModule alloc] getOrderListByServiceId:self.curService._id withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
         

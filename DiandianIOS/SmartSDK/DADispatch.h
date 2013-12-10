@@ -13,4 +13,6 @@
 
 +(void )dealWithAction:(NSString *)action data:(id)data;
 
++(void )dealBecomeActiveAction:(NSString *)action data:(id)data;
+
 @end

@@ -100,10 +100,10 @@
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
         
-//        BOOL fs = [self.orderList archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
-//        if (fs) {
-//            NSLog(@"xieru");
-//        }
+        BOOL fs = [self.orderList archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
+        if (fs) {
+            NSLog(@"xieru");
+        }
     }
     [self.tableView reloadData];
     [self loadAmountPrice];
@@ -317,13 +317,15 @@
     if (indexPath.section == 0) {
         
         NSLog(@"执行删除操作");
-        DAMenu *menu = [self.orderList.items objectAtIndex:indexPath.row];
+
         NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
-        for (DAMenu *mymenu in self.orderList.items) {
-            if (menu._id != mymenu._id) {
-                [tmpArray addObject:mymenu];
+        for (int i = 0 ; i < [self.orderList.items count]; i++) {
+            DAOrder *myOrder = [self.orderList.items objectAtIndex:i];
+            if (i != indexPath.row) {
+                [tmpArray addObject:myOrder];
             }
         }
+        
         self.orderList.items = [[NSArray alloc]initWithArray:tmpArray];
         [self tableViewReload];
     } else {

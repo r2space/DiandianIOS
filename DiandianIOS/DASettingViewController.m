@@ -176,6 +176,8 @@
     [print addSplit];
 
     [print printText:self.labPrintIP.text];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.labPrintIP.text forKey:@"jp.co.dreamarts.smart.diandian.PrintIP"];
 
 }
 
@@ -229,7 +231,8 @@
         NSString *userId = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];;
         NSString *uuid = [OpenUDID value];
         NSString *deviceId = uuid;
-        NSString *token = @"asdf";
+        NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.message.devicetoken"];
+        
         [[DALoginModule alloc] addDevice:deviceId userId:userId token:token callback:^(NSError *error, DAMyDevice *device) {
             NSLog(@"device   %@",device);
             [ProgressHUD showSuccess:@"设备申请成功  可以使用"];

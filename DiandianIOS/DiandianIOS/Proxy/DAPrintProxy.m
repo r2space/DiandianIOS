@@ -53,7 +53,13 @@ enum PrintErrorStatus
     
     [print addSplit];
     
-    [print printText:@"10.2.3.149"];
+//        [[NSUserDefaults standardUserDefaults] setObject:self.labPrintIP.text forKey:@"jp.co.dreamarts.smart.diandian.PrintIP"];
+    NSString *ip = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.PrintIP"];
+    
+    if (ip!=nil &&ip.length > 0) {
+        [print printText:ip];
+    }
+    
 
     
 }

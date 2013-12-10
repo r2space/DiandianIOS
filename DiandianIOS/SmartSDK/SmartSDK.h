@@ -59,7 +59,7 @@
 #define API_SETORDER_FREE @"/api/order/freeOrder.json"
 #define API_SETORDER_BACK @"/api/order/backOrder.json"
 #define API_ORDER_ADD       @"/api/order/add.json"
-#define API_DEVICE_ADD @"/api/device/add.json"
+#define API_DEVICE_ADD  @"/api/device/add.json"
 
 #define API_UESR_UPDATEPATTERN @"/api/admin/user/updatePattern.json"
 #define API_UESR_CHECKPATTERN @"/api/admin/user/checkPattern.json"

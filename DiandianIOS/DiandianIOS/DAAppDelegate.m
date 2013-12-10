@@ -48,8 +48,55 @@
     
     [[DASocketIO sharedClient:self] conn];
     [self initDaemon];
+    
+    // 消息推送注册
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge];
     return YES;
 }
+
+
+// 获取终端设备标识，这个标识需要通过接口发送到服务器端，服务器端推送消息到APNS时需要知道终端的标识，APNS通过注册的终端标识找到终端设备。
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"jp.co.dreamarts.smart.message.devicetoken"];
+    NSLog(@"device token is:%@", token);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSString *error_str = [NSString stringWithFormat: @"%@", error];
+    NSLog(@"Failed to get token, error:%@", error_str);
+}
+
+
+// 处理收到的消息推送
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    if (UIApplicationStateInactive == application.applicationState) {
+        
+        // 由用户点击通知的消息，而启动时
+        NSLog(@"2. Receive remote notification : %@", userInfo);
+        NSDictionary *aps = [userInfo objectForKey:@"aps"];
+        NSDictionary *alert = [aps objectForKey:@"alert"];
+        NSString *action = [alert objectForKey:@"action"];
+        NSString *data = [aps objectForKey:@"data"];
+        
+        [DADispatch dealBecomeActiveAction:action data:data];
+
+        return;
+    }
+    
+    if (UIApplicationStateActive == application.applicationState) {
+        
+        // 应用程序正在运行时，接受消息
+        NSLog(@"3. Receive remote notification : %@", userInfo);
+        return;
+    }
+    
+    NSLog(@"1. Receive remote notification : %@", userInfo);
+}
+
 
 -(void)initDaemon
 {

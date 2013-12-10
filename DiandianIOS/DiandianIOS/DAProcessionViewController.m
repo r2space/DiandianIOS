@@ -36,9 +36,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.layer.cornerRadius = 10;
-    self.view.layer.masksToBounds = YES;
+//    
+//    self.view.layer.cornerRadius = 10;
+//    self.view.layer.masksToBounds = YES;
     
     UINib *cellNib = [UINib nibWithNibName:@"DAProcessionViewCell" bundle:nil];
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAProcessionViewCell"];

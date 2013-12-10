@@ -13,12 +13,12 @@
 - (DAOrderCell *) initWithOrder : (DAMenu *)menu tableView:(UITableView *) tableView
 {
     NSString *identifier = @"DAOrderCell";
-    DAOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        UINib *nib = [UINib nibWithNibName:identifier bundle:nil];
-        NSArray *array = [nib instantiateWithOwner:nil options:nil];
-        cell = [array objectAtIndex:0];
-    }
+//    DAOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+//    if (cell == nil) {
+//        UINib *nib = [UINib nibWithNibName:identifier bundle:nil];
+//        NSArray *array = [nib instantiateWithOwner:nil options:nil];
+//        cell = [array objectAtIndex:0];
+//    }
 //    [self.setRecipeBtn addTarget:cell action:@selector(update:) forControlEvents:UIControlEventTouchUpInside];
     
     return self;

@@ -113,6 +113,7 @@
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
         
+        self.dataList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
         [self.tableView reloadData];
         
         return YES;
@@ -211,6 +212,12 @@
         titleLabel.text = item.itemName;
     }
     
+    if ([orderdata.type integerValue] == 0) {
+        titleLabel.text = item.itemName;
+    
+    } else {
+        titleLabel.text = [NSString stringWithFormat:@"%@(小)",item.itemName];
+    }
     
     amountLabel.text = [NSString stringWithFormat:@"%@份", item.amount];
     
@@ -412,7 +419,7 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:[self.dataList toArray] forKey:@"orderList"];
     [dic setValue:self.curService.deskId forKey:@"deskId"];
-    [socket sendJSONwithAction:@"addOrder" data:[[NSDictionary alloc]initWithDictionary:dic]];
+//    [socket sendJSONwithAction:@"addOrder" data:[[NSDictionary alloc]initWithDictionary:dic]];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
