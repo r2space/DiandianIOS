@@ -2248,8 +2248,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Production IOS Push Services: jp.co.dreamarts.DiandianIOS";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Production IOS Push Services: jp.co.dreamarts.DiandianIOS";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2267,7 +2267,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "C63387DA-A0E2-4467-8778-8A48E73550A7";
+				PROVISIONING_PROFILE = "85193E86-E45E-45DA-B677-8D1C6B44AFE4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -2290,8 +2290,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Production IOS Push Services: jp.co.dreamarts.DiandianIOS";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Production IOS Push Services: jp.co.dreamarts.DiandianIOS";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2302,7 +2302,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "C63387DA-A0E2-4467-8778-8A48E73550A7";
+				PROVISIONING_PROFILE = "85193E86-E45E-45DA-B677-8D1C6B44AFE4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -2323,10 +2323,10 @@
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
 				INFOPLIST_FILE = "DiandianIOS/DiandianIOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = /Users/Antony/Desktop/DAC/developer/DiandianIOS/DiandianIOS;
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "58998F9D-3B36-4E34-81B4-56043CDBA061";
+				PROVISIONING_PROFILE = "997F4624-C03B-4847-8FCE-7335BCDB3D45";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2346,10 +2346,10 @@
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
 				INFOPLIST_FILE = "DiandianIOS/DiandianIOS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = /Users/Antony/Desktop/DAC/developer/DiandianIOS/DiandianIOS;
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "58998F9D-3B36-4E34-81B4-56043CDBA061";
+				PROVISIONING_PROFILE = "997F4624-C03B-4847-8FCE-7335BCDB3D45";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
