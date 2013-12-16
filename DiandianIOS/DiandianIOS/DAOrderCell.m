@@ -27,7 +27,7 @@
 
 - (void)update
 {
-    NSLog(@"update");
+    
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

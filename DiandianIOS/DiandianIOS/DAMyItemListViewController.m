@@ -63,8 +63,6 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     NSDictionary *row = [dataList objectAtIndex:indexPath.row];
     
-    NSLog(@"%@", row);
-    
     
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:10];
     imgItem.image = [UIImage imageNamed:[row objectForKey:@"image"]];
@@ -78,8 +76,7 @@
 }
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *row = [dataList objectAtIndex:indexPath.row];
-    NSLog(@"%@", row);
+    
     
 }
 - (void)loadFromFile {

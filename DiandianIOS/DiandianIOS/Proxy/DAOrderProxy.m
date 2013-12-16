@@ -58,7 +58,6 @@
     
     for (int i = 0 ; i < orderList.items.count ; i ++) {
         DAOrder *order = [orderList.items objectAtIndex:i];
-        NSLog(@"DAOrder   order.itemId : %@  order.type : %@", order.itemId,order.type);
         BOOL hasOneItem = NO;
         if ([tmpList count] > 0 ) {
             for (int j = 0 ; j < [tmpList count] ; j ++) {

@@ -74,7 +74,7 @@
 {
     CCSegmentedControl* segmentedControl = sender;
     NSString *index = [NSString stringWithFormat:@"%d",segmentedControl.selectedSegmentIndex];
-    NSLog(@"%s line:%d segment has changed to %@", __FUNCTION__, __LINE__, index);
+    
     
     DAMenu *menu = [menuList.items objectAtIndex:[index intValue]];
     

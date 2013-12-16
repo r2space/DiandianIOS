@@ -75,12 +75,12 @@
 }
 
 - (void)lockEntered:(NSString*)key {
-    NSLog(@"key: %@", key);
+    
     if (curWaitterUserId != nil && curWaitterUserId.length > 0) {
         
     
         [[DALoginModule alloc]checkPattern:key userId:curWaitterUserId callback:^(NSError *error, NSDictionary *user) {
-            NSLog(@"user key %@" ,user);
+            
             NSNumber *isRight = [user objectForKey:@"isRight"];
             
             if (![isRight boolValue]) {
@@ -157,7 +157,6 @@
 {
     NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
     [defaults setObject:self.waitterId.text forKey: @"LastWaiterId"];
-    NSLog(@"%@",[defaults objectForKey:@"LastWaiterId"]);
     //[defaults synchronize];
 //    
 //    self.myDesk.numOfPepole = self.numOfPepole.text;

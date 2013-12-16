@@ -58,7 +58,6 @@ static DASettingViewController *loginViewController;
                 [[NSUserDefaults standardUserDefaults]  setObject:@"NO" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
                 return ;
             }
-            NSLog(@"用户自动登录");
             
             [[NSUserDefaults standardUserDefaults]  setObject:@"YES" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
             

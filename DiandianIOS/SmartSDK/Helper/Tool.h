@@ -13,5 +13,7 @@
 
 + (NSDate *) dateFromISODateString:(NSString *)isodate;
 + (NSString *) stringFromISODateString:(NSString *)isodate;
++ (NSString *) stringFromISODate:(NSDate *)isodate;
 
++ (NSString *) stringWithPad:(NSString *)str length:(int )length;
 @end

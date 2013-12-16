@@ -72,7 +72,6 @@
 
 - (IBAction)firstAction:(id)sender {
     
-    NSLog(@"into");
     DAMenuBookViewController *menubookView = [[DAMenuBookViewController alloc]initWithNibName:@"DAMenuBookViewController" bundle:nil];
     [self.navigationController pushViewController:menubookView animated:YES];
 }

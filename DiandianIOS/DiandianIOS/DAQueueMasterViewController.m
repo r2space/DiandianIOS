@@ -75,25 +75,23 @@
 {
     // 创建定时器
     puaseTimer = NO;
-    timer = [NSTimer scheduledTimerWithTimeInterval:1
-                                             target:self
-                                           selector:@selector(timerEvent:)
-                                           userInfo:nil
-                                            repeats:YES];
+//    timer = [NSTimer scheduledTimerWithTimeInterval:1
+//                                             target:self
+//                                           selector:@selector(timerEvent:)
+//                                           userInfo:nil
+//                                            repeats:YES];
     // 启动定时器
-    [timer fire];
+//    [timer fire];
 }
 
 // 定时获取消息。发生滚动时，停止定时器
-- (void)timerEvent:(NSTimer *)timer
-{
-    if (puaseTimer) {
-        return;
-    }
-
-    NSLog(@"timer  status  "  );
-    
-}
+//- (void)timerEvent:(NSTimer *)timer
+//{
+//    if (puaseTimer) {
+//        return;
+//    }
+//    
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -105,13 +103,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)drinkViewTouched:(id)sender {
-    
+    [drinkChildView.view removeFromSuperview];
     [orderGroupViewController.view removeFromSuperview];
     [self initDrinkListView];
 
 }
 - (IBAction)ItemViewTouched:(id)sender {
     [drinkChildView.view removeFromSuperview];
+    [orderGroupViewController.view removeFromSuperview];
     [self initItemListView];
 }
 

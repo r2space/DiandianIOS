@@ -102,7 +102,7 @@
         
         BOOL fs = [self.orderList archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
         if (fs) {
-            NSLog(@"xieru");
+            NSLog(@"写入");
         }
     }
     [self.tableView reloadData];
@@ -315,8 +315,6 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        
-        NSLog(@"执行删除操作");
 
         NSMutableArray *tmpArray = [[NSMutableArray alloc] init];
         for (int i = 0 ; i < [self.orderList.items count]; i++) {
@@ -336,8 +334,6 @@
 
 - (void)confirmOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
 {
-
-    NSLog(@"下单备注   %@" ,loginViewViewController.labelTips.text);
     //确认订单 并提交
     self.confirmCallback(loginViewViewController.labelTips.text);
     

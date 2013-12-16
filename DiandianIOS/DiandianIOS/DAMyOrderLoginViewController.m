@@ -65,12 +65,10 @@
 
 
 - (void)lockEntered:(NSString*)key {
-    NSLog(@"key: %@", key);
-    
     NSString *WaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
     
     [[DALoginModule alloc]checkPattern:key userId:WaitterId callback:^(NSError *error, NSDictionary *user) {
-        NSLog(@"user key %@" ,user);
+        
         NSNumber *isRight = [user objectForKey:@"isRight"];
         
         if (![isRight boolValue]) {

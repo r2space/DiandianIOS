@@ -11,7 +11,16 @@
 @implementation Tool
 
 
-
++ (NSString *) stringWithPad:(NSString *)str length:(int )length
+{
+    
+    int add = length -[str length];
+    if (add > 0) {
+        NSString *pad = [[NSString string] stringByPaddingToLength:add*2 withString:@" " startingAtIndex:0];
+        str = [str stringByAppendingString:pad];
+    }
+    return str;
+}
 // ---- 日期相关 ----
 + (NSDate *) dateFromISODateString:(NSString *)isodate
 {

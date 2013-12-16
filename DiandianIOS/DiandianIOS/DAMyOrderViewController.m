@@ -70,7 +70,7 @@
 {
 
     [DAOrderProxy getOldOrderListByServiceId:self.curService._id withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
-        NSLog(@"getOldOrderListByServiceId  %s  %d" ,__FUNCTION__,__LINE__);
+        
         oldOrderDataList = list;
         [self.tableView reloadData];
         [self loadAmountPrice];
@@ -205,7 +205,7 @@
     
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:11];
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:12];
-    NSLog(@"orderdata.back  %@" ,orderdata.back);
+    
     if ([orderdata.back integerValue] == 2) {
         titleLabel.text = [NSString stringWithFormat:@"(已退)%@",item.itemName];
     } else {
@@ -367,11 +367,10 @@
         [ProgressHUD show:nil];
         NSString *deskId = [NSString stringWithFormat:@""];
         
-        if ([self.curService.type integerValue] == 3) {
-            
-        } else {
+        if ([self.curService.type integerValue] != 3) {
             deskId = [NSString stringWithFormat:@"%@" ,self.curService.deskId];
         }
+        
         
         [[DAOrderModule alloc] addOrder:[self.dataList toArray] serviceId:self.curService._id deskId:deskId callback:^(NSError *err, DAMyOrderList *list) {
             
@@ -400,9 +399,7 @@
 
 -(void)updateRecipe:(id)sender 
 {
-    DAOrderRecipeBtn *btn = (DAOrderRecipeBtn *)sender;
     
-    NSLog(@"%s  %@  %@",   __FUNCTION__  ,btn.name,btn.orderId);
     DADetailOrderViewController *secondDetailViewController = [[DADetailOrderViewController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];
     secondDetailViewController.delegate = self;
     [self presentPopupViewController:secondDetailViewController animationType:MJPopupViewAnimationFade];

@@ -92,7 +92,7 @@
     [[DALoginModule alloc]yukarilogin:userName password:password code:nil callback:^(NSError *error, DAUser *user) {
         
         
-        NSLog(@"ERROR  %@  " ,error);
+//        NSLog(@"ERROR  %@  " ,error);
         if (error != nil) {
             isLogin = NO;
             [ProgressHUD showError:@"登录失败"];
@@ -101,7 +101,7 @@
             return;
         }
         
-        NSLog(@"login success  user %@",user);
+//        NSLog(@"login success  user %@",user);
         if (error!=nil) {
             isLogin = NO;
             [ProgressHUD showError:@"登录失败"];
@@ -156,26 +156,45 @@
     
 }
 - (IBAction)onTestPrintTouched:(id)sender {
-    DAPrintProxy *print = [[DAPrintProxy alloc] init];
+    
+    
+    if (isLogin) {
+        [ProgressHUD show:@"正在为你测试打印机，请稍等。"];
+        [[DAPrinterModule alloc]getPrinterList:^(NSError *err, DAPrinterList *list) {
+            [list archiveRootObjectWithPath:@"printer" withName:@"printer"];
+            NSLog(@"%@",list);
+            for (DAPrinter *printSet in list.items) {
+                DAPrintProxy *print = [[DAPrintProxy alloc] init];
+                [print addLine:@"测试打印机"];
+                [print addLine:[NSString stringWithFormat:@"测试名称：%@" ,printSet.name]];
+                
+                [print addLine:@"单号：0021 包：4 下单时间：18:30"];
+                [print addSplit];
+                [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+                [print addLine:@"红烧排骨（大份） 1份"];
+                [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+                [print addLine:@"红烧排骨（大份） 1份"];
+                [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+                [print addLine:@"红烧排骨（大份） 1份"];
+                [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+                [print addLine:@"红烧排骨（大份） 1份"];
+                [print addLine:@"青椒肉丝（小份） 2份 少辣"];
+                [print addSplit];
+                
+                [print printText:printSet.printerIP addTextSize:1 TextHeight:1];
+                if ([printSet.type isEqualToString:@"2"]) {
+                    [printSet archiveRootObjectWithPath:@"printer" withName:@"billprinter"];
+                }
+            }
+            [ProgressHUD dismiss];
+        }];
+    } else {
+        [ProgressHUD showError:@"请登录"];
+    }
+    
+    
 
-    [print addLine:@"单号：0021 包：4 下单时间：18:30"];
-    [print addSplit];
-    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-    [print addLine:@"红烧排骨（大份） 1份"];
-    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-    [print addLine:@"红烧排骨（大份） 1份"];
-    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-    [print addLine:@"红烧排骨（大份） 1份"];
-    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-    [print addLine:@"红烧排骨（大份） 1份"];
-    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-    [print addLine:@"红烧排骨（大份） 1份"];
-    [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-    [print addLine:@"红烧排骨（大份） 1份"];
-    [print addLine:@"asdfasdfasdf"];
-    [print addSplit];
-
-    [print printText:self.labPrintIP.text];
+    
     
     [[NSUserDefaults standardUserDefaults] setObject:self.labPrintIP.text forKey:@"jp.co.dreamarts.smart.diandian.PrintIP"];
 
@@ -234,7 +253,6 @@
         NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.message.devicetoken"];
         
         [[DALoginModule alloc] addDevice:deviceId userId:userId token:token callback:^(NSError *error, DAMyDevice *device) {
-            NSLog(@"device   %@",device);
             [ProgressHUD showSuccess:@"设备申请成功  可以使用"];
         }];
     } else {

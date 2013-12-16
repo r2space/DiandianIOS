@@ -28,7 +28,6 @@
 
 + (void) downloadImageImage: (NSArray *) imageIds iteration:(int)i
 {
-    NSLog(@"download %d" ,i);
     if( imageIds.count <= i ){
         
         NSNotification *n = [NSNotification notificationWithName:@"downloadDone" object:self];

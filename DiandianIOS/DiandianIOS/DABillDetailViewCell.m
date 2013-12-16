@@ -27,7 +27,7 @@
     // Configure the view for the selected state
 }
 - (IBAction)onMiandanTouched:(id)sender {
-    NSLog(@"免单 , %@" , self.order._id);
+    
     NSMutableArray *freeDataList = [[NSMutableArray alloc]init];
     [freeDataList addObject:self.order._id];
     [ProgressHUD show:@"退菜中"];

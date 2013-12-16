@@ -49,7 +49,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
 
     NSString *cellData = [self.dataArray  objectAtIndex:indexPath.row];
-    NSLog(@"%@",cellData);
     static NSString *cellIdentifier = @"simpleCell";
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     UILabel *titleLabel = (UILabel *)[cell viewWithTag:10];
@@ -58,7 +57,6 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    NSLog(@"%d" , [self.dataArray count]);
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{

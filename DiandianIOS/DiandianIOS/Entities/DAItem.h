@@ -11,6 +11,7 @@
 
 @interface DAItem : DAEntity <NSCoding>
 
+@property(retain, nonatomic) NSString *printerId;
 @property(retain, nonatomic) NSString *itemName;
 @property(retain, nonatomic) NSString *itemPriceNormal;
 @property(retain, nonatomic) NSString *itemPriceHalf;

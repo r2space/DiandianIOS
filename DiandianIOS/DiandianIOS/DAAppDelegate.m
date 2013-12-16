@@ -33,11 +33,9 @@
     [DASettings registerDefaultsFromSettingsBundle];
     
     NSString *s = [[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress];
-    NSLog(@"%@",s);
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress] == nil) {
         NSString *serverAddress = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerAddress];
         NSNumber *serverPort = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerPort];
-        NSLog(@"kServerAddress  : %@  conn   host %@  port  %@" ,kServerAddress,serverAddress ,serverPort);
         [[NSUserDefaults standardUserDefaults] setObject:serverAddress forKey:kServerAddress];
         [[NSUserDefaults standardUserDefaults] setInteger:serverPort.integerValue forKey:kServerPort];
     }
@@ -174,7 +172,6 @@
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     
-    NSLog(@"后台 applicationWillResignActive");
     if (![[DASocketIO sharedClient:self] isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }
@@ -184,7 +181,6 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    NSLog(@"后台 applicationDidEnterBackground");
     if (![[DASocketIO sharedClient:self] isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }
@@ -193,7 +189,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    NSLog(@"后台 applicationWillEnterForeground");
+
     if (![[DASocketIO sharedClient:self] isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }
@@ -202,7 +198,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    NSLog(@"后台 applicationDidBecomeActive");
+    
     if (![[DASocketIO sharedClient:self] isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }
@@ -211,7 +207,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    NSLog(@"后台 applicationWillTerminate");
     if (![[DASocketIO sharedClient:self] isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }

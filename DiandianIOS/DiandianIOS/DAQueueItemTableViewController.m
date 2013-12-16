@@ -121,7 +121,7 @@
         for (DAOrder *order in list.items) {
             [tmpDeskList addObject:order];
         }
-        NSLog(@"debug filterTable  %@", list);
+        
         dataList.items = [[NSArray alloc] initWithArray:tmpDeskList];
         [self.tableView reloadData];
         

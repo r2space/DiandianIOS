@@ -74,13 +74,14 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     NSArray *titles = @[@"菜类", @"凉菜", @"主食", @"酒水"];
     self.segmentedControl = [[SMVerticalSegmentedControl alloc] initWithSectionTitles:titles];
     self.segmentedControl.backgroundColor = [UIColor whiteColor];
-    //UI_COLOR_FROM_RGB(0xecf0f1);
+    
+    
     self.segmentedControl.selectionStyle = SMVerticalSegmentedControlSelectionStyleBox;
     self.segmentedControl.selectionIndicatorThickness = 4;
     [self.segmentedControl setFrame:CGRectMake(20, 44, 80.0f, 260.f)];
-//    [self.view addSubview:self.segmentedControl];
+
+    
     self.segmentedControl.indexChangeBlock = ^(NSInteger index) {
-        NSLog(@"fsdafdsf  ：  %@" ,[titles objectAtIndex:index]);
     };
     
     self.labelTitle.layer.cornerRadius = 15.0;

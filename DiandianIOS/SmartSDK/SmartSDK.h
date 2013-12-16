@@ -12,6 +12,7 @@
 
 #define API_ALL_USER_LIST       @"/api/user/list.json"
 
+
 #define API_MENU_LIST           @"/api/menu/list.json"
 #define API_DESK_LIST           @"/api/desk/list.json"
 
@@ -29,7 +30,8 @@
 
 
 
-
+#define API_PRINTER_LIST                @"/api/printer/list.json"
+#define API_PRINTER_GET             @"/api/printer/get.json?printerId=%@"
 
 
 
@@ -78,6 +80,7 @@
 #import "DAOrderModule.h"
 #import "DAUserModule.h"
 #import "DAScheduleModule.h"
+#import "DAPrinterModule.h"
 
 
 #import "DAGroup.h"
@@ -101,5 +104,7 @@
 #import "DAServiceList.h"
 #import "DASchedule.h"
 #import "DAScheduleList.h"
+#import "DAPrinter.h"
+#import "DAPrinterList.h"
 
 #endif

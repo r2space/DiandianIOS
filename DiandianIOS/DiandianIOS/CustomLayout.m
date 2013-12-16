@@ -41,8 +41,7 @@
         attributes.size = CGSizeMake(ITEM_SIZE+200, ITEM_SIZE+100);
     }
 
-//    attributes.center = CGPointMake(_center.x + _radius * cosf(2 * path.item * M_PI / _cellCount), _center.y + _radius * sinf(2 * path.item * M_PI / _cellCount));
-    NSLog(@"%d" ,path.item);
+    
 
     attributes.center = CGPointMake(_center.x + path.item * 200 , _center.y + path.item * 200);
     return attributes;

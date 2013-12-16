@@ -155,7 +155,7 @@
     cell.amountText.text = @"";
 }
 - (IBAction)onPutDoneTouched:(id)sender {
-    NSLog(@"sd \n\n\n\n\n\n");
+    
     [ProgressHUD show:@"退菜中"];
     [[DAOrderModule alloc]setBackOrderWithArray:backDataList deskId:self.curService.deskId callback:^(NSError *err, DAMyOrderList *order) {
         

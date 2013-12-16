@@ -176,7 +176,7 @@ UIViewController *parentVC;
 }
 
 - (IBAction)backOrder:(id)sender {
-    NSLog(@"fdfas");
+    
     UIButton *btn = (UIButton *)sender;
     DAMyBackOrderViewController *vc = [[DAMyBackOrderViewController alloc] initWithNibName:@"DAMyBackOrderViewController" bundle:nil];
 

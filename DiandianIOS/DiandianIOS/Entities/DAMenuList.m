@@ -42,7 +42,6 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:sContentsDir withIntermediateDirectories:NO attributes:nil error:&error];
     }
     NSString *fileName = [NSString stringWithFormat:@"%@/%@", sContentsDir, @"__data_menu_list"];
-    NSLog(@"%@" ,fileName);
     return [NSKeyedArchiver archiveRootObject:self toFile:fileName];
 }
 

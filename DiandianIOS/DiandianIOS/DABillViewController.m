@@ -10,6 +10,7 @@
 #import "DABillDetailViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "DAPreferentialViewController.h"
+#import "DAPrintProxy.h"
 
 #define kMaxNumber                       100000
 
@@ -66,8 +67,6 @@
 {
     [super viewDidAppear:animated];
     [self reload];
-    NSLog(@" sever : %@  deskId : %@ 结账",self.curService._id ,@"");
-//    [self.textPay becomeFirstResponder];
 }
 
 
@@ -121,6 +120,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 - (IBAction)onDetailTaped:(id)sender {
     DABillDetailViewController *c = [[DABillDetailViewController alloc] initWithNibName:nil bundle:nil];
     c.curService = self.curService;
@@ -154,6 +155,14 @@
     self.keyboardView.textField  = text;
 }
 - (IBAction)onStopBillTouched:(id)sender {
+
+    float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
+    self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
+    self.textPay.text = [NSString stringWithFormat:@"%d", (int)off];
+    
+    [DAPrintProxy printBill:self.curService._id off:[NSString stringWithFormat:@"%f",offAmount] pay:self.textPay.text type:payType reduce:self.textReduce.text];
+    
+    
     [[DAServiceModule alloc]stopService:self.curService._id
                                  amount:[billData.amount stringValue]
                                  profit:self.textPay.text
@@ -173,6 +182,7 @@
     self.textPay.text = [NSString stringWithFormat:@"%d", (int)off];
     
 }
+
 
 - (IBAction)onPayTypeTouched:(UISegmentedControl *)sender {
     NSInteger *Index = (NSInteger *)sender.selectedSegmentIndex;

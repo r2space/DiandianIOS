@@ -8,6 +8,7 @@
 
 #import "DABillDetailViewController.h"
 #import "DABillDetailViewCell.h"
+#import "DAPrintProxy.h"
 
 @interface DABillDetailViewController ()
 {
@@ -86,7 +87,8 @@
     
         cell.order = order;
         cell.lblName.text = order.item.itemName;
-        
+    
+
         if ([order.type integerValue ] == 0) {
             cell.lblPrice.text =[NSString stringWithFormat:@"%@元",order.item.itemPriceNormal];
         } else {
@@ -98,13 +100,16 @@
             if (self.parentReloadBlock!=nil) {
                 self.parentReloadBlock();
             }
+            [self loadFromApi];
             
         };
     
         cell.freeCallback = ^(){
+            if (self.parentReloadBlock!=nil) {
+                self.parentReloadBlock();
+            }
             [self loadFromApi];
         };
-        NSLog(@" order  back  %@" , order.back);
         
         UIButton *backBtn = (UIButton *)[cell viewWithTag:402];
         if ([order.back integerValue] == 0) {
@@ -179,6 +184,10 @@
     if (self.chanelBlock) {
         self.chanelBlock();
     }
+}
+
+- (IBAction)onPrintTouched:(id)sender {
+    [DAPrintProxy printBill:self.curService._id off:@"" pay:@"" type:0 reduce:@""];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -65,8 +65,6 @@
 
     NSDictionary *row = [dataList objectAtIndex:indexPath.row];
     
-    NSLog(@"%@", row);
-    
     cell.imgItem.image = [UIImage imageNamed:[row objectForKey:@"image"]];
     
     cell.lblItemName.text = [row objectForKey:@"name"];

@@ -8,49 +8,19 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>AppVersion</string>
+			<string>点点菜</string>
 		</dict>
 		<dict>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>Title</key>
-			<string>AppVersion</string>
+			<string>版本</string>
 			<key>DefaultValue</key>
-			<string>2.5</string>
+			<string>1.0</string>
 			<key>KeyboardType</key>
 			<string>NumberPad</string>
 			<key>Key</key>
-			<string>apps_version_id_preference</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>Server</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
-			<key>Title</key>
-			<string>ServerURL</string>
-			<key>Key</key>
-			<string>address_preference</string>
-			<key>DefaultValue</key>
-			<string>http://popy.dreamarts.co.jp/hibiki/</string>
-			<key>KeyboardType</key>
-			<string>URL</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSTextFieldSpecifier</string>
-			<key>Title</key>
-			<string>INSUITE Server</string>
-			<key>Key</key>
-			<string>insuite_server</string>
-			<key>DefaultValue</key>
-			<string>http://popy.dreamarts.co.jp/</string>
-			<key>KeyboardType</key>
-			<string>URL</string>
+			<string>diandian_version</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>

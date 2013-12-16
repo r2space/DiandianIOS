@@ -132,7 +132,6 @@
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DAOrder *row = [dataList.items objectAtIndex:indexPath.row];
-    NSLog(@"%@", row);
     NSString *deskId = row.deskId;
     NSArray *oneItems =  row.oneItems;
     self.selectItemBlock(oneItems,deskId);

@@ -52,7 +52,6 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:sContentsDir withIntermediateDirectories:NO attributes:nil error:&error];
     }
     NSString *fileName = [NSString stringWithFormat:@"%@/%@", sContentsDir, withName];
-    NSLog(@"%@" ,fileName);
     return [NSKeyedArchiver archiveRootObject:self toFile:fileName];
 }
 
@@ -81,7 +80,6 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:sContentsDir withIntermediateDirectories:NO attributes:nil error:&error];
     }
     NSString *fileName = [NSString stringWithFormat:@"%@/%@", sContentsDir, withName];
-    NSLog(@"%@" ,fileName);
     return [NSKeyedArchiver archiveRootObject:self toFile:fileName];
 }
 

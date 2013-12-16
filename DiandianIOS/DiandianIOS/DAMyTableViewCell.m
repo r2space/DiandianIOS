@@ -56,7 +56,6 @@
 }
 - (IBAction)showUnfinishedMenuList:(id)sender {
     DAPopTableViewController *vc = [[DAPopTableViewController alloc] initWithNibName:@"DAPopTableViewController" bundle:nil];
-    NSLog(@"my desk %@ ",self.curDesk);
     NSMutableArray *wList = [NSMutableArray array];
     
     

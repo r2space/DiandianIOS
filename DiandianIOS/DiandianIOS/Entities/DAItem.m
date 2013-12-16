@@ -27,6 +27,8 @@
     [aCoder encodeObject:self.bigimage forKey:@"bigimage"];
     [aCoder encodeObject:self.smallimage forKey:@"smallimage"];
     [aCoder encodeObject:self.type forKey:@"type"];
+    [aCoder encodeObject:self.printerId forKey:@"printerId"];
+    
     
     
 }
@@ -45,6 +47,8 @@
     self.bigimage = [aDecoder decodeObjectForKey:@"bigimage"];
     self.smallimage = [aDecoder decodeObjectForKey:@"smallimage"];
     self.type = [aDecoder decodeObjectForKey:@"type"];
+    self.printerId = [aDecoder decodeObjectForKey:@"printerId"];
+    
     
     return self;
 }
