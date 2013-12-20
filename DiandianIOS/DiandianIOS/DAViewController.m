@@ -56,13 +56,15 @@ static DASettingViewController *loginViewController;
         if (printList == nil || [printList.items count] == 0) {
             return;
         }
-        
-//        for (DAPrinter *printSet in printList.items) {
-//            if ([printSet.valid isEqualToNumber:[NSNumber numberWithInt:0]]) {
-//                [ProgressHUD showError:[NSString stringWithFormat:@"请检查打印机 ：%@ 的状态" ,printSet.name]];
-//                return;
-//            }
-//        }
+        NSNumber *printerMaster = [[NSUserDefaults standardUserDefaults] objectForKey:@"com.diandain.printer.master"];
+        if ([printerMaster boolValue]) {
+            for (DAPrinter *printSet in printList.items) {
+                if ([printSet.valid isEqualToNumber:[NSNumber numberWithInt:0]]) {
+                    [ProgressHUD showError:[NSString stringWithFormat:@"请检查打印机 ：%@ 的状态" ,printSet.name]];
+                    return;
+                }
+            }
+        }
         
         NSString *keyStatus = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterKeyStatus"];
         if (![@"YES" isEqualToString:keyStatus]) {
