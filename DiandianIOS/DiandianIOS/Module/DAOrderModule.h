@@ -29,8 +29,8 @@
 
 
 -(void) getOrderItemList:(void (^)(NSError *err, DAMyOrderList *list))callback;
-
--(void) getOrderNEItemList:(void (^)(NSError *err, DAMyOrderList *list))callback;
+//
+//-(void) getOrderNEItemList:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
 -(void) setFreeOrderWithArray:(NSArray *) orderIds deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *order))callback;
 
