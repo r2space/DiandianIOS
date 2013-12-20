@@ -15,6 +15,7 @@
 
 + (NSString *)getLoginUserId;
 
+
 - (void)login:(NSString *)name
      password:(NSString *)password
        target:(id)target

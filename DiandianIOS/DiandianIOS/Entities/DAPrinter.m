@@ -16,6 +16,8 @@
     [aCoder encodeObject:self.name   forKey:@"name"];
     [aCoder encodeObject:self.printerIP forKey:@"printerIP"];
     [aCoder encodeObject:self.type forKey:@"type"];
+    [aCoder encodeObject:self.valid forKey:@"valid"];
+    
     
 
     
@@ -27,6 +29,8 @@
     self.name = [aDecoder decodeObjectForKey:@"name"];
     self.printerIP = [aDecoder decodeObjectForKey:@"printerIP"];
     self.type = [aDecoder decodeObjectForKey:@"type"];
+    self.valid = [aDecoder decodeObjectForKey:@"valid"];
+    
     
     return self;
 }

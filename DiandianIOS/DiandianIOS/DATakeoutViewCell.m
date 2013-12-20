@@ -18,6 +18,7 @@
 #import "NSString+Util.h"
 #import "Util.h"
 #import "Tool.h"
+#import "ProgressHUD.h"
 
 
 @interface DATakeoutViewCell()
@@ -93,12 +94,19 @@
 }
 
 - (IBAction)onBillTouched:(id)sender {
-    DABillViewController *viewController = [[DABillViewController alloc]
-                                            initWithNibName:@"DABillViewController" bundle:nil];
-    viewController.curService = takeoutService;
-    
-    [parentVC.navigationController pushViewController:viewController animated:YES];
-    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    NSNumber *hasCash = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
+    if (hasCash!=nil && [hasCash boolValue]) {
+        DABillViewController *viewController = [[DABillViewController alloc]
+                                                initWithNibName:@"DABillViewController" bundle:nil];
+        viewController.curService = takeoutService;
+        
+        [parentVC.navigationController pushViewController:viewController animated:YES];
+        [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+
+    } else {
+        [ProgressHUD showError:@"你没有结账权限"];
+        
+    }
 }
 
 @end

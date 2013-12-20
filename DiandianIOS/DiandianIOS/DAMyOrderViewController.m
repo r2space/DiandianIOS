@@ -231,15 +231,10 @@
     recipeBtn.name = item.itemName;
     recipeBtn.orderId = item._id;
 
-//    [deleteBtn addTarget:self
-//               action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
-//    [recipeBtn addTarget:self action:@selector(updateRecipe: ) forControlEvents:UIControlEventTouchUpInside];
+    
     if (indexPath.section == 0) {
-
-//        cell.backgroundColor = [UIColor clearColor];
         titleLabel.textColor = [UIColor blackColor];
     } else {
-//        cell.backgroundColor = [UIColor lightGrayColor];
         titleLabel.textColor = [UIColor darkGrayColor];
     }
     cell.backgroundColor = [UIColor clearColor];
@@ -363,27 +358,34 @@
         
         
         //改为接口提交订单
-
+         NSArray *orderList = [self.dataList toArray];
+        if ([orderList count] == 0) {
+            [ProgressHUD showError:@"未点菜不能下单 请选择返回桌台."];
+            return;
+        }
+        
         [ProgressHUD show:nil];
         NSString *deskId = [NSString stringWithFormat:@""];
         
         if ([self.curService.type integerValue] != 3) {
             deskId = [NSString stringWithFormat:@"%@" ,self.curService.deskId];
         }
+
         
-        
-        [[DAOrderModule alloc] addOrder:[self.dataList toArray] serviceId:self.curService._id deskId:deskId callback:^(NSError *err, DAMyOrderList *list) {
-            
-            if ([self.curService.type integerValue] == 3) {
-                [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone tips:@""];
-            } else {
-                [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@"" tips:tips];
-            }
+        [[DAOrderModule alloc] addOrder:orderList serviceId:self.curService._id deskId:deskId callback:^(NSError *err, DAMyOrderList *list) {
+
+                if ([self.curService.type integerValue] == 3) {
+                    [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone tips:@""];
+                } else {
+                    [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@"" tips:tips];
+                }
             
             [ProgressHUD dismiss];
             [self.navigationController popViewControllerAnimated:YES];
             
         }];
+ 
+    
         
         
     };

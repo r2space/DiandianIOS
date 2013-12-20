@@ -8,6 +8,7 @@
 
 #import "DAMyMenuBookPopupController.h"
 #import "DAMenuProxy.h"
+#import "ProgressHUD.h"
 
 @interface DAMyMenuBookPopupController ()<DAMyMenuBookPopupDelegate>
 
@@ -77,17 +78,25 @@
     [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
 }
 
-
+//点菜机能
 - (IBAction)onAddTouched:(id)sender {
     NSNotification *addOrderNotification = [NSNotification notificationWithName:@"menu_addOrder" object:self.curItem];
     
     [[NSNotificationCenter defaultCenter] postNotification:addOrderNotification];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
+        [self.delegate cancelButtonClicked:self];
+        [ProgressHUD showSuccess:@"点菜成功"];
+    }
 }
 
 - (IBAction)onAddSmallTouched:(id)sender {
     NSNotification *notice = [NSNotification notificationWithName:@"menu_addSmallItem" object:self.curItem];
     
     [[NSNotificationCenter defaultCenter] postNotification:notice];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
+        [self.delegate cancelButtonClicked:self];
+        [ProgressHUD showSuccess:@"点菜成功"];
+    }
 }
 
 - (IBAction)backThumbTouched:(id)sender {

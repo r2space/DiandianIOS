@@ -10,7 +10,7 @@
 
 
 @implementation DAUser
-@synthesize  _id;
+
 
 
 - (id)initWithDictionary:(NSDictionary *)dictionary
@@ -19,15 +19,6 @@
     return self;
 }
 
-
-
-
-
-
--(UIImage *) getUserDefaultPhotoImage
-{
-    return [UIImage imageNamed:@"user_thumb.png"];
-}
 
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
@@ -47,12 +38,5 @@
     return self;
 }
 
-+(Class) following_class {
-    return [NSString class];
-}
-
-+(Class) follower_class {
-    return [NSString class];
-}
 
 @end

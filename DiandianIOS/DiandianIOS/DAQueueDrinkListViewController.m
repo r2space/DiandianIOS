@@ -83,9 +83,9 @@
 //    NSLog(@"%@", row);
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
 
-    [ProgressHUD show:nil];
+    
     [[DAOrderModule alloc] setDoneOrderWithArrayIds:order.oneItems callback:^(NSError *err, DAMyOrderList *list) {
-        [ProgressHUD dismiss];
+    
         self.itemClickCallback();
     }];
     NSMutableArray *tempList = [[NSMutableArray alloc]init];

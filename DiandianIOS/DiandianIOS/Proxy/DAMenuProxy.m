@@ -8,7 +8,7 @@
 
 #import "DAMenuProxy.h"
 #import "ProgressHUD.h"
-
+#import "TMCache.h"
 
 
 @implementation DAMenuProxy
@@ -56,6 +56,10 @@
                                    NSString *saveImageName = imageName;
                                    NSString *path = [DAMenuProxy imagePath:saveImageName];
                                    [data writeToFile:path atomically:YES];
+                                   UIImage *imageCache = [UIImage imageWithContentsOfFile:[DAMenuProxy imagePath:saveImageName]];
+
+                                   [[TMCache sharedCache] setObject:imageCache forKey:saveImageName block:nil];
+                                   
                                    //                                   NSLog(@" save image - %@ - path : %@ ", imageName, path );
                                    //                                   NSLog(@" save image %d / %d ", i, [images count]);
                                    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:[imageIds count]], @"count", [NSNumber numberWithInt:i], @"progress", nil];
@@ -64,7 +68,7 @@
                                }else{
                                    NSLog(@" download fail!!! save image - %@", imageName );
                                }
-                               
+
                                [DAMenuProxy downloadImageImage:imageIds iteration:( i + 1 )];
                            }];
 }

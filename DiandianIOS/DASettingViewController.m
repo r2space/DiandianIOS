@@ -44,6 +44,7 @@
 {
     
     [super viewDidLoad];
+
     lockVC = [[DrawPatternLockViewController alloc] init];
     lockStatus = NO;
     setLock1 = NO;
@@ -57,10 +58,14 @@
     
     if (_username != nil && _username.length >0 ) {
         self.labUsername.text = _username;
+    } else {
+        self.labUsername.text = @"";
     }
     
     if(_password != nil && _password.length > 0) {
         self.labPassword.text = _password;
+    } else {
+        self.labPassword.text = @"";
     }
     
     if (_isLogin != nil && [@"YES" isEqualToString:_isLogin]) {
@@ -69,6 +74,48 @@
     
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.labLoginStatus.text = @"";
+    //检查用户手势密码
+//    [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+    NSString *curWaitterUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+    
+    NSString *curWaitterKey = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterKey"];
+    
+    
+    if (curWaitterKey !=nil && curWaitterKey.length > 0 && curWaitterUserId != nil && curWaitterUserId.length > 0) {
+        
+        [[DALoginModule alloc]checkPattern:curWaitterKey userId:curWaitterUserId callback:^(NSError *error, NSDictionary *user) {
+            
+            NSNumber *isRight = [user objectForKey:@"isRight"];
+            
+            if ([isRight integerValue] == -1) {
+                
+                [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"jp.co.dreamarts.smart.diandian.curWaitterKeyStatus"];
+                
+                return ;
+            }
+            
+            if (![isRight boolValue]) {
+                
+                [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"jp.co.dreamarts.smart.diandian.curWaitterKeyStatus"];
+                
+            } else {
+                [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"jp.co.dreamarts.smart.diandian.curWaitterKeyStatus"];
+                
+            }
+            
+        }];
+    } else {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"jp.co.dreamarts.smart.diandian.curWaitterKeyStatus"];
+        
+    }
+
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -77,6 +124,7 @@
 - (IBAction)onBackTouched:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 - (IBAction)onLoginTouched:(id)sender {
     NSString *userName = self.labUsername.text;
@@ -91,8 +139,6 @@
     }
     [[DALoginModule alloc]yukarilogin:userName password:password code:nil callback:^(NSError *error, DAUser *user) {
         
-        
-//        NSLog(@"ERROR  %@  " ,error);
         if (error != nil) {
             isLogin = NO;
             [ProgressHUD showError:@"登录失败"];
@@ -101,14 +147,8 @@
             return;
         }
         
-//        NSLog(@"login success  user %@",user);
-        if (error!=nil) {
-            isLogin = NO;
-            [ProgressHUD showError:@"登录失败"];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.diandian.isLogin"];
-            return;
-        }
         isLogin = YES;
+        self.labLoginStatus.text = @"登录成功";
         [ProgressHUD showSuccess:@"登录成功"];
         
         [[NSUserDefaults standardUserDefaults] setValue:userName forKey:@"jp.co.dreamarts.smart.diandian.username"];
@@ -120,6 +160,8 @@
         
         [[NSUserDefaults standardUserDefaults] setValue:user.userName forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
         
+        [[NSUserDefaults standardUserDefaults] setValue:user.cash forKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
+        
         
         [[NSUserDefaults standardUserDefaults] setValue:@"YES" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
         
@@ -130,6 +172,7 @@
 
 
 - (IBAction)onUpdateMenuTouched:(id)sender {
+    
     if (isLogin) {
         [DAMenuProxy getMenuListApiList];
     } else {
@@ -159,44 +202,12 @@
     
     
     if (isLogin) {
-        [ProgressHUD show:@"正在为你测试打印机，请稍等。"];
-        [[DAPrinterModule alloc]getPrinterList:^(NSError *err, DAPrinterList *list) {
-            [list archiveRootObjectWithPath:@"printer" withName:@"printer"];
-            NSLog(@"%@",list);
-            for (DAPrinter *printSet in list.items) {
-                DAPrintProxy *print = [[DAPrintProxy alloc] init];
-                [print addLine:@"测试打印机"];
-                [print addLine:[NSString stringWithFormat:@"测试名称：%@" ,printSet.name]];
-                
-                [print addLine:@"单号：0021 包：4 下单时间：18:30"];
-                [print addSplit];
-                [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-                [print addLine:@"红烧排骨（大份） 1份"];
-                [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-                [print addLine:@"红烧排骨（大份） 1份"];
-                [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-                [print addLine:@"红烧排骨（大份） 1份"];
-                [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-                [print addLine:@"红烧排骨（大份） 1份"];
-                [print addLine:@"青椒肉丝（小份） 2份 少辣"];
-                [print addSplit];
-                
-                [print printText:printSet.printerIP addTextSize:1 TextHeight:1];
-                if ([printSet.type isEqualToString:@"2"]) {
-                    [printSet archiveRootObjectWithPath:@"printer" withName:@"billprinter"];
-                }
-            }
-            [ProgressHUD dismiss];
-        }];
+        //测试打印机
+        [DAPrintProxy testPrinter];
     } else {
         [ProgressHUD showError:@"请登录"];
     }
     
-    
-
-    
-    
-    [[NSUserDefaults standardUserDefaults] setObject:self.labPrintIP.text forKey:@"jp.co.dreamarts.smart.diandian.PrintIP"];
 
 }
 
@@ -217,7 +228,12 @@
                 setLock2 = YES;
                 [[DALoginModule alloc]updatePattern:key userId:userId callback:^(NSError *error, DAUser *user) {
                     [lockVC.view removeFromSuperview];
-                    [ProgressHUD showError:@"手势密码设置成功。"];
+                    
+                    [[NSUserDefaults standardUserDefaults] setObject:key forKey:@"jp.co.dreamarts.smart.diandian.curWaitterKey"];
+                    
+                    [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"jp.co.dreamarts.smart.diandian.curWaitterKeyStatus"];
+                    
+                    [ProgressHUD showSuccess:@"手势密码设置成功。"];
                     setPassword = key;
                     lockStatus = YES;
                 }];
@@ -234,7 +250,28 @@
 }
 
 - (IBAction)onStartTouched:(id)sender {
+    
     if (isLogin) {
+        //TODO:检查打印机链接
+        DAPrinterList *printList = [[DAPrinterList alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"printer"];
+        if (printList == nil || [printList.items count] == 0) {
+            [ProgressHUD showError:@"打印机未设置"];
+            return;
+        }
+        
+//        for (DAPrinter *printSet in printList.items) {
+//            if ([printSet.valid isEqualToNumber:[NSNumber numberWithInt:0]]) {
+//                [ProgressHUD showError:[NSString stringWithFormat:@"请检查打印机 ：%@ 的状态" ,printSet.name]];
+//                return;
+//            }
+//        }
+        
+        NSString *keyStatus = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterKeyStatus"];
+        if (![@"YES" isEqualToString:keyStatus]) {
+            [ProgressHUD showError:@"请设置手势密码"];
+            return;
+        }
+        
         self.startupBlock();
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {

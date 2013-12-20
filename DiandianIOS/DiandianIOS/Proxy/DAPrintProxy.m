@@ -23,6 +23,56 @@ enum PrintErrorStatus
 {
     NSMutableArray *lines;
 }
++(void) testPrinter
+{
+    
+    [ProgressHUD show:@"正在为你测试打印机，请稍等。"];
+    NSMutableArray *tmpPrinterList = [[NSMutableArray alloc] init];
+    [[DAPrinterModule alloc] getPrinterList:^(NSError *err, DAPrinterList *list) {
+        
+        NSLog(@"%@",list);
+        for (DAPrinter *printSet in list.items) {
+            //初始化当作打印机失效
+            printSet.valid = [NSNumber numberWithInt:0];
+            DAPrintProxy *print = [[DAPrintProxy alloc] init];
+            [print addLine:@"测试打印机"];
+            [print addLine:[NSString stringWithFormat:@"测试名称：%@" ,printSet.name]];
+            
+            [print addLine:@"单号：0021 包：4 下单时间：18:30"];
+            [print addSplit];
+            [print addLine:@"青椒肉丝（小份） 2份"];
+            [print addLine:@"红烧排骨（大份） 1份"];
+            [print addLine:@"青椒肉丝（小份） 2份"];
+            [print addLine:@"红烧排骨（大份） 1份"];
+            [print addLine:@"青椒肉丝（小份） 2份"];
+            [print addLine:@"红烧排骨（大份） 1份"];
+            [print addLine:@"青椒肉丝（小份） 2份"];
+            [print addLine:@"红烧排骨（大份） 1份"];
+            [print addLine:@"青椒肉丝（小份） 2份"];
+            [print addSplit];
+            
+            int result = [print printText:printSet.printerIP addTextSize:1 TextHeight:1];
+            
+            if (result == 0) {
+                //根据返回值  设置 打印机有效
+                printSet.valid = [NSNumber numberWithInt:1];
+                
+            }
+            
+            if ([printSet.type isEqualToString:@"2"]) {
+                [printSet archiveRootObjectWithPath:@"printer" withName:@"billprinter"];
+            }
+            [tmpPrinterList addObject:printSet];
+        }
+        
+        list.items = [[NSArray alloc] initWithArray:tmpPrinterList];
+        [list archiveRootObjectWithPath:@"printer" withName:@"printer"];
+        
+        [ProgressHUD dismiss];
+        
+    }];
+
+}
 
 +(void) printBill: (NSString *) serviceId off:(NSString *)off pay:(NSString *)pay type:(NSInteger * )type reduce :(NSString *)reduce
 {
@@ -175,6 +225,10 @@ enum PrintErrorStatus
     DAPrinter *defaultPrinter = nil;
     
     DAPrinterList *printtList = [[DAPrinterList alloc]unarchiveObjectWithFileWithPath:@"printer" withName:@"printer"];
+    if (printtList == nil || [printtList.items count] == 0) {
+        [ProgressHUD showError:@"请设置打印机"];
+        return;
+    }
     NSMutableDictionary *SystemPrintSet = [[NSMutableDictionary alloc]init];
     for (DAPrinter *printerSet in printtList.items ) {
         
@@ -192,6 +246,7 @@ enum PrintErrorStatus
     
     for (DAOrder *willOrder in orderList.items) {
         if (willOrder.item.printerId !=nil && willOrder.item.printerId.length > 0) {
+            NSLog(@"打印机调试 %@" , willOrder.item.printerId);
             NSMutableArray *printerOrderList = [SystemPrintSet objectForKey:willOrder.item.printerId];
             
             [printerOrderList addObject:willOrder];
@@ -231,7 +286,7 @@ enum PrintErrorStatus
             [print addSplit];
             
             
-            [print printText:defaultPrinter.printerIP addTextSize:2 TextHeight:3];
+            [print printText:printerSet.printerIP addTextSize:2 TextHeight:3];
             
         }
     
@@ -343,10 +398,15 @@ enum PrintErrorStatus
     // open printer
     EposPrint *printer = [self getPrinter:ip];
     
+    if (printer == nil) {
+        return -1;
+    }
+    
     // send builder data
     unsigned long status = 0;
     unsigned long battery = 0;
     result = [printer sendData:builder Timeout:SEND_TIMEOUT Status:&status Battery:&battery];
+    NSLog(@"send data  %d" ,result);
     if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }

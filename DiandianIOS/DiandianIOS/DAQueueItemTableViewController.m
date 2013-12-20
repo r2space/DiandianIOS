@@ -95,9 +95,10 @@
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
     DADesk *desk = order.desk;
 
-    [ProgressHUD show:nil];
+    
     [[DAOrderModule alloc] setDoneOrder:order._id callback:^(NSError *err, DAOrder *list) {
-        [ProgressHUD dismiss];
+    
+        
         self.selectDeskBlock(order._id , desk._id);
     }];
     

@@ -47,6 +47,9 @@
     }];
     
 }
+- (IBAction)onBackTouched:(id)sender {
+    self.confirmCallback();
+}
 
 - (void)didReceiveMemoryWarning
 {

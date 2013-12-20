@@ -24,4 +24,6 @@
 
 +(void) printBill: (NSString *) serviceId off:(NSString *)off pay:(NSString *)pay type:(NSInteger * )type reduce :(NSString *)reduce;
 
++(void) testPrinter;
+
 @end

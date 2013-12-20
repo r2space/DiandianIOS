@@ -13,8 +13,5 @@
 
 @interface DAViewController : UIViewController
 
-- (IBAction)pushMenuBook:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *pushTableOpen;
-- (IBAction)toTable:(id)sender;
 
 @end

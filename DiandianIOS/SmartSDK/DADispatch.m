@@ -15,6 +15,11 @@
 
 +(void )dealWithAction:(NSString *)action data:(id)data
 {
+    if ([@"refresh_order" isEqualToString:action]) {
+        
+        [DAOrderProxy refreshOrderList:data];
+        
+    }
     
     if ([@"refreshOrder" isEqualToString:action]) {
         

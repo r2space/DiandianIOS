@@ -30,7 +30,6 @@
     
     NSMutableArray *freeDataList = [[NSMutableArray alloc]init];
     [freeDataList addObject:self.order._id];
-    [ProgressHUD show:@"退菜中"];
     
     [[DAOrderModule alloc] setFreeOrderWithArray:freeDataList deskId:@"" callback:^(NSError *err, DAMyOrderList *order) {
         if (err!=nil) {
@@ -39,7 +38,8 @@
         if (self.freeCallback !=nil) {
             self.freeCallback();
         }
-        [ProgressHUD show:@"免单成功"];        
+        
+        
     }];
 }
 
@@ -48,12 +48,11 @@
     NSMutableArray *backDataList = [[NSMutableArray alloc]init];
     [backDataList addObject:self.order._id];
     
-    [ProgressHUD show:@"退菜中"];
     [[DAOrderModule alloc]setBackOrderWithArray:backDataList deskId:@"" callback:^(NSError *err, DAMyOrderList *order) {
         if (self.backCallback !=nil) {
             self.backCallback();
         }
-        [ProgressHUD show:@"退菜成功"];
+        
     }];
     
 }

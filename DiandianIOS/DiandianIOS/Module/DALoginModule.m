@@ -17,6 +17,7 @@
 
 @implementation DALoginModule
 
+
 + (NSString *)getLoginUserId
 {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kHTTPUser];
@@ -146,7 +147,8 @@
 // 注销
 - (void)logout:(NSString *)token  callback:(void (^)(NSError *error))callback
 {
-    NSString *path = [NSString stringWithFormat:kURLLogout, token];    
+    NSString *path = [NSString stringWithFormat:kURLLogout, token];
+
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject){
         // 删除UserDefautls信息
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kHTTPCookie];

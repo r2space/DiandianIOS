@@ -39,7 +39,7 @@ static DASettingViewController *loginViewController;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [self fetch];
     loginViewController = [[DASettingViewController alloc] initWithNibName:nil bundle:nil];
     
     NSString *_username = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.username"];
@@ -48,10 +48,27 @@ static DASettingViewController *loginViewController;
     
     [[NSUserDefaults standardUserDefaults]  setObject:@"NO" forKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
     
-    
     if (_username.length == 0 || _password.length == 0) {
-        
+        [self showSettingView];
     } else {
+        
+        DAPrinterList *printList = [[DAPrinterList alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"printer"];
+        if (printList == nil || [printList.items count] == 0) {
+            return;
+        }
+        
+//        for (DAPrinter *printSet in printList.items) {
+//            if ([printSet.valid isEqualToNumber:[NSNumber numberWithInt:0]]) {
+//                [ProgressHUD showError:[NSString stringWithFormat:@"请检查打印机 ：%@ 的状态" ,printSet.name]];
+//                return;
+//            }
+//        }
+        
+        NSString *keyStatus = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterKeyStatus"];
+        if (![@"YES" isEqualToString:keyStatus]) {
+            return;
+        }
+        
         [[DALoginModule alloc]yukarilogin:_username password:_password code:nil callback:^(NSError *error, DAUser *user) {
             
             if (error != nil) {
@@ -66,15 +83,18 @@ static DASettingViewController *loginViewController;
             [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
             
             [[NSUserDefaults standardUserDefaults] setValue:user.userName forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
+            
+            [[NSUserDefaults standardUserDefaults] setValue:user.cash forKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
             //自动登录
             DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
             [self.navigationController pushViewController:viewController animated:NO];
+            [loginViewController dismissViewControllerAnimated:YES completion:nil];
 
         }];
     }
     
     
-    [self fetch];
+    
 }
 
 - (void) fetch
@@ -107,10 +127,18 @@ static DASettingViewController *loginViewController;
 }
 
 - (IBAction)onStartTouched:(id)sender {
+    [self showSettingView];
+}
+
+- (void) showSettingView
+{
     // is not logged in
     loginViewController.startupBlock=^(){
         DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
+        
         [self.navigationController pushViewController:viewController animated:YES];
+        [loginViewController dismissViewControllerAnimated:YES completion:nil];
+        
     };
     // init navigation ctrl
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
@@ -118,19 +146,5 @@ static DASettingViewController *loginViewController;
     navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     
     [self presentViewController:navigationController animated:YES completion:nil];
-}
-
-- (IBAction)toTable:(id)sender {
-    DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-- (IBAction)showBill:(id)sender {
-    DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
-
-- (IBAction)showOrderQueue:(id)sender {
-    DAOrderQueueViewController *viewController = [[DAOrderQueueViewController alloc] initWithNibName:@"DAOrderQueueViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
 }
 @end

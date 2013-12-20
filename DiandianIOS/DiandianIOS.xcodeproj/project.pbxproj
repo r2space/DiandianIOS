@@ -249,6 +249,9 @@
 		0AB78B84183CB46500979BD0 /* Jastor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B38183CB46500979BD0 /* Jastor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0AB78B85183CB46500979BD0 /* JastorRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B3A183CB46500979BD0 /* JastorRuntimeHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0AB78B86183CB46500979BD0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78B3D183CB46500979BD0 /* Reachability.m */; };
+		0AC390611860985B0091AFB7 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC3905C1860985B0091AFB7 /* TMCache.m */; };
+		0AC390621860985B0091AFB7 /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC3905E1860985B0091AFB7 /* TMDiskCache.m */; };
+		0AC390631860985B0091AFB7 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC390601860985B0091AFB7 /* TMMemoryCache.m */; };
 		0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */; };
 		0AEBE5201830EDAA00B01A5E /* DAMyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE51F1830EDAA00B01A5E /* DAMyOrderCell.xib */; };
 		0AEBE5241831027600B01A5E /* price_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5231831027600B01A5E /* price_tag.png */; };
@@ -709,6 +712,12 @@
 		0AB78B3C183CB46500979BD0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		0AB78B3D183CB46500979BD0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		0AB78B93183CDC4A00979BD0 /* SmartSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmartSDK.h; sourceTree = "<group>"; };
+		0AC3905B1860985B0091AFB7 /* TMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMCache.h; path = Thirdparty/TMCache/TMCache.h; sourceTree = "<group>"; };
+		0AC3905C1860985B0091AFB7 /* TMCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMCache.m; path = Thirdparty/TMCache/TMCache.m; sourceTree = "<group>"; };
+		0AC3905D1860985B0091AFB7 /* TMDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMDiskCache.h; path = Thirdparty/TMCache/TMDiskCache.h; sourceTree = "<group>"; };
+		0AC3905E1860985B0091AFB7 /* TMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMDiskCache.m; path = Thirdparty/TMCache/TMDiskCache.m; sourceTree = "<group>"; };
+		0AC3905F1860985B0091AFB7 /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMMemoryCache.h; path = Thirdparty/TMCache/TMMemoryCache.h; sourceTree = "<group>"; };
+		0AC390601860985B0091AFB7 /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMMemoryCache.m; path = Thirdparty/TMCache/TMMemoryCache.m; sourceTree = "<group>"; };
 		0AEBE51C1830ED9800B01A5E /* DAMyOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderCell.h; sourceTree = "<group>"; };
 		0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderCell.m; sourceTree = "<group>"; };
 		0AEBE51F1830EDAA00B01A5E /* DAMyOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyOrderCell.xib; sourceTree = "<group>"; };
@@ -843,6 +852,7 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0AC39017186098260091AFB7 /* TMCache */,
 				0A4E47F81857133000CEC3DE /* CCSegmentedControl */,
 				0A4E47EB1857127D00CEC3DE /* CWPopup */,
 				0A54D6A5184C710D00BBA9C4 /* ZenKeyboard */,
@@ -1543,6 +1553,19 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		0AC39017186098260091AFB7 /* TMCache */ = {
+			isa = PBXGroup;
+			children = (
+				0AC3905B1860985B0091AFB7 /* TMCache.h */,
+				0AC3905C1860985B0091AFB7 /* TMCache.m */,
+				0AC3905D1860985B0091AFB7 /* TMDiskCache.h */,
+				0AC3905E1860985B0091AFB7 /* TMDiskCache.m */,
+				0AC3905F1860985B0091AFB7 /* TMMemoryCache.h */,
+				0AC390601860985B0091AFB7 /* TMMemoryCache.m */,
+			);
+			name = TMCache;
+			sourceTree = "<group>";
+		};
 		0AEBE52B1831161B00B01A5E /* group */ = {
 			isa = PBXGroup;
 			children = (
@@ -2054,6 +2077,7 @@
 				0AB78B82183CB46500979BD0 /* AFXMLRequestOperation.m in Sources */,
 				0A7AF0BA183606B900635376 /* DAQueueItemTableViewController.m in Sources */,
 				0AB78B7D183CB46500979BD0 /* AFImageRequestOperation.m in Sources */,
+				0AC390631860985B0091AFB7 /* TMMemoryCache.m in Sources */,
 				0A4E47FE1857137A00CEC3DE /* Util.m in Sources */,
 				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
@@ -2080,6 +2104,7 @@
 				0A4E47E3185711CC00CEC3DE /* DrawPatternLockView.m in Sources */,
 				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
 				28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */,
+				0AC390621860985B0091AFB7 /* TMDiskCache.m in Sources */,
 				0AB78B3F183CB46500979BD0 /* DAAFHttpOperation.m in Sources */,
 				0A4E47BE1857110D00CEC3DE /* DAUserModule.m in Sources */,
 				0AA031A8184334D100C66590 /* DADispatch.m in Sources */,
@@ -2120,6 +2145,7 @@
 				0A54D6A4184C6B8800BBA9C4 /* DABill.m in Sources */,
 				0AA032071843558300C66590 /* SRWebSocket.m in Sources */,
 				0A4E47A91856F56500CEC3DE /* DANotificationProxy.m in Sources */,
+				0AC390611860985B0091AFB7 /* TMCache.m in Sources */,
 				0A4E47C91857112300CEC3DE /* DAService.m in Sources */,
 				28414E9918349EFC009210AF /* DAAnimation.m in Sources */,
 				0AB78B7B183CB46500979BD0 /* AFHTTPClient.m in Sources */,
@@ -2267,7 +2293,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "85193E86-E45E-45DA-B677-8D1C6B44AFE4";
+				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -2302,7 +2328,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "85193E86-E45E-45DA-B677-8D1C6B44AFE4";
+				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -2326,7 +2352,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "997F4624-C03B-4847-8FCE-7335BCDB3D45";
+				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2349,7 +2375,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "997F4624-C03B-4847-8FCE-7335BCDB3D45";
+				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

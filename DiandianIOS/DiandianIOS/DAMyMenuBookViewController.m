@@ -89,21 +89,16 @@
     [self.collectionView reloadData];
     
     DAMenu *menu = [menuList.items objectAtIndex:menuIndex];
-    self.pageControl.numberOfPages = [menu.items count] / pageItemCount ;
-    if ([menu.items count] % pageItemCount !=0) {
-        self.pageControl.numberOfPages = self.pageControl.numberOfPages + 1;
-    }
+    self.pageControl.numberOfPages = [menu.page integerValue];
+                                      
     
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [self loadFromDisk];
-    timer = [NSTimer scheduledTimerWithTimeInterval:3
-                                             target:self
-                                           selector:@selector(timerEvent:)
-                                           userInfo:nil
-                                            repeats:YES];
+    [super viewWillAppear:animated];
+    
 }
 
 -(void)loadFromDisk{
@@ -156,7 +151,25 @@
     UILabel *labelAmount = (UILabel *)[cell viewWithTag:19];
     
     titleLabel.text = data.item.itemName;
-    [imageView setImage:[DAMenuProxy getImageFromDisk:data.item.smallimage]];
+    
+//    [imageView setImage:[DAMenuProxy getImageFromDisk:data.item.smallimage]];
+    [[TMCache sharedCache] objectForKey:data.item.smallimage
+                                    block:^(TMCache *cache, NSString *key, id object) {
+                                        if (object) {
+
+                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                            NSLog(@"cacheed");
+                                            [imageView setImage:(UIImage *)object];
+                                        });
+                                        return;
+                                    }
+                                        NSLog(@"cache miss, requesting %@", data.item.smallimage);
+
+                                        UIImage *image = [DAMenuProxy getImageFromDisk:data.item.smallimage];
+
+                                        [imageView setImage:image];
+                                            
+                                    }];
 
     imageView.layer.cornerRadius = 10;
     imageView.layer.masksToBounds = YES;
@@ -213,6 +226,9 @@
     float  my = 391;
     float  bx = 699;
     float  by = 624;
+    dispatch_async(dispatch_get_main_queue(), ^{
+       
+
     
     if ([data.row intValue] == 1 && [data.column intValue] == 1 ) {
         [addBtn setFrame:CGRectMake(x,y,83 ,27.5)];
@@ -240,7 +256,7 @@
         [titleLabel setFrame:CGRectMake(10, by + 10 , titleLabel.frame.size.width, titleLabel.frame.size.height)];
     }
     
-
+    });
 
     
     

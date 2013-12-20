@@ -10,7 +10,7 @@
 #import "DABookCell.h"
 #import "CustomLayout.h"
 #import "RFQuiltLayout.h"
-
+#import "TMCache.h"
 typedef enum {
     MenuBookList    = 0,
     MenuBookDetail  = 1

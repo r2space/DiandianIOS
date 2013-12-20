@@ -114,11 +114,11 @@
 
 
 - (void)loadFromFile {
-    [ProgressHUD show:nil];
+
     [[DAOrderModule alloc] getDeskListOfNeItemOrder:^(NSError *err, DAMyOrderList *list) {
         dataList = [DAOrderProxy getOneDeskDataList:list];
         [self.tableView reloadData];
-        [ProgressHUD dismiss];
+
         
     }];
     

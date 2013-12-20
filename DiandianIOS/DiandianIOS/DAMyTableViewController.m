@@ -136,7 +136,7 @@ static DAMyTableViewController *activity;
 }
 
 -(void)loadFromFile{
-    [ProgressHUD show:nil];
+
     
     [[DADeskModule alloc] getDeskListWithArchiveName:nil callback:^(NSError *err, DADeskList *list) {
         dataList = [[NSMutableArray alloc]init];
@@ -144,8 +144,8 @@ static DAMyTableViewController *activity;
             [dataList addObject: d];
         }
         [self.collectionView reloadData];
-        [ProgressHUD dismiss];
     }];
+    
 }
 
 
@@ -370,8 +370,15 @@ static DAMyTableViewController *activity;
 }
 
 - (IBAction)showOrderQueueTouched:(id)sender {
-    DAQueueMasterViewController *viewController = [[DAQueueMasterViewController alloc] initWithNibName:@"DAQueueMasterViewController" bundle:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
+    NSNumber *hasCash = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
+    if (hasCash!=nil && [hasCash boolValue]) {
+        
+        DAQueueMasterViewController *viewController = [[DAQueueMasterViewController alloc] initWithNibName:@"DAQueueMasterViewController" bundle:nil];
+        [self.navigationController pushViewController:viewController animated:YES];
+    } else {
+        [ProgressHUD showError:@"只有后厨才能上菜"];
+        
+    }
 
 }
 
@@ -380,6 +387,7 @@ static DAMyTableViewController *activity;
 }
 
 - (IBAction)onLogoutTouched:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"jp.co.dreamarts.smart.diandian.password"];
     [[DALoginModule alloc] logout:@"diandian" callback:^(NSError *error) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
         

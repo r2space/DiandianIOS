@@ -13,6 +13,7 @@
 
 
 + (void) getMenuListApiList;
-
++(NSString *)resourceURLString:(NSString *)name;
 + (UIImage *)getImageFromDisk :(NSString *)name;
++ (NSString *)imagePath:(NSString *)name;
 @end

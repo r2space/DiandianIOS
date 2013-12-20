@@ -327,7 +327,7 @@
         self.orderList.items = [[NSArray alloc]initWithArray:tmpArray];
         [self tableViewReload];
     } else {
-        [ProgressHUD showError:@"已经点的菜就不能删了啊,嘻嘻嘻"];
+        [ProgressHUD showError:@"已经点的菜就不能删除"];
     }
     
 }
