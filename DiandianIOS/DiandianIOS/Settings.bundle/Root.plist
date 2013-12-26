@@ -38,6 +38,76 @@
 			<key>DefaultValue</key>
 			<false/>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>机器码</string>
+			<key>Key</key>
+			<string>diandian_code</string>
+			<key>DefaultValue</key>
+			<string>ZW001</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>用户名</string>
+			<key>Key</key>
+			<string>diandian_username</string>
+			<key>DefaultValue</key>
+			<string>sara</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>DefaultValue</key>
+			<string>sara</string>
+			<key>Title</key>
+			<string>密码</string>
+			<key>IsSecure</key>
+			<true/>
+			<key>Key</key>
+			<string>diandian_password</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>服务器</string>
+			<key>Key</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>服务器IP</string>
+			<key>Key</key>
+			<string>diandian_host</string>
+			<key>DefaultValue</key>
+			<string>115.28.161.172</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>DefaultValue</key>
+			<string>3000</string>
+			<key>Title</key>
+			<string>服务器端口</string>
+			<key>Key</key>
+			<string>diandian_port</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>断网模式</string>
+			<key>Key</key>
+			<string>diandain_mod</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
 	</array>
 	<key>StringsTable</key>
 	<string>Root</string>

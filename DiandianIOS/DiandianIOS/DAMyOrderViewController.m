@@ -371,19 +371,25 @@
             deskId = [NSString stringWithFormat:@"%@" ,self.curService.deskId];
         }
 
-        
-        [[DAOrderModule alloc] addOrder:orderList serviceId:self.curService._id deskId:deskId callback:^(NSError *err, DAMyOrderList *list) {
-
+        if (self.curService != nil) {
+            [[DAOrderModule alloc] addOrder:orderList serviceId:self.curService._id deskId:deskId callback:^(NSError *err, DAMyOrderList *list) {
+                
                 if ([self.curService.type integerValue] == 3) {
                     [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone tips:@""];
                 } else {
                     [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@"" tips:tips];
                 }
-            
+                
+                [ProgressHUD dismiss];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }];
+        } else {
             [ProgressHUD dismiss];
             [self.navigationController popViewControllerAnimated:YES];
             
-        }];
+        }
+        
  
     
         

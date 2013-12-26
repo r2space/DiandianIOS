@@ -19,6 +19,8 @@
     [aCoder encodeObject:self.createby forKey:@"createby"];
     [aCoder encodeObject:self.editat forKey:@"editat"];
     [aCoder encodeObject:self.editby forKey:@"editby"];
+    [aCoder encodeObject:self.valid forKey:@"valid"];
+    
     
     [aCoder encodeObject:self._status forKey:@"_status"];
     [aCoder encodeObject:self._error forKey:@"_error"];
@@ -32,6 +34,8 @@
     self.createby = [aDecoder decodeObjectForKey:@"createby"];
     self.editat = [aDecoder decodeObjectForKey:@"editat"];
     self.editby = [aDecoder decodeObjectForKey:@"editby"];
+    self.valid = [aDecoder decodeObjectForKey:@"valid"];
+    
     self._status = [aDecoder decodeObjectForKey:@"_status"];
     self._error = [aDecoder decodeObjectForKey:@"_error"];
     

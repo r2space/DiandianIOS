@@ -40,6 +40,8 @@
     
     DAMyOrderLoginViewController * loginVC =[[DAMyOrderLoginViewController alloc]initWithNibName:@"DAMyOrderLoginViewController" bundle:nil];
     loginVC.delegate = self;
+    loginVC.curService = self.curService;
+    
     [self presentPopupViewController:loginVC animationType:MJPopupViewAnimationFade];
 }
 

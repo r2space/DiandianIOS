@@ -23,9 +23,9 @@
 @property(retain, nonatomic) NSString *bigimage;
 @property(retain, nonatomic) NSString *smallimage;
 @property(retain, nonatomic) NSNumber *type;
+@property(retain, nonatomic) NSNumber *soldout;
 
-
-@property(retain, nonatomic) NSString *amount;
+@property(retain, nonatomic) NSNumber *amount;
 @property(retain, nonatomic) NSString *status;
 
 @end

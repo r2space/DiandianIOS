@@ -46,6 +46,7 @@
     }
     
     DAMyMenuBookViewController *book = [[DAMyMenuBookViewController alloc] initWithNibName:@"DAMyMenuBookViewController" bundle:nil];
+    book.curService = self.curService;
     [self addChildViewController:book];
     [self.MenuGird addSubview:book.view];
     

@@ -15,6 +15,9 @@
 
 #define API_MENU_LIST           @"/api/menu/list.json"
 #define API_DESK_LIST           @"/api/desk/list.json"
+#define API_SOLDOUT_ITEM_LIST   @"/api/soldout/list.json"
+#define API_ITEM_LIST           @"/api/item/list.json?start=%d&count=%d&keyword=%@&soldoutType=%@"
+#define API_TAG_LIST            @"/api/tag/list.json?count=100&start=0"
 
 #define API_GET_TAKEOUT_SERVICELIST       @"/api/service/takeoutList.json"
 
@@ -23,6 +26,9 @@
 #define API_GET_BILL            @"/api/bill/get.json?serviceId=%@"
 #define API_STOP_BILL           @"/api/bill/stop.json"
 
+#define API_ADD_SOLDOUT         @"/api/soldout/add.json"
+#define API_REMOVE_SOLDOUT         @"/api/soldout/remove.json"
+#define API_REMOVEALL_SOLDOUT         @"/api/soldout/removeAll.json"
 
 #define API_ADD_SCHEDULE        @"/api/schedule/add.json"
 #define API_REMOVE_SCHEDULE     @"/api/schedule/remove.json"
@@ -81,6 +87,7 @@
 #import "DAUserModule.h"
 #import "DAScheduleModule.h"
 #import "DAPrinterModule.h"
+#import "DAItemModule.h"
 
 
 #import "DAGroup.h"
@@ -106,5 +113,11 @@
 #import "DAScheduleList.h"
 #import "DAPrinter.h"
 #import "DAPrinterList.h"
+#import "DAItemList.h"
+#import "DATag.h"
+#import "DATagList.h"
+#import "DASoldout.h"
+#import "DASoldoutList.h"
+
 
 #endif

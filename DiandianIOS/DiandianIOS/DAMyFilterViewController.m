@@ -14,6 +14,7 @@
 {
     NSMutableArray *elements;
     DAMenuList *menuList;
+    CCSegmentedControl* segmentedControl;
 }
 @end
 
@@ -38,7 +39,7 @@
     
     [self loadFromDisk];
     // Do any additional setup after loading the view from its nib.
-    CCSegmentedControl* segmentedControl = [[CCSegmentedControl alloc] initWithItems:elements];
+    segmentedControl = [[CCSegmentedControl alloc] initWithItems:elements];
     segmentedControl.frame = CGRectMake(0, 0, 862, 67);
     
     //设置背景图片，或者设置颜色，或者使用默认白色外观
@@ -57,6 +58,7 @@
     
     [segmentedControl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(segmentedControlReload:) name:@"segmentedControlReload" object:nil];
 }
 
 -(void)loadFromDisk{
@@ -69,16 +71,20 @@
     }
 }
 
+- (void)segmentedControlReload:(NSNotification
+                                *)sender
+{
+    NSString *index = [sender object];
+    segmentedControl.selectedSegmentIndex = [index integerValue];
+}
 
 - (void)valueChanged:(id)sender
 {
-    CCSegmentedControl* segmentedControl = sender;
-    NSString *index = [NSString stringWithFormat:@"%d",segmentedControl.selectedSegmentIndex];
+    CCSegmentedControl* segmented = sender;
+    NSString *index = [NSString stringWithFormat:@"%d",segmented.selectedSegmentIndex];
     
     
-    DAMenu *menu = [menuList.items objectAtIndex:[index intValue]];
-    
-    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:menu];
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:index];
     
     [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
     

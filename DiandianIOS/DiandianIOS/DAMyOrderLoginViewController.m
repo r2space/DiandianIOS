@@ -106,24 +106,39 @@
 
 
 - (IBAction)confirmOrderTouched:(id)sender {
-    willSave = [NSString stringWithFormat:@"confirm"];
-    errorCount = 0 ;
-    [ProgressHUD showError:@"请验证手势密码"];
-    [lockVC setTarget:self withAction:@selector(lockEntered:)];
-    lockVC.view.frame = CGRectMake(0, 0, 556, 349);
-    [self addChildViewController:lockVC];
-    [self.view addSubview:lockVC.view];
+    if (self.curService != nil) {
+        willSave = [NSString stringWithFormat:@"confirm"];
+        errorCount = 0 ;
+        [ProgressHUD showError:@"请验证手势密码"];
+        [lockVC setTarget:self withAction:@selector(lockEntered:)];
+        lockVC.view.frame = CGRectMake(0, 0, 556, 349);
+        [self addChildViewController:lockVC];
+        [self.view addSubview:lockVC.view];
+    } else {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(confirmOrderButtonClicked:)]) {
+            [self.delegate confirmOrderButtonClicked:self];
+        }
+        
+    }
+
 }
 
 - (IBAction)cancelOrderTouched:(id)sender {
-    
-    willSave = [NSString stringWithFormat:@"cancel"];
-    errorCount = 0;
-    [ProgressHUD showError:@"请验证手势密码"];
-    [lockVC setTarget:self withAction:@selector(lockEntered:)];
-    lockVC.view.frame = CGRectMake(0, 0, 556, 349);
-    [self addChildViewController:lockVC];
-    [self.view addSubview:lockVC.view];
+    if (self.curService != nil) {
+        
+        willSave = [NSString stringWithFormat:@"cancel"];
+        errorCount = 0;
+        [ProgressHUD showError:@"请验证手势密码"];
+        [lockVC setTarget:self withAction:@selector(lockEntered:)];
+        lockVC.view.frame = CGRectMake(0, 0, 556, 349);
+        [self addChildViewController:lockVC];
+        [self.view addSubview:lockVC.view];
+        
+    } else {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(cancelOrderButtonClicked:)]) {
+            [self.delegate cancelOrderButtonClicked:self];
+        }
+    }
     
 }
 

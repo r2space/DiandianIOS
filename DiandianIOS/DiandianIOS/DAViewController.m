@@ -13,6 +13,8 @@
 #import "DAMenuProxy.h"
 
 #import "DASettingViewController.h"
+#import "DASaledViewController.h"
+#import "DARootViewController.h"
 
 #import "SmartSDK.h"
 
@@ -142,6 +144,14 @@ static DASettingViewController *loginViewController;
         [loginViewController dismissViewControllerAnimated:YES completion:nil];
         
     };
+    loginViewController.menuViewBlock = ^(){
+        UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+        DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+        menubookVC.curService = nil;
+        menubookVC.willAddItem = @"NO";
+        [self.navigationController pushViewController:menubookVC animated:YES];
+        [loginViewController dismissViewControllerAnimated:YES completion:nil];
+    };
     // init navigation ctrl
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
     navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -149,4 +159,11 @@ static DASettingViewController *loginViewController;
     
     [self presentViewController:navigationController animated:YES completion:nil];
 }
+    
+- (IBAction)onSaledTouched:(id)sender {
+    DASaledViewController *saledVC = [[DASaledViewController alloc] initWithNibName:@"DASaledViewController" bundle:nil];
+    [self.navigationController pushViewController:saledVC animated:YES];
+    NSLog(@"on saled touched");
+}
+
 @end

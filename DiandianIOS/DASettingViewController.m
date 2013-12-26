@@ -12,7 +12,7 @@
 #import "ProgressHUD.h"
 #import "OpenUDID.h"
 #import "DAPrintProxy.h"
-
+#import "DARootViewController.h"
 
 @interface DASettingViewController ()
 {
@@ -305,6 +305,10 @@
 -(void)dismissVC
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)onMenuViewTouched:(id)sender {
+    self.menuViewBlock();
 }
 
 @end

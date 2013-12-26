@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SmartSDK.h"
 typedef void (^StartUpBlock)();
+typedef void (^MenuViewBlock)();
 
 @interface DASettingViewController : UIViewController
 
@@ -18,6 +19,8 @@ typedef void (^StartUpBlock)();
 @property (weak, nonatomic) IBOutlet UILabel *labLoginStatus;
 
 @property (nonatomic, copy) StartUpBlock startupBlock;
+@property (nonatomic, copy) MenuViewBlock menuViewBlock;
+
 
 
 -(void)dismissVC;

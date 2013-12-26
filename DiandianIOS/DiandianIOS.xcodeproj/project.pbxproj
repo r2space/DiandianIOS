@@ -23,6 +23,10 @@
 		0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD80182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard */; };
 		0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A07BD88182A363000A350BC /* DAMyTableViewController.m */; };
 		0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A07BD89182A363000A350BC /* DAMyTableViewController.xib */; };
+		0A0B7C24186959A30041704F /* DATagListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B7C23186959A30041704F /* DATagListCell.xib */; };
+		0A0B7C27186963BC0041704F /* DASoldout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B7C26186963BC0041704F /* DASoldout.m */; };
+		0A0B7C2A186985580041704F /* DASoldoutList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A0B7C29186985580041704F /* DASoldoutList.m */; };
+		0A0B7C2C186AC5EB0041704F /* soldout.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0B7C2B186AC5EB0041704F /* soldout.png */; };
 		0A12D3BE183C9CA000B8F930 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */; };
 		0A12D3C0183C9CA800B8F930 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */; };
 		0A12D3C4183CA75600B8F930 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A12D3C3183CA75600B8F930 /* CFNetwork.framework */; };
@@ -44,6 +48,8 @@
 		0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */; };
 		0A3DB730182B1F5100170F0C /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72F182B1F5100170F0C /* table.png */; };
 		0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */; };
+		0A4099141869104A000E8E24 /* DATag.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4099131869104A000E8E24 /* DATag.m */; };
+		0A4099171869105F000E8E24 /* DATagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4099161869105F000E8E24 /* DATagList.m */; };
 		0A40FDE4183CEDB400427613 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A40FDE3183CEDB400427613 /* Security.framework */; };
 		0A40FDE6183CEDCD00427613 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A40FDE5183CEDCD00427613 /* libicucore.dylib */; };
 		0A40FE0C183F1C6800427613 /* DAOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE0B183F1C6800427613 /* DAOrder.m */; };
@@ -171,6 +177,19 @@
 		0A7AF0DF183612EF00635376 /* DAQueueMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0DD183612EF00635376 /* DAQueueMasterViewController.xib */; };
 		0A7EA1EE1847426D00A9E287 /* DASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EA1EC1847426D00A9E287 /* DASettingViewController.m */; };
 		0A7EA1EF1847426D00A9E287 /* DASettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7EA1ED1847426D00A9E287 /* DASettingViewController.xib */; };
+		0A85479D1867FDB500C051D8 /* DASaledViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A85479B1867FDB500C051D8 /* DASaledViewController.m */; };
+		0A85479E1867FDB500C051D8 /* DASaledViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A85479C1867FDB500C051D8 /* DASaledViewController.xib */; };
+		0A8547A61868081C00C051D8 /* DAItemList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8547A51868081C00C051D8 /* DAItemList.m */; };
+		0A8547A91868091800C051D8 /* DAItemModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8547A81868091800C051D8 /* DAItemModule.m */; };
+		0A8547AB186830A400C051D8 /* DASoldOutViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8547AA186830A400C051D8 /* DASoldOutViewCell.xib */; };
+		0A8547AE186838CB00C051D8 /* DASoldButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8547AD186838CB00C051D8 /* DASoldButton.m */; };
+		0A8547B218684E7E00C051D8 /* DASaledSeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8547B018684E7E00C051D8 /* DASaledSeachViewController.m */; };
+		0A8547B318684E7E00C051D8 /* DASaledSeachViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8547B118684E7E00C051D8 /* DASaledSeachViewController.xib */; };
+		0A8547B718684EA400C051D8 /* DAItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8547B518684EA300C051D8 /* DAItemListViewController.m */; };
+		0A8547B818684EA400C051D8 /* DAItemListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8547B618684EA400C051D8 /* DAItemListViewController.xib */; };
+		0A8547BB1868508100C051D8 /* DAItemListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8547BA1868508100C051D8 /* DAItemListCell.m */; };
+		0A8547BD1868509C00C051D8 /* DAItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A8547BC1868509C00C051D8 /* DAItemListCell.xib */; };
+		0A8547C11868528900C051D8 /* DWTagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8547C01868528900C051D8 /* DWTagList.m */; };
 		0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C2F3E182DDDD70080F15F /* CustomLayout.m */; };
 		0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A924AA31834899A0004C973 /* DAMyOrderQueueViewController.m */; };
 		0A924AA61834899A0004C973 /* DAMyOrderQueueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A924AA41834899A0004C973 /* DAMyOrderQueueViewController.xib */; };
@@ -354,6 +373,12 @@
 		0A07BD87182A363000A350BC /* DAMyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTableViewController.h; sourceTree = "<group>"; };
 		0A07BD88182A363000A350BC /* DAMyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyTableViewController.m; sourceTree = "<group>"; };
 		0A07BD89182A363000A350BC /* DAMyTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyTableViewController.xib; sourceTree = "<group>"; };
+		0A0B7C23186959A30041704F /* DATagListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DATagListCell.xib; path = View/Saled/DATagListCell.xib; sourceTree = "<group>"; };
+		0A0B7C25186963BC0041704F /* DASoldout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASoldout.h; path = Entities/DASoldout.h; sourceTree = "<group>"; };
+		0A0B7C26186963BC0041704F /* DASoldout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASoldout.m; path = Entities/DASoldout.m; sourceTree = "<group>"; };
+		0A0B7C28186985580041704F /* DASoldoutList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASoldoutList.h; path = Entities/DASoldoutList.h; sourceTree = "<group>"; };
+		0A0B7C29186985580041704F /* DASoldoutList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASoldoutList.m; path = Entities/DASoldoutList.m; sourceTree = "<group>"; };
+		0A0B7C2B186AC5EB0041704F /* soldout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soldout.png; sourceTree = "<group>"; };
 		0A12D3BD183C9CA000B8F930 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0A12D3BF183C9CA800B8F930 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0A12D3C1183CA74600B8F930 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -384,6 +409,10 @@
 		0A3DB72F182B1F5100170F0C /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
 		0A3DB731182B21B500170F0C /* DAMyMenuBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuBookCell.h; sourceTree = "<group>"; };
 		0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuBookCell.m; sourceTree = "<group>"; };
+		0A4099121869104A000E8E24 /* DATag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DATag.h; path = Entities/DATag.h; sourceTree = "<group>"; };
+		0A4099131869104A000E8E24 /* DATag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DATag.m; path = Entities/DATag.m; sourceTree = "<group>"; };
+		0A4099151869105F000E8E24 /* DATagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DATagList.h; path = Entities/DATagList.h; sourceTree = "<group>"; };
+		0A4099161869105F000E8E24 /* DATagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DATagList.m; path = Entities/DATagList.m; sourceTree = "<group>"; };
 		0A40FDE3183CEDB400427613 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0A40FDE5183CEDCD00427613 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		0A40FE0A183F1C6800427613 /* DAOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrder.h; sourceTree = "<group>"; };
@@ -574,6 +603,27 @@
 		0A7EA1EB1847426D00A9E287 /* DASettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASettingViewController.h; sourceTree = SOURCE_ROOT; };
 		0A7EA1EC1847426D00A9E287 /* DASettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASettingViewController.m; sourceTree = SOURCE_ROOT; };
 		0A7EA1ED1847426D00A9E287 /* DASettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASettingViewController.xib; sourceTree = SOURCE_ROOT; };
+		0A85479A1867FDB500C051D8 /* DASaledViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASaledViewController.h; path = View/Saled/DASaledViewController.h; sourceTree = "<group>"; };
+		0A85479B1867FDB500C051D8 /* DASaledViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASaledViewController.m; path = View/Saled/DASaledViewController.m; sourceTree = "<group>"; };
+		0A85479C1867FDB500C051D8 /* DASaledViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DASaledViewController.xib; path = View/Saled/DASaledViewController.xib; sourceTree = "<group>"; };
+		0A8547A41868081C00C051D8 /* DAItemList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAItemList.h; path = Entities/DAItemList.h; sourceTree = "<group>"; };
+		0A8547A51868081C00C051D8 /* DAItemList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAItemList.m; path = Entities/DAItemList.m; sourceTree = "<group>"; };
+		0A8547A71868091800C051D8 /* DAItemModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAItemModule.h; sourceTree = "<group>"; };
+		0A8547A81868091800C051D8 /* DAItemModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAItemModule.m; sourceTree = "<group>"; };
+		0A8547AA186830A400C051D8 /* DASoldOutViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DASoldOutViewCell.xib; path = View/Saled/DASoldOutViewCell.xib; sourceTree = "<group>"; };
+		0A8547AC186838CB00C051D8 /* DASoldButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASoldButton.h; path = View/Saled/DASoldButton.h; sourceTree = "<group>"; };
+		0A8547AD186838CB00C051D8 /* DASoldButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASoldButton.m; path = View/Saled/DASoldButton.m; sourceTree = "<group>"; };
+		0A8547AF18684E7E00C051D8 /* DASaledSeachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASaledSeachViewController.h; path = View/Saled/DASaledSeachViewController.h; sourceTree = "<group>"; };
+		0A8547B018684E7E00C051D8 /* DASaledSeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASaledSeachViewController.m; path = View/Saled/DASaledSeachViewController.m; sourceTree = "<group>"; };
+		0A8547B118684E7E00C051D8 /* DASaledSeachViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DASaledSeachViewController.xib; path = View/Saled/DASaledSeachViewController.xib; sourceTree = "<group>"; };
+		0A8547B418684EA300C051D8 /* DAItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAItemListViewController.h; path = View/Saled/DAItemListViewController.h; sourceTree = "<group>"; };
+		0A8547B518684EA300C051D8 /* DAItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAItemListViewController.m; path = View/Saled/DAItemListViewController.m; sourceTree = "<group>"; };
+		0A8547B618684EA400C051D8 /* DAItemListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DAItemListViewController.xib; path = View/Saled/DAItemListViewController.xib; sourceTree = "<group>"; };
+		0A8547B91868508100C051D8 /* DAItemListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAItemListCell.h; path = View/Saled/DAItemListCell.h; sourceTree = "<group>"; };
+		0A8547BA1868508100C051D8 /* DAItemListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAItemListCell.m; path = View/Saled/DAItemListCell.m; sourceTree = "<group>"; };
+		0A8547BC1868509C00C051D8 /* DAItemListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DAItemListCell.xib; path = View/Saled/DAItemListCell.xib; sourceTree = "<group>"; };
+		0A8547BF1868528900C051D8 /* DWTagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTagList.h; path = Thirdparty/DWTagList/DWTagList.h; sourceTree = "<group>"; };
+		0A8547C01868528900C051D8 /* DWTagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTagList.m; path = Thirdparty/DWTagList/DWTagList.m; sourceTree = "<group>"; };
 		0A8C2F3D182DDDD70080F15F /* CustomLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayout.h; sourceTree = "<group>"; };
 		0A8C2F3E182DDDD70080F15F /* CustomLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayout.m; sourceTree = "<group>"; };
 		0A924AA21834899A0004C973 /* DAMyOrderQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderQueueViewController.h; sourceTree = "<group>"; };
@@ -852,6 +902,7 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0A8547BE1868527600C051D8 /* DWTagList */,
 				0AC39017186098260091AFB7 /* TMCache */,
 				0A4E47F81857133000CEC3DE /* CCSegmentedControl */,
 				0A4E47EB1857127D00CEC3DE /* CWPopup */,
@@ -870,6 +921,7 @@
 		0A07BD521829CC8A00A350BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0A0B7C2B186AC5EB0041704F /* soldout.png */,
 				0A3CD5B318516B6200604CB6 /* multiply-sign.png */,
 				0A3CD5B418516B6200604CB6 /* multiply-sign@2x.png */,
 				0A54D6A9184C726900BBA9C4 /* BackgroundTexture@2x.png */,
@@ -947,6 +999,8 @@
 				0A3CD5B118515F8B00604CB6 /* DAScheduleModule.m */,
 				0A20E8ED185A9DFB00422061 /* DAPrinterModule.h */,
 				0A20E8EE185A9DFB00422061 /* DAPrinterModule.m */,
+				0A8547A71868091800C051D8 /* DAItemModule.h */,
+				0A8547A81868091800C051D8 /* DAItemModule.m */,
 			);
 			name = Module;
 			sourceTree = "<group>";
@@ -1252,6 +1306,45 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		0A8547981867E49700C051D8 /* DLO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DLO;
+			sourceTree = "<group>";
+		};
+		0A8547991867FD8400C051D8 /* Saled */ = {
+			isa = PBXGroup;
+			children = (
+				0A85479A1867FDB500C051D8 /* DASaledViewController.h */,
+				0A85479B1867FDB500C051D8 /* DASaledViewController.m */,
+				0A85479C1867FDB500C051D8 /* DASaledViewController.xib */,
+				0A8547AA186830A400C051D8 /* DASoldOutViewCell.xib */,
+				0A8547AC186838CB00C051D8 /* DASoldButton.h */,
+				0A8547AD186838CB00C051D8 /* DASoldButton.m */,
+				0A8547AF18684E7E00C051D8 /* DASaledSeachViewController.h */,
+				0A8547B018684E7E00C051D8 /* DASaledSeachViewController.m */,
+				0A8547B118684E7E00C051D8 /* DASaledSeachViewController.xib */,
+				0A8547B418684EA300C051D8 /* DAItemListViewController.h */,
+				0A8547B518684EA300C051D8 /* DAItemListViewController.m */,
+				0A8547B618684EA400C051D8 /* DAItemListViewController.xib */,
+				0A8547B91868508100C051D8 /* DAItemListCell.h */,
+				0A8547BA1868508100C051D8 /* DAItemListCell.m */,
+				0A8547BC1868509C00C051D8 /* DAItemListCell.xib */,
+				0A0B7C23186959A30041704F /* DATagListCell.xib */,
+			);
+			name = Saled;
+			sourceTree = "<group>";
+		};
+		0A8547BE1868527600C051D8 /* DWTagList */ = {
+			isa = PBXGroup;
+			children = (
+				0A8547BF1868528900C051D8 /* DWTagList.h */,
+				0A8547C01868528900C051D8 /* DWTagList.m */,
+			);
+			name = DWTagList;
+			sourceTree = "<group>";
+		};
 		0A8C2F44182E33A70080F15F /* TVQuiltLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -1374,6 +1467,7 @@
 				0A07BD4D1829CB3800A350BC /* Thirdparty */,
 				0A07BD6F182A0A0500A350BC /* Module */,
 				2886BB041839AD1E00A496AC /* Entities */,
+				0A8547981867E49700C051D8 /* DLO */,
 				0AA9573518279D410098D60C /* View */,
 				0AA9570718274DCA0098D60C /* DAAppDelegate.h */,
 				0AA9570818274DCA0098D60C /* DAAppDelegate.m */,
@@ -1425,6 +1519,7 @@
 		0AA9573518279D410098D60C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0A8547991867FD8400C051D8 /* Saled */,
 				0A3CD5B718518FB600604CB6 /* Schedule */,
 				0A7AF0E01836131A00635376 /* Common */,
 				28FFB62E18322E2D003443D1 /* PopoverTable */,
@@ -1669,6 +1764,16 @@
 				0A20E8EB185A9D6100422061 /* DAPrinter.m */,
 				0A20E8F0185A9EBC00422061 /* DAPrinterList.h */,
 				0A20E8F1185A9EBC00422061 /* DAPrinterList.m */,
+				0A8547A41868081C00C051D8 /* DAItemList.h */,
+				0A8547A51868081C00C051D8 /* DAItemList.m */,
+				0A4099121869104A000E8E24 /* DATag.h */,
+				0A4099131869104A000E8E24 /* DATag.m */,
+				0A4099151869105F000E8E24 /* DATagList.h */,
+				0A4099161869105F000E8E24 /* DATagList.m */,
+				0A0B7C25186963BC0041704F /* DASoldout.h */,
+				0A0B7C26186963BC0041704F /* DASoldout.m */,
+				0A0B7C28186985580041704F /* DASoldoutList.h */,
+				0A0B7C29186985580041704F /* DASoldoutList.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -1927,6 +2032,7 @@
 				0AEBE5D31832071300B01A5E /* top_bg1.png in Resources */,
 				0A5D2897182BD23700847578 /* DADetailOrderViewController.xib in Resources */,
 				0A54D6B9184C726900BBA9C4 /* GenericSeparator@2x.png in Resources */,
+				0A85479E1867FDB500C051D8 /* DASaledViewController.xib in Resources */,
 				0A54D6B7184C726900BBA9C4 /* Default.png in Resources */,
 				0A54D6D2184ED10800BBA9C4 /* menubook_sidetop.png in Resources */,
 				0A54D6BF184C726900BBA9C4 /* KeyboardTopShadow@2x.png in Resources */,
@@ -1944,6 +2050,7 @@
 				28FFB62A18322E20003443D1 /* DAPopTableView.storyboard in Resources */,
 				0A3DB730182B1F5100170F0C /* table.png in Resources */,
 				0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */,
+				0A8547B818684EA400C051D8 /* DAItemListViewController.xib in Resources */,
 				0A4E47E0185711CC00CEC3DE /* dot_off1.png in Resources */,
 				0AA9571418274DCA0098D60C /* Images.xcassets in Resources */,
 				0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */,
@@ -1966,6 +2073,9 @@
 				0A7AF0D618360B2400635376 /* da_data_queue_item.json in Resources */,
 				0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */,
 				0A07BD5D1829D2B900A350BC /* menu.json in Resources */,
+				0A8547B318684E7E00C051D8 /* DASaledSeachViewController.xib in Resources */,
+				0A8547AB186830A400C051D8 /* DASoldOutViewCell.xib in Resources */,
+				0A0B7C24186959A30041704F /* DATagListCell.xib in Resources */,
 				47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */,
 				0A54D6F8185063F300BBA9C4 /* desk_topbotton.png in Resources */,
 				0AEBE52A18310D3800B01A5E /* stain_bg1.png in Resources */,
@@ -2001,8 +2111,10 @@
 				0A5D2835182B6E2F00847578 /* table1.png in Resources */,
 				0A54D6D8184EEC4B00BBA9C4 /* menubook_sidetop1.png in Resources */,
 				0A07BD5B1829D2AF00A350BC /* table.json in Resources */,
+				0A0B7C2C186AC5EB0041704F /* soldout.png in Resources */,
 				0AA9570C18274DCA0098D60C /* Main.storyboard in Resources */,
 				0AB11394183349A10011828A /* DAMyOrderLoginViewController.xib in Resources */,
+				0A8547BD1868509C00C051D8 /* DAItemListCell.xib in Resources */,
 				0A739E65183B01F800AA48C4 /* DAMyBackOrderViewCell.xib in Resources */,
 				0A54D6B8184C726900BBA9C4 /* Default@2x.png in Resources */,
 				0A07BD0B1828ECF800A350BC /* DAMyFilterViewController.xib in Resources */,
@@ -2042,6 +2154,9 @@
 				0AB78B84183CB46500979BD0 /* Jastor.m in Sources */,
 				2886BAFD18360F5800A496AC /* DAProcessionViewController.m in Sources */,
 				0AB78B42183CB46500979BD0 /* DARequestHelper.m in Sources */,
+				0A8547B218684E7E00C051D8 /* DASaledSeachViewController.m in Sources */,
+				0A8547B718684EA400C051D8 /* DAItemListViewController.m in Sources */,
+				0A8547C11868528900C051D8 /* DWTagList.m in Sources */,
 				0A4E47C01857110D00CEC3DE /* DALoginModule.m in Sources */,
 				0A4E47981856A06A00CEC3DE /* DADesk.m in Sources */,
 				0A4E47A51856A0EC00CEC3DE /* DAMenuList.m in Sources */,
@@ -2070,8 +2185,11 @@
 				0AA031F91843555900C66590 /* SocketIOPacket.m in Sources */,
 				0A07BD8A182A363000A350BC /* DAMyTableViewController.m in Sources */,
 				0A4E47C81857112300CEC3DE /* DAMyDevice.m in Sources */,
+				0A8547A61868081C00C051D8 /* DAItemList.m in Sources */,
+				0A0B7C2A186985580041704F /* DASoldoutList.m in Sources */,
 				0AA031F51843555900C66590 /* SBJson4StreamWriterState.m in Sources */,
 				0A3CD5C01851900C00604CB6 /* DAScheduleViewController.m in Sources */,
+				0A85479D1867FDB500C051D8 /* DASaledViewController.m in Sources */,
 				0AEBE5C31831C21300B01A5E /* DAMyMenuBookPopupController.m in Sources */,
 				0A8C2F3F182DDDD70080F15F /* CustomLayout.m in Sources */,
 				0AB78B82183CB46500979BD0 /* AFXMLRequestOperation.m in Sources */,
@@ -2085,6 +2203,7 @@
 				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
 				0A4E47FB1857133900CEC3DE /* CCSegmentedControl.m in Sources */,
 				0A4E47971856A06A00CEC3DE /* DAUserList.m in Sources */,
+				0A4099171869105F000E8E24 /* DATagList.m in Sources */,
 				0A3CD5AC18515E7F00604CB6 /* DASchedule.m in Sources */,
 				0A3CD5B218515F8B00604CB6 /* DAScheduleModule.m in Sources */,
 				0A4E47A61856A0EC00CEC3DE /* DAMyTable.m in Sources */,
@@ -2139,8 +2258,10 @@
 				0A7AF0C91836075200635376 /* DAQueueItemListViewController.m in Sources */,
 				47A6ADAC182E0F2600E80AA1 /* DABillViewController.m in Sources */,
 				0A577BDD1828A040009CDF6D /* DABookViewController.m in Sources */,
+				0A8547A91868091800C051D8 /* DAItemModule.m in Sources */,
 				0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */,
 				287FA98C183B053500E02051 /* DATakeoutViewController.m in Sources */,
+				0A8547BB1868508100C051D8 /* DAItemListCell.m in Sources */,
 				0AB78B7E183CB46500979BD0 /* AFJSONRequestOperation.m in Sources */,
 				0A54D6A4184C6B8800BBA9C4 /* DABill.m in Sources */,
 				0AA032071843558300C66590 /* SRWebSocket.m in Sources */,
@@ -2158,6 +2279,7 @@
 				0A4E47B218570FFC00CEC3DE /* DAPrintProxy.m in Sources */,
 				28FFB64518332272003443D1 /* DADelegateUtil.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
+				0A4099141869104A000E8E24 /* DATag.m in Sources */,
 				0AB4B3B11838DE3700D77D7E /* DAPreferentialViewController.m in Sources */,
 				0A4E47B418570FFC00CEC3DE /* DAMenuProxy.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
@@ -2169,6 +2291,7 @@
 				0AA5339D1828B8600087EFF1 /* DABookCell.m in Sources */,
 				0A54D6C3184D772B00BBA9C4 /* DAServiceList.m in Sources */,
 				0A4E47EA1857122900CEC3DE /* RFQuiltLayout.m in Sources */,
+				0A8547AE186838CB00C051D8 /* DASoldButton.m in Sources */,
 				28FFB64718332272003443D1 /* DAImageUtil.m in Sources */,
 				0AA031F21843555900C66590 /* SBJson4StreamParserState.m in Sources */,
 				0A5D2838182B77A000847578 /* DAMyBigMenuBookCell.m in Sources */,
@@ -2188,6 +2311,7 @@
 				0A4E47CA1857112300CEC3DE /* DATakeout.m in Sources */,
 				F2AB4C02182E03480067E450 /* DAOrderGroupViewController.m in Sources */,
 				F2AB4BFD182E030A0067E450 /* DAOrderDetailViewController.m in Sources */,
+				0A0B7C27186963BC0041704F /* DASoldout.m in Sources */,
 				0A7AF0D31836077B00635376 /* DAQueueDrinkListViewController.m in Sources */,
 				0A4E47F4185712B500CEC3DE /* UIViewController+MJPopupViewController.m in Sources */,
 				0A54D6CB184D842800BBA9C4 /* DABaseViewController.m in Sources */,
@@ -2342,8 +2466,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -2352,7 +2476,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
+				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2365,8 +2489,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -2375,7 +2499,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
+				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

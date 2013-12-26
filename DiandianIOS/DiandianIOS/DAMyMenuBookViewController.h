@@ -11,6 +11,8 @@
 #import "CustomLayout.h"
 #import "RFQuiltLayout.h"
 #import "TMCache.h"
+#import "SmartSDK.h"
+
 typedef enum {
     MenuBookList    = 0,
     MenuBookDetail  = 1
@@ -22,5 +24,6 @@ typedef enum {
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 - (IBAction)changePage:(id)sender;
+@property (nonatomic, retain) DAService *curService;
 
 @end

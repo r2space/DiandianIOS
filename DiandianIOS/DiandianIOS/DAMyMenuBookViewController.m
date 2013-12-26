@@ -28,6 +28,7 @@
     
     NSMutableArray *dataList;
     DAMenuList *menuList;
+    DASoldoutList *soldoutList;
     int menuIndex;
     BOOL listType;
     UICollectionViewFlowLayout *defaultLayout;
@@ -36,6 +37,9 @@
     NSMutableArray *adImageList;
     UIImageView *adImageView;
     int adIndex;
+    
+    int pageRurned;
+    int pagePre;
 }
 @end
 
@@ -57,6 +61,8 @@
     dataList = [[NSMutableArray alloc ] init];
     menuIndex = 0;
     listType = YES;
+    pageRurned = 0 ;
+    pagePre = 0;
     UINib *cellNib = [UINib nibWithNibName:@"DAMyMenuBookCell" bundle:nil];
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyMenuBookCell"];
 
@@ -109,7 +115,14 @@
     for (DAItem *aItem in menu.items){
         [dataList addObject:aItem ];
     }
-    [self.collectionView reloadData];
+    if (self.curService != nil) {
+        [[DAItemModule alloc] getSoldoutItemList:^(NSError *err, DASoldoutList *list) {
+            soldoutList = list;
+            [self.collectionView reloadData];
+        }];
+    }
+    
+
 
     
 }
@@ -158,11 +171,11 @@
                                         if (object) {
 
                                             dispatch_async(dispatch_get_main_queue(), ^{
-                                            NSLog(@"cacheed");
-                                            [imageView setImage:(UIImage *)object];
-                                        });
-                                        return;
-                                    }
+                                                NSLog(@"cacheed");
+                                                [imageView setImage:(UIImage *)object];
+                                            });
+                                            return;
+                                        }
                                         NSLog(@"cache miss, requesting %@", data.item.smallimage);
 
                                         UIImage *image = [DAMenuProxy getImageFromDisk:data.item.smallimage];
@@ -257,6 +270,25 @@
     }
     
     });
+    BOOL soldoutFlag = NO;
+    for (DASoldout *soldout in soldoutList.items) {
+        if ([data.item._id isEqualToString:soldout.itemId]) {
+            soldoutFlag = YES;
+            break;
+        }
+        soldoutFlag = NO;
+    }
+    UIImageView *soldoutView = (UIImageView *)[cell viewWithTag:666];
+    if (soldoutFlag) {
+        
+        [soldoutView setHidden:NO];
+        
+        [addBtn setEnabled:NO];
+        
+    } else {
+        [soldoutView setHidden:YES];
+        [addBtn setEnabled:YES];
+    }
 
     
     
@@ -323,6 +355,14 @@
 {
     
     DAItemLayout *data = [[DAItemLayout alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
+
+    for (DASoldout *soldout in soldoutList.items) {
+        if ([data.item._id isEqualToString:soldout.itemId]) {
+
+            return;
+        }
+
+    }
     if ([data.item.type integerValue] != 10) {
         [self popupDetail:data.item];
     }
@@ -349,12 +389,14 @@
 
 - (void)filterReload : (NSNotification*) notification
 {
-    DAMenu *menu = [notification object];
+    NSString *noticeMenuIndex = [notification object];
+    
+    DAMenu *menu = [menuList.items objectAtIndex:[noticeMenuIndex integerValue]];
+    menuIndex = [noticeMenuIndex integerValue];
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [self loadFromDisk];
     [tmpList addObjectsFromArray:menu.items];
-    
-    
+
     dataList = [[NSMutableArray alloc]initWithArray:tmpList];
 
     [self.collectionView reloadData];
@@ -384,5 +426,62 @@
 - (IBAction)changePage:(id)sender
 {
     [self gotoPage:YES];    // YES = animate
+}
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    NSLog(@"sdfdfdf");
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    NSLog(@"sdfdfdf22 ,%d  self.pageControl.numberOfPages : %d" ,self.pageControl.currentPage,self.pageControl.numberOfPages);
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    NSLog(@"sdfdfdf22 ,%d  self.pageControl.numberOfPages : %d" ,self.pageControl.currentPage,self.pageControl.numberOfPages);
+    int curPage = self.pageControl.currentPage;
+    int numPage = self.pageControl.numberOfPages;
+    
+    if (curPage == (numPage - 1)) {
+        NSLog(@"准备翻页");
+        pageRurned ++;
+    }
+    if (curPage == (numPage - 1) && pageRurned == 2) {
+        NSLog(@"后翻页");
+        
+        if (menuIndex == ([menuList.items count] - 1) ) {
+            return;
+        }
+        
+        menuIndex ++;
+        
+        
+        
+        NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:[NSString stringWithFormat:@"%d",menuIndex] ];
+        [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
+        
+        NSNotification *segmentedControlNotification = [NSNotification notificationWithName:@"segmentedControlReload" object:[NSString stringWithFormat:@"%d",menuIndex]];
+        [[NSNotificationCenter defaultCenter] postNotification:segmentedControlNotification];
+        pageRurned = 0;
+        pagePre = 0;
+    }
+    if (curPage == 0) {
+        pagePre ++;
+    }
+    if (curPage == 0 && pagePre==1) {
+        if (menuIndex == 0) {
+            return;
+        }
+        menuIndex --;
+        pageRurned = 0;
+        pagePre = 0;
+        
+        NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:[NSString stringWithFormat:@"%d",menuIndex] ];
+        [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
+        
+        NSNotification *segmentedControlNotification = [NSNotification notificationWithName:@"segmentedControlReload" object:[NSString stringWithFormat:@"%d",menuIndex]];
+        [[NSNotificationCenter defaultCenter] postNotification:segmentedControlNotification];
+
+    }
 }
 @end

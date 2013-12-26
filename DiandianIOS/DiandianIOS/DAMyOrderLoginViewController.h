@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "DAPopTableViewController.h"
+#import "SmartSDK.h"
+
 @protocol DAMyOrderLoginDelegate;
 
 @interface DAMyOrderLoginViewController : UIViewController<DAPopTableViewDelegate,UITextFieldDelegate>
@@ -16,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *labelTips;
 @property (retain, nonatomic) NSString *curUserId;
+@property (nonatomic, retain) DAService *curService;
 
 @property (assign, nonatomic) id <DAMyOrderLoginDelegate>delegate;
 
