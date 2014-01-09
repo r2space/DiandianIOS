@@ -180,7 +180,12 @@ UIViewController *parentVC;
     
     UIButton *btn = (UIButton *)sender;
     DAMyBackOrderViewController *vc = [[DAMyBackOrderViewController alloc] initWithNibName:@"DAMyBackOrderViewController" bundle:nil];
-
+    vc.closeBackView = ^(){
+        if ([self.popover isPopoverVisible]) {
+            [self.popover dismissPopoverAnimated:YES];
+        }
+        [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    };
     vc.curService = self.curService;
     
     self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];

@@ -12,6 +12,7 @@
 @interface DAItemList : DAEntity<NSCoding>
 
 @property (retain, nonatomic) NSArray   *items;
+@property (retain, nonatomic) NSArray   *tags;
 @property (retain, nonatomic) NSNumber  *totalItems;
 
     

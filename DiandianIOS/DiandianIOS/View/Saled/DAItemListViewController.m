@@ -15,6 +15,7 @@
 
 
 
+
 @interface DAItemListViewController ()<UIScrollViewDelegate>
 {
     DAItemList *dataList;
@@ -24,6 +25,7 @@
     NSString *tag;
     NSString *soldoutType;
     UIRefreshControl    *refresh;   // 下拉Table时显示的控件
+
 }
 @end
 
@@ -41,6 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(handler) forControlEvents:UIControlEventValueChanged];
     refresh.tintColor = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
@@ -101,9 +104,17 @@
          
          if (dataList == nil || start == 0) {
              dataList = list;
+             
+                 NSNotification *tagsNotification = [NSNotification notificationWithName:@"TagsReload" object:dataList.tags];
+                 
+                 [[NSNotificationCenter defaultCenter] postNotification:tagsNotification];
+             
+             
          } else {
              dataList.items = [dataList.items arrayByAddingObjectsFromArray:list.items];
          }
+         
+         
          [self.tableView reloadData];
          [ProgressHUD dismiss];
      }];
@@ -198,6 +209,7 @@
         [btnSoldout setTitle:title forState:UIControlStateNormal];
         [btnSoldout setTitle:title forState:UIControlStateHighlighted];
         [btnSoldout setTitle:title forState:UIControlStateDisabled];
+        [btnSoldout setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
         
     } else {
@@ -206,6 +218,7 @@
         [btnSoldout setTitle:title forState:UIControlStateNormal];
         [btnSoldout setTitle:title forState:UIControlStateHighlighted];
         [btnSoldout setTitle:title forState:UIControlStateDisabled];
+        [btnSoldout setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
        
     }
     [btnSoldout addTarget:self

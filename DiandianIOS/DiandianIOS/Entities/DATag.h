@@ -11,6 +11,8 @@
 
 @interface DATag : DAEntity<NSCoding>
 
+@property (retain, nonatomic) NSString  *selected;
+@property (retain, nonatomic) NSString  *should;
 @property (retain, nonatomic) NSString  *scope;
 @property (retain, nonatomic) NSString  *name;
 @property (retain, nonatomic) NSNumber  *counter;

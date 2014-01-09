@@ -146,6 +146,7 @@
 		0A5D289C182C6EFF00847578 /* DAMyLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */; };
 		0A5D289F182C8FE400847578 /* DAOrderRecipeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5D289E182C8FE400847578 /* DAOrderRecipeBtn.m */; };
 		0A5D28A1182CA9AA00847578 /* DADetailOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A5D28A0182CA9AA00847578 /* DADetailOrderCell.xib */; };
+		0A68C42B187E64000096C698 /* DAImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A68C42A187E64000096C698 /* DAImageHelper.m */; };
 		0A739E62183B019D00AA48C4 /* DAMyBackOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A739E60183B019D00AA48C4 /* DAMyBackOrderViewController.m */; };
 		0A739E63183B019D00AA48C4 /* DAMyBackOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A739E61183B019D00AA48C4 /* DAMyBackOrderViewController.xib */; };
 		0A739E65183B01F800AA48C4 /* DAMyBackOrderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A739E64183B01F800AA48C4 /* DAMyBackOrderViewCell.xib */; };
@@ -557,6 +558,8 @@
 		0A5D289D182C8FE400847578 /* DAOrderRecipeBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderRecipeBtn.h; sourceTree = "<group>"; };
 		0A5D289E182C8FE400847578 /* DAOrderRecipeBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderRecipeBtn.m; sourceTree = "<group>"; };
 		0A5D28A0182CA9AA00847578 /* DADetailOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DADetailOrderCell.xib; sourceTree = "<group>"; };
+		0A68C429187E64000096C698 /* DAImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAImageHelper.h; sourceTree = "<group>"; };
+		0A68C42A187E64000096C698 /* DAImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAImageHelper.m; sourceTree = "<group>"; };
 		0A739E5F183B019D00AA48C4 /* DAMyBackOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyBackOrderViewController.h; sourceTree = "<group>"; };
 		0A739E60183B019D00AA48C4 /* DAMyBackOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyBackOrderViewController.m; sourceTree = "<group>"; };
 		0A739E61183B019D00AA48C4 /* DAMyBackOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyBackOrderViewController.xib; sourceTree = "<group>"; };
@@ -1574,6 +1577,8 @@
 		0AB78A9A183CB46400979BD0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				0A68C429187E64000096C698 /* DAImageHelper.h */,
+				0A68C42A187E64000096C698 /* DAImageHelper.m */,
 				0AB78A9B183CB46400979BD0 /* DAAFHttpClient.h */,
 				0AB78A9C183CB46400979BD0 /* DAAFHttpClient.m */,
 				0AB78A9D183CB46400979BD0 /* DAAFHttpOperation.h */,
@@ -2203,6 +2208,7 @@
 				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
 				0A4E47FB1857133900CEC3DE /* CCSegmentedControl.m in Sources */,
 				0A4E47971856A06A00CEC3DE /* DAUserList.m in Sources */,
+				0A68C42B187E64000096C698 /* DAImageHelper.m in Sources */,
 				0A4099171869105F000E8E24 /* DATagList.m in Sources */,
 				0A3CD5AC18515E7F00604CB6 /* DASchedule.m in Sources */,
 				0A3CD5B218515F8B00604CB6 /* DAScheduleModule.m in Sources */,

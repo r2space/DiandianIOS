@@ -160,6 +160,7 @@
     [[DAOrderModule alloc]setBackOrderWithArray:backDataList deskId:self.curService.deskId callback:^(NSError *err, DAMyOrderList *order) {
         
         [ProgressHUD show:@"退菜成功"];
+        self.closeBackView();
         [self fetch];
     }];
     

@@ -261,9 +261,9 @@ enum PrintErrorStatus
             DAPrintProxy *print = [[DAPrintProxy alloc] init];
             
             if (takeout.length > 0) {
-                [print addLine:[NSString stringWithFormat:@"单号:%@ 外卖的手机号：%@ 下单时间：%@",orderNum,takeout,now]];
+                [print addLine:[NSString stringWithFormat:@"单号:%@ 外卖的手机号：%@ 下单时间：%@",orderNum,takeout,[Tool stringFromISODateString:now]]];
             } else {
-                [print addLine:[NSString stringWithFormat:@"单号:%@ 包： %@ 下单时间：%@",orderNum,deskName,now]];
+                [print addLine:[NSString stringWithFormat:@"单号:%@ 包： %@ 下单时间：%@",orderNum,deskName,[Tool stringFromISODateString:now]]];
             }
             
             if (tips.length > 0) {
@@ -285,8 +285,8 @@ enum PrintErrorStatus
             }
             [print addSplit];
             
-            
-            [print printText:printerSet.printerIP addTextSize:2 TextHeight:3];
+            if([printerOrderList count] > 0)
+                [print printText:printerSet.printerIP addTextSize:2 TextHeight:3];
             
         }
     
