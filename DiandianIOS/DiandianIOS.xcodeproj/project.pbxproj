@@ -287,6 +287,8 @@
 		0AEBE5D718320B9100B01A5E /* price_mask1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5D618320B9100B01A5E /* price_mask1.png */; };
 		0AEBE5DF1832208800B01A5E /* top_bg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5DE1832208800B01A5E /* top_bg3.png */; };
 		0AF2C9CD1839DE9400A74B72 /* queue_drink.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AF2C9CC1839DE9400A74B72 /* queue_drink.json */; };
+		0AF86236187FC80E00D3A1C0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF86234187FC80E00D3A1C0 /* Icon.png */; };
+		0AF86237187FC80E00D3A1C0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF86235187FC80E00D3A1C0 /* Icon@2x.png */; };
 		28414E9918349EFC009210AF /* DAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 28414E9818349EFC009210AF /* DAAnimation.m */; };
 		2854672C182BC2A5004CD144 /* DAMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2854672B182BC2A5004CD144 /* DAMyTableViewCell.m */; };
 		287FA98C183B053500E02051 /* DATakeoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 287FA98A183B053500E02051 /* DATakeoutViewController.m */; };
@@ -789,6 +791,8 @@
 		0AEBE5D618320B9100B01A5E /* price_mask1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = price_mask1.png; sourceTree = "<group>"; };
 		0AEBE5DE1832208800B01A5E /* top_bg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_bg3.png; sourceTree = "<group>"; };
 		0AF2C9CC1839DE9400A74B72 /* queue_drink.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queue_drink.json; sourceTree = "<group>"; };
+		0AF86234187FC80E00D3A1C0 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		0AF86235187FC80E00D3A1C0 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		28414E9718349EFC009210AF /* DAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAnimation.h; sourceTree = "<group>"; };
 		28414E9818349EFC009210AF /* DAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAnimation.m; sourceTree = "<group>"; };
 		2854672A182BC2A5004CD144 /* DAMyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyTableViewCell.h; sourceTree = "<group>"; };
@@ -924,6 +928,8 @@
 		0A07BD521829CC8A00A350BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0AF86234187FC80E00D3A1C0 /* Icon.png */,
+				0AF86235187FC80E00D3A1C0 /* Icon@2x.png */,
 				0A0B7C2B186AC5EB0041704F /* soldout.png */,
 				0A3CD5B318516B6200604CB6 /* multiply-sign.png */,
 				0A3CD5B418516B6200604CB6 /* multiply-sign@2x.png */,
@@ -2013,6 +2019,7 @@
 				0A54D6C0184C726900BBA9C4 /* Snapshot.png in Resources */,
 				0A54D6D4184ED1D400BBA9C4 /* menubook_sidemiddle.png in Resources */,
 				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
+				0AF86236187FC80E00D3A1C0 /* Icon.png in Resources */,
 				0A54D6BB184C726900BBA9C4 /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png in Resources */,
 				0A7AF0DF183612EF00635376 /* DAQueueMasterViewController.xib in Resources */,
 				0A54D6EA1850573C00BBA9C4 /* desk_top.png in Resources */,
@@ -2120,6 +2127,7 @@
 				0AA9570C18274DCA0098D60C /* Main.storyboard in Resources */,
 				0AB11394183349A10011828A /* DAMyOrderLoginViewController.xib in Resources */,
 				0A8547BD1868509C00C051D8 /* DAItemListCell.xib in Resources */,
+				0AF86237187FC80E00D3A1C0 /* Icon@2x.png in Resources */,
 				0A739E65183B01F800AA48C4 /* DAMyBackOrderViewCell.xib in Resources */,
 				0A54D6B8184C726900BBA9C4 /* Default@2x.png in Resources */,
 				0A07BD0B1828ECF800A350BC /* DAMyFilterViewController.xib in Resources */,
