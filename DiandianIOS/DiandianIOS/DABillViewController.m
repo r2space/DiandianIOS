@@ -199,20 +199,16 @@
     
     if (index == 0) {
         offAmount = 1.0;
-        
     }
     
     if (index == 1) {
-        offAmount = 0.9;
+        offAmount = 0.88;
     }
     
     if (index == 2) {
         offAmount = 0.8;
     }
     
-    if (index == 3) {
-        offAmount = 0.7;
-    }
     float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
     self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
     self.textPay.text = [NSString stringWithFormat:@"%d", (int)off];
