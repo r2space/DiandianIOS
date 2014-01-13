@@ -66,7 +66,7 @@
     DABillDetailViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
    
 
-        NSInteger section = indexPath.section;
+    NSInteger section = indexPath.section;
     DAOrder *order;
     if (section == 0) {
         order = [doneOrderList objectAtIndex:indexPath.row];
@@ -95,7 +95,7 @@
             cell.lblPrice.text =[NSString stringWithFormat:@"%@元",order.item.itemPriceHalf];
         }
         
-        cell.lblAmount.text =[NSString stringWithFormat:@"%d",1];
+        cell.lblAmount.text =[NSString stringWithFormat:@"%@.%@",order.amount,order.amountNum];
         cell.backCallback = ^(){
             if (self.parentReloadBlock!=nil) {
                 self.parentReloadBlock();

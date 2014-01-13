@@ -476,6 +476,7 @@
 }
 
 -(void) addAmount :(id)sender {
+    
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
     
     for (DAMenu *menu in self.dataList.items) {

@@ -34,8 +34,21 @@
     NSMutableArray *tmpList = [[NSMutableArray alloc]init];
     
     for (DAOrder *order in self.items) {
-        NSDictionary *orderDic = [order toDictionary];
+        NSMutableDictionary *orderDic = [order toDictionary];
 //        if (order.isNew !=nil ) {
+        int price = 0;
+
+        if ([order.type integerValue ] == 0) {
+            price = [order.item.itemPriceNormal intValue];
+        } else {
+            price = [order.item.itemPriceHalf intValue];
+        }
+        NSString *amountNum = [NSString stringWithFormat:@"%@.%@",order.amount,order.amountNum];
+        float amout = [amountNum floatValue];
+        
+        price = price * amout;
+        
+        [orderDic setObject:[NSString stringWithFormat:@"%d",price] forKey:@"amountPrice"];
             [tmpList addObject:orderDic];
 //        }
 

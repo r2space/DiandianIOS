@@ -109,7 +109,7 @@
 
         float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
         self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
-        self.textPay.text = [NSString stringWithFormat:@"%d", [bill.amount integerValue]];
+        self.textPay.text = [NSString stringWithFormat:@"%.02f", [bill.amount floatValue]];
     }];
     
 }

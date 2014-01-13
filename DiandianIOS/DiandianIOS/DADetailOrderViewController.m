@@ -13,12 +13,16 @@
 #import "DAMenuModule.h"
 #import "DAMenuProxy.h"
 #import "ProgressHUD.h"
-
+#import "DAPickAmountViewController.h"
 
 #define AMOUNT_LABEL_TAG 101
 
 
 @interface DADetailOrderViewController ()<DAMyOrderLoginDelegate>
+{
+    UIPopoverController *popover;
+    DAPickAmountViewController *popoverContent;
+}
 @property (nonatomic, strong) UIPopoverController *remarkViewPopover;
 @end
 
@@ -114,7 +118,7 @@
 
 -(void)loadAmountPrice
 {
-    int amountPrice = 0 ;
+    float amountPrice = 0 ;
     
     
     //新菜单 总价
@@ -122,11 +126,16 @@
         if (order.amount == nil || [order.amount integerValue] == 0) {
             order.amount = [NSNumber numberWithInt:1];
         }
+        int pirce = 0;
         if( [order.type integerValue] == 0){
-            amountPrice = amountPrice + [order.item.itemPriceNormal integerValue];
+            pirce = [order.item.itemPriceNormal intValue];
         } else {
-            amountPrice = amountPrice + [order.item.itemPriceHalf integerValue];
+            pirce = [order.item.itemPriceHalf intValue];
         }
+        float amount = 1.0;
+        NSString *amountNum = [NSString stringWithFormat:@"%@.%@",order.amount,order.amountNum];
+        amount = [amountNum floatValue];
+        amountPrice = amountPrice + pirce * amount;
     }
     
     
@@ -145,7 +154,7 @@
         }
     }
     
-    self.amountPriceLabel.text = [NSString stringWithFormat:@"总价 : %d 元" ,amountPrice];
+    self.amountPriceLabel.text = [NSString stringWithFormat:@"总价 : %.2f 元" ,amountPrice];
     
 }
 
@@ -193,67 +202,102 @@
     
     
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:13];
+
     //TODO  两份合成一份  orderItem.item.amount
-    amountLabel.text = [NSString stringWithFormat:@"%@份" , orderItem.amount];
+    amountLabel.text = [NSString stringWithFormat:@"%@." , orderItem.amount];
     
     UITextField *remarkField = (UITextField * ) [cell viewWithTag:14];
     
-    DAOrderAddAmountBtn *addBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:20];
-    DAOrderAddAmountBtn *deleteBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:21];
-    addBtn._id = orderItem.item._id;
     
-    deleteBtn._id = orderItem.item._id;
     
     if (indexPath.section == 0) {
-        [addBtn addTarget:self
-                   action:@selector(addAmount:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [deleteBtn addTarget:self
-                      action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
-        [addBtn setHidden:NO];
-        [deleteBtn setHidden:NO];
+
+//        [addBtn setEnabled:YES];
+//        [deleteBtn setEnabled:YES];
+//        [addBtn setHidden:NO];
+//        [deleteBtn setHidden:NO];
         [remarkField setEnabled:YES];
         cell.backgroundColor = [UIColor clearColor];
     } else {
-        [addBtn setHidden:YES];
-        [deleteBtn setHidden:YES];
+        
         [remarkField setEnabled:NO];
         cell.backgroundColor = [UIColor lightGrayColor];
     }
-    [addBtn setHidden:YES];
-    [deleteBtn setHidden:YES];
-    return cell;
-
     
+    
+    DAOrderAddAmountBtn *addBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:26];
+    addBtn.amountLabel = amountLabel;
+    addBtn.indexPath = indexPath;
+    DAOrderAddAmountBtn *deleteBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:25];
+    deleteBtn.amountLabel = amountLabel;
+    deleteBtn.indexPath = indexPath;
+    addBtn._id = orderItem.item._id;
+    
+    deleteBtn._id = orderItem.item._id;
+    [addBtn addTarget:self
+               action:@selector(addAmount:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [deleteBtn addTarget:self
+                  action:@selector(deleteAmount:) forControlEvents:UIControlEventTouchUpInside];
+    
+    DAOrderAddAmountBtn *amountBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:33];
+    amountBtn.cell = cell;
+    amountBtn.indexPath = indexPath;
+    if (orderItem.amountNum.length == 0) {
+        [amountBtn setTitle:@"00" forState:UIControlStateNormal];
+    } else {
+        [amountBtn setTitle:orderItem.amountNum forState:UIControlStateNormal];
+    }
+
+    [amountBtn addTarget:self
+                  action:@selector(amountLabelListener:) forControlEvents:UIControlEventTouchUpInside];
+    return cell;
+    
+
+}
+
+-(void) amountLabelListener :(id)sender
+{
+    DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
+    NSLog(@"fdfdf");
+    DAPickAmountViewController *vc = [[DAPickAmountViewController alloc] initWithNibName:@"DAPickAmountViewController" bundle:nil];
+    
+    vc.selectedNum = ^(NSString *num1,NSString *num2){
+        NSString *btnNum = [NSString stringWithFormat:@"%@%@",num1,num2];
+        [btn setTitle:btnNum forState:UIControlStateNormal];
+        DAOrder *orderItem = [self.orderList.items objectAtIndex:btn.indexPath.row];
+        orderItem.amountNum = btnNum;
+        NSLog(@"%@",self.orderList.items);
+        [self tableViewReload];
+    };
+    popover = [[UIPopoverController alloc]initWithContentViewController:vc];
+    popover.popoverContentSize = CGSizeMake(80, 240);
+    
+    [popover presentPopoverFromRect:CGRectMake(btn.cell.frame.origin.x+305, btn.cell.frame.origin.y+100, btn.cell.frame.size.width, btn.cell.frame.size.height) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
 }
 
 -(void) deleteAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
-    
-    for (DAMenu *menu in self.orderList.items) {
-        if (menu._id == btn._id) {
-            if (![menu.amount isEqualToString:@"1"]) {
-                int amount = [menu.amount integerValue] - 1;
-                menu.amount = [NSString stringWithFormat:@"%d", amount];
-                [self tableViewReload];
-                return;
-            }
-            
-        }
-    }
+    NSLog(@"delete");
+    NSString *amount =  btn.amountLabel.text;
+    int value = [amount intValue];
+    value = value - 1;
+    btn.amountLabel.text = [NSString stringWithFormat:@"%d.",value];
+    DAOrder *orderItem = [self.orderList.items objectAtIndex:btn.indexPath.row];
+    orderItem.amount = [NSString stringWithFormat:@"%d",value];
+    [self tableViewReload];
 }
 -(void) addAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
     
-    for (DAMenu *menu in self.orderList.items) {
-        if (menu._id == btn._id) {
-            int amount = [menu.amount integerValue] + 1;
-            menu.amount = [NSString stringWithFormat:@"%d", amount];
-            [self tableViewReload];
-            return;
-        }
-    }
-    
+    NSLog(@"add");
+    NSString *amount =  btn.amountLabel.text;
+    int value = [amount intValue];
+    value = value + 1;
+    btn.amountLabel.text = [NSString stringWithFormat:@"%d.",value];
+    DAOrder *orderItem = [self.orderList.items objectAtIndex:btn.indexPath.row];
+    orderItem.amount = [NSString stringWithFormat:@"%d",value];
+    [self tableViewReload];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

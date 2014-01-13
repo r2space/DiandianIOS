@@ -12,5 +12,8 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *_id;
+@property (nonatomic, strong) UITableViewCell *cell;
+@property (nonatomic, strong) UILabel *amountLabel;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 @end

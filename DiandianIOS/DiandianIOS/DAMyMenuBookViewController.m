@@ -260,6 +260,7 @@
         UIView *addBtnBackgroud = (UIView *)[cell viewWithTag:401];
         UIView *maskBackgroud = (UIView *)[cell viewWithTag:101];
         UIView *titleBackgroud = (UIView *)[cell viewWithTag:99];
+        [titleBackgroud setFrame:CGRectMake(titleBackgroud.frame.origin.x ,my , titleBackgroud.frame.size.width , 55)];
         [maskBackgroud setFrame:CGRectMake(0 ,my , maskBackgroud.frame.size.width , 55)];
         [addBtnBackgroud setFrame:CGRectMake(mx,my,166 ,55)];
         [labelAmount setFrame:CGRectMake(100, my + 10 , labelAmount.frame.size.width, labelAmount.frame.size.height)];
@@ -269,6 +270,7 @@
         UIView *addBtnBackgroud = (UIView *)[cell viewWithTag:401];
         UIView *maskBackgroud = (UIView *)[cell viewWithTag:101];
         UIView *titleBackgroud = (UIView *)[cell viewWithTag:99];
+        [titleBackgroud setFrame:CGRectMake(titleBackgroud.frame.origin.x ,by , titleBackgroud.frame.size.width , 55)];
         [maskBackgroud setFrame:CGRectMake(0 ,by , maskBackgroud.frame.size.width , 55)];
         [addBtnBackgroud setFrame:CGRectMake(bx,by,166 ,55)];
         [labelAmount setFrame:CGRectMake(100, by + 10 , labelAmount.frame.size.width, labelAmount.frame.size.height)];

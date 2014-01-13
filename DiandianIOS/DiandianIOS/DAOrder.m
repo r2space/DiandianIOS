@@ -28,8 +28,12 @@
     [aCoder encodeObject:self.back forKey:@"back"];
     [aCoder encodeObject:self.valid forKey:@"valid"];
     [aCoder encodeObject:self.remark forKey:@"remark"];
+    
+    [aCoder encodeObject:self.amount forKey:@"amount"];
+    [aCoder encodeObject:self.amountNum forKey:@"amountNum"];
 
     [aCoder encodeObject:self.isNew forKey:@" isNew"];
+    
    
     
 }
@@ -52,6 +56,9 @@
     self.back = [aDecoder decodeObjectForKey:@"back"];
     self.valid = [aDecoder decodeObjectForKey:@"valid"];
     self.remark = [aDecoder decodeObjectForKey:@"remark"];
+    
+    self.amount = [aDecoder decodeObjectForKey:@"amount"];
+    self.amountNum = [aDecoder decodeObjectForKey:@"amountNum"];
     
     self.isNew = [aDecoder decodeObjectForKey:@"isNew"];
     

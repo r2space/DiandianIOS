@@ -203,18 +203,7 @@ enum PrintErrorStatus
         
         
         NSLog(@"bill %@",bill);
-//        billData = bill;
-//        self.lblTotal.text = [NSString stringWithFormat:@"%.02f元",[bill.amount floatValue]];
-//        //判断是否是  外卖
-//        if ([self.curService.type integerValue] == 3) {
-//            self.lblDeskName.text = [NSString stringWithFormat:@"外卖"];
-//        } else {
-//            self.lblDeskName.text = [NSString stringWithFormat:@"桌号：%@",bill.desk.name];
-//        }
-//        
-//        float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
-//        self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
-//        self.textPay.text = [NSString stringWithFormat:@"%d", [bill.amount integerValue]];
+        
     }];
 }
 
@@ -260,33 +249,31 @@ enum PrintErrorStatus
             NSMutableArray *printerOrderList = [SystemPrintSet objectForKey:printerSet._id];
             DAPrintProxy *print = [[DAPrintProxy alloc] init];
             
-            if (takeout.length > 0) {
-                [print addLine:[NSString stringWithFormat:@"单号:%@ 外卖的手机号：%@ 下单时间：%@",orderNum,takeout,[Tool stringFromISODateString:now]]];
-            } else {
-                [print addLine:[NSString stringWithFormat:@"单号:%@ 包： %@ 下单时间：%@",orderNum,deskName,[Tool stringFromISODateString:now]]];
-            }
             
-            if (tips.length > 0) {
-                [print addLine:[NSString stringWithFormat:@"备注:%@  ",tips]];
-            }
-            
-            [print addSplit];
             for (DAOrder *willOrder in printerOrderList) {
+                if (takeout.length > 0) {
+                    [print addLine:[NSString stringWithFormat:@"单号:%@ 外卖的手机号：%@ 下单时间：%@",orderNum,takeout,[Tool stringFromISODateString:now]]];
+                } else {
+                    [print addLine:[NSString stringWithFormat:@"单号:%@    %@ ",orderNum,deskName]];
+                    [print addLine:[NSString stringWithFormat:@"单时间：%@",[Tool stringFromISODateString:now]]];
+                }
                 
-                    NSString *line;
-                    if ([willOrder.type  integerValue] == 0) {
-                        line = [NSString stringWithFormat:@"%@ 1份 " ,willOrder.item.itemName];
-                    } else {
-                        line = [NSString stringWithFormat:@"%@ （小份） 1份 " ,willOrder.item.itemName];
-                    }
-                
-                    [print addLine:line];
-                
-            }
-            [print addSplit];
+                if (tips.length > 0) {
+                    [print addLine:[NSString stringWithFormat:@"备注:%@  ",tips]];
+                }
+                    [print addLine:[NSString stringWithFormat:@" "]];                
+                NSString *line;
+                if ([willOrder.type  integerValue] == 0) {
+                    line = [NSString stringWithFormat:@"%@ 1份 " ,willOrder.item.itemName];
+                } else {
+                    line = [NSString stringWithFormat:@"%@ （小份） 1份 " ,willOrder.item.itemName];
+                }
             
-            if([printerOrderList count] > 0)
-                [print printText:printerSet.printerIP addTextSize:2 TextHeight:3];
+                [print addLine:line];
+                
+                if([printerOrderList count] > 0)
+                    [print printText:printerSet.printerIP addTextSize:2 TextHeight:3];
+            }
             
         }
     

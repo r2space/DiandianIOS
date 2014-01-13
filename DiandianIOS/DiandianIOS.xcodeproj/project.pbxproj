@@ -222,6 +222,8 @@
 		0AA032061843558300C66590 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA032011843558300C66590 /* NSData+SRB64Additions.m */; };
 		0AA032071843558300C66590 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA032041843558300C66590 /* SRWebSocket.m */; };
 		0AA032101844DC1D00C66590 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA0320F1844DC1D00C66590 /* Tool.m */; };
+		0AA4AB1118817CF70079EC3F /* DAPickAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA4AB0F18817CF70079EC3F /* DAPickAmountViewController.m */; };
+		0AA4AB1218817CF70079EC3F /* DAPickAmountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4AB1018817CF70079EC3F /* DAPickAmountViewController.xib */; };
 		0AA5338F1828AD690087EFF1 /* DABookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533911828AD690087EFF1 /* DABookViewController.xib */; };
 		0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533971828AD7D0087EFF1 /* DAOrderCell.xib */; };
 		0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AA533991828B7FE0087EFF1 /* DABookCell.xib */; };
@@ -688,6 +690,9 @@
 		0AA032041843558300C66590 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		0AA0320E1844DC1D00C66590 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		0AA0320F1844DC1D00C66590 /* Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
+		0AA4AB0E18817CF70079EC3F /* DAPickAmountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPickAmountViewController.h; sourceTree = "<group>"; };
+		0AA4AB0F18817CF70079EC3F /* DAPickAmountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPickAmountViewController.m; sourceTree = "<group>"; };
+		0AA4AB1018817CF70079EC3F /* DAPickAmountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPickAmountViewController.xib; sourceTree = "<group>"; };
 		0AA533941828AD750087EFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DABookViewController.xib; sourceTree = "<group>"; };
 		0AA533981828AD800087EFF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DAOrderCell.xib; sourceTree = "<group>"; };
 		0AA533991828B7FE0087EFF1 /* DABookCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABookCell.xib; sourceTree = "<group>"; };
@@ -1122,6 +1127,9 @@
 				0AEBE51C1830ED9800B01A5E /* DAMyOrderCell.h */,
 				0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */,
 				0AEBE51F1830EDAA00B01A5E /* DAMyOrderCell.xib */,
+				0AA4AB0E18817CF70079EC3F /* DAPickAmountViewController.h */,
+				0AA4AB0F18817CF70079EC3F /* DAPickAmountViewController.m */,
+				0AA4AB1018817CF70079EC3F /* DAPickAmountViewController.xib */,
 			);
 			name = MenubookCell;
 			sourceTree = "<group>";
@@ -2007,6 +2015,7 @@
 				0A07BD561829CC8A00A350BC /* stain.png in Resources */,
 				28D0DCAB183C79E500583675 /* btn_round_red.png in Resources */,
 				F2AB4C14182E21F90067E450 /* sample-table.jpg in Resources */,
+				0AA4AB1218817CF70079EC3F /* DAPickAmountViewController.xib in Resources */,
 				0A3DB72C182A7B8700170F0C /* DAMyBigMenuBookCell.xib in Resources */,
 				0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */,
 				0A54D6D6184ED1DD00BBA9C4 /* menubook_sidebottom.png in Resources */,
@@ -2314,6 +2323,7 @@
 				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
 				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
 				0AA031F31843555900C66590 /* SBJson4StreamTokeniser.m in Sources */,
+				0AA4AB1118817CF70079EC3F /* DAPickAmountViewController.m in Sources */,
 				0AA031A418432A4A00C66590 /* DAOrderModule.m in Sources */,
 				0AB78B7C183CB46500979BD0 /* AFHTTPRequestOperation.m in Sources */,
 				0A20E8F2185A9EBC00422061 /* DAPrinterList.m in Sources */,
