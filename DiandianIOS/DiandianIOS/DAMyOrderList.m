@@ -35,7 +35,7 @@
     
     for (DAOrder *order in self.items) {
         NSMutableDictionary *orderDic = [order toDictionary];
-//        if (order.isNew !=nil ) {
+
         int price = 0;
 
         if ([order.type integerValue ] == 0) {
@@ -49,9 +49,8 @@
         price = price * amout;
         
         [orderDic setObject:[NSString stringWithFormat:@"%d",price] forKey:@"amountPrice"];
-            [tmpList addObject:orderDic];
-//        }
-
+        [tmpList addObject:orderDic];
+        
     }
     return tmpList;
 }

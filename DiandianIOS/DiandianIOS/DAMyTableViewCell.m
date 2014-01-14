@@ -60,8 +60,8 @@
     
     
     [[DAOrderModule alloc] getOrderListByServiceId:self.curDesk.service._id withBack:@"0" callback:^(NSError *err, DAMyOrderList *list) {
-        DAMyOrderList *dataList = [DAOrderProxy getOneDataList:list];
-        for (DAOrder *_order in dataList.items) {
+//        DAMyOrderList *dataList = [DAOrderProxy getOneDataList:list];
+        for (DAOrder *_order in list.items) {
             [wList addObject:_order];
         }
         [vc initData:@"type" list:wList];

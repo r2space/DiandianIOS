@@ -87,7 +87,7 @@
     
         cell.order = order;
         cell.lblName.text = order.item.itemName;
-    
+        cell.lblAmountPrice.text = [NSString stringWithFormat:@"%0.2f",[order.amountPrice floatValue]];
 
         if ([order.type integerValue ] == 0) {
             cell.lblPrice.text =[NSString stringWithFormat:@"%@元",order.item.itemPriceNormal];
@@ -187,7 +187,7 @@
 }
 
 - (IBAction)onPrintTouched:(id)sender {
-    [DAPrintProxy printBill:self.curService._id off:@"" pay:@"" type:0 reduce:@""];
+    [DAPrintProxy printBill:self.curService._id off:self.offAmount pay:self.payAmount type:0 reduce:self.reduceAmount];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

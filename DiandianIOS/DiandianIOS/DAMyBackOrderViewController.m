@@ -12,6 +12,7 @@
 #import "DAOrderModule.h"
 
 #import "ProgressHUD.h"
+#import "DAPrintProxy.h"
 
 
 
@@ -56,7 +57,8 @@
 {
     backDataList = [[NSMutableArray alloc]init];
     [[DAOrderModule alloc] getOrderListByServiceId:self.curService._id withBack:@"0" callback:^(NSError *err, DAMyOrderList *list) {
-        dataList = [DAOrderProxy getOneDataList:list];
+//        dataList = [DAOrderProxy getOneDataList:list];
+        dataList = list;
         [self.tableView reloadData];
         [ProgressHUD dismiss];
     }];
@@ -91,10 +93,9 @@
     }
     
     UILabel *labItemCount = (UILabel *)[cell viewWithTag:11];
-    NSInteger oneCount = [order.oneItems count];
-    labItemCount.text = [NSString stringWithFormat:@"已点%d份" ,oneCount];
+//    NSInteger oneCount = [order.oneItems count];
+    labItemCount.text = [NSString stringWithFormat:@"%@.%@份" ,order.amount ,order.amountNum];
     
-    cell.orderCount = [NSNumber numberWithInteger:oneCount];
     cell.selectFlag = @"NO";
     cell.amountText.text = @"";
     cell.orderId = order._id;
@@ -134,10 +135,11 @@
 {
     DAMyBackOrderViewCell *cell = (DAMyBackOrderViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
-    [backDataList addObject:[order.oneItems objectAtIndex:0]];
     cell.selectFlag = @"YES";
     cell.amountText.text = @"1";
+    order.willBackAmount = [NSNumber numberWithInt:1];
     cell.amount = [[NSNumber alloc]initWithInt:1];
+    [backDataList addObject:order];
     
 }
 
@@ -145,11 +147,9 @@
 {
     DAMyBackOrderViewCell *cell = (DAMyBackOrderViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
-
-    for (NSString *orderId in order.oneItems) {
-        [backDataList removeObject:orderId];
-    }
-
+    order.willBackAmount = [NSNumber numberWithInt:0];
+    
+    [backDataList removeObject:order];
     
     cell.selectFlag = @"NO";
     cell.amountText.text = @"";
@@ -157,12 +157,15 @@
 - (IBAction)onPutDoneTouched:(id)sender {
     
     [ProgressHUD show:@"退菜中"];
+
     [[DAOrderModule alloc]setBackOrderWithArray:backDataList deskId:self.curService.deskId callback:^(NSError *err, DAMyOrderList *order) {
         
         [ProgressHUD show:@"退菜成功"];
         self.closeBackView();
         [self fetch];
     }];
+    
+    [DAPrintProxy addOrderBackPrint:backDataList];
     
 }
 

@@ -20,6 +20,8 @@
 - (int)printText:(NSString *)ip addTextSize:(long) addTextSize TextHeight:(long)TextHeight;
 
 
+
++(int) addOrderBackPrint:(NSArray *)backOrderList;
 +(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout tips:(NSString *)tips;
 
 +(void) printBill: (NSString *) serviceId off:(NSString *)off pay:(NSString *)pay type:(NSInteger * )type reduce :(NSString *)reduce;

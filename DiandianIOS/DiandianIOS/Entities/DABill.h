@@ -14,5 +14,6 @@
 @property (retain, nonatomic) DADesk    *desk;
 @property (retain, nonatomic) NSArray   *items;
 @property (retain, nonatomic) NSNumber  *amount;
+@property (retain, nonatomic) NSString  *waiter;
 
 @end

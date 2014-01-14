@@ -186,12 +186,16 @@
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:10];
     UILabel *pirceLabel = (UILabel *)[cell viewWithTag:11];
     //TODO  半分
+    NSString *tmpPrice = 0;
     if ([orderItem.type integerValue] == 0) {
         nameLabel.text = orderItem.item.itemName;
-        pirceLabel.text = [NSString stringWithFormat:@"%@元/盘",orderItem.item.itemPriceNormal];
+        pirceLabel.text = [NSString stringWithFormat:@"%.02f元",[orderItem.item.itemPriceNormal floatValue]];
+        tmpPrice = orderItem.item.itemPriceNormal;
     } else {
-        nameLabel.text = [NSString stringWithFormat:@"%@(小)",orderItem.item.itemName];
-        pirceLabel.text = [NSString stringWithFormat:@"%@元/盘",orderItem.item.itemPriceHalf];
+        nameLabel.text = [NSString stringWithFormat:@"%@(小)",orderItem.item.itemName ];
+        pirceLabel.text = [NSString stringWithFormat:@"%.02f元/盘",[orderItem.item.itemPriceHalf floatValue]];
+        tmpPrice = orderItem.item.itemPriceHalf;
+                
     }
     
     if ([orderItem.back integerValue] == 2) {
@@ -202,6 +206,14 @@
     
     
     UILabel *amountLabel = (UILabel *)[cell viewWithTag:13];
+    UILabel *priceLabel = (UILabel *)[cell viewWithTag:111];
+    if (orderItem.amountPrice) {
+        priceLabel.text =  [NSString stringWithFormat:@"%.02f元",[orderItem.amountPrice floatValue]];
+    } else {
+        priceLabel.text =  [NSString stringWithFormat:@"%.02f元",[tmpPrice floatValue]];
+        orderItem.amountPrice = [NSNumber numberWithInt:[tmpPrice intValue]];
+    }
+
 
     //TODO  两份合成一份  orderItem.item.amount
     amountLabel.text = [NSString stringWithFormat:@"%@." , orderItem.amount];
@@ -210,19 +222,7 @@
     
     
     
-    if (indexPath.section == 0) {
 
-//        [addBtn setEnabled:YES];
-//        [deleteBtn setEnabled:YES];
-//        [addBtn setHidden:NO];
-//        [deleteBtn setHidden:NO];
-        [remarkField setEnabled:YES];
-        cell.backgroundColor = [UIColor clearColor];
-    } else {
-        
-        [remarkField setEnabled:NO];
-        cell.backgroundColor = [UIColor lightGrayColor];
-    }
     
     
     DAOrderAddAmountBtn *addBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:26];
@@ -251,6 +251,20 @@
 
     [amountBtn addTarget:self
                   action:@selector(amountLabelListener:) forControlEvents:UIControlEventTouchUpInside];
+    if (indexPath.section == 0) {
+        [addBtn setHidden:NO];
+        [deleteBtn setHidden:NO];
+        [amountBtn setEnabled:YES];
+        
+        [remarkField setEnabled:YES];
+        cell.backgroundColor = [UIColor clearColor];
+    } else {
+        [addBtn setHidden:YES];
+        [deleteBtn setHidden:YES];
+        [amountBtn setEnabled:NO];
+        [remarkField setEnabled:NO];
+        cell.backgroundColor = [UIColor lightGrayColor];
+    }
     return cell;
     
 
@@ -268,6 +282,15 @@
         DAOrder *orderItem = [self.orderList.items objectAtIndex:btn.indexPath.row];
         orderItem.amountNum = btnNum;
         NSLog(@"%@",self.orderList.items);
+        NSString *tmpAmountStr = [NSString stringWithFormat:@"%@.%@",orderItem.amount,orderItem.amountNum?orderItem.amountNum:@"00"];
+        float price = 0.0;
+        if([orderItem.type intValue]== 0){
+            price = [orderItem.item.itemPriceNormal floatValue];
+        } else {
+            price = [orderItem.item.itemPriceHalf floatValue];
+        }
+        orderItem.amountPrice = [NSNumber numberWithInt:(int)price * [tmpAmountStr floatValue]];
+        
         [self tableViewReload];
     };
     popover = [[UIPopoverController alloc]initWithContentViewController:vc];
@@ -285,6 +308,16 @@
     btn.amountLabel.text = [NSString stringWithFormat:@"%d.",value];
     DAOrder *orderItem = [self.orderList.items objectAtIndex:btn.indexPath.row];
     orderItem.amount = [NSString stringWithFormat:@"%d",value];
+    
+    NSString *tmpAmountStr = [NSString stringWithFormat:@"%@.%@",orderItem.amount,orderItem.amountNum?orderItem.amountNum:@"00"];
+    float price = 0.0;
+    if([orderItem.type intValue]== 0){
+        price = [orderItem.item.itemPriceNormal floatValue];
+    } else {
+        price = [orderItem.item.itemPriceHalf floatValue];
+    }
+    orderItem.amountPrice = [NSNumber numberWithInt:(int)price * [tmpAmountStr floatValue]];
+
     [self tableViewReload];
 }
 -(void) addAmount :(id)sender {
@@ -297,6 +330,15 @@
     btn.amountLabel.text = [NSString stringWithFormat:@"%d.",value];
     DAOrder *orderItem = [self.orderList.items objectAtIndex:btn.indexPath.row];
     orderItem.amount = [NSString stringWithFormat:@"%d",value];
+    NSString *tmpAmountStr = [NSString stringWithFormat:@"%@.%@",orderItem.amount,orderItem.amountNum?orderItem.amountNum:@"00"];
+    float price = 0.0;
+    if([orderItem.type intValue]== 0){
+        price = [orderItem.item.itemPriceNormal floatValue];
+    } else {
+        price = [orderItem.item.itemPriceHalf floatValue];
+    }
+    orderItem.amountPrice = [NSNumber numberWithInt:(int)price * [tmpAmountStr floatValue]];
+
     [self tableViewReload];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

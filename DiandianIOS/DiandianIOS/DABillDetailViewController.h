@@ -20,6 +20,10 @@ typedef void(^ParentReloadBlock)();
 @property (nonatomic, copy) ParentReloadBlock parentReloadBlock;
 
 @property (nonatomic, retain) DAService *curService;
+@property (nonatomic, retain) NSString *offAmount;
+@property (nonatomic, retain) NSString *payAmount;
+@property (nonatomic, retain) NSString *reduceAmount;
+
 
 
 @end

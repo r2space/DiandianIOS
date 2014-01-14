@@ -69,11 +69,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DAQueueTableCell"];
 
     UILabel *lblName = (UILabel *)[cell viewWithTag:10];
+    UILabel *lblAmount = (UILabel *)[cell viewWithTag:22];
+    
     if (desk != nil && desk.name.length > 0) {
         lblName.text = desk.name;
     } else {
         lblName.text = @"外卖";
     }
+    NSLog(@"%@.%@",order.amount,order.amountNum?order.amountNum:@"00");
+    lblAmount.text = [NSString stringWithFormat:@"%@.%@份",order.amount,order.amountNum?order.amountNum:@"00"];
     
     
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:11];

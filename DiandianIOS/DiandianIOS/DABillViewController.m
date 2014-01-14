@@ -11,6 +11,7 @@
 #import "UIViewController+MJPopupViewController.h"
 #import "DAPreferentialViewController.h"
 #import "DAPrintProxy.h"
+#import "ProgressHUD.h"
 
 #define kMaxNumber                       100000
 
@@ -60,13 +61,19 @@
     self.textPay.inputView=[[UIView alloc]initWithFrame:CGRectZero];
 //    self.textOff.inputView=[[UIView alloc]initWithFrame:CGRectZero];
     self.textReduce.inputView=[[UIView alloc]initWithFrame:CGRectZero];
-
+    NSNumber *hasCash = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
+    if (hasCash!=nil && [hasCash boolValue]) {
+        [self.btnBill setHidden:NO];
+    } else {
+        [self.btnBill setHidden:YES];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self reload];
+
 }
 
 
@@ -108,12 +115,21 @@
         }
 
         float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
-        self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
-        self.textPay.text = [NSString stringWithFormat:@"%.02f", [bill.amount floatValue]];
+        
+        self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:off]];
+        self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
     }];
     
 }
 
+-(float) parseFloatValue:(float)value
+{
+    int tmp = (int)value;
+    NSString *tmpSting = [NSString stringWithFormat:@"%d",tmp];
+    NSString *result = [NSString stringWithFormat:@"%@.00",tmpSting];
+    NSLog(@"%@",result);
+    return [result floatValue];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -125,6 +141,9 @@
 - (IBAction)onDetailTaped:(id)sender {
     DABillDetailViewController *c = [[DABillDetailViewController alloc] initWithNibName:nil bundle:nil];
     c.curService = self.curService;
+    c.offAmount = [NSString stringWithFormat:@"%f",offAmount];
+    c.payAmount = self.textPay.text;
+    c.reduceAmount = self.textReduce.text;
     c.parentReloadBlock = ^(){
         [self reload];
     };
@@ -157,8 +176,16 @@
 - (IBAction)onStopBillTouched:(id)sender {
 
     float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
-    self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
-    self.textPay.text = [NSString stringWithFormat:@"%d", (int)off];
+    self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:off]];
+    self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
+    
+    NSNumber *hasCash = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
+
+    if (!(hasCash != nil && [hasCash boolValue])) {
+        [ProgressHUD showError:@"只有后厨才能上菜"];
+        return;
+    }
+
     
     [DAPrintProxy printBill:self.curService._id off:[NSString stringWithFormat:@"%f",offAmount] pay:self.textPay.text type:payType reduce:self.textReduce.text];
     
@@ -210,8 +237,8 @@
     }
     
     float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
-    self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",off];
-    self.textPay.text = [NSString stringWithFormat:@"%d", (int)off];
+    self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:off]];
+    self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
 }
 
 @end

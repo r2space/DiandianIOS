@@ -18,6 +18,7 @@ typedef void (^FreeCallback)();
 @property (weak, nonatomic) IBOutlet UILabel *lblOff;
 @property (weak, nonatomic) IBOutlet UILabel *lblPay;
 @property (weak, nonatomic) IBOutlet UILabel *lblAmount;
+@property (weak, nonatomic) IBOutlet UILabel *lblAmountPrice;
 @property (weak, nonatomic) IBOutlet UIButton *btnOperation;
 
 @property (nonatomic,retain) DAOrder *order;

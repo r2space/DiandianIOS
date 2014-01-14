@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DABillViewController">
             <connections>
+                <outlet property="btnBill" destination="LsQ-OM-ALh" id="eUc-W5-Neb"/>
                 <outlet property="lblDeskName" destination="jXB-LY-IMh" id="1ks-Rb-X5n"/>
                 <outlet property="lblPay" destination="Cat-FQ-y5p" id="wH8-cE-7We"/>
                 <outlet property="lblTotal" destination="1Te-8C-tC9" id="XhO-zw-Z2C"/>
