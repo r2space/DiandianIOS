@@ -54,6 +54,8 @@
 		0A40FDE6183CEDCD00427613 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A40FDE5183CEDCD00427613 /* libicucore.dylib */; };
 		0A40FE0C183F1C6800427613 /* DAOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE0B183F1C6800427613 /* DAOrder.m */; };
 		0A40FE14183F290000427613 /* DASocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE13183F290000427613 /* DASocketIO.m */; };
+		0A446BFA188529C70075CFA2 /* DABillBackPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A446BF8188529C70075CFA2 /* DABillBackPopoverViewController.m */; };
+		0A446BFB188529C70075CFA2 /* DABillBackPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A446BF9188529C70075CFA2 /* DABillBackPopoverViewController.xib */; };
 		0A4E478818569ECB00CEC3DE /* DAEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E478718569ECB00CEC3DE /* DAEntity.m */; };
 		0A4E47971856A06A00CEC3DE /* DAUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E478A1856A06A00CEC3DE /* DAUserList.m */; };
 		0A4E47981856A06A00CEC3DE /* DADesk.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E478C1856A06A00CEC3DE /* DADesk.m */; };
@@ -424,6 +426,9 @@
 		0A40FE0B183F1C6800427613 /* DAOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrder.m; sourceTree = "<group>"; };
 		0A40FE12183F290000427613 /* DASocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASocketIO.h; path = Helper/DASync/DASocketIO.h; sourceTree = "<group>"; };
 		0A40FE13183F290000427613 /* DASocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASocketIO.m; path = Helper/DASync/DASocketIO.m; sourceTree = "<group>"; };
+		0A446BF7188529C70075CFA2 /* DABillBackPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DABillBackPopoverViewController.h; path = View/Bill/DABillBackPopoverViewController.h; sourceTree = "<group>"; };
+		0A446BF8188529C70075CFA2 /* DABillBackPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DABillBackPopoverViewController.m; path = View/Bill/DABillBackPopoverViewController.m; sourceTree = "<group>"; };
+		0A446BF9188529C70075CFA2 /* DABillBackPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DABillBackPopoverViewController.xib; path = View/Bill/DABillBackPopoverViewController.xib; sourceTree = "<group>"; };
 		0A4E47811855FE8600CEC3DE /* DiandianIOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DiandianIOS.entitlements; sourceTree = "<group>"; };
 		0A4E478618569EB000CEC3DE /* DAEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAEntity.h; path = Entities/DAEntity.h; sourceTree = "<group>"; };
 		0A4E478718569ECB00CEC3DE /* DAEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAEntity.m; path = Entities/DAEntity.m; sourceTree = "<group>"; };
@@ -1908,6 +1913,9 @@
 				0AB4B3AE1838DE3700D77D7E /* DAPreferentialViewController.h */,
 				0AB4B3AF1838DE3700D77D7E /* DAPreferentialViewController.m */,
 				0AB4B3B01838DE3700D77D7E /* DAPreferentialViewController.xib */,
+				0A446BF7188529C70075CFA2 /* DABillBackPopoverViewController.h */,
+				0A446BF8188529C70075CFA2 /* DABillBackPopoverViewController.m */,
+				0A446BF9188529C70075CFA2 /* DABillBackPopoverViewController.xib */,
 			);
 			name = Bill;
 			sourceTree = "<group>";
@@ -2095,6 +2103,7 @@
 				0A07BD8B182A363000A350BC /* DAMyTableViewController.xib in Resources */,
 				0A07BD5D1829D2B900A350BC /* menu.json in Resources */,
 				0A8547B318684E7E00C051D8 /* DASaledSeachViewController.xib in Resources */,
+				0A446BFB188529C70075CFA2 /* DABillBackPopoverViewController.xib in Resources */,
 				0A8547AB186830A400C051D8 /* DASoldOutViewCell.xib in Resources */,
 				0A0B7C24186959A30041704F /* DATagListCell.xib in Resources */,
 				47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */,
@@ -2258,6 +2267,7 @@
 				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
 				2886BB071839AD8100A496AC /* DAProcession.m in Sources */,
 				0AA031F41843555900C66590 /* SBJson4StreamWriter.m in Sources */,
+				0A446BFA188529C70075CFA2 /* DABillBackPopoverViewController.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
 				0AB78B5B183CB46500979BD0 /* DAMenuModule.m in Sources */,
 				0A7AF0CE1836076600635376 /* DAQueueFoodListViewController.m in Sources */,
@@ -2476,6 +2486,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -2490,8 +2501,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -2500,7 +2511,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
+				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2513,8 +2524,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -2523,7 +2534,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
+				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

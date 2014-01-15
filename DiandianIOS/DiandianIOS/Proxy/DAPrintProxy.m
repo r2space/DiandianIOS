@@ -66,6 +66,27 @@ enum PrintErrorStatus
     
 }
 
++(void) withOrderPrintLine:(DAOrder *)order print:(DAPrintProxy *)print{
+    NSString *line;
+    NSString *amount = [NSString stringWithFormat:@"%@",order.amount];
+    NSString *name;
+    int price = 0;
+    
+    
+    if ([order.type intValue] == 0) {
+        price = [order.item.itemPriceNormal intValue];
+        name = order.item.itemName;
+    } else {
+        price = [order.item.itemPriceHalf intValue];
+        name = [NSString stringWithFormat:@"%@(小份)",order.item.itemName];
+        
+    }
+    
+    line = [NSString stringWithFormat:@"%@ %0.2f    %@份  %@元" ,[Tool stringWithPad:name length:10] ,(float)price ,amount,order.amountPrice];
+    
+    [print addLine:line];
+}
+
 +(void) printBill: (NSString *) serviceId off:(NSString *)off pay:(NSString *)pay type:(NSInteger * )type reduce :(NSString *)reduce
 {
     DAPrintProxy *print = [[DAPrintProxy alloc] init];
@@ -89,7 +110,7 @@ enum PrintErrorStatus
             [print addLine:[NSString stringWithFormat:@"时间:%@", [Tool stringFromISODate:now]]];
             [print addLine:[NSString stringWithFormat:@"点菜员:%@", bill.waiter]];
             [print addLine:@""];
-            [print addLine:[NSString stringWithFormat:@"品名                     单价    份数   总价" ]];
+            [print addLine:[NSString stringWithFormat:@"品名                单价    份数   总价" ]];
             [print addSplit];
             [print addLine:@"菜单"];
             for (DAOrder *order in list.items) {
@@ -109,24 +130,8 @@ enum PrintErrorStatus
             }
             
             for (DAOrder *order in doneOrderList) {
-                NSString *line;
-                NSString *amount = [NSString stringWithFormat:@"%@.%@",order.amount,order.amountNum];
-                NSString *name;
-                int price = 0;
+                [DAPrintProxy withOrderPrintLine:order print:print];                
                 
-
-                if ([order.type intValue] == 0) {
-                    price = [order.item.itemPriceNormal intValue];
-                    name = order.item.itemName;
-                } else {
-                    price = [order.item.itemPriceHalf intValue];
-                    name = [NSString stringWithFormat:@"%@(小份)",order.item.itemName];
-                    
-                }
-                
-                line = [NSString stringWithFormat:@"%@    %0.2f    %@份    %@元" ,[Tool stringWithPad:name length:10] ,(float)price ,amount,order.amountPrice];
-
-                [print addLine:line];
             }
             if ([undoneOrderList count] > 0) {
                 [print addLine:@""];
@@ -134,15 +139,8 @@ enum PrintErrorStatus
             }
             
             for (DAOrder *order in undoneOrderList) {
-                NSString *line;
-                if ([order.type  integerValue] == 0) {
-                    line = [NSString stringWithFormat:@"%@        1份    %@元" ,[Tool stringWithPad:order.item.itemName length:10] , order.item.itemPriceNormal];
-                } else {
-                    NSString *name = [NSString stringWithFormat:@"%@(小份)",order.item.itemName];
-                    line = [NSString stringWithFormat:@"%@        1份    %@元" ,[Tool stringWithPad:name length:10] ,order.item.itemPriceHalf];
-                    
-                }
-                [print addLine:line];
+                [DAPrintProxy withOrderPrintLine:order print:print];
+                
             }
             
             
@@ -152,15 +150,7 @@ enum PrintErrorStatus
                 [print addLine:@""];
             }
             for (DAOrder *order in backOrderList) {
-                NSString *line;
-                if ([order.type  integerValue] == 0) {
-                    line = [NSString stringWithFormat:@"%@        1份    %@元" ,[Tool stringWithPad:order.item.itemName length:10] , order.item.itemPriceNormal];
-                } else {
-                    NSString *name = [NSString stringWithFormat:@"%@(小份)",order.item.itemName];
-                    line = [NSString stringWithFormat:@"%@        1份    %@元" ,[Tool stringWithPad:name length:10] ,order.item.itemPriceHalf];
-                    
-                }
-                [print addLine:line];
+                [DAPrintProxy withOrderPrintLine:order print:print];
             }
             
             if ([freeOrderList count] > 0) {
@@ -170,15 +160,8 @@ enum PrintErrorStatus
             }
             
             for (DAOrder *order in freeOrderList) {
-                NSString *line;
-                if ([order.type  integerValue] == 0) {
-                    line = [NSString stringWithFormat:@"%@        1份    %@元" ,[Tool stringWithPad:order.item.itemName length:10] , order.item.itemPriceNormal];
-                } else {
-                    NSString *name = [NSString stringWithFormat:@"%@(小份)",order.item.itemName];
-                    line = [NSString stringWithFormat:@"%@        1份    %@元" ,[Tool stringWithPad:name length:10] ,order.item.itemPriceHalf];
-                    
-                }
-                [print addLine:line];
+                [DAPrintProxy withOrderPrintLine:order print:print];
+                
             }
             
             [print addSplit];
@@ -284,7 +267,7 @@ enum PrintErrorStatus
                 }
                     [print addLine:[NSString stringWithFormat:@" "]];                
                 NSString *line;
-                NSString *tmpAmount = [NSString stringWithFormat:@"%@.%@",willOrder.amount,willOrder.amountNum?willOrder.amountNum:@"00"];
+                NSString *tmpAmount = [NSString stringWithFormat:@"%@",willOrder.amount];
                 if ([willOrder.type  integerValue] == 0) {
                     line = [NSString stringWithFormat:@"%@  %@份 " ,willOrder.item.itemName,tmpAmount];
                 } else {
@@ -532,17 +515,71 @@ enum PrintErrorStatus
     return result;
 }
 
--(int) printBackOrder:(NSString *)itemName waiterName:(NSString *)waiterName willBackCount:(NSString *)willBackCount
+-(int) printBackOrder:(DAPrintProxy *)print
+            printList:(NSMutableDictionary *)printList
+            printerId:(NSString *)printerId
+             itemName:(NSString *)itemName
+             deskName:(NSString *)deskName
+           waiterName:(NSString *)waiterName
+        willBackCount:(NSString *)willBackCount
+              takeout:(NSString *)takeout
+                  now:(NSString *)now
 {
+    NSString *ip = [printList objectForKey:printerId];
     
+    [print addLine:[NSString stringWithFormat:@"  退菜 "]];
+//    if (takeout.length > 0) {
+//        [print addLine:[NSString stringWithFormat:@"单号:%@    %@",@"num",deskName]];
+//        [print addLine:[NSString stringWithFormat:@"外卖的手机号:%@",@"phone"]];
+//        [print addLine:[NSString stringWithFormat:@"下单时间：%@",[Tool stringFromISODateString:now]]];
+//    } else {
+//        [print addLine:[NSString stringWithFormat:@"单号:%@    %@ ",@"num",deskName]];
+//
+//    }
+//    
+    [print addLine:[NSString stringWithFormat:@"单时间：%@",[Tool stringFromISODateString:now]]];
+    [print addLine:[NSString stringWithFormat:@" "]];
     
+    NSString *line = [NSString stringWithFormat:@"%@  %@份 " ,itemName,willBackCount];
+
+    [print addLine:line];
+    [print addLine:[NSString stringWithFormat:@" "]];    
+    [print printText:ip addTextSize:2 TextHeight:3];
     return 0;
 }
 
 +(int) addOrderBackPrint:(NSArray *)backOrderList;
 {
     DAPrintProxy *print = [[DAPrintProxy alloc] init];
-//    print printBackOrder:<#(NSString *)#> waiterName:<#(NSString *)#> willBackCount:<#(NSString *)#>
+    
+    DAPrinterList *printtList = [[DAPrinterList alloc]unarchiveObjectWithFileWithPath:@"printer" withName:@"printer"];
+    if (printtList == nil || [printtList.items count] == 0) {
+        [ProgressHUD showError:@"请设置打印机"];
+        return -1;
+    }
+    
+    NSMutableDictionary *SystemPrintSet = [[NSMutableDictionary alloc]init];
+    for (DAPrinter *printerSet in printtList.items) {
+
+        if ([printerSet.type isEqualToString:@"1"]) {
+            [SystemPrintSet setObject:printerSet.printerIP forKey:printerSet._id];
+        }
+        
+    }
+    
+    for (DAOrder *order in backOrderList) {
+        [print printBackOrder:print
+                    printList:SystemPrintSet
+                    printerId:order.item.printerId
+                     itemName:order.item.itemName
+                     deskName:order.desk?order.desk.name:@"外卖"
+                   waiterName:order.createby
+                willBackCount:order.willBackAmount
+                      takeout:@""
+                          now:order.createat];
+        
+    }
+    
     return 0;
 }
 

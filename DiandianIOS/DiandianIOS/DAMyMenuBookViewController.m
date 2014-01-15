@@ -122,8 +122,6 @@
         }];
     }
     
-
-
     
 }
 
@@ -141,9 +139,6 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    
-    
-    
     
     DAItemLayout *data = [[DAItemLayout alloc] initWithDictionary:[dataList objectAtIndex:indexPath.row]];
     
@@ -199,7 +194,7 @@
         NSMutableArray *imageList = [[NSMutableArray alloc] init];
         [imageList addObject:data.item.smallimage];
         [imageList addObject:data.item.bigimage];
-        // 创建定时器
+
         adImageList = imageList;
         adImageView = imageView;
         timerFlag = NO;
@@ -214,23 +209,11 @@
         timerFlag = YES;
         
     }
-//    
-//    if (data.item.itemPriceHalf!=nil && data.item.itemPriceHalf.length > 0 ) {
-//        labelAmount.text = [NSString stringWithFormat:@"大%@元/小%@元",data.item.itemPriceNormal, data.item.itemPriceHalf];
-//        if ([data.item.type integerValue] != 10) {
-//            [addSmallBtn setHidden:NO];
-//        }
-//        
-//    } else {
-        titleLabel.text = [NSString stringWithFormat:@"%@    %@元",data.item.itemName, data.item.itemPriceNormal];
-        labelAmount.text = [NSString stringWithFormat:@""];
-        [labelAmount setHidden:YES];
-        [addSmallBtn setHidden:YES];
-        //添加小份动画
-//        [addSmallBtn addTarget:self
-//                   action:@selector(addSmallMenu:) forControlEvents:UIControlEventTouchUpInside];
-//    }
-    
+
+    titleLabel.text = [NSString stringWithFormat:@"%@    %@元",data.item.itemName, data.item.itemPriceNormal];
+    labelAmount.text = [NSString stringWithFormat:@""];
+    [labelAmount setHidden:YES];
+    [addSmallBtn setHidden:YES];
 
     [addBtn addTarget:self
             action:@selector(addMenu:) forControlEvents:UIControlEventTouchUpInside];
@@ -250,31 +233,34 @@
         UIView *addBtnBackgroud = (UIView *)[cell viewWithTag:401];
         UIView *maskBackgroud = (UIView *)[cell viewWithTag:101];
         UIView *titleBackgroud = (UIView *)[cell viewWithTag:99];
-        [titleBackgroud setFrame:CGRectMake(titleBackgroud.frame.origin.x ,y , titleBackgroud.frame.size.width , 27.5)];
+        [titleBackgroud setFrame:CGRectMake(titleBackgroud.frame.origin.x ,0 , titleBackgroud.frame.size.width , 55)];
         [maskBackgroud setFrame:CGRectMake(maskBackgroud.frame.origin.x ,y , maskBackgroud.frame.size.width , 27.5)];
         [addBtnBackgroud setFrame:CGRectMake(x,y,83 ,27.5)];
         [labelAmount setFrame:CGRectMake(100, y, labelAmount.frame.size.width, labelAmount.frame.size.height)];
-        [titleLabel setFrame:CGRectMake(10, y, titleLabel.frame.size.width, titleLabel.frame.size.height)];
+        [titleLabel setFrame:CGRectMake(10, 10, titleLabel.frame.size.width, titleLabel.frame.size.height)];
+
     } else if([data.row intValue] == 2 && [data.column intValue] == 2 )  {
         [addBtn setFrame:CGRectMake(mx,my,166 ,55)];
         UIView *addBtnBackgroud = (UIView *)[cell viewWithTag:401];
         UIView *maskBackgroud = (UIView *)[cell viewWithTag:101];
         UIView *titleBackgroud = (UIView *)[cell viewWithTag:99];
-        [titleBackgroud setFrame:CGRectMake(titleBackgroud.frame.origin.x ,my , titleBackgroud.frame.size.width , 55)];
+        [titleBackgroud setFrame:CGRectMake(titleBackgroud.frame.origin.x ,0 , titleBackgroud.frame.size.width , 55)];
         [maskBackgroud setFrame:CGRectMake(0 ,my , maskBackgroud.frame.size.width , 55)];
         [addBtnBackgroud setFrame:CGRectMake(mx,my,166 ,55)];
         [labelAmount setFrame:CGRectMake(100, my + 10 , labelAmount.frame.size.width, labelAmount.frame.size.height)];
-        [titleLabel setFrame:CGRectMake(10, my + 10 , titleLabel.frame.size.width, titleLabel.frame.size.height)];
+        [titleLabel setFrame:CGRectMake(10, 0 + 10 , titleLabel.frame.size.width, titleLabel.frame.size.height)];
+
     } else if ([data.row intValue] == 3 && [data.column intValue] == 3 )  {
         [addBtn setFrame:CGRectMake(bx,by,166 ,55)];
         UIView *addBtnBackgroud = (UIView *)[cell viewWithTag:401];
         UIView *maskBackgroud = (UIView *)[cell viewWithTag:101];
         UIView *titleBackgroud = (UIView *)[cell viewWithTag:99];
-        [titleBackgroud setFrame:CGRectMake(titleBackgroud.frame.origin.x ,by , titleBackgroud.frame.size.width , 55)];
+        [titleBackgroud setFrame:CGRectMake(titleBackgroud.frame.origin.x ,0 , titleBackgroud.frame.size.width , 55)];
         [maskBackgroud setFrame:CGRectMake(0 ,by , maskBackgroud.frame.size.width , 55)];
         [addBtnBackgroud setFrame:CGRectMake(bx,by,166 ,55)];
         [labelAmount setFrame:CGRectMake(100, by + 10 , labelAmount.frame.size.width, labelAmount.frame.size.height)];
-        [titleLabel setFrame:CGRectMake(10, by + 10 , titleLabel.frame.size.width, titleLabel.frame.size.height)];
+        [titleLabel setFrame:CGRectMake(10, 0 + 10 , titleLabel.frame.size.width, titleLabel.frame.size.height)];
+
     }
     
     });
@@ -434,62 +420,5 @@
 - (IBAction)changePage:(id)sender
 {
     [self gotoPage:YES];    // YES = animate
-}
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
-{
-    NSLog(@"sdfdfdf");
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    NSLog(@"sdfdfdf22 ,%d  self.pageControl.numberOfPages : %d" ,self.pageControl.currentPage,self.pageControl.numberOfPages);
-}
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    NSLog(@"sdfdfdf22 ,%d  self.pageControl.numberOfPages : %d" ,self.pageControl.currentPage,self.pageControl.numberOfPages);
-    int curPage = self.pageControl.currentPage;
-    int numPage = self.pageControl.numberOfPages;
-    
-    if (curPage == (numPage - 1)) {
-        NSLog(@"准备翻页");
-        pageRurned ++;
-    }
-    if (curPage == (numPage - 1) && pageRurned == 2) {
-        NSLog(@"后翻页");
-        
-        if (menuIndex == ([menuList.items count] - 1) ) {
-            return;
-        }
-        
-        menuIndex ++;
-        
-        
-        
-        NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:[NSString stringWithFormat:@"%d",menuIndex] ];
-        [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
-        
-        NSNotification *segmentedControlNotification = [NSNotification notificationWithName:@"segmentedControlReload" object:[NSString stringWithFormat:@"%d",menuIndex]];
-        [[NSNotificationCenter defaultCenter] postNotification:segmentedControlNotification];
-        pageRurned = 0;
-        pagePre = 0;
-    }
-    if (curPage == 0) {
-        pagePre ++;
-    }
-    if (curPage == 0 && pagePre==1) {
-        if (menuIndex == 0) {
-            return;
-        }
-        menuIndex --;
-        pageRurned = 0;
-        pagePre = 0;
-        
-        NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"filterReload" object:[NSString stringWithFormat:@"%d",menuIndex] ];
-        [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
-        
-        NSNotification *segmentedControlNotification = [NSNotification notificationWithName:@"segmentedControlReload" object:[NSString stringWithFormat:@"%d",menuIndex]];
-        [[NSNotificationCenter defaultCenter] postNotification:segmentedControlNotification];
-
-    }
 }
 @end

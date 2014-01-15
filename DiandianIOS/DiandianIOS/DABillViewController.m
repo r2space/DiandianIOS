@@ -21,6 +21,7 @@
     DABill *billData;
     NSInteger *payType;
     float offAmount;
+    BOOL hasLoad;
 }
 @end
 
@@ -43,7 +44,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    hasLoad = NO;
     finishList = [[NSMutableArray alloc] init];
     cancelList = [[NSMutableArray alloc] init];
     payType = 0;
@@ -118,6 +119,7 @@
         
         self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:off]];
         self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
+        hasLoad = YES;
     }];
     
 }
@@ -125,6 +127,9 @@
 -(float) parseFloatValue:(float)value
 {
     int tmp = (int)value;
+    if (tmp < value) {
+        tmp = tmp + 1;
+    }
     NSString *tmpSting = [NSString stringWithFormat:@"%d",tmp];
     NSString *result = [NSString stringWithFormat:@"%@.00",tmpSting];
     NSLog(@"%@",result);
@@ -175,6 +180,10 @@
 }
 - (IBAction)onStopBillTouched:(id)sender {
 
+    if(!hasLoad) {
+        [ProgressHUD showError:@"等待加载。"];
+        return;
+    }
     float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
     self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:off]];
     self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
@@ -236,9 +245,15 @@
         offAmount = 0.8;
     }
     
+    if (index == 3) {
+        offAmount = 0.5;
+    }
+    
     float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
     self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:off]];
     self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
 }
+
+
 
 @end

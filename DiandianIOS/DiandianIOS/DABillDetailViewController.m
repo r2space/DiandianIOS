@@ -9,6 +9,9 @@
 #import "DABillDetailViewController.h"
 #import "DABillDetailViewCell.h"
 #import "DAPrintProxy.h"
+#import "DABillBackPopoverViewController.h"
+#import "DAOrderModule.h"
+#import "ProgressHUD.h"
 
 @interface DABillDetailViewController ()
 {
@@ -17,6 +20,9 @@
     NSMutableArray *undoneOrderList;
     NSMutableArray *backOrderList;
     NSMutableArray *freeOrderList;
+    UIPopoverController *popover;
+    
+    NSMutableArray *backDataList;
 }
 @end
 
@@ -37,7 +43,7 @@
     // Do any additional setup after loading the view from its nib.
     self.view.layer.cornerRadius = 10;
     self.view.layer.masksToBounds = YES;
-
+    backDataList = [[NSMutableArray alloc]init];
     
     dataList = [[DAMyOrderList alloc]init];
     dataList.items = [[NSArray alloc]init];
@@ -95,7 +101,7 @@
             cell.lblPrice.text =[NSString stringWithFormat:@"%@元",order.item.itemPriceHalf];
         }
         
-        cell.lblAmount.text =[NSString stringWithFormat:@"%@.%@",order.amount,order.amountNum];
+        cell.lblAmount.text =[NSString stringWithFormat:@"%0.2f",[order.amount floatValue]];
         cell.backCallback = ^(){
             if (self.parentReloadBlock!=nil) {
                 self.parentReloadBlock();
@@ -113,7 +119,7 @@
         
         UIButton *backBtn = (UIButton *)[cell viewWithTag:402];
         if ([order.back integerValue] == 0) {
-            [backBtn setHidden:NO];
+            [backBtn setHidden:YES];
         } else {
             [backBtn setHidden:YES];
         }
@@ -134,17 +140,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSDictionary *d;
-//    if (indexPath.section == 0) {
-//        d = [_finfishList objectAtIndex:indexPath.row];
-//        [_finfishList removeObjectAtIndex:indexPath.row];
-//        [_cancelList addObject:d];
-//    } else {
-//        d = [_cancelList objectAtIndex:indexPath.row];
-//        [_cancelList removeObjectAtIndex:indexPath.row];
-//        [_finfishList addObject:d];
-//    }
-//    [self.tableView reloadData];
+    NSLog(@"didSelectRow");
+    backDataList = [[NSMutableArray alloc]init];
+    if (indexPath.section == 0) {
+
+        DAOrder *order = [doneOrderList objectAtIndex:indexPath.row];
+        
+            order.willBackAmount = order.amount;
+            [backDataList addObject:order];
+    }
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -202,7 +207,7 @@
     freeOrderList = [[NSMutableArray alloc] init];
     undoneOrderList = [[NSMutableArray alloc] init];
     backOrderList = [[NSMutableArray alloc] init];
-    
+    [ProgressHUD show:@"加载。"];
     [[DAOrderModule alloc] getOrderListByServiceId:self.curService._id withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
         
         for (DAOrder *order in list.items) {
@@ -219,8 +224,42 @@
         }
         dataList = list;
         [self.tableView reloadData];
-        
+        [ProgressHUD dismiss];
     }];
+    
+}
+//0:主食 1:菜品 2:酒水 3:海鲜 
+//0:主食 1:菜品 2:酒水 3:海鲜
+- (IBAction)onBackWhenBillTouched:(UIButton *)sender {
+    NSLog(@"退菜");
+    
+    if ([backDataList count] == 0) {
+        [ProgressHUD showError:@"请选择菜品"];
+        return;
+    }
+    
+    DAOrder *order = [backDataList objectAtIndex:0];
+    NSLog(@"%@",order);
+    if ([order.item.type intValue] == 1 || [order.item.type intValue] == 3) {
+        [ProgressHUD showError:@"请选择酒水或主食"];
+        return;
+    }
+    
+    DABillBackPopoverViewController* vCtrl = [[DABillBackPopoverViewController alloc] initWithNibName:@"DABillBackPopoverViewController" bundle:nil];
+    
+    vCtrl.backDataList = backDataList;
+    vCtrl.curService = self.curService;
+    vCtrl.closeBackView = ^(){
+        [popover dismissPopoverAnimated:YES];
+        backDataList = [[NSMutableArray alloc]init];
+        [self loadFromApi];
+        
+        
+    };
+    popover = [[UIPopoverController alloc]initWithContentViewController:vCtrl];
+    popover.popoverContentSize = CGSizeMake(328, 256);
+    
+    [popover presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
     
 }
 

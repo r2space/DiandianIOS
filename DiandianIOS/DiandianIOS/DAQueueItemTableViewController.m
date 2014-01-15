@@ -77,7 +77,7 @@
         lblName.text = @"外卖";
     }
     NSLog(@"%@.%@",order.amount,order.amountNum?order.amountNum:@"00");
-    lblAmount.text = [NSString stringWithFormat:@"%@.%@份",order.amount,order.amountNum?order.amountNum:@"00"];
+    lblAmount.text = [NSString stringWithFormat:@"%@份",order.amount];
     
     
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:11];

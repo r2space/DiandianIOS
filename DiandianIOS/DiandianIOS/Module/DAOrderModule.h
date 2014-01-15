@@ -43,6 +43,6 @@
 
 -(void) setBackOrder:(NSString *) orderId  callback:(void (^)(NSError *err, DAOrder *list))callback;
 
--(void) setBackOrderWithArray:(NSArray *) orderIds deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *order))callback;
+-(void) setBackOrderWithArray:(NSArray *) backOrderList deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *order))callback;
 
 @end

@@ -370,15 +370,10 @@ static DAMyTableViewController *activity;
 }
 
 - (IBAction)showOrderQueueTouched:(id)sender {
-    NSNumber *hasCash = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
-    if (hasCash!=nil && [hasCash boolValue]) {
-        
+
         DAQueueMasterViewController *viewController = [[DAQueueMasterViewController alloc] initWithNibName:@"DAQueueMasterViewController" bundle:nil];
         [self.navigationController pushViewController:viewController animated:YES];
-    } else {
-        [ProgressHUD showError:@"只有后厨才能上菜"];
-        
-    }
+
 
 }
 

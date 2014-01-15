@@ -94,11 +94,25 @@
     
     UILabel *labItemCount = (UILabel *)[cell viewWithTag:11];
 //    NSInteger oneCount = [order.oneItems count];
-    labItemCount.text = [NSString stringWithFormat:@"%@.%@份" ,order.amount ,order.amountNum];
+    UIButton *addBtn = (UIButton *)[cell viewWithTag:61];
+    UIButton *deleteBtn = (UIButton *)[cell viewWithTag:62];
+    
+    NSArray  *amountArray = [order.amount componentsSeparatedByString:@"."];
+    if([order.item.type intValue] == 2 || [order.item.type intValue] == 0){
+        NSString *amountPrefix = [amountArray objectAtIndex:0];
+        labItemCount.text = [NSString stringWithFormat:@"%@份" ,amountPrefix];
+        [addBtn setHidden:NO];
+        [deleteBtn setHidden:NO];
+    } else {
+        labItemCount.text = [NSString stringWithFormat:@"%0.2f份" ,[order.amount floatValue]];
+        [addBtn setHidden:YES];
+        [deleteBtn setHidden:YES];
+    }
     
     cell.selectFlag = @"NO";
     cell.amountText.text = @"";
     cell.orderId = order._id;
+    cell.orderAmount = order.amount;
     
     cell.addBackBlock =^(NSString *orderId , NSString *amount){
         [self addBackOrder:orderId amount:amount];
@@ -113,9 +127,14 @@
 
 -(void) addBackOrder:(NSString *)orderId amount:(NSString *)amount
 {
-    for (DAOrder *order in dataList.items) {
+    for (DAOrder *order in backDataList) {
         if ([orderId isEqualToString:order._id]) {
-            [backDataList addObject:[order.oneItems objectAtIndex:[amount intValue] -1 ]];
+            NSLog(@"%@",order.willBackAmount);
+            NSLog(@"%@",order.amount);
+            if ([order.willBackAmount intValue] < [order.amount intValue] ) {
+                order.willBackAmount = [NSString stringWithFormat:@"%d",[order.willBackAmount intValue] + 1];
+            }
+
         }
     }
     
@@ -123,9 +142,9 @@
 
 -(void) delBackOrder:(NSString *)orderId amount:(NSString *)amount
 {
-    for (DAOrder *order in dataList.items) {
+    for (DAOrder *order in backDataList) {
         if ([orderId isEqualToString:order._id]) {
-            [backDataList removeObject:[order.oneItems objectAtIndex:[amount intValue]]];
+            order.willBackAmount = [NSString stringWithFormat:@"%d",[order.willBackAmount intValue] - 1 ];
         }
     }
     
@@ -136,9 +155,19 @@
     DAMyBackOrderViewCell *cell = (DAMyBackOrderViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
     cell.selectFlag = @"YES";
-    cell.amountText.text = @"1";
-    order.willBackAmount = [NSNumber numberWithInt:1];
+    
+
     cell.amount = [[NSNumber alloc]initWithInt:1];
+    
+    
+    if([order.item.type intValue] == 2 || [order.item.type intValue] == 0){
+        cell.amountText.text = @"1";
+        order.willBackAmount = @"1";
+    } else {
+        cell.amountText.text = order.amount;
+        order.willBackAmount = order.amount;
+    }
+    
     [backDataList addObject:order];
     
 }
@@ -147,7 +176,6 @@
 {
     DAMyBackOrderViewCell *cell = (DAMyBackOrderViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
-    order.willBackAmount = [NSNumber numberWithInt:0];
     
     [backDataList removeObject:order];
     

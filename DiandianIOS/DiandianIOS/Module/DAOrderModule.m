@@ -36,11 +36,20 @@
 }
 
 
--(void) setBackOrderWithArray:(NSArray *) orderIds deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *order))callback
+-(void) setBackOrderWithArray:(NSArray *) backOrderList deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *order))callback
 {
     NSString *path = API_SETORDER_BACK;
     NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
-    [params setObject:orderIds forKey:@"orderIds"];
+    
+    NSMutableArray *tmpBackOrderList = [[NSMutableArray alloc ]init];
+    for (DAOrder *order in backOrderList) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+        [dic setObject:order._id forKey:@"orderId"];
+        [dic setObject:order.willBackAmount forKey:@"willBackAmount"];
+        [tmpBackOrderList addObject:dic];
+    }
+    
+    [params setObject:tmpBackOrderList forKey:@"backOrderList"];
     [params setObject:deskId forKey:@"deskId"];
     
     [[DAAFHttpClient sharedClient] postPath:path  parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {

@@ -15,4 +15,5 @@ typedef void(^CloseBackView)();
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (retain, nonatomic) DAService *curService;
 @property (nonatomic, copy) CloseBackView closeBackView;
+
 @end

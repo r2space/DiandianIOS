@@ -73,7 +73,7 @@
     lblWaitingTime.text = [Tool stringFromISODateString:row.createat];
     
     UILabel *lblAmount = (UILabel *)[cell viewWithTag:12];
-    lblAmount.text = [NSString stringWithFormat:@"%d份",[row.oneItems count]] ;
+    lblAmount.text = [NSString stringWithFormat:@"%@份",row.amount];
     
     return cell;
 }
@@ -84,10 +84,12 @@
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
 
     
-    [[DAOrderModule alloc] setDoneOrderWithArrayIds:order.oneItems callback:^(NSError *err, DAMyOrderList *list) {
-    
+    [[DAOrderModule alloc] setDoneOrder:order._id callback:^(NSError *err, DAOrder *list) {
+        
+        
         self.itemClickCallback();
     }];
+    
     NSMutableArray *tempList = [[NSMutableArray alloc]init];
     for (DAOrder *tmpOrder in dataList.items) {
         if (![tmpOrder._id isEqualToString:order._id]) {
@@ -108,8 +110,8 @@
 {
     [ProgressHUD show:nil];
     [[DAOrderModule alloc]getOrderNEItemListByServiceId:serviceId callback:^(NSError *err, DAMyOrderList *list) {
-        dataList = [DAOrderProxy getOneDataList:list];
-//        dataList = list;
+//        dataList = [DAOrderProxy getOneDataList:list];
+        dataList = list;
         [self.collectionView reloadData];
         [ProgressHUD dismiss];
     }];

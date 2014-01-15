@@ -46,7 +46,7 @@
                                     <action selector="onMiandanTouched:" destination="Maz-mw-tfP" eventType="touchUpInside" id="9Gq-Gd-p0R"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="402" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIK-g7-fOa">
+                            <button hidden="YES" opaque="NO" tag="402" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jIK-g7-fOa">
                                 <rect key="frame" x="689" y="7" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="退" backgroundImage="top_bg3.png">

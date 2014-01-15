@@ -16,10 +16,18 @@
     return [DAMenu class];
 }
 
+
++(Class) imageIds_class {
+    return [NSString class];
+}
+
+
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.items forKey:@"items" ];
     [aCoder encodeObject:self.totalItems forKey:@"totalItems" ];
+    [aCoder encodeObject:self.imageIds forKey:@"imageIds" ];
+    
     
 }
 
@@ -28,6 +36,7 @@
     self = [super init];
     self.items = [aDecoder decodeObjectForKey:@"items"];
     self.totalItems = [aDecoder decodeObjectForKey:@"totalItems"];
+    self.imageIds = [aDecoder decodeObjectForKey:@"imageIds"];
     
     return  self;
 }

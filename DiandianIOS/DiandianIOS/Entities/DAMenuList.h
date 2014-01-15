@@ -12,6 +12,7 @@
 @interface DAMenuList : DAEntity<NSCoding>
 @property (retain, nonatomic) NSArray   *items;
 @property (retain, nonatomic) NSString  *totalItems;
+@property (retain, nonatomic) NSArray  *imageIds;
 
 -(BOOL ) archiveRootObject;
 -(DAMenuList *) unarchiveObjectWithFile;

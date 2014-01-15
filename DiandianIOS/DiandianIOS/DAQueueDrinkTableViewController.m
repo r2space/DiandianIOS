@@ -91,6 +91,8 @@
     lblProcess.hidden = NO;
     lblProcess.text = [NSString stringWithFormat:@"%d个" ,[row.oneItems count]];
     
+    UILabel *lblAmount = (UILabel *)[cell viewWithTag:22];
+    [lblAmount setHidden:YES];
     
     imgItem.image = [UIImage imageNamed:@"desk_bottonl.png"];
     cell.backgroundColor = [UIColor clearColor];

@@ -215,8 +215,7 @@
     }
 
 
-    //TODO  两份合成一份  orderItem.item.amount
-    amountLabel.text = [NSString stringWithFormat:@"%@." , orderItem.amount];
+
     
     UITextField *remarkField = (UITextField * ) [cell viewWithTag:14];
     
@@ -243,18 +242,30 @@
     DAOrderAddAmountBtn *amountBtn = (DAOrderAddAmountBtn *) [cell viewWithTag:33];
     amountBtn.cell = cell;
     amountBtn.indexPath = indexPath;
-    if (orderItem.amountNum.length == 0) {
-        [amountBtn setTitle:@"00" forState:UIControlStateNormal];
-    } else {
-        [amountBtn setTitle:orderItem.amountNum forState:UIControlStateNormal];
-    }
+    
+    NSArray  *amountArray = [orderItem.amount componentsSeparatedByString:@"."];
+    NSString *amountPrefix = [amountArray objectAtIndex:0];
+    NSString *amountSuffix = [amountArray count] == 2 ? [amountArray objectAtIndex:1]:@"0";
 
+    //TODO  两份合成一份  orderItem.item.amount
+    amountLabel.text = [NSString stringWithFormat:@"%@." , amountPrefix];
+    [amountBtn setTitle:amountSuffix forState:UIControlStateNormal];
+    
+    
     [amountBtn addTarget:self
                   action:@selector(amountLabelListener:) forControlEvents:UIControlEventTouchUpInside];
     if (indexPath.section == 0) {
-        [addBtn setHidden:NO];
-        [deleteBtn setHidden:NO];
-        [amountBtn setEnabled:YES];
+        if ([orderItem.item.type intValue] == 0 || [orderItem.item.type intValue] == 2 ||[orderItem.item.type intValue] == 3) {
+            [addBtn setHidden:NO];
+            [deleteBtn setHidden:NO];
+            [amountBtn setEnabled:YES];
+        } else {
+            [addBtn setHidden:YES];
+            [deleteBtn setHidden:YES];
+            [amountBtn setEnabled:NO];
+        }
+
+        
         
         [remarkField setEnabled:YES];
         cell.backgroundColor = [UIColor clearColor];
@@ -277,12 +288,17 @@
     DAPickAmountViewController *vc = [[DAPickAmountViewController alloc] initWithNibName:@"DAPickAmountViewController" bundle:nil];
     
     vc.selectedNum = ^(NSString *num1,NSString *num2){
-        NSString *btnNum = [NSString stringWithFormat:@"%@%@",num1,num2];
+        NSString *btnNum = [NSString stringWithFormat:@"%@",num1];
         [btn setTitle:btnNum forState:UIControlStateNormal];
         DAOrder *orderItem = [self.orderList.items objectAtIndex:btn.indexPath.row];
-        orderItem.amountNum = btnNum;
-        NSLog(@"%@",self.orderList.items);
-        NSString *tmpAmountStr = [NSString stringWithFormat:@"%@.%@",orderItem.amount,orderItem.amountNum?orderItem.amountNum:@"00"];
+
+        NSArray  *amountArray = [orderItem.amount componentsSeparatedByString:@"."];
+        NSString *amountPrefix = [amountArray objectAtIndex:0];
+        
+        
+        NSString *tmpAmountStr = [NSString stringWithFormat:@"%@.%@",amountPrefix,btnNum];
+        orderItem.amount = tmpAmountStr;
+        
         float price = 0.0;
         if([orderItem.type intValue]== 0){
             price = [orderItem.item.itemPriceNormal floatValue];
@@ -302,45 +318,60 @@
 -(void) deleteAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
     NSLog(@"delete");
-    NSString *amount =  btn.amountLabel.text;
-    int value = [amount intValue];
-    value = value - 1;
-    btn.amountLabel.text = [NSString stringWithFormat:@"%d.",value];
+
     DAOrder *orderItem = [self.orderList.items objectAtIndex:btn.indexPath.row];
-    orderItem.amount = [NSString stringWithFormat:@"%d",value];
+    NSArray  *amountArray = [orderItem.amount componentsSeparatedByString:@"."];
+    NSString *amountPrefix = [amountArray objectAtIndex:0];
+    NSString *amountSuffix = [amountArray count] == 2 ? [amountArray objectAtIndex:1]:@"0";
+
+    int valuePrefix = [amountPrefix intValue];
+    valuePrefix = valuePrefix - 1;
+    if (valuePrefix == 0) {
+        return;
+    }
+    btn.amountLabel.text = [NSString stringWithFormat:@"%d.",valuePrefix];
+    orderItem.amount = [NSString stringWithFormat:@"%d.%@",valuePrefix,amountSuffix];
     
-    NSString *tmpAmountStr = [NSString stringWithFormat:@"%@.%@",orderItem.amount,orderItem.amountNum?orderItem.amountNum:@"00"];
     float price = 0.0;
     if([orderItem.type intValue]== 0){
         price = [orderItem.item.itemPriceNormal floatValue];
     } else {
         price = [orderItem.item.itemPriceHalf floatValue];
     }
-    orderItem.amountPrice = [NSNumber numberWithInt:(int)price * [tmpAmountStr floatValue]];
+    
+    orderItem.amountPrice = [NSNumber numberWithInt:(int)price * [orderItem.amount floatValue]];
 
     [self tableViewReload];
 }
 -(void) addAmount :(id)sender {
     DAOrderAddAmountBtn *btn = (DAOrderAddAmountBtn *)sender;
-    
     NSLog(@"add");
-    NSString *amount =  btn.amountLabel.text;
-    int value = [amount intValue];
-    value = value + 1;
-    btn.amountLabel.text = [NSString stringWithFormat:@"%d.",value];
+    
+    
     DAOrder *orderItem = [self.orderList.items objectAtIndex:btn.indexPath.row];
-    orderItem.amount = [NSString stringWithFormat:@"%d",value];
-    NSString *tmpAmountStr = [NSString stringWithFormat:@"%@.%@",orderItem.amount,orderItem.amountNum?orderItem.amountNum:@"00"];
+    NSArray  *amountArray = [orderItem.amount componentsSeparatedByString:@"."];
+    NSString *amountPrefix = [amountArray objectAtIndex:0];
+    NSString *amountSuffix = [amountArray count] == 2 ? [amountArray objectAtIndex:1]:@"0";
+    
+    int valuePrefix = [amountPrefix intValue];
+    valuePrefix = valuePrefix + 1;
+    
+    btn.amountLabel.text = [NSString stringWithFormat:@"%d.",valuePrefix];
+    orderItem.amount = [NSString stringWithFormat:@"%d.%@",valuePrefix,amountSuffix];
+    
     float price = 0.0;
     if([orderItem.type intValue]== 0){
         price = [orderItem.item.itemPriceNormal floatValue];
     } else {
         price = [orderItem.item.itemPriceHalf floatValue];
     }
-    orderItem.amountPrice = [NSNumber numberWithInt:(int)price * [tmpAmountStr floatValue]];
+    
+    orderItem.amountPrice = [NSNumber numberWithInt:(int)price * [orderItem.amount floatValue]];
 
     [self tableViewReload];
 }
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     int num = 1;

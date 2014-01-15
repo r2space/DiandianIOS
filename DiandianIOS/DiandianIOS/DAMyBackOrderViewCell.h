@@ -20,6 +20,7 @@ typedef void (^DelBackBlock)(NSString *orderId , NSString *amount);
 @property (nonatomic, strong) NSString *selectFlag;
 @property (nonatomic, strong) NSString *orderId;
 @property (nonatomic, strong) NSNumber *amount;
-@property (nonatomic, strong) NSNumber *orderCount;
+
+@property (nonatomic, strong) NSString *orderAmount;
 
 @end

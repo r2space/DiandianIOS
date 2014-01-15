@@ -31,10 +31,12 @@
 @property (retain, nonatomic) NSString *remark;
 
 @property (retain, nonatomic) NSString *amount;
+@property (retain, nonatomic) NSString *backAmount;
 @property (retain, nonatomic) NSString *amountNum;
 @property (retain, nonatomic) NSNumber *amountPrice;
-@property (retain, nonatomic) NSNumber *willBackAmount;
+@property (retain, nonatomic) NSString *willBackAmount;
 @property (retain, nonatomic) NSString *isNew;
+@property (retain, nonatomic) NSString *totalBackAmount;
 
 @property (retain, nonatomic) NSMutableArray *oneItems;
 

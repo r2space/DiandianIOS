@@ -45,7 +45,7 @@
 
 {
     
-    return 2;     //这个picker里的组键数
+    return 1;     //这个picker里的组键数
     
 }
 
@@ -123,14 +123,14 @@
 
     int rowOfFontComponent = [pickerView selectedRowInComponent:0];
 
-    int rowOfColorComponent = [pickerView selectedRowInComponent:1];
+//    int rowOfColorComponent = [pickerView selectedRowInComponent:1];
 
     UIView *ViewOfFontComponent = (UILabel *)[pickerView viewForRow:rowOfFontComponent forComponent:0];
-    UIView *ViewOfColorComponent =(UILabel *) [pickerView viewForRow:rowOfColorComponent forComponent:1];
+//    UIView *ViewOfColorComponent =(UILabel *) [pickerView viewForRow:rowOfColorComponent forComponent:1];
     UILabel *viewOnViewofFontComponent=(UILabel *)[ViewOfFontComponent viewWithTag:20];
-    UILabel *viewOnViewOfColorComponent=(UILabel *)[ViewOfColorComponent viewWithTag:20];
-    NSLog(@"view %@   %@ " ,viewOnViewofFontComponent.text,viewOnViewOfColorComponent.text);
-    self.selectedNum(viewOnViewofFontComponent.text,viewOnViewOfColorComponent.text);
+//    UILabel *viewOnViewOfColorComponent=(UILabel *)[ViewOfColorComponent viewWithTag:20];
+    NSLog(@"view %@   %@ " ,viewOnViewofFontComponent.text,@"");
+    self.selectedNum(viewOnViewofFontComponent.text,@"");
 }
 
 @end

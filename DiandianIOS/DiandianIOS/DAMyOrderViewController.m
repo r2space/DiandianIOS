@@ -150,10 +150,8 @@
     _order.userId = curWaitterUserId;
     _order.deskId = self.curService.deskId;
     _order.serviceId = self.curService._id;
-    _order.isNew = [NSString stringWithFormat:@"YES"];
     _order.type = [NSNumber numberWithInt:1];
     _order.amount = @"1";
-    _order.amountNum = @"0";
     _order.amountPrice = [NSNumber numberWithInt:[obj.itemPriceHalf intValue]];
     
     
@@ -176,10 +174,8 @@
     _order.userId = curWaitterUserId;
     _order.deskId = self.curService.deskId;
     _order.serviceId = self.curService._id;
-    _order.isNew = [NSString stringWithFormat:@"YES"];
     _order.type = [NSNumber numberWithInt:0];
     _order.amount = @"1";
-    _order.amountNum = @"0";
     _order.amountPrice = [NSNumber numberWithInt:[obj.itemPriceNormal intValue]];
     
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];

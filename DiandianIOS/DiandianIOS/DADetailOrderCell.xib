@@ -78,7 +78,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="top_bg2.png" width="29" height="30"/>
+        <image name="top_bg2.png" width="332" height="111"/>
         <image name="top_bg3.png" width="161" height="44"/>
         <image name="虚线.png" width="1024" height="20"/>
     </resources>

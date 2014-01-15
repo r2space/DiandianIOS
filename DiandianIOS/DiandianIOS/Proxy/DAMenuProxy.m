@@ -76,22 +76,22 @@
 + (NSArray *) getImageDownloadIds :(DAMenuList * )menuList
 {
     
-    NSMutableArray *tempList = [[NSMutableArray alloc]init];
-    for (DAMenu *menu in  menuList.items) {
-        for (NSDictionary *layoutDic in menu.items) {
-            DAItemLayout *layoutObj = [[DAItemLayout alloc ]initWithDictionary:layoutDic];
-            if (layoutObj.item !=nil) {
-                if (layoutObj.item.smallimage !=nil) {
-                    [tempList addObject:layoutObj.item.smallimage];
-                }
-                if (layoutObj.item.bigimage != nil) {
-                    [tempList addObject:layoutObj.item.bigimage];
-                }
-            }
-            
-        }
-    }
-    return [[NSArray alloc]initWithArray:tempList];
+//    NSMutableArray *tempList = [[NSMutableArray alloc]init];
+//    for (DAMenu *menu in  menuList.items) {
+//        for (NSDictionary *layoutDic in menu.items) {
+//            DAItemLayout *layoutObj = [[DAItemLayout alloc ]initWithDictionary:layoutDic];
+//            if (layoutObj.item !=nil) {
+//                if (layoutObj.item.smallimage !=nil) {
+//                    [tempList addObject:layoutObj.item.smallimage];
+//                }
+//                if (layoutObj.item.bigimage != nil) {
+//                    [tempList addObject:layoutObj.item.bigimage];
+//                }
+//            }
+//            
+//        }
+//    }
+    return [[NSArray alloc]initWithArray:menuList.imageIds];
 }
 
 

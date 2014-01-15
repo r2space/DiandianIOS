@@ -29,12 +29,12 @@
 
 - (IBAction)deleteTouched:(id)sender {
     if ([self.selectFlag isEqualToString:@"YES"]) {
-        int count = [self.amount intValue];
+        float count = [self.orderAmount floatValue];
         if (count == 1) {
             return;
         }
         count = count - 1;
-        self.amountText.text = [NSString stringWithFormat:@"%d",count];
+        self.amountText.text = [NSString stringWithFormat:@"%d",(int)count];
         self.amount = [[NSNumber alloc]initWithInt:count];
         
         self.delBackBlock(self.orderId,[NSString stringWithFormat:@"%@",self.amount]);
@@ -45,7 +45,7 @@
 - (IBAction)addTouched:(id)sender {
     if ([self.selectFlag isEqualToString:@"YES"]) {
         int count = [self.amount intValue];
-        if (count == [self.orderCount intValue]) {
+        if (count == [self.orderAmount intValue]) {
             return;
         }
         count = count + 1;
