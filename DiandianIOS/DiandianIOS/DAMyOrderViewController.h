@@ -27,5 +27,6 @@
 - (IBAction)putDone:(id)sender;
 
 - (void) loadOldItem;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 @end

@@ -9,6 +9,7 @@
 #import "DAPrintProxy.h"
 #import "ProgressHUD.h"
 #import "Tool.h"
+#import "MBProgressHUD.h"
 
 #define SEND_TIMEOUT    10 * 1000
 #define PRINT_NAME      @"TM-T88V"
@@ -44,6 +45,7 @@ enum PrintErrorStatus
             [print addSplit];
             
             int result = [print printText:printSet.printerIP addTextSize:2 TextHeight:1];
+            NSLog(@"testPrinter判断打印机状态   判断是否 :%d",result);
             
             if (result == 0) {
                 //根据返回值  设置 打印机有效
@@ -87,15 +89,37 @@ enum PrintErrorStatus
     [print addLine:line];
 }
 
-+(void) printBill: (NSString *) serviceId off:(NSString *)off pay:(NSString *)pay type:(NSInteger * )type reduce :(NSString *)reduce
++(void) printBill: (NSString *) serviceId
+              off:(NSString *)off
+              pay:(NSString *)pay
+          userPay:(NSString *)userPay
+             type:(NSInteger * )type
+          reduce :(NSString *)reduce
+              seq:(NSString *)seq
+         progress:(MBProgressHUD *)progress
 {
     DAPrintProxy *print = [[DAPrintProxy alloc] init];
     [[DAServiceModule alloc]getBillByServiceId:serviceId callback:^(NSError *err, DABill *bill) {
 
         
-        [print addLine:[NSString stringWithFormat:@"              滋味厨房"]];
-        
+
+
         [print addLine:@""];
+        if (seq.length > 0) {
+            [print addLine:[NSString stringWithFormat:@"                 滋味厨房  收银联"]];
+        } else {
+            [print addLine:[NSString stringWithFormat:@"                 滋味厨房  客户联"]];
+        }
+        [print addLine:[NSString stringWithFormat:@"序号：%@",seq]];
+        if ([bill.service.type intValue] == 3) {
+            [print addLine:[NSString stringWithFormat:@"手机号:%@",bill.service.phone]];
+        } else {
+            [print addLine:[NSString stringWithFormat:@"台位:%@",bill.desk.name]];
+        }
+
+
+        
+        
         
         [[DAOrderModule alloc] getOrderListByServiceId:serviceId withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
             
@@ -105,9 +129,9 @@ enum PrintErrorStatus
             NSMutableArray *undoneOrderList = [[NSMutableArray alloc]init];
             
             
-            [print addLine:[NSString stringWithFormat:@"台位:%@",bill.desk.name]];
+            
             NSDate *now = [[NSDate alloc] init];
-            [print addLine:[NSString stringWithFormat:@"时间:%@", [Tool stringFromISODate:now]]];
+            [print addLine:[NSString stringWithFormat:@"时间:%@", [Tool stringFromISODateForBill:now]]];
             [print addLine:[NSString stringWithFormat:@"点菜员:%@", bill.waiter]];
             [print addLine:@""];
             [print addLine:[NSString stringWithFormat:@"品名                单价    份数   总价" ]];
@@ -135,7 +159,6 @@ enum PrintErrorStatus
             }
             if ([undoneOrderList count] > 0) {
                 [print addLine:@""];
-                [print addLine:@"未上菜单"];
             }
             
             for (DAOrder *order in undoneOrderList) {
@@ -177,10 +200,10 @@ enum PrintErrorStatus
                 [print addLine:[NSString stringWithFormat:@"折扣:%@折",tmpOffStr]];
             }
 
-            
+            [print addLine:[NSString stringWithFormat:@"应支付金额:%.02f元", [pay floatValue]]];
             [print addLine:[NSString stringWithFormat:@"优惠:%.02f元", [reduce floatValue]]];
             
-            [print addLine:[NSString stringWithFormat:@"实际金额:%.02f元", [pay floatValue]]];
+            [print addLine:[NSString stringWithFormat:@"实际金额:%.02f元", [userPay floatValue]]];
             [print addLine:@""];
             [print addLine:@""];
 
@@ -188,14 +211,18 @@ enum PrintErrorStatus
             DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
             if (billprint != nil && billprint.printerIP!=nil && billprint.printerIP.length > 0 ) {
                 
-                [print printText:billprint.printerIP addTextSize:1 TextHeight:1];
-                
+                int status = [print printText:billprint.printerIP addTextSize:1 TextHeight:2];
+                NSLog(@"打印机状态 判断是否成功   : %d",status);
             } else {
                 
                 NSLog(@"没有链接订单打印机");
                 [ProgressHUD showError:@"没有链接订单打印机"];
                 
             }
+            if (progress!=nil) {
+                [progress hide:YES];
+            }
+
             
             
             
@@ -206,7 +233,6 @@ enum PrintErrorStatus
         
         
         
-        NSLog(@"bill %@",bill);
         
     }];
 }
@@ -256,7 +282,7 @@ enum PrintErrorStatus
             
             for (DAOrder *willOrder in printerOrderList) {
                 if (takeout.length > 0) {
-                    [print addLine:[NSString stringWithFormat:@"单号:%@ 外卖的手机号：%@ 下单时间：%@",orderNum,takeout,[Tool stringFromISODateString:now]]];
+                    [print addLine:[NSString stringWithFormat:@" 外卖  单号:%@ 时间：%@",orderNum,[Tool stringFromISODateString:now]]];
                 } else {
                     [print addLine:[NSString stringWithFormat:@"单号:%@    %@ ",orderNum,deskName]];
                     [print addLine:[NSString stringWithFormat:@"单时间：%@",[Tool stringFromISODateString:now]]];
@@ -276,8 +302,12 @@ enum PrintErrorStatus
             
                 [print addLine:line];
                 
-                if([printerOrderList count] > 0)
-                    [print printText:printerSet.printerIP addTextSize:2 TextHeight:3];
+                if([printerOrderList count] > 0){
+                    int status = [print printText:printerSet.printerIP addTextSize:2 TextHeight:3];
+                    NSLog(@"打印机状态 判断是否成功   : %d",status);
+                    [NSThread sleepForTimeInterval:0.1f];
+                }
+                
             }
             
         }

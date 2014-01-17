@@ -12,6 +12,7 @@
 #import "DAPreferentialViewController.h"
 #import "DAPrintProxy.h"
 #import "ProgressHUD.h"
+#import "MBProgressHUD.h"
 
 #define kMaxNumber                       100000
 
@@ -22,6 +23,8 @@
     NSInteger *payType;
     float offAmount;
     BOOL hasLoad;
+    BOOL hasPrint;
+    MBProgressHUD       *progress;  // 消息框
 }
 @end
 
@@ -45,6 +48,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     hasLoad = NO;
+    hasPrint = NO;
     finishList = [[NSMutableArray alloc] init];
     cancelList = [[NSMutableArray alloc] init];
     payType = 0;
@@ -147,7 +151,8 @@
     DABillDetailViewController *c = [[DABillDetailViewController alloc] initWithNibName:nil bundle:nil];
     c.curService = self.curService;
     c.offAmount = [NSString stringWithFormat:@"%f",offAmount];
-    c.payAmount = self.textPay.text;
+    c.payAmount = self.lblPay.text;
+    c.userPayAmount = self.textPay.text;
     c.reduceAmount = self.textReduce.text;
     c.parentReloadBlock = ^(){
         [self reload];
@@ -184,9 +189,14 @@
         [ProgressHUD showError:@"等待加载。"];
         return;
     }
+    
+    if (!hasPrint) {
+        [ProgressHUD showError:@"请打印订单"];
+        return;
+    }
     float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
     self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:off]];
-    self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
+//    self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
     
     NSNumber *hasCash = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
 
@@ -196,17 +206,23 @@
     }
 
     
-    [DAPrintProxy printBill:self.curService._id off:[NSString stringWithFormat:@"%f",offAmount] pay:self.textPay.text type:payType reduce:self.textReduce.text];
+    
     
     
     [[DAServiceModule alloc]stopService:self.curService._id
                                  amount:[billData.amount stringValue]
-                                 profit:self.textPay.text
+                                 profit:self.lblPay.text
                                    agio:[NSString stringWithFormat:@"%f",offAmount]
+                                userPay:self.textPay.text
                            preferential:self.textReduce.text
                                 payType:[NSString stringWithFormat:@"%d" ,(int)payType]
                                callback:^(NSError *err, DAService *service)
                                     {
+                                        NSLog(@"billNum: %@",service.billNum);
+                                        
+                                        [self showIndicator:@"等待打印"];
+                                        [DAPrintProxy printBill:self.curService._id off:[NSString stringWithFormat:@"%f",offAmount] pay:self.lblPay.text userPay:self.textPay.text type:payType reduce:self.textReduce.text seq:service.billNum progress:progress];
+                                        
                                         [self.navigationController popViewControllerAnimated:YES];
                                     }];
 }
@@ -254,6 +270,25 @@
     self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
 }
 
+- (IBAction)onPrintTouched:(id)sender {
+    
+    NSString *offAmountStr = [NSString stringWithFormat:@"%f",offAmount];
+    NSString *payAmount = self.lblPay.text;
+    NSString *userPayAmount = self.textPay.text;
+    NSString *reduceAmount = self.textReduce.text;
+    [self showIndicator:@"等待打印"];
+    
+    [DAPrintProxy printBill:self.curService._id off:offAmountStr pay:payAmount userPay:userPayAmount  type:0 reduce:reduceAmount seq:@"" progress:progress];
+    hasPrint = YES;
+}
 
+- (void)showIndicator:(NSString *)message
+{
+    progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
+    progress.mode = MBProgressHUDModeIndeterminate;
+    progress.labelText = message;
+    progress.color = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
+    [progress show:YES];
+}
 
 @end

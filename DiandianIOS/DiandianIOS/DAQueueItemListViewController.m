@@ -121,7 +121,18 @@
     UILabel *lblWaitingTime = (UILabel *)[cell viewWithTag:12];
     
     UILabel *lblCountDesk = (UILabel *)[cell viewWithTag:13];
-    lblCountDesk.text = [NSString stringWithFormat:@"%d桌" ,[row.oneItems count]];
+    if ([row.oneItems count] == 1) {
+        if (row.desk.name) {
+            lblCountDesk.text = [NSString stringWithFormat:@"%@" ,row.desk.name];
+        } else {
+            lblCountDesk.text = @"外卖";
+        }
+        
+
+    } else {
+        lblCountDesk.text = [NSString stringWithFormat:@"%d桌" ,[row.oneItems count]];
+    }
+
     
     lblWaitingTime.text = [Tool stringFromISODateString:row.createat];
     cell.backgroundColor = [UIColor clearColor];

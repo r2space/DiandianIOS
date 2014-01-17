@@ -40,6 +40,7 @@
              amount:(NSString *) amount
              profit:(NSString *) profit
                agio:(NSString *) agio
+            userPay:(NSString *) userPay
        preferential:(NSString *) preferential
             payType:(NSString *) payType
            callback:(void (^)(NSError *err, DAService *service))callback;

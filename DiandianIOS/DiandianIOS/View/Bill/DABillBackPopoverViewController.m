@@ -50,8 +50,8 @@
         self.textWillBackAmount.text = @"0";
         order.willBackAmount = @"0";
     } else {
-        self.textWillBackAmount.text = @"1";
-        order.willBackAmount = @"1";
+        self.textWillBackAmount.text = @"0";
+        order.willBackAmount = @"0";
     }
     [dataList addObject:order];
 
@@ -65,6 +65,7 @@
 
 - (IBAction)deleteTouched:(id)sender {
     NSString *tmpWillBackAmount = self.textWillBackAmount.text;
+    
     NSString *tmpValue = [NSString stringWithFormat:@"%d",[tmpWillBackAmount intValue] - 1];
     int value = [tmpValue intValue];
     
@@ -100,10 +101,17 @@
     
     
     NSString *tmpWillBackAmount = self.textWillBackAmount.text;
+    if ([tmpWillBackAmount intValue] <= 0) {
+        [ProgressHUD showError:@"退菜数量不能是零"];
+        return;
+    }
     NSString *tmpValue = [NSString stringWithFormat:@"%d",[tmpWillBackAmount intValue]];
     int value = [tmpValue intValue];
+    NSLog(@"valud: %d",value);
+    NSLog(@"[self.lblItemAmount.text intValue] : %d",[self.lblItemAmount.text intValue]);
     
-    if (value >= [self.lblItemAmount.text intValue] - [self.lblItemBackAmount.text intValue] ) {
+    
+    if (value > [self.lblItemAmount.text intValue] - [self.lblItemBackAmount.text intValue] ) {
         [ProgressHUD showError:@"没有可以退的"];
         return;
     }
@@ -115,8 +123,6 @@
         self.closeBackView();
 
     }];
-    
-    [DAPrintProxy addOrderBackPrint:dataList];
 }
 
 - (IBAction)cancelTouched:(id)sender {

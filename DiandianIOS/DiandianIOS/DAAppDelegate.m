@@ -155,12 +155,17 @@
 - (void) socketIO:(SocketIO *)socket onError:(NSError *)error
 {
     NSLog(@"\n\n\n\n\n\n  onError() %@", error);
+
+    if (![[DASocketIO sharedClient:self]  isConnected]) {
+        [[DASocketIO sharedClient:self] conn];
+    }
 }
 
 
 - (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error
 {
     NSLog(@"\n\n\n\n\n\n   socket.io disconnected. did error occur? %@", error);
+
     if (![[DASocketIO sharedClient:self]  isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }

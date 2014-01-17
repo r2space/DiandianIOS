@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "ePOS-Print.h"
 #import "SmartSDK.h"
+#import "MBProgressHUD.h"
+
 @class  DAMyOrderList;
 
 @interface DAPrintProxy : NSObject
@@ -24,7 +26,13 @@
 +(int) addOrderBackPrint:(NSArray *)backOrderList;
 +(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout tips:(NSString *)tips;
 
-+(void) printBill: (NSString *) serviceId off:(NSString *)off pay:(NSString *)pay type:(NSInteger * )type reduce :(NSString *)reduce;
++(void) printBill: (NSString *) serviceId
+              off:(NSString *)off
+              pay:(NSString *)pay
+          userPay:(NSString *)userPay
+             type:(NSInteger * )type
+          reduce :(NSString *)reduce seq:(NSString *)seq
+         progress:(MBProgressHUD *)progress;
 
 +(void) testPrinter;
 

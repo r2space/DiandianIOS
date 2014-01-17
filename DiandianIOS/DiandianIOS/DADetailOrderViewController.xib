@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DADetailOrderViewController">
             <connections>
                 <outlet property="amountPriceLabel" destination="LiK-es-jYA" id="Mio-O0-a2L"/>
+                <outlet property="lblTotal" destination="KVy-sI-Ydc" id="cbf-Mj-4eO"/>
                 <outlet property="tableView" destination="tim-eB-YLS" id="Zy5-0d-SWW"/>
                 <outlet property="view" destination="2" id="3"/>
             </connections>
@@ -79,6 +80,12 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="总数：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-sI-Ydc">
+                            <rect key="frame" x="217" y="7" width="112" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>

@@ -118,6 +118,7 @@
              amount:(NSString *) amount
              profit:(NSString *) profit
                agio:(NSString *) agio
+            userPay:(NSString *) userPay
        preferential:(NSString *) preferential
             payType:(NSString *) payType
            callback:(void (^)(NSError *err, DAService *service))callback
@@ -128,6 +129,7 @@
     [dic setObject:serviceId forKey:@"serviceId"];
     [dic setObject:amount forKey:@"amount"];
     [dic setObject:profit forKey:@"profit"];
+    [dic setObject:userPay forKey:@"userPay"];
     [dic setObject:agio forKey:@"agio"];
     [dic setObject:preferential forKey:@"preferential"];
     [dic setObject:payType forKey:@"payType"];

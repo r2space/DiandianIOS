@@ -68,7 +68,11 @@
     NSString *WaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
     
     [[DALoginModule alloc]checkPattern:key userId:WaitterId callback:^(NSError *error, NSDictionary *user) {
-        
+        if (error!=nil) {
+            [ProgressHUD showError:@"服务器异常！"];
+            [lockVC.view removeFromSuperview];
+            return ;
+        }
         NSNumber *isRight = [user objectForKey:@"isRight"];
         
         if (![isRight boolValue]) {

@@ -82,9 +82,9 @@
         
         DAOrder *order = [listData objectAtIndex:indexPath.row];
         if ([order.type integerValue] == 0) {
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@份",order.item.itemName,order.amount];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@   X %@",order.item.itemName,order.amount];
         } else {
-            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@份 (小)",order.item.itemName,order.amount];
+            cell.textLabel.text = [NSString stringWithFormat:@"(小)%@   X %@",order.item.itemName,order.amount];
         }
         
    

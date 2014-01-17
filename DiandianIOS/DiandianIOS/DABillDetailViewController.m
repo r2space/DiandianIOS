@@ -192,7 +192,7 @@
 }
 
 - (IBAction)onPrintTouched:(id)sender {
-    [DAPrintProxy printBill:self.curService._id off:self.offAmount pay:self.payAmount type:0 reduce:self.reduceAmount];
+    [DAPrintProxy printBill:self.curService._id off:self.offAmount pay:self.payAmount userPay:self.userPayAmount type:0 reduce:self.reduceAmount seq:NO progress:nil];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

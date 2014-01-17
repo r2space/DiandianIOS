@@ -25,7 +25,6 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    NSLog(@"drawrect...");
     @try {
         if (!_trackPointValue)
             return;
@@ -42,8 +41,7 @@
         UIView *lastDot;
         for (UIView *dotView in _dotViews) {
             from = dotView.center;
-            NSLog(@"drwaing dotview: %@", dotView);
-            NSLog(@"\tdrawing from: %f, %f", from.x, from.y);
+            
 
             if (!lastDot)
             CGContextMoveToPoint(context, from.x, from.y);
@@ -54,7 +52,7 @@
         }
 
         CGPoint pt = [_trackPointValue CGPointValue];
-        NSLog(@"\t to: %f, %f", pt.x, pt.y);
+
         CGContextAddLineToPoint(context, pt.x, pt.y);
 
         CGContextStrokePath(context);

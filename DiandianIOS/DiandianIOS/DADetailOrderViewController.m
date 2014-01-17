@@ -92,6 +92,8 @@
     if([paths count]>0){
         
         self.orderList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
+        
+        
         [self.tableView reloadData];
         return YES;
     }
@@ -119,13 +121,12 @@
 -(void)loadAmountPrice
 {
     float amountPrice = 0 ;
+    int tmpTotal = 0;
     
     
     //新菜单 总价
     for (DAOrder *order in self.orderList.items) {
-        if (order.amount == nil || [order.amount integerValue] == 0) {
-            order.amount = [NSNumber numberWithInt:1];
-        }
+        tmpTotal = tmpTotal + [order.amount intValue];
         int pirce = 0;
         if( [order.type integerValue] == 0){
             pirce = [order.item.itemPriceNormal intValue];
@@ -142,9 +143,7 @@
     //老菜单 总价
     for (NSArray *oldArray in self.oldOrderDataList.oldItems) {
         for (DAOrder *order in oldArray) {
-            if (order.amount == nil || [order.amount integerValue] == 0) {
-                order.amount = [NSNumber numberWithInt:1];
-            }
+            tmpTotal = tmpTotal + [order.amount intValue];
             if( [order.type integerValue] == 0){
                 amountPrice = amountPrice + [order.item.itemPriceNormal integerValue] * [order.amount integerValue];
             } else {
@@ -153,6 +152,7 @@
             
         }
     }
+    self.lblTotal.text = [NSString stringWithFormat:@"总数：%d",tmpTotal];
     
     self.amountPriceLabel.text = [NSString stringWithFormat:@"总价 : %.2f 元" ,amountPrice];
     

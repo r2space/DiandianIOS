@@ -397,5 +397,8 @@ static DAMyTableViewController *activity;
     
 }
 
+- (IBAction)onRefreshTouched:(id)sender {
+    [self loadFromFile];
+}
 
 @end

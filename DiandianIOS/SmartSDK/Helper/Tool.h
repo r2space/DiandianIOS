@@ -13,6 +13,9 @@
 
 + (NSDate *) dateFromISODateString:(NSString *)isodate;
 + (NSString *) stringFromISODateString:(NSString *)isodate;
+
+
++ (NSString *) stringFromISODateForBill:(NSDate *)isodate;
 + (NSString *) stringFromISODate:(NSDate *)isodate;
 
 + (NSString *) stringWithPad:(NSString *)str length:(int )length;

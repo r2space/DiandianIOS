@@ -60,7 +60,7 @@
                         </connections>
                     </button>
                     <imageView hidden="YES" userInteractionEnabled="NO" tag="666" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="soldout.png" id="kVe-vw-Pjh">
-                        <rect key="frame" x="11" y="20" width="100" height="100"/>
+                        <rect key="frame" x="11" y="55" width="69" height="69"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>

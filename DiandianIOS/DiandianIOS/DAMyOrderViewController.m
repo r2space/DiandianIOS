@@ -17,12 +17,14 @@
 #import "DAOrderProxy.h"
 #import "DAPrintProxy.h"
 #import "ProgressHUD.h"
+#import "MBProgressHUD.h"
 
 @interface DAMyOrderViewController ()<DADetailOrderDelegate>
 {
     DAMyOrderList *oldOrderDataList;
     DAMyOrderList *backOrderDataList;
     NSString *curWaitterUserId;
+    MBProgressHUD       *progress;  // 消息框
 }
 @end
 
@@ -63,7 +65,18 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAOrderCell"];
     [self tableViewReload];
    
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] init];
+    self.logoImageView.userInteractionEnabled = YES;
+    [longPressGestureRecognizer addTarget:self action:@selector(gestureRecognizerHandle:)];
+    [longPressGestureRecognizer setMinimumPressDuration:2.0f];
+    [longPressGestureRecognizer setAllowableMovement:50.0];
+    [self.logoImageView addGestureRecognizer:longPressGestureRecognizer];
 
+}
+
+- (void) gestureRecognizerHandle:(id)sender
+{
+    NSLog(@"长按");
 }
 
 - (void) loadOldItem
@@ -81,24 +94,34 @@
 {
     
     int amountPrice = 0 ;
+   
+    
+
+    
+    
+    //新菜单 总价
     for (DAOrder *order in self.dataList.items) {
+        int pirce = 0;
         if( [order.type integerValue] == 0){
-            amountPrice = amountPrice + [order.item.itemPriceNormal integerValue];
+            pirce = [order.item.itemPriceNormal intValue];
         } else {
-            amountPrice = amountPrice + [order.item.itemPriceHalf integerValue];
+            pirce = [order.item.itemPriceHalf intValue];
         }
-        
+        float amount = 1.0;
+        NSString *amountNum = [NSString stringWithFormat:@"%@.%@",order.amount,order.amountNum];
+        amount = [amountNum floatValue];
+        amountPrice = amountPrice + pirce * amount;
     }
+    
+    
     //老菜单 总价
     for (NSArray *oldArray in oldOrderDataList.oldItems) {
         for (DAOrder *order in oldArray) {
-            if (order.amount == nil || [order.amount integerValue] == 0) {
-                order.amount = [NSNumber numberWithInt:1];
-            }
+
             if( [order.type integerValue] == 0){
                 amountPrice = amountPrice + [order.item.itemPriceNormal integerValue] * [order.amount integerValue];
             } else {
-                amountPrice = amountPrice + [order.item.itemPriceHalf integerValue]* [order.amount integerValue];
+                amountPrice = amountPrice + [order.item.itemPriceHalf integerValue] * [order.amount integerValue];
             }
             
         }
@@ -367,7 +390,8 @@
             return;
         }
         
-        [ProgressHUD show:nil];
+
+        [self showIndicator:@"等待打印"];
         NSString *deskId = [NSString stringWithFormat:@""];
         
         if ([self.curService.type integerValue] != 3) {
@@ -377,13 +401,19 @@
         if (self.curService != nil) {
             [[DAOrderModule alloc] addOrder:orderList serviceId:self.curService._id deskId:deskId callback:^(NSError *err, DAMyOrderList *list) {
                 
+                if (err!=nil) {
+                    [ProgressHUD showError:@"服务器异常 请手动下单"];
+                    [progress hide:YES];
+                    return ;
+                }
                 if ([self.curService.type integerValue] == 3) {
                     [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone tips:@""];
                 } else {
                     [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@"" tips:tips];
                 }
                 
-                [ProgressHUD dismiss];
+                
+                [progress hide:YES];
                 [self.navigationController popViewControllerAnimated:YES];
                 
             }];
@@ -510,6 +540,15 @@
     
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)showIndicator:(NSString *)message
+{
+    progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
+    progress.mode = MBProgressHUDModeIndeterminate;
+    progress.labelText = message;
+    progress.color = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
+    [progress show:YES];
 }
 
 - (void)loadOrderList

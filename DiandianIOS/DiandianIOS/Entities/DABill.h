@@ -11,6 +11,7 @@
 
 @interface DABill : DAEntity
 
+@property (retain, nonatomic) DAService *service;
 @property (retain, nonatomic) DADesk    *desk;
 @property (retain, nonatomic) NSArray   *items;
 @property (retain, nonatomic) NSNumber  *amount;

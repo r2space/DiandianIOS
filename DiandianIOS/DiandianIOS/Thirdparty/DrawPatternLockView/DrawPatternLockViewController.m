@@ -96,7 +96,6 @@
         [v drawLineFromLastDotTo:pt];
         
         if (touched!=self.view) {
-            NSLog(@"touched view tag: %d ", touched.tag);
             
             BOOL found = NO;
             for (NSNumber *tag in _paths) {

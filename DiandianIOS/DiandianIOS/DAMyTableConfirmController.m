@@ -56,6 +56,7 @@ UIViewController *parentVC;
     self.numOfPepole.text = [self.curService.people stringValue];
     self.durationTime.text = [Tool stringFromISODateString:self.curService.createat];
     self.unfinishedCount.text = [self.curService.unfinishedCount stringValue];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -198,12 +199,12 @@ UIViewController *parentVC;
 
 //    jp.co.dreamarts.smart.diandian.curWaitterHasCash
 
-        DABillViewController *viewController = [[DABillViewController alloc]
-                                                initWithNibName:@"DABillViewController" bundle:nil];
-        viewController.curService = self.curService;
-        
-        [parentVC.navigationController pushViewController:viewController animated:YES];
-        [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    DABillViewController *viewController = [[DABillViewController alloc]
+                                            initWithNibName:@"DABillViewController" bundle:nil];
+    viewController.curService = self.curService;
+    
+    [parentVC.navigationController pushViewController:viewController animated:YES];
+    [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
 
 
 }

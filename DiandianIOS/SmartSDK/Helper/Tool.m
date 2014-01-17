@@ -30,6 +30,12 @@
 }
 
 
++ (NSString *) stringFromISODateForBill:(NSDate *)isodate
+{
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd HH:mm"];
+    return [format stringFromDate:isodate];
+}
 + (NSString *) stringFromISODate:(NSDate *)isodate
 {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];

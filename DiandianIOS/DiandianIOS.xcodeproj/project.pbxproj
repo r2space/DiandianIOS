@@ -255,6 +255,9 @@
 		0AB4B3AD1838D4CC00D77D7E /* DAQueueDrinkListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4B3AC1838D4CC00D77D7E /* DAQueueDrinkListCell.xib */; };
 		0AB4B3B11838DE3700D77D7E /* DAPreferentialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB4B3AF1838DE3700D77D7E /* DAPreferentialViewController.m */; };
 		0AB4B3B21838DE3700D77D7E /* DAPreferentialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB4B3B01838DE3700D77D7E /* DAPreferentialViewController.xib */; };
+		0AB52FC2188777EE0020272E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52FC1188777EE0020272E /* MBProgressHUD.m */; };
+		0AB52FC71887AA290020272E /* DADeskTableOrderListPopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB52FC51887AA290020272E /* DADeskTableOrderListPopViewController.m */; };
+		0AB52FC81887AA290020272E /* DADeskTableOrderListPopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB52FC61887AA290020272E /* DADeskTableOrderListPopViewController.xib */; };
 		0AB78B3E183CB46500979BD0 /* DAAFHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78A9C183CB46400979BD0 /* DAAFHttpClient.m */; };
 		0AB78B3F183CB46500979BD0 /* DAAFHttpOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78A9E183CB46400979BD0 /* DAAFHttpOperation.m */; };
 		0AB78B40183CB46500979BD0 /* DACommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB78AA0183CB46400979BD0 /* DACommon.m */; };
@@ -738,6 +741,11 @@
 		0AB4B3AE1838DE3700D77D7E /* DAPreferentialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPreferentialViewController.h; sourceTree = "<group>"; };
 		0AB4B3AF1838DE3700D77D7E /* DAPreferentialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPreferentialViewController.m; sourceTree = "<group>"; };
 		0AB4B3B01838DE3700D77D7E /* DAPreferentialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPreferentialViewController.xib; sourceTree = "<group>"; };
+		0AB52FC0188777EE0020272E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		0AB52FC1188777EE0020272E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		0AB52FC41887AA290020272E /* DADeskTableOrderListPopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADeskTableOrderListPopViewController.h; path = View/Table/comp/DADeskTableOrderListPopViewController.h; sourceTree = "<group>"; };
+		0AB52FC51887AA290020272E /* DADeskTableOrderListPopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADeskTableOrderListPopViewController.m; path = View/Table/comp/DADeskTableOrderListPopViewController.m; sourceTree = "<group>"; };
+		0AB52FC61887AA290020272E /* DADeskTableOrderListPopViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DADeskTableOrderListPopViewController.xib; path = View/Table/comp/DADeskTableOrderListPopViewController.xib; sourceTree = "<group>"; };
 		0AB78A9B183CB46400979BD0 /* DAAFHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAFHttpClient.h; sourceTree = "<group>"; };
 		0AB78A9C183CB46400979BD0 /* DAAFHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAFHttpClient.m; sourceTree = "<group>"; };
 		0AB78A9D183CB46400979BD0 /* DAAFHttpOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAFHttpOperation.h; sourceTree = "<group>"; };
@@ -919,6 +927,7 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0AB52FBF188777EE0020272E /* MBProgressHUD */,
 				0A8547BE1868527600C051D8 /* DWTagList */,
 				0AC39017186098260091AFB7 /* TMCache */,
 				0A4E47F81857133000CEC3DE /* CCSegmentedControl */,
@@ -1582,6 +1591,26 @@
 			name = DrinkCell;
 			sourceTree = "<group>";
 		};
+		0AB52FBF188777EE0020272E /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				0AB52FC0188777EE0020272E /* MBProgressHUD.h */,
+				0AB52FC1188777EE0020272E /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			path = Thirdparty/MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		0AB52FC31887A9CF0020272E /* comp */ = {
+			isa = PBXGroup;
+			children = (
+				0AB52FC41887AA290020272E /* DADeskTableOrderListPopViewController.h */,
+				0AB52FC51887AA290020272E /* DADeskTableOrderListPopViewController.m */,
+				0AB52FC61887AA290020272E /* DADeskTableOrderListPopViewController.xib */,
+			);
+			name = comp;
+			sourceTree = "<group>";
+		};
 		0AB78A98183CB46400979BD0 /* SmartSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1695,6 +1724,7 @@
 		0AEBE5CA1831F2EF00B01A5E /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				0AB52FC31887A9CF0020272E /* comp */,
 				0A5D2898182C6EFF00847578 /* DAMyLoginViewController.h */,
 				0A5D2899182C6EFF00847578 /* DAMyLoginViewController.m */,
 				0A5D289A182C6EFF00847578 /* DAMyLoginViewController.xib */,
@@ -2021,6 +2051,7 @@
 				0A07BD551829CC8A00A350BC /* segment_bg.png in Resources */,
 				0A4E47D1185711A100CEC3DE /* ProgressHUD.bundle in Resources */,
 				0A07BD561829CC8A00A350BC /* stain.png in Resources */,
+				0AB52FC81887AA290020272E /* DADeskTableOrderListPopViewController.xib in Resources */,
 				28D0DCAB183C79E500583675 /* btn_round_red.png in Resources */,
 				F2AB4C14182E21F90067E450 /* sample-table.jpg in Resources */,
 				0AA4AB1218817CF70079EC3F /* DAPickAmountViewController.xib in Resources */,
@@ -2229,6 +2260,7 @@
 				0AC390631860985B0091AFB7 /* TMMemoryCache.m in Sources */,
 				0A4E47FE1857137A00CEC3DE /* Util.m in Sources */,
 				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
+				0AB52FC2188777EE0020272E /* MBProgressHUD.m in Sources */,
 				0AA9570918274DCA0098D60C /* DAAppDelegate.m in Sources */,
 				0A3CD5AF18515F0800604CB6 /* DAScheduleList.m in Sources */,
 				47A6ADB3182E25B100E80AA1 /* DABillDetailViewController.m in Sources */,
@@ -2255,6 +2287,7 @@
 				0A4E47E3185711CC00CEC3DE /* DrawPatternLockView.m in Sources */,
 				28FFB64818332272003443D1 /* DAKeyboardObserver.m in Sources */,
 				28FFB653183347B4003443D1 /* DAMyTableConfirmController.m in Sources */,
+				0AB52FC71887AA290020272E /* DADeskTableOrderListPopViewController.m in Sources */,
 				0AC390621860985B0091AFB7 /* TMDiskCache.m in Sources */,
 				0AB78B3F183CB46500979BD0 /* DAAFHttpOperation.m in Sources */,
 				0A4E47BE1857110D00CEC3DE /* DAUserModule.m in Sources */,
@@ -2432,8 +2465,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2451,7 +2484,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
+				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -2474,8 +2507,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2487,7 +2520,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
+				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -2501,8 +2534,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -2511,7 +2544,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
+				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2524,8 +2557,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mengchuang Information (Dalian) Co., Ltd. (8GD8HZ8DR6)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -2534,7 +2567,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "9C86E928-1674-4C00-8884-107B28436DCA";
+				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
