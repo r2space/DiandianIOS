@@ -88,6 +88,12 @@
         //        return @"免单菜单";
     }
 
+    if ([order.discount intValue] == 1) {
+        cell.lblDisCount.text = @"可折";
+    } else {
+        cell.lblDisCount.text = @"无折";
+    }
+    
 
         [cell.btnOperation setTitle:@"免单" forState:UIControlStateNormal];
     
@@ -130,10 +136,23 @@
     } else {
         [freeBtn setHidden:YES];
     }
+    NSNumber *hasCash = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
     
+    if (!(hasCash != nil && [hasCash boolValue])) {
+        [freeBtn setHidden:YES];
+    }
 
 
-
+    NSLog(@"item name  ,order.hasBack %@" , order.hasBack);
+    if ([order.hasBack intValue] == 1) {
+        UILabel *hasBack = (UILabel *)[cell viewWithTag:999];
+        [hasBack setHidden: NO];
+        [freeBtn setHidden:YES];
+    } else {
+        UILabel *hasBack = (UILabel *)[cell viewWithTag:999];
+        [hasBack setHidden: YES];
+    }
+    
     return cell;
 }
 

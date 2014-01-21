@@ -27,7 +27,6 @@
 
 @property (retain, nonatomic) NSNumber *type;
 @property (retain, nonatomic) NSNumber *back;
-@property (retain, nonatomic) NSString *valid;
 @property (retain, nonatomic) NSString *remark;
 
 @property (retain, nonatomic) NSString *amount;
@@ -37,7 +36,8 @@
 @property (retain, nonatomic) NSString *willBackAmount;
 @property (retain, nonatomic) NSString *isNew;
 @property (retain, nonatomic) NSString *totalBackAmount;
-
+@property (retain, nonatomic) NSNumber *discount;
+@property (retain, nonatomic) NSNumber *hasBack;
 @property (retain, nonatomic) NSMutableArray *oneItems;
 
 

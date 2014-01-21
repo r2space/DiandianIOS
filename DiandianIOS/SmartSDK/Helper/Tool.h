@@ -18,5 +18,6 @@
 + (NSString *) stringFromISODateForBill:(NSDate *)isodate;
 + (NSString *) stringFromISODate:(NSDate *)isodate;
 
++(NSString *) compareCurrentTime:(NSString*) compareDate;
 + (NSString *) stringWithPad:(NSString *)str length:(int )length;
 @end

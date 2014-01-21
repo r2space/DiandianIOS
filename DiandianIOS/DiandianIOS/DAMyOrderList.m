@@ -43,8 +43,8 @@
         } else {
             price = [order.item.itemPriceHalf intValue];
         }
-        NSString *amountNum = [NSString stringWithFormat:@"%@.%@",order.amount,order.amountNum];
-        float amout = [amountNum floatValue];
+        
+        float amout = [order.amount floatValue];
         
         price = price * amout;
         

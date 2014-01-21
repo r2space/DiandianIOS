@@ -119,10 +119,38 @@
             self.lblDeskName.text = [NSString stringWithFormat:@"桌号：%@",bill.desk.name];
         }
 
-        float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
+        float tmpTotalAmount = 0.0f;
+        float tmpDisCountAmount = 0.0f;
+        float tmpunDisCountAmount = 0.0f;
+        for (DAOrder *order in billData.items) {
+            if ([order.back intValue] == 3) {
+                
+                
+            } else if ([order.back intValue] == 2){
+                if ([order.discount intValue] == 1) {
+                    NSLog(@"打折");
+                    tmpDisCountAmount = tmpDisCountAmount - [order.amountPrice floatValue];
+                } else {
+                    tmpunDisCountAmount = tmpunDisCountAmount - [order.amountPrice floatValue];
+                    NSLog(@"不打折");
+                }
+                tmpTotalAmount = tmpTotalAmount - [order.amountPrice floatValue];
+            } else {
+                if ([order.discount intValue] == 1) {
+                    tmpDisCountAmount = tmpDisCountAmount + [order.amountPrice floatValue];
+                    NSLog(@"打折");
+                } else {
+                    tmpunDisCountAmount = tmpunDisCountAmount + [order.amountPrice floatValue];
+                    NSLog(@"不打折");
+                }
+            }
+            
+        }
+
+        tmpTotalAmount = tmpDisCountAmount * offAmount + tmpunDisCountAmount - [self.textReduce.text floatValue];
         
-        self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:off]];
-        self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
+        self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:tmpTotalAmount]];
+        self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:tmpTotalAmount]];
         hasLoad = YES;
     }];
     
@@ -194,9 +222,6 @@
         [ProgressHUD showError:@"请打印订单"];
         return;
     }
-    float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
-    self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:off]];
-//    self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
     
     NSNumber *hasCash = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
 
@@ -204,10 +229,6 @@
         [ProgressHUD showError:@"只有后厨才能上菜"];
         return;
     }
-
-    
-    
-    
     
     [[DAServiceModule alloc]stopService:self.curService._id
                                  amount:[billData.amount stringValue]
@@ -264,10 +285,38 @@
     if (index == 3) {
         offAmount = 0.5;
     }
+    float tmpTotalAmount = 0.0f;
+    float tmpDisCountAmount = 0.0f;
+    float tmpunDisCountAmount = 0.0f;
+    for (DAOrder *order in billData.items) {
+        if ([order.back intValue] == 3) {
+            
+            
+        } else if ([order.back intValue] == 2){
+            if ([order.discount intValue] == 1) {
+                NSLog(@"打折");
+                tmpDisCountAmount = tmpDisCountAmount - [order.amountPrice floatValue];
+            } else {
+                tmpunDisCountAmount = tmpunDisCountAmount - [order.amountPrice floatValue];
+                NSLog(@"不打折");
+            }
+            tmpTotalAmount = tmpTotalAmount - [order.amountPrice floatValue];
+        } else {
+            if ([order.discount intValue] == 1) {
+                tmpDisCountAmount = tmpDisCountAmount + [order.amountPrice floatValue];
+                NSLog(@"打折");
+            } else {
+                tmpunDisCountAmount = tmpunDisCountAmount + [order.amountPrice floatValue];
+                NSLog(@"不打折");
+            }
+        }
+        
+    }
     
-    float off = [billData.amount floatValue] * offAmount - [self.textReduce.text floatValue];
-    self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:off]];
-    self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:off]];
+    tmpTotalAmount = tmpDisCountAmount * offAmount + tmpunDisCountAmount - [self.textReduce.text floatValue];
+    
+    self.lblPay.text = [NSString stringWithFormat:@"%.02f元 ",[self parseFloatValue:tmpTotalAmount]];
+    self.textPay.text = [NSString stringWithFormat:@"%.02f", [self parseFloatValue:tmpTotalAmount]];
 }
 
 - (IBAction)onPrintTouched:(id)sender {

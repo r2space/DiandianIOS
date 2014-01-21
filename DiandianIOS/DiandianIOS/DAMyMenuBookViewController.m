@@ -15,7 +15,7 @@
 #import "SmartSDK.h"
 #import "ProgressHUD.h"
 #import "DAMenuProxy.h"
-
+#import "MBProgressHUD.h"
 
 #define MENU_FRAME_WIDTH    882
 #define MENU_FRAME_HEIGHT   701
@@ -40,6 +40,7 @@
     
     int pageRurned;
     int pagePre;
+    MBProgressHUD       *progress;  // 消息框
 }
 @end
 
@@ -216,7 +217,7 @@
         
         NSMutableArray *imageList = [[NSMutableArray alloc] init];
         [imageList addObject:data.item.smallimage];
-        [imageList addObject:data.item.bigimage];
+//        [imageList addObject:data.item.bigimage];
 
         adImageList = imageList;
         adImageView = imageView;
@@ -234,7 +235,6 @@
     }
 
     titleLabel.text = [NSString stringWithFormat:@"%@    %@元",data.item.itemName, data.item.itemPriceNormal];
-    NSLog(@"title %@    " , data.item.itemName);
     labelAmount.text = [NSString stringWithFormat:@""];
     [labelAmount setHidden:YES];
     [addSmallBtn setHidden:YES];
@@ -242,8 +242,8 @@
     [addBtn addTarget:self
             action:@selector(addMenu:) forControlEvents:UIControlEventTouchUpInside];
 
-    float  x = 191;
-    float  y = 186;
+    float  x = 121;
+    float  y = 158;
     float  mx = 402;
     float  my = 391;
     float  bx = 699;
@@ -253,13 +253,13 @@
 
     
     if ([data.row intValue] == 1 && [data.column intValue] == 1 ) {
-        [addBtn setFrame:CGRectMake(x,y,83 ,27.5)];
+        [addBtn setFrame:CGRectMake(x,y,166 ,55)];
         UIView *addBtnBackgroud = (UIView *)[cell viewWithTag:401];
         UIView *maskBackgroud = (UIView *)[cell viewWithTag:101];
         UIView *titleBackgroud = (UIView *)[cell viewWithTag:99];
         [titleBackgroud setFrame:CGRectMake(titleBackgroud.frame.origin.x ,0 , titleBackgroud.frame.size.width , 55)];
-        [maskBackgroud setFrame:CGRectMake(maskBackgroud.frame.origin.x ,y , maskBackgroud.frame.size.width , 27.5)];
-        [addBtnBackgroud setFrame:CGRectMake(x,y,83 ,27.5)];
+        [maskBackgroud setFrame:CGRectMake(maskBackgroud.frame.origin.x ,y , maskBackgroud.frame.size.width , 55)];
+        [addBtnBackgroud setFrame:CGRectMake(x,y,166 ,55)];
         [labelAmount setFrame:CGRectMake(100, y, labelAmount.frame.size.width, labelAmount.frame.size.height)];
         [titleLabel setFrame:CGRectMake(10, 10, titleLabel.frame.size.width, titleLabel.frame.size.height)];
 

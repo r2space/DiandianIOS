@@ -48,7 +48,7 @@
     self.textItemComment.text = [NSString stringWithFormat:@"%@",self.curItem.itemComment];
     self.textItemMaterial.text = [NSString stringWithFormat:@"%@" ,self.curItem.itemMaterial];
     
-    [self.viewImage setImage:[DAMenuProxy getImageFromDisk:self.curItem.bigimage]];
+    [self.viewImage setImage:[DAMenuProxy getImageFromDisk:self.curItem.smallimage]];
     
     
     if ( self.curItem.itemPriceHalf!=nil&&self.curItem.itemPriceHalf.length >0 ) {

@@ -54,6 +54,10 @@
 		0A40FDE6183CEDCD00427613 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A40FDE5183CEDCD00427613 /* libicucore.dylib */; };
 		0A40FE0C183F1C6800427613 /* DAOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE0B183F1C6800427613 /* DAOrder.m */; };
 		0A40FE14183F290000427613 /* DASocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A40FE13183F290000427613 /* DASocketIO.m */; };
+		0A441603188AB2AB00BA66D0 /* DAOrderPrinterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A441601188AB2AB00BA66D0 /* DAOrderPrinterViewController.m */; };
+		0A441604188AB2AB00BA66D0 /* DAOrderPrinterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A441602188AB2AB00BA66D0 /* DAOrderPrinterViewController.xib */; };
+		0A441607188AB3D800BA66D0 /* DAOrderPrinterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A441606188AB3D800BA66D0 /* DAOrderPrinterCell.xib */; };
+		0A44160A188AB57E00BA66D0 /* DAPrinterTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A441609188AB57E00BA66D0 /* DAPrinterTool.m */; };
 		0A446BFA188529C70075CFA2 /* DABillBackPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A446BF8188529C70075CFA2 /* DABillBackPopoverViewController.m */; };
 		0A446BFB188529C70075CFA2 /* DABillBackPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A446BF9188529C70075CFA2 /* DABillBackPopoverViewController.xib */; };
 		0A4E478818569ECB00CEC3DE /* DAEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E478718569ECB00CEC3DE /* DAEntity.m */; };
@@ -279,6 +283,18 @@
 		0AC390611860985B0091AFB7 /* TMCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC3905C1860985B0091AFB7 /* TMCache.m */; };
 		0AC390621860985B0091AFB7 /* TMDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC3905E1860985B0091AFB7 /* TMDiskCache.m */; };
 		0AC390631860985B0091AFB7 /* TMMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AC390601860985B0091AFB7 /* TMMemoryCache.m */; };
+		0ADCBC371888F83D0076FD01 /* book-magic.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC351888F83D0076FD01 /* book-magic.png */; };
+		0ADCBC381888F83D0076FD01 /* book-magic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC361888F83D0076FD01 /* book-magic@2x.png */; };
+		0ADCBC3D1888F94F0076FD01 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC391888F94F0076FD01 /* search.png */; };
+		0ADCBC3E1888F94F0076FD01 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC3A1888F94F0076FD01 /* search@2x.png */; };
+		0ADCBC3F1888F94F0076FD01 /* select-partial.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC3B1888F94F0076FD01 /* select-partial.png */; };
+		0ADCBC401888F94F0076FD01 /* select-partial@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC3C1888F94F0076FD01 /* select-partial@2x.png */; };
+		0ADCBC431888FA3F0076FD01 /* plus-symbol-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC411888FA3F0076FD01 /* plus-symbol-mini.png */; };
+		0ADCBC441888FA3F0076FD01 /* plus-symbol-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC421888FA3F0076FD01 /* plus-symbol-mini@2x.png */; };
+		0ADCBC491888FAF00076FD01 /* magic-wand-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC451888FAF00076FD01 /* magic-wand-mini.png */; };
+		0ADCBC4A1888FAF00076FD01 /* magic-wand-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC461888FAF00076FD01 /* magic-wand-mini@2x.png */; };
+		0ADCBC4B1888FAF00076FD01 /* screen-small-mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC471888FAF00076FD01 /* screen-small-mini.png */; };
+		0ADCBC4C1888FAF00076FD01 /* screen-small-mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0ADCBC481888FAF00076FD01 /* screen-small-mini@2x.png */; };
 		0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */; };
 		0AEBE5201830EDAA00B01A5E /* DAMyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE51F1830EDAA00B01A5E /* DAMyOrderCell.xib */; };
 		0AEBE5241831027600B01A5E /* price_tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEBE5231831027600B01A5E /* price_tag.png */; };
@@ -429,6 +445,12 @@
 		0A40FE0B183F1C6800427613 /* DAOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrder.m; sourceTree = "<group>"; };
 		0A40FE12183F290000427613 /* DASocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DASocketIO.h; path = Helper/DASync/DASocketIO.h; sourceTree = "<group>"; };
 		0A40FE13183F290000427613 /* DASocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DASocketIO.m; path = Helper/DASync/DASocketIO.m; sourceTree = "<group>"; };
+		0A441600188AB2AB00BA66D0 /* DAOrderPrinterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOrderPrinterViewController.h; path = View/PrinterView/DAOrderPrinterViewController.h; sourceTree = "<group>"; };
+		0A441601188AB2AB00BA66D0 /* DAOrderPrinterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOrderPrinterViewController.m; path = View/PrinterView/DAOrderPrinterViewController.m; sourceTree = "<group>"; };
+		0A441602188AB2AB00BA66D0 /* DAOrderPrinterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DAOrderPrinterViewController.xib; path = View/PrinterView/DAOrderPrinterViewController.xib; sourceTree = "<group>"; };
+		0A441606188AB3D800BA66D0 /* DAOrderPrinterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DAOrderPrinterCell.xib; path = View/PrinterView/comp/DAOrderPrinterCell.xib; sourceTree = "<group>"; };
+		0A441608188AB57E00BA66D0 /* DAPrinterTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPrinterTool.h; path = View/PrinterView/comp/DAPrinterTool.h; sourceTree = "<group>"; };
+		0A441609188AB57E00BA66D0 /* DAPrinterTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPrinterTool.m; path = View/PrinterView/comp/DAPrinterTool.m; sourceTree = "<group>"; };
 		0A446BF7188529C70075CFA2 /* DABillBackPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DABillBackPopoverViewController.h; path = View/Bill/DABillBackPopoverViewController.h; sourceTree = "<group>"; };
 		0A446BF8188529C70075CFA2 /* DABillBackPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DABillBackPopoverViewController.m; path = View/Bill/DABillBackPopoverViewController.m; sourceTree = "<group>"; };
 		0A446BF9188529C70075CFA2 /* DABillBackPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DABillBackPopoverViewController.xib; path = View/Bill/DABillBackPopoverViewController.xib; sourceTree = "<group>"; };
@@ -791,6 +813,18 @@
 		0AC3905E1860985B0091AFB7 /* TMDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMDiskCache.m; path = Thirdparty/TMCache/TMDiskCache.m; sourceTree = "<group>"; };
 		0AC3905F1860985B0091AFB7 /* TMMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TMMemoryCache.h; path = Thirdparty/TMCache/TMMemoryCache.h; sourceTree = "<group>"; };
 		0AC390601860985B0091AFB7 /* TMMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TMMemoryCache.m; path = Thirdparty/TMCache/TMMemoryCache.m; sourceTree = "<group>"; };
+		0ADCBC351888F83D0076FD01 /* book-magic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book-magic.png"; sourceTree = "<group>"; };
+		0ADCBC361888F83D0076FD01 /* book-magic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book-magic@2x.png"; sourceTree = "<group>"; };
+		0ADCBC391888F94F0076FD01 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		0ADCBC3A1888F94F0076FD01 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
+		0ADCBC3B1888F94F0076FD01 /* select-partial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-partial.png"; sourceTree = "<group>"; };
+		0ADCBC3C1888F94F0076FD01 /* select-partial@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select-partial@2x.png"; sourceTree = "<group>"; };
+		0ADCBC411888FA3F0076FD01 /* plus-symbol-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-symbol-mini.png"; sourceTree = "<group>"; };
+		0ADCBC421888FA3F0076FD01 /* plus-symbol-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-symbol-mini@2x.png"; sourceTree = "<group>"; };
+		0ADCBC451888FAF00076FD01 /* magic-wand-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magic-wand-mini.png"; sourceTree = "<group>"; };
+		0ADCBC461888FAF00076FD01 /* magic-wand-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magic-wand-mini@2x.png"; sourceTree = "<group>"; };
+		0ADCBC471888FAF00076FD01 /* screen-small-mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-small-mini.png"; sourceTree = "<group>"; };
+		0ADCBC481888FAF00076FD01 /* screen-small-mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen-small-mini@2x.png"; sourceTree = "<group>"; };
 		0AEBE51C1830ED9800B01A5E /* DAMyOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderCell.h; sourceTree = "<group>"; };
 		0AEBE51D1830ED9800B01A5E /* DAMyOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderCell.m; sourceTree = "<group>"; };
 		0AEBE51F1830EDAA00B01A5E /* DAMyOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAMyOrderCell.xib; sourceTree = "<group>"; };
@@ -947,6 +981,18 @@
 		0A07BD521829CC8A00A350BC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0ADCBC451888FAF00076FD01 /* magic-wand-mini.png */,
+				0ADCBC461888FAF00076FD01 /* magic-wand-mini@2x.png */,
+				0ADCBC471888FAF00076FD01 /* screen-small-mini.png */,
+				0ADCBC481888FAF00076FD01 /* screen-small-mini@2x.png */,
+				0ADCBC411888FA3F0076FD01 /* plus-symbol-mini.png */,
+				0ADCBC421888FA3F0076FD01 /* plus-symbol-mini@2x.png */,
+				0ADCBC391888F94F0076FD01 /* search.png */,
+				0ADCBC3A1888F94F0076FD01 /* search@2x.png */,
+				0ADCBC3B1888F94F0076FD01 /* select-partial.png */,
+				0ADCBC3C1888F94F0076FD01 /* select-partial@2x.png */,
+				0ADCBC351888F83D0076FD01 /* book-magic.png */,
+				0ADCBC361888F83D0076FD01 /* book-magic@2x.png */,
 				0AF86234187FC80E00D3A1C0 /* Icon.png */,
 				0AF86235187FC80E00D3A1C0 /* Icon@2x.png */,
 				0A0B7C2B186AC5EB0041704F /* soldout.png */,
@@ -1156,6 +1202,27 @@
 				0A40FE13183F290000427613 /* DASocketIO.m */,
 			);
 			name = Sync;
+			sourceTree = "<group>";
+		};
+		0A4415FF188AB25600BA66D0 /* PrinterView */ = {
+			isa = PBXGroup;
+			children = (
+				0A441605188AB3A000BA66D0 /* comp */,
+				0A441600188AB2AB00BA66D0 /* DAOrderPrinterViewController.h */,
+				0A441601188AB2AB00BA66D0 /* DAOrderPrinterViewController.m */,
+				0A441602188AB2AB00BA66D0 /* DAOrderPrinterViewController.xib */,
+			);
+			name = PrinterView;
+			sourceTree = "<group>";
+		};
+		0A441605188AB3A000BA66D0 /* comp */ = {
+			isa = PBXGroup;
+			children = (
+				0A441606188AB3D800BA66D0 /* DAOrderPrinterCell.xib */,
+				0A441608188AB57E00BA66D0 /* DAPrinterTool.h */,
+				0A441609188AB57E00BA66D0 /* DAPrinterTool.m */,
+			);
+			name = comp;
 			sourceTree = "<group>";
 		};
 		0A4E47EB1857127D00CEC3DE /* CWPopup */ = {
@@ -1550,6 +1617,7 @@
 		0AA9573518279D410098D60C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0A4415FF188AB25600BA66D0 /* PrinterView */,
 				0A8547991867FD8400C051D8 /* Saled */,
 				0A3CD5B718518FB600604CB6 /* Schedule */,
 				0A7AF0E01836131A00635376 /* Common */,
@@ -2045,6 +2113,7 @@
 				F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */,
 				0A3DB72A182A741200170F0C /* DAMyMenuBookCell.xib in Resources */,
 				0A54D6E91850573C00BBA9C4 /* desk_bg.png in Resources */,
+				0ADCBC4C1888FAF00076FD01 /* screen-small-mini@2x.png in Resources */,
 				0A54D6BD184C726900BBA9C4 /* KeyboardNumericEntryKeyTextured@2x.png in Resources */,
 				F2AB4C17182E26710067E450 /* queue_detail.json in Resources */,
 				F2A8CB831831CEB5002AD240 /* sample-table1.jpg in Resources */,
@@ -2054,20 +2123,24 @@
 				0AB52FC81887AA290020272E /* DADeskTableOrderListPopViewController.xib in Resources */,
 				28D0DCAB183C79E500583675 /* btn_round_red.png in Resources */,
 				F2AB4C14182E21F90067E450 /* sample-table.jpg in Resources */,
+				0A441607188AB3D800BA66D0 /* DAOrderPrinterCell.xib in Resources */,
 				0AA4AB1218817CF70079EC3F /* DAPickAmountViewController.xib in Resources */,
 				0A3DB72C182A7B8700170F0C /* DAMyBigMenuBookCell.xib in Resources */,
+				0ADCBC371888F83D0076FD01 /* book-magic.png in Resources */,
 				0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */,
 				0A54D6D6184ED1DD00BBA9C4 /* menubook_sidebottom.png in Resources */,
 				F2AB4BFE182E030A0067E450 /* DAOrderDetailViewController.xib in Resources */,
 				0A54D6F518505DC000BBA9C4 /* desk_bottond.png in Resources */,
 				0AEBE5D11832052600B01A5E /* top_bg.png in Resources */,
 				F2AB4C0A182E1E120067E450 /* DAOrderGroupViewCell.xib in Resources */,
+				0ADCBC401888F94F0076FD01 /* select-partial@2x.png in Resources */,
 				0A54D6B5184C726900BBA9C4 /* BackgroundTexture@2x.png in Resources */,
 				0A7AF0D818360B3A00635376 /* da_data_queue_food.json in Resources */,
 				0A54D6C0184C726900BBA9C4 /* Snapshot.png in Resources */,
 				0A54D6D4184ED1D400BBA9C4 /* menubook_sidemiddle.png in Resources */,
 				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
 				0AF86236187FC80E00D3A1C0 /* Icon.png in Resources */,
+				0ADCBC491888FAF00076FD01 /* magic-wand-mini.png in Resources */,
 				0A54D6BB184C726900BBA9C4 /* KeyboardNumericEntryKeyBackspaceGlyphTextured@2x.png in Resources */,
 				0A7AF0DF183612EF00635376 /* DAQueueMasterViewController.xib in Resources */,
 				0A54D6EA1850573C00BBA9C4 /* desk_top.png in Resources */,
@@ -2094,6 +2167,7 @@
 				0A54D6B9184C726900BBA9C4 /* GenericSeparator@2x.png in Resources */,
 				0A85479E1867FDB500C051D8 /* DASaledViewController.xib in Resources */,
 				0A54D6B7184C726900BBA9C4 /* Default.png in Resources */,
+				0A441604188AB2AB00BA66D0 /* DAOrderPrinterViewController.xib in Resources */,
 				0A54D6D2184ED10800BBA9C4 /* menubook_sidetop.png in Resources */,
 				0A54D6BF184C726900BBA9C4 /* KeyboardTopShadow@2x.png in Resources */,
 				0A5D28A1182CA9AA00847578 /* DADetailOrderCell.xib in Resources */,
@@ -2109,23 +2183,29 @@
 				0A54D6FA1850659A00BBA9C4 /* desk_word.png in Resources */,
 				28FFB62A18322E20003443D1 /* DAPopTableView.storyboard in Resources */,
 				0A3DB730182B1F5100170F0C /* table.png in Resources */,
+				0ADCBC3E1888F94F0076FD01 /* search@2x.png in Resources */,
 				0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */,
 				0A8547B818684EA400C051D8 /* DAItemListViewController.xib in Resources */,
 				0A4E47E0185711CC00CEC3DE /* dot_off1.png in Resources */,
 				0AA9571418274DCA0098D60C /* Images.xcassets in Resources */,
 				0AA533951828AD7D0087EFF1 /* DAOrderCell.xib in Resources */,
+				0ADCBC441888FA3F0076FD01 /* plus-symbol-mini@2x.png in Resources */,
 				0A7AF0CA1836075200635376 /* DAQueueItemListViewController.xib in Resources */,
 				0A7AF0C0183606D300635376 /* DAQueueFoodTableViewController.xib in Resources */,
 				0A54D6B6184C726900BBA9C4 /* Default-568h@2x.png in Resources */,
 				0A7AF0AC183600C900635376 /* DADrinkQueueViewController.xib in Resources */,
 				0AEBE5C91831D69000B01A5E /* DARemarkPopoverViewController.xib in Resources */,
+				0ADCBC3F1888F94F0076FD01 /* select-partial.png in Resources */,
 				0A54D703185076EC00BBA9C4 /* desk_j.png in Resources */,
+				0ADCBC3D1888F94F0076FD01 /* search.png in Resources */,
 				0A1530C0182FD4ED00A13EB8 /* mask.png in Resources */,
 				0A7AF0C51836070000635376 /* DAQueueDrinkTableViewController.xib in Resources */,
 				0A54D7061850793500BBA9C4 /* desk_jz1.png in Resources */,
 				47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */,
 				0A7AF0B6183600EE00635376 /* DAItemViewController.xib in Resources */,
+				0ADCBC431888FA3F0076FD01 /* plus-symbol-mini.png in Resources */,
 				0A54D6C8184D81C400BBA9C4 /* DATakeoutLoginViewController.xib in Resources */,
+				0ADCBC4A1888FAF00076FD01 /* magic-wand-mini@2x.png in Resources */,
 				0A54D6E2184F321C00BBA9C4 /* menubook_background.png in Resources */,
 				0AF2C9CD1839DE9400A74B72 /* queue_drink.json in Resources */,
 				0AA5339A1828B7FE0087EFF1 /* DABookCell.xib in Resources */,
@@ -2165,9 +2245,11 @@
 				F2AB4C03182E03480067E450 /* DAOrderGroupViewController.xib in Resources */,
 				0AA9570318274DCA0098D60C /* InfoPlist.strings in Resources */,
 				0AB113961833770F0011828A /* Settings.bundle in Resources */,
+				0ADCBC4B1888FAF00076FD01 /* screen-small-mini.png in Resources */,
 				0AB4B3B21838DE3700D77D7E /* DAPreferentialViewController.xib in Resources */,
 				0AEBE5D5183209A500B01A5E /* price_mask.png in Resources */,
 				0A24A2D31838C66100B340BE /* DAQueueTableCell.xib in Resources */,
+				0ADCBC381888F83D0076FD01 /* book-magic@2x.png in Resources */,
 				0A4E47DE185711CC00CEC3DE /* botton_on.png in Resources */,
 				0A5D2835182B6E2F00847578 /* table1.png in Resources */,
 				0A54D6D8184EEC4B00BBA9C4 /* menubook_sidetop1.png in Resources */,
@@ -2315,8 +2397,10 @@
 				0A4E479D1856A06A00CEC3DE /* DAUser.m in Sources */,
 				0A7AF0B5183600EE00635376 /* DAItemViewController.m in Sources */,
 				0AA9570F18274DCA0098D60C /* DAMasterViewController.m in Sources */,
+				0A441603188AB2AB00BA66D0 /* DAOrderPrinterViewController.m in Sources */,
 				0AA031FB1843555900C66590 /* SocketIOTransportXHR.m in Sources */,
 				0AB78B80183CB46500979BD0 /* AFPropertyListRequestOperation.m in Sources */,
+				0A44160A188AB57E00BA66D0 /* DAPrinterTool.m in Sources */,
 				0A4E479C1856A06A00CEC3DE /* DAItemLayout.m in Sources */,
 				0A4E47B318570FFC00CEC3DE /* DADeskProxy.m in Sources */,
 				28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */,

@@ -70,7 +70,7 @@
     UILabel *lblName = (UILabel *)[cell viewWithTag:10];
     lblName.text = row.item.itemName;
     UILabel *lblWaitingTime = (UILabel *)[cell viewWithTag:11];
-    lblWaitingTime.text = [Tool stringFromISODateString:row.createat];
+    lblWaitingTime.text = [Tool compareCurrentTime:row.createat];
     
     UILabel *lblAmount = (UILabel *)[cell viewWithTag:12];
     lblAmount.text = [NSString stringWithFormat:@"%@份",row.amount];

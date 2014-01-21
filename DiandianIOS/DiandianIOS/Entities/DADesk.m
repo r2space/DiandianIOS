@@ -38,13 +38,16 @@
     if (self.service == nil)
     {
         return NO;
-    } else if (self.service.unfinishedCount == nil)
-    {
-        return NO;
-    } else if ([@"0" isEqualToString: [NSString stringWithFormat:@"%@",self.service.unfinishedCount]])
+    }
+    else if (self.service.unfinishedCount == nil)
     {
         return NO;
     }
+    else if ([@"0" isEqualToString: [NSString stringWithFormat:@"%@",self.service.unfinishedCount]])
+    {
+        return NO;
+    }
+    
     return YES;
 }
 

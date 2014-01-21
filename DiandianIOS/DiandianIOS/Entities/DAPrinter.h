@@ -14,6 +14,7 @@
 @property (retain, nonatomic) NSString  *name;
 @property (retain, nonatomic) NSString  *printerIP;
 @property (retain, nonatomic) NSString  *type;
+@property (retain, nonatomic) NSNumber  *need;
 @property (retain, nonatomic) NSNumber  *valid;
 
 @end

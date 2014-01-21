@@ -81,10 +81,24 @@
     } else {
         
         DAOrder *order = [listData objectAtIndex:indexPath.row];
-        if ([order.type integerValue] == 0) {
-            cell.textLabel.text = [NSString stringWithFormat:@"%@   X %@",order.item.itemName,order.amount];
+        if (order.amount !=nil) {
+            if ([order.hasBack intValue]  == 1 ) {
+                if ([order.type integerValue] == 0) {
+                    cell.textLabel.text = [NSString stringWithFormat:@"退了-%@   X %@ ",order.item.itemName,order.amount];
+                } else {
+                    cell.textLabel.text = [NSString stringWithFormat:@"退了-%@(小)   X %@ ",order.item.itemName,order.amount];
+                }
+            } else {
+                if ([order.type integerValue] == 0) {
+                    cell.textLabel.text = [NSString stringWithFormat:@"%@   X %@",order.item.itemName,order.amount];
+                } else {
+                    cell.textLabel.text = [NSString stringWithFormat:@"(小)%@   X %@",order.item.itemName,order.amount];
+                }
+            }
+        
+            
         } else {
-            cell.textLabel.text = [NSString stringWithFormat:@"(小)%@   X %@",order.item.itemName,order.amount];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@",order.item.itemName];
         }
         
    

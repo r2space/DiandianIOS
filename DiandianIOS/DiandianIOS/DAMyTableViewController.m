@@ -232,8 +232,11 @@ static DAMyTableViewController *activity;
     
     // 这个好像被外面给覆盖了
     if (![desk isEmpty]) {
+        [cell.btnOrderList setHidden:NO];
+
         cell.imgTable.image = [UIImage imageNamed:@"desk_bottonl.png"];
     } else {
+        [cell.btnOrderList setHidden:YES];
         cell.imgTable.image = [UIImage imageNamed:@"desk_bottond.png"];
     }
     cell.backgroundColor = [UIColor clearColor];
@@ -371,8 +374,8 @@ static DAMyTableViewController *activity;
 
 - (IBAction)showOrderQueueTouched:(id)sender {
 
-        DAQueueMasterViewController *viewController = [[DAQueueMasterViewController alloc] initWithNibName:@"DAQueueMasterViewController" bundle:nil];
-        [self.navigationController pushViewController:viewController animated:YES];
+    DAQueueMasterViewController *viewController = [[DAQueueMasterViewController alloc] initWithNibName:@"DAQueueMasterViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 
 
 }

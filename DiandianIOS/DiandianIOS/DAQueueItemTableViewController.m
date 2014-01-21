@@ -8,11 +8,13 @@
 
 #import "DAQueueItemTableViewController.h"
 #import "ProgressHUD.h"
+#import "MBProgressHUD.h"
 
 @interface DAQueueItemTableViewController ()
 {
     DAMyOrderList *dataList;
     DAMenuList *menuList;
+    MBProgressHUD *progress;
 }
 @end
 
@@ -89,6 +91,15 @@
     return cell;
 }
 
+- (void)showIndicator:(NSString *)message
+{
+    progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
+    progress.mode = MBProgressHUDModeIndeterminate;
+    progress.labelText = message;
+    progress.color = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
+    [progress show:YES];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 142;
@@ -99,10 +110,10 @@
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
     DADesk *desk = order.desk;
 
-    
+
+    [self showIndicator:@"上菜中。。"];
     [[DAOrderModule alloc] setDoneOrder:order._id callback:^(NSError *err, DAOrder *list) {
-    
-        
+        [progress hide:YES];
         self.selectDeskBlock(order._id , desk._id);
     }];
     

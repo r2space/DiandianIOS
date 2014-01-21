@@ -27,6 +27,12 @@
     // Configure the view for the selected state
 }
 - (IBAction)onMiandanTouched:(id)sender {
+    NSNumber *hasCash = [[NSUserDefaults standardUserDefaults]objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterHasCash"];
+    
+    if (!(hasCash != nil && [hasCash boolValue])) {
+        [ProgressHUD showError:@"只有收银员才能免单！！"];
+        return;
+    }
     
     NSMutableArray *freeDataList = [[NSMutableArray alloc]init];
     [freeDataList addObject:self.order._id];

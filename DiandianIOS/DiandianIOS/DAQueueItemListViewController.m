@@ -15,6 +15,8 @@
 #import "DAOrderProxy.h"
 
 #import "Tool.h"
+#import "MBProgressHUD.h"
+
 
 @interface DAQueueItemListViewController ()
 {
@@ -25,6 +27,7 @@
     DAMenuList *menuList;
     NSMutableArray *itemList;
     NSDate *nowData;
+    MBProgressHUD *progress;
 }
 @end
 
@@ -134,10 +137,20 @@
     }
 
     
-    lblWaitingTime.text = [Tool stringFromISODateString:row.createat];
+    lblWaitingTime.text = [Tool compareCurrentTime:row.createat];
+    
     cell.backgroundColor = [UIColor clearColor];
     
     return cell;
+}
+
+- (void)showIndicator:(NSString *)message
+{
+    progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
+    progress.mode = MBProgressHUDModeIndeterminate;
+    progress.labelText = message;
+    progress.color = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
+    [progress show:YES];
 }
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgTable;
 @property (weak, nonatomic) IBOutlet UIView *viewMask;
 @property (weak, nonatomic) IBOutlet UIView *viewLabel;
+@property (weak, nonatomic) IBOutlet UIButton *btnOrderList;
 
 @property (retain, nonatomic) DADesk *curDesk;
 

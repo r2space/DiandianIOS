@@ -25,6 +25,7 @@
 @property(retain, nonatomic) NSNumber *type;
 @property(retain, nonatomic) NSNumber *soldout;
 
+@property(retain, nonatomic) NSNumber *discount;
 @property(retain, nonatomic) NSNumber *amount;
 @property(retain, nonatomic) NSString *status;
 
