@@ -48,6 +48,8 @@
 		0A3DB72E182B192900170F0C /* DAMyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72D182B192900170F0C /* DAMyTableViewCell.xib */; };
 		0A3DB730182B1F5100170F0C /* table.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A3DB72F182B1F5100170F0C /* table.png */; };
 		0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */; };
+		0A4047E1188FEAD200DB62A2 /* DAPrinterLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4047E0188FEAD200DB62A2 /* DAPrinterLine.m */; };
+		0A4047E51890BDE400DB62A2 /* DAPosIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4047E41890BDE400DB62A2 /* DAPosIO.m */; };
 		0A4099141869104A000E8E24 /* DATag.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4099131869104A000E8E24 /* DATag.m */; };
 		0A4099171869105F000E8E24 /* DATagList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4099161869105F000E8E24 /* DATagList.m */; };
 		0A40FDE4183CEDB400427613 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A40FDE3183CEDB400427613 /* Security.framework */; };
@@ -182,6 +184,7 @@
 		0A7AF0DA18360B5000635376 /* da_data_queue_drink.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0D918360B5000635376 /* da_data_queue_drink.json */; };
 		0A7AF0DE183612EF00635376 /* DAQueueMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7AF0DC183612EF00635376 /* DAQueueMasterViewController.m */; };
 		0A7AF0DF183612EF00635376 /* DAQueueMasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7AF0DD183612EF00635376 /* DAQueueMasterViewController.xib */; };
+		0A7C3DBF188E33560061A9C0 /* DAPrintCacheProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C3DBE188E33560061A9C0 /* DAPrintCacheProxy.m */; };
 		0A7EA1EE1847426D00A9E287 /* DASettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EA1EC1847426D00A9E287 /* DASettingViewController.m */; };
 		0A7EA1EF1847426D00A9E287 /* DASettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A7EA1ED1847426D00A9E287 /* DASettingViewController.xib */; };
 		0A85479D1867FDB500C051D8 /* DASaledViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A85479B1867FDB500C051D8 /* DASaledViewController.m */; };
@@ -435,6 +438,10 @@
 		0A3DB72F182B1F5100170F0C /* table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = table.png; sourceTree = "<group>"; };
 		0A3DB731182B21B500170F0C /* DAMyMenuBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyMenuBookCell.h; sourceTree = "<group>"; };
 		0A3DB732182B21B500170F0C /* DAMyMenuBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyMenuBookCell.m; sourceTree = "<group>"; };
+		0A4047DF188FEAD200DB62A2 /* DAPrinterLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPrinterLine.h; path = Entities/DAPrinterLine.h; sourceTree = "<group>"; };
+		0A4047E0188FEAD200DB62A2 /* DAPrinterLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPrinterLine.m; path = Entities/DAPrinterLine.m; sourceTree = "<group>"; };
+		0A4047E31890BDE400DB62A2 /* DAPosIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPosIO.h; path = Thirdparty/PosIO/DAPosIO.h; sourceTree = "<group>"; };
+		0A4047E41890BDE400DB62A2 /* DAPosIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPosIO.m; path = Thirdparty/PosIO/DAPosIO.m; sourceTree = "<group>"; };
 		0A4099121869104A000E8E24 /* DATag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DATag.h; path = Entities/DATag.h; sourceTree = "<group>"; };
 		0A4099131869104A000E8E24 /* DATag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DATag.m; path = Entities/DATag.m; sourceTree = "<group>"; };
 		0A4099151869105F000E8E24 /* DATagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DATagList.h; path = Entities/DATagList.h; sourceTree = "<group>"; };
@@ -637,6 +644,8 @@
 		0A7AF0DB183612EF00635376 /* DAQueueMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAQueueMasterViewController.h; sourceTree = "<group>"; };
 		0A7AF0DC183612EF00635376 /* DAQueueMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAQueueMasterViewController.m; sourceTree = "<group>"; };
 		0A7AF0DD183612EF00635376 /* DAQueueMasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAQueueMasterViewController.xib; sourceTree = "<group>"; };
+		0A7C3DBD188E33560061A9C0 /* DAPrintCacheProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPrintCacheProxy.h; path = Proxy/DAPrintCacheProxy.h; sourceTree = "<group>"; };
+		0A7C3DBE188E33560061A9C0 /* DAPrintCacheProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPrintCacheProxy.m; path = Proxy/DAPrintCacheProxy.m; sourceTree = "<group>"; };
 		0A7EA1EB1847426D00A9E287 /* DASettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DASettingViewController.h; sourceTree = SOURCE_ROOT; };
 		0A7EA1EC1847426D00A9E287 /* DASettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DASettingViewController.m; sourceTree = SOURCE_ROOT; };
 		0A7EA1ED1847426D00A9E287 /* DASettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DASettingViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -961,6 +970,7 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				0A4047E21890BDBB00DB62A2 /* PosIO */,
 				0AB52FBF188777EE0020272E /* MBProgressHUD */,
 				0A8547BE1868527600C051D8 /* DWTagList */,
 				0AC39017186098260091AFB7 /* TMCache */,
@@ -1136,6 +1146,15 @@
 			name = Menubook;
 			sourceTree = "<group>";
 		};
+		0A4047E21890BDBB00DB62A2 /* PosIO */ = {
+			isa = PBXGroup;
+			children = (
+				0A4047E31890BDE400DB62A2 /* DAPosIO.h */,
+				0A4047E41890BDE400DB62A2 /* DAPosIO.m */,
+			);
+			name = PosIO;
+			sourceTree = "<group>";
+		};
 		0A40FDF6183DFAA400427613 /* Proxy */ = {
 			isa = PBXGroup;
 			children = (
@@ -1151,6 +1170,8 @@
 				0AA031A91843350900C66590 /* DAOrderProxy.h */,
 				0A4E47A71856F56500CEC3DE /* DANotificationProxy.h */,
 				0A4E47A81856F56500CEC3DE /* DANotificationProxy.m */,
+				0A7C3DBD188E33560061A9C0 /* DAPrintCacheProxy.h */,
+				0A7C3DBE188E33560061A9C0 /* DAPrintCacheProxy.m */,
 			);
 			name = Proxy;
 			sourceTree = "<group>";
@@ -1896,6 +1917,8 @@
 				0A0B7C26186963BC0041704F /* DASoldout.m */,
 				0A0B7C28186985580041704F /* DASoldoutList.h */,
 				0A0B7C29186985580041704F /* DASoldoutList.m */,
+				0A4047DF188FEAD200DB62A2 /* DAPrinterLine.h */,
+				0A4047E0188FEAD200DB62A2 /* DAPrinterLine.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -2378,11 +2401,13 @@
 				0A739E62183B019D00AA48C4 /* DAMyBackOrderViewController.m in Sources */,
 				0AA031FA1843555900C66590 /* SocketIOTransportWebsocket.m in Sources */,
 				0AA031F01843555900C66590 /* SBJson4Parser.m in Sources */,
+				0A7C3DBF188E33560061A9C0 /* DAPrintCacheProxy.m in Sources */,
 				0AA031F61843555900C66590 /* SBJson4Writer.m in Sources */,
 				0A924AAA18348A420004C973 /* DAMyItemListViewController.m in Sources */,
 				2886BB071839AD8100A496AC /* DAProcession.m in Sources */,
 				0AA031F41843555900C66590 /* SBJson4StreamWriter.m in Sources */,
 				0A446BFA188529C70075CFA2 /* DABillBackPopoverViewController.m in Sources */,
+				0A4047E1188FEAD200DB62A2 /* DAPrinterLine.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
 				0AB78B5B183CB46500979BD0 /* DAMenuModule.m in Sources */,
 				0A7AF0CE1836076600635376 /* DAQueueFoodListViewController.m in Sources */,
@@ -2450,6 +2475,7 @@
 				47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */,
 				0A5D283E182B81F000847578 /* DAOrderAddAmountBtn.m in Sources */,
 				0AA031F31843555900C66590 /* SBJson4StreamTokeniser.m in Sources */,
+				0A4047E51890BDE400DB62A2 /* DAPosIO.m in Sources */,
 				0AA4AB1118817CF70079EC3F /* DAPickAmountViewController.m in Sources */,
 				0AA031A418432A4A00C66590 /* DAOrderModule.m in Sources */,
 				0AB78B7C183CB46500979BD0 /* AFHTTPRequestOperation.m in Sources */,

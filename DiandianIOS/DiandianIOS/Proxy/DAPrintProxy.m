@@ -258,17 +258,50 @@ enum PrintErrorStatus
     }];
 }
 
-+(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout tips:(NSString *)tips
++(NSArray *) reOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout tips:(NSString *)tips
+{
+    NSMutableArray *tmpResultPrinter = [[NSMutableArray alloc] init];
+    return tmpResultPrinter;
+}
+
++(NSArray *) resetOrderPrinterWithLeave :(NSArray *) resetList
+{
+    NSMutableArray *tmpResultPrinter = [[NSMutableArray alloc] init];
+    for (DAPrinterLine *line in  resetList) {
+        DAPrintProxy *print = [[DAPrintProxy alloc] init];
+        int status = -1;
+        if ([line.printerStatus intValue] != 0) {
+            if ([line.printerType isEqualToString:@"bill"]) {
+                for (NSString *str in line.printerLines) {
+                    [print addLine:str];
+                }
+                
+                [print printText:line.printerIp addTextSize:[line.printerTextSize intValue]TextHeight:[line.printerTextHeight intValue]];
+            } else {
+                status = [print printOrderText:line.printerIp linesList:line.printerLines addTextSize:[line.printerTextSize intValue]TextHeight:[line.printerTextHeight intValue]];
+            }
+            line.printerStatus = [NSString stringWithFormat:@"%d",status];
+            [tmpResultPrinter addObject:line];
+        }
+        
+    }
+
+    return tmpResultPrinter;
+}
+
++(NSArray *) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout tips:(NSString *)tips
 {
     
 
     DAPrinter *defaultPrinter = nil;
-    
+    NSMutableArray *tmpResultPrinter = [[NSMutableArray alloc] init];
     DAPrinterList *printtList = [[DAPrinterList alloc]unarchiveObjectWithFileWithPath:@"printer" withName:@"printer"];
+    
     if (printtList == nil || [printtList.items count] == 0) {
         [ProgressHUD showError:@"请设置打印机"];
-        return;
+        return tmpResultPrinter;
     }
+    
     NSMutableDictionary *SystemPrintSet = [[NSMutableDictionary alloc]init];
     for (DAPrinter *printerSet in printtList.items ) {
         
@@ -285,7 +318,7 @@ enum PrintErrorStatus
     
     //START  打印流水单
     DAPrintProxy *print1 = [[DAPrintProxy alloc] init];
-        [print1 addLine:[NSString stringWithFormat:@"流水单"]];
+    [print1 addLine:[NSString stringWithFormat:@"流水单"]];
 
     if (takeout.length > 0) {
         [print1 addLine:[NSString stringWithFormat:@" 外卖  单号:%@ 时间：%@",orderNum,[Tool stringFromISODateString:now]]];
@@ -316,18 +349,24 @@ enum PrintErrorStatus
     
     if([orderList.items count] > 0){
         int status = -1;
-        int times = 0;
-//        do{
-            DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
-            status = [print1 printText:billprint.printerIP addTextSize:2 TextHeight:2];
-//            if (times > 100) {
-//                break;
-//            } else {
-//                [NSThread sleepForTimeInterval:0.5f];
-//            }
-//            [NSThread sleepForTimeInterval:0.1f];
-//            NSLog(@"打印times  %d",times++);
-//        } while(status == -1);
+
+        DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
+        //打印机状态
+        DAPrinterLine *printerLine = [[DAPrinterLine alloc]init];
+        printerLine.printerLines = [print1 getLines];
+        printerLine.printerType  = @"bill";
+        printerLine.printerIp    = billprint.printerIP;
+        printerLine.printerTextSize = @"2";
+        printerLine.printerTextHeight = @"2";
+        printerLine.printerName = billprint.name;
+    
+    
+        status = [print1 printText:billprint.printerIP addTextSize:2 TextHeight:2];
+        printerLine.printerStatus    = [NSString stringWithFormat:@"%d",status];
+        [tmpResultPrinter addObject:printerLine];
+        
+        
+        
         
         NSLog(@"打印机状态 判断是否成功   : %d",status);
         
@@ -347,17 +386,19 @@ enum PrintErrorStatus
     
     for (DAPrinter *printerSet in printtList.items ) {
         
-
+        
         
         if ([printerSet.type isEqualToString:@"1"]) {
             NSMutableArray *printerOrderList = [SystemPrintSet objectForKey:printerSet._id];
 
             NSMutableArray *tmpOrderPrintList = [[NSMutableArray alloc]init];
+            
             //START  后厨打印
             NSMutableArray *tmpOrderCheckPrintLine = [[NSMutableArray alloc]init];
             
             DAPrintProxy *print = [[DAPrintProxy alloc] init];
             [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@"后厨核对单"]];
+            
             if (takeout.length > 0) {
                 [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@" 外卖  单号:%@ 时间：%@",orderNum,[Tool stringFromISODateString:now]]];
             } else {
@@ -414,18 +455,20 @@ enum PrintErrorStatus
             }
             
             if([printerOrderList count] > 0 && [printerSet.need intValue] == 1){
-                int status = -1;
-                int times = 0;
-                do{
-                    status = [print printOrderText:printerSet.printerIP linesList:tmpOrderPrintList addTextSize:2 TextHeight:3];
-                    if (times > 100) {
-                        break;
-                    } else {
-                        [NSThread sleepForTimeInterval:0.5f];
-                    }
-                    [NSThread sleepForTimeInterval:0.1f];
-                    NSLog(@"打印times  %d",times++);
-                } while(status == -1);
+                //打印机状态
+                DAPrinterLine *printerLine = [[DAPrinterLine alloc]init];
+                printerLine.printerLines = tmpOrderPrintList;
+                printerLine.printerType  = @"cook";
+                printerLine.printerIp    = printerSet.printerIP;
+                printerLine.printerTextSize = @"2";
+                printerLine.printerTextHeight = @"3";
+                printerLine.printerName = printerSet.name;
+                
+                int status = [print printOrderText:printerSet.printerIP linesList:tmpOrderPrintList addTextSize:2 TextHeight:3];
+                
+                printerLine.printerStatus    = [NSString stringWithFormat:@"%d",status];
+                [tmpResultPrinter addObject:printerLine];
+
                 
                 NSLog(@"打印机状态 判断是否成功   : %d",status);
                 
@@ -440,6 +483,7 @@ enum PrintErrorStatus
         
     
     }
+    return tmpResultPrinter;
     
     
 
@@ -454,6 +498,7 @@ enum PrintErrorStatus
     }
     return self;
 }
+
 
 - (void)addLine:(NSString *)text {
     NSLog(@"%@", text);
@@ -475,17 +520,25 @@ enum PrintErrorStatus
     [lines addObject:split];
 }
 
+- (void)onStatusChange:(NSString *)deviceName Status:(NSNumber *)status {
+    
+    NSLog(@"deviceName %@ status  %@",deviceName,[self getEposStatusText:(int)status]);
+    
+}
+
 - (EposPrint *)getPrinter:(NSString *)ip
 {
     EposPrint *printer = [[EposPrint alloc] init];
-    
-    // open
-    int result = [printer openPrinter:EPOS_OC_DEVTYPE_TCP DeviceName:ip];
-    if (result != EPOS_OC_SUCCESS) {
+    int errorStatus = EPOS_OC_SUCCESS;
+    if ( printer != nil) {
+        // open
+        errorStatus = [printer openPrinter:EPOS_OC_DEVTYPE_TCP DeviceName:ip];
+        NSLog(@"getPrinter  result : %d  text :%@" ,errorStatus,[self getEposResultText :errorStatus]);
+        return printer;
+    } else {
         return nil;
     }
     
-    return printer;
 }
 
 - (int)printOrderText:(NSString *)ip linesList:(NSArray *)linesList addTextSize:(long) addTextSize TextHeight:(long)TextHeight
@@ -529,7 +582,7 @@ enum PrintErrorStatus
             }
         }
 
-        
+        // bug fix
         for (NSString *str in tempList) {
             NSLog(@"%@",str);
             result = [builder addText:[str stringByAppendingString:@"\n" ]];
@@ -564,6 +617,7 @@ enum PrintErrorStatus
     unsigned long battery = 0;
     result = [printer sendData:builder Timeout:SEND_TIMEOUT Status:&status Battery:&battery];
     NSLog(@"send data  %d" ,result);
+    NSLog(@"send data  %d  Text: %@" ,result ,  [self getEposStatusText:status]);
     if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
@@ -583,6 +637,7 @@ enum PrintErrorStatus
 {
     // create builder
     EposBuilder *builder = [[EposBuilder alloc] initWithPrinterModel:PRINT_NAME Lang:EPOS_OC_MODEL_CHINESE];
+
     if(builder == nil){
         return PRINT_ERROR;
     }
@@ -590,7 +645,7 @@ enum PrintErrorStatus
 
     //add command
     int result = [builder addTextLang:EPOS_OC_LANG_ZH_CN];
-    
+    NSLog(@"builder addTextLang:EPOS_OC_LANG_ZH_CN  result : %d " ,result);
     if(result != EPOS_OC_SUCCESS){
         return PRINT_ERROR;
     }
@@ -648,7 +703,7 @@ enum PrintErrorStatus
     unsigned long status = 0;
     unsigned long battery = 0;
     result = [printer sendData:builder Timeout:SEND_TIMEOUT Status:&status Battery:&battery];
-    NSLog(@"send data  %d" ,result);
+    NSLog(@"send data  %d  Text: %@" ,result ,  [self getEposStatusText:status]);
     if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }

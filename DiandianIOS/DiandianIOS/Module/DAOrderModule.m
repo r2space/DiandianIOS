@@ -289,8 +289,8 @@
 // 获得 主食酒水类型的  order 的接口
 -(void) getOrderNEItemListByServiceId:(NSString *)serviceId callback:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
-    
-    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,@"neItem",serviceId];
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,(int)timeStamp,@"neItem",serviceId];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
@@ -310,7 +310,8 @@
 
 -(void) getOrderItemList:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
-    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,@"item",@""];
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,(int)timeStamp,@"item",@""];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
@@ -331,7 +332,8 @@
 
 -(void) getOrderItemListByServiceId:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
-    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,@"item",@""];
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,(int)timeStamp,@"item",@""];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];

@@ -13,7 +13,8 @@
 
 -(void) getDeskListWithArchiveName:(NSString *)archiveName callback:(void (^)(NSError *err, DADeskList *list))callback
 {
-    NSString *path = [NSString stringWithFormat:API_DESK_LIST];
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    NSString *path = [NSString stringWithFormat:API_DESK_LIST,(int)timeStamp];
     
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         DADeskList *data = [[DADeskList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];

@@ -13,9 +13,9 @@
 #import "SmartSDK.h"
 #import "DASocketIO.h"
 
-@interface DAMyOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,SocketIODelegate>
+@interface DAMyOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,SocketIODelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property (weak, nonatomic) IBOutlet UIAlertView *alertView;
 @property (weak, nonatomic) IBOutlet UILabel *labelAmount;
 
 @property (nonatomic, retain) DAMyOrderList *dataList;

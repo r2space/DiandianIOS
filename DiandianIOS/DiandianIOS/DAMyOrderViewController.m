@@ -25,6 +25,10 @@
     DAMyOrderList *backOrderDataList;
     NSString *curWaitterUserId;
     MBProgressHUD       *progress;  // 消息框
+    
+    DAMyOrderList *submitOrder;
+    
+    NSArray *resultList;
 }
 @end
 
@@ -406,15 +410,21 @@
                     [progress hide:YES];
                     return ;
                 }
+                
+                submitOrder = list;
+                
+                
+                
                 if ([self.curService.type integerValue] == 3) {
-                    [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone tips:@""];
+                    [self printerOrder:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone tips:@""];
+                    
+//                    resultList = [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone tips:@""];
                 } else {
-                    [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@"" tips:tips];
+                    [self printerOrder:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@"" tips:tips];
+                    
                 }
                 
-                
-                [progress hide:YES];
-                [self.navigationController popViewControllerAnimated:YES];
+            
                 
             }];
         } else {
@@ -438,7 +448,72 @@
     
 }
 
--(void)updateRecipe:(id)sender 
+-(void )alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"index  %d",buttonIndex);
+    
+    if (buttonIndex == 1) {
+        
+        [alertView dismissWithClickedButtonIndex:1 animated:NO];
+        [self showIndicator:@"重新打印。。"];
+        resultList = [DAPrintProxy resetOrderPrinterWithLeave:resultList];
+        BOOL flagLock = YES;
+        NSMutableString *message = [[NSMutableString alloc]init];
+        for (DAPrinterLine *printer in resultList) {
+            NSString *status =  printer.printerStatus;
+            if ([status intValue] != 0) {
+                [message appendFormat:@"%@;",printer.printerName];
+                flagLock = NO;
+            }
+        }
+        
+        [progress hide:YES];
+        if (flagLock) {
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"打印错误" message: [NSString stringWithFormat:@"%@ \n 打印机没有打印。",message] delegate:self cancelButtonTitle:@"取消继续点菜" otherButtonTitles:@"重新打印", nil];
+            
+            [alertView show];
+        }
+    }
+    
+}
+
+
+-(void) printerOrder:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString *)orderNum now:(NSString *)now takeout:(NSString *)takeout tips:(NSString *)tips
+{
+    
+    resultList = [DAPrintProxy addOrderPrintWithOrderList:orderList deskName:deskName orderNum:orderNum now:now takeout:takeout tips:tips];
+    
+    
+    BOOL flagLock = YES;
+    NSMutableString *message = [[NSMutableString alloc]init];
+    for (DAPrinterLine *printer in resultList) {
+        NSString *status =  printer.printerStatus;
+        if ([status intValue] != 0) {
+            [message appendFormat:@"%@;",printer.printerName];
+            flagLock = NO;
+        }
+    }
+    
+    [progress hide:YES];
+    if (flagLock) {
+        [progress hide:YES];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"打印错误" message: [NSString stringWithFormat:@"%@ \n 打印机没有打印。",message] delegate:self cancelButtonTitle:@"取消继续点菜" otherButtonTitles:@"重新打印", nil];
+        
+        [alertView show];
+    }
+
+    
+}
+
+
+-(void)updateRecipe:(id)sender
 {
     
     DADetailOrderViewController *secondDetailViewController = [[DADetailOrderViewController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];

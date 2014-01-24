@@ -14,7 +14,7 @@
 
 
 #define API_MENU_LIST           @"/api/menu/list.json"
-#define API_DESK_LIST           @"/api/desk/list.json"
+#define API_DESK_LIST           @"/api/desk/list.json?t=%d"
 #define API_SOLDOUT_ITEM_LIST   @"/api/soldout/list.json"
 #define API_ITEM_LIST           @"/api/item/list.json?start=%d&count=%d&keyword=%@&soldoutType=%@"
 #define API_TAG_LIST            @"/api/tag/list.json?count=100&start=0"
@@ -44,7 +44,7 @@
 #define API_ALL_ORDER_LIST  @"/api/order/list.json?start=%d&count=%d"
 
 
-#define API_ALL_ORDER_ITEM_LIST  @"/api/order/itemList.json?type=%@&serviceId=%@"
+#define API_ALL_ORDER_ITEM_LIST  @"/api/order/itemList.json?t=%d&type=%@&serviceId=%@"
 
 
 #define API_ALL_ORDER_LIST_BY_BACK  @"/api/order/list.json?serviceId=%@&back=%@"
@@ -118,6 +118,7 @@
 #import "DATagList.h"
 #import "DASoldout.h"
 #import "DASoldoutList.h"
+#import "DAPrinterLine.h"
 
 
 #endif

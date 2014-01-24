@@ -22,9 +22,9 @@
 - (int)printText:(NSString *)ip addTextSize:(long) addTextSize TextHeight:(long)TextHeight;
 
 
-
++(NSArray *) resetOrderPrinterWithLeave :(NSArray *) resetList;
 +(int) addOrderBackPrint:(NSArray *)backOrderList;
-+(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout tips:(NSString *)tips;
++(NSArray *) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout tips:(NSString *)tips;
 
 +(void) printBill: (NSString *) serviceId
               off:(NSString *)off
@@ -35,5 +35,6 @@
          progress:(MBProgressHUD *)progress;
 
 +(void) testPrinter;
+
 
 @end
