@@ -35,7 +35,10 @@
     NSInteger port = [[NSUserDefaults standardUserDefaults] integerForKey:kServerPort];
 //    NSString *address = @"10.2.3.237";
 //    NSInteger port = 3000;
-    [self connectToHost:address onPort:port];
+    if (![self isConnected]) {
+        NSLog(@"=====socket io connecting======");
+        [self connectToHost:address onPort:port];
+    }
 }
 
 -(void)sendJSONwithAction:(NSString *)action  data:(NSDictionary *)data

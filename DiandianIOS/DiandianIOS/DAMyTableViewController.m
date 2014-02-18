@@ -65,12 +65,20 @@ static DAMyTableViewController *activity;
     
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self loadFromFile];
+    
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"ioSocketOpen" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
 }
 
+-(void) viewWillDisappear:(BOOL)animated
+{
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"ioSocketClose" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
+}
 + (void) receive:(NSString*)action data:(id)data
 {
     if (activity != nil && [activity isViewLoaded]) {

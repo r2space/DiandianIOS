@@ -24,15 +24,14 @@
 
 @implementation DAAppDelegate
 {
-    NSTimer         *daemonIO;         // 涮新用计时器
-    BOOL            puaseTimer;
+    NSTimer         *daemonIO;         // 定时检查socketio连接情况，在需要的时候重新连接
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [DASettings registerDefaultsFromSettingsBundle];
     
-    NSString *s = [[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress];
+    
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress] == nil) {
         NSString *serverAddress = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerAddress];
         NSNumber *serverPort = [[NSBundle mainBundle] objectForInfoDictionaryKey:kInfoPlistKeyServerPort];
@@ -40,18 +39,31 @@
         [[NSUserDefaults standardUserDefaults] setInteger:serverPort.integerValue forKey:kServerPort];
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(openIOSocket:) name:@"ioSocketOpen" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeIOSocket:) name:@"ioSocketClose" object:nil];
     
     
-//    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
-    [[DASocketIO sharedClient:self] conn];
-    [self initDaemon];
+
     
     // 消息推送注册
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge];
     return YES;
 }
 
+-(void) openIOSocket : (NSNotification*) notification
+{
+    [[DASocketIO sharedClient:self] conn];
+    [self initDaemon];
+}
+
+-(void) closeIOSocket : (NSNotification*) notification
+{
+    NSLog(@"=====socket io disconnecting======");
+    [[DASocketIO sharedClient:self] disconnectForced];
+    [self distoryDaemon];
+}
 
 // 获取终端设备标识，这个标识需要通过接口发送到服务器端，服务器端推送消息到APNS时需要知道终端的标识，APNS通过注册的终端标识找到终端设备。
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -99,18 +111,26 @@
 -(void)initDaemon
 {
     // 创建定时器
-    puaseTimer = NO;
-    daemonIO = [NSTimer scheduledTimerWithTimeInterval:0.5
+    daemonIO = [NSTimer scheduledTimerWithTimeInterval:3
                                              target:self
                                            selector:@selector(daemonEvent:)
                                            userInfo:nil
                                             repeats:YES];
     // 启动定时器
     [daemonIO fire];
+    NSLog(@"====timer start====");
+}
+
+-(void)distoryDaemon
+{
+    [daemonIO invalidate];
+    daemonIO = nil;
+    NSLog(@"====timer stop====");
 }
 
 - (void)daemonEvent:(NSTimer *)timer
 {
+    //NSLog(@"====timer tick====");
     if ([[DASocketIO sharedClient:self] isConnected]) {
         return;
     }
@@ -154,67 +174,44 @@
 
 - (void) socketIO:(SocketIO *)socket onError:(NSError *)error
 {
-    NSLog(@"\n\n\n\n\n\n  onError() %@", error);
-
-    if (![[DASocketIO sharedClient:self]  isConnected]) {
-        [[DASocketIO sharedClient:self] conn];
-    }
+    NSLog(@"socket error : %@", error);
 }
 
 
 - (void) socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error
 {
-    NSLog(@"\n\n\n\n\n\n   socket.io disconnected. did error occur? %@", error);
-
-    if (![[DASocketIO sharedClient:self]  isConnected]) {
-        [[DASocketIO sharedClient:self] conn];
+    if(error == nil){
+        NSLog(@"socket disconnected");
+    }else{
+        NSLog(@"socket disconnected with error : %@", error);
     }
-    
 }
 
 # pragma mark -
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    
-    if (![[DASocketIO sharedClient:self] isConnected]) {
-        [[DASocketIO sharedClient:self] conn];
-    }
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    if (![[DASocketIO sharedClient:self] isConnected]) {
-        [[DASocketIO sharedClient:self] conn];
-    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-
-    if (![[DASocketIO sharedClient:self] isConnected]) {
-        [[DASocketIO sharedClient:self] conn];
-    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
-    if (![[DASocketIO sharedClient:self] isConnected]) {
-        [[DASocketIO sharedClient:self] conn];
-    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    if (![[DASocketIO sharedClient:self] isConnected]) {
-        [[DASocketIO sharedClient:self] conn];
-    }
 }
 
 void uncaughtExceptionHandler(NSException *exception) {
