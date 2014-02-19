@@ -163,6 +163,22 @@
     }
 }
 
+- (void)clearCacheFile
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* documentDir = [paths objectAtIndex:0];
+    NSString *sContentsDir = [documentDir stringByAppendingPathComponent:@"orderList"];
+    if([[NSFileManager defaultManager] fileExistsAtPath:sContentsDir]) {
+        NSString *fileName = [NSString stringWithFormat:@"%@/%@", sContentsDir, FILE_ORDER_LIST(self.curService._id)];
+        NSLog(@"%@",fileName);
+        NSError *error;
+        BOOL success = [[NSFileManager defaultManager] removeItemAtPath:fileName error:&error];
+        if(!success){
+            NSLog(@"delete file[%@] error -:%@ ",fileName,[error localizedDescription]);
+        }
+    }
+}
+
 -(void) tableViewReload
 {
     [self saveDataToFile];
@@ -422,6 +438,7 @@
                 
                 
                 [progress hide:YES];
+                [self clearCacheFile];
                 [self.navigationController popViewControllerAnimated:YES];
                 
             }];
