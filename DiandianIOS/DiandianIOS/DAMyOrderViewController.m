@@ -24,7 +24,7 @@
     DAMyOrderList *oldOrderDataList;
     DAMyOrderList *backOrderDataList;
     NSString *curWaitterUserId;
-    MBProgressHUD       *progress;  // 消息框
+    MBProgressHUD *progress;  // 消息框
 }
 @end
 
@@ -45,8 +45,9 @@
     curWaitterUserId = [[NSUserDefaults standardUserDefaults]  objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
     
     
-    self.dataList = [DAMyOrderList alloc];
-    self.dataList.items = [[NSArray alloc] init];
+//    self.dataList = [DAMyOrderList alloc];
+//    self.dataList.items = [[NSArray alloc] init];
+    [self restoreDataFromFile];
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -94,10 +95,6 @@
 {
     
     int amountPrice = 0 ;
-   
-    
-
-    
     
     //新菜单 总价
     for (DAOrder *order in self.dataList.items) {
@@ -130,27 +127,33 @@
     self.labelAmount.text = [NSString stringWithFormat:@"总价:%d元" ,amountPrice];
     
 }
--(BOOL) loadTableFromDisk
+-(BOOL) restoreDataFromFile
 {
     NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                         NSUserDomainMask, YES);
     if([paths count]>0){
         
-        self.dataList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
+        DAMyOrderList *filedata = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
+        if(filedata != nil){
+            self.dataList = filedata;
+        }else{
+            self.dataList = [DAMyOrderList alloc];
+            self.dataList.items = [[NSArray alloc] init];
+        }
         [self.tableView reloadData];
-        
         return YES;
-        
     }
     
     
     return NO;
 }
 
--(void) tableViewReload
+- (void)saveDataToFile
 {
     NSArray*paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                         NSUserDomainMask, YES);
+    
+    NSLog(@"---------%@",FILE_ORDER_LIST(self.curService._id));
     if([paths count]>0){
         BOOL fs = [self.dataList archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
         
@@ -158,6 +161,11 @@
             NSLog(@"xieru self.curService._id %@"  , self.curService._id);
         }
     }
+}
+
+-(void) tableViewReload
+{
+    [self saveDataToFile];
     [self.tableView reloadData];
     [self loadAmountPrice];
     
@@ -379,7 +387,7 @@
     detailOrderVC.oldOrderDataList = oldOrderDataList;
     detailOrderVC.curService = self.curService;
     detailOrderVC.confirmCallback = ^(NSString *tips){
-        [self loadTableFromDisk];
+        [self restoreDataFromFile];
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
         
         
@@ -423,10 +431,6 @@
             
         }
         
- 
-    
-        
-        
     };
     detailOrderVC.cancelCallback = ^(){
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
@@ -448,7 +452,7 @@
 
 
 -(void)backButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
-    [self loadTableFromDisk];
+    [self restoreDataFromFile];
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     //SOCKETIO提交订单
     DASocketIO *socket = [DASocketIO sharedClient:self];
@@ -465,7 +469,7 @@
 
 -(void)confirmButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
     
-    [self loadTableFromDisk];
+    [self restoreDataFromFile];
     for (DAMenu *menu in self.dataList.items) {
         menu.status = [NSString stringWithFormat:@"doing"];
         
@@ -479,7 +483,7 @@
 
 
 - (void)cancelButtonClicked:(DADetailOrderViewController*)secondDetailViewController{
-    [self loadTableFromDisk];
+    [self restoreDataFromFile];
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     [self tableViewReload];
     
@@ -558,7 +562,7 @@
         [[DAOrderModule alloc]getOrderListByServiceId:self.curService._id withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
             
             [list archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
-            [self loadTableFromDisk];
+            [self restoreDataFromFile];
             
         }];
         
