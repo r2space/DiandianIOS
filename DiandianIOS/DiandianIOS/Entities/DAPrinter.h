@@ -16,5 +16,6 @@
 @property (retain, nonatomic) NSString  *type;
 @property (retain, nonatomic) NSNumber  *need;
 @property (retain, nonatomic) NSNumber  *valid;
+@property (retain, nonatomic) NSString  *_id;
 
 @end

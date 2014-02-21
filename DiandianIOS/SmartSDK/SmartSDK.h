@@ -35,10 +35,9 @@
 #define API_LIST_SCHEDULE       @"/api/schedule/list.json?start=%d&count=%d"
 
 
-
-#define API_PRINTER_LIST                @"/api/printer/list.json"
+#define API_PRINTER_LIST            @"/api/printer/list.json"
 #define API_PRINTER_GET             @"/api/printer/get.json?printerId=%@"
-
+#define API_PRINTER_LOCK            @"/api/printer/lock.json?printerId=%@&operationType=%@&owner=%@"
 
 
 #define API_ALL_ORDER_LIST  @"/api/order/list.json?start=%d&count=%d"
