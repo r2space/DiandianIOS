@@ -43,6 +43,7 @@ enum PrintErrorStatus {
     if (self) {
         _printer = printer;
         _type = type;
+        lines = [[NSMutableArray alloc] init];
         [self initTimer];
     }
     return self;
@@ -54,6 +55,7 @@ enum PrintErrorStatus {
         _printer = printer;
         _type = TICKET_PRINT;
         _ticketLineList = data;
+        lines = [[NSMutableArray alloc] init];
         [self initTimer];
     }
     return self;
