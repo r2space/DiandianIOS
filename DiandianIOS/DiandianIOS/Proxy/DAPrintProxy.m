@@ -139,12 +139,14 @@ enum PrintErrorStatus {
 
 
         [print addLine:@""];
-        if (seq.length > 0) {
-            [print addLine:[NSString stringWithFormat:@"                 滋味厨房  收银联"]];
-        } else {
+        if ([seq isEqualToString:@"-1"]) {
             [print addLine:[NSString stringWithFormat:@"                 滋味厨房  客户联"]];
+
+        } else {
+            [print addLine:[NSString stringWithFormat:@"                 滋味厨房  收银联"]];
+            [print addLine:[NSString stringWithFormat:@"序号：%@", seq]];
         }
-        [print addLine:[NSString stringWithFormat:@"序号：%@", seq]];
+
         if ([bill.service.type intValue] == 3) {
             [print addLine:[NSString stringWithFormat:@"手机号:%@", bill.service.phone]];
         } else {

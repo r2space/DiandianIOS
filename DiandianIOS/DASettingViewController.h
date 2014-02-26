@@ -17,6 +17,7 @@ typedef void (^MenuViewBlock)();
 @property (weak, nonatomic) IBOutlet UITextField *labPassword;
 @property (weak, nonatomic) IBOutlet UITextField *labPrintIP;
 @property (weak, nonatomic) IBOutlet UILabel *labLoginStatus;
+@property (weak, nonatomic) IBOutlet UILabel *labVersion;
 
 @property (nonatomic, copy) StartUpBlock startupBlock;
 @property (nonatomic, copy) MenuViewBlock menuViewBlock;

@@ -69,14 +69,19 @@
     UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] init];
     self.logoImageView.userInteractionEnabled = YES;
     [longPressGestureRecognizer addTarget:self action:@selector(gestureRecognizerHandle:)];
-    [longPressGestureRecognizer setMinimumPressDuration:2.0f];
+    [longPressGestureRecognizer setMinimumPressDuration:4.0f];
     [longPressGestureRecognizer setAllowableMovement:50.0];
     [self.logoImageView addGestureRecognizer:longPressGestureRecognizer];
 
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self clearCacheFile];
+}
 - (void)gestureRecognizerHandle:(id)sender {
     NSLog(@"长按");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)loadOldItem {

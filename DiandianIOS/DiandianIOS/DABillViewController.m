@@ -239,9 +239,12 @@
                                 payType:[NSString stringWithFormat:@"%d" ,(int)payType]
                                callback:^(NSError *err, DAService *service)
                                     {
-                                        NSLog(@"billNum: %@",service.billNum);
                                         
-                                        [self showIndicator:@"等待打印"];
+                                        NSLog(@"billNum: %@",service.billNum);
+                                        if (err!=nil || service == nil || service.billNum == nil) {
+                                            [ProgressHUD showError:@"网络连接失败，请重新打印。"];
+                                            return;
+                                        }                                        [self showIndicator:@"等待打印"];
                                         [DAPrintProxy printBill:self.curService._id off:[NSString stringWithFormat:@"%f",offAmount] pay:self.lblPay.text userPay:self.textPay.text type:payType reduce:self.textReduce.text seq:service.billNum progress:progress];
                                         
                                         [self.navigationController popViewControllerAnimated:YES];
@@ -327,7 +330,7 @@
     NSString *reduceAmount = self.textReduce.text;
     [self showIndicator:@"等待打印"];
     
-    [DAPrintProxy printBill:self.curService._id off:offAmountStr pay:payAmount userPay:userPayAmount  type:0 reduce:reduceAmount seq:@"" progress:progress];
+    [DAPrintProxy printBill:self.curService._id off:offAmountStr pay:payAmount userPay:userPayAmount  type:0 reduce:reduceAmount seq:@"-1" progress:progress];
     hasPrint = YES;
 }
 
