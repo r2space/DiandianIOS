@@ -230,6 +230,7 @@
         return;
     }
     
+    [self showIndicator:@"等待打印"];
     [[DAServiceModule alloc]stopService:self.curService._id
                                  amount:[billData.amount stringValue]
                                  profit:self.lblPay.text
@@ -242,9 +243,11 @@
                                         
                                         NSLog(@"billNum: %@",service.billNum);
                                         if (err!=nil || service == nil || service.billNum == nil) {
+                                            [progress hide:YES];
                                             [ProgressHUD showError:@"网络连接失败，请重新打印。"];
                                             return;
-                                        }                                        [self showIndicator:@"等待打印"];
+                                        }
+                                        
                                         [DAPrintProxy printBill:self.curService._id off:[NSString stringWithFormat:@"%f",offAmount] pay:self.lblPay.text userPay:self.textPay.text type:payType reduce:self.textReduce.text seq:service.billNum progress:progress];
                                         
                                         [self.navigationController popViewControllerAnimated:YES];
