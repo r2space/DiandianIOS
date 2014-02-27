@@ -350,6 +350,8 @@
 		47A6ADB4182E25B100E80AA1 /* DABillDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADB2182E25B100E80AA1 /* DABillDetailViewController.xib */; };
 		47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */; };
 		47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */; };
+		E06F086618BF0EA0004C3DEA /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E06F086318BF0EA0004C3DEA /* DDFileLogger.m */; };
+		E06F086718BF0EA0004C3DEA /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E06F086518BF0EA0004C3DEA /* DDLog.m */; };
 		F2A8CB831831CEB5002AD240 /* sample-table1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB821831CEB5002AD240 /* sample-table1.jpg */; };
 		F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */; };
 		F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */; };
@@ -907,6 +909,10 @@
 		47A6ADB5182E2B7D00E80AA1 /* DABillDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillDetailViewCell.h; sourceTree = "<group>"; };
 		47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillDetailViewCell.m; sourceTree = "<group>"; };
 		47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillDetailViewCell.xib; sourceTree = "<group>"; };
+		E06F086218BF0EA0004C3DEA /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		E06F086318BF0EA0004C3DEA /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		E06F086418BF0EA0004C3DEA /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		E06F086518BF0EA0004C3DEA /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
 		F2A8CB821831CEB5002AD240 /* sample-table1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sample-table1.jpg"; sourceTree = "<group>"; };
 		F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_table_back.jpg; sourceTree = "<group>"; };
 		F2AB4BF4182DDDB90067E450 /* DAOrderQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderQueueViewController.h; sourceTree = "<group>"; };
@@ -961,6 +967,7 @@
 		0A07BD4D1829CB3800A350BC /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				E06F086118BF0E42004C3DEA /* DDLog */,
 				0AB52FBF188777EE0020272E /* MBProgressHUD */,
 				0A8547BE1868527600C051D8 /* DWTagList */,
 				0AC39017186098260091AFB7 /* TMCache */,
@@ -1958,6 +1965,17 @@
 			name = Base64;
 			sourceTree = "<group>";
 		};
+		E06F086118BF0E42004C3DEA /* DDLog */ = {
+			isa = PBXGroup;
+			children = (
+				E06F086218BF0EA0004C3DEA /* DDFileLogger.h */,
+				E06F086318BF0EA0004C3DEA /* DDFileLogger.m */,
+				E06F086418BF0EA0004C3DEA /* DDLog.h */,
+				E06F086518BF0EA0004C3DEA /* DDLog.m */,
+			);
+			name = DDLog;
+			sourceTree = "<group>";
+		};
 		F2AB4BF9182E01150067E450 /* OrderQueue */ = {
 			isa = PBXGroup;
 			children = (
@@ -2376,6 +2394,7 @@
 				0AA031A8184334D100C66590 /* DADispatch.m in Sources */,
 				0AA031F11843555900C66590 /* SBJson4StreamParser.m in Sources */,
 				0A739E62183B019D00AA48C4 /* DAMyBackOrderViewController.m in Sources */,
+				E06F086618BF0EA0004C3DEA /* DDFileLogger.m in Sources */,
 				0AA031FA1843555900C66590 /* SocketIOTransportWebsocket.m in Sources */,
 				0AA031F01843555900C66590 /* SBJson4Parser.m in Sources */,
 				0AA031F61843555900C66590 /* SBJson4Writer.m in Sources */,
@@ -2384,6 +2403,7 @@
 				0AA031F41843555900C66590 /* SBJson4StreamWriter.m in Sources */,
 				0A446BFA188529C70075CFA2 /* DABillBackPopoverViewController.m in Sources */,
 				0AB11393183349A10011828A /* DAMyOrderLoginViewController.m in Sources */,
+				E06F086718BF0EA0004C3DEA /* DDLog.m in Sources */,
 				0AB78B5B183CB46500979BD0 /* DAMenuModule.m in Sources */,
 				0A7AF0CE1836076600635376 /* DAQueueFoodListViewController.m in Sources */,
 				0AB78B83183CB46500979BD0 /* UIImageView+AFNetworking.m in Sources */,
