@@ -107,7 +107,7 @@ enum PrintErrorStatus
     DAPrintProxy *print = [[DAPrintProxy alloc] init];
     [[DAServiceModule alloc]getBillByServiceId:serviceId callback:^(NSError *err, DABill *bill) {
 
-        
+        DDLogWarn(@"获取账单信息[service id : %@]结果:@%", serviceId,[[bill description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 
 
         [print addLine:@""];
@@ -128,7 +128,9 @@ enum PrintErrorStatus
         
         
         [[DAOrderModule alloc] getOrderListByServiceId:serviceId withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
-            
+
+            DDLogWarn(@"获取所有order信息[service id : %@]结果:@%", serviceId,[[list description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+
             NSMutableArray *freeOrderList = [[NSMutableArray alloc]init];
             NSMutableArray *backOrderList = [[NSMutableArray alloc]init];
             NSMutableArray *doneOrderList = [[NSMutableArray alloc]init];
@@ -223,7 +225,11 @@ enum PrintErrorStatus
                 int status = -1;
                 int times = 0;
                 do{
+                    DDLogWarn(@"---------- 开始打印客户联/收银联,打印机id:%@ ----------",billprint._id);
+                    DDLogWarn(@"待打印数据:%@ ",[[print getLines] description]);
+
                     status = [print printText:billprint.printerIP addTextSize:1 TextHeight:1];
+                    DDLogWarn(@"---------- 打印打印客户联/收银联结束,打印结果:%d ----------",status);
                     NSLog(@"打印  times %d",times++);
                     if (times > 100) {
                         break;
@@ -260,12 +266,12 @@ enum PrintErrorStatus
 
 +(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout tips:(NSString *)tips
 {
-    
 
     DAPrinter *defaultPrinter = nil;
     
     DAPrinterList *printtList = [[DAPrinterList alloc]unarchiveObjectWithFileWithPath:@"printer" withName:@"printer"];
     if (printtList == nil || [printtList.items count] == 0) {
+        DDLogWarn(@"未设置打印机");
         [ProgressHUD showError:@"请设置打印机"];
         return;
     }
@@ -313,12 +319,20 @@ enum PrintErrorStatus
         
         
     }
-    
+
     if([orderList.items count] > 0){
+
+
         int status = -1;
         int times = 0;
 //        do{
+
+
             DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
+
+        DDLogWarn(@"---------- 开始打印流水单,打印机id:%@ ----------",billprint._id);
+        DDLogWarn(@"待打印数据:%@ ",[[print1 getLines] description]);
+
             status = [print1 printText:billprint.printerIP addTextSize:2 TextHeight:2];
 //            if (times > 100) {
 //                break;
@@ -328,7 +342,9 @@ enum PrintErrorStatus
 //            [NSThread sleepForTimeInterval:0.1f];
 //            NSLog(@"打印times  %d",times++);
 //        } while(status == -1);
-        
+
+        DDLogWarn(@"---------- 打印流水单结束,打印结果:%d ----------",status);
+
         NSLog(@"打印机状态 判断是否成功   : %d",status);
         
     }
@@ -417,7 +433,10 @@ enum PrintErrorStatus
                 int status = -1;
                 int times = 0;
                 do{
+                    DDLogWarn(@"---------- 开始打印后厨单,打印机id:%@ ----------",printerSet._id);
+                    DDLogWarn(@"待打印数据:%@ ",[tmpOrderPrintList description]);
                     status = [print printOrderText:printerSet.printerIP linesList:tmpOrderPrintList addTextSize:2 TextHeight:3];
+                    DDLogWarn(@"---------- 打印后厨单结束,打印结果:%d ----------",status);
                     if (times > 100) {
                         break;
                     } else {

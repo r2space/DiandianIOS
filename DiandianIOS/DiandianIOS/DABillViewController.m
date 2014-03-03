@@ -229,7 +229,9 @@
         [ProgressHUD showError:@"只有后厨才能上菜"];
         return;
     }
-    
+
+    [self showIndicator:@"等待打印"];
+
     [[DAServiceModule alloc]stopService:self.curService._id
                                  amount:[billData.amount stringValue]
                                  profit:self.lblPay.text
@@ -239,11 +241,18 @@
                                 payType:[NSString stringWithFormat:@"%d" ,(int)payType]
                                callback:^(NSError *err, DAService *service)
                                     {
+                                        if (err!=nil || service == nil || service.billNum == nil) {
+                                            [progress hide:YES];
+                                            [ProgressHUD showError:@"网络连接失败，请重新打印。"];
+                                            return;
+                                        }
                                         NSLog(@"billNum: %@",service.billNum);
-                                        
-                                        [self showIndicator:@"等待打印"];
+
+                                        DDLogWarn(@"开始打印收银联,service id : %@ ,bill num : %@",service._id,service.billNum);
+
                                         [DAPrintProxy printBill:self.curService._id off:[NSString stringWithFormat:@"%f",offAmount] pay:self.lblPay.text userPay:self.textPay.text type:payType reduce:self.textReduce.text seq:service.billNum progress:progress];
-                                        
+
+                                        DDLogWarn(@"收银联打印结束");
                                         [self.navigationController popViewControllerAnimated:YES];
                                     }];
 }
@@ -326,8 +335,10 @@
     NSString *userPayAmount = self.textPay.text;
     NSString *reduceAmount = self.textReduce.text;
     [self showIndicator:@"等待打印"];
-    
+
+    DDLogWarn(@"开始打印客户联");
     [DAPrintProxy printBill:self.curService._id off:offAmountStr pay:payAmount userPay:userPayAmount  type:0 reduce:reduceAmount seq:@"" progress:progress];
+    DDLogWarn(@"客户联打印结束");
     hasPrint = YES;
 }
 

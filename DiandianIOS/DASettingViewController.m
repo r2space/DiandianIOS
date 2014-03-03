@@ -6,13 +6,13 @@
 //  Copyright (c) 2013年 DAC. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "DASettingViewController.h"
 #import "DrawPatternLockViewController.h"
 #import "DAMenuProxy.h"
 #import "ProgressHUD.h"
 #import "OpenUDID.h"
 #import "DAPrintProxy.h"
-#import "DARootViewController.h"
 
 @interface DASettingViewController ()
 {
@@ -139,10 +139,13 @@
         [ProgressHUD showError:@"请输入密码。"];
         return;
     }
+    DDLogWarn(@"用户登录中,用户名:%@",userName);
     [[DALoginModule alloc]yukarilogin:userName password:password code:nil callback:^(NSError *error, DAUser *user) {
         
         if (error != nil) {
             isLogin = NO;
+            DDLogWarn(@"登录失败,用户名:%@",userName);
+
             [ProgressHUD showError:@"登录失败"];
             
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.diandian.isLogin"];
@@ -150,6 +153,7 @@
         }
         
         isLogin = YES;
+        DDLogWarn(@"登录成功,用户名:%@",userName);
         self.labLoginStatus.text = @"登录成功";
         [ProgressHUD showSuccess:@"登录成功"];
         
@@ -176,9 +180,10 @@
 - (IBAction)onUpdateMenuTouched:(id)sender {
     
     if (isLogin) {
+        DDLogWarn(@"开始更新菜单数据");
         [DAMenuProxy getMenuListApiList];
     } else {
-        [ProgressHUD showSuccess:@"请登录"];
+        [ProgressHUD showError:@"请登录"];
     }
     
 }
@@ -196,7 +201,7 @@
         [self addChildViewController:lockVC];
         [self.view addSubview:lockVC.view];
     } else {
-        [ProgressHUD showSuccess:@"请登录"];
+        [ProgressHUD showError:@"请登录"];
     }
     
 }
@@ -286,6 +291,51 @@
     
 }
 
+- (IBAction)onUploadLogTouched:(id)sender {
+    DDLogWarn(@"开始上传日志");
+    [ProgressHUD show:@"上传中..."];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *baseDir = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
+    NSString *logsDirectory = [baseDir stringByAppendingPathComponent:@"Logs"];
+    NSError *error = nil;
+    NSArray *logPaths = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:logsDirectory error:&error];
+    if(error != nil){
+        NSLog(@"%@",[error localizedDescription]);
+        return;
+    }else{
+        NSString *path = [NSString stringWithFormat:API_UPLOAD_LOG, [OpenUDID value]];
+
+        DAAFHttpClient *httpClient = [DAAFHttpClient sharedClient];
+
+        // 添加formData到Request
+        NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST"
+                                                                             path:path
+                                                                       parameters:nil
+                                                        constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+
+                                                            for (NSString *aPath in logPaths) {
+                                                                NSString * fullPath = [logsDirectory stringByAppendingPathComponent:aPath];
+                                                                BOOL isDir = NO;
+                                                                if ([[NSFileManager defaultManager] fileExistsAtPath:fullPath isDirectory:&isDir])
+                                                                {
+                                                                    if (isDir == NO) {
+                                                                        NSURL *filePath = [NSURL fileURLWithPath:fullPath isDirectory:NO];
+                                                                        [formData appendPartWithFileURL:filePath name:aPath error:nil];
+                                                                    }
+                                                                }
+                                                            }
+                                                        }];
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject){
+            [ProgressHUD dismiss];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [ProgressHUD dismiss];
+        }];
+        [httpClient enqueueHTTPRequestOperation:operation];
+
+    }
+    
+}
 
 - (IBAction)onDeviceApplyTouched:(id)sender {
     if (isLogin) {

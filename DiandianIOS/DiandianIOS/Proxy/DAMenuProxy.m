@@ -13,69 +13,71 @@
 
 @implementation DAMenuProxy
 
-+(NSString *)resourceURLString:(NSString *)name
-{
++ (NSString *)resourceURLString:(NSString *)name {
 
-    
+
     NSString *serverUrl = [DACommon getServerAddress];
 
     NSString *string = [[NSString alloc] initWithFormat:@"%@/picture/%@",
-                        serverUrl,
-                        name ];
-    
+                                                        serverUrl,
+                                                        name];
+
     return string;
 }
 
-+ (void) downloadImageImage: (NSArray *) imageIds iteration:(int)i
-{
-    if( imageIds.count <= i ){
-        
-        NSNotification *n = [NSNotification notificationWithName:@"downloadDone" object:self];
-        [[NSNotificationCenter defaultCenter] postNotification:n];
-        
-        NSNotification *caseViewNotification = [NSNotification notificationWithName:@"settingReloaded" object:self];
-        [[NSNotificationCenter defaultCenter] postNotification:caseViewNotification];
-        [ProgressHUD dismiss];
++ (void)downloadImageImage:(NSArray *)imageIds iteration:(int)i {
+    if (imageIds.count <= i) {
+
+//以下两个通知貌似没用到
+//        NSNotification *n = [NSNotification notificationWithName:@"downloadDone" object:self];
+//        [[NSNotificationCenter defaultCenter] postNotification:n];
+//
+//        NSNotification *caseViewNotification = [NSNotification notificationWithName:@"settingReloaded" object:self];
+//        [[NSNotificationCenter defaultCenter] postNotification:caseViewNotification];
+
+        DDLogWarn(@"图片下载结束");
+        [self rebuildImageCache];
         return;
     }
     ProgressHUD *hub = [ProgressHUD shared];
-    hub.label.text = [NSString stringWithFormat:@"图片%d" ,i];
-    
+    hub.label.text = [NSString stringWithFormat:@"下载图片 %d/%d", i, [imageIds count]];
+
     NSString *imageName = [imageIds objectAtIndex:i];
-    
+
     NSString *urlString = [DAMenuProxy resourceURLString:imageName];
     NSURL *url = [NSURL URLWithString:urlString];
-    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
+    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     [req setValue:@"Application/octet-stream" forHTTPHeaderField:@"Accept"];
     [req setHTTPMethod:@"GET"];
-    
+
     [NSURLConnection sendAsynchronousRequest:req
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               if( data != nil ){
+                               if (data != nil ) {
                                    NSString *saveImageName = imageName;
                                    NSString *path = [DAMenuProxy imagePath:saveImageName];
                                    [data writeToFile:path atomically:YES];
-                                   UIImage *imageCache = [UIImage imageWithContentsOfFile:[DAMenuProxy imagePath:saveImageName]];
+                                   //UIImage *imageCache = [UIImage imageWithContentsOfFile:[DAMenuProxy imagePath:saveImageName]];
 
-                                   [[TMCache sharedCache] setObject:imageCache forKey:saveImageName block:nil];
-                                   
-                                   //                                   NSLog(@" save image - %@ - path : %@ ", imageName, path );
-                                   //                                   NSLog(@" save image %d / %d ", i, [images count]);
-                                   NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:[imageIds count]], @"count", [NSNumber numberWithInt:i], @"progress", nil];
-                                   NSNotification *n = [NSNotification notificationWithName:@"downloadProgress" object:self userInfo:dic];
-                                   [[NSNotificationCenter defaultCenter] postNotification:n];
-                               }else{
-                                   NSLog(@" download fail!!! save image - %@", imageName );
+                                   //[[TMCache sharedCache] setObject:imageCache forKey:saveImageName block:nil];
+
+                                   //NSLog(@" save image - %@ - path : %@ ", imageName, path );
+                                   //NSLog(@" save image %d / %d ", i, [images count]);
+//这个通知貌似没用到
+//                                   NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:[imageIds count]], @"count", [NSNumber numberWithInt:i], @"progress", nil];
+//                                   NSNotification *n = [NSNotification notificationWithName:@"downloadProgress" object:self userInfo:dic];
+//                                   [[NSNotificationCenter defaultCenter] postNotification:n];
+
+                               } else {
+                                   NSLog(@" download fail!!! save image - %@", imageName);
                                }
 
-                               [DAMenuProxy downloadImageImage:imageIds iteration:( i + 1 )];
+                               [DAMenuProxy downloadImageImage:imageIds iteration:(i + 1)];
                            }];
 }
 
-+ (NSArray *) getImageDownloadIds :(DAMenuList * )menuList
-{
-    
++ (NSArray *)getImageDownloadIds:(DAMenuList *)menuList {
+
 //    NSMutableArray *tempList = [[NSMutableArray alloc]init];
 //    for (DAMenu *menu in  menuList.items) {
 //        for (NSDictionary *layoutDic in menu.items) {
@@ -91,43 +93,95 @@
 //            
 //        }
 //    }
-    return [[NSArray alloc]initWithArray:menuList.imageIds];
+    return [[NSArray alloc] initWithArray:menuList.imageIds];
 }
 
 
-+ (void) getMenuListApiList {
-    [ProgressHUD show:@"更新菜单中"];
-    [[DAMenuModule alloc]getList:^(NSError *err, DAMenuList *list) {
++ (void)getMenuListApiList {
+    [ProgressHUD show:@"    更新菜单中...    "];
+    [[DAMenuModule alloc] getList:^(NSError *err, DAMenuList *list) {
         [list archiveRootObjectWithName:FILE_MENU_LIST];
-        NSArray *imageIds = [DAMenuProxy getImageDownloadIds:list];
-        [DAMenuProxy downloadImageImage:imageIds iteration:0] ;
-        
+        NSArray *imageIds = [self diffImageIds:[DAMenuProxy getImageDownloadIds:list]];
+        DDLogWarn(@"差分图片结果:%@", [[imageIds description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+        [DAMenuProxy downloadImageImage:imageIds iteration:0];
+
     }];
 }
 
-+ (UIImage *)getImageFromDisk :(NSString *)name
-{
++ (void)rebuildImageCache {
+    DDLogWarn(@"开始重建图片缓存");
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir = [paths objectAtIndex:0];
+
+    docDir = [docDir stringByAppendingPathComponent:@"menuImage"];
+    NSError *error = nil;
+    NSArray *localIds = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:docDir error:&error];
+    __block int count = [localIds count];
+    for (NSString *img in localIds) {
+        NSString *path = [DAMenuProxy imagePath:img];
+        UIImage *imageCache = [UIImage imageWithContentsOfFile:path];
+        [[TMCache sharedCache] setObject:imageCache forKey:img block:^(TMCache *cache, NSString *key, id object) {
+            count--;
+            if (count == 0) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    DDLogWarn(@"重建图片缓存结束");
+                    [ProgressHUD dismiss];
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    ProgressHUD *hub = [ProgressHUD shared];
+                    hub.label.text = [NSString stringWithFormat:@"重建缓存 %d/%d", [localIds count] - count, [localIds count]];
+                    DDLogWarn(@"重建[%@]缓存成功",img);
+                });
+
+
+            }
+        }];
+
+    }
+
+}
+
++ (NSArray *)diffImageIds:(NSArray *)netIds {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir = [paths objectAtIndex:0];
+
+    docDir = [docDir stringByAppendingPathComponent:@"menuImage"];
+    NSError *error = nil;
+    NSArray *localIds = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:docDir error:&error];
+    if (error != nil) {
+        return netIds;
+    } else {
+
+        NSMutableSet *netSet = [NSMutableSet setWithArray:netIds];
+        NSSet *localSet = [NSSet setWithArray:localIds];
+        [netSet minusSet:localSet];
+        return [netSet allObjects];
+
+    }
+
+}
+
++ (UIImage *)getImageFromDisk:(NSString *)name {
     return [UIImage imageWithContentsOfFile:[DAMenuProxy imagePath:name]];
 }
 
-+ (NSString *)imagePath:(NSString *)name
-{
++ (NSString *)imagePath:(NSString *)name {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docDir = [paths objectAtIndex:0];
-    
+
     docDir = [docDir stringByAppendingPathComponent:@"menuImage"];
-    [DAMenuProxy createDir:docDir ];
+    [DAMenuProxy createDir:docDir];
 
     // full path
     NSString *path = [docDir stringByAppendingPathComponent:name];
     return path;
 }
 
-+(void) createDir:(NSString*) dirPath
-{
++ (void)createDir:(NSString *)dirPath {
     if ([[NSFileManager defaultManager] fileExistsAtPath:dirPath])
         return;
-    
+
     NSError *error;
     [[NSFileManager defaultManager] createDirectoryAtPath:dirPath withIntermediateDirectories:NO attributes:nil error:&error];
 }

@@ -173,6 +173,7 @@ static DAMyTableViewController *activity;
 - (void)startTableButtonClicked:(DAMyLoginViewController*)loginViewViewController{
     
     DAMyLoginViewController *loginVC = loginViewViewController;
+    DDLogWarn(@"开台中,桌台信息:%@", [[loginVC.curDesk description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 
     [ProgressHUD show:nil];
     [DADeskProxy initDesk:loginVC.curDesk._id userId:loginVC.curUserId type:@"1" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
@@ -180,6 +181,7 @@ static DAMyTableViewController *activity;
         if ([service._status integerValue ] != 200) {
             [ProgressHUD showError:service._error];
             [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+            DDLogWarn(@"开台失败,错误信息:%@",service._error);
             return ;
         }
         
@@ -188,6 +190,8 @@ static DAMyTableViewController *activity;
         menubookVC.curService = service;
         
         NSLog(@"debug : deskId : %@  serviceId  :   %@ " ,service.deskId, service._id);
+        DDLogWarn(@"开台成功,service :%@ " , [[service description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+
         [ProgressHUD dismiss];
         [self.navigationController pushViewController:menubookVC animated:YES];
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
@@ -267,7 +271,9 @@ static DAMyTableViewController *activity;
             if (curWaitterId == nil || curWaitterId.length ==0) {
                 curWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
             }
-            
+
+            DDLogWarn(@"开始换台,将service id %@ 的桌台换为 %@",changeServiceId,desk._id);
+
             [[DAServiceModule alloc]changeService:changeServiceId deskId:desk._id userId:curWaitterId callback:^(NSError *err, DAService *service) {
                 
                 isStartChangeTable = NO;

@@ -350,6 +350,8 @@
 		47A6ADB4182E25B100E80AA1 /* DABillDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADB2182E25B100E80AA1 /* DABillDetailViewController.xib */; };
 		47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */; };
 		47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */; };
+		B02A0B221AAAD05B69E3FFE3 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A09E43F18227D9333EBEB /* DDLog.m */; };
+		B02A0E13BFDEA296A374629D /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A05AD4E35E9B7C9F70969 /* DDFileLogger.m */; };
 		F2A8CB831831CEB5002AD240 /* sample-table1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB821831CEB5002AD240 /* sample-table1.jpg */; };
 		F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */; };
 		F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */; };
@@ -907,6 +909,10 @@
 		47A6ADB5182E2B7D00E80AA1 /* DABillDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillDetailViewCell.h; sourceTree = "<group>"; };
 		47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillDetailViewCell.m; sourceTree = "<group>"; };
 		47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillDetailViewCell.xib; sourceTree = "<group>"; };
+		B02A05AD4E35E9B7C9F70969 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		B02A09E43F18227D9333EBEB /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		B02A0C224FB9E5A3240FA372 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		B02A0C60F9443A740A6959D7 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
 		F2A8CB821831CEB5002AD240 /* sample-table1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sample-table1.jpg"; sourceTree = "<group>"; };
 		F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_table_back.jpg; sourceTree = "<group>"; };
 		F2AB4BF4182DDDB90067E450 /* DAOrderQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderQueueViewController.h; sourceTree = "<group>"; };
@@ -974,6 +980,7 @@
 				0A8C2F44182E33A70080F15F /* TVQuiltLayout */,
 				0A5D288A182BD01400847578 /* Popup */,
 				0A07BD70182A0B9600A350BC /* Common */,
+				B02A08B0492B3043F881D85F /* DDLog */,
 			);
 			name = Thirdparty;
 			sourceTree = "<group>";
@@ -1958,6 +1965,17 @@
 			name = Base64;
 			sourceTree = "<group>";
 		};
+		B02A08B0492B3043F881D85F /* DDLog */ = {
+			isa = PBXGroup;
+			children = (
+				B02A0C224FB9E5A3240FA372 /* DDLog.h */,
+				B02A05AD4E35E9B7C9F70969 /* DDFileLogger.m */,
+				B02A0C60F9443A740A6959D7 /* DDFileLogger.h */,
+				B02A09E43F18227D9333EBEB /* DDLog.m */,
+			);
+			name = DDLog;
+			sourceTree = "<group>";
+		};
 		F2AB4BF9182E01150067E450 /* OrderQueue */ = {
 			isa = PBXGroup;
 			children = (
@@ -2467,6 +2485,8 @@
 				0A4E47F4185712B500CEC3DE /* UIViewController+MJPopupViewController.m in Sources */,
 				0A54D6CB184D842800BBA9C4 /* DABaseViewController.m in Sources */,
 				0A20E8EC185A9D6100422061 /* DAPrinter.m in Sources */,
+				B02A0E13BFDEA296A374629D /* DDFileLogger.m in Sources */,
+				B02A0B221AAAD05B69E3FFE3 /* DDLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

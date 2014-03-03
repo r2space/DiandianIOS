@@ -139,7 +139,8 @@ static DASettingViewController *loginViewController;
     // is not logged in
     loginViewController.startupBlock=^(){
         DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
-        
+        DDLogWarn(@"进入桌台页面");
+
         [self.navigationController pushViewController:viewController animated:YES];
         [loginViewController dismissViewControllerAnimated:YES completion:nil];
         
@@ -149,6 +150,8 @@ static DASettingViewController *loginViewController;
         DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
         menubookVC.curService = nil;
         menubookVC.willAddItem = @"NO";
+        DDLogWarn(@"网络无法连接,直接进入桌台页面");
+
         [self.navigationController pushViewController:menubookVC animated:YES];
         [loginViewController dismissViewControllerAnimated:YES completion:nil];
     };

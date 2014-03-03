@@ -42,6 +42,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    DDLogWarn(@"点菜页面 viewDidLoad");
+
     curWaitterUserId = [[NSUserDefaults standardUserDefaults]  objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
     
     
@@ -176,8 +178,9 @@
     _order.type = [NSNumber numberWithInt:1];
     _order.amount = @"1";
     _order.amountPrice = [NSNumber numberWithInt:[obj.itemPriceHalf intValue]];
-    
-    
+
+    DDLogWarn(@"客户点了小份%@", [[_order description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [tmpList addObject:_order];
     [tmpList addObjectsFromArray:self.dataList.items];
@@ -200,7 +203,9 @@
     _order.type = [NSNumber numberWithInt:0];
     _order.amount = @"1";
     _order.amountPrice = [NSNumber numberWithInt:[obj.itemPriceNormal intValue]];
-    
+
+    DDLogWarn(@"客户点了%@", [[_order description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [tmpList addObject:_order];
     [tmpList addObjectsFromArray:self.dataList.items];
@@ -399,20 +404,32 @@
         }
 
         if (self.curService != nil) {
+
+            DDLogWarn(@"********** 下单流程开始,service id:%@ ,desk id:%@ **********",self.curService._id,deskId);
+            DDLogWarn(@"本次打印菜品信息:%@",[orderList description]);
+
             [[DAOrderModule alloc] addOrder:orderList serviceId:self.curService._id deskId:deskId callback:^(NSError *err, DAMyOrderList *list) {
-                
+
+
+
                 if (err!=nil) {
                     [ProgressHUD showError:@"服务器异常 请手动下单"];
+                    DDLogWarn(@"服务器异常");
                     [progress hide:YES];
                     return ;
                 }
                 if ([self.curService.type integerValue] == 3) {
+                    DDLogWarn(@"开始外卖打印");
                     [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:self.curService.phone tips:@""];
+                    DDLogWarn(@"外卖打印结束");
                 } else {
+                    DDLogWarn(@"开始桌台打印");
                     [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@"" tips:tips];
+                    DDLogWarn(@"桌台打印结束");
                 }
-                
-                
+
+                DDLogWarn(@"********** 下单流程结束 **********");
+
                 [progress hide:YES];
                 [self.navigationController popViewControllerAnimated:YES];
                 

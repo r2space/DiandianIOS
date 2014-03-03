@@ -185,10 +185,12 @@
 - (IBAction)onPutDoneTouched:(id)sender {
     
     [ProgressHUD show:@"退菜中"];
+    DDLogWarn(@"需要退的菜品:%@", [[backDataList description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 
     [[DAOrderModule alloc]setBackOrderWithArray:backDataList deskId:self.curService.deskId callback:^(NSError *err, DAMyOrderList *order) {
         
         [ProgressHUD show:@"退菜成功"];
+        DDLogWarn(@"退菜结束,service 信息:%@", [[self.curService description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
         self.closeBackView();
         [self fetch];
     }];

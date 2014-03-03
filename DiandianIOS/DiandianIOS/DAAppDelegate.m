@@ -14,7 +14,7 @@
 #import "SocketIOJSONSerialization.h"
 
 #import "DADispatch.h"
-
+#import "DDFileLogger.h"
 
 
 
@@ -30,6 +30,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self initDDLog];
+    DDLogWarn(@"App did finish launching with options.");
     [DASettings registerDefaultsFromSettingsBundle];
     
     NSString *s = [[NSUserDefaults standardUserDefaults] objectForKey:kServerAddress];
@@ -65,6 +67,15 @@
 {
     NSString *error_str = [NSString stringWithFormat: @"%@", error];
     NSLog(@"Failed to get token, error:%@", error_str);
+}
+
+
+- (void)initDDLog {
+    DDFileLogger *fileLogger = [[DDFileLogger alloc] init];
+    fileLogger.rollingFrequency = 60 * 60 * 24; // 24 hour rolling
+    fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+
+    [DDLog addLogger:fileLogger];
 }
 
 
@@ -126,6 +137,8 @@
 
 - (void) socketIODidConnect:(SocketIO *)socket
 {
+    DDLogWarn(@"socket.io connected.");
+
     NSLog(@"socket.io connected.");
 }
 

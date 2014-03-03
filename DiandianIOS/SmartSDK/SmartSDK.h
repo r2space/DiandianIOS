@@ -72,6 +72,8 @@
 #define API_UESR_UPDATEPATTERN @"/api/admin/user/updatePattern.json"
 #define API_UESR_CHECKPATTERN @"/api/admin/user/checkPattern.json"
 
+#define API_UPLOAD_LOG @"/api/uploadLog.json?deviceId=%@"
+
 #define FILE_MENU_LIST @"___data_menu_list_"
 #define FILE_DESK_LIST @"___data_desk_list_"
 
