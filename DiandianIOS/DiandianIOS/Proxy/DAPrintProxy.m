@@ -11,6 +11,8 @@
 #import "Tool.h"
 #import "MBProgressHUD.h"
 #import "OpenUDID.h"
+#import "DDLog.h"
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 #define SEND_TIMEOUT    30 * 1000
 #define PRINT_NAME      @"TM-T88V"
@@ -251,12 +253,12 @@ enum PrintErrorStatus {
                 do {
                     status = [print printText:billprint.printerIP addTextSize:1 TextHeight:1];
                     NSLog(@"打印  times %d", times++);
-                    if (times > 100) {
+                    if (times > 1) {
                         break;
                     } else {
                         [NSThread sleepForTimeInterval:0.5f];
                     }
-                } while (status == -1);
+                } while (status == -2);
 
 
                 NSLog(@"打印机状态 判断是否成功   : %d", status);
@@ -293,6 +295,7 @@ enum PrintErrorStatus {
 
 - (void)timerTick:(NSTimer *)timer {
     if ([[[NSDate alloc] init] timeIntervalSinceDate:_timerStart] > LOCK_TIMEOUT) {
+        DDLogWarn(@"加锁超时 打印机id:%@",_printer._id);
         NSLog(@"[%@]%@", _printer._id, @"lock printer timeout.");
         [self sendResult:PRINT_ERROR];
         [self distoryTimer];
@@ -316,12 +319,15 @@ enum PrintErrorStatus {
     }
     requestPendding = YES;
     NSString *path = [NSString stringWithFormat:API_PRINTER_LOCK, _printer._id, @"1", [OpenUDID value]];
+    DDLogWarn(@"发起加锁申请[%@]",path);
     [self lockPrinterWithPath:path callback:^(BOOL result) {
         requestPendding = NO;
         if (result) {
             [self distoryTimer];
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSLog(@"[%@][type:%d]%@", _printer._id, _type, @"print start");
+                DDLogWarn(@"类型%d的打印机%@开始打印",_type,_printer._id);
+
                 int result = PRINT_ERROR;
                 if (_type == BILLING_PRINT) {
 
@@ -338,7 +344,7 @@ enum PrintErrorStatus {
 
                 }
                 NSLog(@"[%@][type:%d]%@ with result: %d", _printer._id, _type, @"print done", result);
-
+                DDLogWarn(@"类型%d的打印机%@打印结束,结果%d",_type,_printer._id,result);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self sendResult:result];
                     [self releaseLockWithPrinter:_printer];
@@ -355,10 +361,12 @@ enum PrintErrorStatus {
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         if ([[[responseObject objectForKey:@"data"] objectForKey:@"result"] isEqualToString:@"success"]) {
+            DDLogWarn(@"加锁成功[%@]",path);
             NSLog(@"[%@] path :%@", path, @"lock success");
             callback(YES);
 
         } else {
+            DDLogWarn(@"加锁失败[%@]",path);
             NSLog(@"[%@] path :%@", @"lock failed", path);
             callback(NO);
 
@@ -366,6 +374,7 @@ enum PrintErrorStatus {
     }                              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"[%@] path :%@", @"lock request failed", path);
         NSLog(@"error:%@", error);
+        DDLogWarn(@"加锁请求失败[%@]",path);
 
         callback(NO);
     }];
@@ -374,6 +383,7 @@ enum PrintErrorStatus {
 - (void)releaseLockWithPrinter:(DAPrinter *)printer {
     NSString *path = [NSString stringWithFormat:API_PRINTER_LOCK, printer._id, @"0", [OpenUDID value]];
     NSLog(@"[%@] path :%@", @"release lock", path);
+    DDLogWarn(@"释放锁[%@]",path);
     [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
     }

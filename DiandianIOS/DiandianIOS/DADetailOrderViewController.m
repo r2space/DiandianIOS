@@ -14,6 +14,8 @@
 #import "DAMenuProxy.h"
 #import "ProgressHUD.h"
 #import "DAPickAmountViewController.h"
+#import "DDLog.h"
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 #define AMOUNT_LABEL_TAG 101
 

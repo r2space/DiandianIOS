@@ -24,6 +24,8 @@
 #import "ProgressHUD.h"
 #import "DARootViewController.h"
 #import "DAMenuProxy.h"
+#import "DDLog.h"
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 static DAMyTableViewController *activity;
 
@@ -181,20 +183,24 @@ static DAMyTableViewController *activity;
 - (void)startTableButtonClicked:(DAMyLoginViewController*)loginViewViewController{
     
     DAMyLoginViewController *loginVC = loginViewViewController;
-
+    DDLogWarn(@"开台中,桌台信息:%@",[loginVC.curDesk description]);
     [ProgressHUD show:nil];
+
     [DADeskProxy initDesk:loginVC.curDesk._id userId:loginVC.curUserId type:@"1" people:loginVC.numOfPepole.text callback:^(NSError *err, DAService *service) {
 
         if ([service._status integerValue ] != 200) {
             [ProgressHUD showError:service._error];
             [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+            DDLogWarn(@"开台失败,错误信息:%@",service._error);
+
             return ;
         }
         
         UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
         DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
         menubookVC.curService = service;
-        
+        DDLogWarn(@"开台成功,Service信息:%@", [service description]);
+
         NSLog(@"debug : deskId : %@  serviceId  :   %@ " ,service.deskId, service._id);
         [ProgressHUD dismiss];
         [self.navigationController pushViewController:menubookVC animated:YES];
@@ -275,7 +281,8 @@ static DAMyTableViewController *activity;
             if (curWaitterId == nil || curWaitterId.length ==0) {
                 curWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
             }
-            
+
+            DDLogWarn(@"开始换台,将service %@ 的桌台换为 %@",changeServiceId,desk._id);
             [[DAServiceModule alloc]changeService:changeServiceId deskId:desk._id userId:curWaitterId callback:^(NSError *err, DAService *service) {
                 
                 isStartChangeTable = NO;

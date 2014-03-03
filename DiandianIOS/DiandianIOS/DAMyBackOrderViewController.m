@@ -13,6 +13,8 @@
 
 #import "ProgressHUD.h"
 #import "DAPrintProxy.h"
+#import "DDLog.h"
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 
 
@@ -185,9 +187,9 @@
 - (IBAction)onPutDoneTouched:(id)sender {
     
     [ProgressHUD show:@"退菜中"];
-
+    DDLogWarn(@"需要退的菜品:%@", [backDataList description]);
     [[DAOrderModule alloc]setBackOrderWithArray:backDataList deskId:self.curService.deskId callback:^(NSError *err, DAMyOrderList *order) {
-        
+        DDLogWarn(@"退菜结束,service 信息:%@", [self.curService description]);
         [ProgressHUD show:@"退菜成功"];
         self.closeBackView();
         [self fetch];

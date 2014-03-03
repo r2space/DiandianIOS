@@ -12,7 +12,9 @@
 #import "ProgressHUD.h"
 #import "OpenUDID.h"
 #import "DAPrintProxy.h"
+#import "DDLog.h"
 #import "DARootViewController.h"
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface DASettingViewController ()
 {
@@ -141,23 +143,27 @@
         [ProgressHUD showError:@"请输入密码。"];
         return;
     }
+    DDLogWarn(@"用户登录中,用户名:%@",userName);
     [[DALoginModule alloc]yukarilogin:userName password:password code:nil callback:^(NSError *error, DAUser *user) {
         
         if (error != nil) {
             isLogin = NO;
             [ProgressHUD showError:@"登录失败"];
-            
+            DDLogWarn(@"登录失败,用户名:%@",userName);
+
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.diandian.isLogin"];
             return;
         }
         
         isLogin = YES;
+        DDLogWarn(@"登录成功,用户名:%@",userName);
+
         self.labLoginStatus.text = @"登录成功";
         [ProgressHUD showSuccess:@"登录成功"];
         
         [[NSUserDefaults standardUserDefaults] setValue:userName forKey:@"jp.co.dreamarts.smart.diandian.username"];
         [[NSUserDefaults standardUserDefaults] setValue:password forKey:@"jp.co.dreamarts.smart.diandian.password"];
-        
+
         [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.userId"];
         
         [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
@@ -178,6 +184,7 @@
 - (IBAction)onUpdateMenuTouched:(id)sender {
     
     if (isLogin) {
+        DDLogWarn(@"开始更新菜单数据");
         [DAMenuProxy getMenuListApiList];
     } else {
         [ProgressHUD showSuccess:@"请登录"];
@@ -304,6 +311,10 @@
         [ProgressHUD showError:@"请登录"];
     }
 }
+- (IBAction)onUploadLog:(id)sender {
+    
+}
+
 -(void)dismissVC
 {
     [self dismissViewControllerAnimated:YES completion:nil];

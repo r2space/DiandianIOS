@@ -20,6 +20,8 @@
 
 #import "Tool.h"
 #import "ProgressHUD.h"
+#import "DDLog.h"
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 UIViewController *parentVC;
 
@@ -159,6 +161,8 @@ UIViewController *parentVC;
 
 //  换桌
 - (IBAction)changeTable:(id)sender {
+    DDLogWarn(@"换桌按钮点击,service信息:%@", [self.curService description]);
+
     if (self.delegate && [self.delegate respondsToSelector:@selector(changeTable:)]) {
         [self.delegate changeTable:self.curService._id];
     }
@@ -166,8 +170,8 @@ UIViewController *parentVC;
     [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
 }
 - (IBAction)appendOrder:(id)sender {
-    
-    
+
+    DDLogWarn(@"加菜按钮点击,service信息:%@", [self.curService description]);
     UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
     DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
     menubookVC.curService = self.curService;
@@ -178,7 +182,8 @@ UIViewController *parentVC;
 }
 
 - (IBAction)backOrder:(id)sender {
-    
+    DDLogWarn(@"退菜按钮点击,service信息:%@", [self.curService description]);
+
     UIButton *btn = (UIButton *)sender;
     DAMyBackOrderViewController *vc = [[DAMyBackOrderViewController alloc] initWithNibName:@"DAMyBackOrderViewController" bundle:nil];
     vc.closeBackView = ^(){
@@ -196,6 +201,7 @@ UIViewController *parentVC;
 }
 
 - (IBAction)payTheBill:(id)sender {
+    DDLogWarn(@"桌台页面popup结账按钮点击,service信息:%@", [self.curService description]);
 
 //    jp.co.dreamarts.smart.diandian.curWaitterHasCash
 

@@ -19,6 +19,8 @@
 #import "SmartSDK.h"
 
 #import "ProgressHUD.h"
+#import "DDLog.h"
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 static DASettingViewController *loginViewController;
 @interface DAViewController ()
@@ -139,8 +141,11 @@ static DASettingViewController *loginViewController;
     // is not logged in
     loginViewController.startupBlock=^(){
         DAMyTableViewController *viewController = [[DAMyTableViewController alloc] initWithNibName:@"DAMyTableViewController" bundle:nil];
-        
+
+        DDLogWarn(@"进入桌台页面");
+
         [self.navigationController pushViewController:viewController animated:YES];
+
         [loginViewController dismissViewControllerAnimated:YES completion:nil];
         
     };
@@ -151,6 +156,9 @@ static DASettingViewController *loginViewController;
         menubookVC.willAddItem = @"NO";
         [self.navigationController pushViewController:menubookVC animated:YES];
         [loginViewController dismissViewControllerAnimated:YES completion:nil];
+
+        DDLogWarn(@"网络无法连接,直接进入桌台页面");
+
     };
     // init navigation ctrl
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];

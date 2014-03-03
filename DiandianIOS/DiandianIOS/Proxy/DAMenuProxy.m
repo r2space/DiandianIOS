@@ -9,6 +9,8 @@
 #import "DAMenuProxy.h"
 #import "ProgressHUD.h"
 #import "TMCache.h"
+#import "DDLog.h"
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 
 @implementation DAMenuProxy
@@ -27,7 +29,7 @@
 
 + (void)downloadImageImage:(NSArray *)imageIds iteration:(int)i {
     if (imageIds.count <= i) {
-
+        DDLogWarn(@"图片下载结束");
         NSNotification *n = [NSNotification notificationWithName:@"downloadDone" object:self];
         [[NSNotificationCenter defaultCenter] postNotification:n];
 
@@ -55,6 +57,8 @@
                                    NSString *path = [DAMenuProxy imagePath:saveImageName];
                                    [data writeToFile:path atomically:YES];
                                    UIImage *imageCache = [UIImage imageWithContentsOfFile:[DAMenuProxy imagePath:saveImageName]];
+
+                                   DDLogWarn(@"图片下载成功:%@",saveImageName);
 
                                    [[TMCache sharedCache] setObject:imageCache forKey:saveImageName block:nil];
 
@@ -95,8 +99,10 @@
 + (void)getMenuListApiList {
     [ProgressHUD show:@"更新菜单中"];
     [[DAMenuModule alloc] getList:^(NSError *err, DAMenuList *list) {
+        DDLogWarn(@"获取数据结束:%@",[list.imageIds description]);
         [list archiveRootObjectWithName:FILE_MENU_LIST];
         NSArray *imageIds = [self diffImageIds:[DAMenuProxy getImageDownloadIds:list]];
+        DDLogWarn(@"差分图片结果:%@",[imageIds description]);
         [DAMenuProxy downloadImageImage:imageIds iteration:0];
 
     }];

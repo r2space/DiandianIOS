@@ -18,6 +18,8 @@
 #import "DAPrintProxy.h"
 #import "ProgressHUD.h"
 #import "MBProgressHUD.h"
+#import "DDLog.h"
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 @interface DAMyOrderViewController () <DADetailOrderDelegate> {
     DAMyOrderList *oldOrderDataList;
@@ -41,6 +43,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    DDLogWarn(@"点菜页面 viewDidLoad");
+
     curWaitterUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
 
 
@@ -76,11 +80,13 @@
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
+    DDLogWarn(@"点菜页面 viewDidDisappear");
     [super viewDidDisappear:animated];
     [self clearCacheFile];
 }
 - (void)gestureRecognizerHandle:(id)sender {
     NSLog(@"长按");
+    DDLogWarn(@"通过长按返回到桌台页面");
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -137,10 +143,12 @@
 
         DAMyOrderList *filedata = [[DAMyOrderList alloc] unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
         if (filedata != nil) {
+            DDLogWarn(@"从文件恢复点菜信息,service id:%@ , 菜品信息:%@",self.curService._id, [filedata description]);
             self.dataList = filedata;
         } else {
             self.dataList = [DAMyOrderList alloc];
             self.dataList.items = [[NSArray alloc] init];
+            DDLogWarn(@"初始化点菜信息,service id:%@ ",self.curService._id);
         }
         [self.tableView reloadData];
         return YES;
@@ -159,7 +167,10 @@
         BOOL fs = [self.dataList archiveRootObjectWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
 
         if (fs) {
+            DDLogWarn(@"缓存点菜数据,service id:%@ , 菜品信息:%@",self.curService._id, [self.dataList description]);
             NSLog(@"xieru self.curService._id %@", self.curService._id);
+        } else{
+
         }
     }
 }
@@ -174,7 +185,10 @@
         NSError *error;
         BOOL success = [[NSFileManager defaultManager] removeItemAtPath:fileName error:&error];
         if (!success) {
+            DDLogWarn(@"清除缓存点菜信息失败");
             NSLog(@"delete file[%@] error -:%@ ", fileName, [error localizedDescription]);
+        } else{
+            DDLogWarn(@"清除缓存点菜信息成功");
         }
     }
 }
@@ -199,7 +213,7 @@
     _order.amount = @"1";
     _order.amountPrice = [NSNumber numberWithInt:[obj.itemPriceHalf intValue]];
 
-
+    DDLogWarn(@"客户点了小份%@", [_order description]);
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [tmpList addObject:_order];
     [tmpList addObjectsFromArray:self.dataList.items];
@@ -223,6 +237,8 @@
     _order.amount = @"1";
     _order.amountPrice = [NSNumber numberWithInt:[obj.itemPriceNormal intValue]];
 
+    DDLogWarn(@"客户点了%@", [_order description]);
+
     NSMutableArray *tmpList = [[NSMutableArray alloc] init];
     [tmpList addObject:_order];
     [tmpList addObjectsFromArray:self.dataList.items];
@@ -234,14 +250,14 @@
 
     NSDictionary *obj = [notification object];
     NSLog(@"recive print result : %@", [obj description]);
-
+    DDLogWarn(@"收到打印结果 %@",[obj description]);
     [printResult setObject:[obj objectForKey:@"result"] forKey:[obj objectForKey:@"printerId"]];
 
     printerCount--;
 
     if (printerCount == 0) {
         //TODO
-
+        DDLogWarn(@"所有打印机均有结果,退回到桌台");
         [progress hide:YES];
 
         [self.navigationController popViewControllerAnimated:YES];
@@ -413,6 +429,7 @@
     detailOrderVC.oldOrderDataList = oldOrderDataList;
     detailOrderVC.curService = self.curService;
     detailOrderVC.confirmCallback = ^(NSString *tips) {
+        DDLogWarn(@"下单流程开始");
         [self restoreDataFromFile];
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
 
@@ -448,7 +465,7 @@
                 } else {
                     printerCount = [DAPrintProxy addOrderPrintWithOrderList:self.dataList deskName:list.deskName orderNum:list.orderNum now:list.now takeout:@"" tips:tips];
                 }
-
+                DDLogWarn(@"需要的打印机个数为:%d",printerCount);
                 if (printerCount == 0) {
                     [ProgressHUD showError:@"请设置打印机"];
                     [progress hide:YES];
@@ -467,6 +484,7 @@
 
     };
     detailOrderVC.cancelCallback = ^() {
+        DDLogWarn(@"返回到桌台页面");
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
         [self.navigationController popViewControllerAnimated:YES];
     };
