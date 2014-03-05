@@ -116,9 +116,9 @@
 
 -(void) initDrinkListView
 {
-    
-    
-    drinkChildView = [[DADrinkQueueViewController alloc] initWithNibName:@"DADrinkQueueViewController" bundle:nil];
+    if(drinkChildView == nil){
+        drinkChildView = [[DADrinkQueueViewController alloc] initWithNibName:@"DADrinkQueueViewController" bundle:nil];
+    }
     
     [drinkChildView.view setFrame:self.viewMasterBlock.frame];
     [self addChildViewController:drinkChildView];
@@ -129,7 +129,9 @@
 
 -(void) initItemListView
 {
-    orderGroupViewController = [[DAItemViewController alloc] initWithNibName:@"DAItemViewController" bundle:nil];
+    if(drinkChildView == nil){
+        orderGroupViewController = [[DAItemViewController alloc] initWithNibName:@"DAItemViewController" bundle:nil];
+    }
     
     [orderGroupViewController.view setFrame:self.viewMasterBlock.frame];
     [self addChildViewController:orderGroupViewController];
