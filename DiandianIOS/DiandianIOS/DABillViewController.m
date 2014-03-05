@@ -213,6 +213,8 @@
 }
 - (IBAction)onStopBillTouched:(id)sender {
 
+    DDLogWarn(@"收银联打印按钮点击");
+
     if(!hasLoad) {
         [ProgressHUD showError:@"等待加载。"];
         return;

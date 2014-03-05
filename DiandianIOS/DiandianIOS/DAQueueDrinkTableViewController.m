@@ -9,11 +9,14 @@
 #import "DAQueueDrinkTableViewController.h"
 #import "ProgressHUD.h"
 #import "DAOrderProxy.h"
+#import "MBProgressHUD.h"
 
 
 @interface DAQueueDrinkTableViewController ()
 {
     DAMyOrderList *dataList;
+    MBProgressHUD *progress;
+    BOOL isShown;
 }
 @end
 
@@ -31,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    isShown = YES;
     // Do any additional setup after loading the view from its nib.
     dataList =  [[DAMyOrderList alloc ]init];
     dataList.items = [[NSArray alloc]init];
@@ -40,12 +44,30 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DAQueueTableCell"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ioRefreshOrderList:) name:@"ioRefreshOrderList" object:nil];
 }
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    isShown = NO;
+}
+- (void)showIndicator:(NSString *)message
+{
+    if(progress == nil){
+        progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
+        progress.mode = MBProgressHUDModeIndeterminate;
+
+    }
+    progress.labelText = message;
+    [progress show:YES];
+}
 - (void)ioRefreshOrderList : (NSNotification*) notification
 {
+    if(!isShown){
+        return;
+    }
     
     [self loadFromFile];
 }
-- (void) viewWillAppear:(BOOL)animated
+- (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [self loadFromFile];
@@ -116,11 +138,11 @@
 
 
 - (void)loadFromFile {
-
+    [self showIndicator:@"刷新中..."];
     [[DAOrderModule alloc] getDeskListOfNeItemOrder:^(NSError *err, DAMyOrderList *list) {
         dataList = [DAOrderProxy getOneDeskDataList:list];
         [self.tableView reloadData];
-
+        [progress hide:YES];
         
     }];
     

@@ -33,7 +33,7 @@ enum PrintErrorStatus
 +(void) testPrinter
 {
     
-    [ProgressHUD show:@"正在为你测试打印机，请稍等。"];
+    [ProgressHUD show:@"正在配置打印机"];
     NSMutableArray *tmpPrinterList = [[NSMutableArray alloc] init];
     [[DAPrinterModule alloc] getPrinterList:^(NSError *err, DAPrinterList *list) {
         

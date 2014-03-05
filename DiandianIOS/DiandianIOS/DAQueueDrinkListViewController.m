@@ -10,11 +10,13 @@
 #import "ProgressHUD.h"
 #import "DAOrderProxy.h"
 #import "Tool.h"
+#import "MBProgressHUD.h"
 
 
 @interface DAQueueDrinkListViewController ()
 {
     DAMyOrderList *dataList;
+    MBProgressHUD *progress;
 }
 @end
 
@@ -46,6 +48,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)showIndicator:(NSString *)message
+{
+    if(progress == nil){
+        progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
+        progress.mode = MBProgressHUDModeIndeterminate;
+
+    }
+    progress.labelText = message;
+    [progress show:YES];
+}
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
 {
@@ -108,12 +121,12 @@
 
 -(void ) getQueueListWithServiceId:(NSString *)serviceId deskId:(NSString *)deskId
 {
-    [ProgressHUD show:nil];
+    [self showIndicator:@"刷新中..."];
     [[DAOrderModule alloc]getOrderNEItemListByServiceId:serviceId callback:^(NSError *err, DAMyOrderList *list) {
 //        dataList = [DAOrderProxy getOneDataList:list];
         dataList = list;
         [self.collectionView reloadData];
-        [ProgressHUD dismiss];
+        [progress hide:YES];
     }];
     
 }

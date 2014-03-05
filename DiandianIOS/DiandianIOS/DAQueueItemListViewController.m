@@ -16,6 +16,7 @@
 
 #import "Tool.h"
 #import "MBProgressHUD.h"
+#import "TMCache.h"
 
 
 @interface DAQueueItemListViewController ()
@@ -28,6 +29,8 @@
     NSMutableArray *itemList;
     NSDate *nowData;
     MBProgressHUD *progress;
+    BOOL isShown;
+    BOOL isDataLoading;
 }
 @end
 
@@ -67,12 +70,22 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    isShown = YES;
     [self loadFromFile];
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    isShown = NO;
+    [super viewDidDisappear:animated];
 }
 
 - (void)ioRefreshOrderList : (NSNotification*) notification
 {
+    //当前页面不在屏幕显示时 不做操作
+    if(!isShown){
+        return;
+    }
+
 ////    [ProgressHUD show:@"推送消息"];
 //    NSDictionary *obj = [notification object];
 //    NSArray *items = [obj objectForKey:@"items"];
@@ -113,7 +126,21 @@
     DAOrder *row = [dataList.items objectAtIndex:indexPath.row];
 
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:10];
-    imgItem.image = [DAMenuProxy getImageFromDisk:row.item.smallimage];
+
+
+    //imgItem.image = [DAMenuProxy getImageFromDisk:row.item.smallimage];
+
+
+
+    [[TMCache sharedCache] objectForKey:row.item.smallimage block:^(TMCache *cache, NSString *key, id object) {
+        if (object) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [imgItem setImage:(UIImage *) object];
+            });
+        }
+    }];
+
+
     UILabel *lblName = (UILabel *)[cell viewWithTag:11];
     if ([row.type integerValue] == 0) {
         lblName.text = row.item.itemName;
@@ -146,10 +173,12 @@
 
 - (void)showIndicator:(NSString *)message
 {
-    progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
-    progress.mode = MBProgressHUDModeIndeterminate;
+    if(progress == nil){
+        progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
+        progress.mode = MBProgressHUDModeIndeterminate;
+
+    }
     progress.labelText = message;
-    progress.color = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
     [progress show:YES];
 }
 
@@ -191,8 +220,14 @@
 
 - (void)loadFromFile {
 
-    
+    if(isDataLoading){
+        return;
+    }
+    isDataLoading = YES;
+    [self showIndicator:@"刷新中..."];
     [[DAOrderModule alloc]getOrderItemList:^(NSError *err, DAMyOrderList *list) {
+        [progress hide:YES];
+        isDataLoading = NO;
         dataList = [DAOrderProxy getOneDataList:list];
         [self.collectionView reloadData];
         

@@ -37,6 +37,7 @@ static DAMyTableViewController *activity;
     BOOL isStartChangeTable;
     BOOL isProcessionIntoTable;
     NSString * changeServiceId;
+    BOOL isShown;
 }
 @end
 
@@ -65,10 +66,16 @@ static DAMyTableViewController *activity;
     
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    isShown = YES;
     [self loadFromFile];
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:YES];
+    isShown = NO;
 }
 
 + (void) receive:(NSString*)action data:(id)data
@@ -80,6 +87,7 @@ static DAMyTableViewController *activity;
 
 - (void) receiveMessage:(NSString*)action data:(id)data
 {
+    if(!isShown){return;}
     NSDictionary *dic =  [data objectForKey:@"service"];
     NSLog(@"service  dic %@" ,dic );
 //    
@@ -95,6 +103,7 @@ static DAMyTableViewController *activity;
 //            }
 //        }
 //    }
+
         [self loadFromFile];
 }
 - (void) initTopmenu
