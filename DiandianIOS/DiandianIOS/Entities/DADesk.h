@@ -17,6 +17,7 @@
 @property(retain, nonatomic) NSNumber *valid;
 @property(retain, nonatomic) NSNumber *capacity;
 @property(retain, nonatomic) NSNumber *type;
+@property(nonatomic) BOOL supportPaddling;
 @property(retain, nonatomic) DAService *service;
 
 

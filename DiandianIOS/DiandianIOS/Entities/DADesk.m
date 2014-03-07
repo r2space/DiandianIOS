@@ -63,6 +63,7 @@
     [aCoder encodeObject:self.capacity forKey:@"capacity"];
     [aCoder encodeObject:self.type   forKey:@"type"];
     [aCoder encodeObject:self.service   forKey:@"service"];
+    [aCoder encodeBool:self.supportPaddling forKey:@"supportPaddling"];
     
     [aCoder encodeObject:self.name  forKey:@"name"];
     [aCoder encodeObject:self.type forKey:@"type"];
@@ -84,7 +85,7 @@
     self.capacity = [aDecoder decodeObjectForKey:@"capacity"];
     self.type = [aDecoder decodeObjectForKey:@"type"];
     self.service = [aDecoder decodeObjectForKey:@"service"];
-    
+    self.supportPaddling=[aDecoder decodeBoolForKey:@"supportPaddling"];
     
     self.name = [aDecoder decodeObjectForKey:@"name"];
     self.type = [aDecoder decodeObjectForKey:@"type"];

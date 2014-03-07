@@ -58,13 +58,15 @@
     
     for (int i = 0 ; i < orderList.items.count ; i ++) {
         DAOrder *order = [orderList.items objectAtIndex:i];
+        if(!order.desk.supportPaddling){
+            continue;
+        }
         BOOL hasOneItem = NO;
         if ([tmpList count] > 0 ) {
             for (int j = 0 ; j < [tmpList count] ; j ++) {
                 DAOrder *tmpOrder = [tmpList objectAtIndex:j];
                 if ([tmpOrder.itemId isEqualToString:order.itemId] && [tmpOrder.type isEqualToNumber:order.type]) {
                     hasOneItem = YES;
-                    
                 }
             }
         }
@@ -94,6 +96,9 @@
     
     for (int i = 0 ; i < orderList.items.count ; i ++) {
         DAOrder *order = [orderList.items objectAtIndex:i];
+        if(!order.desk.supportPaddling){
+            continue;
+        }
         BOOL hasOneItem = NO;
         if ([tmpList count] > 0 ) {
             for (int j = 0 ; j < [tmpList count] ; j ++) {

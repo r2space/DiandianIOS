@@ -346,11 +346,15 @@
 
 - (void)showIndicator:(NSString *)message
 {
-    progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
-    progress.mode = MBProgressHUDModeIndeterminate;
+
+    if(progress == nil){
+        progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
+        progress.mode = MBProgressHUDModeIndeterminate;
+
+    }
     progress.labelText = message;
-    progress.color = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
     [progress show:YES];
+
 }
 
 @end
