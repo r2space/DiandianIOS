@@ -29,7 +29,7 @@
 
 - (IBAction)deleteTouched:(id)sender {
     if ([self.selectFlag isEqualToString:@"YES"]) {
-        float count = [self.orderAmount floatValue];
+        float count = [self.amount intValue];
         if (count == 1) {
             return;
         }

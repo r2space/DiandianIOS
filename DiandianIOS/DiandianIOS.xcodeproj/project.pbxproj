@@ -352,6 +352,16 @@
 		47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */; };
 		B02A0B221AAAD05B69E3FFE3 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A09E43F18227D9333EBEB /* DDLog.m */; };
 		B02A0E13BFDEA296A374629D /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A05AD4E35E9B7C9F70969 /* DDFileLogger.m */; };
+		E0186F3618CDC5360053EEE7 /* DARightSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0186F3418CDC5360053EEE7 /* DARightSideMenuViewController.m */; };
+		E0186F3718CDC5360053EEE7 /* DARightSideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0186F3518CDC5360053EEE7 /* DARightSideMenuViewController.xib */; };
+		E0846AAC18CFFD8B00B82AC6 /* DABackOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0846AAA18CFFD8B00B82AC6 /* DABackOrderViewController.m */; };
+		E0846AAD18CFFD8B00B82AC6 /* DABackOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0846AAB18CFFD8B00B82AC6 /* DABackOrderViewController.xib */; };
+		E0846AB118D04BF700B82AC6 /* DAOrderPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0846AAF18D04BF700B82AC6 /* DAOrderPopoverViewController.m */; };
+		E0846AB218D04BF700B82AC6 /* DAOrderPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0846AB018D04BF700B82AC6 /* DAOrderPopoverViewController.xib */; };
+		E0846AB618D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0846AB418D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.m */; };
+		E0846AB718D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0846AB518D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.xib */; };
+		E0846ABB18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0846AB918D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m */; };
+		E0846ABC18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0846ABA18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib */; };
 		F2A8CB831831CEB5002AD240 /* sample-table1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB821831CEB5002AD240 /* sample-table1.jpg */; };
 		F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */; };
 		F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */; };
@@ -913,6 +923,21 @@
 		B02A09E43F18227D9333EBEB /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
 		B02A0C224FB9E5A3240FA372 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
 		B02A0C60F9443A740A6959D7 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		E0186F3318CDC5360053EEE7 /* DARightSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARightSideMenuViewController.h; sourceTree = "<group>"; };
+		E0186F3418CDC5360053EEE7 /* DARightSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARightSideMenuViewController.m; sourceTree = "<group>"; };
+		E0186F3518CDC5360053EEE7 /* DARightSideMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DARightSideMenuViewController.xib; sourceTree = "<group>"; };
+		E0846AA918CFFD8B00B82AC6 /* DABackOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABackOrderViewController.h; sourceTree = "<group>"; };
+		E0846AAA18CFFD8B00B82AC6 /* DABackOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABackOrderViewController.m; sourceTree = "<group>"; };
+		E0846AAB18CFFD8B00B82AC6 /* DABackOrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABackOrderViewController.xib; sourceTree = "<group>"; };
+		E0846AAE18D04BF700B82AC6 /* DAOrderPopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderPopoverViewController.h; sourceTree = "<group>"; };
+		E0846AAF18D04BF700B82AC6 /* DAOrderPopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderPopoverViewController.m; sourceTree = "<group>"; };
+		E0846AB018D04BF700B82AC6 /* DAOrderPopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderPopoverViewController.xib; sourceTree = "<group>"; };
+		E0846AB318D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderPopoverTableViewCell.h; sourceTree = "<group>"; };
+		E0846AB418D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAOrderPopoverTableViewCell.m; sourceTree = "<group>"; };
+		E0846AB518D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAOrderPopoverTableViewCell.xib; sourceTree = "<group>"; };
+		E0846AB818D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPopoverOrderTypeAllTableViewCell.h; sourceTree = "<group>"; };
+		E0846AB918D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPopoverOrderTypeAllTableViewCell.m; sourceTree = "<group>"; };
+		E0846ABA18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPopoverOrderTypeAllTableViewCell.xib; sourceTree = "<group>"; };
 		F2A8CB821831CEB5002AD240 /* sample-table1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sample-table1.jpg"; sourceTree = "<group>"; };
 		F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_table_back.jpg; sourceTree = "<group>"; };
 		F2AB4BF4182DDDB90067E450 /* DAOrderQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderQueueViewController.h; sourceTree = "<group>"; };
@@ -1833,6 +1858,21 @@
 				0A54D6C4184D81C400BBA9C4 /* DATakeoutLoginViewController.h */,
 				0A54D6C5184D81C400BBA9C4 /* DATakeoutLoginViewController.m */,
 				0A54D6C6184D81C400BBA9C4 /* DATakeoutLoginViewController.xib */,
+				E0186F3318CDC5360053EEE7 /* DARightSideMenuViewController.h */,
+				E0186F3418CDC5360053EEE7 /* DARightSideMenuViewController.m */,
+				E0186F3518CDC5360053EEE7 /* DARightSideMenuViewController.xib */,
+				E0846AA918CFFD8B00B82AC6 /* DABackOrderViewController.h */,
+				E0846AAA18CFFD8B00B82AC6 /* DABackOrderViewController.m */,
+				E0846AAB18CFFD8B00B82AC6 /* DABackOrderViewController.xib */,
+				E0846AAE18D04BF700B82AC6 /* DAOrderPopoverViewController.h */,
+				E0846AAF18D04BF700B82AC6 /* DAOrderPopoverViewController.m */,
+				E0846AB018D04BF700B82AC6 /* DAOrderPopoverViewController.xib */,
+				E0846AB318D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.h */,
+				E0846AB418D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.m */,
+				E0846AB518D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.xib */,
+				E0846AB818D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.h */,
+				E0846AB918D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m */,
+				E0846ABA18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -2156,6 +2196,7 @@
 				0A7AF0D818360B3A00635376 /* da_data_queue_food.json in Resources */,
 				0A54D6C0184C726900BBA9C4 /* Snapshot.png in Resources */,
 				0A54D6D4184ED1D400BBA9C4 /* menubook_sidemiddle.png in Resources */,
+				E0846AAD18CFFD8B00B82AC6 /* DABackOrderViewController.xib in Resources */,
 				0A5D2892182BD1FD00847578 /* DAMyOrderDetailViewController.xib in Resources */,
 				0AF86236187FC80E00D3A1C0 /* Icon.png in Resources */,
 				0ADCBC491888FAF00076FD01 /* magic-wand-mini.png in Resources */,
@@ -2188,6 +2229,7 @@
 				0A441604188AB2AB00BA66D0 /* DAOrderPrinterViewController.xib in Resources */,
 				0A54D6D2184ED10800BBA9C4 /* menubook_sidetop.png in Resources */,
 				0A54D6BF184C726900BBA9C4 /* KeyboardTopShadow@2x.png in Resources */,
+				E0846ABC18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib in Resources */,
 				0A5D28A1182CA9AA00847578 /* DADetailOrderCell.xib in Resources */,
 				0A3CD5B518516B6200604CB6 /* multiply-sign.png in Resources */,
 				0A54D700185070A600BBA9C4 /* desk_jiebotton.png in Resources */,
@@ -2195,13 +2237,16 @@
 				0AA533A21828BEE80087EFF1 /* DAMyBookViewController.xib in Resources */,
 				0A739E63183B019D00AA48C4 /* DAMyBackOrderViewController.xib in Resources */,
 				2886BAFE18360F5800A496AC /* DAProcessionViewController.xib in Resources */,
+				E0846AB218D04BF700B82AC6 /* DAOrderPopoverViewController.xib in Resources */,
 				0A7EA1EF1847426D00A9E287 /* DASettingViewController.xib in Resources */,
 				287FA997183B3E5D00E02051 /* takeout.json in Resources */,
 				0A07BD81182A232500A350BC /* DAMyOrderDetailViewStoryboard.storyboard in Resources */,
+				E0846AB718D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.xib in Resources */,
 				0A54D6FA1850659A00BBA9C4 /* desk_word.png in Resources */,
 				28FFB62A18322E20003443D1 /* DAPopTableView.storyboard in Resources */,
 				0A3DB730182B1F5100170F0C /* table.png in Resources */,
 				0ADCBC3E1888F94F0076FD01 /* search@2x.png in Resources */,
+				E0186F3718CDC5360053EEE7 /* DARightSideMenuViewController.xib in Resources */,
 				0A9DA5C1182874C900037E73 /* DAMenuBookView.storyboard in Resources */,
 				0A8547B818684EA400C051D8 /* DAItemListViewController.xib in Resources */,
 				0A4E47E0185711CC00CEC3DE /* dot_off1.png in Resources */,
@@ -2306,6 +2351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AB78B81183CB46500979BD0 /* AFURLConnectionOperation.m in Sources */,
+				E0186F3618CDC5360053EEE7 /* DARightSideMenuViewController.m in Sources */,
 				28FFB64418332272003443D1 /* DADateUtil.m in Sources */,
 				0AB78B7F183CB46500979BD0 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				2886BB011836250D00A496AC /* DAProcessionViewCell.m in Sources */,
@@ -2447,12 +2493,15 @@
 				0A4E47B218570FFC00CEC3DE /* DAPrintProxy.m in Sources */,
 				28FFB64518332272003443D1 /* DADelegateUtil.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
+				E0846AAC18CFFD8B00B82AC6 /* DABackOrderViewController.m in Sources */,
 				0A4099141869104A000E8E24 /* DATag.m in Sources */,
 				0AB4B3B11838DE3700D77D7E /* DAPreferentialViewController.m in Sources */,
 				0A4E47B418570FFC00CEC3DE /* DAMenuProxy.m in Sources */,
+				E0846AB118D04BF700B82AC6 /* DAOrderPopoverViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */,
 				0A4E479A1856A06A00CEC3DE /* DAGroup.m in Sources */,
+				E0846AB618D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.m in Sources */,
 				0A4E47EE1857128800CEC3DE /* UIViewController+CWPopup.m in Sources */,
 				0AB78B85183CB46500979BD0 /* JastorRuntimeHelper.m in Sources */,
 				0A924AA51834899A0004C973 /* DAMyOrderQueueViewController.m in Sources */,
@@ -2471,6 +2520,7 @@
 				0AA4AB1118817CF70079EC3F /* DAPickAmountViewController.m in Sources */,
 				0AA031A418432A4A00C66590 /* DAOrderModule.m in Sources */,
 				0AB78B7C183CB46500979BD0 /* AFHTTPRequestOperation.m in Sources */,
+				E0846ABB18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m in Sources */,
 				0A20E8F2185A9EBC00422061 /* DAPrinterList.m in Sources */,
 				0A4E47CD1857117600CEC3DE /* ZenKeyboard.m in Sources */,
 				0A7AF0DE183612EF00635376 /* DAQueueMasterViewController.m in Sources */,
@@ -2588,7 +2638,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
+				PROVISIONING_PROFILE = "21B2A8D2-9817-418A-AEFC-4BB89C530AEC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -2624,7 +2674,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
+				PROVISIONING_PROFILE = "21B2A8D2-9817-418A-AEFC-4BB89C530AEC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -2638,8 +2688,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -2648,7 +2698,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2661,8 +2711,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: yue xing (LWCWFTFFBY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: yue xing (LWCWFTFFBY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DiandianIOS/DiandianIOS-Prefix.pch";
@@ -2671,7 +2721,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = DiandianIOS;
-				PROVISIONING_PROFILE = "DA045924-910B-4D9B-BD09-5FFD19EFD7BB";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

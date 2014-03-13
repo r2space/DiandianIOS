@@ -24,6 +24,11 @@
 #import "ProgressHUD.h"
 #import "DARootViewController.h"
 #import "DAMenuProxy.h"
+#import "DARightSideMenuViewController.h"
+#import "DrawPatternLockViewController.h"
+#import "MBProgressHUD.h"
+#import "DAMyBackOrderViewController.h"
+#import "DABackOrderViewController.h"
 
 static DAMyTableViewController *activity;
 
@@ -35,9 +40,12 @@ static DAMyTableViewController *activity;
     NSMutableArray *dataList;
     BOOL isTableFlicker;
     BOOL isStartChangeTable;
-    BOOL isProcessionIntoTable;
-    NSString * changeServiceId;
     BOOL isShown;
+    DARightSideMenuViewController *rsvc;
+    DrawPatternLockViewController *lockVC;
+    int passErrorCount;
+    MBProgressHUD *progress;
+    DADesk *selectedDesk;
 }
 @end
 
@@ -57,9 +65,8 @@ static DAMyTableViewController *activity;
     [self.collectionView registerNib:cellNib forCellWithReuseIdentifier:@"DAMyTableViewCell"];
     
     self.navigationController.navigationBarHidden = YES;
-    
-    isTableFlicker = false;
-    isProcessionIntoTable = false;
+
+//    isTableFlicker = NO;
     
     
     [self initTopmenu];
@@ -70,6 +77,7 @@ static DAMyTableViewController *activity;
 {
     [super viewDidAppear:animated];
     isShown = YES;
+    selectedDesk = nil;
     [self loadFromFile];
 }
 
@@ -106,6 +114,7 @@ static DAMyTableViewController *activity;
 
         [self loadFromFile];
 }
+
 - (void) initTopmenu
 {
     self.topmenuLabel.layer.cornerRadius = 15.0;
@@ -131,16 +140,25 @@ static DAMyTableViewController *activity;
     }
     
 }
+- (void)showIndicator:(NSString *)message
+{
+    if(progress == nil){
+        progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
+        progress.mode = MBProgressHUDModeIndeterminate;
+        //progress.color = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
 
+    }
+    progress.labelText = message;
+    [progress show:YES];
+}
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch=[event.allTouches anyObject];
     if (![touch.view isEqual:self.collectionView]) {
         isStartChangeTable = NO;
-        isProcessionIntoTable = NO;
-        [self setTableFlicker:false];
-        
+        isTableFlicker = NO;
+        [self.collectionView reloadItemsAtIndexPaths:self.collectionView.indexPathsForVisibleItems];
     }
 }
 
@@ -153,6 +171,7 @@ static DAMyTableViewController *activity;
             [dataList addObject: d];
         }
         [self.collectionView reloadData];
+        [progress hide:YES];
     }];
     
 }
@@ -206,9 +225,6 @@ static DAMyTableViewController *activity;
         [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     }];
 
-    
-    
-    
 }
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section;
@@ -252,8 +268,18 @@ static DAMyTableViewController *activity;
         [cell.btnOrderList setHidden:YES];
         cell.imgTable.image = [UIImage imageNamed:@"desk_bottond.png"];
     }
-    cell.backgroundColor = [UIColor clearColor];
-    
+
+    if (selectedDesk != nil && [selectedDesk._id isEqualToString:desk._id]) {
+        [rsvc changeMode:selectedDesk.isEmpty];
+        cell.backgroundColor = [UIColor orangeColor];
+//        [cell setSelected:YES];
+    }
+    else {
+        cell.backgroundColor = [UIColor clearColor];
+    }
+
+
+    cell.layer.cornerRadius = 10;
     
     // 设置换桌的动画效果
     if (isTableFlicker && [desk isEmpty]) {
@@ -265,81 +291,139 @@ static DAMyTableViewController *activity;
     return cell;
 }
 
+-(void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    DAMyTableViewCell *cell = (DAMyTableViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor clearColor];
+}
 
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    DAMyTableViewCell *cell = (DAMyTableViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     DADesk * desk = [dataList objectAtIndex:indexPath.row];
-    
-    if (isStartChangeTable) {
+    if(isStartChangeTable){
         if ([desk isEmpty]) {
-//            DADesk *fromT = [self getDataByTableId:changeTableId];
-            // TODO: 改成用 [dataList replaceObjectAtIndex:i withObject:new];
-            //[fromT swap:desk];
-            NSString *curWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
-            
-            if (curWaitterId == nil || curWaitterId.length ==0) {
-                curWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
-            }
-
-            DDLogWarn(@"开始换台,将service id %@ 的桌台换为 %@",changeServiceId,desk._id);
-
-            [[DAServiceModule alloc]changeService:changeServiceId deskId:desk._id userId:curWaitterId callback:^(NSError *err, DAService *service) {
-                
+            [self showIndicator:@"换台中..."];
+            DDLogWarn(@"开始换台,将service id %@ 的桌台换为 %@",selectedDesk.service._id,desk._id);
+            [[DAServiceModule alloc]changeService:selectedDesk.service._id deskId:desk._id userId:[self getWaitterId] callback:^(NSError *err, DAService *service) {
+                DDLogWarn(@"换台结束");
                 isStartChangeTable = NO;
-                [self setTableFlicker:NO];
+                isTableFlicker = NO;
+                selectedDesk = nil;
+                //[self.collectionView reloadItemsAtIndexPaths:self.collectionView.indexPathsForVisibleItems];
+
                 [self loadFromFile];
             }];
+        }
 
-        }
-        
-        return;
-    } else if (isProcessionIntoTable) {
-        if ([desk isEmpty])
-        {
+    }else{
+        cell.backgroundColor = [UIColor orangeColor];
+        selectedDesk = desk;
+        [self showSideMenu];
 
-            isProcessionIntoTable = false;
-            [self setTableFlicker:false];
-        }
-        return;
-    } else {
-        if (![desk isEmpty]) {
-            [DAMyTableConfirmController show: desk parentView:self ];
-        } else {
-            DAMyLoginViewController *vc = [[DAMyLoginViewController alloc]initWithNibName:@"DAMyLoginViewController" bundle:nil];
-            vc.delegate = self;
-            vc.curDesk  = desk;
-            [self  presentPopupViewController:vc animationType:MJPopupViewAnimationFade];
-        }
     }
+
+    return;
+
+//    if (isStartChangeTable) {
+//        if ([desk isEmpty]) {
+////            DADesk *fromT = [self getDataByTableId:changeTableId];
+//            // TODO: 改成用 [dataList replaceObjectAtIndex:i withObject:new];
+//            //[fromT swap:desk];
+//            NSString *curWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+//
+//            if (curWaitterId == nil || curWaitterId.length ==0) {
+//                curWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
+//            }
+//
+//            DDLogWarn(@"开始换台,将service id %@ 的桌台换为 %@",changeServiceId,desk._id);
+//
+//            [[DAServiceModule alloc]changeService:changeServiceId deskId:desk._id userId:curWaitterId callback:^(NSError *err, DAService *service) {
+//
+//                isStartChangeTable = NO;
+//                [self setTableFlicker:NO];
+//                [self loadFromFile];
+//            }];
+//
+//        }
+//
+//        return;
+////    } else if (isProcessionIntoTable) {
+////        if ([desk isEmpty])
+////        {
+////
+////            isProcessionIntoTable = false;
+////            [self setTableFlicker:false];
+////        }
+////        return;
+//    } else {
+//        if (![desk isEmpty]) {
+//            [DAMyTableConfirmController show: desk parentView:self ];
+//        } else {
+//            DAMyLoginViewController *vc = [[DAMyLoginViewController alloc]initWithNibName:@"DAMyLoginViewController" bundle:nil];
+//            vc.delegate = self;
+//            vc.curDesk  = desk;
+//            [self  presentPopupViewController:vc animationType:MJPopupViewAnimationFade];
+//        }
+//    }
     
 }
-- (void)changeTable:(NSString *)serviceId
-{
-    changeServiceId = serviceId;
-    isStartChangeTable = YES;
-    [self setTableFlicker:YES];
+
+- (void)showSideMenu {
+    if (rsvc == nil) {
+        rsvc = [[DARightSideMenuViewController alloc] initWithNibName:nil bundle:nil];
+        [rsvc setTarget:self
+         withHideAction:@selector(hideProc)
+             openAction:@selector(openDeskProc)
+              addAction:@selector(addDishProc)
+             backAction:@selector(backDishProc)
+            checkAction:@selector(checkOutProc)
+           changeAction:@selector(changeDeskProc)];
+    }
+    //[self.navigationController pushViewController:rsvc animated:YES];
+
+    [rsvc.view removeFromSuperview];
+    rsvc.view.frame = CGRectMake(1024, 134, 170, 500);
+    [self.view addSubview:rsvc.view];
+    if (selectedDesk != nil) {
+        [rsvc changeMode:selectedDesk.isEmpty];
+    } else {
+        [rsvc changeMode:NO];
+    }
+    [UIView animateWithDuration:0.3
+                     animations:^(void) {
+                         rsvc.view.frame = CGRectMake(1024 - 160, 134, 170, 500);
+                     }];
 }
 
+//- (void)changeTable:(NSString *)serviceId
+//{
+//    changeServiceId = serviceId;
+//    isStartChangeTable = YES;
+//    [self setTableFlicker:YES];
+//}
 
-- (void) setTableFlicker:(BOOL)enabled
-{
-    isTableFlicker = enabled;
-    [self.collectionView reloadItemsAtIndexPaths:self.collectionView.indexPathsForVisibleItems];
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-}
 
-- (void)processionIntoTable:(NSString *)processionId
-{
-    isProcessionIntoTable = true;
-    [self setTableFlicker:true];
-}
-- (void)processionOrderFool:(NSString *)processionId
-{
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
-    UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
-    [self.navigationController pushViewController:menubookVC animated:YES];
-}
+//- (void) setTableFlicker:(BOOL)enabled
+//{
+//    isTableFlicker = enabled;
+//    [self.collectionView reloadItemsAtIndexPaths:self.collectionView.indexPathsForVisibleItems];
+//    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+//}
+
+//- (void)processionIntoTable:(NSString *)processionId
+//{
+//    isProcessionIntoTable = true;
+//    [self setTableFlicker:true];
+//}
+//
+//- (void)processionOrderFool:(NSString *)processionId
+//{
+//    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+//    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+//    UIViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+//    [self.navigationController pushViewController:menubookVC animated:YES];
+//}
 
 -(void)takeoutOrder:(DATakeout *)takeout
 {
@@ -353,6 +437,7 @@ static DAMyTableViewController *activity;
 {
     
 }
+
 -(void)takeoutPay:(DATakeout *)takeout
 {
     [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
@@ -370,12 +455,15 @@ static DAMyTableViewController *activity;
 - (IBAction)onReturnTouched:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 - (IBAction)showProcessionList:(id)sender {
     [DAProcessionViewController show:self];
 }
+
 - (IBAction)showTakeoutList:(id)sender {
     [DATakeoutViewController show:self];
 }
+
 - (IBAction)showBillTouched:(id)sender {
     DABillViewController *viewController = [[DABillViewController alloc] initWithNibName:@"DABillViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
@@ -419,4 +507,151 @@ static DAMyTableViewController *activity;
     [self loadFromFile];
 }
 
+
+//=======new========
+//开台
+-(void)openDeskProc{
+
+    if(lockVC == nil){
+
+        lockVC = [[DrawPatternLockViewController alloc] init];
+        lockVC.modalPresentationStyle = UIModalPresentationFormSheet;
+        [lockVC setTarget:self withAction:@selector(lockEntered:)];
+
+        UINavigationBar *navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 540, 44)];
+        UINavigationItem *navigationItem = [[UINavigationItem alloc] initWithTitle:nil];
+        UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"取消"
+                                                                       style:UIBarButtonItemStyleBordered
+                                                                      target:self
+                                                                      action:@selector(closePassProc)];
+        //设置导航栏内容
+        [navigationItem setTitle:@"请验证手势密码"];
+        [navigationBar pushNavigationItem:navigationItem animated:NO];
+
+        //把左右两个按钮添加入导航栏集合中
+        [navigationItem setLeftBarButtonItem:leftButton];
+        [lockVC.view addSubview:navigationBar];
+    }
+
+
+    [self.navigationController presentViewController:lockVC animated:NO completion:nil];
+
+}
+- (void)lockEntered:(NSString*)key {
+
+    NSString *curWaitterId= [self getWaitterId];
+
+    [[DALoginModule alloc]checkPattern:key userId:curWaitterId callback:^(NSError *error, NSDictionary *user) {
+
+        NSNumber *isRight = [user objectForKey:@"isRight"];
+
+        if (![isRight boolValue]) {
+            passErrorCount++ ;
+            [ProgressHUD showError:@"手势密码验证错误。"];
+            if (passErrorCount == 3) {
+                passErrorCount = 0;
+
+                [self closePassProc];
+            }
+        } else {
+            passErrorCount = 0;
+            [self showIndicator:@"开台中..."];
+            [DADeskProxy initDesk:selectedDesk._id userId:curWaitterId type:@"1" people:@"4" callback:^(NSError *err, DAService *service) {
+                if ([service._status integerValue ] != 200) {
+                    [progress hide:YES];
+                    [ProgressHUD showError:service._error];
+                    DDLogWarn(@"开台失败,错误信息:%@",service._error);
+                    return ;
+                }
+                UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+                DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+                menubookVC.curService = service;
+
+                NSLog(@"debug : deskId : %@  serviceId  :   %@ " ,service.deskId, service._id);
+                DDLogWarn(@"开台成功,service :%@ " , [[service description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+
+                [progress hide:YES];
+                [self closePassProc];
+                [self hideProc];
+                [self.navigationController pushViewController:menubookVC animated:YES];
+            }];
+        }
+    }];
+
+
+
+}
+
+- (NSString *)getWaitterId {
+    NSString *curWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+
+    if (curWaitterId == nil || curWaitterId.length ==0) {
+        curWaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.userId"];
+    }
+    return curWaitterId;
+}
+
+//加菜
+-(void)addDishProc{
+
+    DDLogWarn(@"加菜按钮点击,service信息:%@", [[selectedDesk.service description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+
+    UIStoryboard *menubookStoryboard = [UIStoryboard storyboardWithName:@"DARootView" bundle:nil];
+    DARootViewController *menubookVC = [menubookStoryboard instantiateViewControllerWithIdentifier:@"menubookVC"];
+    menubookVC.curService = selectedDesk.service;
+    menubookVC.willAddItem = @"YES";
+    [self closePassProc];
+    [self hideProc];
+    [self.navigationController pushViewController:menubookVC animated:YES];
+}
+
+//退菜
+-(void)backDishProc{
+    DDLogWarn(@"退菜按钮点击,service信息:%@", [[selectedDesk.service description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+
+    DABackOrderViewController *backVc = [[DABackOrderViewController alloc] initWithNibName:@"DABackOrderViewController" bundle:nil servieId:selectedDesk.service._id deskId:selectedDesk._id];
+    backVc.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self.navigationController presentViewController:backVc animated:YES completion:nil];
+//    DAMyBackOrderViewController *vc = [[DAMyBackOrderViewController alloc] initWithNibName:@"DAMyBackOrderViewController" bundle:nil];
+//    vc.closeBackView = ^(){
+////        if ([self.popover isPopoverVisible]) {
+////            [self.popover dismissPopoverAnimated:YES];
+////        }
+////        [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+//        [self.navigationController dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade]  ;
+//    };
+//    vc.curService = self.curService;
+//
+//    self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
+//    self.popover.popoverContentSize = CGSizeMake(485, 400);
+//    [self.popover presentPopoverFromRect:btn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
+}
+
+//结账
+-(void)checkOutProc{
+
+}
+
+//换桌
+-(void)changeDeskProc{
+    isStartChangeTable = YES;
+    isTableFlicker = YES;
+    [self.collectionView reloadItemsAtIndexPaths:self.collectionView.indexPathsForVisibleItems];
+    [self hideProc];
+}
+
+//换桌
+-(void)hideProc{
+    [UIView animateWithDuration:0.3
+                     animations:^(void) {
+                         rsvc.view.frame = CGRectMake(1024, 134, 170, 500);
+                     }];
+}
+
+//关闭手势
+-(void)closePassProc{
+    [lockVC dismissViewControllerAnimated:NO completion:nil];
+}
+//==================
 @end
