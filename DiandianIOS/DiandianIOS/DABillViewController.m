@@ -13,6 +13,7 @@
 #import "DAPrintProxy.h"
 #import "ProgressHUD.h"
 #import "MBProgressHUD.h"
+#import "DABillOrderDetailViewController.h"
 
 #define kMaxNumber                       100000
 
@@ -176,23 +177,32 @@
 
 
 - (IBAction)onDetailTaped:(id)sender {
-    DABillDetailViewController *c = [[DABillDetailViewController alloc] initWithNibName:nil bundle:nil];
-    c.curService = self.curService;
-    c.offAmount = [NSString stringWithFormat:@"%f",offAmount];
-    c.payAmount = self.lblPay.text;
-    c.userPayAmount = self.textPay.text;
-    c.reduceAmount = self.textReduce.text;
-    c.parentReloadBlock = ^(){
-        [self reload];
-    };
-    
-    c.chanelBlock = ^() {
-        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-    };
+//    DABillDetailViewController *c = [[DABillDetailViewController alloc] initWithNibName:nil bundle:nil];
+//    c.curService = self.curService;
+//    c.offAmount = [NSString stringWithFormat:@"%f",offAmount];
+//    c.payAmount = self.lblPay.text;
+//    c.userPayAmount = self.textPay.text;
+//    c.reduceAmount = self.textReduce.text;
+//    c.parentReloadBlock = ^(){
+//        [self reload];
+//    };
+//
+//    c.chanelBlock = ^() {
+//        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+//    };
+//
+//    [self presentPopupViewController:c animationType:MJPopupViewAnimationFade dismissed:^{
+//        [self reload];
+//    }];
+//
+//
+//
+//    return;
+    DABillOrderDetailViewController *vc = [[DABillOrderDetailViewController alloc] initWithNibName:@"DABillOrderDetailViewController" bundle:nil service:self.curService];
 
-    [self presentPopupViewController:c animationType:MJPopupViewAnimationFade dismissed:^{
-        [self reload];
-    }];
+    vc.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
+
 }
 - (IBAction)onPreferentialTouched:(id)sender {
 
@@ -348,7 +358,7 @@
 {
 
     if(progress == nil){
-        progress = [MBProgressHUD showHUDAddedTo:self.view.window.rootViewController.view animated:YES];
+        progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         progress.mode = MBProgressHUDModeIndeterminate;
 
     }

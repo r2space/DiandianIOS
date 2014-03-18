@@ -17,6 +17,7 @@
     SEL _checkAction;
     SEL _changeAction;
 }
+@property (weak, nonatomic) IBOutlet UILabel *deskLabel;
 - (void)setTarget:(id)target
    withHideAction:(SEL)action1
        openAction:(SEL)action2

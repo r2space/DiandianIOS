@@ -28,5 +28,7 @@
 @property(retain, nonatomic) NSNumber *discount;
 @property(retain, nonatomic) NSNumber *amount;
 @property(retain, nonatomic) NSString *status;
-
+@property(retain, nonatomic) NSArray *option;
+@property(retain, nonatomic) NSString *selectedOption;
+@property(retain, nonatomic) NSString *noteName;
 @end

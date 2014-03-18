@@ -231,7 +231,7 @@ enum PrintErrorStatus
                     status = [print printText:billprint.printerIP addTextSize:1 TextHeight:1];
                     DDLogWarn(@"---------- 打印打印客户联/收银联结束,打印结果:%d ----------",status);
                     NSLog(@"打印  times %d",times++);
-                    if (times > 100) {
+                    if (times > 2) {
                         break;
                     } else {
                         [NSThread sleepForTimeInterval:0.5f];
@@ -437,7 +437,7 @@ enum PrintErrorStatus
                     DDLogWarn(@"待打印数据:%@ ",[tmpOrderPrintList description]);
                     status = [print printOrderText:printerSet.printerIP linesList:tmpOrderPrintList addTextSize:2 TextHeight:3];
                     DDLogWarn(@"---------- 打印后厨单结束,打印结果:%d ----------",status);
-                    if (times > 100) {
+                    if (times > 2) {
                         break;
                     } else {
                         [NSThread sleepForTimeInterval:0.5f];

@@ -10,6 +10,9 @@
 
 @implementation DAItem
 
++(Class) option_class {
+    return [NSString class];
+}
 
 
 -(void)encodeWithCoder:(NSCoder *)aCoder
@@ -30,8 +33,11 @@
     [aCoder encodeObject:self.soldout forKey:@"soldout"];
     
     [aCoder encodeObject:self.printerId forKey:@"printerId"];
-    
-    
+
+    [aCoder encodeObject:self.option forKey:@"option"];
+
+    [aCoder encodeObject:self.option forKey:@"selectedOption"];
+    [aCoder encodeObject:self.option forKey:@"noteName"];
     
 }
 
@@ -50,10 +56,13 @@
     self.smallimage = [aDecoder decodeObjectForKey:@"smallimage"];
     self.type = [aDecoder decodeObjectForKey:@"type"];
     self.soldout = [aDecoder decodeObjectForKey:@"soldout"];
-    
+
     self.printerId = [aDecoder decodeObjectForKey:@"printerId"];
     
-    
+    self.option = [aDecoder decodeObjectForKey:@"option"];
+    self.option = [aDecoder decodeObjectForKey:@"selectedOption"];
+    self.option = [aDecoder decodeObjectForKey:@"noteName"];
+
     return self;
 }
 

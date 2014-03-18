@@ -9,8 +9,12 @@
 #import "DAMyMenuBookPopupController.h"
 #import "DAMenuProxy.h"
 #import "ProgressHUD.h"
+#import "NSString+Util.h"
 
-@interface DAMyMenuBookPopupController ()<DAMyMenuBookPopupDelegate>
+@interface DAMyMenuBookPopupController ()<DAMyMenuBookPopupDelegate>{
+    NSArray *opsBtns;
+    UIColor *ios7BlueColor ;
+}
 
 @end
 
@@ -21,6 +25,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        ios7BlueColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+
     }
     return self;
 }
@@ -28,6 +34,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    opsBtns = [NSArray arrayWithObjects:self.optBtn1,self.optBtn2,self.optBtn3,self.optBtn4, nil];
+
     self.view.layer.cornerRadius = 10;
     self.view.layer.masksToBounds = YES;
     
@@ -58,7 +67,32 @@
         self.labelPrice.text = [NSString stringWithFormat:@"%@元",self.curItem.itemPriceNormal];
         [self.btnSmallAdd setHidden:YES];
     }
-    
+
+    NSArray  *opts= [self.curItem.selectedOption componentsSeparatedByString:@" "];
+
+
+    for (int j = 0; j < [opsBtns count]; j++) {
+         if(j < [self.curItem.option count]){
+             //((UIButton *)[opsBtns objectAtIndex:j]).titleLabel.text = [self.curItem.option objectAtIndex:j];
+             UIButton *btn = [opsBtns objectAtIndex:j];
+             [btn setTitle: [self.curItem.option objectAtIndex:j] forState:UIControlStateNormal];
+             [btn setHidden:NO];
+
+             for(id opt in opts){
+                 if([btn.titleLabel.text isEqualToString:opt]){
+                     btn.backgroundColor = ios7BlueColor;
+                     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                 }
+             }
+         }else{
+             [((UIButton *) [opsBtns objectAtIndex:j]) setHidden:YES];
+         }
+    }
+
+    if([NSString isNotEmpty:self.curItem.noteName]){
+        self.optInputLabel.text = self.curItem.noteName;
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,6 +114,7 @@
 
 //点菜机能
 - (IBAction)onAddTouched:(id)sender {
+    [self appendOptionToOrder];
     NSNotification *addOrderNotification = [NSNotification notificationWithName:@"menu_addOrder" object:self.curItem];
     
     [[NSNotificationCenter defaultCenter] postNotification:addOrderNotification];
@@ -90,6 +125,7 @@
 }
 
 - (IBAction)onAddSmallTouched:(id)sender {
+    [self appendOptionToOrder];
     NSNotification *notice = [NSNotification notificationWithName:@"menu_addSmallItem" object:self.curItem];
     
     [[NSNotificationCenter defaultCenter] postNotification:notice];
@@ -104,4 +140,47 @@
         [self.delegate cancelButtonClicked:self];
     }
 }
+- (IBAction)optBtnTouched:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    if([btn.backgroundColor isEqual:ios7BlueColor]){
+         btn.backgroundColor = [UIColor clearColor];
+        [btn setTitleColor:ios7BlueColor forState:UIControlStateNormal];
+    }else{
+        btn.backgroundColor = ios7BlueColor;
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }
+
+    
+}
+- (IBAction)optAddBtnTouched:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"输入备注信息" message:@"描述菜品口味,名称等" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1){
+          self.optInputLabel.text = [alertView textFieldAtIndex:0].text;
+    }
+}
+
+- (void)appendOptionToOrder{
+    NSMutableString *str = [[NSMutableString alloc] init];
+    for (int j = 0; j < opsBtns.count; j++) {
+        UIButton *btn = [opsBtns objectAtIndex:j];
+
+        if([[btn titleColorForState:UIControlStateNormal] isEqual:[UIColor whiteColor]] && !btn.hidden){
+            [str appendString:[NSString stringWithFormat:@" %@",btn.titleLabel.text]];
+        }
+    }
+    self.curItem.selectedOption = str;
+
+    NSMutableString *noteName = [[NSMutableString alloc] init];
+    if([NSString isNotEmpty:self.optInputLabel.text]){
+        [noteName appendString:[NSString stringWithFormat:@" %@",self.optInputLabel.text]];
+        self.curItem.noteName = noteName;
+    }
+}
+
 @end

@@ -11,7 +11,7 @@
 
 
 @protocol DAMyMenuBookPopupDelegate;
-@interface DAMyMenuBookPopupController : UIViewController
+@interface DAMyMenuBookPopupController : UIViewController<UIAlertViewDelegate>
 
 @property (assign, nonatomic) id <DAMyMenuBookPopupDelegate>delegate;
 - (IBAction)backTouched:(id)sender;
@@ -19,7 +19,7 @@
 - (IBAction)backThumbTouched:(id)sender;
 
 
-@property (retain, nonatomic) DAItem        *curItem;
+@property (retain, nonatomic) DAItem  *curItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;
@@ -36,7 +36,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSmallAdd;
 
 
-
+@property (weak, nonatomic) IBOutlet UIButton *optBtn1;
+@property (weak, nonatomic) IBOutlet UIButton *optBtn2;
+@property (weak, nonatomic) IBOutlet UIButton *optBtn3;
+@property (weak, nonatomic) IBOutlet UIButton *optBtn4;
+@property (weak, nonatomic) IBOutlet UIButton *optBtnAdd;
+@property (weak, nonatomic) IBOutlet UILabel *optInputLabel;
 
 @end
 

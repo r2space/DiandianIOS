@@ -46,6 +46,7 @@ static DAMyTableViewController *activity;
     int passErrorCount;
     MBProgressHUD *progress;
     DADesk *selectedDesk;
+    NSIndexPath *selectedIndexPath;
 }
 @end
 
@@ -78,6 +79,7 @@ static DAMyTableViewController *activity;
     [super viewDidAppear:animated];
     isShown = YES;
     selectedDesk = nil;
+    selectedIndexPath = nil;
     [self loadFromFile];
 }
 
@@ -261,11 +263,8 @@ static DAMyTableViewController *activity;
     
     // 这个好像被外面给覆盖了
     if (![desk isEmpty]) {
-        [cell.btnOrderList setHidden:NO];
-
         cell.imgTable.image = [UIImage imageNamed:@"desk_bottonl.png"];
     } else {
-        [cell.btnOrderList setHidden:YES];
         cell.imgTable.image = [UIImage imageNamed:@"desk_bottond.png"];
     }
 
@@ -309,7 +308,10 @@ static DAMyTableViewController *activity;
                 DDLogWarn(@"换台结束");
                 isStartChangeTable = NO;
                 isTableFlicker = NO;
+
                 selectedDesk = nil;
+                selectedIndexPath = nil;
+
                 //[self.collectionView reloadItemsAtIndexPaths:self.collectionView.indexPathsForVisibleItems];
 
                 [self loadFromFile];
@@ -318,7 +320,11 @@ static DAMyTableViewController *activity;
 
     }else{
         cell.backgroundColor = [UIColor orangeColor];
+        if(selectedIndexPath != nil && ![selectedIndexPath isEqual:indexPath]){
+            ((DAMyTableViewCell *)[collectionView cellForItemAtIndexPath:selectedIndexPath]).backgroundColor = [UIColor clearColor];
+        }
         selectedDesk = desk;
+        selectedIndexPath = indexPath;
         [self showSideMenu];
 
     }
@@ -382,18 +388,18 @@ static DAMyTableViewController *activity;
     }
     //[self.navigationController pushViewController:rsvc animated:YES];
 
-    [rsvc.view removeFromSuperview];
-    rsvc.view.frame = CGRectMake(1024, 134, 170, 500);
-    [self.view addSubview:rsvc.view];
+
     if (selectedDesk != nil) {
+        [rsvc.view removeFromSuperview];
+        rsvc.view.frame = CGRectMake(1024, 134, 170, 500);
+        [self.view addSubview:rsvc.view];
         [rsvc changeMode:selectedDesk.isEmpty];
-    } else {
-        [rsvc changeMode:NO];
+        rsvc.deskLabel.text = selectedDesk.name;
+        [UIView animateWithDuration:0.3
+                         animations:^(void) {
+                             rsvc.view.frame = CGRectMake(1024 - 160, 134, 170, 500);
+                         }];
     }
-    [UIView animateWithDuration:0.3
-                     animations:^(void) {
-                         rsvc.view.frame = CGRectMake(1024 - 160, 134, 170, 500);
-                     }];
 }
 
 //- (void)changeTable:(NSString *)serviceId
@@ -478,6 +484,7 @@ static DAMyTableViewController *activity;
 - (IBAction)showOrderQueueTouched:(id)sender {
 
     DAQueueMasterViewController *viewController = [[DAQueueMasterViewController alloc] initWithNibName:@"DAQueueMasterViewController" bundle:nil];
+    [self hideProc];
     [self.navigationController pushViewController:viewController animated:YES];
 
 
@@ -612,25 +619,19 @@ static DAMyTableViewController *activity;
     DABackOrderViewController *backVc = [[DABackOrderViewController alloc] initWithNibName:@"DABackOrderViewController" bundle:nil servieId:selectedDesk.service._id deskId:selectedDesk._id];
     backVc.modalPresentationStyle = UIModalPresentationFormSheet;
     [self.navigationController presentViewController:backVc animated:YES completion:nil];
-//    DAMyBackOrderViewController *vc = [[DAMyBackOrderViewController alloc] initWithNibName:@"DAMyBackOrderViewController" bundle:nil];
-//    vc.closeBackView = ^(){
-////        if ([self.popover isPopoverVisible]) {
-////            [self.popover dismissPopoverAnimated:YES];
-////        }
-////        [parentVC dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-//        [self.navigationController dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade]  ;
-//    };
-//    vc.curService = self.curService;
-//
-//    self.popover = [[UIPopoverController alloc]initWithContentViewController:vc];
-//    self.popover.popoverContentSize = CGSizeMake(485, 400);
-//    [self.popover presentPopoverFromRect:btn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 
 }
 
 //结账
 -(void)checkOutProc{
+    DDLogWarn(@"结账按钮点击,service信息:%@", [[selectedDesk.service description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 
+
+    DABillViewController *viewController = [[DABillViewController alloc]
+            initWithNibName:@"DABillViewController" bundle:nil];
+    viewController.curService = selectedDesk.service;
+    [self hideProc];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 //换桌

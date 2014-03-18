@@ -10,6 +10,7 @@
 #import "SmartSDK.h"
 #import "ProgressHUD.h"
 #import "DAPrintProxy.h"
+#import "UIViewController+MJPopupViewController.h"
 
 
 @interface DABillBackPopoverViewController ()
@@ -69,7 +70,7 @@
     NSString *tmpValue = [NSString stringWithFormat:@"%d",[tmpWillBackAmount intValue] - 1];
     int value = [tmpValue intValue];
     
-    if (value == 0 ) {
+    if (value < 0 ) {
         return;
     }
     
@@ -96,9 +97,7 @@
 }
 
 - (IBAction)confirmTouched:(id)sender {
-    
-    
-    
+
     
     NSString *tmpWillBackAmount = self.textWillBackAmount.text;
     if ([tmpWillBackAmount intValue] <= 0) {
@@ -109,24 +108,27 @@
     int value = [tmpValue intValue];
     NSLog(@"valud: %d",value);
     NSLog(@"[self.lblItemAmount.text intValue] : %d",[self.lblItemAmount.text intValue]);
-    
-    
+
+
     if (value > [self.lblItemAmount.text intValue] - [self.lblItemBackAmount.text intValue] ) {
         [ProgressHUD showError:@"没有可以退的"];
         return;
     }
-    [ProgressHUD show:@"退菜中"];
-    
-    [[DAOrderModule alloc]setBackOrderWithArray:dataList deskId:self.curService.deskId callback:^(NSError *err, DAMyOrderList *order) {
-        
-        [ProgressHUD show:@"退菜成功"];
-        self.closeBackView();
 
-    }];
+    self.backBlock([self.backDataList objectAtIndex:0]);
+
+//    [ProgressHUD show:@"退菜中"];
+//
+//    [[DAOrderModule alloc]setBackOrderWithArray:dataList deskId:self.curService.deskId callback:^(NSError *err, DAMyOrderList *order) {
+//
+//        [ProgressHUD show:@"退菜成功"];
+//        self.closeBackView();
+//
+//    }];
 }
 
 - (IBAction)cancelTouched:(id)sender {
-    self.closeBackView();
+    self.cancelBlock();
 }
 
 @end

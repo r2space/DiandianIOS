@@ -10,6 +10,8 @@
 #import "SmartSDK.h"
 
 typedef void (^CloseBillBackPopover)();
+typedef void (^BackOrderBlock)(DAOrder *order);
+typedef void (^CancelBlock)();
 @interface DABillBackPopoverViewController : UIViewController
 
 @property(nonatomic ,strong) NSMutableArray *backDataList;
@@ -20,5 +22,6 @@ typedef void (^CloseBillBackPopover)();
 
 @property (weak, nonatomic) IBOutlet UITextField *textWillBackAmount;
 @property (nonatomic, copy) CloseBillBackPopover closeBackView;
-
+@property (nonatomic, copy) BackOrderBlock backBlock;
+@property (nonatomic, copy) CancelBlock cancelBlock ;
 @end

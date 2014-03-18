@@ -10,15 +10,14 @@
 #import "SmartSDK.h"
 
 @interface DAMyTableViewCell : UICollectionViewCell
-@property (strong, nonatomic) IBOutlet UILabel *tableTitle;
-@property (strong, nonatomic) IBOutlet UILabel *tableState;
-@property (strong, nonatomic) IBOutlet UIButton *unfinishedCount;
+@property (weak, nonatomic) IBOutlet UILabel *tableTitle;
+@property (weak, nonatomic) IBOutlet UILabel *tableState;
+@property (weak, nonatomic) IBOutlet UIButton *unfinishedCount;
 @property (weak, nonatomic) IBOutlet UIImageView *imgTable;
 @property (weak, nonatomic) IBOutlet UIView *viewMask;
 @property (weak, nonatomic) IBOutlet UIView *viewLabel;
-@property (weak, nonatomic) IBOutlet UIButton *btnOrderList;
 
 @property (retain, nonatomic) DADesk *curDesk;
 
-- (void)setData:(DADesk *)mytable;
+- (void)setData:(DADesk *)desk;
 @end

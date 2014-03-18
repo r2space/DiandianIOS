@@ -211,7 +211,16 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)doneTouched:(id)sender {
+
+    if(backDataList == nil || [backDataList count] == 0){
+        progress.mode =  MBProgressHUDModeText;
+        [self showIndicator:@"没有要退的菜品"];
+        [progress hide:YES afterDelay:1];
+        return;
+    }
+
     NSMutableString *msg = [[NSMutableString alloc] init];
+    [msg appendString:@"\n"];
     for (DAOrder *order in backDataList) {
         [msg appendString: [NSString stringWithFormat:@"品名:%@  数量:%@ \n", order.item.itemName,order.willBackAmount]];
     }
@@ -221,22 +230,32 @@
 }
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 1){
-        [self showIndicator:@"退菜中"];
+        [self showIndicator:@"退菜中..."];
         DDLogWarn(@"需要退的菜品:%@", [[backDataList description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 
-        [[DAOrderModule alloc]setBackOrderWithArray:backDataList deskId:deskid callback:^(NSError *err, DAMyOrderList *order) {
-            [progress hide:YES];
-            if(err!= nil){
-                DDLogWarn(@"%@", err);
-                [ProgressHUD showError:@"退菜失败"];
-            }else{
-                DDLogWarn(@"退菜结束,service 信息:%@", serviceId);
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [DAPrintProxy addOrderBackPrint:backDataList];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[DAOrderModule alloc]setBackOrderWithArray:backDataList deskId:deskid callback:^(NSError *err, DAMyOrderList *order) {
+                    [progress hide:YES];
+                    if(err!= nil){
+                        DDLogWarn(@"%@", err);
+                        [ProgressHUD showError:@"退菜失败"];
+                    }else{
+                        DDLogWarn(@"退菜结束,service 信息:%@", serviceId);
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    }
 
-        }];
+                }];
+            });
 
-        [DAPrintProxy addOrderBackPrint:backDataList];
+
+        });
+
+
+
+
+
     }
 }
 @end
