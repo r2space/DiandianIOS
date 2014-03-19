@@ -10,6 +10,7 @@
 #import "ProgressHUD.h"
 #import "Tool.h"
 #import "MBProgressHUD.h"
+#import "NSString+Util.h"
 
 #define SEND_TIMEOUT    30 * 1000
 #define PRINT_NAME      @"TM-T88V"
@@ -310,9 +311,9 @@ enum PrintErrorStatus
         NSString *line;
         NSString *tmpAmount = [NSString stringWithFormat:@"%@",willOrder.amount];
         if ([willOrder.type  integerValue] == 0) {
-            line = [NSString stringWithFormat:@"%@  %@份  %@元" ,willOrder.item.itemName,tmpAmount,willOrder.item.itemPriceNormal];
+            line = [NSString stringWithFormat:@"%@  %@份  %@元%@" ,willOrder.item.itemName,tmpAmount,willOrder.item.itemPriceNormal,[DAPrintProxy buildOptStr:willOrder.item]];
         } else {
-            line = [NSString stringWithFormat:@"%@ （小份）  %@份  %@元" ,willOrder.item.itemName,tmpAmount,willOrder.item.itemPriceHalf];
+            line = [NSString stringWithFormat:@"%@ （小份）  %@份  %@元%@" ,willOrder.item.itemName,tmpAmount,willOrder.item.itemPriceHalf,[DAPrintProxy buildOptStr:willOrder.item]];
         }
         
         [print1 addLine:line];
@@ -391,9 +392,9 @@ enum PrintErrorStatus
                 NSString *line;
                 NSString *tmpAmount = [NSString stringWithFormat:@"%@",willOrderA.amount];
                 if ([willOrderA.type  integerValue] == 0) {
-                    line = [NSString stringWithFormat:@"%@  %@份 " ,willOrderA.item.itemName,tmpAmount];
+                    line = [NSString stringWithFormat:@"%@  %@份 %@" ,willOrderA.item.itemName,tmpAmount,[DAPrintProxy buildOptStr:willOrderA.item]];
                 } else {
-                    line = [NSString stringWithFormat:@"%@ （小份）  %@份 " ,willOrderA.item.itemName,tmpAmount];
+                    line = [NSString stringWithFormat:@"%@ （小份）  %@份 %@" ,willOrderA.item.itemName,tmpAmount,[DAPrintProxy buildOptStr:willOrderA.item]];
                 }
                 
                 [tmpOrderCheckPrintLine addObject:line];
@@ -419,9 +420,9 @@ enum PrintErrorStatus
                 NSString *line;
                 
                 if ([willOrder.type  integerValue] == 0) {
-                    line = [NSString stringWithFormat:@"%@  %@份 " ,willOrder.item.itemName,willOrder.amount];
+                    line = [NSString stringWithFormat:@"%@  %@份 %@" ,willOrder.item.itemName,willOrder.amount,[DAPrintProxy buildOptStr:willOrder.item]];
                 } else {
-                    line = [NSString stringWithFormat:@"%@ （小份）  %@份 " ,willOrder.item.itemName,willOrder.amount];
+                    line = [NSString stringWithFormat:@"%@ （小份）  %@份 %@" ,willOrder.item.itemName,willOrder.amount,[DAPrintProxy buildOptStr:willOrder.item]];
                 }
             
                 [tmpOrderPrintLine addObject:line];
@@ -465,6 +466,21 @@ enum PrintErrorStatus
     
 }
 
++ (NSString *) buildOptStr:(DAItem *) item{
+    NSMutableString *str = [[NSMutableString alloc] init];
+
+    NSString *noteName = [item.noteName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    if([NSString isNotEmpty:noteName]){
+        [str appendString:[NSString stringWithFormat:@"[%@]",noteName]];
+    }
+
+    NSString *optstr = [item.selectedOption stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if([NSString isNotEmpty:optstr]){
+         [str appendString:[NSString stringWithFormat:@"(%@)",optstr]];
+    }
+    return str;
+}
 
 - (id)init {
     self = [super init];

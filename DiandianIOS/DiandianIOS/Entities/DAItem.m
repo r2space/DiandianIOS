@@ -36,8 +36,8 @@
 
     [aCoder encodeObject:self.option forKey:@"option"];
 
-    [aCoder encodeObject:self.option forKey:@"selectedOption"];
-    [aCoder encodeObject:self.option forKey:@"noteName"];
+    [aCoder encodeObject:self.selectedOption forKey:@"selectedOption"];
+    [aCoder encodeObject:self.noteName forKey:@"noteName"];
     
 }
 
@@ -60,8 +60,8 @@
     self.printerId = [aDecoder decodeObjectForKey:@"printerId"];
     
     self.option = [aDecoder decodeObjectForKey:@"option"];
-    self.option = [aDecoder decodeObjectForKey:@"selectedOption"];
-    self.option = [aDecoder decodeObjectForKey:@"noteName"];
+    self.selectedOption = [aDecoder decodeObjectForKey:@"selectedOption"];
+    self.noteName = [aDecoder decodeObjectForKey:@"noteName"];
 
     return self;
 }
