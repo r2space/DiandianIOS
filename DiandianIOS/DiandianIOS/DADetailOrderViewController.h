@@ -17,6 +17,7 @@ typedef void(^CancelBlock)();
 @interface DADetailOrderViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTotal;
+@property (weak, nonatomic) IBOutlet UILabel *lblOption;
 
 //显示总价的label
 @property (weak, nonatomic) IBOutlet UILabel *amountPriceLabel;

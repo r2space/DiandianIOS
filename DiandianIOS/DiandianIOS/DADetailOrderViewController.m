@@ -27,7 +27,6 @@
     NSString *command;
     UIView *mask;
     int errorCount;
-    
 }
 @property (nonatomic, strong) UIPopoverController *remarkViewPopover;
 @end
@@ -72,7 +71,7 @@
         } else {
             
             if ([command isEqualToString:@"confirm"]) {
-                self.confirmCallback(@"");
+                self.confirmCallback(self.lblOption.text);
                 [self.navigationController dismissViewControllerAnimated:YES completion:nil];
             }
             
@@ -140,9 +139,13 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DADetailOrderCell"];
     [self loadTableFromDisk];
     [self loadAmountPrice];
-    mask = [[UIView alloc]init];
-    mask.frame = CGRectMake(0, 0, 828, 600);
     
+    if (mask == nil) {
+        mask = [[UIView alloc]init];
+        mask.frame = CGRectMake(0, 0, 828, 600);
+    }
+    
+    self.lblOption.text = @"";
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -157,8 +160,6 @@
     if([paths count]>0){
         
         self.orderList = [[DAMyOrderList alloc]unarchiveObjectWithFileWithPath:@"orderList" withName:FILE_ORDER_LIST(self.curService._id)];
-        
-        
         [self.tableView reloadData];
         return YES;
     }
@@ -227,6 +228,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    NSLog(@"内存不足");
 }
 
 
@@ -532,6 +534,19 @@
 - (void)backmenuButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)optAddBtnTouched:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"输入备注信息" message:@"当前订单的备注信息。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1){
+        self.lblOption.text = [alertView textFieldAtIndex:0].text;
+    }
 }
 
 
