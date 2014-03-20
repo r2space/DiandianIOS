@@ -7,9 +7,11 @@
 //
 
 #import "DAUnfinishedOrderCell.h"
+#import "DABillBackPopoverViewController.h"
 
 @implementation DAUnfinishedOrderCell{
     DAOrder* orderData;
+    UIPopoverController *popover;
 }
 
 - (void)awakeFromNib
@@ -62,6 +64,27 @@
     
     orderData = order;
 }
-- (IBAction)backBtnTouched:(id)sender {
+- (IBAction)backBtnTouched:(UIButton *)sender {
+
+    DABillBackPopoverViewController* vCtrl = [[DABillBackPopoverViewController alloc] initWithNibName:@"DABillBackPopoverViewController" bundle:nil];
+
+    NSMutableArray * backDataList = [[NSMutableArray alloc]init];
+    [backDataList addObject:orderData];
+
+    vCtrl.backDataList = backDataList;
+
+    vCtrl.backBlock = ^(DAOrder *order){
+        [popover dismissPopoverAnimated:YES];
+        self.backCallback(order);
+    };
+
+    vCtrl.cancelBlock = ^(){
+        [popover dismissPopoverAnimated:YES];
+    };
+
+    popover = [[UIPopoverController alloc]initWithContentViewController:vCtrl];
+    popover.popoverContentSize = CGSizeMake(328, 256);
+
+    [popover presentPopoverFromRect:sender.frame inView:self.contentView permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 @end

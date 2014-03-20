@@ -112,6 +112,7 @@
 -(void)reload
 {
     [[DAServiceModule alloc]getBillByServiceId:self.curService._id callback:^(NSError *err, DABill *bill) {
+        [progress hide:YES];
         billData = bill;
         self.lblTotal.text = [NSString stringWithFormat:@"%.02f元",[bill.amount floatValue]];
         //判断是否是  外卖
@@ -200,7 +201,10 @@
 //
 //    return;
     DABillOrderDetailViewController *vc = [[DABillOrderDetailViewController alloc] initWithNibName:@"DABillOrderDetailViewController" bundle:nil service:self.curService];
-
+    vc.parentReloadBlock = ^(){
+        [self showIndicator:@"刷新中"];
+        [self reload];
+    };
     vc.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 
@@ -245,36 +249,6 @@
     }else{
         [self printProc];
     }
-
-
-
-
-//
-//    [self showIndicator:@"等待打印"];
-//
-//    [[DAServiceModule alloc]stopService:self.curService._id
-//                                 amount:[billData.amount stringValue]
-//                                 profit:self.lblPay.text
-//                                   agio:[NSString stringWithFormat:@"%f",offAmount]
-//                                userPay:self.textPay.text
-//                           preferential:self.textReduce.text
-//                                payType:[NSString stringWithFormat:@"%d" ,(int)payType]
-//                               callback:^(NSError *err, DAService *service)
-//                                    {
-//                                        if (err!=nil || service == nil || service.billNum == nil) {
-//                                            [progress hide:YES];
-//                                            [ProgressHUD showError:@"网络连接失败，请重新打印。"];
-//                                            return;
-//                                        }
-//                                        NSLog(@"billNum: %@",service.billNum);
-//
-//                                        DDLogWarn(@"开始打印收银联,service id : %@ ,bill num : %@",service._id,service.billNum);
-//
-//                                        [DAPrintProxy printBill:self.curService._id off:[NSString stringWithFormat:@"%f",offAmount] pay:self.lblPay.text userPay:self.textPay.text type:payType reduce:self.textReduce.text seq:service.billNum progress:progress];
-//
-//                                        DDLogWarn(@"收银联打印结束");
-//                                        [self.navigationController popViewControllerAnimated:YES];
-//                                    }];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -287,6 +261,8 @@
 
 -(void)printProc{
     [self showIndicator:@"等待打印"];
+
+    DDLogWarn(@"实付款输入框金额为:%@",self.textPay.text);
 
     [[DAServiceModule alloc]stopService:self.curService._id
                                  amount:[billData.amount stringValue]
