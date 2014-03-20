@@ -19,10 +19,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *labelTips;
 @property (retain, nonatomic) NSString *curUserId;
 @property (nonatomic, retain) DAService *curService;
+@property (retain, nonatomic) NSString *command;
 
 @property (assign, nonatomic) id <DAMyOrderLoginDelegate>delegate;
 
-
+@property(nonatomic ,retain) UINavigationController *navigationController;
 
 
 

@@ -211,7 +211,7 @@
     [[DAOrderModule alloc]setBackOrderWithArray:dataList deskId:service.deskId callback:^(NSError *err, DAMyOrderList *order) {
         if (err!=nil) {
             [self showIndicator:@"退菜失败..."];
-            DDLogWarn(@"%@","结账页面退菜失败");
+            DDLogWarn(@"%@",@"结账页面退菜失败");
             [progress hide:YES afterDelay:1000];
         }else{
             [self loadData];

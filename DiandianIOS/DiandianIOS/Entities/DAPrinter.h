@@ -16,5 +16,7 @@
 @property (retain, nonatomic) NSString  *type;
 @property (retain, nonatomic) NSNumber  *need;
 @property (retain, nonatomic) NSNumber  *valid;
+@property (retain, nonatomic) NSString  *invoiceHead;
+@property (retain, nonatomic) NSString  *invoiceTail;
 
 @end

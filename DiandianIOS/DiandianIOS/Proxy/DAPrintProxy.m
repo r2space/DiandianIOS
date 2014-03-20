@@ -109,6 +109,11 @@ enum PrintErrorStatus
 
         DDLogWarn(@"获取账单信息[service id : %@]结果:@%", serviceId,[[bill description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 
+        DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
+        
+        if (billprint.invoiceHead) {
+            [print addLine:[NSString stringWithFormat:@"%@",billprint.invoiceHead]];
+        }
 
         [print addLine:@""];
         if (seq.length > 0) {
@@ -126,10 +131,11 @@ enum PrintErrorStatus
 
         
         
+
         
         [[DAOrderModule alloc] getOrderListByServiceId:serviceId withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
 
-            DDLogWarn(@"获取所有order信息[service id : %@]结果:@%", serviceId,[[list description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+            DDLogWarn(@"获取所有order信息 [ service id : %@ ] 结果:@%", serviceId,[[list description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 
             NSMutableArray *freeOrderList = [[NSMutableArray alloc]init];
             NSMutableArray *backOrderList = [[NSMutableArray alloc]init];
@@ -218,9 +224,11 @@ enum PrintErrorStatus
             [print addLine:@""];
             [print addLine:@""];
             [print addLine:@"促销活动酒水、主食、个别菜不打折"];
+            
+            if (billprint.invoiceTail) {
+                [print addLine:[NSString stringWithFormat:@"%@",billprint.invoiceTail]];
+            }
 
-                
-            DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
             if (billprint != nil && billprint.printerIP!=nil && billprint.printerIP.length > 0 ) {
                 int status = -1;
                 int times = 0;

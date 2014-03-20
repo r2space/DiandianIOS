@@ -8,8 +8,6 @@
 
 #import "DAMyOrderViewController.h"
 #import "DAMyOrderDetailViewController.h"
-#import "UIViewController+CWPopup.h"
-#import "UIViewController+MJPopupViewController.h"
 #import "DADetailOrderViewController.h"
 #import "DAOrderRecipeBtn.h"
 #import "DAMyOrderLoginViewController.h"
@@ -385,8 +383,6 @@
     detailOrderVC.curService = self.curService;
     detailOrderVC.confirmCallback = ^(NSString *tips){
         [self loadTableFromDisk];
-        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-        
         
         //改为接口提交订单
          NSArray *orderList = [self.dataList toArray];
@@ -446,12 +442,17 @@
         
     };
     detailOrderVC.cancelCallback = ^(){
-        [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
-        [self.navigationController popViewControllerAnimated:YES];
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
     };
     
+    detailOrderVC.navigationController = self.navigationController;
+    detailOrderVC.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+    [self.navigationController presentViewController:detailOrderVC animated:YES completion:nil];
     
-    [self presentPopupViewController:detailOrderVC animationType:MJPopupViewAnimationFade];
+//    [self presentPopupViewController:detailOrderVC animationType:MJPopupViewAnimationFade];
     
 }
 

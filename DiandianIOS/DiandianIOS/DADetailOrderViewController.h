@@ -31,7 +31,7 @@ typedef void(^CancelBlock)();
 @property (nonatomic, copy) CancelBlock cancelCallback;
 
 @property (retain, nonatomic) DAService *curService;
-
+@property(nonatomic ,retain) UINavigationController *navigationController;
 
 @property (assign, nonatomic) id <DADetailOrderDelegate>delegate;
 - (IBAction)closePopup:(id)sender;

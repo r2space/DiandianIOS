@@ -18,7 +18,8 @@
     [aCoder encodeObject:self.type forKey:@"type"];
     [aCoder encodeObject:self.valid forKey:@"valid"];
     [aCoder encodeObject:self.need forKey:@"need"];
-    
+    [aCoder encodeObject:self.invoiceHead forKey:@"invoiceHead"];
+    [aCoder encodeObject:self.invoiceTail forKey:@"invoiceTail"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -29,6 +30,8 @@
     self.type = [aDecoder decodeObjectForKey:@"type"];
     self.valid = [aDecoder decodeObjectForKey:@"valid"];
     self.need = [aDecoder decodeObjectForKey:@"need"];
+    self.invoiceHead = [aDecoder decodeObjectForKey:@"invoiceHead"];
+    self.invoiceTail = [aDecoder decodeObjectForKey:@"invoiceTail"];
     
     return self;
 }

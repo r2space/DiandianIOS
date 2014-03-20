@@ -14,6 +14,7 @@
 #import "DAMenuProxy.h"
 #import "ProgressHUD.h"
 #import "DAPickAmountViewController.h"
+#import "DrawPatternLockViewController.h"
 
 #define AMOUNT_LABEL_TAG 101
 
@@ -22,37 +23,99 @@
 {
     UIPopoverController *popover;
     DAPickAmountViewController *popoverContent;
+    DrawPatternLockViewController *lockVC;
+    NSString *command;
+    UIView *mask;
+    int errorCount;
+    
 }
 @property (nonatomic, strong) UIPopoverController *remarkViewPopover;
 @end
 
 @implementation DADetailOrderViewController
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    self.view.superview.bounds = CGRectMake(0, 0, 828, 600);
+}
+
 - (IBAction)closePopup:(id)sender
 {
+    
     if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
         [self.delegate cancelButtonClicked:self];
     }
 }
 
 
+- (void)lockEntered:(NSString*)key {
+    NSString *WaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
+    
+    [[DALoginModule alloc]checkPattern:key userId:WaitterId callback:^(NSError *error, NSDictionary *user) {
+        if (error!=nil) {
+            [ProgressHUD showError:@"服务器异常！"];
+            [mask removeFromSuperview];
+            [lockVC.view removeFromSuperview];
+            return ;
+        }
+        NSNumber *isRight = [user objectForKey:@"isRight"];
+        
+        if (![isRight boolValue]) {
+            errorCount++;
+            [ProgressHUD showError:@"手势密码验证错误。"];
+            if (errorCount == 3) {
+                [mask removeFromSuperview];
+                [lockVC.view removeFromSuperview];
+            }
+            
+        } else {
+            
+            if ([command isEqualToString:@"confirm"]) {
+                self.confirmCallback(@"");
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            }
+            
+            if ([command isEqualToString:@"cancel"]) {
+                
+                //返回台位
+                self.cancelCallback();
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+            }
+        }
+    }];
+    
+}
+
+
 - (IBAction)confirmOrder:(id)sender
 {
-
-//    if (self.delegate && [self.delegate respondsToSelector:@selector(confirmButtonClicked:)]) {
-//        [self.delegate confirmButtonClicked:self];
-//    }
+    command = @"confirm";
+    lockVC = [[DrawPatternLockViewController alloc] init];
+    [ProgressHUD showError:@"请验证手势密码"];
+    errorCount = 0 ;
+    [lockVC setTarget:self withAction:@selector(lockEntered:)];
     
-    DAMyOrderLoginViewController * loginVC =[[DAMyOrderLoginViewController alloc]initWithNibName:@"DAMyOrderLoginViewController" bundle:nil];
-    loginVC.delegate = self;
-    loginVC.curService = self.curService;
-    
-    [self presentPopupViewController:loginVC animationType:MJPopupViewAnimationFade];
+    [self.view addSubview:mask];
+    lockVC.view.frame = CGRectMake(0, 0, 400, 300);
+    lockVC.view.center = CGPointMake(828 / 2, 600 / 2);
+    [self addChildViewController:lockVC];
+    [self.view addSubview:lockVC.view];
 }
 
 - (IBAction)backTableClick:(id)sender {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(backButtonClicked:)]) {
-        [self.delegate backButtonClicked:self];
-    }
+    
+    command = @"cancel";
+    lockVC = [[DrawPatternLockViewController alloc] init];
+    [ProgressHUD showError:@"请验证手势密码"];
+    errorCount = 0 ;
+    [lockVC setTarget:self withAction:@selector(lockEntered:)];
+    
+    [self.view addSubview:mask];
+    lockVC.view.frame = CGRectMake(0, 0, 400, 300);
+    lockVC.view.center = CGPointMake(828 / 2, 600 / 2);
+    [self addChildViewController:lockVC];
+    [self.view addSubview:lockVC.view];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -77,6 +140,8 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"DADetailOrderCell"];
     [self loadTableFromDisk];
     [self loadAmountPrice];
+    mask = [[UIView alloc]init];
+    mask.frame = CGRectMake(0, 0, 828, 600);
     
 }
 
@@ -455,18 +520,18 @@
 {
     //确认订单 并提交
     self.confirmCallback(loginViewViewController.labelTips.text);
-    
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)cancelOrderButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
 {
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
     //取消 返回桌台
     self.cancelCallback();
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 - (void)backmenuButtonClicked:(DAMyOrderLoginViewController*)loginViewViewController
 {
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationFade];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

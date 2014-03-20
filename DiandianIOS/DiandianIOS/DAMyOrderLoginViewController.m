@@ -26,6 +26,13 @@
 
 @implementation DAMyOrderLoginViewController
 
+
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    self.view.superview.bounds = CGRectMake(0, 0, 468, 300);
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,8 +45,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.layer.cornerRadius = 10;
-    self.view.layer.masksToBounds = YES;
+//    self.view.layer.cornerRadius = 10;
+//    self.view.layer.masksToBounds = YES;
     
     
     self.labelName.delegate = self;
@@ -49,6 +56,11 @@
     //判断输入三次返回
     errorCount = 0 ;
     self.labelName.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserName"];
+    [ProgressHUD showError:@"请验证手势密码"];
+    [lockVC setTarget:self withAction:@selector(lockEntered:)];
+    lockVC.view.frame = CGRectMake(0, 0, 468, 300);
+    [self addChildViewController:lockVC];
+    [self.view addSubview:lockVC.view];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -61,6 +73,9 @@
             [wDataList addObject:user];
         }
     }];
+    willSave = [NSString stringWithFormat:@"confirm"];
+    errorCount = 0 ;
+
 }
 
 
@@ -84,18 +99,18 @@
 
         } else {
 
-            if ([willSave isEqualToString:@"confirm"]) {
-                //验证后直接开台
+            if ([self.command isEqualToString:@"confirm"]) {
+                //返回台位
                 if (self.delegate && [self.delegate respondsToSelector:@selector(confirmOrderButtonClicked:)]) {
                     [self.delegate confirmOrderButtonClicked:self];
                 }
-                
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
             }
-            if ([willSave isEqualToString:@"cancel"]) {
-                if (self.delegate && [self.delegate respondsToSelector:@selector(cancelOrderButtonClicked:)]) {
-                    [self.delegate cancelOrderButtonClicked:self];
-                }
-                
+            
+            if ([self.command isEqualToString:@"cancel"]) {
+
+                //返回台位
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
             }
         }
     }];
