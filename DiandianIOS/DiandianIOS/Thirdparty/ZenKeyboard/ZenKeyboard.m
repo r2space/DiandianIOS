@@ -7,6 +7,8 @@
 //
 
 #import "ZenKeyboard.h"
+#import "NSString+Util.h"
+
 #define kMaxNumber                       100000000
 
 @interface ZenKeyboard()
@@ -140,7 +142,11 @@
 //    } else {
 //        
 //    }
+    [_textField deleteBackward];
     self.num = [[NSMutableString alloc]init];
+    if([NSString isNotEmpty:_textField.text]){
+        [self.num appendString:[_textField.text substringToIndex:[_textField.text length] - 1]];
+    }
     _textField.text = self.num;
 }
 

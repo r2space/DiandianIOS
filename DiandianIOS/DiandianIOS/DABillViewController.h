@@ -11,7 +11,7 @@
 #import "ZenKeyboard.h"
 
 @class DAService;
-@interface DABillViewController : UIViewController
+@interface DABillViewController : UIViewController <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lblTotal;
 @property (weak, nonatomic) IBOutlet UILabel *lblOff;
 @property (weak, nonatomic) IBOutlet UILabel *lblReduce;

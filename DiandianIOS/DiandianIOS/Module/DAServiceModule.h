@@ -43,6 +43,7 @@
             userPay:(NSString *) userPay
        preferential:(NSString *) preferential
             payType:(NSString *) payType
+               note:(NSString *) note
            callback:(void (^)(NSError *err, DAService *service))callback;
 
 @end

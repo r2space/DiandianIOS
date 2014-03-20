@@ -15,477 +15,471 @@
 #define SEND_TIMEOUT    30 * 1000
 #define PRINT_NAME      @"TM-T88V"
 
-enum PrintErrorStatus
-{
-	PRINT_ERROR = -1,
-	PRINT_SUCCESS = 0
+enum PrintErrorStatus {
+    PRINT_ERROR = -1,
+    PRINT_SUCCESS = 0
 };
 
-@implementation DAPrintProxy
-{
+@implementation DAPrintProxy {
     NSMutableArray *lines;
 }
 
--(NSMutableArray *) getLines
-{
+- (NSMutableArray *)getLines {
     return lines;
 }
 
-+(void) testPrinter
-{
-    
++ (void)testPrinter {
+
     [ProgressHUD show:@"正在配置打印机"];
     NSMutableArray *tmpPrinterList = [[NSMutableArray alloc] init];
     [[DAPrinterModule alloc] getPrinterList:^(NSError *err, DAPrinterList *list) {
-        
-        NSLog(@"%@",list);
+
+        NSLog(@"%@", list);
         for (DAPrinter *printSet in list.items) {
             //初始化当作打印机失效
             printSet.valid = [NSNumber numberWithInt:0];
             DAPrintProxy *print = [[DAPrintProxy alloc] init];
             [print addLine:@"测试打印机"];
-            [print addLine:[NSString stringWithFormat:@"测试名称：%@" ,printSet.name]];
-            
+            [print addLine:[NSString stringWithFormat:@"测试名称：%@", printSet.name]];
+
             [print addLine:@"单号：0021 包：4 下单时间：18:30"];
             [print addSplit];
-            
+
             [print addSplit];
-            
+
             int result = [print printText:printSet.printerIP addTextSize:2 TextHeight:1];
-            NSLog(@"testPrinter判断打印机状态   判断是否 :%d",result);
-            
+            NSLog(@"testPrinter判断打印机状态   判断是否 :%d", result);
+
             if (result == 0) {
                 //根据返回值  设置 打印机有效
                 printSet.valid = [NSNumber numberWithInt:1];
-                
+
             }
-            
+
             if ([printSet.type isEqualToString:@"2"]) {
                 [printSet archiveRootObjectWithPath:@"printer" withName:@"billprinter"];
             }
             [tmpPrinterList addObject:printSet];
         }
-        
+
         list.items = [[NSArray alloc] initWithArray:tmpPrinterList];
         [list archiveRootObjectWithPath:@"printer" withName:@"printer"];
-        
+
         [ProgressHUD dismiss];
-        
+
     }];
-    
+
 }
 
-+(void) withOrderPrintLine:(DAOrder *)order print:(DAPrintProxy *)print{
++ (void)withOrderPrintLine:(DAOrder *)order print:(DAPrintProxy *)print {
     NSString *line;
-    NSString *amount = [NSString stringWithFormat:@"%@",order.amount];
+    NSString *amount = [NSString stringWithFormat:@"%@", order.amount];
     NSString *name;
     int price = 0;
-    
-    
+
+
     if ([order.type intValue] == 0) {
         price = [order.item.itemPriceNormal intValue];
         name = order.item.itemName;
     } else {
         price = [order.item.itemPriceHalf intValue];
-        name = [NSString stringWithFormat:@"%@(小份)",order.item.itemName];
-        
+        name = [NSString stringWithFormat:@"%@(小份)", order.item.itemName];
+
     }
-    
-    line = [NSString stringWithFormat:@"%@ %0.2f    %@份  %@元" ,[Tool stringWithPad:name length:10] ,(float)price ,amount,order.amountPrice];
-    
+
+    line = [NSString stringWithFormat:@"%@ %0.2f    %@份  %@元", [Tool stringWithPad:name length:10], (float) price, amount, order.amountPrice];
+
     [print addLine:line];
 }
 
-+(void) printBill: (NSString *) serviceId
++ (void)printBill:(NSString *)serviceId
               off:(NSString *)off
               pay:(NSString *)pay
           userPay:(NSString *)userPay
-             type:(NSInteger * )type
-          reduce :(NSString *)reduce
+             type:(NSInteger *)type
+           reduce:(NSString *)reduce
               seq:(NSString *)seq
-         progress:(MBProgressHUD *)progress
-{
+       completion:(void (^)(NSError *err))callback {
     DAPrintProxy *print = [[DAPrintProxy alloc] init];
-    [[DAServiceModule alloc]getBillByServiceId:serviceId callback:^(NSError *err, DABill *bill) {
+    [[DAServiceModule alloc] getBillByServiceId:serviceId callback:^(NSError *err, DABill *bill) {
 
-        DDLogWarn(@"获取账单信息[service id : %@]结果:@%", serviceId,[[bill description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
-
-        DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
-        
-        if (billprint.invoiceHead) {
-            [print addLine:[NSString stringWithFormat:@"%@",billprint.invoiceHead]];
+        if (err != nil) {
+            callback(err);
+            DDLogWarn(@"获取service 出错:%@", err);
+            return;
         }
-
-        [print addLine:@""];
-        if (seq.length > 0) {
-            [print addLine:[NSString stringWithFormat:@"                 滋味厨房  收银联"]];
-        } else {
-            [print addLine:[NSString stringWithFormat:@"                 滋味厨房  客户联"]];
-        }
-        [print addLine:[NSString stringWithFormat:@"序号：%@",seq]];
-        if ([bill.service.type intValue] == 3) {
-            [print addLine:[NSString stringWithFormat:@"手机号:%@",bill.service.phone]];
-        } else {
-            [print addLine:[NSString stringWithFormat:@"台位:%@",bill.desk.name]];
-        }
-
-
-        
-        
-
-        
         [[DAOrderModule alloc] getOrderListByServiceId:serviceId withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
-
-            DDLogWarn(@"获取所有order信息 [ service id : %@ ] 结果:@%", serviceId,[[list description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
-
-            NSMutableArray *freeOrderList = [[NSMutableArray alloc]init];
-            NSMutableArray *backOrderList = [[NSMutableArray alloc]init];
-            NSMutableArray *doneOrderList = [[NSMutableArray alloc]init];
-            NSMutableArray *undoneOrderList = [[NSMutableArray alloc]init];
-            
-            
-            
-            NSDate *now = [[NSDate alloc] init];
-            [print addLine:[NSString stringWithFormat:@"时间:%@", [Tool stringFromISODateForBill:now]]];
-            [print addLine:[NSString stringWithFormat:@"点菜员:%@", bill.waiter]];
-            [print addLine:@""];
-            [print addLine:[NSString stringWithFormat:@"品名                单价    份数   总价" ]];
-            [print addSplit];
-            for (DAOrder *order in list.items) {
-                if ([order.back integerValue] == 3) {
-                    [freeOrderList addObject:order];
-                } else if  ([order.back integerValue] == 2) {
-                    [backOrderList addObject:order];
-                } else if  ([order.back integerValue] == 1){
-                    [doneOrderList addObject:order];
-                } else {
-                    [undoneOrderList addObject:order];
-                }
-                
-            }
-            if ([doneOrderList count] > 0) {
-
-                
-            }
-            
-            for (DAOrder *order in doneOrderList) {
-                [DAPrintProxy withOrderPrintLine:order print:print];
-            }
-            //免单菜单和菜单 和在一起
-            for (DAOrder *order in freeOrderList) {
-                [DAPrintProxy withOrderPrintLine:order print:print];
-                
-            }
-            
-            if ([undoneOrderList count] > 0) {
-                [print addLine:@""];
-            }
-            
-            for (DAOrder *order in undoneOrderList) {
-                [DAPrintProxy withOrderPrintLine:order print:print];
-                
-            }
-            
-            
-            if ([backOrderList count] > 0) {
-                [print addLine:@""];
-                [print addLine:@"退菜菜单"];
-            }
-            for (DAOrder *order in backOrderList) {
-                [DAPrintProxy withOrderPrintLine:order print:print];
-            }
-            
-            if ([freeOrderList count] > 0) {
-                [print addLine:@""];
-                [print addLine:@"免单菜单"];
-
-            }
-            
-            for (DAOrder *order in freeOrderList) {
-                [DAPrintProxy withOrderPrintLine:order print:print];
-                
-            }
-            
-            [print addSplit];
-
-            [print addLine:[NSString stringWithFormat:@"总金额:%.02f元", [bill.amount floatValue]]];
-            if ([off intValue] == 1) {
-                [print addLine:[NSString stringWithFormat:@"折扣:无 "]];
-            } else {
-                float tmpOff = [off floatValue] * 10;
-                NSString *tmpOffStr = [NSString stringWithFormat:@"%.01f",tmpOff];
-                
-                [print addLine:[NSString stringWithFormat:@"折扣:%@折",tmpOffStr]];
+            if (err != nil) {
+                callback(err);
+                DDLogWarn(@"获取订单 出错:%@", err);
+                return;
             }
 
-            [print addLine:[NSString stringWithFormat:@"应支付金额:%.02f元", [pay floatValue]]];
-            [print addLine:[NSString stringWithFormat:@"优惠:%.02f元", [reduce floatValue]]];
-            
-            [print addLine:[NSString stringWithFormat:@"实际金额:%.02f元", [userPay floatValue]]];
-            [print addLine:@""];
-            [print addLine:@""];
-            [print addLine:@"促销活动酒水、主食、个别菜不打折"];
-            
-            if (billprint.invoiceTail) {
-                [print addLine:[NSString stringWithFormat:@"%@",billprint.invoiceTail]];
-            }
+            DDLogWarn(@"获取账单信息[service id : %@]结果:@%", serviceId, [[bill description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 
-            if (billprint != nil && billprint.printerIP!=nil && billprint.printerIP.length > 0 ) {
-                int status = -1;
-                int times = 0;
-                do{
-                    DDLogWarn(@"---------- 开始打印客户联/收银联,打印机id:%@ ----------",billprint._id);
-                    DDLogWarn(@"待打印数据:%@ ",[[print getLines] description]);
+            //客户联
+            DDLogWarn(@"开始打印客户联");
+            [self printBillProc:serviceId off:off pay:pay userPay:userPay reduce:reduce seq:@"" print:print bill:bill list:list];
+            DDLogWarn(@"客户联打印结束");
 
-                    status = [print printText:billprint.printerIP addTextSize:1 TextHeight:1];
-                    DDLogWarn(@"---------- 打印打印客户联/收银联结束,打印结果:%d ----------",status);
-                    NSLog(@"打印  times %d",times++);
-                    if (times > 2) {
-                        break;
-                    } else {
-                        [NSThread sleepForTimeInterval:0.5f];
-                    }
-                }while(status == -1);
-                
+            //收银联
+            DDLogWarn(@"开始打印收银联");
+            [self printBillProc:serviceId off:off pay:pay userPay:userPay reduce:reduce seq:seq print:print bill:bill list:list];
+            DDLogWarn(@"收银联打印结束");
 
-                NSLog(@"打印机状态 判断是否成功   : %d",status);
-            } else {
-                
-                NSLog(@"没有链接订单打印机");
-                [ProgressHUD showError:@"没有链接订单打印机"];
-                
-            }
-            if (progress!=nil) {
-                [progress hide:YES];
-            }
-
-            
-            
-            
+            callback(nil);
         }];
-        
-        
-        
-        
-        
-        
-        
     }];
 }
 
-+(void) addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString * )orderNum now:(NSString *)now takeout:(NSString *) takeout tips:(NSString *)tips
-{
++ (void)printBillProc:(NSString *)serviceId off:(NSString *)off pay:(NSString *)pay userPay:(NSString *)userPay reduce:(NSString *)reduce seq:(NSString *)seq print:(DAPrintProxy *)print bill:(DABill *)bill list:(DAMyOrderList *)list {
+    DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
+
+    if (billprint.invoiceHead) {
+        [print addLine:[NSString stringWithFormat:@"%@", billprint.invoiceHead]];
+    }
+
+    [print addLine:@""];
+    if (seq.length > 0) {
+        [print addLine:[NSString stringWithFormat:@"                 滋味厨房  收银联"]];
+    } else {
+        [print addLine:[NSString stringWithFormat:@"                 滋味厨房  客户联"]];
+    }
+    [print addLine:[NSString stringWithFormat:@"序号：%@", seq]];
+    if ([bill.service.type intValue] == 3) {
+        [print addLine:[NSString stringWithFormat:@"手机号:%@", bill.service.phone]];
+    } else {
+        [print addLine:[NSString stringWithFormat:@"台位:%@", bill.desk.name]];
+    }
+
+    DDLogWarn(@"获取所有order信息 [ service id : %@ ] 结果:@%", serviceId, [[list description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+
+    NSMutableArray *freeOrderList = [[NSMutableArray alloc] init];
+    NSMutableArray *backOrderList = [[NSMutableArray alloc] init];
+    NSMutableArray *doneOrderList = [[NSMutableArray alloc] init];
+    NSMutableArray *undoneOrderList = [[NSMutableArray alloc] init];
+
+
+    NSDate *now = [[NSDate alloc] init];
+    [print addLine:[NSString stringWithFormat:@"时间:%@", [Tool stringFromISODateForBill:now]]];
+    [print addLine:[NSString stringWithFormat:@"点菜员:%@", bill.waiter]];
+    [print addLine:@""];
+    [print addLine:[NSString stringWithFormat:@"品名                单价    份数   总价"]];
+    [print addSplit];
+    for (DAOrder *order in list.items) {
+        if ([order.back integerValue] == 3) {
+            [freeOrderList addObject:order];
+        } else if ([order.back integerValue] == 2) {
+            [backOrderList addObject:order];
+        } else if ([order.back integerValue] == 1) {
+            [doneOrderList addObject:order];
+        } else {
+            [undoneOrderList addObject:order];
+        }
+
+    }
+    if ([doneOrderList count] > 0) {
+
+
+    }
+
+    for (DAOrder *order in doneOrderList) {
+        [DAPrintProxy withOrderPrintLine:order print:print];
+    }
+    //免单菜单和菜单 和在一起
+    for (DAOrder *order in freeOrderList) {
+        [DAPrintProxy withOrderPrintLine:order print:print];
+
+    }
+
+    if ([undoneOrderList count] > 0) {
+        [print addLine:@""];
+    }
+
+    for (DAOrder *order in undoneOrderList) {
+        [DAPrintProxy withOrderPrintLine:order print:print];
+
+    }
+
+
+    if ([backOrderList count] > 0) {
+        [print addLine:@""];
+        [print addLine:@"退菜菜单"];
+    }
+    for (DAOrder *order in backOrderList) {
+        [DAPrintProxy withOrderPrintLine:order print:print];
+    }
+
+    if ([freeOrderList count] > 0) {
+        [print addLine:@""];
+        [print addLine:@"免单菜单"];
+
+    }
+
+    for (DAOrder *order in freeOrderList) {
+        [DAPrintProxy withOrderPrintLine:order print:print];
+
+    }
+
+    [print addSplit];
+
+    [print addLine:[NSString stringWithFormat:@"总金额:%.02f元", [bill.amount floatValue]]];
+    if ([off intValue] == 1) {
+        [print addLine:[NSString stringWithFormat:@"折扣:无 "]];
+    } else {
+        float tmpOff = [off floatValue] * 10;
+        NSString *tmpOffStr = [NSString stringWithFormat:@"%.01f", tmpOff];
+
+        [print addLine:[NSString stringWithFormat:@"折扣:%@折", tmpOffStr]];
+    }
+
+    [print addLine:[NSString stringWithFormat:@"应支付金额:%.02f元", [pay floatValue]]];
+    [print addLine:[NSString stringWithFormat:@"优惠:%.02f元", [reduce floatValue]]];
+
+    [print addLine:[NSString stringWithFormat:@"实际金额:%.02f元", [userPay floatValue]]];
+    [print addLine:@""];
+    [print addLine:@""];
+
+    if (billprint.invoiceTail) {
+        [print addLine:[NSString stringWithFormat:@"%@", billprint.invoiceTail]];
+    }
+
+    if (billprint != nil && billprint.printerIP != nil && billprint.printerIP.length > 0) {
+        int status = -1;
+        int times = 0;
+        do {
+            DDLogWarn(@"---------- 开始打印客户联/收银联,打印机id:%@ 第%d次打印----------", billprint._id,times);
+            DDLogWarn(@"待打印数据:%@ ", [[print getLines] description]);
+
+            status = [print printText:billprint.printerIP addTextSize:1 TextHeight:1];
+            DDLogWarn(@"---------- 打印打印客户联/收银联结束,打印结果:%d ----------", status);
+            times++;
+            if (times > 100) {
+                break;
+            } else {
+                [NSThread sleepForTimeInterval:0.5f];
+            }
+        } while (status == -1);
+
+
+        NSLog(@"打印机状态 判断是否成功   : %d", status);
+    } else {
+
+        NSLog(@"没有链接订单打印机");
+        [ProgressHUD showError:@"没有链接订单打印机"];
+
+    }
+}
+
++ (void)addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString *)orderNum now:(NSString *)now takeout:(NSString *)takeout tips:(NSString *)tips {
 
     DAPrinter *defaultPrinter = nil;
-    
-    DAPrinterList *printtList = [[DAPrinterList alloc]unarchiveObjectWithFileWithPath:@"printer" withName:@"printer"];
+
+    DAPrinterList *printtList = [[DAPrinterList alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"printer"];
     if (printtList == nil || [printtList.items count] == 0) {
         DDLogWarn(@"未设置打印机");
         [ProgressHUD showError:@"请设置打印机"];
         return;
     }
-    NSMutableDictionary *SystemPrintSet = [[NSMutableDictionary alloc]init];
-    for (DAPrinter *printerSet in printtList.items ) {
-        
+    NSMutableDictionary *SystemPrintSet = [[NSMutableDictionary alloc] init];
+    for (DAPrinter *printerSet in printtList.items) {
+
         if (defaultPrinter == nil && [printerSet.type isEqualToString:@"1"]) {
             defaultPrinter = printerSet;
         }
-        
+
         if ([printerSet.type isEqualToString:@"1"]) {
-            NSMutableArray *printerOrderList = [[NSMutableArray alloc]init];
+            NSMutableArray *printerOrderList = [[NSMutableArray alloc] init];
             [SystemPrintSet setObject:printerOrderList forKey:printerSet._id];
         }
-        
+
     }
-    
+
     //START  打印流水单
     DAPrintProxy *print1 = [[DAPrintProxy alloc] init];
-        [print1 addLine:[NSString stringWithFormat:@"流水单"]];
+    [print1 addLine:[NSString stringWithFormat:@"流水单"]];
 
     if (takeout.length > 0) {
-        [print1 addLine:[NSString stringWithFormat:@" 外卖  单号:%@ 时间：%@",orderNum,[Tool stringFromISODateString:now]]];
+        [print1 addLine:[NSString stringWithFormat:@" 外卖  单号:%@ 时间：%@", orderNum, [Tool stringFromISODateString:now]]];
     } else {
-        [print1 addLine:[NSString stringWithFormat:@"桌台:%@    ",deskName]];
-        [print1 addLine:[NSString stringWithFormat:@"单号:%@    ",orderNum]];
-        [print1 addLine:[NSString stringWithFormat:@"单时间：%@",[Tool stringFromISODateString:now]]];
-    }
-    
-    if (tips.length > 0) {
-        [print1 addLine:[NSString stringWithFormat:@"备注:%@  ",tips]];
-    }
-    [print1 addLine:[NSString stringWithFormat:@" "]];
-    
-    for (DAOrder *willOrder in orderList.items) {
-        NSString *line;
-        NSString *tmpAmount = [NSString stringWithFormat:@"%@",willOrder.amount];
-        if ([willOrder.type  integerValue] == 0) {
-            line = [NSString stringWithFormat:@"%@  %@份  %@元%@" ,willOrder.item.itemName,tmpAmount,willOrder.item.itemPriceNormal,[DAPrintProxy buildOptStr:willOrder.item]];
-        } else {
-            line = [NSString stringWithFormat:@"%@ （小份）  %@份  %@元%@" ,willOrder.item.itemName,tmpAmount,willOrder.item.itemPriceHalf,[DAPrintProxy buildOptStr:willOrder.item]];
-        }
-        
-        [print1 addLine:line];
-        
-        
+        [print1 addLine:[NSString stringWithFormat:@"桌台:%@    ", deskName]];
+        [print1 addLine:[NSString stringWithFormat:@"单号:%@    ", orderNum]];
+        [print1 addLine:[NSString stringWithFormat:@"单时间：%@", [Tool stringFromISODateString:now]]];
     }
 
-    if([orderList.items count] > 0){
+    if (tips.length > 0) {
+        [print1 addLine:[NSString stringWithFormat:@"备注:%@  ", tips]];
+    }
+    [print1 addLine:[NSString stringWithFormat:@" "]];
+
+    for (DAOrder *willOrder in orderList.items) {
+        NSString *line;
+        NSString *tmpAmount = [NSString stringWithFormat:@"%@", willOrder.amount];
+        if ([willOrder.type integerValue] == 0) {
+            line = [NSString stringWithFormat:@"%@  %@份  %@元%@", willOrder.item.itemName, tmpAmount, willOrder.item.itemPriceNormal, [DAPrintProxy buildOptStr:willOrder.item]];
+        } else {
+            line = [NSString stringWithFormat:@"%@ （小份）  %@份  %@元%@", willOrder.item.itemName, tmpAmount, willOrder.item.itemPriceHalf, [DAPrintProxy buildOptStr:willOrder.item]];
+        }
+
+        [print1 addLine:line];
+
+
+    }
+
+    if ([orderList.items count] > 0) {
 
 
         int status = -1;
         int times = 0;
-//        do{
 
 
-            DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
+        DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
 
-        DDLogWarn(@"---------- 开始打印流水单,打印机id:%@ ----------",billprint._id);
-        DDLogWarn(@"待打印数据:%@ ",[[print1 getLines] description]);
 
+
+        do{
+            DDLogWarn(@"---------- 开始打印流水单,打印机id:%@ 第%d次----------", billprint._id,times);
+            DDLogWarn(@"待打印数据:%@ ", [[print1 getLines] description]);
             status = [print1 printText:billprint.printerIP addTextSize:2 TextHeight:2];
-//            if (times > 100) {
-//                break;
-//            } else {
-//                [NSThread sleepForTimeInterval:0.5f];
-//            }
-//            [NSThread sleepForTimeInterval:0.1f];
-//            NSLog(@"打印times  %d",times++);
-//        } while(status == -1);
+            times++;
+            if (times > 100) {
+                break;
+            } else {
+                [NSThread sleepForTimeInterval:0.5f];
+            }
+        }while (status == -1);
 
-        DDLogWarn(@"---------- 打印流水单结束,打印结果:%d ----------",status);
 
-        NSLog(@"打印机状态 判断是否成功   : %d",status);
-        
+        DDLogWarn(@"---------- 打印流水单结束,打印结果:%d ----------", status);
+
+        NSLog(@"打印机状态 判断是否成功   : %d", status);
+
     }
-    
+
     //END  打印流水单
-    
+
     for (DAOrder *willOrder in orderList.items) {
-        if (willOrder.item.printerId !=nil && willOrder.item.printerId.length > 0) {
-            NSLog(@"打印机调试 %@" , willOrder.item.printerId);
+        if (willOrder.item.printerId != nil && willOrder.item.printerId.length > 0) {
+            NSLog(@"打印机调试 %@", willOrder.item.printerId);
             NSMutableArray *printerOrderList = [SystemPrintSet objectForKey:willOrder.item.printerId];
-            
+
             [printerOrderList addObject:willOrder];
             [SystemPrintSet setObject:printerOrderList forKey:willOrder.item.printerId];
         }
     }
-    
-    for (DAPrinter *printerSet in printtList.items ) {
-        
 
-        
+    for (DAPrinter *printerSet in printtList.items) {
+
+
         if ([printerSet.type isEqualToString:@"1"]) {
             NSMutableArray *printerOrderList = [SystemPrintSet objectForKey:printerSet._id];
 
-            NSMutableArray *tmpOrderPrintList = [[NSMutableArray alloc]init];
+            NSMutableArray *tmpOrderPrintList = [[NSMutableArray alloc] init];
             //START  后厨打印
-            NSMutableArray *tmpOrderCheckPrintLine = [[NSMutableArray alloc]init];
-            
+            NSMutableArray *tmpOrderCheckPrintLine = [[NSMutableArray alloc] init];
+
             DAPrintProxy *print = [[DAPrintProxy alloc] init];
             [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@"后厨核对单"]];
             if (takeout.length > 0) {
-                [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@" 外卖  单号:%@ 时间：%@",orderNum,[Tool stringFromISODateString:now]]];
+                [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@" 外卖  单号:%@ 时间：%@", orderNum, [Tool stringFromISODateString:now]]];
             } else {
-                [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@"单号:%@    %@ ",orderNum,deskName]];
-                [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@"单时间：%@",[Tool stringFromISODateString:now]]];
+                [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@"单号:%@    %@ ", orderNum, deskName]];
+                [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@"单时间：%@", [Tool stringFromISODateString:now]]];
             }
-            
+
             if (tips.length > 0) {
-                [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@"备注:%@  ",tips]];
+                [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@"备注:%@  ", tips]];
             }
-            
+
             [tmpOrderCheckPrintLine addObject:[NSString stringWithFormat:@" "]];
-            
+
             for (DAOrder *willOrderA in printerOrderList) {
                 NSString *line;
-                NSString *tmpAmount = [NSString stringWithFormat:@"%@",willOrderA.amount];
-                if ([willOrderA.type  integerValue] == 0) {
-                    line = [NSString stringWithFormat:@"%@  %@份 %@" ,willOrderA.item.itemName,tmpAmount,[DAPrintProxy buildOptStr:willOrderA.item]];
+                NSString *tmpAmount = [NSString stringWithFormat:@"%@", willOrderA.amount];
+                if ([willOrderA.type integerValue] == 0) {
+                    line = [NSString stringWithFormat:@"%@  %@份 %@", willOrderA.item.itemName, tmpAmount, [DAPrintProxy buildOptStr:willOrderA.item]];
                 } else {
-                    line = [NSString stringWithFormat:@"%@ （小份）  %@份 %@" ,willOrderA.item.itemName,tmpAmount,[DAPrintProxy buildOptStr:willOrderA.item]];
+                    line = [NSString stringWithFormat:@"%@ （小份）  %@份 %@", willOrderA.item.itemName, tmpAmount, [DAPrintProxy buildOptStr:willOrderA.item]];
                 }
-                
+
                 [tmpOrderCheckPrintLine addObject:line];
             }
             [tmpOrderPrintList addObject:tmpOrderCheckPrintLine];
-            
+
             for (DAOrder *willOrder in printerOrderList) {
-                NSMutableArray *tmpOrderPrintLine = [[NSMutableArray alloc]init];
+                NSMutableArray *tmpOrderPrintLine = [[NSMutableArray alloc] init];
 
                 if (takeout.length > 0) {
-                    [tmpOrderPrintLine addObject:[NSString stringWithFormat:@" 外卖  单号:%@ 时间：%@",orderNum,[Tool stringFromISODateString:now]]];
+                    [tmpOrderPrintLine addObject:[NSString stringWithFormat:@" 外卖  单号:%@ 时间：%@", orderNum, [Tool stringFromISODateString:now]]];
                 } else {
-                    [tmpOrderPrintLine addObject:[NSString stringWithFormat:@"单号:%@    %@ ",orderNum,deskName]];
-                    [tmpOrderPrintLine addObject:[NSString stringWithFormat:@"单时间：%@",[Tool stringFromISODateString:now]]];
+                    [tmpOrderPrintLine addObject:[NSString stringWithFormat:@"单号:%@    %@ ", orderNum, deskName]];
+                    [tmpOrderPrintLine addObject:[NSString stringWithFormat:@"单时间：%@", [Tool stringFromISODateString:now]]];
                 }
-                
+
                 if (tips.length > 0) {
-                    [tmpOrderPrintLine addObject:[NSString stringWithFormat:@"备注:%@  ",tips]];
+                    [tmpOrderPrintLine addObject:[NSString stringWithFormat:@"备注:%@  ", tips]];
                 }
-                
+
                 [tmpOrderPrintLine addObject:[NSString stringWithFormat:@" "]];
-                
+
                 NSString *line;
-                
-                if ([willOrder.type  integerValue] == 0) {
-                    line = [NSString stringWithFormat:@"%@  %@份 %@" ,willOrder.item.itemName,willOrder.amount,[DAPrintProxy buildOptStr:willOrder.item]];
+
+                if ([willOrder.type integerValue] == 0) {
+                    line = [NSString stringWithFormat:@"%@  %@份 %@", willOrder.item.itemName, willOrder.amount, [DAPrintProxy buildOptStr:willOrder.item]];
                 } else {
-                    line = [NSString stringWithFormat:@"%@ （小份）  %@份 %@" ,willOrder.item.itemName,willOrder.amount,[DAPrintProxy buildOptStr:willOrder.item]];
+                    line = [NSString stringWithFormat:@"%@ （小份）  %@份 %@", willOrder.item.itemName, willOrder.amount, [DAPrintProxy buildOptStr:willOrder.item]];
                 }
-            
+
                 [tmpOrderPrintLine addObject:line];
                 [tmpOrderPrintList addObject:tmpOrderPrintLine];
-                
+
             }
-            
-            if([printerOrderList count] > 0 && [printerSet.need intValue] == 1){
+
+            if ([printerOrderList count] > 0 && [printerSet.need intValue] == 1) {
                 int status = -1;
                 int times = 0;
-                do{
-                    DDLogWarn(@"---------- 开始打印后厨单,打印机id:%@ ----------",printerSet._id);
-                    DDLogWarn(@"待打印数据:%@ ",[tmpOrderPrintList description]);
+                do {
+                    DDLogWarn(@"---------- 开始打印后厨单,打印机id:%@ 第%d次打印----------", printerSet._id,times);
+                    DDLogWarn(@"待打印数据:%@ ", [tmpOrderPrintList description]);
                     status = [print printOrderText:printerSet.printerIP linesList:tmpOrderPrintList addTextSize:2 TextHeight:3];
-                    DDLogWarn(@"---------- 打印后厨单结束,打印结果:%d ----------",status);
-                    if (times > 2) {
+                    DDLogWarn(@"---------- 打印后厨单结束,打印结果:%d ----------", status);
+                    times++;
+                    if (times > 100) {
                         break;
                     } else {
                         [NSThread sleepForTimeInterval:0.5f];
                     }
                     [NSThread sleepForTimeInterval:0.1f];
-                    NSLog(@"打印times  %d",times++);
-                } while(status == -1);
-                
-                NSLog(@"打印机状态 判断是否成功   : %d",status);
-                
+                } while (status == -1);
+
+                NSLog(@"打印机状态 判断是否成功   : %d", status);
+
             }
             //END  后厨打印
-            
-            
-            
-            
-        }
-        
-        
-    
-    }
-    
-    
 
-    
+
+
+
+        }
+
+
+    }
+
+
 }
 
-+ (NSString *) buildOptStr:(DAItem *) item{
++ (NSString *)buildOptStr:(DAItem *)item {
     NSMutableString *str = [[NSMutableString alloc] init];
 
     NSString *noteName = [item.noteName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    if([NSString isNotEmpty:noteName]){
-        [str appendString:[NSString stringWithFormat:@"[%@]",noteName]];
+    if ([NSString isNotEmpty:noteName]) {
+        [str appendString:[NSString stringWithFormat:@"[%@]", noteName]];
     }
 
     NSString *optstr = [item.selectedOption stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    if([NSString isNotEmpty:optstr]){
-         [str appendString:[NSString stringWithFormat:@"(%@)",optstr]];
+    if ([NSString isNotEmpty:optstr]) {
+        [str appendString:[NSString stringWithFormat:@"(%@)", optstr]];
     }
     return str;
 }
@@ -507,209 +501,203 @@ enum PrintErrorStatus
     [lines addObject:@"\n"];
 }
 
-- (void)addSplit
-{
+- (void)addSplit {
     [self addSplit:48];
 }
 
-- (void)addSplit:(int)length
-{
+- (void)addSplit:(int)length {
     NSString *split = [@"" stringByPaddingToLength:length withString:@"-" startingAtIndex:0];
     [lines addObject:split];
 }
 
-- (EposPrint *)getPrinter:(NSString *)ip
-{
+- (EposPrint *)getPrinter:(NSString *)ip {
     EposPrint *printer = [[EposPrint alloc] init];
-    
+
     // open
     int result = [printer openPrinter:EPOS_OC_DEVTYPE_TCP DeviceName:ip];
     if (result != EPOS_OC_SUCCESS) {
         return nil;
     }
-    
+
     return printer;
 }
 
-- (int)printOrderText:(NSString *)ip linesList:(NSArray *)linesList addTextSize:(long) addTextSize TextHeight:(long)TextHeight
-{
+- (int)printOrderText:(NSString *)ip linesList:(NSArray *)linesList addTextSize:(long)addTextSize TextHeight:(long)TextHeight {
     int result = -1;
     // create builder
     EposBuilder *builder = [[EposBuilder alloc] initWithPrinterModel:PRINT_NAME Lang:EPOS_OC_MODEL_CHINESE];
-    if(builder == nil){
+    if (builder == nil) {
         return PRINT_ERROR;
     }
-    
+
     //设置语言
     result = [builder addTextLang:EPOS_OC_LANG_ZH_CN];
-    
-    if(result != EPOS_OC_SUCCESS){
+
+    if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
-    
+
     //设置文字
     result = [builder addTextFont:EPOS_OC_FONT_A];
-    if(result != EPOS_OC_SUCCESS){
+    if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
-    
+
     result = [builder addTextSize:addTextSize Height:TextHeight];
-    if(result != EPOS_OC_SUCCESS){
+    if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
-    
-    for (int i = 0 ; i <[linesList count] ;i++) {
-        NSArray *tempList =  [linesList objectAtIndex:i];
+
+    for (int i = 0; i < [linesList count]; i++) {
+        NSArray *tempList = [linesList objectAtIndex:i];
         if (i == 0) {
             result = [builder addTextSize:1 Height:1];
-            if(result != EPOS_OC_SUCCESS){
+            if (result != EPOS_OC_SUCCESS) {
                 return PRINT_ERROR;
             }
         } else {
             result = [builder addTextSize:addTextSize Height:TextHeight];
-            if(result != EPOS_OC_SUCCESS){
+            if (result != EPOS_OC_SUCCESS) {
                 return PRINT_ERROR;
             }
         }
 
-        
+
         for (NSString *str in tempList) {
-            NSLog(@"%@",str);
-            result = [builder addText:[str stringByAppendingString:@"\n" ]];
-            if(result != EPOS_OC_SUCCESS){
+            NSLog(@"%@", str);
+            result = [builder addText:[str stringByAppendingString:@"\n"]];
+            if (result != EPOS_OC_SUCCESS) {
                 return PRINT_ERROR;
             }
         }
-    
-        
-        
+
+
+
         // cut
         result = [builder addCut:EPOS_OC_CUT_FEED];
         if (result != EPOS_OC_SUCCESS) {
             return PRINT_ERROR;
         }
-        
+
     }
     // feed
     result = [builder addFeedUnit:30];
-    if(result != EPOS_OC_SUCCESS){
+    if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
     // open printer
     EposPrint *printer = [self getPrinter:ip];
-    
+
     if (printer == nil) {
         return -1;
     }
-    
+
     // send builder data
     unsigned long status = 0;
     unsigned long battery = 0;
     result = [printer sendData:builder Timeout:SEND_TIMEOUT Status:&status Battery:&battery];
-    NSLog(@"send data  %d" ,result);
+    NSLog(@"send data  %d", result);
     if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
-    
+
     // remove builder
     [builder clearCommandBuffer];//状态？
 
     [printer closePrinter];
     //TODO
-    
-    
+
+
     return PRINT_SUCCESS;
-    
+
 }
 
-- (int)printText:(NSString *)ip addTextSize:(long) addTextSize TextHeight:(long)TextHeight
-{
+- (int)printText:(NSString *)ip addTextSize:(long)addTextSize TextHeight:(long)TextHeight {
     // create builder
     EposBuilder *builder = [[EposBuilder alloc] initWithPrinterModel:PRINT_NAME Lang:EPOS_OC_MODEL_CHINESE];
-    if(builder == nil){
+    if (builder == nil) {
         return PRINT_ERROR;
     }
 
 
     //add command
     int result = [builder addTextLang:EPOS_OC_LANG_ZH_CN];
-    
-    if(result != EPOS_OC_SUCCESS){
+
+    if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
-    
+
     result = [builder addTextFont:EPOS_OC_FONT_A];
-    if(result != EPOS_OC_SUCCESS){
-        
+    if (result != EPOS_OC_SUCCESS) {
+
         return PRINT_ERROR;
     }
-    
+
     result = [builder addTextSize:addTextSize Height:TextHeight];
-    if(result != EPOS_OC_SUCCESS){
+    if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
-    
+
     // print text
     for (NSString *line in lines) {
-        result = [builder addText:[line stringByAppendingString:@"\n" ]];
-        if(result != EPOS_OC_SUCCESS){
+        result = [builder addText:[line stringByAppendingString:@"\n"]];
+        if (result != EPOS_OC_SUCCESS) {
             return PRINT_ERROR;
         }
     }
-    
-    
+
+
     // set language
 //    result = [builder addTextLang:EPOS_OC_LANG_ZH_CN];
 //    if(result != EPOS_OC_SUCCESS){
 //        return PRINT_ERROR;
 //    }
     //add command
-    
-    
+
+
     // feed
     result = [builder addFeedUnit:30];
-    if(result != EPOS_OC_SUCCESS){
+    if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
-    
-    
+
+
     // cut
     result = [builder addCut:EPOS_OC_CUT_FEED];
     if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
-    
-    
+
+
     // open printer
     EposPrint *printer = [self getPrinter:ip];
-    
+
     if (printer == nil) {
         return -1;
     }
-    
+
     // send builder data
     unsigned long status = 0;
     unsigned long battery = 0;
     result = [printer sendData:builder Timeout:SEND_TIMEOUT Status:&status Battery:&battery];
-    NSLog(@"send data  %d" ,result);
+    NSLog(@"send data  %d", result);
     if (result != EPOS_OC_SUCCESS) {
         return PRINT_ERROR;
     }
-    
+
     // clear data & close print
     [lines removeAllObjects];
 
     // remove builder
     [builder clearCommandBuffer];
-    
+
     [printer closePrinter];
     return PRINT_SUCCESS;
 }
 
 // convert EposPrint result to text
-- (NSString*)getEposResultText:(int)result
-{
-    switch(result){
+- (NSString *)getEposResultText:(int)result {
+    switch (result) {
         case EPOS_OC_SUCCESS:
             return @"SUCCESS";
         case EPOS_OC_ERR_PARAM:
@@ -738,15 +726,14 @@ enum PrintErrorStatus
 }
 
 // covnert EposPrint status to text
-- (NSString*)getEposStatusText:(unsigned long)status
-{
+- (NSString *)getEposStatusText:(unsigned long)status {
     NSString *result = @"";
-    
-    for(int bit = 0; bit < 32; bit++){
+
+    for (int bit = 0; bit < 32; bit++) {
         unsigned int value = 1 << bit;
-        if((value & status) != 0){
+        if ((value & status) != 0) {
             NSString *msg = @"";
-            switch(value){
+            switch (value) {
                 case EPOS_OC_ST_NO_RESPONSE:
                     msg = @"NO_RESPONSE";
                     break;
@@ -795,19 +782,19 @@ enum PrintErrorStatus
                     return [NSString stringWithFormat:@"%d", value];
                     break;
             }
-            if(msg.length != 0){
-                if(result.length != 0){
+            if (msg.length != 0) {
+                if (result.length != 0) {
                     result = [result stringByAppendingString:@"\n"];
                 }
                 result = [result stringByAppendingString:msg];
             }
         }
     }
-    
+
     return result;
 }
 
--(int) printBackOrder:(DAPrintProxy *)print
+- (int)printBackOrder:(DAPrintProxy *)print
             printList:(NSMutableDictionary *)printList
             printerId:(NSString *)printerId
              itemName:(NSString *)itemName
@@ -815,59 +802,55 @@ enum PrintErrorStatus
            waiterName:(NSString *)waiterName
         willBackCount:(NSString *)willBackCount
               takeout:(NSString *)takeout
-                  now:(NSString *)now
-{
+                  now:(NSString *)now {
     NSString *ip = [printList objectForKey:printerId];
-    
+
     [print addLine:[NSString stringWithFormat:@"  退菜 "]];
-    
-    [print addLine:[NSString stringWithFormat:@"单时间：%@",[Tool stringFromISODateString:now]]];
+
+    [print addLine:[NSString stringWithFormat:@"单时间：%@", [Tool stringFromISODateString:now]]];
     [print addLine:[NSString stringWithFormat:@" "]];
-    
-    NSString *line = [NSString stringWithFormat:@"%@  %@份 " ,itemName,willBackCount];
+
+    NSString *line = [NSString stringWithFormat:@"%@  %@份 ", itemName, willBackCount];
 
     [print addLine:line];
-    [print addLine:[NSString stringWithFormat:@" "]];    
+    [print addLine:[NSString stringWithFormat:@" "]];
     [print printText:ip addTextSize:2 TextHeight:3];
     return 0;
 }
 
-+(int) addOrderBackPrint:(NSArray *)backOrderList;
-{
++ (int)addOrderBackPrint:(NSArray *)backOrderList; {
     DAPrintProxy *print = [[DAPrintProxy alloc] init];
-    
-    DAPrinterList *printtList = [[DAPrinterList alloc]unarchiveObjectWithFileWithPath:@"printer" withName:@"printer"];
+
+    DAPrinterList *printtList = [[DAPrinterList alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"printer"];
     if (printtList == nil || [printtList.items count] == 0) {
         [ProgressHUD showError:@"请设置打印机"];
         return -1;
     }
-    
-    NSMutableDictionary *SystemPrintSet = [[NSMutableDictionary alloc]init];
+
+    NSMutableDictionary *SystemPrintSet = [[NSMutableDictionary alloc] init];
     for (DAPrinter *printerSet in printtList.items) {
 
         if ([printerSet.type isEqualToString:@"1"]) {
             [SystemPrintSet setObject:printerSet.printerIP forKey:printerSet._id];
         }
-        
+
     }
-    
+
     for (DAOrder *order in backOrderList) {
         [print printBackOrder:print
                     printList:SystemPrintSet
                     printerId:order.item.printerId
                      itemName:order.item.itemName
-                     deskName:order.desk?order.desk.name:@"外卖"
+                     deskName:order.desk ? order.desk.name : @"外卖"
                    waiterName:order.createby
                 willBackCount:order.willBackAmount
                       takeout:@""
                           now:order.createat];
-        
+
     }
-    
+
     return 0;
 }
-
-
 
 
 @end

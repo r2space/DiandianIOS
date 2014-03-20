@@ -34,19 +34,19 @@
     //类型
     if([order.itemType integerValue] == 0){
         self.typeLabel.text = @"主食";
-        [self.backBtn setHidden:YES];
+        [self.backBtn setHidden:NO];
     }else if([order.itemType integerValue] == 1){
         self.typeLabel.text = @"菜品";
-        [self.backBtn setHidden:NO];
+        [self.backBtn setHidden:YES];
     }else if([order.itemType integerValue] == 2){
         self.typeLabel.text = @"酒水";
-        [self.backBtn setHidden:YES];
+        [self.backBtn setHidden:NO];
     }else if([order.itemType integerValue] == 3){
         self.typeLabel.text = @"海鲜";
-        [self.backBtn setHidden:NO];
+        [self.backBtn setHidden:YES];
     }else if([order.itemType integerValue] == 10){
         self.typeLabel.text = @"广告";
-        [self.backBtn setHidden:NO];
+        [self.backBtn setHidden:YES];
     }
 
     //单价
