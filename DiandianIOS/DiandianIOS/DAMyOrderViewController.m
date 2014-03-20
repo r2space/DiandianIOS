@@ -53,7 +53,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOrder:) name:@"menu_addOrder" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addSmallItem:) name:@"menu_addSmallItem" object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(modifyMenuItem:) name:@"menu_modifyMenuItem" object:nil];
     //
     UIImageView *imageview = [[UIImageView alloc] initWithFrame:self.view.bounds];
     [imageview setImage:[UIImage imageNamed:@"menubook_sidemiddle.png"]];
@@ -210,7 +210,12 @@
     self.dataList.items = [[NSArray alloc] initWithArray:tmpList];
     [self tableViewReload];
 }
+- (void)modifyMenuItem :(NSNotification*) notification
+{
+    self.dataList.items;
+    [self tableViewReload];
 
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

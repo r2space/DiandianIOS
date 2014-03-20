@@ -50,7 +50,6 @@
 {
     
     self.labelName.text = self.curItem.itemName;
-    
 
     
     self.textItemMethod.text = [NSString stringWithFormat:@"%@", self.curItem.itemMethod];
@@ -67,6 +66,20 @@
         self.labelPrice.text = [NSString stringWithFormat:@"%@元",self.curItem.itemPriceNormal];
         [self.btnSmallAdd setHidden:YES];
     }
+
+
+
+
+    if([self.from isEqualToString:@"menubook"]){
+        self.btnBigAdd.hidden = NO;
+        self.btnConfirm.hidden = YES;
+    }else{
+        self.btnBigAdd.hidden = YES;
+        self.btnSmallAdd.hidden = YES;
+        self.btnConfirm.hidden = NO;
+    }
+
+
 
     NSArray  *opts= [self.curItem.selectedOption componentsSeparatedByString:@" "];
 
@@ -180,6 +193,15 @@
     if([NSString isNotEmpty:self.optInputLabel.text]){
         [noteName appendString:[NSString stringWithFormat:@" %@",self.optInputLabel.text]];
         self.curItem.noteName = noteName;
+    }
+}
+- (IBAction)confirmTouched:(id)sender {
+    [self appendOptionToOrder];
+    NSNotification *notice = [NSNotification notificationWithName:@"menu_modifyMenuItem" object:self.curItem];
+    [[NSNotificationCenter defaultCenter] postNotification:notice];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(cancelButtonClicked:)]) {
+        [self.delegate cancelButtonClicked:self];
+        [ProgressHUD showSuccess:@"修改成功"];
     }
 }
 

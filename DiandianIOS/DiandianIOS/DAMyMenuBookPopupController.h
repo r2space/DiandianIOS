@@ -20,6 +20,7 @@
 
 
 @property (retain, nonatomic) DAItem  *curItem;
+@property (strong, nonatomic) NSString *from;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UILabel *labelPrice;
@@ -34,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *textItemMethod;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnSmallAdd;
+@property (weak, nonatomic) IBOutlet UIButton *btnBigAdd;
+@property (weak, nonatomic) IBOutlet UIButton *btnConfirm;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *optBtn1;

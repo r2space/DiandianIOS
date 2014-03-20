@@ -382,7 +382,7 @@
 
     }
     if ([data.item.type integerValue] != 10) {
-        [self popupDetail:data.item];
+        [self popupDetail:data.item from:@"menubook"];
     }
     
     
@@ -392,15 +392,17 @@
 -(void) popupDetailMenu :(NSNotification *) sender
 {
     DAItem * menu  = (DAItem *)[sender object];
-    [self popupDetail:menu];
+    [self popupDetail:menu from:@"notification"];
 }
 
--(void) popupDetail :(DAItem *) item
+-(void) popupDetail :(DAItem *) item from:(NSString *) from
 {
 
     DAMyMenuBookPopupController *menuBookPopupVC = [[DAMyMenuBookPopupController alloc] initWithNibName:@"DAMyMenuBookPopupController" bundle:nil];
     menuBookPopupVC.delegate = self;
     menuBookPopupVC.curItem = item;
+    menuBookPopupVC.from = from;
+
     [self presentPopupViewController:menuBookPopupVC animationType:MJPopupViewAnimationFade];
     
 }
