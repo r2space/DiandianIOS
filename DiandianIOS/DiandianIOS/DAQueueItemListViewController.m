@@ -128,17 +128,8 @@
     UIImageView *imgItem = (UIImageView *)[cell viewWithTag:10];
 
 
-    //imgItem.image = [DAMenuProxy getImageFromDisk:row.item.smallimage];
+    imgItem.image = [DAMenuProxy getImageFromDisk:row.item.smallimage];
 
-
-
-    [[TMCache sharedCache] objectForKey:row.item.smallimage block:^(TMCache *cache, NSString *key, id object) {
-        if (object) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [imgItem setImage:(UIImage *) object];
-            });
-        }
-    }];
 
 
     UILabel *lblName = (UILabel *)[cell viewWithTag:11];
@@ -157,8 +148,7 @@
         } else {
             lblCountDesk.text = @"外卖";
         }
-        
-
+       
     } else {
         lblCountDesk.text = [NSString stringWithFormat:@"%d桌" ,[row.oneItems count]];
     }

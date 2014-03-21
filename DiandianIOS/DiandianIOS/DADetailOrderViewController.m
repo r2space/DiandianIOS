@@ -91,7 +91,6 @@
 {
     command = @"confirm";
     lockVC = [[DrawPatternLockViewController alloc] init];
-    [ProgressHUD showError:@"请验证手势密码"];
     errorCount = 0 ;
     [lockVC setTarget:self withAction:@selector(lockEntered:)];
     
@@ -106,7 +105,6 @@
     
     command = @"cancel";
     lockVC = [[DrawPatternLockViewController alloc] init];
-    [ProgressHUD showError:@"请验证手势密码"];
     errorCount = 0 ;
     [lockVC setTarget:self withAction:@selector(lockEntered:)];
     

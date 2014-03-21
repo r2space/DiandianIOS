@@ -227,45 +227,35 @@
     labelName.text = item.itemName;
     labelAmount.text = [NSString stringWithFormat:@"%@",item.amount];
     [imageView setImage:nil];
-    [[TMCache sharedCache] objectForKey:item.smallimage
-                                  block:^(TMCache *cache, NSString *key, id object) {
-                                      if (object) {
-                                          
-                                          dispatch_async(dispatch_get_main_queue(), ^{
-                                              NSLog(@"cacheed");
-                                              [imageView setImage:(UIImage *)object];
-                                          });
-                                          return;
-                                      }
-                                      
-                                      NSString *urlString = [DAMenuProxy resourceURLString:item.smallimage];
-                                      NSURL *url = [NSURL URLWithString:urlString];
-                                      NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
-                                      [req setValue:@"Application/octet-stream" forHTTPHeaderField:@"Accept"];
-                                      [req setHTTPMethod:@"GET"];
-                                      
-                                      [NSURLConnection sendAsynchronousRequest:req
-                                                                         queue:[NSOperationQueue mainQueue]
-                                                             completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                                                                 if( data != nil ){
-                                                                     NSString *saveImageName = item.smallimage;
-                                                                     NSString *path = [DAMenuProxy imagePath:saveImageName];
-                                                                     [data writeToFile:path atomically:YES];
-                                                                     UIImage *imageCache = [UIImage imageWithContentsOfFile:[DAMenuProxy imagePath:saveImageName]];
-                                                                     UIImage *image = [DAMenuProxy getImageFromDisk:item.smallimage];
-                                                                     
-                                                                     [imageView setImage:image];
-                                                                     [[TMCache sharedCache] setObject:imageCache forKey:saveImageName block:nil];
-                                                                     
-                                                                 }else{
-                                                                     NSLog(@" download fail!!! save image - %@", item.smallimage );
-                                                                 }
-                                                                 
-                                                                 
-                                                             }];
-                                      
-                                  }];
+    UIImage *image = [DAMenuProxy getImageFromDisk:item.smallimage];
+    if (image) {
 
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"cacheed");
+            [imageView setImage:image];
+        });
+    } else {
+        NSString *urlString = [DAMenuProxy resourceURLString:item.smallimage];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
+        [req setValue:@"Application/octet-stream" forHTTPHeaderField:@"Accept"];
+        [req setHTTPMethod:@"GET"];
+
+        [NSURLConnection sendAsynchronousRequest:req
+                                         queue:[NSOperationQueue mainQueue]
+                             completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                                 if( data != nil ){
+                                     NSString *saveImageName = item.smallimage;
+                                     NSString *path = [DAMenuProxy imagePath:saveImageName];
+                                     [data writeToFile:path atomically:YES];
+                                    UIImage *image = [DAMenuProxy getImageFromDisk:item.smallimage];
+                                     [imageView setImage:image];
+                                     
+                                 }else{
+                                     NSLog(@" download fail!!! save image - %@", item.smallimage );
+                                 }
+                             }];
+    }
     cell.backgroundColor = [UIColor clearColor];
     return cell;
 }

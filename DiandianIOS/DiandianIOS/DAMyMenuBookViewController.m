@@ -159,49 +159,37 @@
     UIButton *addSmallBtn = (UIButton *)[cell viewWithTag:14];
     UILabel *labelAmount = (UILabel *)[cell viewWithTag:19];
     
-    [[TMCache sharedCache] objectForKey:data.item.smallimage
-                                    block:^(TMCache *cache, NSString *key, id object) {
-                                        if (object) {
 
-                                            dispatch_async(dispatch_get_main_queue(), ^{
-                                                [imageView setImage:(UIImage *)object];
-                                            });
-                                            return;
-                                        }
-
-                                        UIImage *image = [DAMenuProxy getImageFromDisk:data.item.smallimage];
-                                        if (image) {
-                                            [imageView setImage:image];
-                                        } else {
-                                            NSString *urlString = [DAMenuProxy resourceURLString:data.item.smallimage];
-                                            NSURL *url = [NSURL URLWithString:urlString];
-                                            NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
-                                            [req setValue:@"Application/octet-stream" forHTTPHeaderField:@"Accept"];
-                                            [req setHTTPMethod:@"GET"];
-                                            
-                                            [NSURLConnection sendAsynchronousRequest:req
-                                                                               queue:[NSOperationQueue mainQueue]
-                                                                   completionHandler:^(NSURLResponse *response, NSData *data1, NSError *error) {
-                                                                       if( data1 != nil ){
-                                                                           NSString *saveImageName = data.item.smallimage;
-                                                                           NSString *path = [DAMenuProxy imagePath:saveImageName];
-                                                                           [data1 writeToFile:path atomically:YES];
-                                                                           UIImage *imageCache = [UIImage imageWithContentsOfFile:[DAMenuProxy imagePath:saveImageName]];
-                                                                           UIImage *image = [DAMenuProxy getImageFromDisk:data.item.smallimage];
-                                                                           
-                                                                           [imageView setImage:image];
-                                                                           [[TMCache sharedCache] setObject:imageCache forKey:saveImageName block:nil];
-                                                                           
-                                                                       }else{
-                                                                           NSLog(@" download fail!!! save image - %@", data.item.smallimage);
-                                                                       }
-                                                                       
-                                                                       
-                                                                   }];
-                                        }
+    UIImage *image = [DAMenuProxy getImageFromDisk:data.item.smallimage];
+    if (image) {
+        [imageView setImage:image];
+    } else {
+        NSString *urlString = [DAMenuProxy resourceURLString:data.item.smallimage];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
+        [req setValue:@"Application/octet-stream" forHTTPHeaderField:@"Accept"];
+        [req setHTTPMethod:@"GET"];
+        
+        [NSURLConnection sendAsynchronousRequest:req
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data1, NSError *error) {
+                                   if( data1 != nil ){
+                                       NSString *saveImageName = data.item.smallimage;
+                                       NSString *path = [DAMenuProxy imagePath:saveImageName];
+                                       [data1 writeToFile:path atomically:YES];
+                                       UIImage *image = [DAMenuProxy getImageFromDisk:data.item.smallimage];
+                                       [imageView setImage:image];
+                                   
+                                   }else{
+                                       NSLog(@" download fail!!! save image - %@", data.item.smallimage);
+                                   }
+                                   
+                                   
+                               }];
+    }
 
                                             
-                                    }];
+
 
     imageView.layer.cornerRadius = 10;
     imageView.layer.masksToBounds = YES;

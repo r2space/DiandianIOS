@@ -28,15 +28,12 @@
 + (void)downloadImageImage:(NSArray *)imageIds iteration:(int)i {
     if (imageIds.count <= i) {
 
-//以下两个通知貌似没用到
-//        NSNotification *n = [NSNotification notificationWithName:@"downloadDone" object:self];
-//        [[NSNotificationCenter defaultCenter] postNotification:n];
-//
-//        NSNotification *caseViewNotification = [NSNotification notificationWithName:@"settingReloaded" object:self];
-//        [[NSNotificationCenter defaultCenter] postNotification:caseViewNotification];
-
         DDLogWarn(@"图片下载结束");
-        [self rebuildImageCache];
+//        [self rebuildImageCache];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            DDLogWarn(@"重建图片缓存结束");
+            [ProgressHUD dismiss];
+        });
         return;
     }
     ProgressHUD *hub = [ProgressHUD shared];

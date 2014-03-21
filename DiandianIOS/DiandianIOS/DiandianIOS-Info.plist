@@ -29,7 +29,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>ServerAddress</key>
-	<string>115.28.161.172</string>
+	<string>10.2.3.223</string>
 	<key>ServerPort</key>
 	<string>3000</string>
 	<key>UIMainStoryboardFile</key>
