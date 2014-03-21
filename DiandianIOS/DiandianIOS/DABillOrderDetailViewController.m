@@ -94,8 +94,8 @@
         }
 
         if(cell.backCallback == nil){
+            DABillOrderDetailViewController * __weak weakSelf = self;
             cell.backCallback = ^(DAOrder *currOrder){
-                DABillOrderDetailViewController * __weak weakSelf = self;
                  [weakSelf backOrderBlock:currOrder];
             };
         }
@@ -106,12 +106,12 @@
         order = [undoneOrderList objectAtIndex:indexPath.row];
         DAUnfinishedOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:undoneCellIndentifier forIndexPath:indexPath];
 
-//        if(cell.freeCallback == nil){
-//            DABillOrderDetailViewController * __weak weakSelf = self;
-//            cell.freeCallback = ^(NSString *orderId){
-//                [weakSelf freeOrderBlock:orderId];
-//            };
-//        }
+        if(cell.backCallback == nil){
+            DABillOrderDetailViewController * __weak weakSelf = self;
+            cell.backCallback = ^(DAOrder *currOrder){
+                [weakSelf backOrderBlock:currOrder];
+            };
+        }
 
         [cell setData:order];
         return cell;
@@ -285,6 +285,7 @@
 }
 
 - (IBAction)backBtnTouched:(id)sender {
+    self.parentReloadBlock();
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -32,7 +32,7 @@
           userPay:(NSString *)userPay
              type:(NSInteger * )type
           reduce :(NSString *)reduce seq:(NSString *)seq
-         progress:(MBProgressHUD *)progress;
+        completion:(void (^)(NSError *err))callback;
 
 +(void) testPrinter;
 

@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SmartSDK.h"
-
+typedef void(^ParentReloadBlock)();
 @interface DABillOrderDetailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segControl;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil service: (DAService *) serviceOrNil;
+@property (copy) ParentReloadBlock parentReloadBlock;
 @end

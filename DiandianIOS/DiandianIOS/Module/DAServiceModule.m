@@ -121,6 +121,7 @@
             userPay:(NSString *) userPay
        preferential:(NSString *) preferential
             payType:(NSString *) payType
+               note:(NSString *) note
            callback:(void (^)(NSError *err, DAService *service))callback
 {
     NSString *path = [NSString stringWithFormat:API_STOP_BILL];
@@ -133,7 +134,11 @@
     [dic setObject:agio forKey:@"agio"];
     [dic setObject:preferential forKey:@"preferential"];
     [dic setObject:payType forKey:@"payType"];
-    
+    if(note != nil){
+        [dic setObject:note forKey:@"serviceNote"];
+    }else{
+        [dic setObject:@"" forKey:@"serviceNote"];
+    }
     [[DAAFHttpClient sharedClient] postPath:path parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         DAService *data = [[DAService alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
         

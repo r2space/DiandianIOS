@@ -121,7 +121,7 @@
         } else {
             cell.typeLabel.text = @"小份";
         }
-        if ([order.hasBack intValue]  == 1 ) {
+        if ([order.back intValue]  == 2 ) {
             [cell.backFlagLabel setHidden:NO];
         }else{
             [cell.backFlagLabel setHidden:YES];

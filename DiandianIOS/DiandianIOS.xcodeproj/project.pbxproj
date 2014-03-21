@@ -71,11 +71,6 @@
 		0A4E47A41856A0EC00CEC3DE /* DAMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E479F1856A0EC00CEC3DE /* DAMenu.m */; };
 		0A4E47A51856A0EC00CEC3DE /* DAMenuList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47A11856A0EC00CEC3DE /* DAMenuList.m */; };
 		0A4E47A61856A0EC00CEC3DE /* DAMyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47A31856A0EC00CEC3DE /* DAMyTable.m */; };
-		0A4E47A91856F56500CEC3DE /* DANotificationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47A81856F56500CEC3DE /* DANotificationProxy.m */; };
-		0A4E47B218570FFC00CEC3DE /* DAPrintProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47AB18570FFC00CEC3DE /* DAPrintProxy.m */; };
-		0A4E47B318570FFC00CEC3DE /* DADeskProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47AD18570FFC00CEC3DE /* DADeskProxy.m */; };
-		0A4E47B418570FFC00CEC3DE /* DAMenuProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47AF18570FFC00CEC3DE /* DAMenuProxy.m */; };
-		0A4E47B518570FFC00CEC3DE /* DAServiceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47B118570FFC00CEC3DE /* DAServiceProxy.m */; };
 		0A4E47BE1857110D00CEC3DE /* DAUserModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47B71857110D00CEC3DE /* DAUserModule.m */; };
 		0A4E47BF1857110D00CEC3DE /* DADeskModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47B91857110D00CEC3DE /* DADeskModule.m */; };
 		0A4E47C01857110D00CEC3DE /* DALoginModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E47BB1857110D00CEC3DE /* DALoginModule.m */; };
@@ -210,7 +205,6 @@
 		0A9DA5C61828766200037E73 /* DARootView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A9DA5C51828766100037E73 /* DARootView.storyboard */; };
 		0AA031A418432A4A00C66590 /* DAOrderModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031A318432A4A00C66590 /* DAOrderModule.m */; };
 		0AA031A8184334D100C66590 /* DADispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031A7184334D100C66590 /* DADispatch.m */; };
-		0AA031AB1843350A00C66590 /* DAOrderProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031AA1843350900C66590 /* DAOrderProxy.m */; };
 		0AA031B418434A1E00C66590 /* DAMyOrderList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031B318434A1E00C66590 /* DAMyOrderList.m */; };
 		0AA031F01843555900C66590 /* SBJson4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031D81843555900C66590 /* SBJson4Parser.m */; };
 		0AA031F11843555900C66590 /* SBJson4StreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA031DA1843555900C66590 /* SBJson4StreamParser.m */; };
@@ -350,7 +344,13 @@
 		47A6ADB4182E25B100E80AA1 /* DABillDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADB2182E25B100E80AA1 /* DABillDetailViewController.xib */; };
 		47A6ADB7182E2B7D00E80AA1 /* DABillDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */; };
 		47A6ADBB182E2BB500E80AA1 /* DABillDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */; };
+		B02A015778A9A1D19DB916D7 /* DANotificationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A06FC15F101492F0F9ADF /* DANotificationProxy.m */; };
+		B02A033AB89F799E61DC16D1 /* DAPrintProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A04E5C21A76F956FC6470 /* DAPrintProxy.m */; };
+		B02A090CA08688AD6FCEAE4F /* DAOrderProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A08651F4A7A4539E67BCD /* DAOrderProxy.m */; };
+		B02A0A7BED33DC4C5175DE50 /* DAMenuProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A0CF36899FE57EDCA9E9B /* DAMenuProxy.m */; };
+		B02A0A8B01D416284B811E34 /* DAServiceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A029AC7BB7AD62D2F98C3 /* DAServiceProxy.m */; };
 		B02A0B221AAAD05B69E3FFE3 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A09E43F18227D9333EBEB /* DDLog.m */; };
+		B02A0BCFDB85A61E04BB2FC0 /* DADeskProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A08E098F58212B03BFC96 /* DADeskProxy.m */; };
 		B02A0E13BFDEA296A374629D /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B02A05AD4E35E9B7C9F70969 /* DDFileLogger.m */; };
 		E0186F3618CDC5360053EEE7 /* DARightSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0186F3418CDC5360053EEE7 /* DARightSideMenuViewController.m */; };
 		E0186F3718CDC5360053EEE7 /* DARightSideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0186F3518CDC5360053EEE7 /* DARightSideMenuViewController.xib */; };
@@ -501,16 +501,6 @@
 		0A4E47A11856A0EC00CEC3DE /* DAMenuList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenuList.m; path = Entities/DAMenuList.m; sourceTree = "<group>"; };
 		0A4E47A21856A0EC00CEC3DE /* DAMyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMyTable.h; path = Entities/DAMyTable.h; sourceTree = "<group>"; };
 		0A4E47A31856A0EC00CEC3DE /* DAMyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMyTable.m; path = Entities/DAMyTable.m; sourceTree = "<group>"; };
-		0A4E47A71856F56500CEC3DE /* DANotificationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DANotificationProxy.h; path = Proxy/DANotificationProxy.h; sourceTree = "<group>"; };
-		0A4E47A81856F56500CEC3DE /* DANotificationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DANotificationProxy.m; path = Proxy/DANotificationProxy.m; sourceTree = "<group>"; };
-		0A4E47AA18570FFC00CEC3DE /* DAPrintProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPrintProxy.h; path = Proxy/DAPrintProxy.h; sourceTree = "<group>"; };
-		0A4E47AB18570FFC00CEC3DE /* DAPrintProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPrintProxy.m; path = Proxy/DAPrintProxy.m; sourceTree = "<group>"; };
-		0A4E47AC18570FFC00CEC3DE /* DADeskProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADeskProxy.h; path = Proxy/DADeskProxy.h; sourceTree = "<group>"; };
-		0A4E47AD18570FFC00CEC3DE /* DADeskProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADeskProxy.m; path = Proxy/DADeskProxy.m; sourceTree = "<group>"; };
-		0A4E47AE18570FFC00CEC3DE /* DAMenuProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenuProxy.h; path = Proxy/DAMenuProxy.h; sourceTree = "<group>"; };
-		0A4E47AF18570FFC00CEC3DE /* DAMenuProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenuProxy.m; path = Proxy/DAMenuProxy.m; sourceTree = "<group>"; };
-		0A4E47B018570FFC00CEC3DE /* DAServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAServiceProxy.h; path = Proxy/DAServiceProxy.h; sourceTree = "<group>"; };
-		0A4E47B118570FFC00CEC3DE /* DAServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAServiceProxy.m; path = Proxy/DAServiceProxy.m; sourceTree = "<group>"; };
 		0A4E47B61857110D00CEC3DE /* DAUserModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAUserModule.h; path = Module/DAUserModule.h; sourceTree = "<group>"; };
 		0A4E47B71857110D00CEC3DE /* DAUserModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAUserModule.m; path = Module/DAUserModule.m; sourceTree = "<group>"; };
 		0A4E47B81857110D00CEC3DE /* DADeskModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADeskModule.h; path = Module/DADeskModule.h; sourceTree = "<group>"; };
@@ -705,8 +695,6 @@
 		0AA031A318432A4A00C66590 /* DAOrderModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOrderModule.m; path = Module/DAOrderModule.m; sourceTree = "<group>"; };
 		0AA031A6184334D100C66590 /* DADispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DADispatch.h; sourceTree = "<group>"; };
 		0AA031A7184334D100C66590 /* DADispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DADispatch.m; sourceTree = "<group>"; };
-		0AA031A91843350900C66590 /* DAOrderProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOrderProxy.h; path = Proxy/DAOrderProxy.h; sourceTree = "<group>"; };
-		0AA031AA1843350900C66590 /* DAOrderProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOrderProxy.m; path = Proxy/DAOrderProxy.m; sourceTree = "<group>"; };
 		0AA031B218434A1E00C66590 /* DAMyOrderList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAMyOrderList.h; sourceTree = "<group>"; };
 		0AA031B318434A1E00C66590 /* DAMyOrderList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAMyOrderList.m; sourceTree = "<group>"; };
 		0AA031D61843555900C66590 /* SBJson4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson4.h; sourceTree = "<group>"; };
@@ -931,10 +919,22 @@
 		47A6ADB5182E2B7D00E80AA1 /* DABillDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DABillDetailViewCell.h; sourceTree = "<group>"; };
 		47A6ADB6182E2B7D00E80AA1 /* DABillDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DABillDetailViewCell.m; sourceTree = "<group>"; };
 		47A6ADBA182E2BB500E80AA1 /* DABillDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DABillDetailViewCell.xib; sourceTree = "<group>"; };
+		B02A000D0B163D7DFF21E360 /* DAPrintProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAPrintProxy.h; path = Proxy/DAPrintProxy.h; sourceTree = "<group>"; };
+		B02A029AC7BB7AD62D2F98C3 /* DAServiceProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAServiceProxy.m; path = Proxy/DAServiceProxy.m; sourceTree = "<group>"; };
+		B02A0325C50BA5A1D78F0EFE /* DAOrderProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAOrderProxy.h; path = Proxy/DAOrderProxy.h; sourceTree = "<group>"; };
+		B02A04E5C21A76F956FC6470 /* DAPrintProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAPrintProxy.m; path = Proxy/DAPrintProxy.m; sourceTree = "<group>"; };
 		B02A05AD4E35E9B7C9F70969 /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		B02A061421591C28A0477C77 /* DAServiceProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAServiceProxy.h; path = Proxy/DAServiceProxy.h; sourceTree = "<group>"; };
+		B02A06D3657F04B3BAC60A6B /* DANotificationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DANotificationProxy.h; path = Proxy/DANotificationProxy.h; sourceTree = "<group>"; };
+		B02A06FC15F101492F0F9ADF /* DANotificationProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DANotificationProxy.m; path = Proxy/DANotificationProxy.m; sourceTree = "<group>"; };
+		B02A08651F4A7A4539E67BCD /* DAOrderProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAOrderProxy.m; path = Proxy/DAOrderProxy.m; sourceTree = "<group>"; };
+		B02A08E098F58212B03BFC96 /* DADeskProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DADeskProxy.m; path = Proxy/DADeskProxy.m; sourceTree = "<group>"; };
+		B02A08E66BF2AE5394C7BF8C /* DADeskProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DADeskProxy.h; path = Proxy/DADeskProxy.h; sourceTree = "<group>"; };
 		B02A09E43F18227D9333EBEB /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		B02A0BF635E4FBEF5835C748 /* DAMenuProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DAMenuProxy.h; path = Proxy/DAMenuProxy.h; sourceTree = "<group>"; };
 		B02A0C224FB9E5A3240FA372 /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
 		B02A0C60F9443A740A6959D7 /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		B02A0CF36899FE57EDCA9E9B /* DAMenuProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DAMenuProxy.m; path = Proxy/DAMenuProxy.m; sourceTree = "<group>"; };
 		E0186F3318CDC5360053EEE7 /* DARightSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARightSideMenuViewController.h; sourceTree = "<group>"; };
 		E0186F3418CDC5360053EEE7 /* DARightSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARightSideMenuViewController.m; sourceTree = "<group>"; };
 		E0186F3518CDC5360053EEE7 /* DARightSideMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DARightSideMenuViewController.xib; sourceTree = "<group>"; };
@@ -1196,25 +1196,6 @@
 				0A5D2895182BD23700847578 /* DADetailOrderViewController.xib */,
 			);
 			name = Menubook;
-			sourceTree = "<group>";
-		};
-		0A40FDF6183DFAA400427613 /* Proxy */ = {
-			isa = PBXGroup;
-			children = (
-				0A4E47AA18570FFC00CEC3DE /* DAPrintProxy.h */,
-				0A4E47AB18570FFC00CEC3DE /* DAPrintProxy.m */,
-				0A4E47AC18570FFC00CEC3DE /* DADeskProxy.h */,
-				0A4E47AD18570FFC00CEC3DE /* DADeskProxy.m */,
-				0A4E47AE18570FFC00CEC3DE /* DAMenuProxy.h */,
-				0A4E47AF18570FFC00CEC3DE /* DAMenuProxy.m */,
-				0A4E47B018570FFC00CEC3DE /* DAServiceProxy.h */,
-				0A4E47B118570FFC00CEC3DE /* DAServiceProxy.m */,
-				0AA031AA1843350900C66590 /* DAOrderProxy.m */,
-				0AA031A91843350900C66590 /* DAOrderProxy.h */,
-				0A4E47A71856F56500CEC3DE /* DANotificationProxy.h */,
-				0A4E47A81856F56500CEC3DE /* DANotificationProxy.m */,
-			);
-			name = Proxy;
 			sourceTree = "<group>";
 		};
 		0A40FE03183EFBAB00427613 /* ProgressHUD */ = {
@@ -1622,7 +1603,6 @@
 			isa = PBXGroup;
 			children = (
 				0A4E47811855FE8600CEC3DE /* DiandianIOS.entitlements */,
-				0A40FDF6183DFAA400427613 /* Proxy */,
 				0A07BD571829D27E00A350BC /* Resources */,
 				0A07BD4D1829CB3800A350BC /* Thirdparty */,
 				0A07BD6F182A0A0500A350BC /* Module */,
@@ -1770,6 +1750,7 @@
 				0AB78AA5183CB46400979BD0 /* DARequestHelper.m */,
 				0AA0320E1844DC1D00C66590 /* Tool.h */,
 				0AA0320F1844DC1D00C66590 /* Tool.m */,
+				B02A030EB2161B2034773C44 /* Proxy */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -2034,6 +2015,26 @@
 			);
 			name = Base64;
 			sourceTree = "<group>";
+		};
+		B02A030EB2161B2034773C44 /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				B02A000D0B163D7DFF21E360 /* DAPrintProxy.h */,
+				B02A04E5C21A76F956FC6470 /* DAPrintProxy.m */,
+				B02A08E66BF2AE5394C7BF8C /* DADeskProxy.h */,
+				B02A08E098F58212B03BFC96 /* DADeskProxy.m */,
+				B02A0BF635E4FBEF5835C748 /* DAMenuProxy.h */,
+				B02A0CF36899FE57EDCA9E9B /* DAMenuProxy.m */,
+				B02A061421591C28A0477C77 /* DAServiceProxy.h */,
+				B02A029AC7BB7AD62D2F98C3 /* DAServiceProxy.m */,
+				B02A08651F4A7A4539E67BCD /* DAOrderProxy.m */,
+				B02A0325C50BA5A1D78F0EFE /* DAOrderProxy.h */,
+				B02A06D3657F04B3BAC60A6B /* DANotificationProxy.h */,
+				B02A06FC15F101492F0F9ADF /* DANotificationProxy.m */,
+			);
+			name = Proxy;
+			path = DiandianIOS;
+			sourceTree = SOURCE_ROOT;
 		};
 		B02A08B0492B3043F881D85F /* DDLog */ = {
 			isa = PBXGroup;
@@ -2439,7 +2440,6 @@
 				0AA031F81843555900C66590 /* SocketIOJSONSerialization.m in Sources */,
 				28FFB64A18332272003443D1 /* DASettings.m in Sources */,
 				0A20E8EF185A9DFB00422061 /* DAPrinterModule.m in Sources */,
-				0AA031AB1843350A00C66590 /* DAOrderProxy.m in Sources */,
 				0AA031F71843555900C66590 /* SocketIO.m in Sources */,
 				0A9DA5C41828764800037E73 /* DARootViewController.m in Sources */,
 				0A07BD0A1828ECF800A350BC /* DAMyFilterViewController.m in Sources */,
@@ -2518,7 +2518,6 @@
 				0AB78B5B183CB46500979BD0 /* DAMenuModule.m in Sources */,
 				0A7AF0CE1836076600635376 /* DAQueueFoodListViewController.m in Sources */,
 				0AB78B83183CB46500979BD0 /* UIImageView+AFNetworking.m in Sources */,
-				0A4E47B518570FFC00CEC3DE /* DAServiceProxy.m in Sources */,
 				0A07BD7E182A20DC00A350BC /* DAMyOrderDetailViewController.m in Sources */,
 				0A5D289B182C6EFF00847578 /* DAMyLoginViewController.m in Sources */,
 				28FFB64B18332272003443D1 /* NSNumber+Util.m in Sources */,
@@ -2534,7 +2533,6 @@
 				E022804418D194DF00460BB2 /* DABackOrderCell.m in Sources */,
 				0A44160A188AB57E00BA66D0 /* DAPrinterTool.m in Sources */,
 				0A4E479C1856A06A00CEC3DE /* DAItemLayout.m in Sources */,
-				0A4E47B318570FFC00CEC3DE /* DADeskProxy.m in Sources */,
 				28FFB62B18322E20003443D1 /* DAPopTableViewCell.m in Sources */,
 				0AA032101844DC1D00C66590 /* Tool.m in Sources */,
 				0A7AF0C91836075200635376 /* DAQueueItemListViewController.m in Sources */,
@@ -2547,7 +2545,6 @@
 				0AB78B7E183CB46500979BD0 /* AFJSONRequestOperation.m in Sources */,
 				0A54D6A4184C6B8800BBA9C4 /* DABill.m in Sources */,
 				0AA032071843558300C66590 /* SRWebSocket.m in Sources */,
-				0A4E47A91856F56500CEC3DE /* DANotificationProxy.m in Sources */,
 				0AC390611860985B0091AFB7 /* TMCache.m in Sources */,
 				0A4E47C91857112300CEC3DE /* DAService.m in Sources */,
 				28414E9918349EFC009210AF /* DAAnimation.m in Sources */,
@@ -2558,13 +2555,11 @@
 				0A3DB733182B21B500170F0C /* DAMyMenuBookCell.m in Sources */,
 				0A4E47BF1857110D00CEC3DE /* DADeskModule.m in Sources */,
 				0A577BC9182878DA009CDF6D /* DAViewController.m in Sources */,
-				0A4E47B218570FFC00CEC3DE /* DAPrintProxy.m in Sources */,
 				28FFB64518332272003443D1 /* DADelegateUtil.m in Sources */,
 				0AA533A11828BEE80087EFF1 /* DAMyBookViewController.m in Sources */,
 				E0846AAC18CFFD8B00B82AC6 /* DABackOrderViewController.m in Sources */,
 				0A4099141869104A000E8E24 /* DATag.m in Sources */,
 				0AB4B3B11838DE3700D77D7E /* DAPreferentialViewController.m in Sources */,
-				0A4E47B418570FFC00CEC3DE /* DAMenuProxy.m in Sources */,
 				E0846AB118D04BF700B82AC6 /* DAOrderPopoverViewController.m in Sources */,
 				0A07BD611829DC0900A350BC /* DAMyMenuBookViewController.m in Sources */,
 				28FFB62C18322E20003443D1 /* DAPopTableViewController.m in Sources */,
@@ -2605,6 +2600,12 @@
 				0A20E8EC185A9D6100422061 /* DAPrinter.m in Sources */,
 				B02A0E13BFDEA296A374629D /* DDFileLogger.m in Sources */,
 				B02A0B221AAAD05B69E3FFE3 /* DDLog.m in Sources */,
+				B02A033AB89F799E61DC16D1 /* DAPrintProxy.m in Sources */,
+				B02A0BCFDB85A61E04BB2FC0 /* DADeskProxy.m in Sources */,
+				B02A0A7BED33DC4C5175DE50 /* DAMenuProxy.m in Sources */,
+				B02A0A8B01D416284B811E34 /* DAServiceProxy.m in Sources */,
+				B02A090CA08688AD6FCEAE4F /* DAOrderProxy.m in Sources */,
+				B02A015778A9A1D19DB916D7 /* DANotificationProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
