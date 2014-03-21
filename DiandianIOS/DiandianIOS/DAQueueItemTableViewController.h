@@ -10,11 +10,12 @@
 #import "SmartSDK.h"
 
 
-typedef void (^SelectDeskBlock)(NSString *orderId , NSString *deskId);
-
+typedef void (^SelectDeskBlock)(DAMyOrderList *list);
+typedef void (^BeforeSelectDeskBlock)();
 @interface DAQueueItemTableViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, copy) SelectDeskBlock selectDeskBlock;
+@property (nonatomic, copy) BeforeSelectDeskBlock beforeSelectDeskBlock;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(retain, nonatomic) NSString* curOrderId;

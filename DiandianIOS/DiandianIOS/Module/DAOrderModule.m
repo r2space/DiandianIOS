@@ -137,6 +137,26 @@
     }];
 }
 
+-(void) setDoneOrderWIthReturnData: (NSString *) orderId callback:(void (^)(NSError *err, DAMyOrderList *list))callback
+{
+    NSString *path = [NSString stringWithFormat:API_SETORDER_DONE_BY_ID_WITH_RETURN_DATA,orderId];
+
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+
+        if (callback) {
+            callback(nil, data);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (callback) {
+            callback(error, nil);
+        }
+
+    }];
+}
+
 - (void) setDoneOrderWithArrayIds :(NSArray *) orderIds callback:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
     NSMutableString *ids = [[NSMutableString alloc]init];
@@ -328,7 +348,25 @@
     }];
 }
 
+-(void) getDishOrderItemList:(void (^)(NSError *err, DAMyOrderList *list))callback
+{
+    NSString *path = API_DISH_ORDER_ITEM_LIST;
 
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DAMyOrderList *data = [[DAMyOrderList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+
+        if (callback) {
+            callback(nil, data);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (callback) {
+            callback(error, nil);
+        }
+
+    }];
+}
 -(void) getOrderItemListByServiceId:(void (^)(NSError *err, DAMyOrderList *list))callback
 {
     NSString *path = [NSString stringWithFormat:API_ALL_ORDER_ITEM_LIST,@"item",@""];

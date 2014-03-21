@@ -27,6 +27,7 @@
 
 -(void) getOrderNEItemListByServiceId:(NSString *)serviceId callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
+-(void) setDoneOrderWIthReturnData: (NSString *) orderId callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
 -(void) getOrderItemList:(void (^)(NSError *err, DAMyOrderList *list))callback;
 //
@@ -44,5 +45,5 @@
 -(void) setBackOrder:(NSString *) orderId  callback:(void (^)(NSError *err, DAOrder *list))callback;
 
 -(void) setBackOrderWithArray:(NSArray *) backOrderList deskId:(NSString *)deskId callback:(void (^)(NSError *err, DAMyOrderList *order))callback;
-
+-(void) getDishOrderItemList:(void (^)(NSError *err, DAMyOrderList *list))callback;
 @end

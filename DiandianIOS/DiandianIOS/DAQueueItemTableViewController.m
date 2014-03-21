@@ -113,11 +113,11 @@
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
     DADesk *desk = order.desk;
 
-
+    self.beforeSelectDeskBlock();
     [self showIndicator:@"上菜中..."];
-    [[DAOrderModule alloc] setDoneOrder:order._id callback:^(NSError *err, DAOrder *list) {
+    [[DAOrderModule alloc] setDoneOrderWIthReturnData:order._id callback:^(NSError *err, DAMyOrderList *list) {
         [progress hide:YES];
-        self.selectDeskBlock(order._id , desk._id);
+        self.selectDeskBlock(list);
     }];
     
     NSMutableArray *tempList = [[NSMutableArray alloc]init];

@@ -64,8 +64,11 @@ static DAQueueItemTableViewController *vct;
 -(void)initTableList
 {
     vct.view.frame = CGRectMake(834, 10, 160.0, 668.0);
-    vct.selectDeskBlock = ^(NSString *orderId,NSString *deskId){
-        [vc filterItem:orderId tableNO:deskId];
+    vct.selectDeskBlock = ^(DAMyOrderList *list){
+        [vc filterItem:list];
+    };
+    vct.beforeSelectDeskBlock=^(){
+        [vc disableSocketIO];
     };
     [self addChildViewController:vct];
     [self.view addSubview:vct.view];

@@ -17,6 +17,6 @@ typedef double NSTimeInterval;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, copy) SelectItemBlock selectItemBlock;
 
-- (void)filterItem:(NSString *)itemId tableNO:(NSString *)tableNo;
-
+- (void)filterItem:(DAMyOrderList *)list;
+-(void) disableSocketIO;
 @end

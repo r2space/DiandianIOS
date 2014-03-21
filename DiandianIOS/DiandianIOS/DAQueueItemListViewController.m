@@ -7,16 +7,10 @@
 //
 
 #import "DAQueueItemListViewController.h"
-
 #import "DAMenuProxy.h"
-
-#import "ProgressHUD.h"
-
 #import "DAOrderProxy.h"
-
 #import "Tool.h"
 #import "MBProgressHUD.h"
-#import "TMCache.h"
 
 
 @interface DAQueueItemListViewController ()
@@ -31,6 +25,8 @@
     MBProgressHUD *progress;
     BOOL isShown;
     BOOL isDataLoading;
+    BOOL HandleSoecktIO;
+    NSTimer *daemonIO;
 }
 @end
 
@@ -71,11 +67,15 @@
 {
     [super viewDidAppear:animated];
     isShown = YES;
+    HandleSoecktIO = YES;
     [self loadFromFile];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     isShown = NO;
+    if(daemonIO != nil){
+        [daemonIO invalidate];
+    }
     [super viewDidDisappear:animated];
 }
 
@@ -83,6 +83,9 @@
 {
     //当前页面不在屏幕显示时 不做操作
     if(!isShown){
+        return;
+    }
+    if(!HandleSoecktIO){
         return;
     }
 
@@ -125,10 +128,16 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     DAOrder *row = [dataList.items objectAtIndex:indexPath.row];
 
-    UIImageView *imgItem = (UIImageView *)[cell viewWithTag:10];
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        // 耗时的操作
+        UIImage *image =  [DAMenuProxy getImageFromDisk:row.item.smallimage];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            // 更新界面
+            UIImageView *imgItem = (UIImageView *)[cell viewWithTag:10];
+            imgItem.image = image;
+//        });
+//    });
 
-
-    imgItem.image = [DAMenuProxy getImageFromDisk:row.item.smallimage];
 
 
 
@@ -148,7 +157,8 @@
         } else {
             lblCountDesk.text = @"外卖";
         }
-       
+        
+
     } else {
         lblCountDesk.text = [NSString stringWithFormat:@"%d桌" ,[row.oneItems count]];
     }
@@ -215,7 +225,7 @@
     }
     isDataLoading = YES;
     [self showIndicator:@"刷新中..."];
-    [[DAOrderModule alloc]getOrderItemList:^(NSError *err, DAMyOrderList *list) {
+    [[DAOrderModule alloc]getDishOrderItemList:^(NSError *err, DAMyOrderList *list) {
         [progress hide:YES];
         isDataLoading = NO;
         dataList = [DAOrderProxy getOneDataList:list];
@@ -226,9 +236,31 @@
     
 }
 
-- (void)filterItem:(NSString *)itemId tableNO:(NSString *)tableNo
+- (void)filterItem:(DAMyOrderList *)list
 {
+
+    if(daemonIO != nil){
+        [daemonIO invalidate];
+    }
+    daemonIO = [NSTimer scheduledTimerWithTimeInterval:30
+                                                target:self
+                                              selector:@selector(enableSocketIO:)
+                                              userInfo:nil
+                                               repeats:NO];
+    [progress hide:YES];
+    dataList = [DAOrderProxy getOneDataList:list];
+    [self.collectionView reloadData];
+}
+
+-(void)enableSocketIO:(NSTimer *)timer
+{
+    HandleSoecktIO = YES;
     [self loadFromFile];
+}
+
+-(void) disableSocketIO
+{
+    HandleSoecktIO = NO;
 }
 
 

@@ -45,7 +45,7 @@
 
 
 #define API_ALL_ORDER_ITEM_LIST  @"/api/order/itemList.json?type=%@&serviceId=%@"
-
+#define API_DISH_ORDER_ITEM_LIST  @"/api/order/dishItemList.json"
 
 #define API_ALL_ORDER_LIST_BY_BACK  @"/api/order/list.json?serviceId=%@&back=%@"
 #define API_ALL_ORDER_LIST_BY_SERVICEID  @"/api/order/list.json?serviceId=%@"
@@ -61,7 +61,7 @@
 
 #define API_SETORDER_DONE_BY_ID @"/api/order/doneOrder.json?orderId=%@"
 #define API_SETORDER_DONE_BY_IDS @"/api/order/doneOrder.json?orderIds=%@"
-
+#define API_SETORDER_DONE_BY_ID_WITH_RETURN_DATA @"/api/order/doneOrderAndGetDishOrderList.json?orderId=%@"
 #define API_SETORDER_BACK_BY_ID @"/api/order/backOrder.json?orderId=%@"
 
 #define API_SETORDER_FREE @"/api/order/freeOrder.json"
