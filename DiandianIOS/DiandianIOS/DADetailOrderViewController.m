@@ -226,7 +226,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    NSLog(@"内存不足");
+    DDLogWarn(@"didReceiveMemoryWarning  :  %@" ,[self class]);
 }
 
 

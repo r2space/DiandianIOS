@@ -19,7 +19,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+    // Dispose of any resources that can be recreated.
+    DDLogWarn(@"didReceiveMemoryWarning  :  %@" ,[self class]);
 }
 
 #pragma mark - View lifecycle

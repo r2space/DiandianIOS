@@ -120,6 +120,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    DDLogWarn(@"didReceiveMemoryWarning  :  %@" ,[self class]);
 }
 
 - (IBAction)backTopMenuTouched:(id)sender {

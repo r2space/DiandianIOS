@@ -115,6 +115,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    DDLogWarn(@"didReceiveMemoryWarning  :  %@" ,[self class]);
 }
 
 + (void) show:(DADesk *)thisTable parentView :(UIViewController *) parentView

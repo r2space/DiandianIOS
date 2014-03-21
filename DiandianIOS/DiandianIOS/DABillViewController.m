@@ -170,13 +170,13 @@
     NSLog(@"%@",result);
     return [result floatValue];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    DDLogWarn(@"didReceiveMemoryWarning  :  %@" ,[self class]);
 }
-
-
 
 - (IBAction)onDetailTaped:(id)sender {
 //    DABillDetailViewController *c = [[DABillDetailViewController alloc] initWithNibName:nil bundle:nil];

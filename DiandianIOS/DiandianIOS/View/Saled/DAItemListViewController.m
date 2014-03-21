@@ -290,7 +290,9 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    DDLogWarn(@"didReceiveMemoryWarning  :  %@" ,[self class]);
 }
+
 - (IBAction)onChangeSoldoutType:(UISegmentedControl *)sender {
     NSLog(@"选择售罄 ：%d"  , sender.selectedSegmentIndex );
     soldoutType = [NSString stringWithFormat:@"%d",sender.selectedSegmentIndex];
