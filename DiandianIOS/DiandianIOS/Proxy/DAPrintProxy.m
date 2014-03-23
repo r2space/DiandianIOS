@@ -271,6 +271,14 @@ enum PrintErrorStatus {
     }
 }
 
++(void) printStringInBillPrinter: (NSString *)str
+{
+    DAPrinter *billprint = [[DAPrinter alloc] unarchiveObjectWithFileWithPath:@"printer" withName:@"billprinter"];
+    DAPrintProxy *proxy = [[DAPrintProxy alloc] init];
+    [proxy addLine:str];
+    [proxy printText:billprint.printerIP addTextSize:1 TextHeight:1];
+}
+
 + (void)addOrderPrintWithOrderList:(DAMyOrderList *)orderList deskName:(NSString *)deskName orderNum:(NSString *)orderNum now:(NSString *)now takeout:(NSString *)takeout tips:(NSString *)tips {
 
     DAPrinter *defaultPrinter = nil;

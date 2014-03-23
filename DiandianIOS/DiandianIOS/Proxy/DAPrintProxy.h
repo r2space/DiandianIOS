@@ -35,5 +35,5 @@
         completion:(void (^)(NSError *err))callback;
 
 +(void) testPrinter;
-
++(void) printStringInBillPrinter: (NSString *)str;
 @end

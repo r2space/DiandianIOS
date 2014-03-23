@@ -19,11 +19,12 @@
 #import "SmartSDK.h"
 
 #import "ProgressHUD.h"
+#import "DAPrintProxy.h"
 
 static DASettingViewController *loginViewController;
 @interface DAViewController ()
 {
-
+    MBProgressHUD       *progress;
 }
 @end
 
@@ -170,4 +171,31 @@ static DASettingViewController *loginViewController;
     NSLog(@"on saled touched");
 }
 
+- (IBAction)onPrintBillTouched:(id)sender {
+
+    [self showIndicator:@"打印中..."];
+    [[DAAFHttpClient sharedClient]
+            getPath:API_DRINK_SALE_RANKING parameters:nil
+           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSString *str = [responseObject valueForKeyPath:@"data"];
+                [DAPrintProxy printStringInBillPrinter:str];
+               [progress setHidden:YES];
+           }
+           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                DDLogWarn(@"打印酒水销量出错.");
+               [progress setHidden:YES];
+    }];
+}
+- (void)showIndicator:(NSString *)message
+{
+
+    if(progress == nil){
+        progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        progress.mode = MBProgressHUDModeIndeterminate;
+
+    }
+    progress.labelText = message;
+    [progress show:YES];
+
+}
 @end

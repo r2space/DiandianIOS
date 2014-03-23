@@ -48,6 +48,9 @@
 #define API_DISH_ORDER_ITEM_LIST  @"/api/order/dishItemList.json"
 
 #define API_ALL_ORDER_LIST_BY_BACK  @"/api/order/list.json?serviceId=%@&back=%@"
+
+#define API_DRINK_SALE_RANKING @"/turnover/drinkRanking.json"
+
 #define API_ALL_ORDER_LIST_BY_SERVICEID  @"/api/order/list.json?serviceId=%@"
 
 
