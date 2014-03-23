@@ -44,7 +44,7 @@
     
     
     
-//    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+    //NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
     [[DASocketIO sharedClient:self] conn];
     [self initDaemon];
@@ -145,11 +145,12 @@
 - (void) socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet
 {
     @try {
+
         NSDictionary *dic = [packet dataAsJSON];
         NSArray *args = [dic objectForKey:@"args"];
         for (NSDictionary *argDic in args) {
-            
             NSString *action = [argDic objectForKey:@"action"];
+            DDLogWarn(@"Socket IO didReceiveEvent:%@",action);
             id data = [argDic objectForKey:@"data"];
             [DADispatch dealWithAction:action data:data];
             
@@ -193,6 +194,7 @@
     if (![[DASocketIO sharedClient:self] isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }
+    DDLogWarn(@"applicationWillResignActive");
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -202,6 +204,7 @@
     if (![[DASocketIO sharedClient:self] isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }
+    DDLogWarn(@"applicationDidEnterBackground");
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -211,6 +214,7 @@
     if (![[DASocketIO sharedClient:self] isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }
+    DDLogWarn(@"applicationWillEnterForeground");
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -220,6 +224,7 @@
     if (![[DASocketIO sharedClient:self] isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }
+    DDLogWarn(@"applicationDidBecomeActive");
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -228,12 +233,14 @@
     if (![[DASocketIO sharedClient:self] isConnected]) {
         [[DASocketIO sharedClient:self] conn];
     }
-}
+    DDLogWarn(@"applicationDidBecomeActive");
 
-void uncaughtExceptionHandler(NSException *exception) {
-    NSLog(@"CRASH: %@", exception);
-    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
-    // Internal error reporting
 }
+//
+//static void uncaughtExceptionHandler(NSException *exception) {
+//    NSLog(@"CRASH: %@", exception);
+//    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
+//    // Internal error reporting
+//}
 
 @end

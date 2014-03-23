@@ -115,7 +115,7 @@ enum PrintErrorStatus {
                 return;
             }
 
-            DDLogWarn(@"获取账单信息[service id : %@]结果:@%", serviceId, [[bill description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+            DDLogWarn(@"获取账单信息[service id : %@]结果:%@", serviceId, [[bill description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 
             //客户联
             DDLogWarn(@"开始打印客户联");
@@ -152,7 +152,7 @@ enum PrintErrorStatus {
         [print addLine:[NSString stringWithFormat:@"台位:%@", bill.desk.name]];
     }
 
-    DDLogWarn(@"获取所有order信息 [ service id : %@ ] 结果:@%", serviceId, [[list description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
+    DDLogWarn(@"获取所有order信息 [ service id : %@ ] 结果:%@", serviceId, [[list description] stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]);
 
     NSMutableArray *freeOrderList = [[NSMutableArray alloc] init];
     NSMutableArray *backOrderList = [[NSMutableArray alloc] init];
