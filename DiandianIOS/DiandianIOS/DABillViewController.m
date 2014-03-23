@@ -293,7 +293,7 @@
                                                     completion:^(NSError *error){
                                                         DDLogWarn(@"打印账单结束");
                                                         [progress hide:YES];
-                                                        if(err != nil){
+                                                        if(error != nil){
                                                             [ProgressHUD showError:@"打印失败,请重试."];
                                                         }else{
                                                             [self.navigationController popViewControllerAnimated:YES];

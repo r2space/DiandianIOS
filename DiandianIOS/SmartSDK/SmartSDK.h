@@ -20,7 +20,7 @@
 #define API_TAG_LIST            @"/api/tag/list.json?count=100&start=0"
 
 #define API_GET_TAKEOUT_SERVICELIST       @"/api/service/takeoutList.json"
-
+#define API_GET_RECENT_SERVICELIST       @"/api/service/recentList.json"
 #define API_START_SERVICE       @"/api/service/start.json"
 #define API_CHANGE_SERVICE      @"/api/service/change.json"
 #define API_GET_BILL            @"/api/bill/get.json?serviceId=%@"

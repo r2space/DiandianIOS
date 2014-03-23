@@ -18,6 +18,7 @@
 
 - (void) getTakeoutServiceList:(void (^)(NSError *err, DAServiceList *list))callback;
 
+- (void) getRecentServiceList:(void (^)(NSError *err, DAServiceList *list))callback;
 
 -(void) startService:(NSString *)deskId
               userId:(NSString *)userId
@@ -45,5 +46,6 @@
             payType:(NSString *) payType
                note:(NSString *) note
            callback:(void (^)(NSError *err, DAService *service))callback;
+
 
 @end

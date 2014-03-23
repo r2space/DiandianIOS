@@ -33,4 +33,6 @@
 @property (retain, nonatomic) NSString *editat;
 @property (retain, nonatomic) NSString *editby;
 
+@property (retain, nonatomic) NSString *deskName;
+@property (retain, nonatomic) NSString *userPay;
 @end

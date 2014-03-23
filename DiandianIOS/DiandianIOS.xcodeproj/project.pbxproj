@@ -374,6 +374,10 @@
 		E0846AB718D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0846AB518D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.xib */; };
 		E0846ABB18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0846AB918D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m */; };
 		E0846ABC18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0846ABA18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib */; };
+		E0F9820518DECCD9007D8E67 /* DARecentBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F9820318DECCD9007D8E67 /* DARecentBillViewController.m */; };
+		E0F9820618DECCD9007D8E67 /* DARecentBillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0F9820418DECCD9007D8E67 /* DARecentBillViewController.xib */; };
+		E0F9820A18DECF65007D8E67 /* DARecentBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F9820818DECF65007D8E67 /* DARecentBillTableViewCell.m */; };
+		E0F9820B18DECF65007D8E67 /* DARecentBillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0F9820918DECF65007D8E67 /* DARecentBillTableViewCell.xib */; };
 		F2A8CB831831CEB5002AD240 /* sample-table1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB821831CEB5002AD240 /* sample-table1.jpg */; };
 		F2A8CB8D1831D50D002AD240 /* sample_table_back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */; };
 		F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2AB4BF5182DDDB90067E450 /* DAOrderQueueViewController.m */; };
@@ -968,6 +972,12 @@
 		E0846AB818D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPopoverOrderTypeAllTableViewCell.h; sourceTree = "<group>"; };
 		E0846AB918D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPopoverOrderTypeAllTableViewCell.m; sourceTree = "<group>"; };
 		E0846ABA18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPopoverOrderTypeAllTableViewCell.xib; sourceTree = "<group>"; };
+		E0F9820218DECCD9007D8E67 /* DARecentBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARecentBillViewController.h; sourceTree = "<group>"; };
+		E0F9820318DECCD9007D8E67 /* DARecentBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARecentBillViewController.m; sourceTree = "<group>"; };
+		E0F9820418DECCD9007D8E67 /* DARecentBillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DARecentBillViewController.xib; sourceTree = "<group>"; };
+		E0F9820718DECF65007D8E67 /* DARecentBillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARecentBillTableViewCell.h; sourceTree = "<group>"; };
+		E0F9820818DECF65007D8E67 /* DARecentBillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARecentBillTableViewCell.m; sourceTree = "<group>"; };
+		E0F9820918DECF65007D8E67 /* DARecentBillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DARecentBillTableViewCell.xib; sourceTree = "<group>"; };
 		F2A8CB821831CEB5002AD240 /* sample-table1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sample-table1.jpg"; sourceTree = "<group>"; };
 		F2A8CB8C1831D50D002AD240 /* sample_table_back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_table_back.jpg; sourceTree = "<group>"; };
 		F2AB4BF4182DDDB90067E450 /* DAOrderQueueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAOrderQueueViewController.h; sourceTree = "<group>"; };
@@ -2129,6 +2139,12 @@
 				E022802D18D18E0500460BB2 /* DABillOrderDetailViewController.m */,
 				E022802E18D18E0500460BB2 /* DABillOrderDetailViewController.xib */,
 				E022803118D1944600460BB2 /* OrderDetailCell */,
+				E0F9820218DECCD9007D8E67 /* DARecentBillViewController.h */,
+				E0F9820318DECCD9007D8E67 /* DARecentBillViewController.m */,
+				E0F9820418DECCD9007D8E67 /* DARecentBillViewController.xib */,
+				E0F9820718DECF65007D8E67 /* DARecentBillTableViewCell.h */,
+				E0F9820818DECF65007D8E67 /* DARecentBillTableViewCell.m */,
+				E0F9820918DECF65007D8E67 /* DARecentBillTableViewCell.xib */,
 			);
 			name = Bill;
 			sourceTree = "<group>";
@@ -2293,6 +2309,7 @@
 				0A3CD5B518516B6200604CB6 /* multiply-sign.png in Resources */,
 				0A54D700185070A600BBA9C4 /* desk_jiebotton.png in Resources */,
 				0AEBE5C41831C21300B01A5E /* DAMyMenuBookPopupController.xib in Resources */,
+				E0F9820618DECCD9007D8E67 /* DARecentBillViewController.xib in Resources */,
 				0AA533A21828BEE80087EFF1 /* DAMyBookViewController.xib in Resources */,
 				E022804F18D1951C00460BB2 /* DAAllOrderCell.xib in Resources */,
 				0A739E63183B019D00AA48C4 /* DAMyBackOrderViewController.xib in Resources */,
@@ -2326,6 +2343,7 @@
 				0A7AF0C51836070000635376 /* DAQueueDrinkTableViewController.xib in Resources */,
 				0A54D7061850793500BBA9C4 /* desk_jz1.png in Resources */,
 				47A6ADAD182E0F2600E80AA1 /* DABillViewController.xib in Resources */,
+				E0F9820B18DECF65007D8E67 /* DARecentBillTableViewCell.xib in Resources */,
 				0A7AF0B6183600EE00635376 /* DAItemViewController.xib in Resources */,
 				0ADCBC431888FA3F0076FD01 /* plus-symbol-mini.png in Resources */,
 				0A54D6C8184D81C400BBA9C4 /* DATakeoutLoginViewController.xib in Resources */,
@@ -2466,6 +2484,7 @@
 				0AB78B82183CB46500979BD0 /* AFXMLRequestOperation.m in Sources */,
 				0A7AF0BA183606B900635376 /* DAQueueItemTableViewController.m in Sources */,
 				0AB78B7D183CB46500979BD0 /* AFImageRequestOperation.m in Sources */,
+				E0F9820518DECCD9007D8E67 /* DARecentBillViewController.m in Sources */,
 				0AC390631860985B0091AFB7 /* TMMemoryCache.m in Sources */,
 				0A4E47FE1857137A00CEC3DE /* Util.m in Sources */,
 				0A5D2896182BD23700847578 /* DADetailOrderViewController.m in Sources */,
@@ -2486,6 +2505,7 @@
 				0AB78B86183CB46500979BD0 /* Reachability.m in Sources */,
 				0A4E47C11857110D00CEC3DE /* DAServiceModule.m in Sources */,
 				0AEBE51E1830ED9800B01A5E /* DAMyOrderCell.m in Sources */,
+				E0F9820A18DECF65007D8E67 /* DARecentBillTableViewCell.m in Sources */,
 				0AB78B40183CB46500979BD0 /* DACommon.m in Sources */,
 				0A750294184863E400665B6C /* OpenUDID.m in Sources */,
 				0A4E47A41856A0EC00CEC3DE /* DAMenu.m in Sources */,

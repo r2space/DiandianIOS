@@ -29,7 +29,7 @@
 #import "MBProgressHUD.h"
 #import "DAMyBackOrderViewController.h"
 #import "DABackOrderViewController.h"
-
+#import "DARecentBillViewController.h"
 static DAMyTableViewController *activity;
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate, DATakeoutDelegate>
@@ -466,7 +466,10 @@ static DAMyTableViewController *activity;
 }
 
 - (IBAction)showTakeoutList:(id)sender {
-    [DATakeoutViewController show:self];
+    //[DATakeoutViewController show:self];
+    DARecentBillViewController *vc = [[DARecentBillViewController alloc] initWithNibName:@"DARecentBillViewController" bundle:nil];
+    vc.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)showBillTouched:(id)sender {

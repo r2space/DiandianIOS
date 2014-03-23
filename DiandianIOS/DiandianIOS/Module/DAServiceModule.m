@@ -31,7 +31,27 @@
     }];
     
 }
+- (void) getRecentServiceList:(void (^)(NSError *err, DAServiceList *list))callback
+{
+    NSString *path = [NSString stringWithFormat:API_GET_RECENT_SERVICELIST];
 
+    [[DAAFHttpClient sharedClient] getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        DAServiceList *data = [[DAServiceList alloc] initWithDictionary:[responseObject valueForKeyPath:@"data"]];
+
+        if (callback) {
+            callback(nil, data);
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+        if (callback) {
+            callback(error, nil);
+        }
+
+    }];
+
+}
 -(void)startService:(NSString *)deskId
              userId:(NSString *)userId
                type:(NSString *)type
