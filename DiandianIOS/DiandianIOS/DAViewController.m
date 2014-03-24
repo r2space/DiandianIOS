@@ -179,11 +179,11 @@ static DASettingViewController *loginViewController;
            success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSString *str = [responseObject valueForKeyPath:@"data"];
                 [DAPrintProxy printStringInBillPrinter:str];
-               [progress setHidden:YES];
+               [progress hide:YES];
            }
            failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 DDLogWarn(@"打印酒水销量出错.");
-               [progress setHidden:YES];
+               [progress hide:YES];
     }];
 }
 - (void)showIndicator:(NSString *)message
