@@ -93,25 +93,23 @@
 }
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSDictionary *row = @"lblName";
-//    NSLog(@"%@", row);
     DAOrder *order = [dataList.items objectAtIndex:indexPath.row];
-
-    
-    [[DAOrderModule alloc] setDoneOrder:order._id callback:^(NSError *err, DAOrder *list) {
-        
-        
-        self.itemClickCallback();
+    self.disableSocketIO();
+    [self showIndicator:@"上菜中..."];
+    [[DAOrderModule alloc] setDoneOrderWIthReturnDeskData:order._id callback:^(NSError *err, DAMyOrderList *list) {
+        NSMutableArray *tempList = [[NSMutableArray alloc]init];
+        for (DAOrder *tmpOrder in dataList.items) {
+            if (![tmpOrder._id isEqualToString:order._id]) {
+                [tempList addObject:tmpOrder];
+            }
+        }
+        dataList.items = [[NSArray alloc]initWithArray:tempList];
+        [self.collectionView reloadData];
+          [progress hide:YES];
+          self.itemClickCallback(list);
     }];
     
-    NSMutableArray *tempList = [[NSMutableArray alloc]init];
-    for (DAOrder *tmpOrder in dataList.items) {
-        if (![tmpOrder._id isEqualToString:order._id]) {
-            [tempList addObject:tmpOrder];
-        }
-    }
-    dataList.items = [[NSArray alloc]initWithArray:tempList];
-    [self.collectionView reloadData];
+
 }
 
 - (void)loadFromFile {
@@ -129,7 +127,5 @@
         [self.collectionView reloadData];
         [progress hide:YES];
     }];
-    
 }
-
 @end

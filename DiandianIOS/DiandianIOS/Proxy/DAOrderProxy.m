@@ -115,7 +115,7 @@
             [tmpList addObject: order];
         } else {
             for (DAOrder *oneOrder in tmpList) {
-                if (oneOrder.deskId == order.deskId ) {
+                if ([oneOrder.deskId isEqualToString: order.deskId] ) {
                     [oneOrder.oneItems addObject:order._id];
                 }
             }

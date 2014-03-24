@@ -29,6 +29,8 @@
 
 -(void) setDoneOrderWIthReturnData: (NSString *) orderId callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
 
+-(void) setDoneOrderWIthReturnDeskData: (NSString *) orderId callback:(void (^)(NSError *err, DAMyOrderList *list))callback;
+
 -(void) getOrderItemList:(void (^)(NSError *err, DAMyOrderList *list))callback;
 //
 //-(void) getOrderNEItemList:(void (^)(NSError *err, DAMyOrderList *list))callback;

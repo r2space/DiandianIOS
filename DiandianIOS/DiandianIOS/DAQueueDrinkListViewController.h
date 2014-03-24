@@ -9,15 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "SmartSDK.h"
 
-typedef void(^ItemClickCallback)();
-
+typedef void(^ItemClickCallback)(DAMyOrderList *orderData);
+typedef void(^DisableSocketIO)();
 @interface DAQueueDrinkListViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 
 @property (nonatomic, copy) ItemClickCallback itemClickCallback;
-
+@property (nonatomic, copy) DisableSocketIO disableSocketIO;
 -(void ) getQueueListWithServiceId:(NSString *)serviceId deskId:(NSString *)deskId;
 
 @end

@@ -17,6 +17,8 @@ typedef void(^DeskClickCallback)(NSString *deskId , NSString *serviceId);
 
 @property (nonatomic, copy) DeskClickCallback deskClickCallback;
 
-- (void)loadFromFile;
 
+- (void)loadFromFile;
+-(void)loadWithData:(DAMyOrderList *) data;
+-(void) disableSocketIO;
 @end

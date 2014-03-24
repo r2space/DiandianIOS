@@ -17,6 +17,8 @@
     DAMyOrderList *dataList;
     MBProgressHUD *progress;
     BOOL isShown;
+    BOOL handleSocketIO;
+    NSTimer *daemonIO;
 }
 @end
 
@@ -35,6 +37,7 @@
 {
     [super viewDidLoad];
     isShown = YES;
+    handleSocketIO = YES;
     // Do any additional setup after loading the view from its nib.
     dataList =  [[DAMyOrderList alloc ]init];
     dataList.items = [[NSArray alloc]init];
@@ -48,6 +51,9 @@
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     isShown = NO;
+    if(daemonIO != nil){
+        [daemonIO invalidate];
+    }
 }
 - (void)showIndicator:(NSString *)message
 {
@@ -64,9 +70,15 @@
     if(!isShown){
         return;
     }
-    
+
+    if(!handleSocketIO){
+        return;
+    }
+
     [self loadFromFile];
 }
+
+
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -149,5 +161,28 @@
     
 }
 
+-(void)loadWithData:(DAMyOrderList *) data
+{
+    if(daemonIO != nil){
+        [daemonIO invalidate];
+    }
+    daemonIO = [NSTimer scheduledTimerWithTimeInterval:30
+                                                target:self
+                                              selector:@selector(enableSocketIO:)
+                                              userInfo:nil
+                                               repeats:NO];
+    dataList = [DAOrderProxy getOneDeskDataList:data];
+    [self.tableView reloadData];
+}
+-(void)enableSocketIO:(NSTimer *)timer
+{
+    handleSocketIO = YES;
+    [self loadFromFile];
+}
+
+-(void) disableSocketIO
+{
+    handleSocketIO = NO;
+}
 
 @end

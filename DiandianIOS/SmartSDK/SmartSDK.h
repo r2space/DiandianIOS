@@ -65,6 +65,7 @@
 #define API_SETORDER_DONE_BY_ID @"/api/order/doneOrder.json?orderId=%@"
 #define API_SETORDER_DONE_BY_IDS @"/api/order/doneOrder.json?orderIds=%@"
 #define API_SETORDER_DONE_BY_ID_WITH_RETURN_DATA @"/api/order/doneOrderAndGetDishOrderList.json?orderId=%@"
+#define API_SETORDER_DONE_BY_ID_WITH_RETURN_DESK_DATA @"/api/order/doneOrderAndGetDeskList.json?orderId=%@"
 #define API_SETORDER_BACK_BY_ID @"/api/order/backOrder.json?orderId=%@"
 
 #define API_SETORDER_FREE @"/api/order/freeOrder.json"
