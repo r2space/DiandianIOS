@@ -20,11 +20,13 @@
 
 #import "ProgressHUD.h"
 #import "DAPrintProxy.h"
+#import "DAdrinkRankingViewController.h"
 
 static DASettingViewController *loginViewController;
 @interface DAViewController ()
 {
     MBProgressHUD       *progress;
+    UIPopoverController *popover;
 }
 @end
 
@@ -172,19 +174,34 @@ static DASettingViewController *loginViewController;
 }
 
 - (IBAction)onPrintBillTouched:(id)sender {
+    DAdrinkRankingViewController *drvc = [[DAdrinkRankingViewController alloc] initWithNibName:@"DAdrinkRankingViewController" bundle:nil];
 
-    [self showIndicator:@"打印中..."];
-    [[DAAFHttpClient sharedClient]
-            getPath:API_DRINK_SALE_RANKING parameters:nil
-           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSString *str = [responseObject valueForKeyPath:@"data"];
-                [DAPrintProxy printStringInBillPrinter:str];
-               [progress hide:YES];
-           }
-           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                DDLogWarn(@"打印酒水销量出错.");
-               [progress hide:YES];
-    }];
+    drvc.printProc = ^(NSString *day){
+        [self showIndicator:@"打印中..."];
+        NSString *path = [NSString stringWithFormat:API_DRINK_SALE_RANKING,day];
+        [[DAAFHttpClient sharedClient]
+                getPath:path parameters:nil
+                success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSString *str = [responseObject valueForKeyPath:@"data"];
+                    [DAPrintProxy printStringInBillPrinter:str];
+                    [progress hide:YES];
+                    [popover dismissPopoverAnimated:YES];
+                }
+                failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    DDLogWarn(@"打印酒水销量出错.");
+                    [progress hide:YES];
+                    [popover dismissPopoverAnimated:YES];
+                }];
+    };
+
+    if(popover == nil){
+
+        popover = [[UIPopoverController alloc]initWithContentViewController:drvc];
+        popover.popoverContentSize = CGSizeMake(150, 250);
+    }
+
+    [popover presentPopoverFromRect:((UIButton *)sender).frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
 }
 - (void)showIndicator:(NSString *)message
 {

@@ -25,5 +25,5 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 - (IBAction)changePage:(id)sender;
 @property (nonatomic, retain) DAService *curService;
-
+-(DASoldoutList *)getSoldout;
 @end

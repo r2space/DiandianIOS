@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SmartSDK.h"
 
-@interface DARootViewController : UIViewController
+@interface DARootViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIView *MenuGird;
@@ -21,6 +21,7 @@
 @property (nonatomic, retain) NSString  *willAddItem;
 
 - (IBAction)backAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UITableView *quickSearchTableView;
 
 
 @end

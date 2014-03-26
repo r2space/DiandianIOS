@@ -374,6 +374,8 @@
 		E0846AB718D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0846AB518D04F9E00B82AC6 /* DAOrderPopoverTableViewCell.xib */; };
 		E0846ABB18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0846AB918D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m */; };
 		E0846ABC18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0846ABA18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib */; };
+		E0937A8918E2769800F779EA /* DAdrinkRankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0937A8718E2769800F779EA /* DAdrinkRankingViewController.m */; };
+		E0937A8A18E2769800F779EA /* DAdrinkRankingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0937A8818E2769800F779EA /* DAdrinkRankingViewController.xib */; };
 		E0F9820518DECCD9007D8E67 /* DARecentBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F9820318DECCD9007D8E67 /* DARecentBillViewController.m */; };
 		E0F9820618DECCD9007D8E67 /* DARecentBillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0F9820418DECCD9007D8E67 /* DARecentBillViewController.xib */; };
 		E0F9820A18DECF65007D8E67 /* DARecentBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F9820818DECF65007D8E67 /* DARecentBillTableViewCell.m */; };
@@ -972,6 +974,9 @@
 		E0846AB818D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAPopoverOrderTypeAllTableViewCell.h; sourceTree = "<group>"; };
 		E0846AB918D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAPopoverOrderTypeAllTableViewCell.m; sourceTree = "<group>"; };
 		E0846ABA18D062FE00B82AC6 /* DAPopoverOrderTypeAllTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAPopoverOrderTypeAllTableViewCell.xib; sourceTree = "<group>"; };
+		E0937A8618E2769800F779EA /* DAdrinkRankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAdrinkRankingViewController.h; sourceTree = "<group>"; };
+		E0937A8718E2769800F779EA /* DAdrinkRankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAdrinkRankingViewController.m; sourceTree = "<group>"; };
+		E0937A8818E2769800F779EA /* DAdrinkRankingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DAdrinkRankingViewController.xib; sourceTree = "<group>"; };
 		E0F9820218DECCD9007D8E67 /* DARecentBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DARecentBillViewController.h; sourceTree = "<group>"; };
 		E0F9820318DECCD9007D8E67 /* DARecentBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DARecentBillViewController.m; sourceTree = "<group>"; };
 		E0F9820418DECCD9007D8E67 /* DARecentBillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DARecentBillViewController.xib; sourceTree = "<group>"; };
@@ -1633,6 +1638,9 @@
 				0A7EA1ED1847426D00A9E287 /* DASettingViewController.xib */,
 				0AA9571318274DCA0098D60C /* Images.xcassets */,
 				0AA956FF18274DCA0098D60C /* Supporting Files */,
+				E0937A8618E2769800F779EA /* DAdrinkRankingViewController.h */,
+				E0937A8718E2769800F779EA /* DAdrinkRankingViewController.m */,
+				E0937A8818E2769800F779EA /* DAdrinkRankingViewController.xib */,
 			);
 			path = DiandianIOS;
 			sourceTree = "<group>";
@@ -2267,6 +2275,7 @@
 				0ADCBC401888F94F0076FD01 /* select-partial@2x.png in Resources */,
 				0A54D6B5184C726900BBA9C4 /* BackgroundTexture@2x.png in Resources */,
 				0A7AF0D818360B3A00635376 /* da_data_queue_food.json in Resources */,
+				E0937A8A18E2769800F779EA /* DAdrinkRankingViewController.xib in Resources */,
 				0A54D6C0184C726900BBA9C4 /* Snapshot.png in Resources */,
 				0A54D6D4184ED1D400BBA9C4 /* menubook_sidemiddle.png in Resources */,
 				E0846AAD18CFFD8B00B82AC6 /* DABackOrderViewController.xib in Resources */,
@@ -2466,6 +2475,7 @@
 				0A4E47E7185711F000CEC3DE /* SMVerticalSegmentedControl.m in Sources */,
 				0A924AAF18348A810004C973 /* DAMyTableListViewController.m in Sources */,
 				F2AB4BF7182DDDB90067E450 /* DAOrderQueueViewController.m in Sources */,
+				E0937A8918E2769800F779EA /* DAdrinkRankingViewController.m in Sources */,
 				0A40FE14183F290000427613 /* DASocketIO.m in Sources */,
 				0AA9573318279AE90098D60C /* DAMenuBookViewController.m in Sources */,
 				0AA9570518274DCA0098D60C /* main.m in Sources */,

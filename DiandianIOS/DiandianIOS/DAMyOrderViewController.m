@@ -16,6 +16,7 @@
 #import "DAPrintProxy.h"
 #import "ProgressHUD.h"
 #import "MBProgressHUD.h"
+#import "DAMyFilterViewController.h"
 
 @interface DAMyOrderViewController ()<DADetailOrderDelegate>
 {
@@ -382,6 +383,13 @@
 }
 
 - (IBAction)putDone:(id)sender {
+
+    for(UIViewController *controller in [[self parentViewController] childViewControllers]){
+        if([controller isMemberOfClass:[DAMyFilterViewController class]]){
+            [[(DAMyFilterViewController *)controller searchTextField] resignFirstResponder];
+        }
+    }
+
 
     DADetailOrderViewController *detailOrderVC = [[DADetailOrderViewController alloc] initWithNibName:@"DADetailOrderViewController" bundle:nil];
     detailOrderVC.delegate = self;

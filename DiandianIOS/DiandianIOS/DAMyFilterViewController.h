@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DAMyFilterViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 
 @end

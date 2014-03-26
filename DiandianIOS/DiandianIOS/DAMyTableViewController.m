@@ -497,18 +497,19 @@ static DAMyTableViewController *activity;
 }
 
 - (IBAction)onLogoutTouched:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"jp.co.dreamarts.smart.diandian.password"];
-    [[DALoginModule alloc] logout:@"diandian" callback:^(NSError *error) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
-        
-        [[NSUserDefaults standardUserDefaults]  removeObjectForKey:@"jp.co.dreamarts.smart.diandian.username"];
-        
-        [[NSUserDefaults standardUserDefaults]  removeObjectForKey:@"jp.co.dreamarts.smart.diandian.password"];
-        
-        
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    }];
+    [self.navigationController popViewControllerAnimated:YES];
+//    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"jp.co.dreamarts.smart.diandian.password"];
+//    [[DALoginModule alloc] logout:@"diandian" callback:^(NSError *error) {
+//        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"jp.co.dreamarts.smart.diandian.isLogin"];
+//
+//        [[NSUserDefaults standardUserDefaults]  removeObjectForKey:@"jp.co.dreamarts.smart.diandian.username"];
+//
+//        [[NSUserDefaults standardUserDefaults]  removeObjectForKey:@"jp.co.dreamarts.smart.diandian.password"];
+//
+//
+//        [self.navigationController popViewControllerAnimated:YES];
+//
+//    }];
     
 }
 

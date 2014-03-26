@@ -40,11 +40,11 @@
     [self loadFromDisk];
     // Do any additional setup after loading the view from its nib.
     segmentedControl = [[CCSegmentedControl alloc] initWithItems:elements];
-    segmentedControl.frame = CGRectMake(0, 0, 862, 67);
+    segmentedControl.frame = CGRectMake(0, 0, 774, 67);
     
     //设置背景图片，或者设置颜色，或者使用默认白色外观
-    segmentedControl.backgroundImage = [UIImage imageNamed:@"menubook_top.png"];
-//    segmentedControl.backgroundColor = [UIColor grayColor];
+    //segmentedControl.backgroundImage = [UIImage imageNamed:@"menubook_top.png"];
+    segmentedControl.backgroundColor = [UIColor clearColor];
     
     //阴影部分图片，不设置使用默认椭圆外观的stain
     UIImageView *stainView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"top_bg3.png"]];
@@ -59,6 +59,21 @@
     [segmentedControl addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(segmentedControlReload:) name:@"segmentedControlReload" object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearSearch:) name:@"QuickSearchRes" object:nil];
+}
+- (void)clearSearch:(NSNotification *)sender
+{
+    self.searchTextField.text = @"";
+    NSNotification *searchRequest = [NSNotification notificationWithName:@"QuickSearchRequest" object:@""];
+
+    [[NSNotificationCenter defaultCenter] postNotification:searchRequest];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)loadFromDisk{
@@ -80,6 +95,9 @@
 
 - (void)valueChanged:(id)sender
 {
+    if(self.searchTextField.isFirstResponder){
+        [self.searchTextField resignFirstResponder];
+    }
     CCSegmentedControl* segmented = sender;
     NSString *index = [NSString stringWithFormat:@"%d",segmented.selectedSegmentIndex];
     
@@ -140,6 +158,15 @@
     unsigned hexComponent;
     [[NSScanner scannerWithString: fullHex] scanHexInt: &hexComponent];
     return hexComponent / 255.0;
+}
+- (IBAction)searchValueChanged:(id)sender {
+    UITextField* text = (UITextField*)sender;
+    NSLog(@"%@",text.text);
+
+    NSNotification *searchRequest = [NSNotification notificationWithName:@"QuickSearchRequest" object:text.text];
+
+    [[NSNotificationCenter defaultCenter] postNotification:searchRequest];
+    
 }
 
 @end

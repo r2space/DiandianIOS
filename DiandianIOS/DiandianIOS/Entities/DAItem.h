@@ -31,4 +31,5 @@
 @property(retain, nonatomic) NSArray *option;
 @property(retain, nonatomic) NSString *selectedOption;
 @property(retain, nonatomic) NSString *noteName;
+@property(retain, nonatomic) NSString *searchIndex;
 @end

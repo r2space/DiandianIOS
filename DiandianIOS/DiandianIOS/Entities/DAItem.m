@@ -38,6 +38,8 @@
 
     [aCoder encodeObject:self.selectedOption forKey:@"selectedOption"];
     [aCoder encodeObject:self.noteName forKey:@"noteName"];
+
+    [aCoder encodeObject:self.searchIndex forKey:@"searchIndex"];
     
 }
 
@@ -62,7 +64,7 @@
     self.option = [aDecoder decodeObjectForKey:@"option"];
     self.selectedOption = [aDecoder decodeObjectForKey:@"selectedOption"];
     self.noteName = [aDecoder decodeObjectForKey:@"noteName"];
-
+    self.searchIndex = [aDecoder decodeObjectForKey:@"searchIndex"];
     return self;
 }
 

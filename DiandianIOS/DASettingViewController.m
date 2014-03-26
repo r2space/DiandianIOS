@@ -77,8 +77,10 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    
+
+    self.lbliPadId.text = [NSString stringWithFormat:@"iPad:%@",[OpenUDID value]];
+    self.lblVer.text = [NSString stringWithFormat:@"Ver:%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
+
     self.labLoginStatus.text = @"";
     //检查用户手势密码
 //    [[NSUserDefaults standardUserDefaults] setValue:user._id forKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];

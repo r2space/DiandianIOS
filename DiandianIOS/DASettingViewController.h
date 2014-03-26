@@ -22,6 +22,8 @@ typedef void (^MenuViewBlock)();
 @property (nonatomic, copy) MenuViewBlock menuViewBlock;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *lbliPadId;
+@property (weak, nonatomic) IBOutlet UILabel *lblVer;
 
 -(void)dismissVC;
 

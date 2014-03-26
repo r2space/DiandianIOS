@@ -436,4 +436,8 @@
 {
     [self gotoPage:YES];    // YES = animate
 }
+-(DASoldoutList *)getSoldout
+{
+    return soldoutList;
+}
 @end
