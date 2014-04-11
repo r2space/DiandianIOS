@@ -15,5 +15,6 @@ typedef void (^PrintCallback)(DAService *service);
 @property (weak, nonatomic) IBOutlet UILabel *lblUserpay;
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
 @property (copy) PrintCallback printCallback;
+@property (weak, nonatomic) IBOutlet UILabel *billNum;
 -(void)setData:(DAService *) service;
 @end

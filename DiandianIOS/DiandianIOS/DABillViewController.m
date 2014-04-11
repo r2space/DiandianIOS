@@ -264,42 +264,41 @@
 
     DDLogWarn(@"实付款输入框金额为:%@",self.textPay.text);
 
-    [[DAServiceModule alloc]stopService:self.curService._id
-                                 amount:[billData.amount stringValue]
-                                 profit:self.lblPay.text
-                                   agio:[NSString stringWithFormat:@"%f",offAmount]
-                                userPay:self.textPay.text
-                           preferential:self.textReduce.text
-                                payType:[NSString stringWithFormat:@"%d" ,(int)payType]
-                                   note:serviceNote
-                               callback:^(NSError *err, DAService *service)
-                               {
-                                   if (err!=nil || service == nil || service.billNum == nil) {
-                                       [progress hide:YES];
-                                       [ProgressHUD showError:@"打印失败"];
-                                       return;
-                                   }
-                                   NSLog(@"billNum: %@",service.billNum);
+    [[DAServiceModule alloc] stopService:self.curService._id
+                                  amount:[billData.amount stringValue]
+                                  profit:[self.lblPay.text stringByReplacingOccurrencesOfString:@"元" withString:@""]
+                                    agio:[NSString stringWithFormat:@"%f", offAmount]
+                                 userPay:self.textPay.text
+                            preferential:self.textReduce.text
+                                 payType:[NSString stringWithFormat:@"%d", (int) payType]
+                                    note:serviceNote
+                                callback:^(NSError *err, DAService *service) {
+                                    if (err != nil || service == nil || service.billNum == nil) {
+                                        [progress hide:YES];
+                                        [ProgressHUD showError:@"打印失败"];
+                                        return;
+                                    }
+                                    NSLog(@"billNum: %@", service.billNum);
 
-                                   DDLogWarn(@"开始打印账单,service id : %@ ,bill num : %@",service._id,service.billNum);
+                                    DDLogWarn(@"开始打印账单,service id : %@ ,bill num : %@", service._id, service.billNum);
 
-                                   [DAPrintProxy printBill:self.curService._id
-                                                       off:[NSString stringWithFormat:@"%f",offAmount]
-                                                       pay:self.lblPay.text
-                                                   userPay:self.textPay.text
-                                                      type:payType
-                                                    reduce:self.textReduce.text
-                                                       seq:service.billNum
-                                                    completion:^(NSError *error){
-                                                        DDLogWarn(@"打印账单结束");
-                                                        [progress hide:YES];
-                                                        if(error != nil){
-                                                            [ProgressHUD showError:@"打印失败,请重试."];
-                                                        }else{
-                                                            [self.navigationController popViewControllerAnimated:YES];
-                                                        }
-                                                    }];
-                               }];
+                                    [DAPrintProxy printBill:self.curService._id
+                                                        off:[NSString stringWithFormat:@"%f", offAmount]
+                                                        pay:[self.lblPay.text stringByReplacingOccurrencesOfString:@"元" withString:@""]
+                                                    userPay:self.textPay.text
+                                                       type:payType
+                                                     reduce:self.textReduce.text
+                                                        seq:service.billNum
+                                                 completion:^(NSError *error) {
+                                                     DDLogWarn(@"打印账单结束");
+                                                     [progress hide:YES];
+                                                     if (error != nil) {
+                                                         [ProgressHUD showError:@"打印失败,请重试."];
+                                                     } else {
+                                                         [self.navigationController popViewControllerAnimated:YES];
+                                                     }
+                                                 }];
+                                }];
 }
 
 

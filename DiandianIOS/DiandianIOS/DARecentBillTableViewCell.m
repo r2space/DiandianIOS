@@ -34,7 +34,7 @@
     self.lblDesk.text = service.deskName;
     self.lblProfit.text = service.profit;
     self.lblUserpay.text = service.userPay;
-
+    self.billNum.text = service.billNum;
 
     //NSString *dateString = @"2013-04-18T08:49:58.157+0000";
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -46,5 +46,10 @@
     NSDateFormatter* formatter2 = [[NSDateFormatter alloc] init];//实例化一个NSDateFormatter对象
     [formatter2 setDateFormat:@"HH:mm"];
     self.lblTime.text = [formatter2 stringFromDate:date];
+}
+- (IBAction)detailTouched:(id)sender {
+
+    NSNotification *orderReloadNotification = [NSNotification notificationWithName:@"serviceDetail" object:service];
+    [[NSNotificationCenter defaultCenter] postNotification:orderReloadNotification];
 }
 @end

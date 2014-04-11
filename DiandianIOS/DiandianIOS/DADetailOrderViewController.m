@@ -15,7 +15,7 @@
 #import "ProgressHUD.h"
 #import "DAPickAmountViewController.h"
 #import "DrawPatternLockViewController.h"
-
+#import "MBProgressHUD.h"
 #define AMOUNT_LABEL_TAG 101
 
 
@@ -27,6 +27,7 @@
     NSString *command;
     UIView *mask;
     int errorCount;
+    MBProgressHUD       *progress;
 }
 @property (nonatomic, strong) UIPopoverController *remarkViewPopover;
 @end
@@ -50,8 +51,11 @@
 
 - (void)lockEntered:(NSString*)key {
     NSString *WaitterId = [[NSUserDefaults standardUserDefaults] objectForKey:@"jp.co.dreamarts.smart.diandian.curWaitterUserId"];
-    
+    NSLog(@"%@",@"验证手势密码");
+
+    [self showIndicator:@"验证中..."];
     [[DALoginModule alloc]checkPattern:key userId:WaitterId callback:^(NSError *error, NSDictionary *user) {
+        [progress hide:YES];
         if (error!=nil) {
             [ProgressHUD showError:@"服务器异常！"];
             [mask removeFromSuperview];
@@ -391,7 +395,7 @@
 
     int valuePrefix = [amountPrefix intValue];
     valuePrefix = valuePrefix - 1;
-    if (valuePrefix == 0) {
+    if (valuePrefix < 0) {
         return;
     }
     btn.amountLabel.text = [NSString stringWithFormat:@"%d.",valuePrefix];
@@ -546,6 +550,15 @@
         self.lblOption.text = [alertView textFieldAtIndex:0].text;
     }
 }
-
+- (void)showIndicator:(NSString *)message
+{
+    if (progress == nil) {
+        progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    }
+    progress.mode = MBProgressHUDModeIndeterminate;
+    progress.labelText = message;
+    //progress.color = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
+    [progress show:YES];
+}
 
 @end

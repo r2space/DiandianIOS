@@ -581,13 +581,13 @@
     }
     progress.mode = MBProgressHUDModeIndeterminate;
     progress.labelText = message;
-    progress.color = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
+    //progress.color = [UIColor colorWithRed:102.0f/255.0f green:0.0f/255.0f blue:204.0f/255.0f alpha:1.0f];
     [progress show:YES];
 }
 
 - (void)loadOrderList
 {
-    if ( self.curService !=nil && self.curService._id.length >0 ) {
+    if ( self.curService !=nil && self.curService._id.length > 0 ) {
         
         [[DAOrderModule alloc]getOrderListByServiceId:self.curService._id withBack:@"0,1,2,3" callback:^(NSError *err, DAMyOrderList *list) {
             

@@ -30,6 +30,7 @@
 #import "DAMyBackOrderViewController.h"
 #import "DABackOrderViewController.h"
 #import "DARecentBillViewController.h"
+#import "DABillOrderDetailViewController.h"
 static DAMyTableViewController *activity;
 
 @interface DAMyTableViewController ()<DAMyLoginDelegate, DAMyTableConfirmDelegate, DAProcessionViewDelegate, DATakeoutDelegate>
@@ -47,6 +48,7 @@ static DAMyTableViewController *activity;
     MBProgressHUD *progress;
     DADesk *selectedDesk;
     NSIndexPath *selectedIndexPath;
+    DARecentBillViewController *recentVC;
 }
 @end
 
@@ -81,11 +83,13 @@ static DAMyTableViewController *activity;
     selectedDesk = nil;
     selectedIndexPath = nil;
     [self loadFromFile];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popupServiceDetail:) name:@"serviceDetail" object:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:YES];
     isShown = NO;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 + (void) receive:(NSString*)action data:(id)data
@@ -467,9 +471,10 @@ static DAMyTableViewController *activity;
 
 - (IBAction)showTakeoutList:(id)sender {
     //[DATakeoutViewController show:self];
-    DARecentBillViewController *vc = [[DARecentBillViewController alloc] initWithNibName:@"DARecentBillViewController" bundle:nil];
-    vc.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    recentVC = [[DARecentBillViewController alloc] initWithNibName:@"DARecentBillViewController" bundle:nil];
+
+    recentVC.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+    [self.navigationController presentViewController:recentVC animated:YES completion:nil];
 }
 
 - (IBAction)showBillTouched:(id)sender {
@@ -658,4 +663,17 @@ static DAMyTableViewController *activity;
     [lockVC dismissViewControllerAnimated:NO completion:nil];
 }
 //==================
+
+-(void) popupServiceDetail :(NSNotification *) sender
+{
+    [recentVC dismissViewControllerAnimated:YES completion:^{
+        DAService *service = (DAService *)sender.object;
+        DABillOrderDetailViewController *vc = [[DABillOrderDetailViewController alloc] initWithNibName:@"DABillOrderDetailViewController" bundle:nil service:service];
+        vc.parentReloadBlock = ^(){
+            //[self showIndicator:@"刷新中"];
+        };
+        vc.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
+    }];
+}
 @end
