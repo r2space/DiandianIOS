@@ -2206,7 +2206,7 @@
 				ORGANIZATIONNAME = DAC;
 				TargetAttributes = {
 					0AA956F418274DCA0098D60C = {
-						DevelopmentTeam = 8GD8HZ8DR6;
+						DevelopmentTeam = B6PZ43Z3Q2;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
 								enabled = 0;
